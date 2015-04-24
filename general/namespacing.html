@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/namespacing.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>命名空間 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="namespacing.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>命名空間</h2>
+
+			<p>
+				FuelPHP，做為一個 PHP 5.3+ 框架，很大程度依賴命名空間來分隔框架和你的應用程式的不同元件，
+				to make the code as portable as possible, and to prevent any collisons in class names when you're moving
+				bits of your application around.
+			</p>
+			<p>
+				By default, the exception to this is your main application code, which resides in <code>APPPATH/classes</code>. All main application
+				classes are defined in the global namespace (they do not have a namespace set), and use the cascading file system to create unique
+				classnames.
+			</p>
+			<p>
+				While this makes it easier for the novice to start using the FuelPHP framework, it will create more complex class names, and it will
+				make those classes less portable or interchangable.
+			</p>
+
+			<h3 id="controllers">為你的控制器加上命名空間</h3>
+
+			<p>
+				As mentioned in the <a href="controllers/base.html">introduction</a>, by default controllers are created in the <code>APPPATH/classes/controller</code> folder,
+				and are prefixed with <var>Controller_</var>. This prefix is defined in your <code>APPPATH/config/config.php</code> configuration file
+				(and if not this is the default), but can be changed if you want to namespace your controllers, or if you
+				want to move them to a different folder structure.
+			</p>
+
+			<p>
+				Lets move the example given above to the <kbd>Controller</kbd> namespace. You tell FuelPHP that you've done this by setting the
+				config setting <var>controller_prefix</var> from <kbd>'Controller_'</kbd> to <kbd>'Controller\\'</kbd> in your app's config.php file.
+			</p>
+
+			<pre class="php"><code>namespace Controller;
+
+class Example extends \Controller
+{
+	public function action_index()
+	{
+		// 一些程式碼
+	}
+}</code></pre>
+
+			<p>
+				Once you have enabled namespacing for your controllers, <strong>ALL</strong> your controller classes need to be namespaced!
+				This means a controller in a module called <kbd>Mymodule</kbd> will look like this:
+			</p>
+
+			<pre class="php"><code>namespace Mymodule\Controller;
+
+class Example extends \Controller
+{
+	public function action_index()
+	{
+		// 一些程式碼
+	}
+}</code></pre>
+
+			<p>
+				Namespacing your controllers is completely transparent for your application, you can implement it without altering anything else.
+				You can even mix-and-match namespacing and the cascading filesystem, and create a controller like <kbd>\Controller\Admin\User_Groups</kbd>
+				which is defined in <code>APPPATH/classes/controller/admin/user/groups.php</code>.
+			</p>
+
+			<p class="note">
+				Note that now that your controller lives in a namespace, you have to prefix all global classes (like "Controller" in the example) with a
+				backslash, since it needs to be loaded from the global namespace. Alternative, you can use the 'use' keyword to import classes into the
+				current namespace.
+			</p>
+
+			<h3 id="models">為你的模型加上命名空間</h3>
+
+			<p>
+				你可以立即開始為你的模型加上命名空間，不需要額外的配置。
+			</p>
+
+			<pre class="php"><code>namespace Model;
+
+class Example extends \Orm\Model
+{
+	// 一些程式碼
+}</code></pre>
+
+			<p>或在一個模組中：</p>
+
+			<pre class="php"><code>namespace Mymodule\Model;
+
+class Example extends \Model_Crud
+{
+	// 一些程式碼
+}</code></pre>
+
+			<p>然後你可以在你的控制器中像這樣存取模型：</p>
+
+			<pre class="php"><code>// the ORM model created above
+$orm = \Model\Example::forge();
+
+// the module crud model created above
+$crud = \Mymodule\Model\Example::forge();</code></pre>
+
+			<h3 id="presenters">為你的表現控件加上命名空間</h3>
+
+			<p>
+				Since there is no configuration for the Presenter prefix, namespacing your presenters is a bit more complicated.
+				It requires an extension of the Presenter class in your app. Create the following class:
+			</p>
+
+			<pre class="php"><code>// 位於 APPPATH/classes/presenter.php 的檔案
+class Presenter extends \Fuel\Core\Presenter
+{
+	// 命名空間前綴
+	protected static $ns_prefix = 'Presenter\\';
+}
+</code></pre>
+			<p>
+				And inform the framework you have extended the class by adding this to your <code>APPPATH/bootstrap.php</code>:
+			</p>
+
+			<pre class="php"><code>// add our presenter override
+Autoloader::add_classes(array(
+	'Presenter' => APPPATH.'classes/presenter.php',
+));
+</code></pre>
+
+			<p>Make sure you add it before the Autoloader is registered!</p>
+
+			<p>
+				Once you have made this change, you can define your Presenters like so:
+			</p>
+
+			<pre class="php"><code>// 位於 APPPATH/classes/presenter/users/group.php 的檔案
+namespace Presenter\Admin\Users;
+
+class Group
+{
+	public function view()
+	{
+		// your presenter code
+	}
+}
+</code></pre>
+
+			<h3 id="others">為其他類別加上命名空間</h3>
+
+			<p>
+				Any other class in the classes folder can be namespaced without problems, as long as the fully namespaced name of class
+				can be mapped to the file which defines the class:
+			</p>
+
+			<pre class="php"><code>// 位於 APPPATH/classes/admin/users/group.php 的檔案
+namespace Admin\Users;
+
+class Group
+{
+	// 一些程式碼
+}
+
+// alternative for the same file and class
+namespace Admin;
+
+class Users_Group
+{
+	// 一些程式碼
+}
+
+// or even old style without namespace
+class Admin_Users_Group
+{
+	// 一些程式碼
+}
+</code></pre>
+
+			<h3 id="caveats">Caveats</h3>
+
+			<h4 id="caveats_mixnmatch">Do not mix different naming styles for the same class</h4>
+
+			<p>
+				Although you can mix-and-match namespaces and underscores to construct your class names, you can not mix-and-match it's usage.
+				If you have defined a class <kbd>\Admin\Users\Group</kbd>, using <kbd>\Admin\Users_Group::method();</kbd> will load the correct
+				file (since it maps correctly to the right file), but the autoloader will throw an exception because the expected <kbd>\Admin\Users_Group</kbd> class is
+				not defined in that file.
+			</p>
+			<p>
+				So it is best to decide on a naming convention for your applications, and stick to it!
+			</p>
+
+			<h4 id="caveats_collisions">Class name collisions</h4>
+
+			<p>
+				When executing a Request, modules have precedence over the main app. This has some implications as to the names and namespaces you
+				can use in your app, in relation to your module.
+			</p>
+			<p>
+				Say you have a module called <kbd>Admin</kbd>, then all classes in that module will be defined in a namespace that starts with <kbd>\Admin</kbd>.
+				If at the same time you have classes in <code>APPPATH/classes/admin</code>, like in the example above, then<br />
+				- those app classes will always work as long as the module isn't loaded.<br />
+				- if the module is loaded, a module class with the same name has precedence, the app class can never be loaded.<br />
+			</p>
+			<p>
+				Similarly, if you have a app Controller called <kbd>Controller_Admin_Users</kbd>, and you have a module called <kbd>Admin</kbd>, you can never
+				have a URL Request load that app controller, since the Framework will look for that controller in the module based on the admin prefix.
+			</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+</body>
+</html>

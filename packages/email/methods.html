@@ -1,0 +1,1506 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/email/methods.html';
+		var path = './../../';
+		var class_prefix = "Email_Driver::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>方法 - Email 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="email_class_method">Email 類別方法</h2>
+
+			<article>
+				<h4 class="method" id="method_forge" data-class="Email">forge($setup = null, array $config = array())</h4>
+				<p><strong>forge</strong> 回傳一個新的 Email_Driver 實例基於配置或它接收到的輸入。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$setup</kbd></th>
+									<td><em>混合</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>提供 <em>null</em> 做為預設的配置，一個設定組的名稱，或配置的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td><em>混合</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>額外配置陣列以動態修改預設配置。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個新的 Email_Driver 實例</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 簡單的樣本：
+$email = \Email::forge();
+
+// 從一個群組載入配置
+$email = \Email::forge('my_defaults');
+
+// 提供配置
+$email = \Email::forge(array(
+	'driver' => 'smtp',
+));
+
+// 從群組載入設置以動態覆寫
+$email = \Email::forge('my_defaults', array(
+	'driver' => 'smtp',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h2 id="email_driver_methods">Email driver 方法</h2>
+
+			<p>
+				擴充 <em>Email_Driver</em> 的每個驅動程序都有這些方法。
+				你所需要的就是喚醒與執行它們。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_body">body($body)</h4>
+				<p><strong>body</strong> 轉換輸入為字串，並設定訊息主體。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$body</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>訊息主體。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->body('This is my message.');
+
+// 或傳遞檢視給它
+$email->body(\View::forge('my/view', $data);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_alt_body">alt_body($alt_body)</h4>
+				<p><strong>alt_body</strong> 轉換輸入為字串，並設定訊息的替代主體。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$alt_body</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>訊息主體。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->alt_body('This is my alternative message.');
+
+// 或傳遞檢視給它
+$email->alt_body(\View::forge('my/alt/view', $data);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_priority">priority($priority)</h4>
+				<p><strong>priority</strong> 方法設定郵件的優先權。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$priority</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>優先權： <a href="./introduction.html#config_priority">查看所有郵件優先權</a>。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->priority(\Email::P_HIGHEST);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_html_body">html_body($html, $generate_alt = null, $auto_attach = null)</h4>
+				<p><strong>html_body</strong> 方法設置郵件主體並且選擇性地從其產生替代的主體。如果指定內嵌的圖片將自動被附加。</p>
+				<p class="note"><strong>請注意：</strong> 預設情況下自動附加是開啟的（透過配置）。要關閉這個功能，提供 false 或者更改配置設定。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">類型</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$html</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>郵件 HTML。</td>
+								</tr>
+								<tr>
+									<th><kbd>$generate_alt</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>是否產生替代訊息主體，當提供空值時回退（fallback）到預設配置。</td>
+								</tr>
+								<tr>
+									<th><kbd>$auto_attach</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設定為 true 或 false 以附加嵌入式圖片，當提供空值時回退（fallback）到預設配置。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->html_body(\View::forge('welcome/email', $data));
+// 不產生替代訊息主體
+$email->html_body(\View::forge('welcome/email', $data), false);
+
+// 產生替代訊息主體，但不自動附加圖片。
+$email->html_body(\View::forge('welcome/email', $data), true, false);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_from">from($email, $name = false)</h4>
+				<p><strong>from</strong> 方法設定來源地址與名稱。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$email</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>來源電子郵件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>來源名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->from('me@example.com', 'My Name');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_subject">subject($subject)</h4>
+				<p><strong>subject</strong> 方法設定主題。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$subject</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>電子郵件主題。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->subject('This is my subject');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to">to($email, $name = false)</h4>
+				<p><strong>to</strong> 方法增加單一或陣列的地址至 <em>to</em> 接收者陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$email</kbd></th>
+									<td><em>字串｜陣列</em></td>
+									<td><em>必要</em></td>
+									<td>接收電子郵件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>接收名稱，當 $email 是陣列時忽略。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->to('me@example.com', 'My Name');
+
+// 添加多個地址
+$email->to(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_cc">cc($email, $name = false)</h4>
+				<p><strong>cc</strong> 方法添加單一或陣列的地址到 <em>cc</em> 接收者陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$email</kbd></th>
+									<td><em>字串｜陣列</em></td>
+									<td><em>必要</em></td>
+									<td>接收電子郵件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>接收名稱，當 $email 是陣列時忽略。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->cc('me@example.com', 'My Name');
+
+// 添加多個地址
+$email->cc(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_bcc">bcc($email, $name = false)</h4>
+				<p><strong>bcc</strong> 方法添加單一或陣列的地址到 <em>bcc</em> 接收者陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$email</kbd></th>
+									<td><em>字串｜陣列</em></td>
+									<td><em>必要</em></td>
+									<td>接收電子郵件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>接收名稱，當 $email 是陣列時忽略。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->bcc('me@example.com', 'My Name');
+
+// 添加多個地址
+$email->bcc(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_reply_to">reply_to($email, $name = false)</h4>
+				<p><strong>reply_to</strong> 方法添加單一或陣列的地址到 <em>reply to</em> 接收者陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$email</kbd></th>
+									<td><em>字串｜陣列</em></td>
+									<td><em>必要</em></td>
+									<td>接收電子郵件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>接收名稱，當 $email 是陣列時忽略。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->reply_to('me@example.com', 'My Name');
+
+// 添加多個地址
+$email->reply_to(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_header">header($header, $value = null)</h4>
+				<p><strong>header</strong> 方法添加一個自訂的標題到你的郵件表頭。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$header</kbd></th>
+									<td><em>字串｜陣列</em></td>
+									<td><em>必要</em></td>
+									<td>表頭的類型或表頭的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>表頭的值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->header('X-SMTPAP', 'XXXXXXXX');
+
+// 添加多個地址
+$email->reply_to(array(
+	'X-SMTPAP' => 'XXXXXX',
+	'X-SMTPAP2' => 'XXXXXA',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_recipients">clear_recipients()</h4>
+				<p><strong>clear_recipients</strong> 方法清空 to、cc 與 bcc 列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->bcc('me@example.com', 'My Name');
+
+// 添加多個地址
+$email->to(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+
+// 重置
+$email->clear_recipients();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_addresses">clear_addresses()</h4>
+				<p><strong>clear_addresses</strong> 方法清空 to、cc、bcc 與 reply to 列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加單一地址
+$email->reply_to('me@example.com', 'My Name');
+
+// 添加多個地址
+$email->to(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+
+// 重置
+$email->clear_addresses();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_to">clear_to()</h4>
+				<p><strong>clear_to</strong> 方法清空 <em>to</em> 接收者列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加多個地址
+$email->to(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+
+// 重置
+$email->clear_to();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_cc">clear_cc()</h4>
+				<p><strong>clear_cc</strong> 方法清空 <em>cc</em> 接收者列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加多個地址
+$email->cc(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+
+// 重置
+$email->clear_cc();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_bcc">clear_bcc()</h4>
+				<p><strong>clear_bcc</strong> 方法清空 <em>bcc</em> 接收者列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加多個地址
+$email->bcc(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+
+// 重置
+$email->clear_bcc();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_reply_to">clear_reply_to()</h4>
+				<p><strong>clear_reply_to</strong> 方法清空 <em>reply to</em> 列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加多個地址
+$email->reply_to(array(
+	'me@example.com',
+	// 帶有名稱
+	'me@example.com' => 'His/Her name.',
+));
+
+// 重置
+$email->clear_reply_to();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_attach">attach($file, $inline = false, $cid = null, $mime = null, $name = null)</h4>
+				<p><strong>attach</strong> 方法附加一個檔案。</p>
+				<p class="note">此方法將會在 <em>attach_paths</em> 陣列裡設定（config/email.php）的附件路徑中搜尋檔案。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$file</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>引入檔案的路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$inline</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>是否附加內嵌檔案。</td>
+								</tr>
+								<tr>
+									<th><kbd>$cid</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>內容標識符。附加內嵌圖像時使用。</td>
+								</tr>
+								<tr>
+									<th><kbd>$mime</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>MIME 類型預設是去查在 core/config/mimes 內的陣列，以此來覆寫它。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>附件名稱覆寫。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加一個附件
+$email->attach(DOCROOT.'attachments/report.pdf');
+
+// 添加一個內嵌圖像
+$email->attach(DOCROOT.'assets/img/mail/header.png', true, 'cid:headerimage');
+// 此圖像將被包成 &lt;img src="cid:headerimage" /&gt;
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_string_attach">string_attach($contents, $filename, $cid = null, $inline = false, $mime = null)</h4>
+				<p><strong>string_attach</strong> 方法以字串輸入附加一個檔案。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$contents</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>附件內容。</td>
+								</tr>
+								<tr>
+									<th><kbd>$filename</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>使用的檔案名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$cid</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>內容標識符。附加內嵌圖像時使用。</td>
+								</tr>
+								<tr>
+									<th><kbd>$inline</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>是否將附加檔案內嵌。</td>
+								</tr>
+								<tr>
+									<th><kbd>$mime</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>MIME 類型預設是去查在 core/config/mimes 內的陣列，以此來覆寫它。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加一個附件
+$email->string_attach('This is a textfile', 'test.txt');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clear_attachments">clear_attachments()</h4>
+				<p><strong>clear_attachments</strong> 方法清除附件陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加一些附件
+$email->string_attach('This is a textfile', 'test.txt');
+$email->attach(DOCROOT.'uploads/attach.pdf');
+
+// 然後清空附件
+$email->clear_attachments();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_send">send($validate = null)</h4>
+				<p><strong>send</strong> 方法發送信件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$validate</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>是否驗證地址，退回到配置設定。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>try{
+	$email->send();
+}
+catch(\EmailSendingFailedException $e)
+{
+	// 驅動程序無法發送信件。
+}
+catch(\EmailValidationFailedException $e)
+{
+	// 單一或更多驗證失敗的email地址。
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_invalid_addresses">get_invalid_addresses()</h4>
+				<p><strong>get_invalid_addresses</strong> 方法回傳未通過驗證的email地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>try{
+	$email->send();
+}
+catch(\EmailSendingFailedException $e)
+{
+	// 驅動程序無法發送信件。
+}
+catch(\EmailValidationFailedException $e)
+{
+	// 單一或更多驗證失敗的email地址。
+	$these_failed = $email->get_invalid_addresses();
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_from">return_path($email)</h4>
+				<p><strong>return_path</strong> 方法設定回傳路徑地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$email</kbd></th>
+									<td><em>字串</em></td>
+									<td><em>必要</em></td>
+									<td>郵件回傳路徑。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->return_path('bounces@example.com');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pipelining">pipelining($pipelining = true)</h4>
+				<p>
+					<strong>pipelining</strong> 方法可使用流水線（一次發送多個訊息）。
+					對於不支援的驅動，這個方法是一個空操作（NOOP）。流水線預設是停用的。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$pipelining</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>流水線是否應該被啟用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>$this</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$email->pipelining(true);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h2 id="email_getters">Email getters</h2>
+
+			<article>
+				<h4 class="method" id="method_get_from">get_from()</h4>
+				<p><strong>get_from</strong> 方法回傳配置的 "from" 地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳透過 from() 設定的地址
+$from = $email->get_from();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_to">get_to()</h4>
+				<p><strong>get_to</strong> 方法回傳配置的 "to" 地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳透過 to() 設定的地址
+$to = $email->get_to();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_cc">get_cc()</h4>
+				<p><strong>get_cc</strong> 方法回傳配置的 "cc" 地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳透過 cc() 設定的地址
+$cc = $email->get_cc();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_bcc">get_bcc()</h4>
+				<p><strong>get_bcc</strong> 方法回傳配置的 "bcc" 地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳透過 bcc() 設定的地址
+$bcc = $email->get_bcc();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_reply_to">get_reply_to()</h4>
+				<p><strong>get_reply_to</strong> 方法回傳配置的 "reply_to" 地址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳透過 reply_to() 設定的地址
+$reply_to = $email->get_reply_to();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_body">get_body()</h4>
+				<p><strong>get_body</strong> 方法回傳設定的 Email 主體。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 Email 主體
+$text = $email->get_body();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_subject">get_subject()</h4>
+				<p><strong>get_subject</strong> 方法回傳配置的 Email "subject"。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳透過 subject() 設定的主題
+$subject = $email->get_subject();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

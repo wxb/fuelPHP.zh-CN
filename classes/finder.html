@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/finder.html';
+		var path = './../';
+		var class_prefix = "Finder::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Finder - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Finder 類別</h2>
+
+			<p>Finder 類別能透過搜尋路徑尋找所給的檔案，以及載入所給的檔案。</p>
+
+			<h3 id="searchorder">搜尋順序</h3>
+
+			<p>Finder 使用下列搜尋邏輯來定位檔案：</p>
+			<ul>
+				<li>如果有定義任何快閃路徑，這些會依定義順序先被搜尋</li>
+				<li>如果目前請求情境是模組，該模組將接著被搜尋</li>
+				<li>如果有定義任何請求路徑，這些會依定義順序接著搜尋</li>
+				<li>接著，搜尋 APPPATH</li>
+				<li>所有載入的套件會被搜尋</li>
+				<li>以及最後，COREPATH 會被搜尋</li>
+			</ul>
+
+			<p>
+				如果你在你的 app/config.php 啟用 <kbd>'caching'</kbd>，而且你已定義有效的快取路徑，
+				Finder 會快取所有找到的檔案，如此一來，下次尋找檔案時就不必抓取硬碟。
+				你也可以在你的配置檔案中指定快取生存時間。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($paths = array())</h4>
+				<p><strong>forge</strong> 回傳一個新的 Finder 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$paths</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>要給此 Finder 實例初始化的路徑陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Finder 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$array = array(APPPATH, COREPATH);
+$finder = Finder::forge($array));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_instance">instance()</h4>
+				<p>
+					<strong>instance</strong> 方法回傳 Finder 物件的獨體。
+					這個實例也被 FuelPHP 核心類別用來尋找檔案，並且在第一次呼叫時會初始化，
+					帶著 <code>APPPATH</code> 和 <code>COREPATH</code> 做為預設搜尋路徑。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							無
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Finder 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$finder = Finder::instance();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_search">search($dir, $file, $ext = '.php', $multiple = false, $cache = true)</h4>
+				<p><strong>search</strong> 方法是在預設 Finder 實例上 <code>locate()</code> 的靜態別名。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$dir</kbd></th>
+									<td>字串</td>
+									<td>相對於要搜尋的目錄。當試著要定位檔案時，它被附加到所有定義的搜尋路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$file</kbd></th>
+									<td>字串</td>
+									<td>要尋找檔案的主檔名。</td>
+								</tr>
+								<tr>
+									<th><kbd>$ext</kbd></th>
+									<td><pre class="php"><code>'.php'</code></pre></td>
+									<td>要尋找檔案的副檔名。這<strong>必須</strong>包含開頭的點。</td>
+								</tr>
+								<tr>
+									<th><kbd>$multiple</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>如果為 false，在第一個檔案找到時停止搜尋。如果為 true，搜尋所有路徑，並回傳所有找到的檔案做為一個陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$cache</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>如果為 true，為隨後的請求快取結果，來避免不必要的硬碟存取。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>混合</th>
+						<td>
+							找到檔案的完整路徑，或 <strong>false</strong> 如果沒找到檔案。
+							在一個多重搜尋的情況下，一個找到路徑的陣列會被回傳，或當沒有檔案被找到時是一個空陣列。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 將回傳 APPPATH/views/welcome/index.php
+$viewfile = Finder::search('views', 'welcome/index');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_path">add_path($paths, $pos = null)</h4>
+				<p>
+					<strong>add_path</strong> 方法添加一個新搜尋路徑到 Finder 實例，在所給的位置。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$paths</kbd></th>
+									<td>混合</td>
+									<td>要添加給 Finder 實例搜尋路徑的路徑或路徑陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$pos</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>
+										路徑應該被添加到列表的位置。
+										可能的選項有：
+										<strong>null</strong> 以附加到列表結尾，
+										<strong>-1</strong> 以附加在列表開頭，或
+										<strong>index</strong> 以在列表中所給索引<strong>之後</strong>插入該路徑。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>用來鍊結的目前物件</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>OutOfBoundsException，當所給的索引位置超出範圍。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 確保 Finder 最先搜尋 'mypackage'
+Finder::instance()->add_path(PKGPATH.'mypackage', -1);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_remove_path">remove_path($path)</h4>
+				<p>
+					<strong>remove_path</strong> 方法從 Finder 實例搜尋列表移除所給的路徑。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td>字串</td>
+									<td>要移除的路徑。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>用來鍊結的目前物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 從搜尋路徑列表移除 'mypackage'
+Finder::instance()->remove_path(PKGPATH.'mypackage');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_paths">paths()</h4>
+				<p>
+					<strong>paths</strong> 方法回傳定義的搜尋路徑列表。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							無
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>路徑陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取回給預設實例的定義路徑。
+$paths = Finder::instance()->paths();
+print_r($paths);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_list_files">list_files($directory = null, $filter = '*.php')</h4>
+				<p>
+					<strong>list_files</strong> 方法取得一個在所給目錄中所有已載入的搜尋路徑裡的所有檔案的列表
+					（例如級聯式的檔案系統）。
+					這在像從所有搜尋路徑中尋找所有配置是非常有用的。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$directory</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>對要列出檔案目錄的相對路徑。該路徑將被附加到所有定義的搜尋路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$filter</kbd></th>
+									<td><pre class="php"><code>'*.php'</code></pre></td>
+									<td>要尋找的檔案類型。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列，所有找到檔案的完整路徑列表</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 尋找所有資料庫配置檔案
+$dbcfg = Finder::instance()->list_files('config', 'db.php');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					這個方法會了解目前請求的情境。這意味著當活躍的請求是一個 HMVC 呼叫到一個模組控制器時，
+					模組路徑會動態添加到要搜尋的路徑列表。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_locate">locate($dir, $file, $ext = '.php', $multiple = false, $cache = true)</h4>
+				<p><strong>locate</strong> 方法在定義搜尋路徑中定位檔案。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$dir</kbd></th>
+									<td>字串</td>
+									<td>相對於要搜尋的目錄。當試著要定位檔案時，它被附加到所有定義的搜尋路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$file</kbd></th>
+									<td>字串</td>
+									<td>要尋找檔案的主檔名。</td>
+								</tr>
+								<tr>
+									<th><kbd>$ext</kbd></th>
+									<td><pre class="php"><code>'.php'</code></pre></td>
+									<td>要尋找檔案的副檔名。這<strong>必須</strong>包含開頭的點。</td>
+								</tr>
+								<tr>
+									<th><kbd>$multiple</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>如果為 false，在第一個檔案找到時停止搜尋。如果為 true，搜尋所有路徑，並回傳所有找到的檔案做為一個陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$cache</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>如果為 true，為隨後的請求快取結果，來避免不必要的硬碟存取。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>混合</th>
+						<td>
+							找到檔案的完整路徑，或 <strong>false</strong> 如果沒找到檔案。
+							在一個多重搜尋的情況下，一個找到路徑的陣列會被回傳，或當沒有檔案被找到時是一個空陣列。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 將回傳 APPPATH/views/welcome/index.php
+$viewfile = Finder::instance()->locate('views', 'welcome/index');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

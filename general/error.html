@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/error.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>錯誤處理 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="error.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>錯誤處理</h2>
+
+			<h3 id="intro">簡介</h3>
+			<p>
+				正如大家（應該）知道的，在開發過程中，<a href="http://en.wikipedia.org/wiki/Exception_handling">錯誤處理</a>
+				是非常重要的部分。它不僅向使用者表明他／她／它所請求的頁面是不可用的，
+				也是一種透過提供一個 HTTP 錯誤狀態來通知機器
+				（瀏覽器等）發生了什麼事情的方式。
+			</p>
+
+			<h3 id="code_errors">程式碼錯誤</h3>
+
+			<p>
+				FuelPHP 的內部錯誤處理是基於例外。這可以讓你在你的程式碼中捕捉它們，
+				因此你的應用程式可以優雅地處理發生的例外，且使用者可以繼續使用應用程式。
+			</p>
+			<p>
+				FuelPHP 也改變預設 PHP 行為，當從舊的程序函式涉及 PHP 錯誤（不是例外）時。
+				取代在所有非致命錯誤繼續的是，<strong>FuelPHP 將會在所有錯誤發生時拋出一個 PhpErrorException</strong>。
+				這將強迫你解決所有錯誤，即使過去你可能會忽略的一個 E_NOTICE。
+				它也能讓你捕捉 PHP 錯誤。例如，當你有非程式設計師建立的檢視，
+				要在檢視檔案捕捉語法錯誤時。
+			</p>
+			<p>
+				你可以透過添加 PHP 錯誤類型（像 E_NOTICE 或 E_STRICT）到你應用程式 config/config.php 檔案中的
+				<a href="configuration.html#config">errors.continue_on</a> 鍵來修改此行為。這裡定義的錯誤將能讓你的指令碼繼續。
+				這些錯誤的例外不會被拋出，所以你可以不再捕捉它們。
+			 </p>
+			 <p class="note">
+				 我們強烈建議在錯誤時別繼續，因為它可能會導致程式碼中的錯誤非常難以發現，
+				 一旦你的應用程式進入量產！
+			 </p>
+
+			<h3 id="application_errors">應用程式邏輯錯誤</h3>
+
+			<h4 id="config">錯誤 404</h4>
+
+			<p>
+				404 路由設定在 <em>app/config/routes.php</em> 並且必須指向處理 404 頁面的控制器／方法。
+				<a href="routing.html">在路由章節閱讀更多關於它的部分。</a>
+			</p>
+
+			<h4 id="throw">拋出一個 404</h4>
+
+			<p>
+				有些時候需要拋出一個 404 錯誤，像你自己處理路由時。
+				這可以透過拋出一個 <kbd>HttpNotFoundException</kbd> 來輕易辦到。
+				一旦你運行 404 頁面，Fuel 將 <kbd>結束</kbd>。
+			</p>
+
+			<pre class="php"><code>throw new HttpNotFoundException;</code></pre>
+
+			<p class="note">
+				此例外在你應用程式的 index.php 檔案被捕捉並且進行處理。被捕捉時，
+				它將尋找被定義的 404 路由，如果找到的話，它將鍛造一個使用該路由做為 URI 給新請求。
+				由於這是一個正常的請求，URI
+				將<strong>像任何其他請求一樣被路由！</strong>
+			</p>
+
+			<p>
+				如果你不希望這樣的行為，變更你要讀取的 index.php 檔案。
+			</p>
+
+			<pre class="php"><code>// 產生請求、執行並發送輸出。
+try
+{
+	$response = Request::forge()->execute()->response();
+}
+catch (HttpNotFoundException $e)
+{
+	$route = array_key_exists('_404_', Router::$routes) ? Router::$routes['_404_']->translation : Config::get('routes._404_');
+	if ($route)
+	{
+		// 添加 'false' 到鍛造的請求以停用路由引擎
+		$response = Request::forge($route, false)->execute()->response();
+	}
+	else
+	{
+		throw $e;
+	}
+}
+</code></pre>
+
+			<h4 id="404_handling">404 處理</h4>
+
+			<p>
+				當一個請求被建立，並在路由器尋找可能相符的卻找不到相符合之後，
+				404 處理就進場了。預設情況下 <strong>_404_</strong> 路徑指向 <em>welcome/404</em>，
+				讓我們看一下該方法：
+			</p>
+
+			<pre class="php"><code>// 在 Controller_Welcome 中
+
+/**
+ * 應用程式的 404 動作。
+ *
+ * @access  public
+ * @return  void
+ */
+public function action_404()
+{
+	$messages = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
+	$data['title'] = $messages[array_rand($messages)];
+
+	// 設定一個 HTTP 404 輸出表頭
+	return Response::forge(Presenter::forge('welcome/404', $data), 404);
+}</code></pre>
+
+			<p>
+				在這裡，你可以看到 404 處理程序內部發生了什麼事。正如你可以看到它是一個正常的控制器動作。
+				關於這點好的地方是，它能讓你在頁面上顯示任何你喜歡的內容。
+				你可以載入你自己的檢視，帶著從資料庫取回的資料。
+			</p>
+
+			<p class="note">
+				請注意 Fuel 不設定 404 狀態，你的 Response 必須設定它。回傳 <em>Response::forge(Presenter::forge('welcome/404'), 404);</em>
+				以傳送正確的狀態表頭。
+			</p>
+
+			<h4 id="catch_all">捕捉全部</h4>
+
+			<p>
+				由於 Fuel 不設定 404 回應狀態，你可以使用它做為一個捕捉全部的函式。
+				你可能已經有一個可以透過 URI 從資料庫取回頁面的頁面模型。
+				下面是一個例子來說明此可能性：
+			</p>
+
+			<pre class="php"><code>// 在你的 404 控制器中
+
+public function action_my404()
+{
+	$original_uri = \Input::uri();
+	$result = \DB::select()->from('pages')->where('uri', $original_uri)->execute();
+	if(count($result) === 1)
+	{
+		// 用任何你喜歡的方式顯示該頁面
+	}
+	else
+	{
+		// 顯示你一般的 404 頁
+		$messages = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
+		$data['title'] = $messages[array_rand($messages)];
+		return Response::forge(View::forge('welcome/404', $data), 404);
+	}
+}</code></pre>
+
+			<h4 id="throw_500">拋出一個 500</h4>
+
+			<p>
+				可能有些時候你的應用程式需要簡單地停止並顯示一個錯誤，
+				來表明在伺服器上出了點問題。
+				通常這是一個
+				<a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error">500 內部伺服器錯誤</a>。
+			</p>
+
+			<p>
+				相似於拋出一個 404，可以拋出一個 500 錯誤。
+			</p>
+
+			<pre class="php"><code>throw new HttpServerErrorException;</code></pre>
+
+			<h3 id="cli">在 CLI 模式中的錯誤</h3>
+
+			<p>
+				當在 CLI 模式中發生一個錯誤，無論是透過 oil 控制台互動，或執行一個任務時，
+				錯誤會簡單呈現，並根據錯誤的類型，目前的動作可能會中止。
+			</p>
+			<p>
+				你可以啟用倒出回溯跟蹤（backtrace）當致命錯誤發生時，透過設定在
+				<kbd>config.php</kbd> 配置檔案中的 <code>cli_backtrace</code> 配置鍵為 <code>true</code>。
+			</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

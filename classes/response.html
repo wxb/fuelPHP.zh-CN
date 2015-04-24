@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/response.html';
+		var path = './../';
+		var class_prefix = "Response::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Response - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Response 類別</h2>
+
+			<p>Response 類別包含處理 HTTP 回應及瀏覽器輸出的方法。</p>
+
+			<article>
+				<h4>設定狀態表頭</h4>
+				<p>在 Fuel 裡，狀態表頭被視為「特別」的表頭，你想保留其他表頭的話別設定它，
+					狀態表頭在控制器裡設定如下：</p>
+				<pre class="php"><code>$response = new Response($body, 404);</code></pre>
+
+				<h4>設定狀態表頭和其他表頭</h4>
+				<pre class="php"><code>$headers = array (
+    'Cache-Control'     => 'no-cache, no-store, max-age=0, must-revalidate',
+    'Expires'           => 'Mon, 26 Jul 1997 05:00:00 GMT',
+    'Pragma'            => 'no-cache',
+);
+$response = new Response($body, 404, $headers);</code></pre>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($body = null, $status = 200, array $headers = array())</h4>
+				<p><strong>forge</strong> 方法建立一個 Response 類別的新實例。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$body</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>回應主體，也就是你想回傳給呼叫者的回應。</td>
+								</tr>
+								<tr>
+									<th><kbd>$status</kbd></th>
+									<td><pre class="php"><code>200</code></pre></td>
+									<td>給此回應的 HTTP 狀態碼。預設值為 200 OK。</td>
+								</tr>
+								<tr>
+									<th><kbd>$headers</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>任何應成為該回應一部份的 HTTP 表頭。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Response 物件</td>
+					</tr>
+					<tr>
+						<th>觸發</th>
+						<td>'response_created' 事件在物件實例化之後</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 建立一個回應物件，使用一個 View 做為主體，以及一個 404 NOT FOUND 狀態碼
+return Response::forge(View::forge('errors/404page'), 404);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_redirect">redirect($url = '', $method = 'location', $redirect_code = 302)</h4>
+				<p><strong>redirect</strong> 方法提供不同的重導到新 URL 的方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$url</kbd></th>
+									<td><pre class="php"><code>''</code></pre></td>
+									<td>要重導向的 URL。</td>
+								</tr>
+								<tr>
+									<th><kbd>$method</kbd></th>
+									<td><pre class="php"><code>'location'</code></pre></td>
+									<td>要使用的重導向方法。支援 'location' 與 'refresh'。</td>
+								</tr>
+								<tr>
+									<th><kbd>$redirect_code</kbd></th>
+									<td><pre class="php"><code>302</code></pre></td>
+									<td>要送回做為重導向一部分的 HTTP 狀態碼。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>此方法終止目前的指令碼，不回傳。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 使用一個 URL
+Response::redirect('http://example.com/home', 'refresh');
+
+// 或使用一個相對 URI
+Response::redirect('site/about');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					這個方法支援 URL 的萬用字元替換。詳情請見 <a href="uri.html#method_segment_replace">Uri::segment_replace()</a>。
+					你可以透過在你應用程式的 config.php 設定 <code>response.redirect_with_wildcards</code> 為 <code>false</code> 來停用它。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_redirect_back">redirect_back($url = '', $method = 'location', $redirect_code = 302)</h4>
+				<p><strong>redirect_back</strong>方法能讓你重導向回來源頁面，
+				並提供不同的重導到新 URL 的方法。如果前一頁不是你應用程式的一部分（也就是說，該使用者來自其他網站），
+				或沒給 URL，它會重導向應用程式首頁。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$url</kbd></th>
+									<td><pre class="php"><code>''</code></pre></td>
+									<td>要重導向的 URL。</td>
+								</tr>
+								<tr>
+									<th><kbd>$method</kbd></th>
+									<td><pre class="php"><code>'location'</code></pre></td>
+									<td>要使用的重導向方法。支援 'location' 與 'refresh'。</td>
+								</tr>
+								<tr>
+									<th><kbd>$redirect_code</kbd></th>
+									<td><pre class="php"><code>302</code></pre></td>
+									<td>要送回做為重導向一部分的 HTTP 狀態碼。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>此方法終止目前的指令碼，不回傳。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 重定向回頁面。如果沒有 'back'，前往到 dashboard 頁面
+Response::redirect_back('/dashboard', 'refresh');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					這個方法支援 URL 的萬用字元替換。詳情請見 <a href="uri.html#method_segment_replace">Uri::segment_replace()</a>。
+					你可以透過在你應用程式的 config.php 設定 <code>response.redirect_with_wildcards</code> 為 <code>false</code> 來停用它。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_status">set_status($status = 200)</h4>
+				<p><strong>set_status</strong> 方法能讓你更新一個 Response 物件的 HTTP 狀態碼設定。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$status</kbd></th>
+									<td><pre class="php"><code>200</code></pre></td>
+									<td>給此回應的 HTTP 狀態碼。預設值為 200 OK。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>目前物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$response = new Response();
+
+// 這將是一個 NOT FOUND 回應
+$response->set_status(404);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_header">set_header($name, $value, $replace)</h4>
+				<p><strong>set_header</strong> 方法可以設定自訂的 HTTP 表頭。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>必要</i></td>
+									<td>要添加的表頭名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>需要被添加到 HTTP 表頭的字串。</td>
+								</tr>
+								<tr>
+									<th><kbd>$replace</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>預設所有表頭將被同名的值取代，
+										如果你設定這個參數為 <kbd>false</kbd>，表頭將不會也不能被覆寫。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$response = new Response();
+
+// 我們將輸出 PDF
+$response->set_header('Content-Type', 'application/pdf');
+
+// 將被稱為 downloaded.pdf
+$response->set_header('Content-Disposition', 'attachment; filename="downloaded.pdf"');
+
+// 設定不快取
+$response->set_header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
+$response->set_header('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
+$response->set_header('Pragma', 'no-cache');
+
+// 更多範例
+$response->set_header('Content-Language', 'en');
+$response->set_header('Content-Type', 'text/html; charset=utf-8');
+
+return $response;</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">注意名稱是唯一的，如果相同名稱被使用的話將覆寫掉其他的。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_header">get_header($name = null)</h4>
+				<p><strong>get_header</strong> 方法能讓你取回一個先前設定的自訂 HTTP 表頭。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>要取得的表頭名稱。如果沒給，所有表頭會被回傳。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。在單一表頭的情況下是字串，在所有表頭被回傳的情況下是陣列。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$response = new Response();
+$response->set_header('Pragma', 'no-cache');
+
+// 回傳 'no-cache'
+$header = $response->get_header('Pragma');
+
+// 回傳 array('Pragma' => 'no-cache')
+$header = $response->get_header();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_body">body($value = false)</h4>
+				<p><strong>body</strong> 方法允許取得目前回應主體，或設定一個新的。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>要設定的 Response 主體。如果沒給，目前回應主體會被回傳。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。目前回應主體，或給鍊結用的目前回應物件。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$response = new Response();
+$response->body('This is the response body');
+
+// 回傳 'This is the response body'
+$body = $response->body();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_send_headers">send_headers()</h4>
+				<p><strong>send_headers</strong> 方法傳送設定的表頭到瀏覽器，包含請求的 HTTP 狀態。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$response->send_headers();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">請注意，通常你不必手動呼叫這個方法，Fuel 會打理好此方法做為請求處理的一部份。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_send">send($send_headers = false)</h4>
+				<p><strong>send</strong> 方法發送回應主體到輸出緩衝（意即輸出）。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$send_headers</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>如果為 true，在發送回應主體之前發送任何定義的 HTTP 表頭。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 寫出任何回應主體
+$response->send();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">請注意，通常你不必手動呼叫這個方法，Fuel 會打理好此方法做為請求處理的一部份。</p>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

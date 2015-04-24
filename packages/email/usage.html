@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/email/usage.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>使用 - Email 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>使用 Email 套件</h2>
+
+			<p>Email 套件只需要你三樣東西便可開始發送電子郵件。</p>
+
+			<ol>
+				<li>「發送來源」地址。</li>
+				<li>發送對象地址。</li>
+				<li>以及最後但並非最不重要的，訊息。</li>
+			</ol>
+
+			<h3 id="sending_mails">讓我們來發送郵件。</h3>
+
+			<pre class="php"><code>// 建立一個實例
+$email = Email::forge();
+
+// 設定來源地址
+$email->from('my@email.me', 'My Name');
+
+// 設定接收地址
+$email->to('receiver@elsewhere.co.uk', 'Johny Squid');
+
+// 設定一個主題
+$email->subject('This is the subject');
+
+// 設定多個接收地址
+
+$email->to(array(
+	'example@mail.com',
+	'another@mail.com' => 'With a Name',
+));
+
+// 並且設定主體。
+$email->body('This is my message');
+</code></pre>
+
+			<p>在這裡我們已經準備好開始發送郵件。</p>
+
+			<h3 id="exception">例外</h3>
+
+			<p>發送郵件時，你可能會遭遇兩種類型的例外。</p>
+
+			<ul>
+				<li><strong>\EmailValidationFailedException</strong>：當一個或多個電子郵件地址未通過驗證時拋出。</li>
+				<li><strong>\EmailSendingFailedException</strong>, 當驅動程序發送失敗時拋出</li>
+			</ul>
+
+			<p>下面的例子顯示了如何處理例外。</p>
+
+			<pre class="php"><code>try
+{
+	$email->send();
+}
+catch(\EmailValidationFailedException $e)
+{
+	// 驗證失敗
+}
+catch(\EmailSendingFailedException $e)
+{
+	// 驅動程序無法發送信件
+}</code></pre>
+
+			<h3 id="html_mails">HTML 郵件。</h3>
+
+			<p>發送 HTML 郵件與發送一般郵件並沒有太大不同：</p>
+
+			<pre class="php"><code>// 設定一個 html 主體訊息
+$email->html_body(\View::forge('email/template', $email_data));
+
+/** 預設情況下也會從 html 產生一個替代的主體，
+	並附加任何內嵌檔案（不像 http://... 的路徑）    **/
+
+// 設定一個替代的主體，這是選擇性的。
+$email->alt_body('This is my alt body, for non-html viewers.');</code></pre>
+
+			<h3 id="attachments">附件</h3>
+
+			<p>
+				Email 套件支援兩種附件：一般（附件）與內嵌。使用一個內嵌附件，
+				如果你想在郵件裡使用它的話。例如你可能想在你的郵件裡有一個圖形，並且你想要人們也能在離線看見。
+				有些客戶端並不快取，是的這很愚蠢。但它是跨網發生這樣的東西。
+			</p>
+
+			<pre class="php"><code>// 添加一個附件
+$email->attach(DOCROOT.'dir/my_img.png');
+
+// 添加一個內嵌附件
+// 在這裡添加一個 cid 指向主體
+$email->attach(DOCROOT.'dir/my_img.png', true, 'cid:my_conten_id');
+</code></pre>
+
+			<p>你也可以添加字串附件：</p>
+
+			<pre class="php"><code>$contents = file_get_contents($my_file);
+$email->string_attach($contents, $filename);
+	</code></pre>
+
+			<p>
+				預設情況下，HTML 圖片會自動引入，但只引入本地檔案。
+				看看以下的 HTML 以了解它如何運作。
+			</p>
+
+			<pre class="html"><code>&lt;!-- 這會被引入 --&gt;
+&lt;img src="path/to/my/file.png" /&gt;
+
+&lt;!-- 這不會被引入 --&gt;
+&lt;img src="http://remote_host/file.jpeg" /&gt;
+
+&lt;!-- 這不會被引入 --&gt;
+&lt;img src="cid:my_conten_id" /&gt;
+	</code></pre>
+
+			<p>你所看見最後的標籤（帶有 cid:）也不會被引入。在這種情況下，郵件希望你自己使用內嵌附件附加文件。</p>
+
+			<h3 id="priorities">優先權</h3>
+
+			<p>
+				透過使用 <a href="./methods.html#method_priority">priority</a> 方法修改一個郵件的優先權。
+			</p>
+
+			<pre class="php"><code>$email->priority(\Email::P_HIGH);</code></pre>
+
+			<h3 id="pipelining">流水線</h3>
+
+			<p>
+				流水線是一個你可以一次發送多封 email 的機制。
+			</p>
+
+			<pre class="php"><code>$email->pipelining($true);</code></pre>
+
+			<p>
+				啟用後，你可以使用相同的 <code>$email</code> 物件來建構並發送多封 email，在使用相同的連線到郵件伺服器。
+				你應該諮詢你的郵件伺服器託管公司來了解這是否是允許的，以及你在單一流水線可以送出 email 的最大數量。
+				大多數的主機商限制一個特定數量，之後伺服器斷開連線。
+			</p>
+			<p>
+				目前，只有 SMTP 驅動支援流水線。
+			</p>
+
+
+            <h2 id="drivers">驅動</h2>
+            <h3 id="mailgun">Mailgun 驅動</h3>
+            <p><a href="http://www.mailgun.com/">Mailgun</a> 是一個由 Rackspace 提供，能讓你依需求量發送電子郵件的服務。你會需要在你的 FuelPHP 中用 composer 安裝 <a href="https://github.com/mailgun/mailgun-php">Mailgun 函式庫</a>。</p>
+
+            <p>添加下一行到你的 <i>composer.json</i> 檔案並執行更新</p>
+
+            <pre class="cli"><code class="body">"mailgun/mailgun-php": "1.6"</code></pre>
+
+            <pre class="cli"><code>$ composer update</code></pre>
+
+            <p>一旦你安裝了套件，你必須要為你的 App 設置配置。</p>
+
+            <pre class="php"><code>
+/**
+ * 覆蓋預設 Email.php 配置
+ */
+return array(
+    'defaults' => array(
+        'driver' => 'mailgun',
+        'mailgun' => array(
+            'key' => 'YOUR KEY',
+            'domain' => 'YOUR DOMAIN'
+        ),
+    ),
+);
+            </code></pre>
+
+        </div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

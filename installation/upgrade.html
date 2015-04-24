@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'installation/upgrade.html';
+		var path = './../';
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>指示 - 升級 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h3 id="intro">簡介</h3>
+			<p>
+				如何升級取決於你如何在你的開發專案中使用 FuelPHP。
+			</p>
+			<p>
+				在任何情況下，我們假設你依循指示不對核心檔案做任何改變，
+				在 app/classes 使用類別擴充來擴充核心功能，
+				並在你想要修改預設配置時複製核心配置檔案到 app/config。
+			</p>
+			<h4 id="plain">我只有下載並安裝該 zip 檔案</h4>
+			<p>
+				如果你已經採取這條路線，你可以再做一次。下載新版本的壓縮檔，並取代 fuel/core，
+				以及所有你有安裝的 fuel/packages 。一旦完成了，
+				打開修改紀錄並檢查每一項變更對你應用程式的影響。
+			</p>
+
+			<h4 id="own_git">我的專案是在自己的儲存庫中，其中包括框架檔案</h4>
+			<p>
+				使用相同的程序。下載壓縮檔，並取代檔案。
+				把它們放進一個儲存庫讓你利於查看差異，
+				這使得它更容易使用改版紀錄來對你的應用程式進行必要的修改（如果需要的話）。
+			</p>
+			<p class="note"><strong>請注意</strong> 如果你（仍）使用 SVN，注意每個文件夾中隱藏的 svn 目錄。取代檔案時別刪除它們。</p>
+
+			<h4 id="git_with_subs">我的專案是在自己的儲存庫中，我使用 FuelPHP 儲存庫做為子模組</h4>
+			<p>
+				如果你已經手動建立子模組，你了解它是如何運作的，以及如何升級它們。
+				如果你從一份 fuel/fuel 儲存庫的複製開始，添加它做為一個上游儲存庫，並且拉取（pull）新版本的 master 分支。
+				處理任何可能出現的合併問題，並運行一個 `git submodule update` 來更新發行版本的子模組。
+			</p>
+
+			<h4 id="git_with_git">我的專案是在自己的儲存庫中，我為 FuelPHP 組件使用獨立的儲存庫</h4>
+			<p>
+				如果這些儲存庫是你自己的，添加 fuel 的做為上游遠端儲存庫，並且拉取（pull）發行版本分支來更新你的檔案。
+				然後推送（push）到你的儲存庫以完成更新。如果你直接使用 fuel 的儲存庫，
+				簡單地切換分支。如果檔案包含在你的應用程式儲存庫中，
+				推送（push）對你應用程式造成的變更以完成更新。
+			</p>
+			<p class="note">
+				可能會有更多的情況。如果你有不同的情況，你覺得值得在此一提的話，
+				讓我們知道或給我們發送一個此頁面的拉取請求（pull request）。
+			</p>
+
+			<h3 id="app">那關於應用程式呢？</h3>
+			<p>
+				在多數情況下，當一個新版本推出，主要的 FuelPHP 儲存庫也會有變更，
+				而它已經成為你應用程式的一部份（即在 app 文件夾中的所有東西）。
+				如果你在建立應用程式時有對該文件夾做出大量修改的話，你必須要小心點。
+				潛在的三樣事物可能已經被改變：
+			</p>
+
+			<h4 id="app_index">在 public 中的 index.php 檔案</h4>
+			<p>
+				index.php 是 FuelPHP 框架不可或缺的一部份，它打理設置環境和引導框架。
+				當你升級到一個新版的 FuelPHP，別忘了從 fuel/fuel 儲存庫取代此文件。
+				如果你已經做了一些變動，別忘了移植到新的檔案！
+			</p>
+
+			<h4 id="app_assets">在 public 中包含的 asset 檔案</h4>
+			<p>
+				雖然包含在 FuelPHP public/assets 中的檔案不是框架的關鍵，
+				它們包含 Twitter Bootstrap 的檔案，用在由 <em>Oil</em> 套件產生的 管理程式碼。
+				由於新版本的 Bootstrap 將引入變動到框架使用的方式，
+				你必須檢查產生的管理程式碼標記，以確保它仍然能夠與新版的 Bootstrap 一起運作。
+			</p>
+
+			<h4 id="app_others">其他包含的檔案</h4>
+			<p>
+				其他可能需要升級的檔案有 'Oil' 引導指令碼和 .htaccess 檔案，以及 PHPUnit 需要的檔案。
+				如果你沒有更動它們，只要以新版本取代，
+				以確保不會在使用時遇到問題。
+			</p>
+
+			<h3 id="tips">使用上游儲存庫</h3>
+
+			<p>
+				如果你使用 git 來管理你的儲存庫，你可以添加 fuel/fuel 做為一個上游遠端的儲存庫到你的儲存庫中。
+				這將能讓你輕易地拉取（pull）更新。如果你使用各自獨立的 FuelPHP 核心元件，
+				你同樣也可以這麼做。當升級到一個較新的版本時，
+				可以節省你大量時間。
+			</p>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

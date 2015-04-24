@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/oil/generate.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>產生 - Oil 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<section>
+
+				<h2 id="generate">產生</h2>
+
+				<p>
+					程式碼產生可用於建立許多重複的程式碼為你加速開發時間，
+					這完全是選擇性的 - 就像所有的 Oil - 且事後你可以編輯所有程式碼，你可以產生下列項目：
+				</p>
+
+				<ul>
+					<li><a href="#controllers">控制器</a></li>
+					<li><a href="#models">模型</a></li>
+					<li><a href="#presenters">表現控件</a></li>
+					<li><a href="#migrations">遷移</a></li>
+					<li><a href="#scaffolding">鷹架</a></li>
+					<li><a href="#admin">admin 鷹架</a></li>
+					<li><a href="#tasks">任務</a></li>
+					<li><a href="#configs">配置</a></li>
+					<li><a href="#packages">套件</a></li>
+					<li><a href="#modules">模組</a></li>
+				</ul>
+
+				<h3 id="controllers">控制器</h3>
+
+				<p>
+					產生一個預定義有行動與檢視的骨架 <a href="../../general/controllers/base.html">控制器</a>，
+					使用以下命令：
+				</p>
+
+				<pre class="cli"><code>$ php oil g controller posts action1 action2 action3
+	Created view: APPPATH/views/posts/action1.php
+	Created view: APPPATH/views/posts/action2.php
+	Created view: APPPATH/views/posts/action3.php
+	Created controller: APPPATH/classes/controller/posts.php</code></pre>
+
+				<p>這將產生一個控制器看起來像這樣：</p>
+
+				<pre class="php"><code>class Controller_Posts extends Controller_Template
+{
+
+	public function action_action1()
+	{
+		$this->template->title = 'Posts &raquo; Action1';
+		$this->template->content = View::forge('posts/action1');
+	}
+
+	public function action_action2()
+	{
+		$this->template->title = 'Posts &raquo; Action2';
+		$this->template->content = View::forge('posts/action2');
+	}
+
+	public function action_action3()
+	{
+		$this->template->title = 'Posts &raquo; Action3';
+		$this->template->content = View::forge('posts/action3');
+	}
+
+}
+
+/* End of file posts.php */</code></pre>
+
+				<h3 id="models">模型</h3>
+
+				<p>
+					藉由表列欄位產生一個簡單的模型且有自動為你建立匹配的
+					 <a href="../../general/migrations.html">遷移</a>：
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int
+	Created model: APPPATH/classes/model/post.php
+	Created migration: APPPATH/migrations/001_create_posts.php</code></pre>
+
+				<p>那將建立一個使用 <a href="../orm/intro.html">Orm</a> 的簡單模型，所以確認在你的配置檔案中套件已經啟用，它看起來像這樣：</p>
+
+				<pre class="php"><code>class Model_Post extends Orm\Model {
+
+	protected static $_properties = array(
+		'id',
+		'title',
+		'body',
+		'created_at',
+		'updated_at'
+	);
+
+	protected static $_observers = array(
+		'Orm\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
+			'mysql_timestamp' => false,
+		),
+		'Orm\Observer_UpdatedAt' => array(
+			'events' => array('before_save'),
+			'mysql_timestamp' => false,
+		),
+	);
+
+}
+
+/* End of file post.php */
+</code></pre>
+
+			<p>不是非常令人興奮，但遷移在這裡是有用的部分：</p>
+
+			<pre class="php"><code>namespace Fuel\Migrations;
+
+class Create_posts
+{
+	public function up()
+	{
+		\DBUtil::create_table('posts', array(
+			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
+			'title' => array('constraint' => 50, 'type' => 'varchar'),
+			'body' => array('type' => 'text'),
+			'user_id' => array('constraint' => 11, 'type' => 'int'),
+			'created_at' => array('type' => 'datetime'),
+
+		), array('id'));
+	}
+
+	public function down()
+	{
+		\DBUtil::drop_table('posts');
+	}
+}</code></pre>
+
+				<p>如果你不希望產生遷移，只需提供 <code>--no-migration</code>：</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --no-migration
+	Created model: APPPATH/classes/model/post.php</code></pre>
+
+				<p>預設情況下，產生的類別名稱是單數（它代表一篇發文），但產生的相應資料表是複數（包含多篇發文）。
+				你可以讓資料表使用與模型相同的名稱透過使用 <code>--singular</code>。</p>
+
+				<h4>使用 Model_Crud 產生模型</h4>
+
+				<p>FuelPHP v1.1 添加一個簡單的 Model_Crud 基礎模型，提供類似的功能，使用沒有關聯資料開銷的 ORM ，你可以透過添加 <code>--crud</code> 產生模型。</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int created_at:datetime --crud
+	Created model: APPPATH/classes/model/post.php
+	Created migration: APPPATH/migrations/001_create_posts.php</code></pre>
+
+				<p>那將建立一個使用 Fuel\Core\Model_Crud 的簡單模型。它看起來像這樣：</p>
+
+				<pre class="php"><code>class Model_Post extends \Model_Crud
+{
+	protected static $_properties = array(
+		'id',
+		'title',
+		'body',
+		'user_id',
+		'created_at',
+		'updated_at'
+	);
+
+	protected static $_table_name = 'posts';
+
+}</code></pre>
+
+
+				<h4 id="no_timestamp">產生沒有時間戳記選項的模型</h4>
+
+				<p>添加 <code>--no-timestamp</code> 以排除 建立／更新 的欄位與觀察者。</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --no-timestamp</code></pre>
+				<pre class="php"><code>class Model_Post extends \Orm\Model
+{
+  protected static $_properties = array(
+    'id',
+    'title',
+    'body',
+    'user_id'
+  );
+
+}
+</code></pre>
+
+				<pre class="php"><code>namespace Fuel\Migrations;
+
+class Create_posts
+{
+  public function up()
+  {
+    \DBUtil::create_table('posts', array(
+      'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
+      'title' => array('constraint' => 50, 'type' => 'varchar'),
+      'body' => array('type' => 'text'),
+      'user_id' => array('constraint' => 11, 'type' => 'int'),
+
+    ), array('id'));
+  }
+
+  public function down()
+  {
+    \DBUtil::drop_table('posts');
+  }
+}
+</code></pre>
+
+				<h4 id="timestamp_fields">變更時間戳記及時間戳記欄位</h4>
+
+				<p>
+					不管是在 ORM 模型或 CRUD 模型（\Model_Crud），當你使用時間欄位時，你可以選擇你自己的欄位名稱。
+					使用 <code>--created-at</code> 及 <code>--updated-at</code>
+					選項去設定你自己的欄位名稱。
+				</p>
+
+				<p>
+					預設情況下，當你啟用時間戳記，儲存在 unixtime 中，做為一個整數。
+					如果你更喜歡 MySQL DATETIME 格式，你可以使用 <code>--mysql-timestamp</code> 選項。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --mysql-timestamp --created-at=my_created</code></pre>
+
+				<p>將會給你：</p>
+
+				<pre class="php"><code>&lt;?php
+
+class Model_Post extends \Orm\Model
+{
+	protected static $_properties = array(
+		'id',
+		'title',
+		'body',
+		'user_id',
+		'my_created',
+		'updated_at'
+	);
+
+	protected static $_observers = array(
+		'Orm\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
+			'mysql_timestamp' => true,
+			'property' => 'my_created',
+		),
+		'Orm\Observer_UpdatedAt' => array(
+			'events' => array('before_save'),
+			'mysql_timestamp' => true,
+		),
+	);
+}</code></pre>
+
+<pre class="php"><code>&lt;?php
+
+namespace Fuel\Migrations;
+
+class Create_posts
+{
+	public function up()
+	{
+		\DBUtil::create_table('posts', array(
+			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
+			'title' => array('constraint' => 50, 'type' => 'varchar'),
+			'body' => array('type' => 'text'),
+			'user_id' => array('constraint' => 11, 'type' => 'int'),
+			'my_created' => array('constraint' => 11, 'type' => 'int'),
+			'updated_at' => array('constraint' => 11, 'type' => 'int'),
+
+		), array('id'));
+	}
+
+	public function down()
+	{
+		\DBUtil::drop_table('posts');
+	}
+}</code></pre>
+
+				<h4 id="model_soft">使用 Model_Soft 產生模型</h4>
+
+				<p>
+					FuelPHP v1.5 添加一個 Model_Soft 為底的 ORM 模型。添加 <code>--soft-delete</code> 以使用 Model_Soft。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --soft-delete</code></pre>
+
+				<p>將會給你：</p>
+
+				<pre class="php"><code>&lt;?php
+
+class Model_Post extends \Orm\Model_Soft
+{
+	protected static $_properties = array(
+		'id',
+		'title',
+		'body',
+		'user_id',
+		'created_at',
+		'updated_at',
+		'deleted_at',
+	);
+
+	protected static $_observers = array(
+		'Orm\Observer_CreatedAt' => array(
+			'events' => array('before_insert'),
+			'mysql_timestamp' => false,
+		),
+		'Orm\Observer_UpdatedAt' => array(
+			'events' => array('before_update'),
+			'mysql_timestamp' => false,
+		),
+	);
+
+	protected static $_soft_delete = array(
+		'mysql_timestamp' => false,
+	);
+}
+</code></pre>
+
+<pre class="php"><code>&lt;?php
+
+namespace Fuel\Migrations;
+
+class Create_posts
+{
+	public function up()
+	{
+		\DBUtil::create_table('posts', array(
+			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
+			'title' => array('constraint' => 50, 'type' => 'varchar'),
+			'body' => array('type' => 'text'),
+			'user_id' => array('constraint' => 11, 'type' => 'int'),
+			'created_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'updated_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+			'deleted_at' => array('constraint' => 11, 'type' => 'int', 'null' => true),
+
+		), array('id'));
+	}
+
+	public function down()
+	{
+		\DBUtil::drop_table('posts');
+	}
+}</code></pre>
+
+				<p>
+					如果你希望變更 deleted_at 欄位名稱。使用 <code>--deleted-at</code> 選項來設定你自己的欄位名稱。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --soft-delete --deleted-at=mydeleted</code></pre>
+
+				<h4 id="model_temporal">使用 Model_Temporal 產生模型</h4>
+
+				<p>
+					添加 <code>--temporal</code> 來使用 Model_Temporal。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --temporal</code></pre>
+
+				<p>它會給你：</p>
+
+				<pre class="php"><code>&lt;?php
+
+class Model_Post extends \Orm\Model_Temporal
+{
+	protected static $_properties = array(
+		'id',
+		'temporal_start',
+		'temporal_end',
+		'title',
+		'body',
+		'user_id',
+	);
+
+
+	protected static $_temporal = array(
+		'mysql_timestamp' => false,
+	);
+
+	protected static $_primary_key = array('id', 'temporal_start', 'temporal_end');
+	protected static $_table_name = 'posts';
+
+}
+</code></pre>
+
+<pre class="php"><code>&lt;?php
+
+namespace Fuel\Migrations;
+
+class Create_posts
+{
+	public function up()
+	{
+		\DBUtil::create_table('posts', array(
+			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
+			'temporal_start' => array('constraint' => 11, 'type' => 'int'),
+			'temporal_end' => array('constraint' => 11, 'type' => 'int'),
+			'title' => array('constraint' => 50, 'type' => 'varchar'),
+			'body' => array('type' => 'text'),
+			'user_id' => array('constraint' => 11, 'type' => 'int'),
+
+		), array('id'));
+	}
+
+	public function down()
+	{
+		\DBUtil::drop_table('posts');
+	}
+}</code></pre>
+
+				<p class="note">請注意，<b>temporal_start</b> 和 <b>temporal_end</b> 不會添加到遷移的 primary_key 陣列。你必須手動添加。</p>
+
+				<p class="note"><code>--no-timestamp</code> 預設是設為 true，這意味著 <b>created_at</b> 和 <b>updated_at</b> 欄位以及相關觀察者都會被忽略。你可以帶 <code>--no-timestamp=0</code> 繞過這個預設讓他們回來。</p>
+
+				<p>
+					如果你想要變更 temporal_start 或 temporal_end 欄位名稱。使用 <code>--temporal-start</code> 或 <code>--temporal-end</code> 選項來設定你自己的欄位名稱。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --temporal --temporal-start=mystart --temporal-end=myend</code></pre>
+
+				<h4 id="model_nestedset">使用 Model_Nestedset 產生模型</h4>
+
+				<p>
+					添加 <code>--nestedset</code> 來使用 Model_Nestedset。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --nestedset</code></pre>
+
+				<p>它會給你：</p>
+
+				<pre class="php"><code>&lt;?php
+
+class Model_Post extends \Orm\Model_Nestedset
+{
+	protected static $_properties = array(
+		'id',
+		'left_id',
+		'right_id',
+		'title',
+		'body',
+		'user_id',
+	);
+
+	protected static $_table_name = 'posts';
+
+}
+</code></pre>
+
+<pre class="php"><code>&lt;?php
+
+namespace Fuel\Migrations;
+
+class Create_posts
+{
+	public function up()
+	{
+		\DBUtil::create_table('posts', array(
+			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true),
+			'left_id' => array('constraint' => 11, 'type' => 'int', 'unsigned' => true),
+			'right_id' => array('constraint' => 11, 'type' => 'int', 'unsigned' => true),
+			'title' => array('constraint' => 50, 'type' => 'varchar'),
+			'body' => array('type' => 'text'),
+			'user_id' => array('constraint' => 11, 'type' => 'int'),
+
+		), array('id'));
+	}
+
+	public function down()
+	{
+		\DBUtil::drop_table('posts');
+	}
+}</code></pre>
+
+				<p class="note"><code>--no-timestamp</code> 預設是設為 true，這意味著 <b>created_at</b> 和 <b>updated_at</b> 欄位以及相關觀察者都會被忽略。你可以帶 <code>--no-timestamp=0</code> 繞過這個預設讓他們回來。</p>
+
+				<p>
+					如果你想要變更 title、tree_id、left_id、right_id 欄位名稱。使用 <code>--title</code>、<code>--tre-id</code>、<code>--left-id</code>、<code>--right-id</code> 選項其中之一來設定你自己的欄位名稱。
+				</p>
+
+				<pre class="cli"><code>$ php oil g model post title:varchar[50] body:text user_id:int --nestedset --title=mytitle --tree-id=mytreeid --left-id=myleftid --right-id=myrightid</code></pre>
+
+				<h3 id="presenters">表現控件</h3>
+
+				<p>
+					（選擇性）你可以讓 oil 產生檢視伴隨著一個 Presenter 類別。
+				</p>
+
+				<pre class="cli"><code>$ php oil g controller posts action1 action2 action3 --with-presenter</code></pre>
+
+				<h3 id="running_migrations">執行遷移</h3>
+
+				<p>
+					以下命令舉例說明，如何使用提煉命令去運行有用的遷移任務。
+					假設系統目前在遷移 5，藉由所給參數，遷移任務可以直接移動到一個所給的版本，
+					或只是 up/down 的單一版本。
+				</p>
+
+				<pre class="cli"><code>$ php oil refine migrate
+	Currently on migration: 5.
+
+$ php oil refine migrate --version=4
+	Migrated to version: 4.
+
+$ php oil refine migrate --version=5
+	Migrated to version: 5.
+
+$ php oil refine migrate:down
+	Migrated to version: 4.
+
+$ php oil refine migrate:up
+	Migrated to version: 5.</code></pre>
+
+				<p class="note">支援以下欄位類型：<strong>string[n]</strong>、<strong>varchar[n]</strong>、<strong>int[n]</strong>、<strong>enum[value1, value2]</strong>、<strong>decimal[n, n]</strong>、<strong>float[n, n]</strong>、<strong>text</strong>、<strong>blob</strong>、<strong>datetime</strong>、<strong>date</strong>、<strong>timestamp</strong> 及 <strong>time</strong>。</p>
+
+				<h3 id="migrations">產生遷移</h3>
+
+				<p>
+					你可以產生遷移而無須建立一個模型，這可以用來重新命名表或添加欄位到表，這是容易佈署在其他環境中的方式。
+				</p>
+
+				<pre class="cli"><code>$ php oil generate migration rename_table_users_to_accounts
+	Building magic migration: rename_table
+	Created migration: APPPATH/migrations/002_rename_table_users_to_accounts.php</code></pre>
+
+				<h3 id="magic_migrations">神奇遷移</h3>
+				<p>有一些「神奇」的遷移，它會自動建立一個基於你的遷移名稱前綴的遷移。</p>
+				<pre class="cli"><code>$ php oil generate migration create_users name:text email:string[50] password:string[125]
+$ php oil generate migration rename_table_users_to_accounts
+$ php oil generate migration add_bio_to_accounts bio:text
+$ php oil generate migration delete_bio_from_accounts bio:text
+$ php oil generate migration rename_field_name_to_username_in_accounts
+$ php oil generate migration drop_accounts
+</code></pre>
+				<p>請注意：命名你的遷移時要小心，別意外地以任何保留字開頭。</p>
+
+				<h3 id="scaffolding">鷹架</h3>
+
+				<p>
+					鷹架是 Oil 程式碼產生中真正令人興奮的部分。這種方法在很大程度上借用了做得很好的 Rails，
+					這個想法是你不僅建立了 MVC 的骨架和遷移，也將他們與預設的 CRUD 程式碼放置在一起，
+					所以程式碼將在撰寫命令後實際運行。
+				</p>
+
+				<pre class="cli"><code>$ php oil g scaffold monkey name:string description:text
+	Created model: APPPATH/classes/model/monkey.php
+	Created migration: APPPATH/migrations/003_create_monkeys.php
+	Created controller: APPPATH/classes/controller/monkeys.php
+	Created view: APPPATH/views/monkeys/index.php
+	Created view: APPPATH/views/monkeys/view.php
+	Created view: APPPATH/views/monkeys/create.php
+	Created view: APPPATH/views/monkeys/edit.php
+	Created view: APPPATH/views/monkeys/_form.php
+
+$ php oil refine migrate
+Migrated to latest version: 3.
+</code></pre>
+
+				<p>
+					正如你可以看到，很多代碼是由包含在第二個命令的命令所產生，
+					控制器看起來像這樣：
+				</p>
+
+				<pre class="php"><code>class Controller_Monkey extends Controller_Template
+{
+
+	public function action_index()
+	{
+		$data['monkeys'] = Model_Monkey::find('all');
+		$this->template->title = "Monkeys";
+		$this->template->content = View::forge('monkey/index', $data);
+
+	}
+
+	public function action_view($id = null)
+	{
+		$data['monkey'] = Model_Monkey::find($id);
+
+		$this->template->title = "Monkey";
+		$this->template->content = View::forge('monkey/view', $data);
+
+	}
+
+	public function action_create($id = null)
+	{
+		if (Input::method() == 'POST')
+		{
+			$monkey = Model_Monkey::forge(array(
+				'name' => Input::post('name'),
+				'description' => Input::post('description'),
+			));
+
+			if ($monkey and $monkey->save())
+			{
+				Session::set_flash('success', 'Added monkey #'.$monkey->id.'.');
+
+				Response::redirect('monkey');
+			}
+
+			else
+			{
+				Session::set_flash('error', 'Could not save monkey.');
+			}
+		}
+
+		$this->template->title = "Monkeys";
+		$this->template->content = View::forge('monkey/create');
+
+	}
+
+	public function action_edit($id = null)
+	{
+		$monkey = Model_Monkey::find($id);
+
+		if (Input::method() == 'POST')
+		{
+			$monkey->name = Input::post('name');
+			$monkey->description = Input::post('description');
+
+			if ($monkey->save())
+			{
+				Session::set_flash('success', 'Updated monkey #' . $id);
+
+				Response::redirect('monkey');
+			}
+
+			else
+			{
+				Session::set_flash('error', 'Could not update monkey #' . $id);
+			}
+		}
+
+		else
+		{
+			$this->template->set_global('monkey', $monkey, false);
+		}
+
+		$this->template->title = "Monkeys";
+		$this->template->content = View::forge('monkey/edit');
+
+	}
+
+	public function action_delete($id = null)
+	{
+		if ($monkey = Model_Monkey::find($id))
+		{
+			$monkey->delete();
+
+			Session::set_flash('success', 'Deleted monkey #'.$id);
+		}
+
+		else
+		{
+			Session::set_flash('error', 'Could not delete monkey #'.$id);
+		}
+
+		Response::redirect('monkey');
+
+	}
+
+
+}</code></pre>
+
+				<h3 id="admin">admin 鷹架</h3>
+
+				<p>
+					你可以用 admin 交換鷹架並產生一個擴充 Controller_Admin 而不是 Controller_Template 的控制器。
+					在第一次使用此命令，一個管理骨架會被產生，要擴充此骨架使用強制跳過參數。
+
+					要在子目錄中產生，命名前綴相應的模型名稱。
+				</p>
+
+				<pre class="cli"><code>$ php oil g admin project_entry title:string abstract:text full_text:text project_id:int is_draft:int order:int -s
+	Creating migration: APPPATH/migrations/012_create_project_entries.php
+	Creating model: APPPATH/classes/model/project/entry.php
+	Creating controller: APPPATH/classes/controller/admin/project/entry.php
+	Creating view: APPPATH/views/admin/project/entry/index.php
+	Creating view: APPPATH/views/admin/project/entry/view.php
+	Creating view: APPPATH/views/admin/project/entry/create.php
+	Creating view: APPPATH/views/admin/project/entry/edit.php
+	Creating view: APPPATH/views/admin/project/entry/_form.php
+</code></pre>
+
+				<h3 id="tasks">任務</h3>
+
+				<p>
+					你也可以讓 oil 產生一個新任務的骨架。
+				</p>
+
+				<pre class="cli"><code>$ php oil g task newtask cmd1 cmd2</code></pre>
+
+				<p>
+					將產生
+				</p>
+
+				<pre class="php"><code>&lt;?php
+
+namespace Fuel\Tasks;
+
+class Newtask
+{
+	public static function run($args = NULL)
+	{
+		echo "\n===========================================";
+		echo "\nRunning DEFAULT task [Newtask:Run]";
+		echo "\n-------------------------------------------\n\n";
+
+		/***************************
+		 Put in TASK DETAILS HERE
+		 **************************/
+	}
+
+	public static function cmd1($args = NULL)
+	{
+		echo "\n===========================================";
+		echo "\nRunning task [Newtask:Cmd1]";
+		echo "\n-------------------------------------------\n\n";
+
+		/***************************
+		 Put in TASK DETAILS HERE
+		 **************************/
+	}
+
+	public static function cmd2($args = NULL)
+	{
+		echo "\n===========================================";
+		echo "\nRunning task [Newtask:Cmd2]";
+		echo "\n-------------------------------------------\n\n";
+
+		/***************************
+		 Put in TASK DETAILS HERE
+		 **************************/
+	}
+}
+/* End of file tasks/newtask.php */</code></pre>
+
+				<h3 id="configs">配置</h3>
+
+				<p>
+					要產生一個 <a href="../../classes/config.html">配置</a>，使用以下命令：
+				</p>
+
+				<pre class="cli"><code>$ php oil g config sample hello:world
+	Created config: APPPATH/config/sample.php</code></pre>
+
+				<p>這將產生一個配置看起來像這樣：</p>
+
+				<pre class="php"><code>return array (
+	'hello' => 'world',
+);
+
+/* End of file sample.php */</code></pre>
+
+				<h3>從 COREPATH 產生配置</h3>
+				<p>
+					從 COREPATH/config 合併配置，如果 APPPATH/config 不存在
+				</p>
+
+				<pre class="cli"><code>$ php oil g config package
+	Created config: APPPATH/config/package.php</code></pre>
+
+				<p>這將產生一個配置看起來像這樣：</p>
+
+				<pre class="php"><code>return array (
+	'sources' =>
+	array (
+		0 => 'github.com/fuel-packages',
+	),
+);</code></pre>
+
+				<h3>從 COREPATH &amp; APPPATH 強制更新配置</h3>
+				<p>
+					從 COREPATH/config 及 APPPATH/config 合併配置到 APPPATH/config
+				</p>
+
+				<pre class="cli"><code>$ php oil g config form --overwrite
+	Created config: APPPATH/config/form.php</code></pre>
+
+				<p>這將產生一個配置看起來像這樣：</p>
+
+				<pre class="php"><code>return array (
+	'prep_value' => true,
+	'auto_id' => true,
+	'auto_id_prefix' => '',
+	'form_method' => 'post',
+);
+
+/* End of file form.php */</code></pre>
+
+<h3 id="packages">套件</h3>
+
+				<p>
+					要產生一個 <a href="../../general/packages.html">套件</a>，使用以下命令：
+				</p>
+
+				<pre class="cli"><code>$ php oil g package sample
+	Creating file: PKGPATH/sample/classes/sample.php
+	Creating file: PKGPATH/sample/config/sample.php
+	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
+
+				<p class="note">產生套件的路徑預設是 PKGPATH，但是這個值可以透過傳遞 <code>--path=package_path</code> 或 <code>-p=package_path</code> 選項到命令來配置 <code>package_paths</code>，以變更為定義在其中的任何路徑。</p>
+
+				<h3>產生驅動為底的套件</h3>
+
+				<p>如果你希望產生一個驅動為底的套件，簡單地提供 <code>--drivers</code> 或 <code>-d</code> 選項：</p>
+
+				<pre class="cli"><code>$ php oil g package sample -d
+	Creating file: PKGPATH/sample/classes/sample.php
+	Creating file: PKGPATH/sample/classes/sample/driver.php
+	Creating file: PKGPATH/sample/config/sample.php
+	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
+
+				<p>你也可以產生你自己的驅動。簡單地以逗號分隔傳遞驅動名稱到 <code>--drivers</code> 或 <code>-d</code> 選項：</p>
+
+				<pre class="cli"><code>$ php oil g package sample -d=driver1,driver2
+	Creating file: PKGPATH/sample/classes/sample.php
+	Creating file: PKGPATH/sample/classes/sample/driver.php
+	Creating file: PKGPATH/sample/classes/sample/driver1.php
+	Creating file: PKGPATH/sample/classes/sample/driver2.php
+	Creating file: PKGPATH/sample/config/sample.php
+	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
+
+				<h3>產生帶 VCS 檔案的套件</h3>
+
+				<p>如果你希望為你的套件產生 composer.json 和 README.md 檔案，簡單地提供 <code>--vcs</code> 或 <code>-v</code> 選項：</p>
+
+				<pre class="cli"><code>$ php oil g package sample -v
+	Creating file: PKGPATH/sample/composer.json
+	Creating file: PKGPATH/sample/README.md
+	Creating file: PKGPATH/sample/classes/sample.php
+	Creating file: PKGPATH/sample/config/sample.php
+	Creating file: PKGPATH/sample/bootstrap.php</code></pre>
+
+				<h3 id="modules">模組</h3>
+
+				<p>
+					要產生一個 <a href="../../general/modules.html">模組</a>，使用以下命令：
+				</p>
+
+				<pre class="cli"><code>$ php oil g module blog</code></pre>
+
+				<p>
+					此命令會在你應用程式定義在 <code>config.module_paths</code> 中的模組路徑建立一個名為 <code>blog</code> 的文件夾。如果你定義了多個模組路徑，你會得到一個你可以選擇的路徑列表，如：
+				</p>
+
+				<pre class="cli"><code>$ php oil g module blog
+Your app has multiple module paths defined. Please choose the appropriate path from the list below
+[1] /var/www/fuel/shared/modules/
+[2] /var/www/fuel/app/modules/</code></pre>
+
+				<p>
+					為了更簡單提供模組產生，你可以提供一個以逗號分隔要被建立文件夾的列表給 <code>--folders</code> 選項。這些可以被近乎無限地嵌套，而且你不需要提供每個父文件夾。一個簡短但很有用的範例可以是：
+				</p>
+
+				<pre class="cli"><code>$ php oil g module blog --folders=classes/model,classes/controller,config,lang</code></pre>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

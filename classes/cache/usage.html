@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/cache/usage.html';
+		var path = './../../';
+		var class_prefix = "Cache::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Cache 用法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Cache 類別</h2>
+
+			<p>Cache 類別能讓你快取資源大量操作的結果。</p>
+
+			<section>
+				<h3 id="usage">用法</h3>
+
+				<p>可用兩種方法使用快取：透過靜態的 Cache 類別使用和透過
+				Cache::forge() 回傳的快取物件。此章節包括靜態的使用，
+				它將總是使用和 <a href="config.html">配置</a> 中指定的相同驅動。</p>
+
+				<p>使用快取物件和 Cache::forge()
+				在 <a href="advanced.html">進階</a> 段落裡有解釋。</p>
+
+				<h3 id="gc">垃圾回收</h3>
+
+				<p>
+					目前還 <strong>沒有</strong> 垃圾回收機制建構在 Cache 驅動之中，
+					後端儲存有內建支援資料過期，如 APC、Memcached 或 Redis，
+					將使用該特性並將自動讓過舊的快取條目過期。
+				</p>
+				<p class="note">
+					這意味著，如果你使用檔案儲存你的快取條目，你將必須寫一個排程工作（cron job），
+					基於最後修改的時間戳記，定期刪除所有舊檔案！
+				</p>
+
+				<article>
+					<h4 class="method" id="method_set">set($identifier, $contents = null, $expiration = false, $dependencies = array())</h4>
+					<p>寫入一個快取。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$identifier</kbd></th>
+										<td><i>字串</i></td>
+										<td>快取名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$contents</kbd></th>
+										<td><i>混合</i></td>
+										<td>要被快取的內容</td>
+									</tr>
+									<tr>
+										<th><kbd>$expiration</kbd></th>
+										<td><i>整數</i></td>
+										<td>直到快取過期的秒數，null 將使它永不過期，
+										false 使它使用配置中的預設過期設定。</td>
+									</tr>
+									<tr>
+										<th><kbd>$dependencies</kbd></th>
+										<td><i>陣列</i></td>
+										<td>此快取依賴的識別碼陣列，如果其中之一是新的或已不存在了，
+										此快取將過期。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>空</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 以識別碼 "test" 快取 'String to be cached' 3 小時
+Cache::set('test', 'String to be cached.', 3600 * 3);
+
+// 你可以添加一個部份或用句點表示法的快取目錄
+Cache::set('test.test', 'String to be cached.', 3600 * 3);
+</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_get">get($identifier, $use_expiration = true)</h4>
+					<p>取回一個快取。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$identifier</kbd></th>
+										<td><i>字串</i></td>
+										<td>快取名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$use_expiration</kbd></th>
+										<td><i>true</i></td>
+										<td>藉由設定為 false 來為此次抓取停用快取</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>混合 - 快取內容</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>CacheNotFoundException 當快取不存在時，或 CacheExpiredException 當它已經過期時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 嘗試取回快取並儲存到 $content 變數
+try
+{
+	$content = Cache::get('test');
+}
+catch (\CacheNotFoundException $e)
+{
+	/*
+		捕捉 CacheNotFoundException 例外
+		將同時捕捉 CacheNotFoundException 和 CacheExpiredException。
+		使用此當捕捉例外時。
+	*/
+}
+</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_delete">delete($identifier)</h4>
+					<p>刪除一個快取。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$identifier</kbd></th>
+										<td><i>字串</i></td>
+										<td>快取名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>空</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Cache::delete('test');</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_delete_all">delete_all($section = null, $driver = null)</h4>
+					<p>為指定儲存驅動或只是其中的子段落清除全部快取。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$section</kbd></th>
+										<td><i>字串</i></td>
+										<td>快取的段落或目錄名稱，null 以刪除所有東西</td>
+									</tr>
+									<tr>
+										<th><kbd>$driver</kbd></th>
+										<td><i>字串</i></td>
+										<td>要使用的驅動名稱，null 以使用預設驅動。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>空</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 刪除預設驅動的全部快取
+Cache::delete_all();
+
+// 刪除 file 的子目錄 "test"
+Cache::delete_all('test', 'file');</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_call">call($identifier, $callback, $args = array(), $expiration = null, $dependencies = array())</h4>
+					<p>快取任何可呼叫函式或方法的結果。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$identifier</kbd></th>
+										<td><i>字串</i></td>
+										<td>快取名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$callback</kbd></th>
+										<td><i>混合</i></td>
+										<td>任何有效的 PHP 回呼（callback）</td>
+									</tr>
+									<tr>
+										<th><kbd>$args</kbd></th>
+										<td><i>陣列</i></td>
+										<td>給回呼（callback）的任何參數</td>
+									</tr>
+									<tr>
+										<th><kbd>$expiration</kbd></th>
+										<td><i>整數</i></td>
+										<td>直到快取過期的秒數，null 將使它永不過期，
+										false 使它使用配置中的預設過期設定。</td>
+									</tr>
+									<tr>
+										<th><kbd>$dependencies</kbd></th>
+										<td><i>陣列</i></td>
+										<td>此快取依賴的識別碼陣列，如果其中之一是新的或已不存在了，
+										此快取將過期。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>空</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 快取模型搜尋結果
+Cache::call('article_something', array('Model_Article', 'find'), array("all", array( 'where' => array('something' => $something) ));
+</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/view.html';
+		var path = './../';
+		var class_prefix = "View::";
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>View - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="view.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>View 類別</h2>
+
+			<p>
+				View 類別做為一個包裝嵌入式 PHP 的 HTML 頁面的物件，稱為「檢視」。
+				變數可以被指派給檢視物件，並且可以在檢視內本地引用。
+			</p>
+
+			<p>
+				<a href="../general/views.html">閱讀更多關於檢視。</a>
+			</p>
+
+			<article>
+				<h4 class="method" id="method_construct">__construct($file = null, $data = null, $filter = null)</h4>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$file</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">檢視檔案名稱，如果沒提供你之後必須透過 <em>set_filename</em> 或在 <em>render</em> 中提供。檢視檔案應該被對應到 <em>app/views</em> 目錄。</td>
+									</tr>
+									<tr>
+										<th><kbd>$data</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">值的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$filter</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">設定為 <em>true</em> 或 <em>false</em> 來設定自動編碼，預設是主要配置設定（app/config/config.php）</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>一個新的 <em>View</em> 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$view = new View('path/to/view', array(
+	'menu' => $menu,
+	'articles' => $articles,
+	'footer_links' => $footer_links,
+));</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($file = null, $data = null, $filter = null)</h4>
+				<p><strong>forge</strong> 方法回傳一個新的 View 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$file</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">檢視檔案名稱，如果沒提供你之後必須透過 <em>set_filename</em> 或在 <em>render</em> 中提供。檢視檔案應該被對應到 <em>app/views</em> 目錄，並且不提供 <strong>.php</strong> 副檔名。</td>
+									</tr>
+									<tr>
+										<th><kbd>$data</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">值的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$filter</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">設定為 <em>true</em> 或 <em>false</em> 來設定自動編碼，預設是主要配置設定（app/config/config.php）</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>一個新的 <em>View</em> 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將建立一個對 APPPATH/ 的 View 物件
+$view = View::forge('path/to/view', array(
+	'menu' => $menu,
+	'articles' => $articles,
+	'footer_links' => $footer_links,
+));</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_auto_encode">auto_filter($filter = true)</h4>
+				<p><strong>auto_filter</strong> 方法設定在 View 實例上是否編碼資料。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$filter</kbd></th>
+										<td><pre class="php"><code>true</code></pre></td>
+										<td class="description">在 View 實例上是否編碼資料</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>目前 View 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$view = View::forge('path/to/view', array(
+	'menu' => $menu,
+	'articles' => $articles,
+	'footer_links' => $footer_links,
+));
+
+$view->auto_filter();
+
+// 或設定它為 false
+
+$view->auto_filter(false);
+
+// 或鍊結
+
+$view = View::forge('path/to/view', array(
+	'menu' => $menu,
+	'articles' => $articles,
+	'footer_links' => $footer_links,
+))->auto_filter();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_filename">set_filename($file)</h4>
+				<p><strong>set_filename</strong> 方法能讓你設定或變更檢視檔案名稱。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$file</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">檢視檔案名稱，檢視檔案應該被對應到 <em>app/views</em> 目錄，並且不提供 <strong>.php</strong> 副檔名。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>目前 View 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$view = new View();
+
+$view->set_filename('path/to/view');</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get">get($key = null, $default = null)</h4>
+				<p><strong>get</strong> 方法檢索一個或全部設定在檢視上的變數。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">變數名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">如果變數沒設定要回傳的預設值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>混合</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 建立一個檢視並設定一些資料
+$view = new View;
+$view->set(array('field1' =&gt; 'value1', 'field2' =&gt; 'value2');
+
+// 取得單一值
+$field1 = $view->get('field1');
+
+// 取得單一值，設定一個預設值如果該欄位不存在
+$field3 = $view->get('field3', 'value3');
+
+// 取得所有值
+$fields = $view->get();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set($key, $value = null, $filter = null)</h4>
+				<p><strong>set</strong> 方法指派一個變數到檢視。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">變數名稱或變數陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">值</td>
+									</tr>
+									<tr>
+										<th><kbd>$filter</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">設為 <em>true</em> 或 <em>false</em> 來編碼，預設是主要自動編碼設定</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>目前 View 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$view = new View;
+$view->set('users', $users, false);
+
+// 或設定一個陣列
+
+$view->set(array(
+	'users' => $users,
+	'articles' => $articles,
+), null, true);
+
+// 當編碼輸出啟用時，
+// 如果你需要傳遞 HTML／Javascript，你需要設定最後參數為 false。
+$view->set('example', '&lt;h1&gt;Heading&lt;/h1&gt;', false);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_safe">set_safe($key, $value = null)</h4>
+				<p>與 <code>set()</code> 相同，除了它預設不在輸出時編碼變數。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">變數名稱或變數陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>目前 View 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$view = new View;
+$view->set_safe('users', $users);
+
+// 或設定一個陣列
+
+$view->set_safe(array(
+	'users' => $users,
+	'articles' => $articles,
+), null);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_global">set_global($key, $value = null, $filter = null)</h4>
+				<p><strong>set_global</strong> 方法設定一個可存取的變數給所有檢視。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">變數名稱或變數陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">值</td>
+									</tr>
+									<tr>
+										<th><kbd>$filter</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">設為 <em>true</em> 或 <em>false</em> 來編碼，預設是主要自動編碼設定</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>空</em></td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>View::set_global('users', $users, false);
+
+// 或設定一個陣列
+
+View::set_global(array(
+	'users' => $users,
+	'articles' => $articles,
+), null, true);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_bind">bind($key, $value = null)</h4>
+				<p>
+					透過參照指派一個值。綁定的好處是該值可以被修改，而不須重新設定它們。
+					也可能在變數有值之前綁定它們。在檢視檔案中，
+					指派值將可被做為一個變數。
+				</p>
+				<p class="note">請注意：這些不能被編碼輸出淨化，因此應該被認為是不安全的。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">變數名稱或變數陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>目前 View 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$view = new View;
+$view->bind('users', $users, false);
+
+// 或設定一個陣列
+
+$view->bind(array(
+	'users' => $users,
+	'articles' => $articles,
+), null, true);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_bind_global">bind_global($key, $value = null)</h4>
+				<p><strong>bind_global</strong> 方法透過可存取的參照為所有檢視指派一個全域的變數。</p>
+				<p class="note">請注意：這些不能被編碼輸出淨化，因此應該被認為是不安全的。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">變數名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>空</em></td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>View::bind_global('users', $users);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_render">render($file = null)</h4>
+				<p>
+					<strong>render</strong> 方法呈現檢視物件為一個字串。
+					全域和本地資料會合併並提取給檢視檔案，來建立本地變數。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$file</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">沒有副檔名的檢視檔案名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><strong>呈現的檢視檔案</strong></td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$html = View::forge()->render('path/to/view');
+
+// 或
+
+$html = View::forge('path/to/view')->render();
+
+// 或
+
+$html = View::forge()->set_filename('path/to/view')->render();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h3 id="procedural_helpers">程序助手</h3>
+
+			<article>
+				<h4 id="function_render" class="method" data-class="">render($view, $data = array(), $auto_filter = null)</h4>
+				<p><strong>render</strong> 函式是 <a href="view.html#method_render">View::render</a> 的別名。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$view</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td class="description">沒有副檔名的檢視檔案名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$data</kbd></th>
+										<td><em>陣列</em></td>
+										<td><pre class="php"><code>array()</code></pre></td>
+										<td class="description">要被傳遞給檢視的資料陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$auto_filter</kbd></th>
+										<td><em>布林</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">是否過濾資料</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><strong>字串，來自 <a href="view.html#method_render">View::render</a></strong> 的結果</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$html = render('path/to/view', $data_array);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

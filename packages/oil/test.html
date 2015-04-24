@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/oil/test.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>測試 - Oil 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<section>
+
+				<h2 id="test">測試</h2>
+
+				<p><code>oil test</code>（或 <code>oil t</code>）命令運行與你的 web app、模組和套件相關的 PHPUnit 測試。關於 FuelPHP 單元測試的完整文件可以在 <a href="../../general/unit_testing.html">單元測試</a> 文件頁面找到，而關於 PHPUnit 的完整文件可以在 <a href="http://www.phpunit.de/manual/current/en/index.html">PHPUnit 網站</a>找到。</p>
+                <h3 id="configuration">配置</h3>
+                <p>Oil 實用工具本身不需要太多配置，但如果在你機器上的 PHPUnit 實例不是全域安裝（例如，如果你使用 Composer 安裝 PHPUnit 到你的專案），你會想要配置 Oil 來解決你的 PHPUnit 安裝。在 <code>app/config/oil.php</code> 建立（或從 Oil 套件複製）一個配置檔案，並根據需要變更這些設定：</p>
+                <h4 id="phpunit_configuration">PHPUnit 配置</h4>
+                <table class="config">
+                    <tr class="header">
+                        <th>參數</th>
+                        <th>類型</th>
+                        <th>預設</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <th>phpunit.autoload_path</th>
+                        <td>字串</td>
+                        <td><pre class="php"><code class="php">'PHPUnit/Autoload.php'</code></pre></td>
+                        <td>指向 PHPUnit Autoload 檔案的路徑。</td>
+                    </tr>
+                    <tr>
+                        <th>phpunit.binary_path</th>
+                        <td>字串</td>
+                        <td><pre class="php"><code class="php">'phpunit'</code></pre></td>
+                        <td>這是運行 PHPUnit 命令（如果需要的話，包含完整路徑）的可執行文件。</td>
+                    </tr>
+                </table>
+				<h4 id="cli_options">命令列選項</h4>
+				<p>測試支援幾個 PHPUnit 命令列選項：</p>
+				<p><code>--file=&lt;file&gt;</code> 只在指定的檔案運行測試。</p>
+				<p><code>--group=&lt;group&gt;</code> 只在指定的群組（們）運行測試。</p>
+				<p><code>--testsuite=&lt;testsuite&gt;</code> 只運行指定測試套裝（們）的測試。</p>
+				<p><code>--exclude-group=&lt;group&gt;</code> 從指定的群組（們）排除測試。</p>
+				<p><code>--coverage-clover=&lt;file&gt;</code> 產生 Clover XML 格式的程式碼覆蓋率報告。</p>
+				<p><code>--coverage-html=&lt;dir&gt;</code> 產生 HTML 格式的程式碼覆蓋率報告。</p>
+				<p><code>--coverage-php=&lt;file&gt;</code> 序列化 PHP_CodeCoverage 物件到檔案。</p>
+				<p><code>--coverage-text=&lt;file&gt;</code> 產生文本格式的程式碼覆蓋率報告。</p>
+				<p><code>--log-junit=&lt;file&gt;</code> 產生執行在 JUnit XML 格式的測試報告到檔案。</p>
+				<p><code>--debug</code> 在測試執行過程顯示除錯資訊。</p>
+                <p>更多關於這些命令列選項以及它們所處理的資訊，請見 <a
+                        href="http://www.phpunit.de/manual/current/en/textui.html#textui.clioptions">PHPUnit 文件</a>。</p>
+                <h4 id="phpunit_config">PHPUnit 測試運行配置</h4>
+				<p>預設情況下，Oil 將傳遞位於 <code>COREPATH</code> 目錄中的 <code>phpunit.xml</code> 測試運行配置檔案給 PHPUnit。</p>
+                <p>Fuel 在 <code>fuel/core/phpunit.xml</code> 的基本 phpunit.xml 包含：</p>
+				<pre class='xml'><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;phpunit colors="true" stopOnFailure="false" bootstrap="../core/bootstrap_phpunit.php"&gt;
+	&lt;php&gt;
+		&lt;server name="doc_root" value="../../"/&gt;
+		&lt;server name="app_path" value="fuel/app"/&gt;
+		&lt;server name="core_path" value="fuel/core"/&gt;
+		&lt;server name="package_path" value="fuel/packages"/&gt;
+	&lt;/php&gt;
+	&lt;testsuites&gt;
+		&lt;testsuite name="core"&gt;
+			&lt;directory suffix=".php"&gt;../core/tests&lt;/directory&gt;
+		&lt;/testsuite&gt;
+		&lt;testsuite name="packages"&gt;
+			&lt;directory suffix=".php"&gt;../packages/*/tests&lt;/directory&gt;
+		&lt;/testsuite&gt;
+		&lt;testsuite name="app"&gt;
+			&lt;directory suffix=".php">../app/tests&lt;/directory&gt;
+		&lt;/testsuite&gt;
+	&lt;/testsuites&gt;
+&lt;/phpunit&gt;
+</code></pre>
+				<p>如果你需要更改這個配置檔案，將它複製到你的 <code>APPPATH</code> 目錄並編輯它。Oil 才能夠識別代替預設的新配置檔案，並使用你自訂的配置。</p>
+                <p>例如，如果你在 Modules 開發，你可能需要以下額外的測試組在你自訂的測試配置檔案：</p>
+<pre class='xml'><code>		&lt;testsuite name="modules"&gt;
+			&lt;directory suffix=".php"&gt;../modules/*/tests&lt;/directory&gt;
+		&lt;/testsuite&gt;
+</code></pre>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

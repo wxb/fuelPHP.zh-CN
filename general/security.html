@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/security.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>安全性 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="security.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>安全性</h2>
+
+			<p>
+				Fuel 非常重視安全性，並引此採取了以下對策，來確保你 web 應用程式的安全：
+			</p>
+
+			<ul>
+				<li><a href="security.html#output">編碼輸出</a></li>
+				<li><a href="security.html#csrf">CSRF 保護</a></li>
+				<li><a href="security.html#xss">過濾 XSS</a></li>
+				<li><a href="security.html#input">過濾輸入</a></li>
+				<li><a href="security.html#sql">SQL 注入</a></li>
+			</ul>
+			<p>
+				預設情況下，Fuel 不在輸入時過濾 POST 和 GET 變數，並且在輸出編碼所有事物。
+				當使用 URI 分段時，Fuel 也編碼 URI，以防止討厭的驚喜，並轉義要進入資料庫的所有事物。
+			</p>
+			<p>
+				本頁面說明 Fuel 提供的一般安全性對策，<a href="../classes/security.html">Security
+				類別</a> 記錄在 Classes 底下。你也會在該頁面找到配置 Fuel 安全性類別的詳情。
+			</p>
+
+			<article id="output">
+				<h3>編碼輸出</h3>
+
+				<p>
+					預設情況下，Fuel 傾向編碼輸出多於過濾輸入。這背後的原因是雙重的。
+					無論你的資料來源，以及它是否被過濾，當它送到客戶端時，編碼輸出將使之無害化。
+					這也意味著所有的輸入都儲存在原始和未改變的形式，所以無論發生什麼事，
+					你始終可以存取原始資料。
+				</p>
+				<p>
+					這也意味著你就不會遇到麻煩當你需要資料是未改變的形式。
+					一個常見的例子是資料由 HTML 編輯器如 TinyMCE 或 ckeditor 產生，用於大量應用程式中給終端使用者編輯內容。
+					在這種情況下，你可能想要在這些輸入變數運行<a href="security.html#xss">過濾 XSS</a>，
+					以過濾掉任何可能已經產生的討厭驚喜，因為這是一個典型的例子，
+					你不想要在輸出時編碼資料。
+				</p>
+				<p>
+					由於編碼輸出只能發生在字串，你必須注意你想要傳遞給檢視的物件。
+					或確保你的物件包含一個 <strong>__toString()</strong> 方法讓編碼可以發生，
+					添加你的物件類別到在安全配置中的類別白名單（別忘了命名空間！），或傳遞它到檢視帶著 <strong>$encode</strong>
+					標誌設為 false。
+					你也可以使用 <a href="../classes/view.html#method_auto_encode">auto_encode</a> 方法，
+					在每個檢視的基礎上臨時停用自動編碼輸出。
+				</p>
+				<p>
+					詳見<a href="views.html#security">檢視安全性</a>段落以了解這如何為檢視實現。
+				</p>
+			</article>
+
+			<article id="csrf">
+				<h3>CSRF 保護</h3>
+				<p>
+					跨網站請求偽造（Cross-site request forgery），也被稱為一鍵式攻擊或 session 欺騙，並縮寫為 CSRF，是一種惡意的網站漏洞利用，
+					從使用者信任的網站傳輸未授權的命令。不像跨網站指定碼（XSS），
+					它利用使用者對特定網站的信任，CSRF 利用在使用者瀏覽器中網站的信任。
+					攻擊的原理是透過在頁面引入一個連結或指令碼，
+					來存取使用者已知（或假設）已認證的網站。
+				</p>
+				<p>
+					例如，一個使用者 Bob 可能會瀏覽聊天論壇其他使用者，Mallory，發表的訊息。
+					假設 Mallory 擬訂一個 HTML 圖像元素，引用自 Bob 的銀行網站上（而不是一個圖像檔案）的動作。
+					如果 Bob 的銀行保留他的認證資訊在 cookie，而且如果 cookie 沒過期，然後 Bob 的瀏覽器企圖使用他的
+					cookie 來載入會提交提款表格的圖像，從而批准交易而不須 Bob 的授權。
+					<span style="float:right;font-style:italic;"><a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">來源：wikipedia (English)</a></span>
+				</p>
+				<p>
+					Fuel 提供你工具來保護你的表單對抗此類型的攻擊，透過在表單中引入一個安全符記，
+					它將可以在表單提交後被驗證，並將確保驗證時，被送交的表單是客戶端所請求。
+				</p>
+				<p>
+					CSRF 保護可以透過在應用程式 config/config.php 檔案中的安全部份來配置。
+				</p>
+
+
+				<p>要啟用 CRSF 保護，從添加符記到你的表單開始：</p>
+				<pre class="php"><code>// 純 HTML
+&lt;input type="hidden" name="&lt;?php echo \Config::get('security.csrf_token_key');?&gt;" value="&lt;?php echo \Security::fetch_token();?&gt;" /&gt;
+
+// 使用 Form 類別
+echo \Form::csrf();
+
+// 使用一個 Form 實例，也會添加一個驗證規則到表單欄位組
+$form = \Form::forge();
+$form->add_csrf();
+</code></pre>
+			<p>要手動檢查是否被送交的表單是客戶端所請求：</p>
+		<pre class="php"><code>// 檢查是否表單被提交
+if ($_POST)
+{
+	// 檢查 CSRF 符記是否有效
+	if ( ! \Security::check_token())
+	{
+		// CSRF 攻擊或過期的 CSRF 符記
+	}
+	else
+	{
+		// 符記有效，你可以處理表單輸入
+	}
+}
+</code></pre>
+
+			</article>
+
+			<article id="xss">
+				<h3>過濾 XSS</h3>
+				<p>
+					Fuel 提供過濾 XSS 使用 <a href="http://www.bioinformatics.org/phplabware/internal_utilities/htmLawed/">HTMLawed</a> 函式庫，
+					一個非常快速且高度可配置的函式庫。預設情況下它運作在安全及平衡模式。
+				</p>
+				<p>
+					安全是指 HTML 受到限制以減少基於 HTML 程式碼的指令碼攻擊（例如 XSS）漏洞，
+					即使該程式碼仍然是合法且符合 HTML 標準規格。當像指令碼和物件的元素，
+					以及像 onmouseover 及 style 屬性在輸入文本中是被允許的，輸入者可以引入惡意的 HTML 程式碼。
+				</p>
+				<p>
+					在平衡模式，HTMLawed 檢查並改正輸入來適當平衡標籤及合法元素內容
+					（即：任何巢狀元素應該是有效的，而且純文本可能只在允許元素的內容中被呈現）。
+				</p>
+				<p class="note">
+					出於效能考量，建議你在個別輸入值使用 <a href="../classes/security.html#method_xss_clean">xss_clean</a> 方法，
+					而不是做為一個通用輸入過濾。
+				</p>
+			</article>
+
+			<article id="input">
+				<h3>過濾輸入</h3>
+				<p>
+					雖然預設不啟用，你可以配置 Fuel 來過濾所有輸入（$_GET、$_POST 和 $_COOKIE）在每個頁面請求。
+					要做到這一點，在應用程式的 config/config.php 檔案中配置要被用來過濾的函式或方法。
+				</p>
+				<pre class="php"><code>/**
+ * Security settings
+ */
+'security' => array(
+    'input_filter' => array(),
+)</code></pre>
+				<p>
+					任何在 PHP 可呼叫的以及接受單一值做為參數的事物可用於過濾目的。
+					這包含 PHP 函式像 'htmlentities'、靜態類別方法像 '\\Security::xss_clean' 或甚至被定義為
+					<strong>array($object, 'method')</strong> 的物件方法。如果你使用一個物件方法，確保該物件在 Fuel 初始化前是可用的，
+					因為過濾輸入發生在請求過程中非常早期。
+				</p>
+			</article>
+
+			<article id="sql">
+				<h3>SQL 注入</h3>
+				<p>
+					SQL 注入是一種程式碼注入技術，它利用了發生在應用程式的資料庫層（像查詢）的安全漏洞。
+					漏洞存在於未正確過濾使用者輸入的字串為轉義字元，嵌入在 SQL 語句，
+					或使用者輸入不是強型態，進而意外地執行。
+					這是一個更常見類型漏洞的實例，可能發生在一種程式語言指令碼被嵌入其他語言時。
+					SQL 注入攻擊也被稱為 SQL 插入式攻擊。
+					<br />
+					此形式的 SQL 注入發生在使用者輸入沒有過濾轉義字元，並且傳進 SQL 語句。
+					這導致應用程式的終端用戶對資料庫執行語句的潛在操縱。
+					<span style="float:right;font-style:italic;"><a href="http://en.wikipedia.org/wiki/SQL_injection">來源：wikipedia (English)</a></span>
+				</p>
+				<p>
+					Fuel 透過轉義所有傳遞給 Database 類別方法的值來防止 SQL 注入。由於這發生在
+					Fuel 的中心 Query Builder 層級，所有使用 Query Builder 的程式碼，包含 Fuel 的 ORM 套件，將自動使用轉義。
+				</p>
+
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

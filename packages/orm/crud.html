@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/crud.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>CRUD - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Orm</h2>
+
+			<p>Orm 是 <a href="http://en.wikipedia.org/wiki/Object_relational_mapper" target="_blank">物件關聯對映（Object
+				Relational Mapper）</a> 的簡寫，它做兩件事：<br />對應你資料庫裡的資料列到物件，
+				並能讓你在這些物件之間建立關係。<br />
+				它緊隨 <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">活動記錄模式（
+				Active Record Pattern）</a>，但也受到其他系統的影響。</p>
+
+			<section>
+				<h2 id="crud">CRUD：建立、讀取、更新和刪除</h2>
+
+				<p>一旦你配置好你的模型，是時候開始在你的資料庫中建立、讀取、
+					更新和刪除條目。</p>
+
+				<article id="create">
+					<h2>建立（Create）</h2>
+
+					<pre class="php"><code>// 選項 1
+$new = new Model_Example();
+$new->property = 'something';
+$new->save();
+
+// 選項 2，使用 forge 代替 new
+$new = Model_Example::forge();
+$new->property = 'something';
+$new->save();</code></pre>
+
+					<p class="note">在 <kbd>save()</kbd> 之後，模型已經被儲存到資料庫，
+						而且如果你正在使用一個 <kbd>auto_increment</kbd> 主鍵，在成功儲存後，
+						它將自動地被設定在實例。</p>
+
+					<p>你也可以在模型設定一個特性的陣列：</p>
+
+					<pre class="php"><code>$props = array('property' =&gt; 'something');
+
+// 使用 "new"
+$new = new Model_Example($props);
+$new->save();
+
+// 選項 2，使用 forge 代替 new
+$new = Model_Example::forge($props);
+$new->save();</code></pre>
+				</article>
+
+				<article id="read">
+					<h2>讀取（Read）</h2>
+
+					<p>或實際上是 <kbd>find()</kbd>。find 方法可用於三種方式：選找一個特定 ID（主鍵）、
+						尋找第一個／最後一個或帶條件的所有條目。
+						所有可能的選擇方法（where、or_where、order_by、等）可在頁面底部找到。</p>
+
+					<h3 id="find_by_id">Find by ID</h3>
+
+					<pre class="php"><code>// 你知道有一個主題是 ID=2
+$entry = Model_Article::find(2);
+
+// ……或當使用複合主鍵
+$entry = Model_Article::find(array(2, 'foo'));</code></pre>
+
+					<p>在這個範例中它將回傳一個 Model_Article 的實例或 null 當 ID 找不到時。</p>
+
+					<h3 id="find_first_last">Find first/last</h3>
+
+					<pre class="php"><code>// 尋找第一個條目
+$entry = Model_Article::find('first');
+
+// 尋找最後一個條目添加日期排序
+$entry = Model_Article::find('last', array('order_by' =&gt; 'date'));</code></pre>
+
+					<p>在這個範例中它將回傳一個 Model_Article 的實例或 null 當 ID 找不到時。</p>
+
+					<h3 id="find_all">Find all</h3>
+
+					<pre class="php"><code>// 尋找所有主題
+$entry = Model_Article::find('all');
+
+// 從 category 1 降序排列日期尋找所有主題
+$entry = Model_Article::find('all', array(
+	'where' =&gt; array(
+		array('category_id', 1),
+	),
+	'order_by' =&gt; array('date' =&gt; 'desc'),
+));
+
+// 從 category 1 或 catergory 2 尋找所有主題
+$entry = Model_Article::find('all', array(
+	'where' =&gt; array(
+		array('category_id', 1),
+		'or' =&gt; array(
+			array('catergory_id', 2),
+		),
+	),
+));</code></pre>
+
+					<p>在這個範例中它將始終回傳一個 Model_Article 實例的陣列。</p>
+
+					<h3 id="find_chaining">Find 使用鍊結方法</h3>
+
+					<p class="note">
+						你不能沒帶屬性呼叫 <kbd>find()</kbd> 方法，或帶 <kbd>null</kbd>
+						或一個包含 <kbd>null</kbd> 的變數做為參數來呼叫。如果你這樣做，<kbd>null</kbd> 會被回傳。如果你想要鍊結方法，
+						使用 <kbd>query()</kbd> 方法替代。</p>
+
+					<pre class="php"><code>$query = Model_Article::query()->where('category_id', 1)->order_by('date', 'desc');
+
+// 我們想知道給分頁的主題總數
+$number_of_articles = $query->count();
+
+// 我們想知道最後一個發行的 ID
+$number_of_articles = $query->max('id');
+
+// 我們想知道第一個發布的主題的日期
+$number_of_articles = $query->min('date');
+
+// 取回一個 Article
+$newest_article = $query->get_one();
+
+// 我們重複使用但添加一個回傳限制到上一個查詢，來取回多個主題
+$all_articles = $query->limit(15)->get();</code></pre>
+
+					<p>這些方法全部都一樣有效，其他四個 find 方法實際上一樣使用 Query 物件，
+						但不回傳。</p>
+
+					<h3 id="partial_selects">部分行選擇</h3>
+					<p>預設情況下，所有 ORM find 方法會選擇所有資料表行。你可以使用 <kbd>select</kbd> 陣列條目，
+						或 <kbd>select()</kbd> 方法來改變此行為。
+					</p>
+
+					<pre class="php"><code>// 使用陣列方法。只選擇 'name' 和 'date' 行
+$entry = Model_Article::find('last', array('select' =&gt; array('name', 'date')));
+
+// 一樣，但使用鍊結方法
+$entry = Model_Article::query()->select('name', 'date')->get();
+
+// 使用陣列方法。選擇所有行除了 'date'
+$entry = Model_Article::find('all', array('select' =&gt; array(array('date' =&gt; false))));
+
+// 一樣，但使用鍊結方法
+$entry = Model_Article::query()->select(array('date' =&gt; false))->get();
+</code></pre>
+				</article>
+
+				<article id="update">
+					<h2>更新（Update）</h2>
+
+					<pre class="php"><code>$entry = Model_Article::find(4);
+$entry->title = 'My first edit';
+$entry->author = 'Total n00b';
+$entry->save();</code></pre>
+
+					<p>就是這樣，沒有更多了：尋找、更改特性並儲存。</p>
+
+					<p>你也可以在模型設定一個特性的陣列：</p>
+
+					<pre class="php"><code>$entry = Model_Article::find(4);
+$entry->set(array(
+	'title'  => 'My first edit',
+	'author' => 'Total n00b'
+));
+
+$entry->save();</code></pre>
+				</article>
+
+				<article id="delete">
+					<h2>刪除（Delete）</h2>
+
+					<pre class="php"><code>$entry = Model_Article::find(4);
+$entry->delete();</code></pre>
+
+					<p>再一次，沒有更多了：尋找並刪除。</p>
+
+					<p class="note">在上一個例子中，<kbd>$entry</kbd> 變數及其物件仍然存在。
+						但主鍵設為 <kbd>null</kbd> 而且該物件本身被認為是一個新的實例。
+						如果你在刪除之後儲存，它會重新被輸入到資料庫並被賦予一個新的主鍵，
+						在 <kbd>auto_increment</kbd> 被開啟時。</p>
+				</article>
+
+				<article id="functions">
+					<h2>使用 find 時所有的選擇方法</h2>
+
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>方法</th>
+								<th>參數</th>
+								<th>範例</th>
+							</tr>
+							<tr>
+								<th>select</th>
+								<td>字串 <kbd>$column</kbd>, [字串 <kbd>$more_columns</kbd>,] | 陣列 <kbd>$filter</kbd></td>
+								<td>
+									<pre class="php"><code>// 只尋找一些行
+Model_Article::query()-&gt;select('id', 'name');
+Model_Article::find('all', array('select' =&gt; array('id', 'name')));
+
+// 尋找所有行除了 'name'
+Model_Article::query()-&gt;select(array('name' =&gt; false));
+Model_Article::find('all', array('select' =&gt; array(array('name' =&gt; false))));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>related</th>
+								<td>字串｜陣列 <kbd>$relation</kbd>, [陣列 <kbd>$conditions</kbd>]</td>
+								<td>
+									<pre class="php"><code>// 在 find 中包含關聯模型
+Model_Article::query()-&gt;related(array('author', 'comments'));
+Model_Article::find('all', array('related' =&gt; array('author', 'comments')));
+
+//=============================
+// 在關聯包含一個或更多條件（只支援鍊結）
+//=============================
+
+// 第一種方法 - 使用一個陣列
+//----------------------------
+// 單一條件
+Model_Article::query()
+    -&gt;related('author', array('where' =&gt; array(array('active', '=', 1))));
+
+// 多個條件
+Model_Article::query()
+    -&gt;related('author', array('where' =&gt; array(array('active', '=', 1), array('status', '=', 'X'))));
+
+// 第二種方法 - 使用句點表示法
+//----------------------------
+// 單一條件
+Model_Article::query()
+	-&gt;related('author')
+	-&gt;where('author.active', 1);
+
+// 多個條件
+Model_Article::query()
+	-&gt;related('author')
+	-&gt;where('author.active', 1);
+	-&gt;where('author.status', 1);
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>use_view</th>
+								<td>字串 <kbd>$viewname</kbd></td>
+								<td>
+									<pre class="php"><code>// 使用 view 來檢索資料
+Model_Article::query()-&gt;use_view('with_comments');
+Model_Article::find('all', array('use_view' =&gt; 'with_comments'));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>where</th>
+								<td>字串 <kbd>$column</kbd>, [字串 <kbd>$operator</kbd>,] 混合 <kbd>$value</kbd></td>
+								<td>
+									<pre class="php"><code>// 單一 where
+Model_Article::query()-&gt;where('id', 4);
+Model_Article::find('all', array('where' =&gt; array('category_id' =&gt; 5)));
+
+// 多個 where 用法範例
+Model_Article::query()-&gt;where('id', 4)->where('category_id', '&gt;', 1);
+Model_Article::query()-&gt;where(array('id' =&gt; 4, 'category_id' =&gt; 6));
+Model_Article::find('all', array('where' =&gt; array(array('category_id', '=', 5), array('publish', '&lt;', time()))));
+
+// 使用 or where
+Model_Article::query()-&gt;where('id', 4)-&gt;or_where('id', 5);
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>order_by</th>
+								<td>字串 <kbd>$column</kbd>, [字串 <kbd>$direction</kbd>]</td>
+								<td>
+									<pre class="php"><code>// 單一 order_by
+Model_Article::query()-&gt;order_by('name', 'desc');
+Model_Article::find('all', array('order_by' =&gt; array('name' =&gt; 'desc')));
+
+// 多個 order_by 用法範例
+Model_Article::query()-&gt;order_by('name', 'desc')->order_by('category_id', 'asc');
+Model_Article::query()-&gt;order_by(array('name' => 'desc', 'category_id' =&gt; 'asc'));
+Model_Article::find('all', array('order_by' => array(array('name' =&gt; 'desc', 'category_id' =&gt; 'asc'))));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>from_cache</th>
+								<td>布林<kbd>$cache</kbd></td>
+								<td>
+									<pre class="php"><code>// 在此查詢停用 ORM 物件快取
+Model_Article::query()-&gt;from_cache(false);
+Model_Article::find('all', array('from_cache' =&gt; false));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>limit</th>
+								<td>整數 <kbd>$limit</kbd></td>
+								<td>
+									<pre class="php"><code>// 帶有關聯一致的 limit
+Model_Article::query()-&gt;limit(10);
+Model_Article::find('all', array('limit' =&gt; 10));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>rows_limit</th>
+								<td>整數 <kbd>$limit</kbd></td>
+								<td>
+									<pre class="php"><code>// 沒有關聯一致的 limit
+Model_Article::query()-&gt;rows_limit(10);
+Model_Article::find('all', array('rows_limit' =&gt; 10));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>offset</th>
+								<td>整數 <kbd>$offset</kbd></td>
+								<td>
+									<pre class="php"><code>// 帶有關聯一致的 offset
+Model_Article::query()-&gt;offset(10);
+Model_Article::find('all', array('offset' =&gt; 10));
+</code></pre>
+								</td>
+							</tr>
+							<tr>
+								<th>rows_offset</th>
+								<td>整數 <kbd>$offset</kbd></td>
+								<td>
+									<pre class="php"><code>// 沒有關聯一致的 offset
+Model_Article::query()-&gt;rows_offset(10);
+Model_Article::find('all', array('rows_offset' =&gt; 10));
+</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="note">
+						不要把 limit／offset 兩種類型搞混了！<kbd>limit</kbd> 和 <kbd>rows_offset</kbd> 的組合（或其他方式），
+						將導致意想不到的結果！
+					</p>
+					<p class="note">
+						在此情境中，<kbd>關聯一致</kbd>意指預設情況下，當你查詢包含關聯模型時，
+						ORM 將確保關聯結果是一致的。這意味著你的結果並非總是準確的被限制。
+						例如，如果第一個 parent 在結果有 12 個 children，你的結果集將包含 12 筆紀錄，
+						即使你已經使用 <kbd>limit(10)</kbd>。當你使用 <kbd>rows_limit(10)</kbd>，該結果集將只包含 10 筆資料，
+						但將缺少 2 筆關聯紀錄，而且稍候不能被檢索，因為該結果將被快取，
+						而且快取處理程序並不知道該結果是不完整的！
+					</p>
+
+					<h3 id="complex_wheres">複雜的 where 子句</h3>
+
+					<p>使用鍊結你可以建立更複雜的 where 子句，使用 and、or 及巢狀</p>
+					<pre class="php"><code>// 複雜的 where 子句
+Model_Article::query()
+  -&gt;where('author', '=', 16)
+  -&gt;and_where_open()
+      -&gt;where('date', '&lt;', time())
+      -&gt;or_where('draft', '=', 1)
+  -&gt;and_where_close();
+
+// 建立 WHERE `author` = 16 AND (`date` &lt; 1348404127 OR `draft` = 1)
+</code></pre>
+					<p class="note">
+						要建立巢狀的 OR，使用 <kbd>or_where_open()</kbd> 和 <kbd>or_where_close()</kbd>。
+						務必確保你的 open 和 close 方法相配！
+					</p>
+				</article>
+
+                                <article>
+                                    <h3 id="subqueries"><a class="internal_link" href="#/custom_sql">子查詢</a></h3>
+                                    <p>子查詢可以透過建構一個獨立的查詢物件來建立，並使用 get_query() 來解析它。</p>
+                                    <pre id="php"><code>$subQuery = Model_Article::query()
+        -&gt;select('author')
+        -&gt;where('date', '&lt;', time())
+        -&gt;where('draft', '=', 1);
+
+Model_Article::query()
+        -&gt;where('author', '=', 16)
+        -&gt;or_where('author', $subQuery-&gt;get_query(true))
+        -&gt;get();</code></pre>
+                                </article>
+
+                                <article>
+                                    <h3 id="custom_sql"><a class="internal_link" href="#/custom_sql">自訂 SQL</a></h3>
+                                    <p>執行自訂 SQL 語句並讓結果回傳做為一個 Orm 模型（或模型的列表）也是可能的。雖然這不是 Orm 本身的一部分，知道它是有用的。更多資訊先看看 <a href="../../classes/database/db.html#/method_query">DB::query()</a> 函式。</a></p>
+                                    <pre class="php"><code>DB::query('SELECT * FROM `articles` WHERE `id` = 1')-&gt;as_object('Model_Article')-&gt;execute();</code></pre>
+                                    <p class="note">建議你在有可能的情況下使用 <kbd>query()</kbd> 函式</p>
+                               </article>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/auth/intro.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>簡介 - Auth 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Auth 套件</h2>
+
+			<p>Auth 套件在 Fuel 裡提供一個標準化的認證介面。
+			這使得我們的使用者能編寫自己的驅動程序，並且輕鬆地將新的驅動程序與舊的程式碼整合，
+			以保持基本方法一致。</p>
+
+			<section>
+				<h2 id="intro">簡介</h2>
+
+				<p>建立一個適合每一個人或每一個實作的 Auth 套件是不可能的。
+				做為一個框架我們不希望強迫你如何做 Auth，
+				但我們想要讓你方便去建立你自己的或使用別人的成品，這就是為什麼要有 Auth 套件。</p>
+
+				<p>介面包含三種類型的驅動（可被擴充到更多類型）：<strong>login</strong>、
+				<strong>group</strong> &amp; <strong>ACL</strong>。
+				登入驅動處理一個使用者登入，且能同時處理多個登入驅動。
+				例如一種情況是可以讓使用者透過 Twitter 和本地使用者登入，
+				同時使用兩個登入驅動。</p>
+
+				<p>做為下一步，你可以使用一個群組驅動組合兩種類型的登入，該驅動不在乎你使用的類型。
+				最後但非最不重要的，你可以使用一個
+				ACL 驅動以給特定權限到那些群組。</p>
+
+				<p>上述僅僅是一個你可以如何使用它，而不是你 <em>必須</em> 如何使用它的範例。
+				閱讀下一段以了解那些方法是通用介面的一部份，以及那些會被特定驅動：
+				<a href="drivers.html">撰寫驅動</a>。</p>
+
+				<h3 id="included">包含的驅動</h3>
+
+				<p>Auth 套件配備兩套驅動提供本地存取、使用一個或多個資料庫表。</p>
+
+				<h4 id="simpleauth">Simpleauth</h4>
+
+				<p>正如名字所暗示的，這是一個基礎驅動集。它使用一張資料庫表來儲存使用者資訊，
+				以及一個配置檔案來儲存關於群組、角色、及 ACL 的資訊。它在使用者紀錄中的一個序列化陣列裡儲存使用者詮釋資料。
+				它沒有很多功能，但對大多數應用程式來說，它可以勝任。
+				記錄在 <a href="simpleauth/intro.html">這裡</a>。
+				</p>
+
+				<h4 id="ormauth">Ormauth</h4>
+
+				<p>這個驅動集提供與 Simpleauth 驅動類似的功能，但儲存所有關於使用者、
+				群組、角色及權限的資訊在資料庫，並使用 ORM 模型來存取此資訊。除此之外，
+				它不在一個陣列中儲存使用者詮釋資料，而是獨立的資料表，使用 ORM 的 EAV 容器功能來存取它。
+				其 API 幾乎與 Simpleauth 相容，但不同的是，回傳使用者、群組或角色資料的方法，
+				現在回傳的是 ORM 物件而不是陣列。
+				記錄在 <a href="ormauth/intro.html">這裡</a>。
+				</p>
+
+				<p class="note">Auth 套件包含需要的遷移檔案來建立這些驅動所需的資料表結構。
+				它使用 Auth 配置檔案來確定要建立什麼，所以首先你需要配置它。</p>
+
+				<h3 id="supporting">支援的類別</h3>
+
+				<p>除了完整的驅動集，Auth 套件也包含支援類別，
+				它提供額外功能給一個或全部驅動。</p>
+
+				<h4 id="opauth">Opauth</h4>
+
+				<p>Opauth 是一個多提供者認證的PHP框架，並且安裝做為一個 composer 套件。
+				它提供了使用 OAuth 或 OpenID 通訊協議的通用認證，並擁有大量針對受歡迎的 OAuth 平台認證的現成策略，
+				如 Facebook、Twitter、Github、等。</p>
+
+				<p>包含在 Auth 套件中的 Opauth 驅動會是 Opauth 及（目前）不管是 Simpleauth 或 Ormauth 之間的介面，
+				以便你可以連結 OAuth 帳號到本地帳號，對 OAuth 帳號使用本地 ACL 、等。
+				記錄在 <a href="opauth/intro.html">這裡</a>。
+				</p>
+
+				<h3 id="install">安裝</h3>
+
+				<p>Auth 套件包含在 Fuel 的下載，你所需要做的就是在你的配置中啟用它。</p>
+				<pre class="php"><code>'always_load' => array(
+	'packages' => array(
+		'auth',
+	),
+),</code></pre>
+
+				<h3 id="configuration">配置</h3>
+
+				<p>Auth 可以在 config/auth.php 檔案配置，並使用以下的鍵：</p>
+
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>driver</th>
+							<td>字串｜陣列</td>
+							<td><pre class="php"><code>array('Simpleauth')</code></pre></td>
+							<td>
+								要載入的登入驅動，第一個也會是 Auth::instance() 回傳的預設值。
+							</td>
+						</tr>
+						<tr>
+							<th>verify_multiple_logins</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								是否在一個驅動成功驗證後持續檢查登入，
+								這使得它可以在同一時間使用多種方式登入。
+							</td>
+						</tr>
+						<tr>
+							<th>salt</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'put_your_salt_here'</code></pre></td>
+							<td>
+								使用於密碼雜湊的鹽。
+							</td>
+						</tr>
+						<tr>
+							<th>iterations</th>
+							<td>整數</td>
+							<td><pre class="php"><code>10000</code></pre></td>
+							<td>
+								在密碼雜湊處理（Auth 使用 PBKDF2）中的迭代數（對密碼的「加密」數量）。
+								迭代次數越多意味著更安全的密碼，但會使用更多時間。太多迭代可能會崩潰你的伺服器！
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					注意 'verify_multiple_logins' 是一個驅動層級的設定，對登入驅動來說沒有意義，
+					它也並不代表「允許一個使用者被多重登入」！
+				</p>
+
+				<p>你的 auth 配置檔案應該看起來像這樣：</p>
+
+				<pre class="php"><code>&lt;?php
+
+return array(
+	// 驅動程序
+	'driver' => array('Simpleauth'),
+
+	// 設定為 true 以允許多個登入
+	'verify_multiple_logins' => true,
+
+	// 出於安全原因，用你自己的鹽
+	'salt' => 'Th1s=mY0Wn_$@|+',
+);
+</code></pre>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

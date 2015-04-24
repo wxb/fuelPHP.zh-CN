@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/auth/simpleauth/intro.html';
+		var path = './../../../';
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>簡介 - SimpleAuth - Auth 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>SimpleAuth - 簡介</h2>
+
+			<p>
+				Simpleauth，正如它的名字所暗示的，是一個被包含在 Auth 套件的簡易認證系統。
+				除了做為一個運行中的 Auth 實現，也是其他 Auth 驅動程序的範例。
+				當建立自己的驅動程序時，你可以做為參考使用。
+			</p>
+
+			<h3 id="setup">Auth 設置</h3>
+
+			<p>
+				配置開始於告知 Auth 套件你即將使用 Simpleauth 驅動。
+				這是透過 auth.php 配置檔案做到。預設檔案在 Auth 套件中被提供。
+				在做任何變更前，你應該複製此檔案到你的 app/config 文件夾。
+				預設檔案已經為 Simpleauth 套件配置。你將在此配置檔案的<a href="../intro.html#/configuration">這裡</a>找到說明。
+			</p>
+			<p>
+				在你完成後，你可以選擇透過 app/config/config.php 的 <strong>always_load</strong> 段落來自動載入套件。
+			</p>
+
+			<h3 id="acl">ACL</h3>
+
+			<p>
+				SimpleAuth 配備一個支援以下 ACL 結構的 ACL 驅動：
+			</p>
+
+			<ul>
+				<li>每個使用者是一個群組（對，就是一個）的一員</li>
+				<li>每個群組可以有零個或多個指派給它的角色</li>
+				<li>每個角色可以有零個或多個指派給它的權限</li>
+			</ul>
+
+			<p>
+				當檢查存取時，你指定所需的存取為 <code>role.right</code> 當你想要檢查單一權限，
+				或 <code>role.[right,right]</code> 當你想要一次檢查多個權限。這是一個 <strong>AND</strong> 檢查，
+				所以當你指定多個權限時，該使用者必須要有<strong>全部</strong>指派權限才能授權存取。
+			</p>
+
+			<h3 id="configuration">配置</h3>
+
+			<p>
+				SimpleAuth 認證系統是透過一個配置檔案來配置，不意外地稱為 'simpleauth.php'。
+				預設檔案在 Auth 套件中有提供。
+				在你做任何變更前，你應該複製該檔案到你的 app/config 文件夾。
+			</p>
+
+				<p>以下配置值可以被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th class="fixed_width">類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>db_connection</th>
+							<td>字串</td>
+							<td><pre class="php"><code>null</code></pre>
+							</td>
+							<td>
+								要使用的資料庫連線名稱。這應該與你應用程式 db.php 配置檔案中的定義相符。
+								設定它為 <strong>null</strong> 以使用預設 DB 實例。
+							</td>
+						</tr>
+						<tr>
+							<th>table_name</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'users'</code></pre>
+							</td>
+							<td>
+								要使用的使用者資料表名稱。
+							</td>
+						</tr>
+						<tr>
+							<th>table_columns</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('*')</code></pre>
+							</td>
+							<td>
+								要從使用者資料表選擇的行列表，或 '*' 來選擇所有行。你必須至少包含
+								'username'、'password'、'email'、'last_login'、'login_hash'、'group' 和 'profile_fields'。
+							</td>
+						</tr>
+						<tr>
+							<th>guest_login</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre>
+							</td>
+							<td>
+								如果為 true，如果沒有登入，假的 'guest' 使用者會被建立。
+								這能讓你在沒登入時使用群組和 acl 驅動。
+							</td>
+						</tr>
+						<tr>
+							<th>remember_me</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array(
+	'enabled' => false,
+	'cookie_name' => 'rmcookie',
+	'expiration' => 86400*31
+)</code></pre>
+							</td>
+							<td>
+								給 Simpleauth 'remember_me' 功能的配置
+							</td>
+						</tr>
+						<tr>
+							<th>multiple_logins</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre>
+							</td>
+							<td>
+								如果為 true，多個相同使用者同時登入是允許的。如果為 false，當一個使用者登入，任何先前的登入會被取消。
+								注意啟用這會停用一些登入 session 劫持的對策！
+							</td>
+						</tr>
+						<tr>
+							<th>groups</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre>
+							</td>
+							<td>
+								定義的群組，被 SimpleAuth groups 驅動所使用。
+								群組陣列結構的敘述，詳見預設配置檔案。
+							</td>
+						</tr>
+						<tr>
+							<th>roles</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre>
+							</td>
+							<td>
+								定義的角色，被 SimpleAuth acl 驅動所使用。
+								角色陣列結構的敘述，詳見預設配置檔案。
+							</td>
+						</tr>
+						<tr>
+							<th>login_hash_salt</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'put_some_salt_in_here'</code></pre>
+							</td>
+							<td>
+								為了讓 SimpleAuth 驅動使用的密碼額外安全，
+								一個鹽值被用在儲存密碼進資料庫時雜湊他們。確保你變更預設值為一個非常隨機的字串！
+								為了雜湊密碼，SimpleAuth 使用 <a href="http://en.wikipedia.org/wiki/PBKDF2" target="_blank">PBKDF2</a>，一個非常安全的雜湊機制。
+							</td>
+						</tr>
+						<tr>
+							<th>username_post_key</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'username'</code></pre>
+							</td>
+							<td>
+								在登入表單上包含使用者名稱的輸入欄位名稱。
+							</td>
+						</tr>
+						<tr>
+							<th>password_post_key</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'password'</code></pre>
+							</td>
+							<td>
+								在登入表單上包含密碼的輸入欄位名稱。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			<p class="note">
+				如果你想要使用 'remember-me' 功能，確保你有一個有效的 <a href="../../../classes/crypt.html">Crypt</a> 配置，
+				因為它使用一個加密的 cookie 來儲存要被記憶的使用者資訊。
+			</p>
+
+			<h3 id="database">資料庫表</h3>
+
+			<p>
+				SimpleAuth 依賴一張資料表，Auth 套件包含要建立此資料表所需的遷移檔案。
+				只要運行 <code>oil refine migrate --packages=auth</code> 來為你建立該資料表。
+			</p>
+
+			<h3 id="example">範例</h3>
+
+			<p>這是一個簡單的登入動作：</p>
+
+			<pre class="php"><code>public function action_login()
+{
+	$data = array();
+
+	// 如果你按下提交按鈕，讓我們跑整個步驟。
+	if (Input::post())
+	{
+		// 檢查認證，這裡假設你已經建立上表，且
+		// 你已經使用如上所述的資料表定義和配置。
+		if (Auth::login())
+		{
+			// 認證成功，進入。
+			Response::redirect('success_page');
+		}
+		else
+		{
+			// 哎呀，沒你的湯，再試著登入一次。設定一些值來
+			// 重填使用者名稱欄位，並給一些錯誤的文字到檢視。
+			$data['username']    = Input::post('username');
+			$data['login_error'] = 'Wrong username/password combo. Try again';
+		}
+	}
+
+	// 顯示登入表單。
+	echo View::forge('auth/login',$data);
+}</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

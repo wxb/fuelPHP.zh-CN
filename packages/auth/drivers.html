@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/auth/drivers.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>撰寫你自己的驅動 - Auth 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Auth 套件</h2>
+
+			<p>Auth 套件在 Fuel 裡提供一個標準化的認證介面。
+			這使得我們的使用者能編寫自己的驅動程序，並且輕鬆地將新的驅動程序與舊的程式碼整合，
+			以保持基本方法一致。</p>
+
+			<section>
+				<h2 id="writing_drivers">撰寫你自己的驅動</h2>
+
+				<p>
+					撰寫驅動可以兩種方式達成。透過擴充 Auth 驅動類別以從零開始建立一個新驅動，
+					或擴充一個存在的類別並在需要的地方變更它們。
+				</p>
+
+				<p>
+					一個 Auth 驅動包含三種類型的類別一起運作，這些是：
+				</p>
+
+				<ul>
+					<li><a href="types/login.html">Login</a>（Auth_Login_Driver）。</li>
+					<li><a href="types/group.html">Group</a>（Auth_Group_Driver）。</li>
+					<li><a href="types/acl.html">Acl</a>（Auth_Acl_Driver）。</li>
+				</ul>
+
+				<h3 id="extending">擴充認證類別</h3>
+
+				<p>像這樣擴充這些類別：</p>
+
+				<pre class="php"><code>&lt;?php
+
+class Auth_Login_Mydriver extends \Auth\Auth_Login_Driver
+{
+
+	// 在驅動類別裡實現所有需要的函式和變數定義。
+
+}
+
+/* End of file app/classes/auth/login/mydriver.php */
+</code></pre>
+
+				<h3 id="implementing_function">實現函式</h3>
+
+				<p>
+					當擴充 Auth 驅動類別時，注意每一個需要實現的函式的預期回傳值。
+					每一個方法提供一個範例，如此你知道需要回傳什麼。下面是一個範例：
+				</p>
+
+				<pre class="php"><code>/**
+ * 取得目前登入使用者的 ID
+ * 以此形式：array(driver_id, user_id)
+ *
+ * @return  array
+ */
+abstract public function get_user_id();</code></pre>
+
+				<p>
+					上面的程式碼告訴你每一個驅動都應該有 <em>get_user_id</em> 函式。
+					就像所有你擴充的有抽象函式的類別，這些函式必須在擴充的類別中被定義。
+					此函式的回傳類型提供在註解中，在這裡是 <em>array(driver_id, user_id)</em>。
+					為了讓你的驅動與其他驅動並肩合作，
+					確認你回傳正確的值或你的驅動中斷協定。
+				</p>
+
+				<p>
+					這裡是相同的函式來自 Simpleauth 驅動的實現。
+				</p>
+
+				<pre class="php"><code>/**
+ * 取得使用者的 ID
+ *
+ * @return  Array  包含此驅動 ID ＆使用者 ID
+ */
+public function get_user_id()
+{
+	if (empty($this->user))
+	{
+		return false;
+	}
+
+	return array($this->id, (int) $this->user['id']);
+}
+</code></pre>
+
+				<p>
+					一旦你讓新驅動的一切都到位，取代或添加到 auth <a href="intro.html#configuration">配置</a>。
+				</p>
+
+				<pre class="php"><code>// 在 config/auth.php 中的陣列
+
+// 添加做為第二個驅動
+'driver' => array('Simpleauth', 'Mydriver'),
+
+// 或取代存在的驅動
+'driver' => array('Mydriver'),
+</code></pre>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

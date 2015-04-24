@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/file/intro.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>File 簡介 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>File 類別</h2>
+
+			<section>
+
+				<h3 id="intro">簡介</h3>
+
+				<p>
+					File 類別提供一系列的方法與檔案＆目錄協作。
+					可以透過一些輔助方法完成，或透過更進階的物件導向方法，
+					其中所有的檔案和目錄被包裹在物件。
+				</p>
+
+			</section>
+
+			<section>
+				<h3 id="configuration">配置</h3>
+
+				<p>
+					File 類別是高度可配置性的，並給你類別提供行為所需要的所有控制。
+					限制檔案系統存取，與藉由檔案類型設定驅動，
+					其配置設定各不相同。
+				</p>
+
+				<p>
+					預設的 File 配置被放在 <em>core/config/file.php</em>。要變更這些設定，
+					建立一個帶有你自己設定的配置檔案在 <em>app/config/file.php</em>。
+				</p>
+
+				<p>
+					以下的配置值可以被定義：
+				</p>
+
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>basedir</th>
+							<td>字串</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								指向基礎目錄的路徑。預設為 <em>null</em> 沒有限制。
+								當有定義將限制存取到該指定目錄。
+							</td>
+						</tr>
+						<tr>
+							<th>extensions</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								允許擴充的陣列，null 為全部。
+								如果有定義，File 類別將只處理所給的擴充，
+								並過濾出其餘部份。
+							</td>
+						</tr>
+						<tr>
+							<th>url</th>
+							<td>字串</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								檔案的基礎 url，null 為不可用。
+							</td>
+						</tr>
+						<tr>
+							<th>use_locks</th>
+							<td>null</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								是否使用檔案鎖。設定為 <em>true</em> 如果你希望 File 類別使用它們。
+							</td>
+						</tr>
+						<tr>
+							<th>file_drivers</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array</code></pre></td>
+							<td>
+								每個檔案驅動的陣列。這些能讓你在檔案類型的基礎上使用自訂驅動。
+							</td>
+						</tr>
+						<tr>
+							<th>magic_file</th>
+							<td>字串</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								fileinfo() 魔術檔案的替代位置。如果不指定，系統預設會被使用。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

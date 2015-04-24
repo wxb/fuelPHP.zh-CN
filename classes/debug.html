@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/debug.html';
+		var path = './../';
+		var class_prefix = "Debug::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Debug - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Debug 類別</h2>
+
+			<p>
+				Debug 類別是藉由顯示輸出資訊以除錯變數、物件、陣列等的簡易工具集，
+				這並不意味著你所有的除錯需求是一站式服務，但做為簡易方法快速拋出資訊以確認你在做的事。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_dump">dump(*$args)</h4>
+				<p><strong>dump</strong> 方法以格式化的方式並包含回溯資訊輸出多個混合值到瀏覽器中，因此你知道它來自何處。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無限的混合變數</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::dump($stuff, 'junk', array('whatever'));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					預設情況下，巢狀結構將顯示為折疊以最小化在頁面佈局輸出的影響，
+					你可以修改此行為並藉由設定 <strong>Debug::$js_toggle_open</strong> 為 <strong>true</strong> 來擴充它。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_backtrace">backtrace()</h4>
+				<p><strong>backtrace</strong> 方法顯示檔案及方法被呼叫的行數，以及所有前面的清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::backtrace();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_classes">classes()</h4>
+				<p>輸出一個在目前 PHP 執行階段列表定義的所有類別清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::classes();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_interfaces">interfaces()</h4>
+				<p>輸出一個在目前 PHP 執行階段列表定義的所有<a href="http://uk.php.net/interfaces" target="_blank">介面類別</a>清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::interfaces();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_includes">includes()</h4>
+				<p>輸出一個在目前 PHP 執行階段列表載入的所有引入檔案清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::includes();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_functions">functions()</h4>
+				<p>輸出一個在目前 PHP 執行階段列表定義的所有函式清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::functions();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_constants">constants()</h4>
+				<p>輸出一個在目前 PHP 執行階段列表定義的所有常數清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::constants();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_extensions">extensions()</h4>
+				<p>輸出一個 PHP 載入的所有擴充清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::extensions();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_headers">headers()</h4>
+				<p>輸出一個所有伺服器請求的 HTTP 表頭清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::headers();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_phpini">phpini()</h4>
+				<p>印出一個讀取自 <i>php.ini</i> 的配置設定清單。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Debug::phpini();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

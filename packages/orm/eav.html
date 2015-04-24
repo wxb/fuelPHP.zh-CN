@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/eav.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>EAV 容器 - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>EAV 容器</h2>
+
+			<p>
+				「實體-屬性-值模型（EAV）是一種實體資料模型，描述該實體屬性（特性、參數）的數量可能十分巨大，
+				但實際上會被應用在所給實體的數量相對適中。
+				在數學上，這個模型被稱為稀疏矩陣。EAV 也被稱為物件-屬性-值模型，
+				直式的資料庫模型以及開放的架構。」</p>
+			<p><em>來源：<a href="http://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model">Wikipedia (English)</a>。</em></p>
+
+			<section>
+				<h2 id="intro">簡介</h2>
+
+				<p>大多數人已經在第一段迷失，所以讓我們試著用一個範例來解釋。</p>
+
+				<p>
+					當你有一個實體（紀錄在 ORM 中的術語）而它有關聯的屬性做為它的子代時，你通常會使用一個 EAV 容器。
+					但是，對每一條紀錄來說，這些屬性可以是不同的。
+					這使得它不可能在實體的資料表中定義這些屬性為行，因為會有太多，
+					他們大多不會有資料，而且你完全不能處理動態屬性
+					（因為行需要預先被定義）。
+				</p>
+
+				<p>
+					要解決這個「關聯」風格的問題，你會建立一張子表，並使用一對多關係關聯到「實體」的資料表，
+					其中每個屬性會成為子表中的一筆紀錄。
+					然而，這種作法的缺點是，為了能夠取得一個指定屬性值，你將不得不循環所有關聯紀錄，
+					比較屬性行與你尋找的值，如果找到一個符合，
+					取得該值行的內容。
+				</p>
+
+				<p>
+					ORM EAV 容器使用這個相同的實現，但允許你合併實體的屬性，
+					如此該屬性成為實體紀錄的特性，
+					從而模擬一個 EAV 實現所需的可變行數。
+				</p>
+
+			</section>
+
+			<section>
+				<h2 id="implementation">實現</h2>
+
+				<p>
+					要在一個模型啟用 EAV 容器，該模型需要一張有屬性及值行的子表，
+					它需要被定義為一對多或多對多關聯。
+				</p>
+
+				<p>
+					讓我們建立一個醫院病人的範例，該醫院保留病人的紀錄統計。
+					這取決於病人的病情，他們不能被預先預測。
+				</p>
+				<pre class="php"><code>class Model_Patient extends \Orm\Model
+{
+	// 此模型的特性列表，在這個例子中簡化
+	protected static $_properties = array(
+		'id',					// 主鍵
+	);
+
+	// 設置 statistics 關聯的通常方法
+	protected static $_has_many = array(
+		'statistics' => array(
+			'key_from' => 'id',			// 在此模型中的鍵
+			'model_to' => 'Model_Statistic',	// 關聯模型
+			'key_to' => 'patient_id',		// 在關聯模型中的鍵
+			'cascade_save' => true,		// 在儲存時更新關聯資料表
+			'cascade_delete' => true,		// 在刪除父層時刪除關聯資料
+		)
+	);
+
+	// 像這樣定義 EAV 容器
+	protected static $_eav = array(
+		'statistics' => array(			// 我們使用 statistics 關聯來儲存 EAV 資料
+			'model_to' => 'Model_Statistic',	// 關聯模型
+			'attribute' => 'key',		// 在關聯資料表中包含屬性的鍵行
+			'value' => 'value',			// 在關聯資料表中包含值的值行
+		)
+	);
+}
+
+class Model_Statistic extend \Orm\Model
+{
+	// 此模型的特性列表
+	protected static $_properties = array(
+		'id',					// 主鍵
+		'patient_id',				// 外鍵
+		'key',					// 屬性行
+		'value',				// 值行
+	);
+
+	// 設置病人關聯的通常方法
+	protected static $_belongs_to = array(
+	    'patient' => array(
+	        'key_from' => 'patient_id',
+	        'model_to' => 'Model_Patient',
+	        'key_to' => 'id',
+	        'cascade_save' => true,
+	        'cascade_delete' => true,
+	    )
+	);
+}</code></pre>
+
+			<p>
+				你可以定義多個 EAV 容器，連結到不同的關聯資料表。如果你這樣做，
+				請求一個屬性會依他們定義的順序來搜尋整個容器，直到找到一個符合。
+				正如這僅僅是一個模型屬性的額外定位，模型中處理未定義的特性仍保持不變：
+				它會拋出一個例外。
+			</p>
+
+			</section>
+
+			<section>
+				<h2 id="example">範例</h2>
+
+				<p>使用上面的配置，假設我們有以下的資料集：
+				<pre class="php"><code>// SELECT * FROM patient
++----+-----------+
+| id | name      |
++----+-----------+
+|  1 | MisterIll |
+|  2 | MissIll   |
++----+-----------+
+
+// SELECT * FROM statistics
++----+------------+---------------+----------------+
+| id | patient_id | key           | value          |
++----+------------+---------------+ ---------------+
+|  1 |          1 | Temperature   |           38.4 |
+|  2 |          1 | Coughing      |            yes |
+|  3 |          1 | Headache      |             no |
+|  4 |          2 | Temperature   |           37.9 |
+|  5 |          2 | Heartbeat     |             98 |
++----+------------+---------------+----------------+
+</code></pre>
+			<p>所給的這些資料，你可以像這樣存取：</p>
+<pre class="php"><code>// 建立一些物件來協作
+$mr = Patient::find(1);
+$ms = Patient::find(2);
+
+// 現在你可以直接取得屬性
+echo $mr->Temperature;		// '38.4'
+echo $ms->Temperature;		// '37.9'
+echo $mr->Headache;		// 'yes'
+echo $ms->Headache;		// 拋出一個特性找不到的例外
+
+// 或直接設定他們
+$mr->Temperature = '36.9';	// 我們的病人似乎有改善
+$mr->save();			// 更新病人紀錄，並且更新 EAV 紀錄
+
+// 你仍可以用古老的方法存取資料
+foreach ($mr->statistics as $statistic)
+{
+	// 在這裡對每個統計值做點什麼……
+}
+</code></pre>
+				<p class="note">
+					請注意，當你的模型有一個已定義的 EAV 容器，你可以不用再為模型使用自訂資料屬性，
+					因為每個新屬性會視為一個新的 EAV 鍵。
+				</p>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

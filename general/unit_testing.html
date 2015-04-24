@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/unit_testing.html';
+		var path = './../';
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>單元測試 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="unit_testing">
+				<a class="internal_link" href="#unit_testing">單元測試</a>
+			</h2>
+
+			<p>
+				FuelPHP 以自動測試的想法建成，並且基於 <a title="The PHPUnit Testing Framework" href="http://www.phpunit.de/manual/current/en/index.html">PHPUnit</a> 測試框架來包含測試和測試類別。
+			</p>
+
+			<h3 id="what_is_a_unit_test">
+				<a class="internal_link" href="#what_is_a_unit_test">單元測試是什麼？</a>
+			</h3>
+
+			<p>
+				單元測試是被寫來確保程式碼單元（通常是一個函式或方法）是否有執行它原設計行為的自動測試。
+				這些測試也幫助開發者確保他們對系統所作的任何變更，不會破壞原有運作中的任何東西。
+				單元測試也是測試驅動開發（TDD）學問的關鍵原動力。
+			</p>
+
+			<h3 id="prerequisite">
+				<a class="internal_link" href="#prerequisite">PHPUnit</a>
+			</h3>
+
+			<p>
+				你將需要本地安裝的 <a title="The PHPUnit Testing Framework" href="http://www.phpunit.de/manual/current/en/index.html">PHPUnit</a>，如果你想要傳送給 FuelPHP 運行測試，並且想要使用 Oil 來運行你的測試的話。
+				如果你還沒安裝好 PHPUnit，請參考 PHPUnit 安裝文件：<a title="PHPUnit Installation" href="http://www.phpunit.de/manual/current/en/installation.html">http://www.phpunit.de/manual/current/en/installation.html</a>。
+			</p>
+
+			<p>
+				如果你對使用 FuelPHP 運行單元測試不感興趣，你就沒有必要安裝 PHPUnit。
+			</p>
+
+			<h3 id="running_unit_tests">
+				<a class="internal_link" href="#running_unit_tests">執行單元測試</a>
+			</h3>
+
+			<p>
+				FuelPHP 包含的命令列實用工具已經被配置來運行你的單元測試。
+				你可以從命令列使用 Oil 命令列實用工具，來運行所有在你 FuelPHP 專案中的測試：
+			</p>
+
+			<pre class="cli"><code>$ php oil test
+
+Tests Running...This may take a few moments.
+PHPUnit 3.6.10 by Sebastian Bergmann.
+
+Configuration read from /home/user/sites/example/fuel/core/phpunit.xml
+
+...............................................................  63 / 251 ( 25%)
+............................................................... 126 / 251 ( 50%)
+............................................................... 189 / 251 ( 75%)
+..............................................................
+
+Time: 6 seconds, Memory: 22.25Mb
+
+OK (251 tests, 206 assertions)</code></pre>
+
+			<h3 id="creating_unit_tests">
+				<a class="internal_link" href="#creating_unit_tests">建立單元測試</a>
+			</h3>
+
+			<p>
+				在 FuelPHP，測試位於 fuel/app/tests 目錄及其子目錄。
+				如果此目錄不存在，前去建立它。
+				依照慣例，測試檔案被放在之於 fuel/app/tests 的子路徑會與被測試類別之於 fuel/app/classes 的相同，所以一個對 fuel/app/classes/model/login.php 類別的測試會在 fuel/app/tests/model/login.php。
+			</p>
+
+			<p>
+				測試是擴充 TestCase 的類別。
+				TestCase 是 FuelPHP 對 PHPUnit 的 PHPUnit_Framework_TestCase 類別的擴充，這樣你將可以在你的測試中使用所有常見的 PHPUnit 主張（assertion）和方法。
+				依照慣例，測試類別在它們要測試的類別之後被命名，以 Test_ 前綴，所以一個測試 Model_Login 的類別會被命名為 Test_Model_Login。
+			</p>
+
+			<pre class="php"><code>class Test_Model_Login extends TestCase
+{
+	public function test_foo()
+	{
+	}
+}</code></pre>
+
+			<p>
+				你可以在 PHPUnit 文件找到更進一步關於撰寫測試的資訊：<a href="http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html">http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a>。
+			</p>
+
+			<h3 id="test_groups">
+				<a class="internal_link" href="#test_groups">測試群組</a>
+			</h3>
+
+			<p>
+				如果你在開發階段只想運行測試的子群集，你可以使用測試群組。
+				運行 <code>php oil test</code> 帶著 <code>--group=</code> 命令開關。
+			</p>
+
+			<pre class="cli"><code>$ php oil test --group=App</code></pre>
+
+			<p>
+				此命令將只運行 'App' 群組的測試。
+				你可以對文件區塊的 @group 屬性指派一個測試類別為一個或更多群組。
+			</p>
+
+			<pre class="php"><code>/**
+ * @group App
+ * @group Login
+ */
+class Test_Model_Login extends TestCase
+{
+	public function test_foo()
+	{
+	}
+}</code></pre>
+
+			<h2 id="advanced_configuration">
+				<a class="internal_link" href="#advanced_configuration">進階配置</a>
+			</h2>
+
+			<p>
+				如果你需要自訂 phpunit.xml 檔案的內容，複製 fuel/core/phpunit.xml 到 fuel/app 目錄中。
+				FuelPHP 將識別你的新配置檔案代替在 fuel/core 的舊檔案。
+			</p>
+
+
+			<h3 id="unit_tests_for_modules">
+				<a class="internal_link" href="#unit_tests_for_modules">為模組單元測試</a>
+			</h3>
+
+			<p>
+				如果你正在用 FuelPHP 開發大型系統，建議作法是在模組開發。
+				但因為模組路徑試可配置的，模組路徑必須被配置在 phpunit.xml 讓測試可被識別及運行。
+				例如，如果你正在 fuel/app/modules 開發模組，你會想要添加此測試套件到你的 phpunit 配置：
+			</p>
+
+			<pre class="xml"><code>&lt;testsuite name="modules"&gt;
+    &lt;directory suffix=".php"&gt;../app/modules/*/tests&lt;/directory&gt;
+&lt;/testsuite&gt;</code></pre>
+
+
+			<h3 id="testing_in_a_renamed_directory">
+				<a class="internal_link" href="#testing_in_a_renamed_directory">在一個改名的 fuel/ 目錄中測試</a>
+			</h3>
+
+			<p>
+				如果你已經把你的 fuel 目錄改為其他名稱，設定在 phpunit.xml 檔案中的系統變數（文件根目錄、核心路徑等。）
+				雖然在你根目錄的 Oil 指令碼變更路徑將有助於其他 Oil 命令，PHPUnit 載入它自己的環境，因此一個改名的 fuel 目錄將破壞測試。
+				要修正這個問題，編輯在你的 app/ 目錄中的 phpunit.xml 副本，並更新伺服器變數路徑來反映你的新檔案結構。
+			</p>
+
+
+
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

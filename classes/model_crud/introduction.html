@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/combined.css">
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/model_crud/introduction.html';
+		var path = './../../';
+		var class_prefix = "Model_Crud::";
+	</script>
+	<script src="../../assets/js/combined.js"></script>
+	<title>Model_Crud 簡介 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="introduction.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Model_Crud 類別</h2>
+
+			<h3 id="introduction">簡介</h3>
+
+			<p>
+				許多資料庫的操作回歸基本的 CRUD（建立、取回、更新、刪除）操作。
+				Model_Crud 類別提供標準化的功能，類別能幫助你：
+			</p>
+
+			<ul>
+				<li>建立資料庫條目</li>
+				<li>取回資料庫條目</li>
+				<li>更新資料庫條目</li>
+				<li>刪除資料庫條目</li>
+				<li>條目輸入驗證</li>
+			</ul>
+
+			<h3 id="first_model">你的第一個模型</h3>
+
+			<p>
+				要使用 Model_Crud 類別，建立一個類別擴充 \Model_Crud，範例：
+			</p>
+
+			<pre class="php"><code>&lt;?php
+
+class Model_Users extends \Model_Crud
+{
+	// 設定要使用的資料表
+	protected static $_table_name = 'users';
+}
+</code></pre>
+
+			<p>現在你有基本的模型可以使用。</p>
+
+			<h3 id="configuration">配置</h3>
+
+			<p>
+				藉由設定一些參數配置模型：
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>參數</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+						<th>範例</th>
+					</tr>
+					<tr>
+						<th><strong>$_table_name</strong></th>
+						<td>字串</td>
+						<td><em>必要</em></td>
+						<td>
+							要使用的資料表。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_table_name = 'table';</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_primary_key</strong></th>
+						<td>字串</td>
+						<td><pre class="php"><code>'id'</code></pre></td>
+						<td>
+							資料表的 id 欄位。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_primary_key = 'custom_id';</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_rules</strong></th>
+						<td>陣列</td>
+						<td><em>無</em></td>
+						<td>
+							輸入驗證規則
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_rules = array(
+	'name' => 'required',
+	'email' => 'required|valid_email',
+);</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_labels</strong></th>
+						<td>陣列</td>
+						<td><em>無</em></td>
+						<td>
+							驗證標籤。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_labels = array(
+	'name' => 'Your Name',
+	'email' => 'Email Address',
+);</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_properties</strong></th>
+						<td>陣列</td>
+						<td><em>無</em></td>
+						<td>
+							當更新／儲存時要使用的行。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_properties = array(
+	'id',
+	'name',
+	'age',
+	'birth_date',
+	'gender',
+);</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_mass_whitelist</strong></th>
+						<td>陣列</td>
+						<td><em>無</em></td>
+						<td>
+							可以被：<br />__construct、<br />::forge<br />->set()<br />設定的行陣列。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_mass_whitelist = array(
+	'first_name',
+	'last_name',
+	'age',
+);</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_mass_blacklist</strong></th>
+						<td>陣列</td>
+						<td><em>無</em></td>
+						<td>
+							不能被：__construct、::forge 和 ->set() 方法設定的行陣列。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_mass_blacklist = array(
+	'password',
+	'is_admin',
+);</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<p class="note">
+								$_mass_whitelist 就像是在大量指派屬性時允許額外的安全性。
+								千萬注意，這僅適用於 <strong>__construct</strong>、
+								<strong>::forge</strong> 和 <strong>->set</strong>。
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_connection</strong></th>
+						<td>字串</td>
+						<td><em>無</em></td>
+						<td>
+							要使用的資料庫連線，或在一個 master／slave 設定中用於讀取的連線。如果沒有配置，將使用預設的 DB 配置。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_connection = null;</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_write_connection</strong></th>
+						<td>字串</td>
+						<td><em>無</em></td>
+						<td>
+							在一個 master／slave 設定中要用來寫入的資料庫連線。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_write_connection = 'master';</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_defaults</strong></th>
+						<td>陣列</td>
+						<td><em>無</em></td>
+						<td>
+							預設值的陣列
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_defaults = array(
+	'field' => 'value',
+	'other_field' => 'other value',
+);</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_created_at</strong></th>
+						<td>字串</td>
+						<td><em>無</em></td>
+						<td>
+							給 'created at' 欄位的名稱。設 <strong>$_mysql_timestamp</strong>
+							為 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_created_at = 'created_at';</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_updated_at</strong></th>
+						<td>字串</td>
+						<td><em>無</em></td>
+						<td>
+							給 'updated at' 欄位的名稱。設 <strong>$_mysql_timestamp</strong>
+							為 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_updated_at = 'modified_at';</code></pre>
+						</td>
+					</tr>
+					<tr>
+						<th><strong>$_mysql_timestamp</strong></th>
+						<td>布林</td>
+						<td><em>無</em></td>
+						<td>
+							為 <strong>$_created_at</strong> 與 <strong>$_updated_at</strong> 欄位，
+							設為 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記。
+						</td>
+						<td>
+							<pre class="php"><code>protected static $_mysql_timestamp = true;</code></pre>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

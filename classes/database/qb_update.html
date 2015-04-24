@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/combined.css">
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/qb_update.html';
+		var path = './../../';
+		var class_prefix = 'Query_Builder_Update::';
+	</script>
+	<script src="../../assets/js/combined.js"></script>
+	<title>Query Builder Update - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="qb_update.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="introduction">Query_Builder_Update 類別</h2>
+
+			<p>（擴充 <a href="qb_where.html">Query_Builder_Where</a>）</p>
+
+			<p>
+				Query_Builder_Update 類別為查詢建立程序處理所有 update 操作，它擴充
+				Query_Builder_Where 類別，所以所有方法都繼承。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_table">table($table)</h4>
+				<p><strong>table</strong> 方法設定／改變要更新的資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 update 語句
+$query = DB::update('users');
+
+// 設定要更新的資料表
+$query->table('admins');
+
+// UPDATE `admins` ...
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_value">value($column, $value)</h4>
+				<p><strong>value</strong> 方法設定要更新的行和值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$column</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>要更新的行</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><em>混合</em></td>
+										<td><em>必要</em></td>
+										<td>新值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 update 語句
+$query = DB::update('users');
+
+// 設定行
+$query->value('name', 'Frank');
+
+// UPDATE `users` SET `name` = "Frank"
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set(array $pairs)</h4>
+				<p><strong>set</strong> 方法設定行並附加要更新的值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$pairs</kbd></th>
+										<td><em>陣列</em></td>
+										<td><em>必要</em></td>
+										<td>行和值的關聯陣列</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 update 語句
+$query = DB::update('users');
+
+// 設定行和值
+$query->set(array(
+	'name' => 'John',
+	'surname' => 'Doe',
+));
+
+// UPDATE `users` SET `name` = "John", `surname` = "Doe"
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
+				<p><strong>compile</strong> 方法回傳 update SQL 查詢做為一個字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><em>物件</em></td>
+										<td><em>必要</em></td>
+										<td>一個資料庫連線</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳 SQL 查詢做為一個字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 update 語句
+$query = DB::update('users');
+
+// 設定兩個值
+$query->set(array(
+	'name' => 'Bert',
+	'surname' => 'Klaassen',
+));
+
+// 取得資料庫連線
+$connection = Database_Connection::instance();
+
+// 取得 SQL 查詢
+$sql = $query->compile($connection);
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_reset">reset()</h4>
+				<p><strong>reset</strong> 方法重置目前實例的所有值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<em>無</em>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 update 語句
+$query = DB::update('users');
+
+// 設定兩個值
+$query->set(array(
+	'name' => 'Bert',
+	'surname' => 'Klaassen',
+));
+
+// 重置它
+$query->reset();
+
+// 設定一個
+$query->value('name', 'Hank');
+
+// 取得資料庫連線
+$connection = Database_Connection::instance();
+
+// 取得 SQL 查詢
+$sql = $query->compile($connection);
+
+// UPDATE `users` SET `name` = "Hank"
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_join">join($table, $type = null)</h4>
+				<p><strong>join</strong> 方法附加要組合的資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>混合</em></td>
+										<td><em>必要</em></td>
+										<td>資料表名稱或 array($table, $alias)</td>
+									</tr>
+									<tr>
+										<th><kbd>$type</kbd></th>
+										<td><em>混合</em></td>
+										<td><pre class="php"><code>true</code></pre></td>
+										<td>組合類型（LEFT、RIGHT、INNER、等等）</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<a href="qb_update.html#join_example">請看這裡的範例</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_on">on($c1, $op, $c2)</h4>
+				<p><strong>on</strong> 方法為最後建立的 JOIN 語句添加 "ON ..." 條件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$c1</kbd></th>
+										<td><em>混合</em></td>
+										<td><em>必要</em></td>
+										<td>資料表名稱或 array($table, $alias)</td>
+									</tr>
+									<tr>
+										<th><kbd>$op</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>邏輯運算子</td>
+									</tr>
+									<tr>
+										<th><kbd>$c2</kbd></th>
+										<td><em>混合</em></td>
+										<td><em>必要</em></td>
+										<td>資料表名稱或 array($table, $alias)</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre id="join_example" class="php"><code>// 預處理一個 update 語句
+$query = DB::update('users');
+
+// 組合一張資料表
+$query->join('profiles');
+$query->on('users.id', '=', 'profiles.user_id');
+
+// 使用一個 Database_Expression 如此值不會被轉義。
+$query->value('users.profile_type', \DB::expr('`profiles`.`type`'));
+
+// UPDATE `users` JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` SET `users`.`profile_type` = `profiles`.`type`
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

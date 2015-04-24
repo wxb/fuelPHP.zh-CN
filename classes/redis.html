@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/redis.html';
+		var path = './../';
+		var class_prefix = "Redis_Db::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Redis_Db - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Redis_Db 類別</h2>
+
+			<p>Redis_Db 類別能讓你與 <a href="http://redis.io/">Redis</a> 鍵 - 值儲存互動。</p>
+
+			<h3 id="configuration">配置</h3>
+
+			<p>每個 Redis 資料庫連線必須配置在 app/config/&lt;environment&gt;/db.php 中的 redis 陣列。下面列出了配置選項和解釋。每個配置需要包含一個主機名稱和連接埠。</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>參數</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+
+					</tr>
+					<tr>
+						<th>hostname</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'127.0.0.1'</code></pre></td>
+						<td>
+							主機名稱
+						</td>
+					</tr>
+					<tr>
+						<th>port</th>
+						<td>整數</td>
+						<td><pre class="php"><code>6379</code></pre></td>
+						<td>
+							用於連線的連接埠
+						</td>
+					</tr>
+					<tr>
+						<th>timeout</th>
+						<td>混合</td>
+						<td><pre class="php"><code>null</code></pre></td>
+						<td>
+							連線逾時
+						</td>
+					</tr>
+					<tr>
+						<th>database</th>
+						<td>整數</td>
+						<td><pre class="php"><code>0</code></pre></td>
+						<td>
+							從零開始的索引資料庫
+						</td>
+					</tr>
+					<tr>
+						<th>password</th>
+						<td>混合</td>
+						<td><pre class="php"><code>null</code></pre></td>
+						<td>
+							選擇性的密碼如果資料庫需要認證
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($name = 'default', $config = array())</h4>
+				<p>建立一個新命名的 redis 的實例，選擇性的帶自訂配置。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i><pre class="php"><code>'default'</code></pre></i></td>
+									<td>新 Redis 實例的名稱，如應用程式配置 db.php 檔案所定義。</td>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td><i><pre class="php"><code>array()</code></pre></i></td>
+									<td>自訂配置，將覆寫定義在 db.php 檔案的值。</td>
+ 								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Redis 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 建立 Redis 'mystore' 實例
+$redis = Redis_Db::forge('mystore');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_instance">instance($name = 'default')</h4>
+				<p>回傳先前建立的一個具名的實例。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i><pre class="php"><code>'default'</code></pre></i></td>
+									<td>請求的 redis 實例名稱，使用 forge() 所建立的。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Redis 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取回 Redis 的 'mystore' 實例
+$redis = Redis_Db::instance('mystore');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 id="redis_commands">Redis 命令</h4>
+				<p>一旦你使用 instance() 方法建立一個 Redis 物件，每個有效的 Redis 命令（見 <a href="http://redis.io/commands">Redis 文件</a>）做為該物件的方法。</p>
+				<p>一些範例：</p>
+				<pre class="php"><code>// 建立 Redis 'mystore' 實例
+$redis = Redis_Db::forge('mystore');
+
+// 建立一些測試資料
+$redis->rpush('particles', 'proton');
+$redis->rpush('particles', 'electron');
+$redis->rpush('particles', 'neutron');
+
+// 提取範圍
+$particles = $redis->lrange('particles', 0, -1);
+
+// 計算元素的數量
+$particle_count = $redis->llen('particles');
+
+// 顯示結果
+echo "&lt;p>The {$particle_count} particles that make up atoms are:&lt;/p>";
+echo "&lt;ul>";
+foreach ($particles as $particle) {
+  echo "&lt;li>{$particle}&lt;/li>";
+}
+echo "&lt;/ul>";
+</code></pre>
+			</article>
+
+			<article>
+				<h4 id="redis_pipelining">流水線</h4>
+				<p>你可以添加多個 Redis 命令進入一個命令流水線，並且一次執行它們。</p>
+				<p>一個範例：</p>
+				<pre class="php"><code>// 建立 Redis 'mystore' 實例
+$redis = Redis_Db::forge('mystore');
+
+// 傳遞一些 redis 命令到流水線，然後執行它們
+$result = $redis->pipeline()
+	->sadd('list', 4)
+	->sadd('list', 1)
+	->sadd('list', 55)
+	->execute();</code></pre>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

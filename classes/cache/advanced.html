@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/cache/advanced.html';
+		var path = './../../';
+		var class_prefix = "Cache::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Cache 進階 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Cache 類別</h2>
+
+			<p>Cache 類別能讓你快取資源大量操作的結果。</p>
+
+			<section>
+				<h3>進階用法</h3>
+
+                                <p>使用快取做為一個物件實例。</p>
+                                <pre><code>$options = array(...); // 這些跟在快取配置檔案中的相同。
+
+$cache = Cache::forge('my_cache', $options)</code></pre>
+                                <p>接著資料可以使用 <kbd>set()</kbd> 函式被儲存到快取中。</p>
+                                <pre id="php"><code>$cache-&gt;set($myData, 604800);</code></pre>
+                                <p>這設定資料在一個區塊中，並設定過期時間為一週（604800 秒）。如果第二個參數設定為 null，那麼快取將永遠不會過期。</p>
+                                <p>當靜態使用 <kbd>Cache</kbd> 時，資料可以相同的方式被取回。</p>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

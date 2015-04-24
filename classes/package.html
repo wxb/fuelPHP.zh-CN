@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/package.html';
+		var path = './../';
+		var class_prefix = "Package::";
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>Package - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="package.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Package 類別</h2>
+
+			<p><kbd>Package</kbd> 類別能讓你簡單地載入、卸載、檢查套件是否載入、或取得所有已載入的套件。</p>
+
+			<article>
+				<h4 class="method" id="method_load">load($package, $path = null)</h4>
+				<p><strong>load</strong> 方法能讓你在執行階段載入單一或更多套件。如果套件無法找到將會拋出一個 <kbd>PackageNotFoundException</kbd>。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$package</kbd></th>
+									<td><i>必要</i></td>
+									<td>要載入的套件名稱，或一個套件與套件路徑的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><code>PKGPATH</code></td>
+									<td>指向套件安裝所在的文件夾路徑。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 載入 orm 套件
+Package::load('orm');
+
+// 載入 parser 套件從特定的目錄
+Package::load('parser', '/path/to/packages/dir/');
+
+// 載入多個套件從單一的套件安裝
+Package::load( array('First' => PKGPATH.'my'.DS.'first'.DS, 'Last' => PKGPATH.'my'.DS.'last'.DS) );
+
+// 載入不存在的套件
+Package::load('awesome'); // 拋出一個 PackageNotFoundException
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_unload">unload($package)</h4>
+				<p><strong>unload</strong> 方法能讓你在執行階段卸載套件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$package</kbd></th>
+									<td><i>必要</i></td>
+									<td>要卸載的套件名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 卸載 orm 套件
+Package::unload('orm');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_loaded">loaded($package = null)</h4>
+				<p><strong>loaded</strong> 方法能讓你檢查是否套件已經被載入。如果沒有給套件名稱，會回傳所有已載入的套件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$package</kbd></th>
+									<td><kbd>null</kbd></td>
+									<td>要檢查的套件名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><kbd>布林｜陣列</kbd></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 檢查 orm 套件是否載入
+$loaded = Package::loaded('orm');
+
+// 取得所有已載入套件
+$loaded = Package::loaded();
+/*
+回傳結果如：
+array(
+    'orm' => '/path/to/orm',
+    'parser' => '/path/to/parser',
+)
+*/
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

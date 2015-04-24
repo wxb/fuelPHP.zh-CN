@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/theme/advanced.html';
+		var path = './../../';
+		var class_prefix = "Theme::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Theme 進階 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Theme 類別</h2>
+
+			<p>
+				Theme 類別為你的應用程式提供主題。
+			</p>
+
+			<h3 id="asset">Asset 支援</h3>
+
+			<p>
+				每一個 Theme 類別實例有它自己的 Asset 類別實例，可以很容易從主題載入資產。
+				Asset 實例被填入活躍的和備用兩者的資產路徑，
+				它將為你的資產提供相同的備用功能，如你有其他主題元素像樣板和檢視。
+			</p>
+
+			<p>範例：</p>
+
+			<pre class="php"><code>// 使用預設的主題實例載入一個資產
+echo \Theme::instance()->asset->css('bootstrap.css');</code></pre>
+
+			<h3 id="advanced_config">進階配置</h3>
+
+			<p>
+				<a href="methods.html#method_active">active()</a>、<a href="methods.html#method_fallback">fallback()</a>、
+				<a href="methods.html#method_get_info">get_info()</a> 和 <a href="methods.html#method_load_info">load_info()</a>
+				方法預設能讓你傳遞一個有已安裝主題名稱的字串。
+				這些方法可以讓你傳遞一個替代的主題定義陣列，這讓傳遞額外配置資訊是可能的。
+			</p>
+
+			<p>以下的主題變數被定義：</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>參數</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>name</th>
+						<td>字串</td>
+						<td><strong>必要</strong></td>
+						<td>主題名稱。這應該與在指定路徑中的文件夾相符。</td>
+					</tr>
+					<tr>
+						<th>path</th>
+						<td>字串</td>
+						<td><strong>必要</strong></td>
+						<td>主題路徑。這應該包含主題名稱，並以一個目錄分隔符結尾。</td>
+					</tr>
+					<tr>
+						<th>asset_base</th>
+						<td>字串</td>
+						<td><strong>選擇性</strong></td>
+						<td>
+							指向此主題資產相對於應用程式 <strong>DOCROOT</strong>的基礎路徑。
+							如果在 <strong>DOCROOT</strong> 之外，該路徑應該是完整路徑。
+							它應該以一個目錄分隔符結尾。
+							如果沒指定，它將從所給主題路徑、配置的 assets_folder、
+							以及配置的 base_url 來建構。
+						</td>
+					</tr>
+					<tr>
+						<th>info</th>
+						<td>陣列</td>
+						<td><strong>選擇性</strong></td>
+						<td>主題的資訊陣列。如果沒定義，它將從主題資訊檔案中的資訊建立。</td>
+					</tr>
+					<tr>
+						<th>find_file</th>
+						<td>布林</td>
+						<td><strong>選擇性</strong></td>
+						<td>如果設為 <strong>true</strong>，<a href="../finder.html#method_search">Finder::search()</a> 方法將被用來定位檢視和主題資訊檔案。</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>範例：</p>
+
+			<pre class="php"><code>// 標準用法：建立一個實例並設定活躍的主題
+$theme = \Theme::forge();
+$theme->active('darkglow');
+
+// 進階用法
+\Config::load('theme', true, false, true);
+$config = \Config::get('theme', false);
+
+// 覆寫一些配置值
+$config['info_file_name'] = 'setup.info';
+$config['info_file_type'] = 'ini';
+
+// 建立主題實例
+$theme = \Theme::forge($config);
+
+// 設定活躍的主題
+$theme->active(
+	array(
+		'name' => 'darkglow',
+		'path' => APPPATH.'themes'.DS.'darkglow'.DS,
+		'asset_base' => '/themes/darkglow/assets/',
+		'find_file' => true,
+	)
+);
+	</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

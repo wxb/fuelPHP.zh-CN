@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/session/usage.html';
+		var path = './../../';
+		var class_prefix = "Session::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Session 用法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Session 類別</h2>
+
+			<p>
+				Session 類別能讓你為你的應用程式在無狀態（stateless）的 web 環境下保持狀態。
+				它能讓你在伺服器上使用各種變數解決方案來儲存變數，並且在下個頁面請求再呼叫變數。
+			</p>
+			<p>
+				記錄在本頁的靜態方法使用透過設定配置中 <kbd>driver</kbd> 設定配置的 session 驅動。
+				當你已經設定 <kbd>auto_initialize</kbd> 設定為 <kbd>true</kbd> 時，session 會被初始化在 Session 類別載入時。
+				如果它設為 <kbd>false</kbd>，你將必須使用以下方法之一，或手動開始一個 session 實例來初始化 session。
+			</p>
+			<p class="note">
+				如果你的應用程式需要 session 支援，"<kbd>always_load</kbd>" 你的 session 類別，或確保你的（基礎）控制器會載入它。
+				如果你載入它，但選擇不 <kbd>auto_initialize</kbd> session，而且你沒使用任何的 session 方法，
+				session 將不會被刷新！這可能因為逾期的 session 造成你應用程式無法預期的行為。
+			</p>
+
+			<h3 id="gc">垃圾回收</h3>
+
+			<p>
+				session 驅動有內建的垃圾回收機制來移除失效的條目。
+				具有內建支援資料過期的儲存後端，例如 APC、Memcached 或 Redis，會使用此功能，
+				並會自動到期失效的快取條目。
+			</p>
+			<p>
+				儲存後端，例如資料庫或檔案系統驅動，不會使用 gc_probability 設定來確定是否需要垃圾回收。
+				如果是這樣的話，它們將在頁面已經傳送給使用者之後的一個 shutdown 事件執行它。
+				這種方法的缺點是，如果這需要一點時間，頁面將不會完成，而會是「載入中……」直到 GC 完成。
+			</p>
+
+			<p class="note">
+				當使用 cookie，請 <strong>務必</strong> 確保配置在你的 <em>app/config/config.php</em> 及／或你的
+				<em>php.ini</em> 檔案中的時區與設定在你伺服器上的時區相符。因為 cookie 的到期時間戳記是 GMT，當你時區有不相符時，
+				計算到期時間將導致嚴重錯誤，從不正確的過期到 cookie 完全不被設定，
+				因為它們到達瀏覽器時已經逾期。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_instance">instance($instance = null)</h4>
+				<p><strong>instance</strong> 方法回傳預設的 session 實例，或一個指定的實例，透過名稱識別。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$instance</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>識別需求的 session 實例的 Cookie 名稱（如在 config/session.php 定義的）。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合 - session 物件，或 <kbd>false</kbd> 在請求的實例不存在時。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設 session 實例（由 'driver' 配置設定所標識）。
+$session = Session::instance();
+
+// 取得一個指定 session 實例
+$session = Session::instance('myappcookie');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set($variable, $value = null)</h4>
+				<p><strong>set</strong> 方法能讓你設定一個 session 變數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td class="fixed_width"><em>字串｜陣列</em></td>
+									<td><em>必要</em></td>
+									<td>要設定或關聯值陣列的 session 變數名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><em>混合</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>
+										session 變數值。<br />
+										這可以是任何資料型態，但注意當在 session 中儲存物件，做為 session 資料是序列化的，而且要序列化一個物件是有限制的。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在 session 中儲存 userid
+Session::set('userid', $userid);
+
+// 你也可以儲存更複雜的值
+Session::set('array', array('varA', 'varB', 'varC' => array('val1', 'val2'));
+
+// 你也可以使用一個陣列來同時設定多個值
+Session::set(array(
+	'userid' => $userid,
+	'has_cookies' => function()
+	{
+		return (bool) \Cookie::get('has_them', false);
+	}
+));
+
+// 你也可以鍊結呼叫來設定值
+Session::set('userid', $userid)->set('foo', 'bar');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get">get($variable = null, $default = null)</h4>
+				<p><strong>get</strong> 方法能讓你從 session 檢索變數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要取得的 session 變數名稱。如果沒指定，所有 session 變數會被回傳。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>在請求的變數不存在時要回傳的預設值。如果沒給預設，該方法將回傳 <kbd>null</kbd>。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合 - 依據儲存的 <var>$variable</var> 型態。該方法回傳 <kbd>null</kbd> 如果請求的變數不存在。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 從 session 取得儲存的 userid
+$userid = Session::get('userid');
+if ( $userid === false )
+{
+	echo "no user is logged in";
+}
+
+// 你可以檢索整個儲存的陣列
+$arr = Session::get('array');
+
+// 或從陣列取得一個指定的鍵
+$arr = Session::get('array.varC');
+
+// 取得所有 session 變數
+$vars = Session::get();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete($variable)</h4>
+				<p><strong>delete</strong> 方法能讓你刪除一個儲存的 session 變數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td><em>必要</em></td>
+									<td>要刪除的 session 變數名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 從 session 刪除儲存的 userid
+Session::delete('userid');
+
+// 你也可以從陣列刪除指定的鍵
+Session::delete('array.varC');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_flash">set_flash($variable, $value = null)</h4>
+				<p><strong>set_flash</strong> 方法能讓你設定一個 session 快閃變數。快閃變數的生命週期有限。根據配置的不同，它們將在下個頁面請求之後，或在被檢索被刪除。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td><em>必要</em></td>
+									<td>要設定的 session 快閃變數名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>
+										session 快閃變數值。<br />
+										這可以是任何資料型態，但注意當在 session 中儲存物件，做為 session 資料是序列化的，而且要序列化一個物件是有限制的。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 告訴下一頁的請求要處理哪個步驟
+Session::set_flash('step', 2);
+
+// 你也可以儲存更複雜的值
+Session::set_flash('array', array('varA', 'varB', 'varC' => array('val1', 'val2'));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					此方法支援有限的「句點表示法」來在一個多維陣列中儲存元素。只有最上層有版本化，
+					整個多維陣列會同時過期。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_flash">get_flash($variable, $default = null, $expire = false)</h4>
+				<p><strong>get_flash</strong> 方法能讓你取得一個 session 快閃變數。快閃變數有生命週期的限制。根據配置的不同，它們將在下個頁面請求之後，或在被檢索被刪除。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td><em>必要</em></td>
+									<td>要取得的 session 變數名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>在請求的變數不存在時要回傳的預設值。如果沒給預設，該方法將回傳 <kbd>null</kbd>。</td>
+								</tr>
+								<tr>
+									<th><kbd>$expire</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>如果為 <kbd>true</kbd>，session 變數立即過期，即使它在同一個請求中被設定。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合 - 依據儲存的 <var>$variable</var> 型態。該方法回傳 <kbd>null</kbd> 如果請求的變數不存在。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 找出要處理哪個步驟
+$step = Session::get_flash('step');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">此方法支援「句點表示法」來從一個多維陣列中檢索元素。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_keep_flash">keep_flash($variable)</h4>
+				<p><strong>keep_flash</strong> 方法重設一個儲存在 session 中的快閃變數為「未請求」狀態。這能讓你取得一個快閃變數，並繼續傳遞它到下個頁面請求。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td><em>必要</em></td>
+									<td>要保留的快閃變數名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 保留步驟值給更多頁面請求
+Session::keep_flash('step');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete_flash">delete_flash($variable)</h4>
+				<p><strong>delete_flash</strong> 方法能讓你刪除一個儲存的快閃變數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$variable</kbd></th>
+									<td><em>必要</em></td>
+									<td>要刪除的快閃變數名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 從 session 刪除步驟
+Session::delete_flash('step');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_create">create()</h4>
+				<p><strong>create</strong> 方法能讓你建立一個新的 session，如果 session 已經存在，當新的建立時它將被銷毀。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 建立一個新 session
+Session::create();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_destroy">destroy()</h4>
+				<p><strong>destroy</strong> 方法能讓你銷毀一個存在的 session。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 銷毀一個 session
+Session::destroy();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_read">read()</h4>
+				<p><strong>read</strong> 方法能讓你手動讀取一個 session。當 session 類別初始化時 session 會自動讀取，所以在一般情況下是不需要使用此方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 讀取 session
+Session::read();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_write">write()</h4>
+				<p><strong>write</strong> 方法能讓你手動寫入 session。在正常情況下，session 會在指令碼結束時自動寫入。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 寫入 session
+Session::write();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_rotate">rotate()</h4>
+				<p>
+					<strong>rotate</strong> 方法能讓你手動轉動 session ID。
+					在一般情況下，session ID 會如定義在配置中的週期定期地自動轉動，
+					做為額外安全措施，你可能想要手動轉動它，
+					例如當你變更已登入使用者的權限。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>FuelCoreSession_Driver - 可鍊結</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 轉動 session
+Session::rotate();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_key">key()</h4>
+				<p>
+					<strong>key</strong> 方法能讓你檢索 session 鍵的元素，
+					唯一地識別 session。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td class="fixed_width"><em>選擇性</em></td>
+									<td>
+										鍵元素的名稱。預設情況下，它是設為 'session_id'。
+										其他可能可用的元素有 'ip_hash'、'created'、'updated'、
+										'user_agent' 和 'payload'。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合 - 元素值，或 <kbd>false</kbd> 如果請求的元素不存在。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得目前 session id
+$session_id = Session::key('session_id');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

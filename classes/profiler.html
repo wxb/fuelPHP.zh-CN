@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/profiler.html';
+		var path = './../';
+		var class_prefix = "Profiler::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Profiler - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Profiler 類別</h2>
+
+			<p>Profiler 類別能讓你添加你自己的分析資訊到分析器。</p>
+
+			<article>
+				<h4 class="method" id="method_mark">mark($label)</h4>
+				<p>
+					<strong>mark</strong> 方法將添加一個速度標記到分析器，
+					這個標記將在分析器的 "Load Time" 段落呈現。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th>描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$label</kbd></th>
+									<td><i>必要</i></td>
+									<td>敘述被設定標記的文字標籤。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Profiler::mark('start of this piece of code');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_mark_memory">mark_memory($var, $name)</h4>
+				<p>
+					<strong>mark_memory</strong> 方法將添加一個記憶體標記到分析器。
+					如果你傳送一個變數，該變數的記憶體使用情況將被記錄，
+					如果沒有，標記的時間點記憶體使用情況將被記錄。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th>描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$var</kbd></th>
+									<td><kbd>false</kbd></td>
+									<td>變數，其大小將被記錄。如果 false 或不指定，PHP 記憶體使用情況將被記錄。</td>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><kbd>'Memory&nbsp;Usage'</kbd></td>
+									<td>敘述被設定標記的文字標籤。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Profiler::mark_memory($this, 'Controller_Welcome object');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_console">console($text)</h4>
+				<p>
+					<strong>console</strong> 方法將添加一個紀錄條目到分析器。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th>描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$text</kbd></th>
+									<td><i>必要</i></td>
+									<td>敘述被設定紀錄條目的文字。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Profiler::console('start of this piece of code');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

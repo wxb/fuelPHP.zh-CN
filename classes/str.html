@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/str.html';
+		var path = './../';
+		var class_prefix = "Str::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Str - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Str 類別</h2>
+
+			<p>Str 類別是一系列幫助操作字串的方法。</p>
+
+			<article>
+				<h4 class="method" id="method_increment">increment($str, $first = 1)</h4>
+				<p><strong>increment</strong> 方法能讓你附加一個數字字串的結尾或遞增已經存在的數字。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>必要</em></td>
+										<td>要遞增的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$first</kbd></th>
+										<td><pre class="php"><code>1</code></pre></td>
+										<td>要遞增的第一個數字。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$string = "filename";
+Str::increment($string); // 回傳 filename_1
+
+$string = "filename_1";
+Str::increment($string); // 回傳 filename_2
+
+$string = "filename";
+Str::increment($string, 3); // 回傳 filename_3
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_random">random($type = 'alnum', $length = 8)</h4>
+				<p><strong>random</strong> 方法基於所給的類型產生一個隨機的字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$type</kbd></th>
+										<td><em>alnum</em></td>
+										<td>要產生的字串類型。你的選擇有 alnum、numeric、nozero、alpha、distinct、hexdec、unique、sha1 與 uuid。</td>
+									</tr>
+									<tr>
+										<th><kbd>$length</kbd></th>
+										<td><pre class="php"><code>16</code></pre></td>
+										<td>你想要最後字串的字元長度（unique、sha1 與 uuid 忽略此參數）。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// alnum（大寫與小寫字母混合數字（
+Str::random('alnum', 16);
+// 回傳：SvZi9Dh3lq7zQYim
+
+// numeric（只有數字）
+Str::random('numeric', 16);
+// 回傳：1045343964672481
+
+// nozero（除了 0 的數字）
+Str::random('nozero', 16);
+// 回傳：3244623373994515
+
+// alpha（只有大寫與小寫字母）
+Str::random('alpha', 16);
+// 回傳：LuVAXbmxQbbWoYqz
+
+// distinct（大寫字母與不會被混淆的數字）
+Str::random('distinct', 16);
+// 回傳：R79MPKMH4KTRN35J
+
+// hexdec（a-f、0-9 的十六進位制字元)
+Str::random('hexdec', 16);
+// 回傳：09c34e42f36547f8
+
+// unique（基於 md5 的 32 字元字串）
+Str::random('unique');
+// 回傳：ed4bb844a35b7a4edb7eed0d3795d328
+
+// sha1（基於 sha1 的 40 字元字串）
+Str::random('sha1');
+// 回傳：af5c5a8cc3be9a3180205c1ed2975015cd6cf1e7
+
+// uuid（版本 4 - 隨機）
+Str::random('uuid');
+// 回傳：f47ac10b-58cc-4372-a567-0e02b2c3d479</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_truncate">truncate($string, $limit, $continuation = '...', $is_html = false)</h4>
+				<p><strong>truncate</strong> 方法能讓你限制字元，並提供一個續編字串，而不打破 html。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>必要</em></td>
+										<td>要截短的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$limit</kbd></th>
+										<td><em>必要</em></td>
+										<td>允許在字串中的字元長度。</td>
+									</tr>
+									<tr>
+										<th><kbd>$continuation</kbd></th>
+										<td><pre class="php"><code>'...'</code></pre></td>
+										<td>要追加到截短字串結尾的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$is_html</kbd></th>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>如果字串包含 html，設定此為 true 將使該方法不打破 html。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+Str::truncate($string, 15); // 回傳 Lorem ipsum dol...
+
+$string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+Str::truncate($string, 15, '...Read More'); // 回傳 Lorem ipsum dol...Read More
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_alternator">alternator(*$args)</h4>
+				<p>回傳一個閉包（closure），它將會輪替你傳給此方法做為變數的值，
+					除非你使用 <kbd>false</kbd> 變數呼叫閉包（closure） - 在此情況下，
+					將會在下次呼叫時回傳相同的值，而沒有移動到下一個值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>*$args</kbd></th>
+										<td><em>必要</em></td>
+										<td>所有你需要輪替的變數</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>閉包（closure）</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$alt = Str::alternator('one', 'two', 'three', 'four');
+echo $alt(); // 輸出 'one'
+echo $alt(); // 輸出 'two'
+echo $alt(false); // 輸出 'three'，但不會移動到下一個元素，如同你在下一次呼叫所見
+echo $alt(); // 輸出 'three'
+echo $alt(); // 輸出 'four'
+echo $alt(); // 輸出 'one'
+// 等等……</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_upper">upper($str, $encoding = null)</h4>
+				<p><strong>upper</strong> 方法轉換所有字元為大寫，它等同於 PHP 的 strtoupper() 可使用指定的字元編碼。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$encoding</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>字元編碼。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::upper('User Data'); // 回傳 'USER DATA'</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_lower">lower($str, $encoding = null)</h4>
+				<p><strong>lower</strong> 方法轉換所有字元為小寫，它等同於 PHP 的 strtolower() 可使用指定的字元編碼。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$encoding</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>字元編碼。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::lower('User Data'); // 回傳 'user data'</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_tr">tr($string, $array = array())</h4>
+				<p><strong>tr</strong> 方法使用 PHP 的 strtr() 從所給的字串解析變數。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$array</kbd></th>
+										<td><em>陣列</em></td>
+										<td><pre class="php"><code>array()</code></pre></td>
+										<td>要 str_replace 的參數。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::tr('Hello :name', array('name' => 'World')); // 回傳 'Hello World'</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_json">is_json($string)</h4>
+				<p><strong>is_json</strong> 方法檢查一個字串是否為 json 編碼。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::is_json('{"0":"An","encoded":["string"]}'); // 回傳 true</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_serialized">is_serialized($string)</h4>
+				<p><strong>is_serialized</strong> 方法檢查一個字串是否序列化。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::is_serialized('a:2:{i:0;s:2:"An";s:7:"encoded";a:1:{i:0;s:6:"string";}}');
+// 回傳 true</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_html">is_html($string)</h4>
+				<p><strong>is_html</strong> 方法檢查一個字串是否為 html。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::is_html('Lorem ipsum &lt;b>dolor sit amet&lt;/b>, consectetur &lt;u>adipiscing&lt;/u> elit.');
+// 回傳 true</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_xml">is_xml($string)</h4>
+				<p><strong>is_xml</strong> 方法檢查一個字串是否是有效的 xml。需要 <a href="http://www.php.net/manual/en/ref.libxml.php" target="_blank">libxml 擴充</a>。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::is_xml('&lt;?xml version="1.0" encoding="utf-8"?>&lt;xml>&lt;foo>bar&lt;/foo>&lt;/xml>');
+// 回傳 true</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_starts_with">starts_with($str, $start, $ignore_case = false)</h4>
+				<p><strong>starts_with</strong> 方法檢查一個字串是否有特定的開頭。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$str</kbd></th>
+										<td><em>必要</em></td>
+										<td>要檢查的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$start</kbd></th>
+										<td><em>必要</em></td>
+										<td>要檢查的開頭。</td>
+									</tr>
+									<tr>
+										<th><kbd>$ignore_case</kbd></th>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>是否要忽略大小寫。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$string = "Lorem ipsum dolor sit amet";
+
+Str::starts_with($string, 'Lorem'); // 回傳 true
+Str::starts_with($string, 'lorem'); // 回傳 false
+Str::starts_with($string, 'lorem', true); // 回傳 true
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_ends_with">ends_with($str, $end, $ignore_case = false)</h4>
+				<p><strong>ends_with</strong> 方法檢查一個字串是否有特定的結尾。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$str</kbd></th>
+										<td><em>必要</em></td>
+										<td>要檢查的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$end</kbd></th>
+										<td><em>必要</em></td>
+										<td>要檢查的結尾。</td>
+									</tr>
+									<tr>
+										<th><kbd>$ignore_case</kbd></th>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>是否要忽略大小寫。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$string = "Lorem ipsum dolor sit amet";
+
+Str::ends_with($string, 'amet'); // 回傳 true
+Str::ends_with($string, 'Amet'); // 回傳 false
+Str::ends_with($string, 'Amet', true); // 回傳 true
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_sub">sub($str, $start, $length = null, $encoding = null)</h4>
+				<p><strong>sub</strong> 方法回傳字串指定的一部分，它等同於 PHP 的 substr() 可使用指定的字符集編碼。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$str</kbd></th>
+										<td><em>必要</em></td>
+										<td>輸入的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$start</kbd></th>
+										<td><em>必要</em></td>
+										<td>第一個字元的定位，詳細用法請看 <a href="http://php.net/substr" target="_blank">php.net</a>。</td>
+									</tr>
+									<tr>
+										<th><kbd>$length</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>字元的最大值，詳細用法請看 <a href="http://php.net/substr" target="_blank">php.net</a>。</td>
+									</tr>
+									<tr>
+										<th><kbd>$encoding</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>字符集編碼。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>Str::sub('User Data', 3, -1); // 回傳 'r Dat'</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

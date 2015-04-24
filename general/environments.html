@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/environments.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>環境 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="environments.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>環境</h2>
+
+			<p>
+				環境的支援幫助 FuelPHP 和你的應用程式在環境設定的基礎上作出決定。
+				FuelPHP 本身根據現行的環境，
+				使用環境設定去載入／覆寫額外的配置設定。
+			</p>
+
+			<h3 id="env_config">環境和設定</h3>
+
+			<p>
+				Based on the environment the app is set to, the Config class looks for environment-specific config files.
+				The config class looks for config files in the directory that matches the current environment. This can be helpful if you are working with multiple developers that each use their own database connection configurations. Another helpful use case is when you have a server for testing that should display all PHP errors and warnings and you have a production server that should not display any errors or warning but simply log them to be reviewed by a developer later.
+			</p>
+
+			<p>Here is an example to illustrate this:</p>
+
+			<pre class="plain"><code>app/
+  config/
+    auth.php
+    db.php
+      development/
+        db.php
+      staging/
+        email.php
+      mike_dev/
+        db.php
+        email.php
+      production/
+        db.php</code></pre>
+
+			<p>
+				When your environment is set to <kbd>\Fuel::DEVELOPMENT</kbd>, the settings from <em>db.php</em> are merged with <em>development/db.php</em>.
+				If the environment setting is set to any other than <kbd>\Fuel::DEVELOPMENT</kbd>, the extra config file is not loaded. The same goes
+				for any other environment setting you might use.
+			</p>
+
+			<p>
+				A real-life example for this is the database configuration. There are no default configuration settings (this is possibly very dangerous).  There are only environment-specific config settings.
+			</p>
+
+			<h3 id="possible_envs">預定義環境</h3>
+
+			<p>
+				FuelPHP 有四個預定義環境。你也可以 <a href="environments.html#create_env">建立你自己的自訂環境。</a>
+			</p>
+
+			<ul>
+				<li>
+					<strong>\Fuel::DEVELOPMENT</strong><br/>
+					開發環境。
+				</li>
+				<li>
+					<strong>\Fuel::TEST</strong><br/>
+					測試環境。
+				</li>
+				<li>
+					<strong>\Fuel::STAGING</strong><br/>
+					臨時環境。
+				</li>
+				<li>
+					<strong>\Fuel::PRODUCTION</strong><br/>
+					生產環境。
+				</li>
+			</ul>
+
+			<h3 id="create_env">建立自訂環境</h3>
+			<p>
+				要建立一個自訂環境，只要使用一個自訂字串，例如 <em>mike_dev</em> 並在 /fuel/app/config/ 中建立一個匹配文件夾。
+			</p>
+			<p>
+				例如：
+				</br>
+				如果你有一個名為 Mike 的開發人員，你可以建立一個稱為 <i>mike_dev</i> 的自訂環境。
+				<ol>
+					<li>在 /fuel/app/config/ 中建立一個稱為 <i>mike_dev</i> 的文件夾。</li>
+					<li>Place any config files that pertain to Mike in the new config folder, for example, place db.php in /fuel/app/config/mike_dev/ to a load custom database configuration when the <em>mike_dev</em> environment is set.</li>
+					<li>Follow the instructions on <a href="environments.html#setting_env">setting your environment</a> below. When setting the environment, instead of using a predefined FuelPHP Environment such as PRODUCTION, use the custom string <em>mike_dev</em></li>
+				</ol>
+			</p>
+
+			<h3 id="setting_env">設定你的環境</h3>
+
+			<p>
+				There are three ways to set your environment. The first two allow you to set the environment that FuelPHP will use when loading web pages. The third option shows you how to set your environment when using FuelPHP's Oil. Oil does not use the environment you set in the first two options below, it has to be set separately, every time you use Oil.
+			</p>
+			<ul>
+				<li><a href="environments.html#env_server">Set Environment with server environment variables (Recommended)</a></li>
+				<li><a href="environments.html#env_manual">Set Environment with <em>/fuel/app/bootstrap.php</em></a></li>
+				<li><a href="environments.html#env_oil">Set Environment when using Oil (Does not replace the above methods, this has its own separate use)</a></li>
+			</ul>
+
+			<h4 id="env_server">Set Environment with server environment variables (Recommended)</h4>
+
+			<p>
+				You can use the server environment variable <strong>SetEnv</strong> to set the environment your application should run in. Every server has its own envrionment variables. Below includes instructions for known configurations. If your server is not included below, <a href="http://en.wikipedia.org/wiki/Environment_variable">read more about environment variables here</a>.
+ 			</p>
+ 			<p class="note">The variable name <strong>FUEL_ENV</strong> should be specified in UPPERCASE, the environment name in lowercase.</p>
+
+			<h5>Apache - Server Configuration</h5>
+			<ol>
+				<li>Make sure your apache server configuration loads the extension mod_env</li>
+				<li>
+					Edit the <pre>httpd.conf</pre> file (or if you include virtual host configurations the desired virtual host config file)
+					and add the following code.
+					</br>
+					<pre class="php"><code>// run this application in production mode
+SetEnv FUEL_ENV production</code></pre>
+				</li>
+			</ol>
+
+			<h5>Apache - User Configuration</h5>
+			<ol>
+				<li>Make sure your apache server configuration loads the extension mod_env</li>
+				<li>Create an <pre>.htaccess</pre> file in the <pre>/public</pre> directory of your application</li>
+				<li>
+					Edit the <pre>.htaccess</pre> file and add the following code.
+					</br>
+					<pre class="php"><code>// run this application in production mode
+SetEnv FUEL_ENV production</code></pre>
+				</li>
+			</ol>
+			<p class="note">Note that enabling .htaccess will slow Apache down considerably. If possible, use a server configuration and disable the use of .htaccess!</p>
+
+			<h5>Nginx</h5>
+			<ol>
+				<li>
+					Edit the desired file in <pre>/etc/nginx/sites-available</pre> and add the following code.
+					</br>
+					<pre class="php"><code># run this application in production mode
+  location ~ \.php$ {
+    fastcgi_param FUEL_ENV production;
+  }</code></pre>
+				</li>
+			</ol>
+
+
+			<h4 id="env_manual">Set Environment with /fuel/app/bootstrap.php</h4>
+			<p>
+				If you are unable to set the environment using <a href="environments.html#env_server">the FUEL_ENV server variable</a>, you can manually change the setting in <em>fuel/app/bootstrap.php</em>.
+			</p>
+
+			<pre class="php"><code>// Inside fuel/app/bootstrap.php
+
+/**
+ * Your environment.  Can be set to any of the following:
+ *
+ * Fuel::DEVELOPMENT
+ * Fuel::TEST
+ * Fuel::STAGING
+ * Fuel::PRODUCTION
+ * Any string you want, for example, a developer name (mike_dev)
+ *
+ */
+Fuel::$env = (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : Fuel::PRODUCTION);</code></pre>
+			<p class="note">Note that when using this code, the environment variable has precedence when set!</p>
+
+			<h3 id="env_oil">Set Environment when using Oil</h3>
+
+			<p>
+				當使用一個 *unix 的操作系統，你可以在開始 oil 之前使用 <kbd>env</kbd> 命令來定義該變數。
+			</p>
+
+			<pre class="cli"><code><strong>$</strong> env FUEL_ENV=production php oil -v</code></pre>
+
+			<p>
+				FuelPHP's Oil does not use the same environment that is set for your application. The environment Oil runs in must be set separately, each time you run an Oil instance. The following instructions tell you how to do so. If you are looking to set the environment for your application, see <a href="environments.html#env_server">Set Environment with server environment variables (Recommended)</a> or <a href="environments.html#env_manual">Set Environment with <em>/fuel/app/bootstrap.php</em></a>
+			</p>
+			<p>
+				當使用 Windows 時，這已經被回報可以運作：
+			</p>
+
+			<pre class="cli"><code><strong>C:\> </strong>set FUEL_ENV=production &amp;&amp; php oil -v</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http")  "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

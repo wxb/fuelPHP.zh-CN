@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/introduction.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Database 簡介 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Database 簡介</h2>
+
+			<section>
+
+				<h3 id="introduction">簡介</h3>
+
+				<p>
+					Fuel 提供基於資料庫抽象層的驅動程序，
+					在編寫的時候支援的驅動程序有 MySQL、MySQLi 和 PDO。
+					除了常規的資料庫互動，Fuel 也具有 DBUtil 類別以執行資料庫操作如建立資料庫、
+					添加欄位及更多。
+				</p>
+
+				<p class="note">請注意：並非所有的特色都被每一種驅動程序支援。</p>
+			</section>
+
+			<section>
+				<h3 id="configuration">配置</h3>
+
+				<p>
+					為了開始與資料庫協作，你必須變更資料庫設定。
+					全域設定對你在 <em>APPPATH/config/db.php</em> 定義的所有 <a href="../../general/environments.html">環境</a>
+					是有效的。你在位於適當環境配置文件夾中的 <em>db.php</em>
+					定義環境特定資料庫設定。
+					兩者將被合併以形成完整的資料庫配置。
+				</p>
+				<p>
+					資料庫配置像這樣的格式：
+				</p>
+					<pre class="php"><code>// MySQL 驅動程序配置
+'development' => array(
+	'type'           => 'mysqli',
+	'connection'     => array(
+		'hostname'       => 'localhost',
+		'port'           => '3306',
+		'database'       => 'fuel_db',
+		'username'       => 'your_username',
+		'password'       => 'y0uR_p@ssW0rd',
+		'persistent'     => false,
+		'compress'       => false,
+	),
+	'identifier'     => '`',
+	'table_prefix'   => '',
+	'charset'        => 'utf8',
+	'enable_cache'   => true,
+	'profiling'      => false,
+	'readonly'       => false,
+),
+
+// PDO 驅動程序配置，使用 PostgreSQL
+'production' => array(
+	'type'           => 'pdo',
+	'connection'     => array(
+		'dsn'            => 'pgsql:host=localhost;dbname=fuel_db',
+		'username'       => 'your_username',
+		'password'       => 'y0uR_p@ssW0rd',
+		'persistent'     => false,
+		'compress'       => false,
+	),
+	'identifier'     => '"',
+	'table_prefix'   => '',
+	'charset'        => 'utf8',
+	'enable_cache'   => true,
+	'profiling'      => false,
+	'readonly'       => array('slave1', 'slave2', 'slave3'),
+),
+
+'slave1' => array(
+	// 第一生產唯讀 slave db 的配置
+),
+
+'slave2' => array(
+	// 第二生產唯讀 slave db 的配置
+),
+
+'slave3' => array(
+	// 第三生產唯讀 slave db 的配置
+),
+</code></pre>
+				<p class="note">請注意，type 對所有連線都是必要的。</p>
+				<h3 id="config_settings">所有配置設定</h3>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>設定</th>
+							<th>類型</th>
+							<th class="description">描述</th>
+						</tr>
+						<tr>
+							<th><kbd>type</kbd></th>
+							<td>字串</td>
+							<td>要使用什麼類型的連線，可以是 mysql、mysqli 或 pdo。</td>
+						</tr>
+						<tr>
+							<th><kbd>connection</kbd></th>
+							<td>陣列</td>
+							<td>連線設定陣列</td>
+						</tr>
+						<tr>
+							<th><kbd>connection.dsn</kbd></th>
+							<td>字串</td>
+							<td>給 PDO 的連線 DSN。</td>
+						</tr>
+						<tr>
+							<th><kbd>connection.username</kbd></th>
+							<td>字串</td>
+							<td>連線使用者。</td>
+						</tr>
+						<tr>
+							<th><kbd>connection.password</kbd></th>
+							<td>字串</td>
+							<td>連線密碼。</td>
+						</tr>
+						<tr>
+							<th><kbd>connection.persistent</kbd></th>
+							<td>布林</td>
+							<td>是否啟動一個持久的連線。</td>
+						</tr>
+						<tr>
+							<th><kbd>connection.compress</kbd></th>
+							<td>布林</td>
+							<td>當使用 MySQL／MySQLi 時，是否使用客戶端壓縮。</td>
+						</tr>
+						<tr>
+							<th><kbd>identifier</kbd></th>
+							<td>字串</td>
+							<td>用於引用識別符的分隔符。</td>
+						</tr>
+						<tr>
+							<th><kbd>table_prefix</kbd></th>
+							<td>字串</td>
+							<td>資料表前綴。</td>
+						</tr>
+						<tr>
+							<th><kbd>charset</kbd></th>
+							<td>字串</td>
+							<td>連線字符集。</td>
+						</tr>
+						<tr>
+							<th><kbd>enable_cache</kbd></th>
+							<td>布林</td>
+							<td>是否允許快取，將覆寫連線基礎上的查詢快取設定。</td>
+						</tr>
+						<tr>
+							<th><kbd>profiling</kbd></th>
+							<td>布林</td>
+							<td>是否添加連線查詢到分析器。</td>
+						</tr>
+						<tr>
+							<th><kbd>readonly</kbd></th>
+							<td>陣列｜false</td>
+							<td>如果你有一個 master/slave 資料庫設定，你可以使用它來定義一個 slave 連線的陣列，它可以被用在隨機的讀取操作。</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>
+					一旦你配置到位，是時候<a href="./usage.html">使用它</a>。
+				</p>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

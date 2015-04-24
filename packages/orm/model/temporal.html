@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/model/temporal.html';
+		var path = './../../../';
+		var class_prefix = 'Model_Temporal::';
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>時序模型 - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+			<div id="main">
+				<section>
+					<h2 id="introduction">簡介</h2>
+					<p>時序模型比它聽起來的更不可怕。</p>
+					<p>通常一個資料庫實體代表資料表中的一列，當它被更新時，舊資訊會被覆寫。時序模型允許資料以時間被引用，它使得在一個所給時間查詢一個實體狀態變為可能。</p>
+					<p>例如，假設你希望追蹤產品的變更，如此當一個訂單交易成功你可以知道產品的狀態而無須重複訂單資料表中的資料。你可以讓產品有時序並且使用訂單時間來引用當時下訂產品的狀態，而非它們目前的狀態，不使用時序資料的情況下就可能會是當下的狀態。</p>
+					<p>時序模型也可被用在審核變更的事物像 wiki 頁面。任何變更會被自動記錄，而不須使用一張獨立的 log 資料表。</p>
+					<p>「實體」可能是你設計中的任何項目，例如產品、使用者、多媒體文件夾、任何你會使用做為模型的可被認為是一個實體。時序模型能讓你透過儲存變更，來追蹤這些實體隨著時間推移的變化，每一組新的變更被稱為一個「修訂版本」。因為每一個修訂版本與時間（時序）資料一起儲存，這使得取得一個實體在所給任何時間的狀態變為可能。</p>
+					<p>這個時序模型的實現在相同資料表儲存實體的修訂版本做為原始資料，不再需要重複的 "log" 資料表。雖然這裡的實現不是實現修訂版本的唯一方式，它是在 ORM 所給的限制之下最彈性的方式，而且事實上，它必須在多種資料庫環境下運作。</p>
+					<h3>為什麼在 ORM 中實現而不是選擇一個允許該功能的資料庫系統？</h3>
+					<p>在 ORM 中實現時序功能能讓技術被抽象出資料庫層，這能讓 ORM 支援的任何資料庫使用時序模型，提供更大的靈活性。此模型不會取代使用支援時序資訊的資料庫使用能力，但提供一個「開箱即用」的實現。</p>
+				</section>
+
+				<section>
+					<h2 id="use">使用</h2>
+					<p>資料表必須被設置一個實體 ID 的複合主鍵，一個標準的自動遞增數字（例如），以及代表有效時間跨度的時間戳記。</p>
+					<pre id="php"><code>class Model_MyTemporal extends Orm\Model_Temporal
+{
+	protected static $_primary_key = array('id', 'temporal_start', 'temporal_end');
+	protected static $_temporal = array(
+		'start_column' => 'temporal_start', // 包含此筆資料有效起始時間的行名稱
+		'end_column' => 'temporal_end', // 包含此筆資料有效結束時間的行名稱
+		'mysql_timestamp' => false, // 如果設為 true 將使用 MySQL 時間戳記，否則是 UNIX 時間戳記
+	);
+}</code></pre>
+					<p class="note">請注意，主鍵應該是一個實體 ID 以及時序時間戳記的複合鍵。</p>
+					<p class="note">任何使用時序模型定義的關聯應該只涉及 ID，而<strong>不是</strong> ID 和時間戳記。</p>
+				</section>
+
+				<article>
+					<h4 id="method_find" class="method"><a class="interal_link" href="#/method_find">find()</a></h4>
+					<p>find 方法與正規模型的實現運作相同，除了只在實體最新版本，WHERE 子句被添加到 SELECT。</p>
+				</article>
+
+				<article>
+					<h4 id="method_find_revision" class="method"><a class="interal_link" href="#/method_find_revision">find_revision($id, $timestamp=null, $relations = array())</a></h4>
+					<p>此方法可以被用來查詢實體在所給時間的狀態。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th class="legend">靜態</th>
+								<td>是</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$id</kbd></th>
+											<td><em>必要</em></td>
+											<td>要搜尋實體的 ID。</td>
+										</tr>
+										<tr>
+											<th><kbd>$timestamp</kbd></th>
+											<td><pre class="php"><span class="keyword">null</span></pre></td>
+											<td>要引用實體所在的時間。<kbd>null</kbd> 將回傳最新的修訂版本。</td>
+										</tr>
+										<tr>
+											<th><kbd>$relations</kbd></th>
+											<td><pre class="php"><span class="keyword">array</span></pre></td>
+											<td>要與該實體一起載入的關聯的名稱。</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>單一的 <kbd>Model_Temporal</kbd> 子類別</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>Model_Product::find_revision($id, '2012-11-09 12:04:00', array('images', 'reviews'));</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="note">任何透過 <kbd>find_revision</kbd> 或 <kbd>find_revisions</kbd> 取回的模型應該被認為是<strong>唯讀</strong>，因為它不應該有可能修改過去！</p>
+				</article>
+				<article>
+					<h4 id="method_find_revisions_between" class="method"><a class="interal_link" href="#/method_find_revisions_between">find_revisions_between($id, $earliestTime = null, $latestTime = null)</a></h4>
+					<p>此方法將回傳實體在所給時間之間的狀態。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th class="legend">靜態</th>
+								<td>是</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$id</kbd></th>
+											<td><em>必要</em></td>
+											<td>要搜尋實體的 ID。</td>
+										</tr>
+										<tr>
+											<th><kbd>$earliestTime</kbd></th>
+											<td><pre class="php"><span class="keyword">null</span></pre></td>
+											<td>要尋找最早的修訂版本時間，或 <kbd>null</kbd> 無限多先前的修訂版本。</td>
+										</tr>
+										<tr>
+											<th><kbd>$latestTime</kbd></th>
+											<td><pre class="php"><span class="keyword">null</span></pre>、<pre class="php"><span class="keyword">字串</span></pre> 或 <pre class="php"><span class="keyword">整數</span></pre></td>
+											<td>要尋找最新的修訂版本時間，或<kbd>null</kbd> 無限多的修訂版本（直到最新）。</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td><kbd>Model_Temporal</kbd> 子類別的陣列</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>Model_Product::find_revisions_between($id, '2012-11-09 12:04:00', '2012-12-10 19:00:00');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="note">目前還不能在使用 find_revisions_between 的同時選擇關聯。</p>
+				</article>
+				<article>
+					<h4 id="method_delete" class="method"><a class="interal_link" href="#/method_delete">delete($cascade = null, $use_transaction = false)</a></h4>
+					<p>此方法將從資料庫刪除物件。它與一般模型的刪除功能運作的方式完全相同，除了資訊不會從資料庫被移除。這意味著你仍然可以引用該物件在所給時間，但它就目前而言不再有效。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th class="legend">靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>Model_Product::find(5)->delete();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="note">串聯刪除將正常刪除。任何不是 Soft 或 Temporal 的模型也會正常刪除。</p>
+				</article>
+				<article>
+					<h4 id="method_overwrite" class="method"><a class="interal_link" href="#/method_overwrite">overwrite($cascade = null, $use_transaction = false)</a></h4>
+					<p>能讓資訊被儲存而不用建立一個新的修訂版本。與 Model::save() 的運作相同。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th class="legend">靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$product = Model_Product::find(5);
+$product->name = 'Super Awesome 12000';
+// Product 會更新而不會在資料庫中建立新的一筆資料。
+$product->overwrite();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article>
+					<h4 id="method_restore" class="method"><a class="interal_link" href="#/method_restore">restore()</a></h4>
+					<p>如果一個實體已經被刪除，此方法還原該實體到目前狀態。如果該實體沒有被刪除將不會發生什麼事。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th class="legend">靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>Model_Product::find_revision(5, '2012-11-09 12:04:00')->restore();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<article>
+					<h4 id="method_purge" class="method"><a class="interal_link" href="#/method_purge">purge()</a></h4>
+					<p>從資料庫移除此實體的所有修訂版本。這是<strong>永久</strong>的！它不能被撤消。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th class="legend">靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									 <pre class="php"><code>Model_Product::find(5)->purge();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="note">這不能被撤消，它將從資料庫刪除實體的所有修訂版本。如果你這樣做資料將被摧毀！</p>
+				</article>
+			</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

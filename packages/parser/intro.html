@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+<!--	<script src="http://www.google.com/jsapi" type="text/javascript"></script>-->
+	<script type="text/javascript">
+		var pagepath = 'packages/parser/intro.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>簡介 - Parser 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Parser 套件</h2>
+
+			<p>Parser 套件擴充核心檢視類別，能夠使用任何你想要的樣板解析器。</p>
+
+			<section>
+				<h2 id="intro">簡介</h2>
+
+				<p>Parser 套件不改變任何你使用檢視的方法，但它將能讓你使用任何你想要的樣板解析器取代 PHP。
+					這套件有著許多解析器的驅動，
+					像 Dwoo、Haml、Jade、Lex、Markdown、Mustache、PHPTal、Smarty 和 Twig。</p>
+
+				<p>Which parser is used is determined by the file extension of your view file. Normal views, parsed by PHP
+					use the file extension <kbd>.php</kbd>. This is also the default, if no extension is specified, it is
+					assumed to have the <kbd>.php</kbd> extension.</p>
+				<p>All others have their own specific extension, for example <kbd>foo.mustache</kbd> will use the Mustache
+				    driver, <kbd>foo.tpl</kbd> will use the Dwoo driver, <kbd>foo.lex</kbd> will use the Lex driver, and
+				    so on. The default extension can be changed in config).</p>
+
+				<section>
+					<h3 id="install">安裝</h3>
+
+					<p>Parser 套件包含在 Fuel 下載中，
+						使用你必須先添加啟用至你的配置：</p>
+					<pre class="php"><code>'always_load' => array(
+	'packages' => array(
+		'parser',
+	),
+),</code></pre>
+					<p>To be able to use one of the supported parsers, you need to install them via composer.
+					    Simply add the libraries to your project's <kbd>composer.json</kbd> then run <kbd>php composer.phar install</kbd>:</p>
+
+					<pre class="javascript"><code>{
+    "require": {
+        "dwoo/dwoo" : "*",
+        "mustache/mustache" : "*",
+        "smarty/smarty" : "*",
+        "twig/twig" : "*",
+        "mthaml/mthaml": "*",
+        "pyrocms/lex": "*"
+    }
+}
+</code></pre>
+					<p class="note">Note that the  Markdown parser is installed by default, as it is also used by the FuelPHP core class </kbd>Markdown</kbd>.</p>
+
+					<p>Libraries that can not be installed through composer are expected to be installed in in <kbd>APPPATH/vendor/lib_name</kbd>
+					    (capitalize lib_name), and you'll have to download them yourself. Don't change the casing or anything, keep it as
+					    much original as possible within the </kbd>vendor/lib_name</kbd> dir to keep updating easy (also because some come with
+					    their own autoloader).</p>
+				</section>
+
+				<section>
+					<h3 id="configuration">配置</h3>
+
+					<p>Parser 能在 config/parser.php 檔案中被配置，且使用以下的鍵：</p>
+
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>參數</th>
+								<th>類型</th>
+								<th>預設</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<th>extensions</th>
+								<td>陣列</td>
+								<td>（包含擴充與解析的檢視類別的陣列）</td>
+								<td>
+									定義哪些擴充是有效的以及它們的檢視驅動是什麼。<br />
+									例：'md' => 'View_Markdown'
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p>For every View driver supported, the configuration file contains a array entry with
+					    the same name as the driver, which lists the driver specific configuration (limited
+					    to the configuration items supported by the driver. This may be a subset of all
+					    configuration the parser supports).</p>
+				</section>
+
+				<section>
+					<h3 id="runtime_configuration">執行階段配置</h3>
+
+					<p>所有驅動都有一個 <kbd>parser()</kbd> 方法能讓你存取目前的 Parser 物件。
+						這是一個慣例而非必要條件，
+						且不同的第三方驅動程序可能會有所不同。</p>
+
+					<pre class="php"><code>// 清除特定 Smarty 樣板的快取
+$view = View::forge('example.smarty');
+$view->parser()->clearCache('example.smarty');
+
+// 靜態用法的範例
+View_Smarty::parser()->clearCache('example.smarty');</code></pre>
+
+					<p>This can also be used when you need to pass custom configuration to the driver.</p>
+				</section>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

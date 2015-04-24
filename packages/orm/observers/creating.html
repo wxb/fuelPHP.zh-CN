@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/observers/creating.html';
+		var path = './../../../';
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>建立 - 觀察者 - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Orm</h2>
+
+			<p>Orm 是 <a href="http://en.wikipedia.org/wiki/Object_relational_mapper" target="_blank">物件關聯對映（Object
+				Relational Mapper）</a> 的簡寫，它做兩件事：<br />對應你資料庫裡的資料列到物件，
+				並能讓你在這些物件之間建立關係。<br />
+				它緊隨 <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">活動記錄模式（
+				Active Record Pattern）</a>，但也受到其他系統的影響。</p>
+
+			<article>
+				<h3 id="creating_observers">觀察者：建立你自己的</h3>
+
+				<p>你可以添加任何類別做為一個觀察者，藉由添加完整的類別名稱（包含命名空間）到你的模型的 Observers 特性。
+					有兩種方式建立的類別可以用來做為觀察者：</p>
+
+				<h3>擴充 Orm\Observer 類別</h3>
+
+				<p>建立一個擴充 <kbd>Orm\Observer</kbd> 的新類別，並為你想要你的觀察者行動的事件上建立方法。
+					在下面的範例中，你想要它在 <kbd>after_insert</kbd>上行動，
+					該方法動作時將被傳遞 Model 實例。</p>
+
+				<pre class="php"><code>class Observer_Something extends Orm\Observer
+{
+
+	public function after_insert(Orm\Model $model)
+	{
+		\Log::info('Succesfully created new object of class '.get_class($model));
+	}
+}</code></pre>
+
+				<p class="note">Orm\Observer 擴充的類型預設是獨體的，如此你不能使用一個
+					<kbd>instance()</kbd> 方法或一個 <kbd>$_instance</kbd> 特性，否則無法正常運作，
+					因為此方法可能是靜態或非靜態。</p>
+
+				<h3>帶有一個 orm_notify() 方法</h3>
+
+				<p>當你擴充 <kbd>Orm\Observer</kbd> 類別它繼承一個 <kbd>orm_notify()</kbd> 方法，
+					該方法將確認是否有符合事件的方法，並在可能時呼叫它。
+					但你可以使用任何類別做為一個觀察者只要它有一個 <kbd>orm_notify()</kbd> 方法，
+					該方法將於事件被呼叫且被傳遞事件名稱和一個 Model 實例。</p>
+
+				<pre class="php"><code>class Some_Other_Class
+{
+
+	// 在 orm_notify 方法之前或之後可能有許多方法及特性
+
+	public static function orm_notify(Orm\Model $model, $event)
+	{
+		\Log::info('I was notified of the event '.$event.' on a Model of class '.get_class($model));
+	}
+}</code></pre>
+				<h3 id="event_names">事件名稱</h3>
+
+				<ul>
+					<li><kbd>after_create</kbd>，一旦物件被建立時，由 __construct() 方法呼叫</li>
+					<li><kbd>after_load</kbd>，一旦物件從資料庫被載入時，由 __construct() 方法呼叫</li>
+					<li><kbd>before_save</kbd>，在任何事完成之前，由 save() 方法呼叫</li>
+					<li><kbd>after_save</kbd>，在完成後由 save() 方法呼叫</li>
+					<li><kbd>before_insert</kbd>，當一個物件第一次被儲存到資料庫時被呼叫</li>
+					<li><kbd>after_insert</kbd>，當一個物件第一次被儲存到資料庫後被呼叫</li>
+					<li><kbd>before_update</kbd>，當一個物件被儲存到資料庫時被呼叫（第一次除外）</li>
+					<li><kbd>after_update</kbd>，當一個物件被儲存到資料庫後被呼叫（第一次除外）</li>
+					<li><kbd>before_delete</kbd>，當你從資料庫刪除一個物件時被呼叫</li>
+					<li><kbd>after_delete</kbd>，當你從資料庫刪除一個物件後被呼叫</li>
+					<li><kbd>after_clone</kbd>，在一個物件成功被複製之後被呼叫</li>
+				</ul>
+
+				<p class="note">
+					<kbd>before_insert</kbd> 和 <kbd>before_update</kbd> <em>只</em>在該物件被變更時觸發。如果你需要觸發一個事件即使該物件沒有被變更（例如：要處理 $_FILES 資料），你應該使用 <kbd>before_save</kbd>。
+				</p>
+
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

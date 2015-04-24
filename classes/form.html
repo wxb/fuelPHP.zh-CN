@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/form.html';
+		var path = './../';
+		var class_prefix = "Form::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Form - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Form 類別</h2>
+
+			<p>
+				Form 類別可以被用來建立單獨的表單元素，或建立一個有驗證的完整表單，
+				後者則是結合了 <a href="fieldset/fieldset.html">Fieldset</a> 類別。
+			</p>
+
+			<h3 id="creatin_elements">建立單獨的表單元素</h3>
+
+			<article>
+				<h4 class="method" id="method_open">open($attributes = array(), $hidden = array())</h4>
+				<p>建立一個表單開始標籤。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>一個做為 action 屬性的字串或一個設定的陣列，
+										如果沒給，action 將使用目前 Uri，
+										屬性的值將被用作 HTML 標籤特性。</td>
+								</tr>
+								<tr>
+									<th><kbd>$hidden</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>一個欄位名稱和值的關聯陣列，
+										將全部被設定為隱藏欄位。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 &lt;form action="http://mydomain.com/uri/to/form" accept-charset="utf-8" method="post"&gt;
+echo Form::open('uri/to/form');
+
+// 回傳 &lt;form action="http://google.com/" accept-charset="utf-8" method="get"&gt;
+echo Form::open(array('action' => 'http://google.com/', 'method' => 'get'));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_close">close()</h4>
+				<p>建立一個表單結束標籤。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>（無）</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 &lt;/form&gt;
+echo Form::close();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_input">input($field, $value = null, $attributes = array())</h4>
+				<p>
+					建立一個 html input 元素，它可以設定使用的欄位名稱、值和標籤的屬性，
+					或合為一個陣列做為第一個參數。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$field</kbd></th>
+									<td><i>必要</i></td>
+									<td>欄位名稱的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>欄位值，當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::input('name', 'value', array('style' => 'border: 2px;'));
+// 更多可以添加</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_button">button($field, $value = null, $attributes = array())</h4>
+				<p>
+					建立一個 html button 元素，它可以設定使用的欄位名稱、值和標籤的屬性，
+					或合為一個陣列做為第一個參數。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$field</kbd></th>
+									<td><i>必要</i></td>
+									<td>欄位名稱的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>欄位值，當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::button('name', 'value', array('style' => 'border: 2px;'));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_hidden">hidden($field, $value = null, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'hidden'</kbd>。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_csrf">csrf()</h4>
+
+				<p>建立一個 HTML input 元素，帶有自動設為產生的 CSRF 符記的 <kbd>value</kbd> 屬性。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_password">password($field, $value = null, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'password'</kbd>。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_radio">radio($field, $value = null, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'radio'</kbd>。<br />
+				<em>為了向下相容，此方法也接受：<kbd>radio($field, $value = null, array $attributes = array())</kbd></em></p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$field</kbd></th>
+									<td><i>必要</i></td>
+									<td>欄位名稱的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>欄位值，當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$checked</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>是否選取（如果是布林）或符合 $value （如果是字串），
+										當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::label('Male', 'gender');
+echo Form::radio('gender', 'Male', true);
+echo Form::label('Female', 'gender');
+echo Form::radio('gender', 'Female');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</article>
+
+			<article>
+				<h4 class="method" id="method_checkbox">checkbox($field, $value = null, $checked = null, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'checkbox'</kbd>。<br />
+				<em>為了向下相容，此方法也接受：<kbd>checkbox($field, $value = null, array $attributes = array())</kbd></em></p>
+<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$field</kbd></th>
+									<td><i>必要</i></td>
+									<td>欄位名稱的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>欄位值，當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$checked</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>是否選取（如果是布林）或符合 $value （如果是字串），
+										當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::label('Male', 'gender');
+echo Form::checkbox('gender', 'Male', true);
+echo Form::label('Female', 'gender');
+echo Form::checkbox('gender', 'Female');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_file">file($field, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'file'</kbd>。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_reset">reset($field, $value = null, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'reset'</kbd>。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_submit">submit($field, $value = null, $attributes = array())</h4>
+
+				<p>這是一個 <kbd>Form::input()</kbd> 的別名，它會自動設定 <kbd>type</kbd> 屬性為
+				<kbd>'submit'</kbd>。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_textarea">textarea($field, $value = null, $attributes = array())</h4>
+				<p>建立一個 html textarea 元素，它可以設定使用的欄位名稱、值和標籤的屬性，
+					或合為一個陣列做為第一個參數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$field</kbd></th>
+									<td><i>必要</i></td>
+									<td>欄位名稱的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>欄位值，當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::textarea('description', 'enter here', array('rows' => 6, 'cols' => 8));
+// 更多可以添加</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_select">select($field, $values = null, $options = array(), $attributes = array())</h4>
+				<p>建立一個 html select 元素，它可以設定使用的欄位名稱、已選擇的值、選項和標籤的屬性，
+					或合為一個陣列做為第一個參數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$field</kbd></th>
+									<td><i>必要</i></td>
+									<td>欄位名稱的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$values</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>選擇的值或多選值的陣列，
+										當第一個參數是陣列時將被忽略。</td>
+								</tr>
+								<tr>
+									<th><kbd>$options</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>value=>label 配對的關聯陣列，也可能包含 option 群組如
+										opt_name=>array()，該陣列包含自己的一組  value=>label 配對。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::select('country', 'none', array(
+	'none' => 'None',
+	'europe' => array(
+		'uk' => 'United Kingdom',
+		'nl' => 'Netherlands'
+	),
+	'us' => 'United States'
+));
+// 更多可以添加</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_label">label($label, $id = null, $attributes = array())</h4>
+				<p>建立一個 html label 元素，它可以設定使用的標籤、連結的 id 和標籤的屬性，
+					或合為一個陣列做為第一個參數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$label</kbd></th>
+									<td><i>必要</i></td>
+									<td>標籤的字串或標籤屬性的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$id</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>此標籤屬於的欄位 id。</td>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>這些將被用作 HTML 標籤特性。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Form::label('Username', 'username');
+// 更多可以添加</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_fieldset_open">fieldset_open($attributes = array(), $legend = null)</h4>
+				<p>建立一個欄位集開始標籤。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$attributes</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>一個設定的陣列；可能使用 'legend' 鍵去設定欄位集的 legend 屬性。
+									屬性的值將被用作 HTML 標籤特性。</td>
+								</tr>
+								<tr>
+									<th><kbd>$legend</kbd></th>
+									<td><pre class="php"><code>字串</code></pre></td>
+									<td>要用作 legend 欄位集選項的字串</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 &lt;fieldset &gt;
+echo Form::fieldset_open();
+
+// 回傳 &lt;fieldset class="example-class" id="example-id"&gt;
+echo Form::fieldset_open(array('class' => 'example-class', 'id' => 'example-id'));
+
+// 回傳 &lt;fieldset class="example-class" id="example-id"&gt;&lt;legend&gt;Custom Legend&lt;/legend&gt;
+echo Form::fieldset_open(array('class' => 'example-class', 'id' => 'example-id'), 'Custom Legend');
+
+// 回傳 &lt;fieldset class="example-class" id="example-id"&gt;&lt;legend&gt;Custom Legend&lt;/legend&gt;
+echo Form::fieldset_open(array('class' => 'example-class', 'id' => 'example-id', 'legend' => 'Custom Legend'));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_fieldset_close">fieldset_close()</h4>
+				<p>建立一個欄位集結束標籤。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>（無）</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 &lt;/fieldset&gt;
+echo Form::fieldset_close();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<h3 id="create_forms_oop">以 OOP 方式使用欄位集建立表單</h3>
+
+			<p>詳見 <a href="fieldset/fieldset.html">Fieldset</a></p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/date.html';
+		var path = './../';
+		var class_prefix = "Date::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Date - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Date 類別</h2>
+
+			<p>Date 類別是一系列與日期協作的輔助函式。與 PHP 的 DateTime 類別相反，
+			Fuel 的 Date 類別對 i18n 有完整的支援。你也可以使用 Date 類別的時區轉換。</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($timestamp = null, $timezone = null)</h4>
+				<p><strong>forge</strong> 方法回傳一個新的 Date 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$timestamp</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要設定給 Date 物件的時間戳記</td>
+								</tr>
+								<tr>
+									<th><kbd>$timezone</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>時間所設定的時區</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Date 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>print_r(Date::forge(1294176140));
+
+// 回傳
+Fuel\Core\Date Object
+(
+    [timestamp:protected] => 1294176140
+    [timezone:protected] => UTC
+)
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_time">time($timezone = null)</h4>
+				<p><strong>time</strong> 方法回傳在所給時區中的目前時間做為一個 Date 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$timezone</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>時間所設定的時區</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Date 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>print_r(Date::time());</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_display_timezone">display_timezone($timezone = null)</h4>
+				<p>
+					<strong>display_timezone</strong> 方法能讓你全域地設定一個可被 format() 方法使用的時區，
+					以在系統時區當時產生輸出另一個時區。
+					如果你沒有傳遞參數，目前 display_timezone 會被回傳。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$timezone</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要被用於在非系統時區中格式化時間戳記的顯示時區。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合，null、或目前顯示時區如果沒有參數被傳遞。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 設定顯示時區為 'America/Lima'
+Date::display_timezone('America/Lima');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_create_from_string">create_from_string($input, $pattern_key = 'local')</h4>
+				<p><strong>create_from_string</strong> 建立一個來自具名的日期字串格式或一個模式的
+					Date 物件。</p>
+
+				<p class="note">此函式為 i18n 用途使用 <a href="http://www.php.net/manual/en/function.strptime.php" target="_blank">strptime()</a>。
+					然而，該方法無法在 Windows 主機上使用，在這種情況下 <kbd>strtotime()</kbd>
+					被用來取代且模式會被忽略。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$input</kbd></th>
+									<td><i>必要</i></td>
+									<td>要使用的日期字串</td>
+								</tr>
+								<tr>
+									<th><kbd>$pattern_key</kbd></th>
+									<td>"local"</td>
+									<td>要使用的模式鍵（見 config/date.php）或直接一個 strptime() 模式</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Date 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>print_r(Date::create_from_string("01/04/2011" , "us"));
+
+// 回傳
+Fuel\Core\Date Object
+(
+    [timestamp:protected] => 1322956800
+    [timezone:protected] => UTC
+)
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_range_to_array">range_to_array($start, $end, $interval = '+1 Day')</h4>
+				<p><strong>range_to_array</strong> 轉換一個日期範圍為一個日期物件的陣列</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$start</kbd></th>
+									<td><i>必要</i></td>
+									<td>開始日期，不是一個 Date 物件就是一個時間戳記</td>
+								</tr>
+								<tr>
+									<th><kbd>$end</kbd></th>
+									<td><i>必要</i></td>
+									<td>結束日期，不是一個 Date 物件就是一個時間戳記</td>
+								</tr>
+								<tr>
+									<th><kbd>$interval</kbd></th>
+									<td>"+1 Day"</td>
+									<td>要建立一個 Date 物件的時間間隔</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$start = time();
+$end = $start + 604800; // 加 1 週
+print_r(Date::range_to_array($start, $end, "+2 days"));
+
+// 回傳
+Array
+(
+    [0] => Fuel\Core\Date Object
+        (
+            [timestamp:protected] => 1294181818
+            [timezone:protected] => UTC
+        )
+
+    [1] => Fuel\Core\Date Object
+        (
+            [timestamp:protected] => 1294354618
+            [timezone:protected] => UTC
+        )
+
+    [2] => Fuel\Core\Date Object
+        (
+            [timestamp:protected] => 1294527418
+            [timezone:protected] => UTC
+        )
+
+    [3] => Fuel\Core\Date Object
+        (
+            [timestamp:protected] => 1294700218
+            [timezone:protected] => UTC
+        )
+)</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_date_in_month">days_in_month($month, $year = null)</h4>
+				<p><strong>days_in_month</strong> 回傳任何指定年、月份的天數</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$month</kbd></th>
+									<td><i>必要</i></td>
+									<td>要使用的月份</td>
+								</tr>
+								<tr>
+									<th><kbd>$year</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要使用的年份（預設是目前年份）</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>整數</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Date::days_in_month(2);       // 28
+echo Date::days_in_month(2, 2000); // 29
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_time_ago">time_ago($timestamp, $now, $period)</h4>
+				<p><strong>time_ago</strong> 方法回傳一個格式化的時間差。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$timestamp</kbd></th>
+									<td><i>必要</i></td>
+									<td>UNIX 時間戳記</td>
+								</tr>
+								<tr>
+									<th><kbd>$now</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>要進行比較的 UNIX 時間戳記，如果沒給或為空，會使用目前時間</td>
+								</tr>
+								<tr>
+									<th><kbd>$period</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>答案回傳的時間跨度，可能的值是 'second'、'minute'、'hour'、'day'、'week'、'month'、'year' 和 'decade'。如果沒有指定，會回傳最大的可能值</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Date::time_ago(strtotime("01 January 2012")); // 1 months ago（當在 February 2012 時）
+echo Date::time_ago(strtotime("12 April 1964"), strtotime("01 March 2012")); // 5 decades ago
+echo Date::time_ago(strtotime("12 April 1964"), strtotime("01 March 2012"), 'year'); // 48 years ago
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_format">format($pattern_key = 'local', $timezone = null)</h4>
+				<p>
+					<strong>format</strong> 方法回傳一個指定模式鍵的格式化日期。
+					模式被定義在 <kbd>fuel/core/config/date.php</kbd> 配置檔案 - 你可以藉由在
+					<kbd>app/config</kbd> 建立一個類似的檔案來添加你自己的模式。
+				</p>
+				<p class="note">此方法為 <a href="http://www.php.net/manual/en/function.strftime.php" target="_blank">strftime()</a>
+					函式使用模式取代 <kbd>date()</kbd> ，以允許 i18n。</p>
+				<p>
+					如果你沒有傳遞一個時區，當格式化結果時，目前 Date 物件的設定時區將被使用。預設情況下，
+					是系統時區，除非你有藉由呼叫 <kbd>set_timezone()</kbd> 方法修改它。你也可以傳遞
+					<kbd>true</kbd> ，這將造成全域的 display_timezone 被使用。
+				</p>
+				<p class="note">你可以使用 display_timezone 以全域設定一個要轉換到的時區，例如，
+				當一個使用者已登入，從一個使用者個人設定。這將能讓所有日期在使用者本地時區裡被顯示。</p>
+
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$pattern_key</kbd></th>
+									<td>"local"</td>
+									<td>要使用的模式鍵（見 config/date.php）</td>
+								</tr>
+								<tr>
+									<th><kbd>$timezone</kbd></th>
+									<td>null</td>
+									<td>當產生格式化輸出時要使用的時區</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 如果系統時間是 UTC，這將回傳 "01/04/2011 21:22"
+echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M");
+
+// 設定時區為 "Europe/Amsterdam"（在一月是 GMT+1），這將回傳 "01/04/2011 22:22"
+echo Date::forge(1294176140)->set_timezone('Europe/Amsterdam')->format("%m/%d/%Y %H:%M");
+
+// 設定全域的顯示時區為 "Europe/Amsterdam"
+Date::display_timezone('Europe/Amsterdam');
+
+// 這也將回傳 "01/04/2011 22:22"
+echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M", true);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_timestamp">get_timestamp()</h4>
+				<p><strong>get_timestamp</strong> 方法回傳 Date 物件的時間戳記</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>整數</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Date::forge(1294176140)->get_timestamp(); // 1294176140</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_timezone">get_timezone()</h4>
+				<p><strong>get_timezone</strong> 方法回傳 Date 物件的時區</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Date::forge(1294176140, "Europe/London")->get_timezone(); // Europe/London</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_timezone_abbr">get_timezone_abbr($display_timezone = false)</h4>
+				<p><strong>get_timezone_abbr</strong> 方法回傳 Date 物件時區設定的時區縮寫，或顯示時區的時區縮寫。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$display_timezone</kbd></th>
+									<td><i>布林</i></td>
+									<td>如果為 true，全域的 display_timezone 將取代 Date 物件的時區設定</td>
+								</tr>
+							</table>
+						</td>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Date::forge(1294176140, "Europe/London")->get_timezone_abbr(); // 回傳 "GMT"
+echo Date::forge(1294176140, "Europe/Amsterdam")->get_timezone_abbr(); // 回傳 "CET"
+
+// 設定全域顯示時區為 "Europe/Amsterdam"
+Date::display_timezone('Europe/Amsterdam');
+echo Date::forge(1294176140)->get_timezone_abbr(true); // 也回傳 "CET"</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_timezone">set_timezone($timezone)</h4>
+				<p><strong>set_timezone</strong> 方法設定 Date 物件的時區</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$timezone</kbd></th>
+									<td><i>必要</i></td>
+									<td>要設定給 Date 物件的時區</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Date::forge(1294176140)->set_timezone("America/Chicago")->get_timezone(); // America/Chicago</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

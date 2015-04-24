@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/security.html';
+		var path = './../';
+		var class_prefix = "Security::";
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>Security - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="security.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Security 類別</h2>
+
+			<p>Security 類別能讓你在你的應用程式得到 CSRF 保護。</p>
+
+			<section>
+				<h3 id="configuration">配置</h3>
+
+				<p>
+					Security 類別透過 <kbd>app/config/config.php</kbd> 配置檔案的 security 段落來配置。
+				</p>
+				<p>以下安全配置設定可以被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>token_salt</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'put your salt value here...'</code></pre></td>
+							<td>
+								用來產生安全符記的鹽。請確保這包含一些隨機的東西，以確保你的符記是不可預測的。
+							</td>
+						</tr>
+						<tr>
+							<th>csrf_token_key</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'fuel_csrf_token'</code></pre></td>
+							<td>
+								用於 CSRF 符記 cookie 的名稱，以及包含符記的表單欄位的名稱。
+							</td>
+						</tr>
+						<tr>
+							<th>csrf_expiration</th>
+							<td>整數</td>
+							<td><pre class="php"><code>0</code></pre></td>
+							<td>
+								CSRF 符記 cookie 的過期時間。預設 cookie 會在瀏覽器 session 結束時過期。
+							</td>
+						</tr>
+						<tr>
+							<th>uri_filter</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('htmlentities')</code></pre></td>
+							<td>
+								用來過濾 URI 的可呼叫項目的陣列（PHP 函式、物件方法、類別方法）。預設情況下，它使用 PHP 的 htmlentities 內部函式。
+							</td>
+						</tr>
+						<tr>
+							<th>input_filter</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								用來過濾 $_GET、$_POST 和 $_COOKIE 的可呼叫項目的陣列（PHP 函式、物件方法、類別方法）。預設情況下，沒有輸入過濾器被定義。
+							</td>
+						</tr>
+						<tr>
+							<th>output_filter</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('Security::htmlentities')</code></pre></td>
+							<td>
+								用來過濾傳送給檢視或表現控件的變數的可呼叫項目的陣列（PHP 函式、物件方法、類別方法）。
+								為了安全起見，你<strong>需要</strong>定義一個輸出過濾器。
+							</td>
+						</tr>
+						<tr>
+							<th>htmlentities_flags</th>
+							<td>整數</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								被用來在編碼 HTML 實體的標誌。預設是 ENT_QUOTES 如果沒定義的話。
+							</td>
+						</tr>
+						<tr>
+							<th>htmlentities_double_encode</th>
+							<td>布林</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								已經編碼過的實體是否應該再被編碼一次。預設是 <strong>false</strong> 如果沒定義。
+							</td>
+						</tr>
+						<tr>
+							<th>auto_filter_output</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								當為 true，所有傳遞給檢視物件的變數會自動被編碼。
+							</td>
+						</tr>
+						<tr>
+							<th>whitelisted_classes</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('stdClass', 'Fuel\\Core\\View',<br /> 'Fuel\\Core\\Presenter', 'Closure')</code></pre></td>
+							<td>
+								當檢視變數的自動編碼啟用，當傳遞物件到檢視時，你會遇到問題。
+								定義在此陣列的類別將免除自動編碼。
+							</td>
+						</tr>
+						<tr>
+							<th>csrf_autoload</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								當為 true 時，自動使用 check_token() 載入並檢查 CSRF 符記。
+							</td>
+						</tr>
+						<tr>
+							<th>csrf_autoload_methods</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('post', 'put', 'delete')</code></pre></td>
+							<td>
+								當 csrf_autoload 為 true，CSRF 符記將被用來驗證陣列中的所有 HTTP 方法。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">請注意，如果你啟用 "csrf_autoload"，你<strong>所有</strong>的 HTTP 指定類型的請求<strong>必須</strong>包含一個 CSRF 符記，否則驗證將失敗，並拋出一個 SecurityException。</p>
+				<p class="note">如果你需要處理 CSRF 驗證失敗在自動載入啟用時，你可以在你的 index.php 捕捉 SecurityException。</p>
+			</section>
+
+			<article>
+				<h4 class="method" id="method_check_token">check_token($value = null)</h4>
+				<p><strong>check_token</strong> 方法能讓你檢查 CSRF 符記。<br />
+				檢查符記也確保符記存在，而且當它接收到下一個要被檢查的 session 值，
+				它將重置符記（無論檢查的結果）。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要被檢查的 CSRF 符記，當沒給時檢查來自 POST 或 JSON 輸入的值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Security::check_token();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_fetch_token">fetch_token()</h4>
+				<p><strong>fetch_token</strong> 方法能讓你從 cookie 取回 CSRF 符記。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$csrf_token = Security::fetch_token();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_js_fetch_token">js_fetch_token()</h4>
+				<p><strong>js_fetch_token</strong> 方法能讓你產生 JavaScript  fuel_csrf_token() 函式，當呼叫時，它將回傳目前的 CSRF 符記。用在表單提交 AJAX 操作時填充對的欄位。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 輸出 javascript 函式
+echo Security::js_fetch_token();
+
+// 你現在可以在你的頁面上使用產生的 javascript 程式碼 函式
+&lt;script type="text/javascript"&gt;
+	var current_token = fuel_csrf_token();
+&lt;/script&gt;
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_js_set_token">js_set_token()</h4>
+				<p>
+					<strong>js_set_token</strong> 方法能讓你產生 JavaScript
+					fuel_set_csrf_token() 函式，當呼叫時，它將設定目前表單的 CSRF 符記欄位。
+					在一個表單的 onsubmit 使用，
+					用目前 CSRF cookie 的值來更新表單內的隱藏符記欄位。
+					你必須使用它在你希望允許多個視窗開啟時，
+					並使用一個嚴格的旋轉及 CSRF 符記的終結。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 輸出 javascript 函式
+echo Security::js_set_token();
+
+// 你使用產生的函式做為 onsubmit 函式，像這樣。
+// 不要忘記 'this' 參數，如此該函式知道要更新哪張表單！
+&lt;form onsubmit="fuel_set_csrf_token(this);"&gt;
+	&lt;!-- 在這裡做你的東西 --&gt;
+&lt;/form&gt;
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_generate_token">generate_token()</h4>
+				<p>
+					<strong>generate_token</strong> 方法能讓你產生一個安全符記。
+					此方法是用來產生 CSRF 符記，但可用在你應用程式裡，
+					任何需要安全隨機符記的地方。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$token = Security::generate_token();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_clean">clean($value, $filters = null)</h4>
+				<p><strong>clean</strong> 方法能讓你使用提供的過濾器來淨化資料。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>要被淨化的值。這可以是一個字串值，或一個字串值的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$filters</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>
+										要被用來淨化字串的過濾器。過濾器可以是單一值，或一個值的陣列。每個值必須是有效的 PHP 回呼（callback）。
+										你可能指定函式 ('htmlentities')、物件 ($this)、或靜態方法 ('Classname::method')。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 首先剝離標籤，在剩餘的資料中轉換 HTML 實體，並且使用我們的特別淨化解決方案完成它
+$filters = array('strip_tags', 'htmlentities', '\\cleaners\\soap::clean');
+$text = Security::clean($text, $filters);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_strip_tags">strip_tags($value)</h4>
+				<p><strong>strip_tags</strong> 方法能讓你從一個字串剝離 HTML 和 PHP 標籤。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>輸入的字串。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$text = '&lt;p&gt;Test paragraph.&lt;/p&gt;';
+$text = Security::strip_tags($text);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_xss_clean">xss_clean($value, array $options = array())</h4>
+				<p><strong>xss_clean</strong> 方法能讓你從一個字串剝離危險的 HTML 標籤，使用 HTMLawed 函式庫。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>輸入的字串。</td>
+								</tr>
+								<tr>
+									<th><kbd>$options</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>給 htmLawed 的選擇性配置陣列，如果你需要自訂淨化規則。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$text = '&lt;SCRIPT&gt;alert("XSS attack!")&lt;/SCRIPT&gt;';
+$text = Security::xss_clean($text);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_htmlentities">htmlentities($value, $flags = null, $encoding = null, $double_encode = null)</h4>
+				<p>
+					<strong>htmlentities</strong> 方法能讓你轉化 HTML 字元為他們相等的實體。此方法與 PHP 的 htmlentities() 函式操作一致，
+					但也支援陣列及物件。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>輸入的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$flags</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要傳遞給 htmlentities() 的標誌。如果沒給也沒配置，它將預設是 ENT_QUOTES。</td>
+								</tr>
+								<tr>
+									<th><kbd>$encoding</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>用於傳遞值的編碼。如果沒給它預設將使用 FuelPHP 的預設編碼。</td>
+								</tr>
+								<tr>
+									<th><kbd>$double_encoding</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果為 true，已經編碼的值將不會再次被編碼。如果沒給或沒配置，它將預設是 <strong>false</strong>。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td><strong>RuntimeException</strong>，在物件已經被傳遞且不能被轉換為字串的情況下。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$text = '&lt;p&gt;Test paragraph.&lt;/p&gt;';
+$text = Security::htmlentities($text);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h3 id="procedural_helpers">程序助手</h3>
+
+			<article>
+				<h4 id="function_e" class="method" data-class="">e($string)</h4>
+				<p><strong>e</strong> 函式是 <a href="security.html#method_htmlentities">Security::htmlentities</a> 的別名。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$string</kbd></th>
+									<td><em>必要</em></td>
+									<td>輸入的值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串，來自 <a href="security.html#method_htmlentities">Security::htmlentities</a></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$text = '&lt;p&gt;Test paragraph.&lt;/p&gt;';
+$text = e($text);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/configuration.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>配置 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="configuration.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>配置你的應用程式</h2>
+
+			<h3 id="intro">簡介</h3>
+			<p>
+				FuelPHP 框架是以配置慣例的想法建成。這樣的結果是你可以在一個高度可自訂的基礎上，
+				開始建立你的應用程序。
+			</p>
+
+			<p>
+				配置檔案儲存在 <kbd>app/config</kbd> 文件夾裡。
+				應用程式的基本配置在 <em>app/config/config.php</em> 完成。
+				載入的配置可依特定環境改變，更多關於此在 <a href="environments.html#/env_config">環境</a>。
+			</p>
+
+			<p class="note">
+				要覆寫功能相關配置的設定，在 app/config 建立一個新檔案，
+				或從 core/config 複製相應的檔案到 app/config。
+			</p>
+
+			<h3 id="config">配置選項</h3>
+
+			<p>
+				這些是可以被定義在應用程式中的基本配置檔案 <kbd>app/config/config.php</kbd> 的選項。
+				當你剛裝好 FuelPHP 時，這個檔案是空的。所有如下定義的預設值，
+				被定義在 <kbd>core/config</kbd> 文件夾中的相應檔案。當你想要覆寫一個預設值時，在你的應用程式配置檔案中添加該鍵到陣列，
+				並修改值。或者，從核心檔案複製該段落到應用程式檔案，
+				並修改它。
+			</p>
+
+			<p class="note">
+				FuelPHP 使用 "<em>句點表示法</em>" 處理陣列。它是一種方便存取一個多維陣列元素的方式。
+				此表示法也用於文件中，因為它提供簡單的陣列類型參照。例如：
+			</p>
+			<pre class="php"><code>// 當你看見 "always_load.packages = array()"，它是以下的簡寫：
+array("always_load" => array("packages" => array(...) ) );
+</code></pre>
+
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th style="width:500px;">鍵</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>base_url</th>
+						<td>字串</td>
+						<td><pre class="php"><code>null</code></pre></td>
+						<td>
+							應用程式的基礎 URL。可以是相對的。<strong>必須</strong>包含一個斜線。（'/foo/'、'http://example.com/'）
+						</td>
+					</tr>
+					<tr>
+						<th>url_suffix</th>
+						<td>字串</td>
+						<td><pre class="php"><code>''</code></pre></td>
+						<td>
+							任何需要被添加到 Fuel 產生的 URL 的後綴。如果後綴是一個副檔名，
+							確認包含點（'.html'）。
+						</td>
+					</tr>
+					<tr>
+						<th>index_file</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'index.php'</code></pre></td>
+						<td>
+							主引導程序的檔案名稱。如果你使用 mod_rewrite，設為 false 或移除。
+						</td>
+					</tr>
+					<tr>
+						<th>controller_prefix</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'Controller_'</code></pre></td>
+						<td>
+							當對應 URI 到控制器類別名稱時用來尋找控制器的類別前綴。
+							如果你想要你的控制器有命名空間或在不同於
+							app/classes/controller 的文件夾，你必須變更它。
+						</td>
+					</tr>
+					<tr>
+						<th>profiling</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							是否啟用分析器。
+						</td>
+					</tr>
+					<tr>
+						<th>cache_dir</th>
+						<td>字串</td>
+						<td><pre class="php"><code>APPPATH.'cache/'</code></pre></td>
+						<td>
+							要儲存快取檔案的資料夾，此資料夾必須是可寫入的。
+						</td>
+					</tr>
+					<tr>
+						<th>caching</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							是否啟用檔案 finder 快取。
+						</td>
+					</tr>
+					<tr>
+						<th>cache_lifetime</th>
+						<td>整數</td>
+						<td><pre class="php"><code>3600</code></pre></td>
+						<td>
+							檔案 finder 快取存活時間（秒）。
+						</td>
+					</tr>
+					<tr>
+						<th>ob_callback</th>
+						<td>回呼（callback）</td>
+						<td><pre class="php"><code>null</code></pre></td>
+						<td>
+							給 ob_start() 的回呼（callback），設為 ob_gzhandler 以啟用 gzip 輸出編碼。
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+						</td>
+					</tr>
+					<tr>
+						<th>errors</th>
+						<td>陣列</td>
+						<td colspan="2">
+							<strong>陣列，包含配置鍵以控制檢測到錯誤時的行為：</strong>
+						</td>
+					</tr>
+					<tr>
+						<th>errors.continue_on</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array(
+)</code></pre></td>
+						<td>
+							在哪一種 php 錯誤繼續執行。見<a href="error.html">錯誤處理</a>。
+						</td>
+					</tr>
+					<tr>
+						<th>errors.throttle</th>
+						<td>整數</td>
+						<td><pre class="php"><code>10</code></pre></td>
+						<td>
+							在我們停止顯示前要顯示多少錯誤。（預防記憶體不足錯誤）
+						</td>
+					</tr>
+					<tr>
+						<th>errors.notices</th>
+						<td>布林</td>
+						<td><pre class="php"><code>true</code></pre></td>
+						<td>
+							是否顯示 notices。
+						</td>
+					</tr>
+					<tr>
+						<th>language</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'en'</code></pre></td>
+						<td>
+							預設的應用程式語言，由 <a href="../classes/lang.html">Lang 類別</a> 使用。
+						</td>
+					</tr>
+					<tr>
+						<th>locale</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'en_US'</code></pre></td>
+						<td>
+							在一些 php 安裝需要給 <em>setlocale()</em> 使用，設定為 <kbd>false</kbd>
+							以防止被設定。<br />
+							<em>每種 OS 的設定語法會不同，例如 Ubuntu 需要一個
+							<kbd>.utf8</kbd>（編碼）後綴。</em>
+						</td>
+					</tr>
+					<tr>
+						<th>encoding</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'UTF-8'</code></pre></td>
+						<td>
+							應用程式的預設字元編碼。
+						</td>
+					</tr>
+					<tr>
+						<th>server_gmt_offset</th>
+						<td>整數</td>
+						<td><pre class="php"><code>0</code></pre></td>
+						<td>
+							當 time() 使用時，伺服器與 GMT 時間戳記以秒為單位的偏移量。<br />
+							<em>這僅僅是為了改正錯誤的伺服器配置：<kbd>time()</kbd>
+							應始終回傳自 January 1 1970 00:00:00 GMT 以來的秒數。</em>
+						</td>
+					</tr>
+					<tr>
+						<th>default_timezone</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'UTC'</code></pre></td>
+						<td>
+							伺服器時區。
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+						<p class="note">
+							如果你設定這個值，請 <strong>務必</strong> 確保該時區配置與你伺服器上設定的時區相符。
+							因為時區計算的運作藉由轉化為 GTM，當你時區不相符時，它將導致嚴重錯誤。
+							由於不正確的過期時間計算，將造成在你應用程式中的時間顯示不正確，以及 cookie/session 的問題！
+						</p>
+						</td>
+					</tr>
+					<tr>
+						<th>log_threshold</th>
+						<td>整數</td>
+						<td><pre class="php"><code>Fuel::L_WARNING</code></pre></td>
+						<td>
+							記錄的門檻。什麼等級的訊息要記錄，或一個應該被記錄的特定訊息等級的陣列。<a href="../classes/fuel.html#log_constants">閱讀關於可能的值</a>
+						</td>
+					</tr>
+					<tr>
+						<th>log_path</th>
+						<td>字串</td>
+						<td><pre class="php"><code>APPPATH.'logs/'</code></pre></td>
+						<td>
+							儲存紀錄的資料夾，此資料夾必須為可寫入的。
+						</td>
+					</tr>
+					<tr>
+						<th>log_date_format</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'Y-m-d H:i:s'</code></pre></td>
+						<td>
+							在紀錄中使用的時間／日期格式。
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<th>security</th>
+						<td>陣列</td>
+						<td colspan="2">
+							<strong>陣列，包含配置鍵以控制你的應用程式安全：</strong>
+						</td>
+					</tr>
+					<tr>
+						<th>security.csrf_autoload</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							是否自動檢查 CSRF 符記。<a href="security.html#csrf">閱讀更多關於 CSRF</a>。
+						</td>
+					</tr>
+					<tr>
+						<th>security.csrf_token_key</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'fuel_csrf_token'</code></pre></td>
+						<td>
+							當檢查 CSRF 符記時取回的 $_POST 鍵。
+						</td>
+					</tr>
+					<tr>
+						<th>security.csrf_expiration</th>
+						<td>整數</td>
+						<td><pre class="php"><code>0</code></pre></td>
+						<td>
+							設定 CSRF cookie 的到期時間。任何大於 0 的秒數
+							cookie 將過期。
+						</td>
+					</tr>
+					<tr>
+						<th>security.token_salt</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'put your salt value here to make the token more secure'</code></pre></td>
+						<td>
+							用來確保產生的安全符記是不可預測的鹽。
+						</td>
+					</tr>
+					<tr>
+						<th>security.allow_x_headers</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							允許 Input 類別在呈現時使用 "X" 表頭，例如 HTTP_X_FORWARDED_FOR 或 HTTP_X_FORWARDED_PROTO。
+						</td>
+					</tr>
+					<tr>
+						<th>security.uri_filter</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array('htmlentities')</code></pre></td>
+						<td>
+							要用來過濾 URI 的 PHP 函式。
+						</td>
+					</tr>
+					<tr>
+						<th>security.input_filter</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							用來過濾輸入陣列（$_GET、$_POST 和 $_COOKIE）的 PHP 函式。可以被設為 <em>xxs_clean</em>，
+							根據輸入的大小可能導致效能損失。
+						</td>
+					</tr>
+					<tr>
+						<th>security.output_filter</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							用來過濾設定給檢視變數的 PHP 函式。可以被設為 <em>xxs_clean</em>，
+							根據變數的大小可能導致效能損失。
+						</td>
+					</tr>
+					<tr>
+						<th>security.auto_filter_output</th>
+						<td>布林</td>
+						<td><pre class="php"><code>true</code></pre></td>
+						<td>
+							是否自動編碼（htmlentities）檢視資料。
+						</td>
+					</tr>
+					<tr>
+						<th>security.whitelisted_classes</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array(
+'stdClass',
+'Fuel\\Core\\View',
+'Fuel\\Core\\Presenter',
+'Closure'
+)</code></pre></td>
+						<td>
+							隨著輸出編碼打開，所有傳遞的物件將被轉換為字串或拋出例外，
+							除非它們是此陣列中類別的實例。
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<th>cookie</th>
+						<td>陣列</td>
+						<td colspan="2">
+							<strong>陣列，包含配置鍵定義全域的 cookie 設定：</strong>
+						</td>
+					</tr>
+					<tr>
+						<th>cookie.expiration</th>
+						<td>整數</td>
+						<td><pre class="php"><code>0</code></pre></td>
+						<td>
+							在 cookie 到期前的秒數。
+						</td>
+					</tr>
+					<tr>
+						<th>cookie.path</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'/'</code></pre></td>
+						<td>
+							限制 cookie 可用的路徑。
+						</td>
+					</tr>
+					<tr>
+						<th>cookie.domain</th>
+						<td>字串</td>
+						<td><pre class="php"><code>null</code></pre></td>
+						<td>
+							限制 cookie 可用的網域。
+						</td>
+					</tr>
+					<tr>
+						<th>cookie.secure</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							只透過安全連線傳輸 cookie。
+						</td>
+					</tr>
+					<tr>
+						<th>cookie.http_only</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							只透過 HTTP 傳輸 cookie，停用 javascript 存取。
+						</td>
+					</tr>
+					<tr>
+						<th>module_paths</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							指向模組目錄的路徑。當添加一個模組沒有指定位置時使用。
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<th>always_load</th>
+						<td>陣列</td>
+						<td colspan="2">
+							<strong>陣列，包含框架初始化時必須載入的項目：</strong>
+						</td>
+					</tr>
+					<tr>
+						<th>always_load.packages</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							那些套件要自動載入。像這樣指定：<strong>array('package')</strong> 或 <strong>array('package' => PKGPATH.'path/to/package')</strong>為了讓它運作，套件路徑必須在 <em>package_paths</em> 被設定
+						</td>
+					</tr>
+					<tr>
+						<th>always_load.modules</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							那些模組要自動載入。像這樣指定：<strong>array('package')</strong>。自動載入的模組可藉由
+							URL 存取。為了讓它運作，模組路徑必須在 <em>module_paths</em> 被設定
+						</td>
+					</tr>
+					<tr>
+						<th>always_load.classes</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							哪些類別要自動載入和初始化。當你想要從套件或模組自動載入一個類別時，
+							確保那些也被自動載入了！
+						</td>
+					</tr>
+					<tr>
+						<th>always_load.config</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							哪些配置檔案要自動載入。像這樣載入一個配置檔案進入群組：<strong>array('config')</strong> 或
+							<strong>array('filename' => 'group')</strong>。如果你不想載入檔案進入群組，設定群組名稱為
+							<em>null</em>：<strong>array('filename' => null)</strong>。
+						</td>
+					</tr>
+					<tr>
+						<th>always_load.language</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre></td>
+						<td>
+							哪些語言檔案要自動載入。像這樣載入一個語言檔案進入群組：<strong>array('lang')</strong> 或
+							<strong>array('filename' => 'group')</strong>。如果你不想載入檔案進入群組，設定群組名稱為
+							<em>null</em>：<strong>array('filename' => null)</strong>。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>
+				與配置檔案／設定的互動是透過使用 <a href="../classes/config.html">Config</a> 類別達成。
+				配置檔案也可以使用 <a href="../packages/oil/generate.html#config">Oil</a> 產生。
+			</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

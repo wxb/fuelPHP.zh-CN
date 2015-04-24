@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/controllers/template.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>樣板控制器 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>樣板控制器</h2>
+
+			<h3>樣板控制器是什麼？</h3>
+
+			<p>Template 控制器是 Base 控制器的擴充並內建支援樣板。它使用一些預定義的 before() 和 after() 方法。基本上，
+			它可以用來在你的檢視佈局中包裹頁眉、頁腳、側邊欄等。</p>
+
+			<h3>使用樣板控制器</h3>
+
+			<p>如同所有的控制器，你在 <kbd>fuel/app/classes/controller</kbd> 目錄裡建立一個類別。它們需要擴充 <kbd>Controller_Template</kbd> 類別並且預設前綴為 "Controller_"。下面是一個控制器 "example" 的範例：</p>
+
+			<p class="note"><strong>請注意：</strong>預設情況下，擴充 Controller_Template 的類別的所有方法將使用該樣板。
+			<br />但是，有可能從樣板<a href="#omit_methods">省略方法</a>。</p>
+
+	<pre><code>class Controller_Example extends Controller_Template
+{
+	public function action_index()
+	{
+		$data = array();
+		$this->template->title = 'Example Page';
+		$this->template->content = View::forge('test/index', $data);
+	}
+}</code></pre>
+
+			<h3>使用樣板控制器的 before() 及／或 after()</h3>
+
+			<p class="note"><strong>請注意：</strong>如果你在你的樣板控制器擴充中使用 before() 方法，你
+				<strong>必須</strong> 添加 <kbd>parent::before();</kbd> 到該方法，否則 <kbd>$this->template</kbd> 將無法使用。
+				<strong>讓 after() 兼容</strong> 於 Controller_Template：
+				使用 <kbd>after($response)</kbd> 而不僅僅是 after()。</p>
+
+
+	<pre><code>class Controller_Example extends Controller_Template
+{
+	/**
+	 * 你的 before 方法
+	 */
+	public function before()
+	{
+		parent::before(); // 沒有這一行，樣板不會運作！
+
+		// 做點什麼
+	}
+
+	/**
+	 * 透過添加 $response 做為一個參數讓 after() 兼容於 Controller_Template
+	 */
+	public function after($response)
+	{
+		$response = parent::after($response); // 如果你建立自己的 Response 物件就不需要
+
+		// 做點什麼
+
+		return $response; // 確認 after() 回傳 Response 物件
+	}
+
+	public function action_index()
+	{
+		$data = array();
+		$this->template->title = 'Example Page';
+		$this->template->content = View::forge('test/index', $data);
+	}
+}</code></pre>
+
+			<h3>樣板範例</h3>
+
+			<p>
+				樣板檔案是一個呼叫你的 JS、CSS、組織你的 HTML 和呼叫檢視局部的好地方。它能讓你組織你的輸出。
+				它就只是一個檢視檔案，預設情況下，將注視這裡：<kbd>fuel/app/views/template.php</kbd>。
+			</p>
+
+	<pre><code>&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="utf-8">
+	&lt;title>&lt;?php echo $title; ?>&lt;/title>
+
+	&lt;?php echo Asset::css('main.css'); ?>
+&lt;/head>
+&lt;body>
+	&lt;div id="wrapper">
+		&lt;h1>&lt;?php echo $title; ?>&lt;/h1>
+
+		&lt;div id="content">
+			&lt;?php echo $content; ?>
+		&lt;/div>
+	&lt;/div>
+&lt;/body>
+&lt;/html></code></pre>
+
+			<h3>變更預設樣板檔案</h3>
+
+			<p>
+				你可以輕易地把預設檔案 <kbd>APPPATH/views/template.php</kbd> 改為其他的。<br/>
+				你必須把公開變數 <kbd>$template</kbd>（注意：在這裡你不需要副檔名）設為其他的，例如：
+			</p>
+
+	<pre><code>class Controller_Example extends Controller_Template
+{
+
+    public $template = 'template_admin';
+
+    public function action_index()
+    {
+        $this->template->title = 'Example Page';
+        $this->template->content = View::forge('test/index', $data);
+    }
+}</code></pre>
+
+		<h3 id="omit_methods">從樣板控制器省略方法</h3>
+
+		<p>
+			預設情況下，擴充 <kbd>Controller_Template</kbd> 的類別的所有方法將使用該樣板。<br />
+			如果你想要從樣板省略方法，你可以透過在
+			<kbd>Response</kbd> 物件回傳其他東西辦到。那將覆寫預設樣板輸出。
+		</p>
+
+		<pre><code>class Controller_Example extends Controller_Template
+{
+	public $template = 'template_admin';
+
+	public function action_index()
+	{
+		$this->template->title   = 'Example Page';
+		$this->template->content = View::forge('test/index', $data);
+
+		// 這將在樣板顯示內容
+	}
+
+	public function action_example()
+	{
+		$data['title']   = "Example Page";
+		$data['content'] = "Don't show me in the template";
+
+		// 優先回傳 Response 物件並將不經樣板顯示內容
+		return new Response(View::forge('index/test', $data));
+	}
+}</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

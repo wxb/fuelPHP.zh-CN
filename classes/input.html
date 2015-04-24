@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/input.html';
+		var path = './../';
+		var class_prefix = "Input::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Input - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Input 類別</h2>
+
+			<p>Input 類別能讓你存取 HTTP 參數、載入伺服器變數及使用者代理詳情。</p>
+
+			<article>
+				<h4 class="method" id="method_uri">uri()</h4>
+				<p><strong>uri</strong> 方法偵測目前的 URI 以建立正確的字串。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串 - 帶有正斜線前綴的目前 URI</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 範例 URL：http://localhost/controller/method
+echo Input::uri(); // 回傳 /controller/method</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_json">json($index = null, $default = null)</h4>
+				<p><strong>json</strong> 方法回傳一個來自 json 請求主體，json_decoded（且淨化過）的值。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 json 請求主體中的鍵。多維陣列可藉由點（.）分隔階層被存取</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列 - Format::from_json 結果陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$value = \Input::json('key');
+
+// 設定一個預設值當沒有值存在：
+$value = \Input::json('key', 'backup-value');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_xml">xml($index = null, $default = null)</h4>
+				<p><strong>xml</strong> 方法回傳一個來自 XML 請求主體，XML 解碼（且淨化過）的值。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 XML 請求主體中的鍵。多維陣列可藉由點（.）分隔階層被存取</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列 - Format::from_json 結果陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$value = \Input::xml('key');
+
+// 設定一個預設值當沒有值存在：
+$value = \Input::xml('key', 'backup-value');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_cookie">cookie($index = null, $default = null)</h4>
+				<p><strong>cookie</strong> 方法能讓你讀取 $_COOKIE 變數，
+				不帶參數的呼叫以取回完整的 cookie 陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_COOKIE 陣列中的鍵，多維陣列可藉由點（.）分隔階層被存取</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::cookie('foo', 'bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete($index = null, $default = null)</h4>
+				<p><strong>delete</strong> 方法能讓你讀取來自 php://input 流的參數當藉由 DELETE 呼叫，不帶參數的呼叫以取回完整的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 php://input 流中的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::delete('foo', 'bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_put">put($index = null, $default = null)</h4>
+				<p><strong>put</strong> 方法能讓你讀取來自 php://input 流的參數當藉由 PUT 呼叫，
+				不帶參數的呼叫以取回完整的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 php://input 流中的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::put('foo', 'bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_patch">patch($index = null, $default = null)</h4>
+				<p><strong>patch</strong> 方法能讓你讀取來自 php://input 流的參數當藉由 PATCH 呼叫，
+				不帶參數的呼叫以取回完整的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 php://input 流中的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::patch('foo', 'bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get">get($index = null, $default = null)</h4>
+				<p><strong>get</strong> 方法能讓你讀取 $_GET 變數，不帶參數的呼叫以取回完整的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_GET 陣列中的鍵，多維陣列可藉由點（.）分隔階層被存取</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::get('foo', 'bar');
+
+// 你可以像這樣到達多層次深度。
+// 這將回傳 $_GET['somevar']['foo']['bar']
+Input::get('somevar.foo.bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_post">post($index = null, $default = null)</h4>
+				<p><strong>post</strong> 方法能讓你讀取 $_POST 變數，不帶參數的呼叫以取回完整的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_POST 陣列中的鍵，多維陣列可藉由點（.）分隔階層被存取</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::post('foo', 'bar');
+
+// 你可以像這樣到達多層次深度。
+// 這將回傳 $_POST['somevar']['foo']['bar']
+Input::post('somevar.foo.bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_ajax">is_ajax()</h4>
+				<p><strong>is_ajax</strong> 方法回傳 true 如果控制器是藉由 AJAX 呼叫。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::is_ajax(); // false</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_method">method($default = 'GET')</h4>
+				<p><strong>method</strong> 方法回傳用於呼叫控制器的 HTTP 方法。如果表頭 X-HTTP-Method-Override 已經被發送，將回傳替代的指定方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>'GET'</code></pre></td>
+									<td>預設 HTTP 方法。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::method(); // "GET"</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_protocol">protocol()</h4>
+				<p><strong>protocol</strong> 方法回傳用於呼叫控制器的 HTTP 協定。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::protocol(); // "HTTP"</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_ip">ip()</h4>
+				<p><strong>ip</strong> 方法回傳使用者的公開 IP 位址，如果使用者在代理伺服器後操作，將回傳該伺服器的 IP 位址。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">echo Input::ip(); // 73.194.37.104（公開 IP 位址）</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_real_ip">real_ip($default = '0.0.0.0', $exclude_reserved = false)</h4>
+				<p><strong>real_ip</strong> 方法回傳使用者的「真實」IP 位址，如果代理伺服器被偵測到，它將嘗試從代理添加到表頭的訊息，去確認使用者的私有 IP 位址，如果此資訊不存在，公開 IP 位址將被回傳。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>'0.0.0.0'</code></pre></td>
+									<td>當沒有有效的 IP 位址被檢測到時，要回傳的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$exclude_reserved</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>如果為 true，排除私有和預留的 IP 範圍，且只回傳公開 IP 位址。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">echo Input::real_ip(); // 10.76.12.199（在代理伺服器後的私有 IP）</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">當 $exclude_reserved 為 true，以下的範圍將從結果被排除：</p>
+<pre><code>IPv4:
+10.0.0.0/8     // private use network (rfc1918)
+172.16.0.0/12  // private use network (rfc1918)
+192.168.0.0/16 // private use network (rfc1918)
+0.0.0.0/8      // "this" network (rfc1700)
+169.254.0.0/16 // link local network (rfc3927)
+192.0.2.0/24   // test net (rfc3330)
+224.0.0.0/4    // Multicast (rfc3171)
+240.0.0.0/4    // Reserved for Future Use (rfc1700)
+
+IPv6:
+fc00::/7       // unique-local addresses (rfc4193)
+::/128         // unspecified address (rfc4291)
+::1/128        // loopback address (rfc4291)
+fe80::/10      // link local unicast (rfc4291)
+2001:db8::/32  // documentation addresses (rfc3849)
+5f00::/8       // 6Bone
+3ffe::/16      // 6Bone
+::ffff:0:0/96  // IPv4-Mapped addresses (rfc4291)
+2001:10::/28   // ORCHID addresses (rfc4843)
+::/0           // default unicast route address
+</code></pre>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_server">server($index = null, $default = null)</h4>
+				<p><strong>server</strong> 能讓你從 $_SERVER 陣列讀取參數並帶著預設值，
+					不帶參數呼叫以取回完整陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_SERVER 陣列中的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">Input::server('HTTP_HOST'); // "localhost:8080"</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_referrer">referrer($default = '')</h4>
+				<p><strong>referrer</strong> 方法能讓你從 $_SERVER 陣列讀取導入連結。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Input::referrer();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_user_agent">user_agent($default = '')</h4>
+				<p><strong>user_agent</strong> 能讓你從 $_SERVER 陣列讀取使用者代理。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Input::user_agent();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_all">all()</h4>
+				<p><strong>all</strong> 回傳所有 GET、POST、PUT 和 DELETE 變數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Input::all();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_file">file($index = null, $default = null)</h4>
+				<p><strong>file</strong> 方法能讓你從 FILE 陣列取回一個項目。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_FILE 陣列中的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串｜陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Input::file();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_param">param($index = null, $default = null)</h4>
+				<p><strong>param</strong> 能讓你從 GET、POST、PUT 或 DELETE 陣列之中取回一個項目。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_GET、$_POST、$_PUT 或 $_DELETE 陣列中的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>當找不到陣列項目應該被回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串｜陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Input::param();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_extension">extension()</h4>
+				<p><strong>extension</strong> 方法回傳目前 URI 副檔名。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串｜null</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">// 範例 URL：http://localhost/test/
+echo Input::extension(); // NULL
+
+// 範例 URL：http://localhost/test.html
+echo Input::extension(); // 'html'
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_headers">headers($index = null, $default = null)</h4>
+				<p><strong>headers</strong> 方法回傳目前請求的指定或所有 HTTP 表頭。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>HTTP 表頭的名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>如果該表頭條目找不到時應該回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre><code class="php">// 檢查是否有指定的 Content-Length
+if ($headers = \Input::headers() and array_key_exists('Content-Length', $headers))
+{
+	echo 'The content length set on this request is', $headers['Content-Length'];
+}
+
+// 或直接取回它
+if ($header = \Input::headers('Content-Length', false))
+{
+	echo 'The content length set on this request is', $header;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

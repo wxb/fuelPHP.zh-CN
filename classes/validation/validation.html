@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/validation/validation.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Validation - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Validation 類別</h2>
+
+			<p>類別幫助你驗證使用者輸入，如果你想要同時建立一個表單＆它的驗證，
+				使用 <a href="../fieldset/fieldset.html">Fieldset</a> 類別代替。</p>
+
+			<ul>
+				<li><a href="#config">配置</a></li>
+				<li><a href="#usage">用法</a></li>
+				<li><a href="#rules">驗證規則</a></li>
+				<li><a href="#extending_validation">擴充 Validation 類別</a></li>
+				<li><a href="errors.html">驗證錯誤</a></li>
+				<li><a href="methods.html">方法</a></li>
+			</ul>
+
+			<article>
+				<h3 id="config">配置</h3>
+
+				<p>Validation 類別可以選擇性的透過全域應用程式配置檔案 <strong>app/config/config.php</strong> 來配置。定義一個名為 '<strong>validation</strong>' 的段落，在其中以下設定可以被定義：</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>變數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th class="description">描述</th>
+						</tr>
+						<tr>
+							<th><kbd>no_errors</kbd></th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>如果沒有發現驗證錯誤要回傳的字串。</td>
+						</tr>
+						<tr>
+							<th><kbd>open_list</kbd></th>
+							<td>字串</td>
+							<td><pre class="php"><code>'&lt;ul&gt;'</code></pre></td>
+							<td>要被附加到錯誤列表前的字串。通常這是某種形式的 HTML 來格式化列表。預設情況下，它被格式化為一個無序列表。</td>
+						</tr>
+						<tr>
+							<th><kbd>close_list</kbd></th>
+							<td>字串</td>
+							<td><pre class="php"><code>'&lt;/ul&gt;'</code></pre></td>
+							<td>要被附加到錯誤列表後的字串。</td>
+						</tr>
+						<tr>
+							<th><kbd>open_error</kbd></th>
+							<td>字串</td>
+							<td><pre class="php"><code>'&lt;li&gt;'</code></pre></td>
+							<td>要被附加到每個單一錯誤訊息前的字串。</td>
+						</tr>
+						<tr>
+							<th><kbd>close_error</kbd></th>
+							<td>字串</td>
+							<td><pre class="php"><code>'&lt;/li&gt;'</code></pre></td>
+							<td>要被附加到每個單一錯誤訊息後的字串。</td>
+						</tr>
+						<tr>
+							<th><kbd>quote_label</kbd></th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>如果為 true，而且驗證欄位的標籤包含空白，該標籤會被括在雙引號中，以增強可讀性。</td>
+						</tr>
+						<tr>
+							<th><kbd>global_input_fallback</kbd></th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>如果為 true，而且值在輸入陣列找不到，該值將退回到 Input::param。</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>如果全域配置中缺少這些值中的一個或多個時，類別將使用定義在這張表中的預設值。</p>
+
+			</article>
+
+			<article>
+				<h3 id="usage">用法</h3>
+
+				<p>要開始驗證你需要建立一個物件，這可以是名為 "default" 的預設物件，
+				或者你可以命名它如果你需要多個驗證物件。</p>
+
+				<pre class="php"><code>// 使用預設
+$val = Validation::forge();
+
+// ……或給它命名
+$val = Validation::forge('my_validation');</code></pre>
+
+				<p>在讓它實例化之後，你可以開始添加欄位給它。這與使用 Fieldset 類別的運作完全一樣，
+				然而這裡我們只記錄首選的用法。</p>
+
+				<pre class="php"><code>$val = Validation::forge('my_validation');
+
+// 添加一個 username 欄位，給它 "Your username" 標籤並讓它為必要
+$val->add('username', 'Your username')->add_rule('required');
+
+// 現在添加另一個 password 欄位，並讓它必須包含至少 3 個最多 10 個字元
+$val->add('password', 'Your password')->add_rule('required')
+    ->add_rule('min_length', 3)
+    ->add_rule('max_length', 10);
+
+// 現在為 gender 添加另一個欄位，並要求它包含 "M" 或 "F" 其中之一。
+$val->add('gender', 'Your gender')->add_rule('required')
+    ->add_rule('match_collection', array('M', 'F'));</code></pre>
+
+				<p>add_rule() 方法的第一參數除了提供的驗證方法之外，可以包含 PHP 原生函式名稱、任何有效的 PHP
+				回呼（callback）和閉包（Closure）。該方法會取得要被驗證做為其第一參數的值，
+				以及任何更多可以給 add_rule() 方法的參數值。</p>
+
+				<p>我們也提供了更短的語法，相對這非常受限。它不會接受陣列回呼（array-callback）、
+				閉包（closure）或字串以外的參數。你也不能在你的形式中使用管道符號（|）當你使用 'match_pattern'規則，
+				因為該符號被用來拆分定義的規則。</p>
+
+				<pre class="php"><code>// 與上面範例相同的欄位
+$val = Validation::forge('my_validation');
+$val->add_field('username', 'Your username', 'required');
+$val->add_field('password', 'Your password', 'required|min_length[3]|max_length[10]');
+$val->add_field('gender', 'Your gender', 'required|match_collection[M,F]');</code></pre>
+
+				<p>一旦所有欄位都被添加，你可以執行你的驗證。這將預設為 $_POST 輸入，
+				但可以在給一個輸入陣列時被擴充並覆寫。</p>
+
+				<pre class="php"><code>// 執行剛發布的驗證
+if ($val->run())
+{
+	// 在驗證成功時處理你的東西
+}
+else
+{
+	// 驗證失敗
+}
+
+// 替代上面，覆寫 POST 中的 username，password 仍在 POST 中被徵詢
+if ($val->run(array('username' => 'something')))</code></pre>
+
+				<p>在驗證執行後，有三個關於輸入資訊的可用方法：</p>
+
+				<pre class="php"><code>// 取得一個驗證成功欄位 => 值配對的陣列
+$vars = $val->validated();
+// 取得一個驗證錯誤為欄位 => 錯誤配對的陣列
+$errors = $val->error();
+// 取得一個已驗證輸入的陣列，這合併了 post 和給 run() 的輸入
+$input = $val->input();
+
+// 這些方法也都可以只取得單一欄位的值
+$var = $val->validated('username');</code></pre>
+
+				<p>驗證也可以部份執行，在這種情況下甚至 required 欄位會被忽略，當他們不在 POST 中或輸入給 run()。
+				透過設定執行的第二參數為 true 能做到。</p>
+
+				<pre class="php"><code>// 這會只驗證 password，當 username 沒有出現在 POST 時
+$val->run(array('password' => 'whatever'), true);</code></pre>
+			</article>
+
+			<article>
+				<h3 id="rules">驗證規則</h3>
+
+				<p>請注意，所有方法（甚至 min_length）在空白輸入時也會回傳 true。
+				也要要求欄位你應該添加 "required" 規則。</p>
+
+				<p>這些規則都可以像以下這樣被使用：</p>
+				<pre class="php"><code>// 一般使用範例，一個沒參數的規則，和另一個有參數的規則
+$val->add('email', 'Email address')->add_rule('match_value', 'me@mydomain.com', true)->add_rule('valid_email');
+$val->add_field('email', 'Email address', 'match_value[me@mydomain.com,1]|valid_email');</code></pre>
+
+				<h4 id="rules_table">規則表</h4>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>規則</th>
+							<th>額外參數</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>required</th>
+							<td>（無）</td>
+							<td>
+								該欄位必須被設定並給一些不是 <kbd>null</kbd>、
+								<kbd>false</kbd> 或空字串的值。
+							</td>
+						</tr>
+						<tr>
+							<th>required_with</th>
+							<td><kbd>$fieldname</kbd></td>
+							<td>
+								如果所給的 <kbd>$fieldname</kbd> 欄位被設定，該欄位必須被設定。
+							</td>
+						</tr>
+						<tr>
+							<th>match_value</th>
+							<td><kbd>$compare</kbd>, <kbd>$strict</kbd> = false</td>
+							<td>
+								該欄位輸入必須符合 <kbd>$compare</kbd>，會使用 == 做，除非第二參數也給 true
+								（那麼會使用 ===）。
+							</td>
+						</tr>
+						<tr>
+							<th>match_pattern</th>
+							<td><kbd>$pattern</kbd></td>
+							<td>
+								會嘗試針對所給 $pattern（必須是完整 PREG 正規表達式）相配值。
+								<p class="note"><strong>注意：</strong>你 <strong>不能</strong> 在你的形式中使用管道符號（|）當你使用短語法，因為該符號被用來在字串中拆分規則。</p>
+							</td>
+						</tr>
+						<tr>
+							<th>match_field</th>
+							<td><kbd>$field</kbd></td>
+							<td>
+								會嘗試相配該欄位與所給名稱的欄位，
+								相配會使用 ===。
+								<p class="note"><strong>重要：</strong>你只能針對此規則添加到欄位之前的欄位進行相配。</p>
+ 							</td>
+						</tr>
+						<tr>
+						<th>match_collection</th>
+							<td><kbd>$collection</kbd> = array()</td>
+							<td>
+								會試著針對集合的有效值進行欄位匹配。
+							</td>
+						</tr>
+						<tr>
+							<th>min_length</th>
+							<td><kbd>$length</kbd></td>
+							<td>
+								測試該字串是否包含至少 <kbd>$length</kbd> 的字元數。
+							</td>
+						</tr>
+						<tr>
+							<th>max_length</th>
+							<td><kbd>$length</kbd></td>
+							<td>
+								測試該字串是否包含不超過 <kbd>$length</kbd> 的字元數。
+							</td>
+						</tr>
+						<tr>
+							<th>exact_length</th>
+							<td><kbd>$length</kbd></td>
+							<td>
+								測試該字串是否有準確 <kbd>$length</kbd> 的字元數。
+							</td>
+						</tr>
+						<tr>
+							<th>valid_date</th>
+							<td><kbd>$format</kbd>, <kbd>$strict</kbd> = true</td>
+							<td>
+								驗證所給輸入是否為有效的日期格式。如果有給 <kbd>$format</kbd> 參數，驗證會使用指定格式。
+								會嚴格（例如：閏年）檢查除非第二參數是給 false。
+							</td>
+						</tr>
+						<tr>
+							<th>valid_email</th>
+							<td>（無）</td>
+							<td>
+								驗證所給輸入是否為有效的 Email 地址。
+							</td>
+						</tr>
+						<tr>
+							<th>valid_emails</th>
+							<td><kbd>$separator</kbd>（選擇性）</td>
+							<td>
+								驗證多個以逗號（或 <kbd>$separator</kbd>）分隔的 Email 地址。
+							</td>
+						</tr>
+						<tr>
+							<th>valid_url</th>
+							<td>（無）</td>
+							<td>
+								驗證所給輸入是否是有效的 URL。
+							</td>
+						</tr>
+						<tr>
+							<th>valid_ip</th>
+							<td>（無）</td>
+							<td>
+								驗證所給輸入是否是有效的 IP。
+							</td>
+						</tr>
+						<tr>
+							<th>numeric_min</th>
+							<td><kbd>$min_val</kbd></td>
+							<td>
+								測試所給輸入是否是一個大於 <kbd>$min_val</kbd> 的數字，
+								它不檢查或轉化輸入為數字值，所以任何非數字值會被認為是 0。
+								使用 PHP 函式 <kbd>is_numeric</kbd> 先行檢查。
+							</td>
+						</tr>
+						<tr>
+							<th>numeric_max</th>
+							<td><kbd>$max_val</kbd></td>
+							<td>
+								測試所給輸入是否是一個小於 <kbd>$max_val</kbd>的數字。
+								（關於非數字值詳見 <kbd>numeric_min</kbd> 規則）
+							</td>
+						</tr>
+						<tr>
+							<th>numeric_between</th>
+							<td><kbd>$min_val</kbd>, <kbd>$max_val</kbd></td>
+							<td>
+								測試所給輸入是否是一個在 <kbd>$min_val</kbd> 和 <kbd>$max_val</kbd> 之間的數字。
+								（關於非數字值詳見 <kbd>numeric_min</kbd> 規則）
+								<p class="note"><strong>重要：</strong>指定的號碼包含在範圍中。</p>
+							</td>
+						</tr>
+						<tr>
+							<th>valid_string</th>
+							<td><kbd>$flags</kbd> = array('alpha', 'utf8')</td>
+							<td>
+								見以下。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h4 id="valid_string_rule">有效字串規則</h4>
+				<p>驗證字串是否堅持 $flags 參數設定的條件。
+				接受的標誌有：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>標誌</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>alpha</th>
+							<td>允許字母字元。</td>
+						</tr>
+						<tr>
+							<th>uppercase</th>
+							<td>與只允許大寫字元字母的組合使用。</td>
+						</tr>
+						<tr>
+							<th>lowercase</th>
+							<td>與只允許小寫字元字母的組合使用。</td>
+						</tr>
+						<tr>
+							<th>numeric</th>
+							<td>允許數字字元。</td>
+						</tr>
+						<tr>
+							<th>spaces</th>
+							<td>允許一般空白。</td>
+						</tr>
+						<tr>
+							<th>newlines</th>
+							<td>允許換行符號。</td>
+						</tr>
+						<tr>
+							<th>tabs</th>
+							<td>允許 tab。</td>
+						</tr>
+						<tr>
+							<th>dots</th>
+							<td>允許點。</td>
+						</tr>
+						<tr>
+							<th>commas</th>
+							<td>允許逗號。</td>
+						</tr>
+						<tr>
+							<th>punctuation</th>
+							<td>允許點、逗號、驚嘆號、問號、冒號和分號。</td>
+						</tr>
+						<tr>
+							<th>dashes</th>
+							<td>允許破折號和底線。</td>
+						</tr>
+						<tr>
+							<th>singlequotes</th>
+							<td>允許單引號。</td>
+						</tr>
+						<tr>
+							<th>doublequotes</th>
+							<td>允許雙引號。</td>
+						</tr>
+						<tr>
+							<th>quotes</th>
+							<td>允許單引號和雙引號。</td>
+						</tr>
+						<tr>
+							<th>forwardslashes</th>
+							<td>允許正斜線。</td>
+						</tr>
+						<tr>
+							<th>backwardslashes</th>
+							<td>允許反斜線。</td>
+						</tr>
+						<tr>
+							<th>slashes</th>
+							<td>所有正反斜線。</td>
+						</tr>
+						<tr>
+							<th>brackets</th>
+							<td>允許開啟和關閉的括號。</td>
+						</tr>
+						<tr>
+							<th>braces</th>
+							<td>允許開啟和關閉的大括號。</td>
+						</tr>
+						<tr>
+							<th>utf8</th>
+							<td>添加 UTF8 修飾符到正規表達式。</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 id="extending_validation">擴充 Validation 類別</h4>
+				<p>擴充 Validation 類別有幾種辦法：</p>
+				<p>1. 擴充核心類別像<a href="../../general/extending_core.html">擴充核心類別</a>中的敘述</p>
+				<p>2. 在 <b>app/classes/myrules.php</b> 中建立一個類別（例如）</p>
+				<pre class="php"><code>// app/classes/myrules.php
+class MyRules
+{
+	// 注意這是一個靜態方法
+	public static function _validation_unique($val, $options)
+	{
+		list($table, $field) = explode('.', $options);
+
+		$result = DB::select(DB::expr("LOWER (\"$field\")"))
+		->where($field, '=', Str::lower($val))
+		->from($table)->execute();
+
+		return ! ($result->count() > 0);
+	}
+
+	// 注意這是一個非靜態方法
+	public function _validation_is_upper($val)
+	{
+		return $val === strtoupper($val);
+	}
+
+}
+
+// 並且像這樣呼叫它：
+$val = Validation::forge();
+
+// 注意靜態與非靜態驗證規則之間的差異：
+
+// 靜態地添加，將只能使用靜態方法
+$val->add_callable('MyRules');
+
+// 非靜態地添加，將可以使用靜態與非靜態方法
+$val->add_callable(new MyRules());
+
+$val->add('username', 'Your username', array(), array('trim', 'strip_tags', 'required', 'is_upper'))
+	->add_rule('unique', 'users.username');</code></pre>
+
+				<p>3. 從模型呼叫回呼（callback），它運作就像上面所描述的方法，但我們只需要用其他方式呼叫它：</p>
+
+				<pre class="php"><code>$val = Validation::forge();
+$val->add_model('Model_User');</code></pre>
+
+				<p class="note">
+					<strong>注意：</strong>
+					你需要用於方法的 '_validation_' 前綴以在驗證中是可用的。
+				</p>
+
+				<p class="note">
+					<strong>注意：</strong>
+					如果你傳遞類別名稱做為一個字串，驗證方法必須被定義為靜態。如果方法不是靜態，你將必須傳遞一個物件實例做為 callable()。
+				</p>
+
+				<p>使用 <a href="methods.html#method_active">Validation::active()</a> 和 <a href="methods.html#method_active_field">Validation::active_field()</a> 來分別取得目前活躍的 validation 實例與目前被驗證的欄位會是有用的。</p>
+
+				<p>例如，在上述你可以這樣做：</p>
+
+				<pre class="php"><code>public static function _validation_unique($val, $options)
+{
+	Validation::active()->set_message('unique', 'The field :label must be unique, but :value has already been used');
+...
+}</code></pre>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

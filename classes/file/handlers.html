@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/file/handlers.html';
+		var path = './../../';
+		var class_prefix = "File_Handler_File::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>File 處理程序 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>處理程序</h2>
+
+			<article>
+				<h3 id="introduction">簡介</h3>
+
+				<p>
+					Fuel 能讓你包裝目錄和檔案在物件中。透過這樣做，
+					它能讓你在一個 OO 基礎上存取及修改檔案系統項目（檔案及目錄）。
+				</p>
+
+				<p>
+					接收自 File 類別（或檔案區域）的物件是<em>檔案處理程序</em>。Fuel
+					有兩個核心檔案處理程序：<em>檔案處理程序</em> 以及 <em>目錄處理程序</em>。
+					就像你所期望的，這些類別處理檔案和目錄。
+				</p>
+
+				<h3 id="topics">主題</h3>
+				<ul>
+					<li><a href="#usage">用法</a></li>
+					<li><a href="#file_handler">檔案處理程序</a></li>
+					<li><a href="#directory_handler">目錄處理程序</a></li>
+					<li><a href="#writing_handlers">撰寫處理程序</a></li>
+				</ul>
+
+			</article>
+
+			<article>
+
+				<h3 id="usage">用法</h3>
+
+				<p>
+					每個輔助類別帶有一組方法，
+					能讓你對包裝在檔案或目錄中的物件執行操作。這裡是一些使用
+					<a href="usage.html#method_get">File::get</a> 的範例：
+				</p>
+
+				<pre class="php"><code> // 首先我們會取得一個檔案
+$file = \File::get(DOCROOT.'/here_is_my/textfile.txt');
+</code></pre>
+
+			<p>現在我們已經取得檔案處理程序，我們可以使用它的方法來完成某事。</p>
+
+			<pre class="code"><code>// 讓我們重新命名它。
+$file->rename('new_name');
+
+// 取得檔案的內容
+$content = $file->read();
+
+// 並且改回原來的名稱
+$file->rename('textfile');
+</code></pre>
+
+				<p>
+					正如你可以在上面的例子看到，重新命名文件時，你不需要重新取回該處理程序。
+					你可以一遍又遍地重複使用相同物件，直到你刪除該檔案或清除該變數。
+				</p>
+
+
+			</article>
+
+			<section>
+
+				<h3 id="file_handler">檔案處理程序</h3>
+
+				<p>
+					檔案處理程序處理與檔案的基礎互動。每個範例都假設 <strong>
+					$handler</strong> 變數是取回的處理程序。想知道如何取得處理程序？
+					請看<a href="#usage">用法段落</a>。
+				</p>
+
+				<article>
+					<h4 class="method" id="method_file_forge">forge($path, $config = array(), $area = null, $content = array())</h4>
+					<p><strong>forge</strong> 方法回傳一個新的 File_Handler_File 物件。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>是</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$path</kbd></th>
+											<td><em>必要</em></td>
+											<td>指向檔案的路徑</td>
+										</tr>
+										<tr>
+											<th><kbd>$config</kbd></th>
+											<td><em>array()</em></td>
+											<td>選擇性的配置陣列</td>
+										</tr>
+										<tr>
+											<th><kbd>$area</kbd></th>
+											<td><em>null</em></td>
+											<td>File_Area 實例</td>
+										</tr>
+										<tr>
+											<th><kbd>$content</kbd></th>
+											<td><em>陣列</em></td>
+											<td><em>忽略</em></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>回傳一個新的 File_Handler_File 物件。</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler = File_Handler_File::forge('path/to/file.txt', $config_array, $my_file_area);</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_read">read($as_string = false)</h4>
+					<p><strong>read</strong> 方法是 <a href="usage.html#method_read">File::read</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$as_string</kbd></th>
+											<td><em>false</em></td>
+											<td>設為 <em>true</em> 以使用 file_get_contents() 而不是 readfile()</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>回傳 IO 或字串（檔案內容）</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$file_content = $handler->read(true);</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_rename">rename($new_name, $new_extension = false)</h4>
+					<p><strong>rename</strong> 方法是 <a href="usage.html#method_rename">File::rename</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_name</kbd></th>
+											<td><em>必要</em></td>
+											<td>新檔案名稱</td>
+										</tr>
+										<tr>
+											<th><kbd>$new_extension</kbd></th>
+											<td><em>false</em></td>
+											<td>新副檔名</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>rename()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->rename('new_name');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_move">move($new_path)</h4>
+					<p><strong>move</strong> 方法是 <a href="usage.html#method_move">File::move</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_path</kbd></th>
+											<td><em>必要</em></td>
+											<td>指向新目錄的路徑，必須是有效的</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>rename()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->move(DOCROOT.'/new/parent/directory/');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_copy">copy($new_path)</h4>
+					<p><strong>copy</strong> 方法是 <a href="usage.html#method_copy">File::copy</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_path</kbd></th>
+											<td><em>必要</em></td>
+											<td>指向要複製目錄到的路徑，必須是有效的</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>copy()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->copy(DOCROOT.'/directory/');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_update">update($new_content)</h4>
+					<p><strong>update</strong> 方法是 <a href="usage.html#method_update">File::update</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_content</kbd></th>
+											<td><em>必要</em></td>
+											<td>新的檔案內容</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>true 在成功時</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->update('the new content');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_delete">delete()</h4>
+					<p><strong>delete</strong> 方法是 <a href="usage.html#method_delete">File::delete</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>unlink()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->delete();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_get_url">get_url()</h4>
+					<p><strong>get_url</strong> 方法是 <a href="usage.html#method_get_url">File::get_url</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>公開 URL</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$url = $handler->get_url();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_get_permissions">get_permissions()</h4>
+					<p><strong>get_permissions</strong> 方法是 <a href="usage.html#method_get_permissions">File::get_permissions</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>八進位制的檔案權限</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$permissions = $handler->get_permissions();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_get_time">get_time($type = 'modified')</h4>
+					<p><strong>get_time</strong> 方法是 <a href="usage.html#method_get_time">File::get_time</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$type</kbd></th>
+											<td><em>'modified'</em></td>
+											<td>需要被回傳的時間。只能是 <strong>created</strong> 或 <strong>modified</strong>。</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>檔案的建立或修改時間戳記</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$created_at = $handler->get_time('created');
+
+$modified_at = $handler->get_time('modified');
+// 或簡寫
+$modified_at = $handler->get_time();
+</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_get_size">get_size()</h4>
+					<p><strong>get_size</strong> 方法是 <a href="usage.html#method_get_size">File::get_size</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>檔案大小（位元組）</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$file_size = $handler->get_size();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_file_get_path">get_path()</h4>
+					<p><strong>get_path</strong> 方法回傳檔案路徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>檔案路徑</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$file_path = $handler->get_path();
+									// 回傳 "/path/to/file.txt"</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+			</section>
+
+			<section>
+
+				<h2 id="directory_handler">目錄處理程序</h2>
+
+				<p>
+					目錄處理程序處理與目錄的基礎互動。每個範例都假設 <strong>
+					$handler</strong> 變數是取回的處理程序。想知道如何取得處理程序？
+					請看<a href="#usage">用法段落</a>。
+				</p>
+
+				<article>
+					<h4 class="method" id="method_directory_forge" data-class="File_Handler_Directory">forge($path, $config = array(), $area = null, $content = array())</h4>
+					<p><strong>forge</strong> 方法回傳一個新的 File_Handler_Directory 物件。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>是</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$path</kbd></th>
+											<td><em>必要</em></td>
+											<td>指向目錄的路徑</td>
+										</tr>
+										<tr>
+											<th><kbd>$config</kbd></th>
+											<td><em>array()</em></td>
+											<td>選擇性的配置陣列</td>
+										</tr>
+										<tr>
+											<th><kbd>$area</kbd></th>
+											<td><em>null</em></td>
+											<td>File_Area 實例</td>
+										</tr>
+										<tr>
+											<th><kbd>$content</kbd></th>
+											<td><em>陣列</em></td>
+											<td><em>目錄的內容</em></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>回傳一個新的 File_Handler_File 物件。</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler = File_Handler_Directory::forge('path/to/dir');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_read" data-class="File_Handler_Directory">read($depth = 0, $filters = null)</h4>
+					<p><strong>read</strong> 方法是 <a href="usage.html#method_read_dir">File::read_dir</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$depth</kbd></th>
+											<td><em>0</em></td>
+											<td>要遞迴目錄的深度，1 是只有目前，而 0 或更小是無限</td>
+										</tr>
+										<tr>
+											<th><kbd>$filters</kbd></th>
+											<td><em>null</em></td>
+											<td>局部正規表達式的陣列，或預設的非陣列</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>回傳目錄內容在一個陣列中</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$cir_contents = $handler->read();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_rename" data-class="File_Handler_Directory">rename($new_name)</h4>
+					<p><strong>rename</strong> 方法是 <a href="usage.html#method_rename_dir">File::rename_dir</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_name</kbd></th>
+											<td><em>必要</em></td>
+											<td>新目錄名稱</td>
+										</tr>
+
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>rename()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->rename('new_name');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_move" data-class="File_Handler_Directory">move($new_path)</h4>
+					<p><strong>move</strong> 方法是 <a href="usage.html#method_move">File::move</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_path</kbd></th>
+											<td><em>必要</em></td>
+											<td>指向新目錄的路徑，必須是有效的</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>rename()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->move(DOCROOT.'/new/parent/directory/');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_copy" data-class="File_Handler_Directory">copy($new_path)</h4>
+					<p><strong>copy</strong> 方法是 <a href="usage.html#method_copy_dir">File::copy_dir</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$new_path</kbd></th>
+											<td><em>必要</em></td>
+											<td>指向要複製目錄到的路徑，必須是有效的</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>布林，來自 <em>copy()</em> 的結果</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->copy(DOCROOT.'/directory/');</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_delete" data-class="File_Handler_Directory">delete($recursive = true, $delete_top = true)</h4>
+					<p><strong>delete</strong> 方法是 <a href="usage.html#method_delete_dir">File::delete_dir</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$recursive</kbd></th>
+											<td><em>true</em></td>
+											<td>是否也刪除子目錄內容</td>
+										</tr>
+										<tr>
+											<th><kbd>$delete_top</kbd></th>
+											<td><em>true</em></td>
+											<td>是否在為空時刪除上層目錄</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>true 在成功時</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$handler->delete();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_get_permissions" data-class="File_Handler_Directory">get_permissions()</h4>
+					<p><strong>get_permissions</strong> 方法是 <a href="usage.html#method_get_permissions">File::get_permissions</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>八進位制的目錄權限</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$permissions = $handler->get_permissions();</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 class="method" id="method_directory_get_time" data-class="File_Handler_Directory">get_time($type = 'modified')</h4>
+					<p><strong>get_time</strong> 方法是 <a href="usage.html#method_get_time">File::get_time</a> 的捷徑。</p>
+					<table class="method">
+						<tbody>
+							<tr>
+								<th>靜態</th>
+								<td>否</td>
+							</tr>
+							<tr>
+								<th>參數</th>
+								<td>
+									<table class="parameters">
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$type</kbd></th>
+											<td><em>'modified'</em></td>
+											<td>需要被回傳的時間。只能是 <strong>created</strong> 或 <strong>modified</strong>。</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th>回傳</th>
+								<td>目錄的建立或修改時間戳記</td>
+							</tr>
+							<tr>
+								<th>範例</th>
+								<td>
+									<pre class="php"><code>$created_at = $handler->get_time('created');
+
+$modified_at = $handler->get_time('modified');
+// 或簡寫
+$modified_at = $handler->get_time();
+</code></pre>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+
+			</section>
+
+			<article>
+
+				<h2 id="writing_handlers">撰寫處理程序</h2>
+
+				<p>
+					正如前面所提到，Fuel 帶有兩個預定義的處理程序。一個用於目錄以及一個用於檔案。
+					透過撰寫你自己的處理程序，你可以改變行為並且藉由檔案類型添加相應功能。
+					例如處理 csv 文件時，你可能希望在讀取時自動解析他們，
+					或可以從一個圖像檔案取回圖像。
+				</p>
+
+				<h4 id="writing_handlers_how_to">如何撰寫他們……</h4>
+
+				<p>
+					處理程序是擴充 File Handler 類別（<strong>\File_Handler_File</strong>）的類別。
+					這裡是一個範例：
+				</p>
+
+				<pre class="php"><code>&lt;?php
+
+class File_Handler_XML extends \File_Handler_File
+{
+
+	/**
+	 * Read 方法指定此處理程序會如何處理檔案內容
+	 */
+	public function read()
+	{
+		return simplexml_load_file($this->path);
+	}
+}
+
+/* End of file xml.php */
+</code></pre>
+
+				<p class="note">注意 <strong>$this->path</strong>。這將一直保持路徑為目前檔案，即使在移動或改名時。</p>
+
+				<h4 id="writing_handlers_adding">添加他們……</h4>
+
+				<p>
+					File 處理程序可以透過在 file 配置中添加來指派。
+					透過添加它們到基礎配置，所有來自特定副檔名的檔案將被所需的處理程序取回。
+					你也可以在一個區域基礎上，
+					透過添加它們到你想使用的區域配置中來指派處理程序。
+				</p>
+
+				<pre class="php"><code>// 在 app/config/file.php
+
+'base_config' => array(
+	'file_handlers' => array(
+		'csv' => 'File_Handler_Csv',
+	),
+),
+
+'areas' => array(
+	'my_area' => array(
+		'file_handlers' => array(
+			'xml' => 'File_Handler_XML',
+		),
+	),
+),
+</code></pre>
+
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/oil/intro.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>簡介 - Oil 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Oil 工具</h2>
+
+			<p>Oil 工具是特別的套件，命令可被使用於許多地方，以促進快速開發，
+				幫助測試你的應用程式及運行<a href="../../general/tasks.html">任務</a>。</p>
+
+			<section>
+
+				<p>Oil 是一個選擇性的命令列實用工具，旨在幫助加快開發，提供多種函式：</p>
+
+				<ul>
+					<li><a href="../../packages/oil/generate.html">產生</a> - 建構 MVC 模組、遷移及整個鷹架。</li>
+					<li><a href="../../packages/oil/refine.html">精煉</a> - 運行任務如遷移與你自訂的。</li>
+					<li><a href="../../packages/oil/package.html">套件</a> - 安裝、升級及移除套件。</li>
+					<li><a href="../../packages/oil/console.html">控制台</a> - 使用 shell 即時測試你的程式碼。</li>
+					<li><a href="../../packages/oil/test.html">測試</a> - 運行 PHPUnit 測試。</li>
+					<li><a href="../../packages/oil/server.html">伺服器</a> - 使用 PHP 5.4+ 內建網頁伺服器來運行 FuelPHP。</li>
+				</ul>
+
+				<p>
+					這些命令都以不同的方式來實現不同的東西，但進入前，
+					最好確認你是在正確的文件夾，且 Oil 是可運行的。
+				</p>
+
+				<pre class="cli"><code>$ cd Sites/fuel
+$ php oil -v
+Fuel: 1.2</code></pre>
+
+				<h3 id="environments">環境</h3>
+
+				<p>
+					Oil 不會使用任何你為 HTTP 請求所做的指示，例如使用 .htaccess 定義伺服器環境。除非你有指示，Oil 將使用預設的環境。
+				</p>
+
+				<pre class="cli"><code>$ FUEL_ENV=production php oil refine migrate</code></pre>
+
+				<p>在 <code>production</code> 的地方你可以使用任何已定義的環境。</p>
+
+				<h3 id="help">內嵌幫助</h3>
+
+				<p>Oil 含有自己的基本文件，可以透過鍵入命令找到：</p>
+
+				<pre class="cli"><code>$ php oil help
+
+Usage:
+  php oil [cell|console|generate|package|refine|help|server|test]
+
+Runtime options:
+  -f, [--force]    # Overwrite files that already exist
+  -s, [--skip]     # Skip files that already exist
+  -q, [--quiet]    # Supress status output
+  -t, [--speak]    # Speak errors in a robot voice
+
+Description:
+  The 'oil' command can be used in several ways to facilitate quick development, help with
+  testing your application and for running Tasks.
+
+Environment:
+  If you want to specify a specific environment oil has to run in, overload the environment
+  variable on the commandline: FUEL_ENV=staging php oil &lt;commands&gt;
+
+More information:
+  You can pass the parameter "help" to each of the defined command to get information
+  about that specific command: php oil package help
+
+
+Documentation:
+  http://docs.fuelphp.com/packages/oil/intro.html
+
+</code></pre>
+
+				<p>這些命令都有自己的幫助段落，可以透過鍵入找到：</p>
+
+				<pre class="cli"><code>$ php oil generate help</code></pre>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

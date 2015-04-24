@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/upload/usage.html';
+		var path = './../../';
+		var class_prefix = "Upload::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Upload 用法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Upload 類別</h2>
+
+			<p>
+				Upload 類別可以安全地處理被上傳到應用程式的檔案。
+				它能讓你用不同的方式過濾上傳、定義目標檔案名稱應該像怎樣、或過濾檔案名稱的大小或長度。
+			</p>
+
+			<h3 id="uploaded_files_array">上傳檔案陣列</h3>
+
+			<p>每個上傳檔案的資訊被儲存在 Upload 類別中的一個多維陣列。
+				對於每個檔案，每個被定義的陣列有下列欄位：
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>鍵</th>
+						<th>類型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>field</th>
+						<td>字串</td>
+						<td>
+							被用來上傳檔案的表單欄位名稱。如果該表單欄位是一個（多維）陣列，
+							該陣列鍵將被以冒號分隔來添加到欄位名稱。
+							所以一個稱為 "field[a][b][]" 的欄位將被儲存為 "field:a:b:0"。
+						</td>
+					</tr>
+					<tr>
+						<th>name</th>
+						<td>字串</td>
+						<td>
+							上傳檔案的名稱。
+						</td>
+					</tr>
+					<tr>
+						<th>type</th>
+						<td>字串</td>
+						<td>
+							上傳文件的 MIME 類型，由瀏覽器所定義。
+						</td>
+					</tr>
+					<tr>
+						<th>mimetype</th>
+						<td>字串</td>
+						<td>
+							上傳檔案的 MIME 類型，如同 Upload 類別所確定的。
+							請注意，這需要安裝一個最新的 'mime magic' 檔案。
+							此檔案出現在每個 *xin 平台，但在 Windows 平台，你可能必須自己安裝這個檔案。
+							如果 MIME 類型不能被確定，此欄位包含的值與 'type' 相同。
+						</td>
+					</tr>
+					<tr>
+						<th>file</th>
+						<td>字串</td>
+						<td>
+							上傳檔案臨時位置的完整檔案名稱。
+						</td>
+					</tr>
+					<tr>
+						<th>filename</th>
+						<td>字串</td>
+						<td>
+							上傳檔案的檔案名稱（主檔名）。
+						</td>
+					</tr>
+					<tr>
+						<th>extension</th>
+						<td>字串</td>
+						<td>
+							上傳檔案的副檔名。
+						</td>
+					</tr>
+					<tr>
+						<th>size</th>
+						<td>整數</td>
+						<td>
+							上傳檔案的大小（位元組）。
+						</td>
+					</tr>
+					<tr>
+						<th>error</th>
+						<td>布林</td>
+						<td>
+							如果為 true，上傳失敗的話，錯誤陣列包含原因。
+						</td>
+					</tr>
+					<tr>
+						<th>errors</th>
+						<td>陣列</td>
+						<td>
+							一個陣列群的陣列，每個有兩個值。'error'，包含錯誤代碼，以及 'message'，包含錯誤文字。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>
+				請注意，MIME 類型將始終包含最具體的類型。所以如果瀏覽器宣稱它是一個 MS-Word 文件，
+				但 MIME 類型被測定是 "application/octet-stream"，瀏覽器的 MIME 類型會被使用，即使這可能是錯的或無法預期的！
+				例如，一個 Microsoft .xlsx 檔案可能被偵測是 "application/zip"。
+			</p>
+
+			<p>
+				在你呼叫 save() 方法之後，此陣列結構會被擴充兩個額外欄位，給你關於實際儲存的資訊。
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>鍵</th>
+						<th>類型</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>saved_to</th>
+						<td>字串</td>
+						<td>
+							上傳檔案被儲存的完整路徑。
+						</td>
+					</tr>
+					<tr>
+						<th>saved_as</th>
+						<td>字串</td>
+						<td>
+							該檔案被儲存的名稱
+						</td>
+					</tr>
+					<tr>
+						<th>errors</th>
+						<td>陣列</td>
+						<td>
+							錯誤陣列（以及錯誤布林）將在呼叫 save() 來指示任何在試圖儲存檔案時遇到的錯誤之後被更新。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 id="error_constants">定義的錯誤常數</h3>
+
+			<p>Upload 類別定義以下的錯誤常數：</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>名稱</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_OK</th>
+						<td>
+							沒有錯誤，檔案上傳成功。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_INI_SIZE</th>
+						<td>
+							上傳檔案超過了在 php.ini 中指定的 upload_max_filesize。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_FORM_SIZE</th>
+						<td>
+							上傳檔案超過了在 HTML 表單中指定的 MAX_FILE_SIZE。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_PARTIAL</th>
+						<td>
+							上傳檔案只有部分被上傳。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_NO_FILE</th>
+						<td>
+							沒有檔案被上傳。請注意，當執行上傳檔案列表時，帶有此錯誤的條目將被過濾。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_NO_TMP_DIR</th>
+						<td>
+							缺少臨時文件夾。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_CANT_WRITE</th>
+						<td>
+							寫入檔案到硬碟失敗。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_EXTENSION</th>
+						<td>
+							一個 PHP 擴充停止了檔案上傳。PHP 沒提供方法來查明是哪個擴充造成檔案上傳停止；審視 phpinfo() 中的已載入擴充列表可能會有幫助。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_MAX_SIZE</th>
+						<td>
+							上傳檔案超過了定義在配置中的最大檔案大小。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_EXT_BLACKLISTED</th>
+						<td>
+							上傳檔案的副檔名被定義在副檔名黑名單中。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_EXT_NOT_WHITELISTED</th>
+						<td>
+							上傳檔案的副檔名沒有被定義在副檔名白名單中。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_TYPE_BLACKLISTED</th>
+						<td>
+							上傳檔案的類型被定義在類型黑名單中。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_TYPE_NOT_WHITELISTED</th>
+						<td>
+							上傳檔案的類型沒有被定義在類型白名單中。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_MIME_BLACKLISTED</th>
+						<td>
+							上傳檔案的 MIME 類型被定義在 MIME 類型黑名單中。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_MIME_NOT_WHITELISTED</th>
+						<td>
+							上傳檔案的 MIME 類型沒有被定義在 MIME 類型白名單中。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_MAX_FILENAME_LENGTH</th>
+						<td>
+							上傳的檔案名稱超過了定義的最大檔案名稱長度。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_MOVE_FAILED</th>
+						<td>
+							上傳的檔案名稱不能從臨時儲存移動到指定路徑。這可能意味著有一個權限問題。
+						</td>
+					</tr>
+					<tr>
+						<th>UPLOAD_ERR_DUPLICATE_FILE</th>
+						<td>
+							上傳的檔案名稱不能被儲存因為已存在同名檔案。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p class="note">
+				請注意，為了能夠上傳檔案，你的 HTML &lt;form&gt; 標籤<strong>必須</strong>包含 <strong>enctype="multipart/form-data"</strong>，
+				而且你的表單<strong>必須</strong>包含至至少一個 "file" 類型的輸入欄位。沒有它，所有上傳將失敗，而且 Upload::process 將拋出一個例外！
+			</p>
+
+			<h3 id="usage_example">用法範例</h3>
+			<pre class="php"><code>// 自訂此上傳的配置
+$config = array(
+	'path' => DOCROOT.'files',
+	'randomize' => true,
+	'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
+);
+
+// 處理 $_FILES 中上傳的檔案
+Upload::process($config);
+
+// 如果有任何有效檔案
+if (Upload::is_valid())
+{
+	// 根據配置儲存他們
+	Upload::save();
+
+	// 呼叫一個模型方法來更新資料庫
+	Model_Uploads::add(Upload::get_files());
+}
+
+// 並處理任何錯誤
+foreach (Upload::get_errors() as $file)
+{
+	// $file 是一個有所有檔案資訊的陣列，
+	// $file['errors'] 包含一個所有發生錯誤的陣列
+	// 每個陣列元素是一個包含 'error' 及 'message' 的陣列
+}
+</code></pre>
+
+			<article>
+				<h4 class="method" id="method_is_valid">is_valid()</h4>
+				<p><strong>is_valid</strong> 方法可被用來檢查是否有任何已通過上傳驗證的上傳檔案存在。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林 - true 如果驗證的檔案存在，false 如果沒有。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 我們有任何已上傳的檔案要儲存嗎？
+if (Upload::is_valid())
+{
+	Upload::save();
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_files">get_files($index = null)</h4>
+				<p><strong>get_files</strong> 方法回傳一個所有上傳檔案中 error 值為 <strong>false</strong> 的多維陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>檔案在已上傳檔案陣列中的索引數字，或一個表單欄位的名稱。如果沒指定，會回傳一個有所有已驗證檔案的陣列。
+									如果該索引數字無效，或如果該索引指向一個有錯誤狀態為 <strong>true</strong> 的檔案，會拋出一個例外。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得成功上傳的檔案列表
+foreach(Upload::get_files() as $file)
+{
+	// 使用檔案資訊做點什麼
+}
+
+// 透過索引取得第一個上傳的檔案
+if ( ! Upload::get_files(0))
+{
+	// 第一個上傳的檔案沒有成功上傳
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_errors">get_errors($index = null)</h4>
+				<p><strong>get_errors</strong> 方法回傳一個所有上傳檔案中 error 狀態為 <strong>true</strong> 的多維陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$index</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>檔案在已上傳檔案陣列中的索引數字，或一個表單欄位的名稱。如果沒指定，會回傳一個有所有已驗證檔案的陣列。
+									如果該索引數字無效，或如果該索引指向一個有錯誤狀態為 <strong>false</strong> 的檔案，會拋出一個例外。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得有錯誤的上傳檔案列表
+foreach(Upload::get_errors() as $file)
+{
+	// 使用檔案資訊做點什麼
+}
+
+// 透過欄位名稱取得第一個上傳的檔案
+if (Upload::get_errors('new_image'))
+{
+	// 上傳檔案的表單欄位 'new_image' 有一個錯誤
+	// 定義為 &lt;input type="file" name="new_image" /&gt;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					請注意，在你表單中的所有上傳欄位會被發送，即使它們是選擇性的。欄位留空，
+					上傳的檔案陣列將有一個空的檔案條目，會有一個 <strong>Upload::UPLOAD_ERR_NO_FILE</strong> 的錯誤代碼。
+					處理錯誤時，首先檢查錯誤代碼，然後再試著使用任何回傳陣列中的其他欄位。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_register">register($event, $callback)</h4>
+				<p>
+					<strong>register</strong> 方法能讓你為特定的上傳事件註冊回呼（callback），
+					並能讓你添加你自己的程式碼到 <strong>process()</strong> 和 <strong>save()</strong> 方法。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$event</kbd></th>
+									<td><i>必要</i></td>
+									<td>你想註冊的回呼（callback）事件名稱。有效的名稱是 'validate'、'before' 和 'after'。</td>
+								</tr>
+								<tr>
+									<th><kbd>$callback</kbd></th>
+									<td><i>必要</i></td>
+									<td>有效的 PHP 回呼（callback）函式。這可以是一個函式、一個動態或靜態方法、或一個閉包（closure）。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林 - true 如果回呼（callback）被註冊，false 如果註冊失敗。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 使用閉包（closure）註冊 before 回呼（callback）
+Upload::register('before', function (&amp;$file) {
+	if ($file['error'] == Upload::UPLOAD_ERR_OK)
+	{
+		switch($file['extension'])
+		{
+			case "jpg":
+			case "png":
+			case "gif":
+				// 在 images 子目錄儲存這些
+				$file['file'] .= 'images/';
+			break;
+
+			case "css":
+				// 在 css 子目錄儲存這些
+				$file['file'] .= 'css/';
+			break;
+
+			case "js":
+				// 在 javascript 子目錄儲存這些
+				$file['file'] .= 'js/';
+			break;
+
+			default:
+				// 給所有其他的不修改路徑
+		}
+	}
+});
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p>
+					如果你想要使用一個 'validate' 回呼（callback），確保在你呼叫 Upload::process() 之前註冊它。
+					如果你已經使用 'auto_process' 配置設定，只要你使用 Upload 類別，Upload::process() 將會被呼叫，
+					這意味著你不能使用此設定，如果你想在執行階段定義回呼（callback）。
+				</p>
+				<p>
+					該回呼（callback）將接受一個 FuelPHP\Upload\File 物件做為參數。該條目透過引用傳遞，
+					它允許回呼（callback）函式修改陣列中的條目。你可以因為向下相容的原因存取它做為一個陣列，
+					但如果遷移你的應用程式從版本 &lt; 1.6 到 1.6+，檢查傳遞到你回呼（callback）的值，
+					因為不是所有屬性在 1.6 前都是相同命名。<br />
+					如果該回呼（callback）函式回傳一個整數，它會被假設為一個上傳檔案錯誤代碼的更新。
+					所有其他回傳值會被忽略。
+				</p>
+
+				<p class="note">
+					<strong>注意：</strong>如果你改變在你的回呼（callback）中的 <strong>$file</strong> 陣列內容，你必須確保該資訊仍然有效，
+					因為 Upload 不會再一次執行它的檢查。此規則的唯一例外是 '<strong>file</strong>' 路徑，
+					如果需要它會在回呼（callback）被執行之後被檢查並建立。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_process">process($config = array())</h4>
+				<p>
+					<strong>process</strong> 方法處理關於所有上傳檔案的資訊，
+					正規化可被使用表單欄位名稱的不同排列組合，
+					取回額外關於檔案及其 MIME 類型的資訊，
+					並驗證檔案。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>配置項目的陣列，如此你可以覆寫定義在配置檔案中的設定。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>FuelException，當沒有檔案試圖上傳可被偵測到（即沒有 "Enctype" 或 type="file" 輸入欄位的表單）</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 處理上傳的檔案
+// 設定最大大小為 10kb，並允許重複檔案的覆寫
+Upload::process(array(
+	'max_size'    => 10240,
+	'auto_rename' => false,
+	'overwrite'   => true
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">如果你打算使用此方法，在配置中停用 <strong>auto_process</strong>，以避免處理上傳的檔案兩次！</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_save">save( ... )</h4>
+				<p><strong>save</strong> 方法儲存所有已驗證的上傳檔案到指定的路徑。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$integer</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>透過 <strong>get_files()</strong> 回傳的檔案陣列的鍵。這能讓你從一組上傳檔案中儲存一個獨立的檔案。</td>
+								</tr>
+								<tr>
+									<th><kbd>$array</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>透過 <strong>get_files()</strong> 回傳的檔案陣列的鍵陣列。這能讓你從一組上傳檔案中儲存選擇的檔案。</td>
+								</tr>
+								<tr>
+									<th><kbd>$string</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>檔案應該被儲存的路徑。它覆寫指定在配置中的路徑，或在 <strong>process()</strong> 方法被呼叫時傳遞在 $config 陣列中的路徑。</td>
+								</tr>
+							</table>
+							<br />
+							請注意，這些參數所給的順序是不相關的，而他們全都是選擇性的。但使用 $integer 或 $array，不要兩個都使用。如果你這樣做，最後一個指定的會被使用。
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 儲存所有驗證的檔案
+Upload::save();
+
+// 只儲存第一個上傳的檔案
+Upload::save(0);
+
+// 儲存第一個、第二個和第四個上傳的檔案
+Upload::save(0, 1, 3);
+
+// 儲存所有驗證的檔案，並存到替代的位置
+$arr = Upload::get_files();
+Upload::save(DOCROOT.'assets', array_keys($arr));
+
+// 處理這些檔案的任何錯誤
+foreach (Upload::get_errors() as $key => $file)
+{
+	// 在這裡處理錯誤
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

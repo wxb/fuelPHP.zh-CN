@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/agent/usage.html';
+		var path = './../../';
+		var class_prefix = "Agent::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Agent 用法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Agent 類別</h2>
+
+			<p>Agent 類別能讓你擷取關於瀏覽器的類型、版本、平台或操作系統等等基於客戶使用者代理字串資訊。</p>
+
+			<section>
+				<h2>用法</h2>
+
+				<article>
+					<h4 id="method_accepts_charset" class="method">accepts_charset($charset = 'utf-8')</h4>
+					<p>檢查目前的瀏覽器是否接受一個特定的字符集。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$charset</kbd></th>
+										<td><i>字串</i></td>
+										<td>字符集名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 檢查使用者的瀏覽器是否接受 iso-8859-1
+if (Agent::accepts_charset('iso-8859-1'))
+{
+	echo "Yes, the browser accepts this characterset!";
+}
+	</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_accepts_language" class="method">accepts_language($language = 'en')</h4>
+					<p>檢查目前的瀏覽器是否接受一個特定的 ISO 語言代碼。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$language</kbd></th>
+										<td><i>字串</i></td>
+										<td>ISO 語言代碼</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 檢查使用者的瀏覽器是否接受 Flemish (Belgian Dutch)
+if (Agent::accepts_language('nl_BE'))
+{
+	echo "Yes, the browser is configured for the Flemish language!";
+}
+	</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_browser" class="method">browser()</h4>
+					<p>從用戶代理字串回傳正規化的瀏覽器名稱。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 基於瀏覽器名稱的程序
+switch (Agent::browser())
+{
+	case 'Firefox':
+		// 在此做一些特定的事情
+		break;
+	case 'IE':
+		// 在此做一些特定的事情
+		break;
+	case 'Chrome':
+		// 在此做一些特定的事情
+		break;
+	case 'Unknown':
+		// 在此做一些特定的事情
+		break;
+	default:
+		// 這些都是未支援的瀏覽器……
+		break;
+}</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_platform" class="method">platform()</h4>
+					<p>從用戶代理字串回傳正規化的平台名稱。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 基於瀏覽器平台的程序
+switch (Agent::platform())
+{
+	case 'Win95':
+	case 'Win98':
+	case 'WinNT':
+	case 'WinME':
+	case 'Win2000':
+		// 在此做一些特定的事情
+		break;
+	case 'WinXP':
+	case 'WinVista':
+	case 'Win7':
+		// 在此做一些特定的事情
+		break;
+	case 'Linux':
+		// 在此做一些特定的事情
+		break;
+	case 'MacOSX':
+	case 'MacPPC':
+		// 在此做一些特定的事情
+		break;
+	case 'SunOS':
+	case 'FreeBSD':
+	case 'Debian':
+	case 'HP-UX':
+	case 'IRIX64':
+		// 在此做一些特定的事情
+		break;
+	case 'unknown':
+		// 在此做一些特定的事情
+		break;
+	default:
+		// 這些都是未支援的平台……
+		break;
+}</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_version" class="method">version()</h4>
+					<p>回傳瀏覽器版本。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>浮點數</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 檢查是否使用舊版本的 Internet Explorer。
+if (Agent::browser() == 'IE' and Agent::version() &lt; 7)
+{
+	echo "Sorry, no support for outdated browsers!";
+}
+	</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_charsets" class="method">charsets()</h4>
+					<p>回傳一個被瀏覽器接受的所有字符集陣列。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>陣列</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 檢查使用者瀏覽器是否接受 iso-8859-1
+$sets = Agent::charsets();
+if (in_array('iso-8859-1', $sets))
+{
+	echo "Yes, the browser accepts this characterset!";
+}
+	</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_languages" class="method">languages()</h4>
+					<p>回傳一個被瀏覽器接受的所有 ISO 語言陣列。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>陣列</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 檢查使用者的瀏覽器是否接受 Flemish (Belgian Dutch)
+$lang = Agent::languages();
+if (in_array('nl_BE', $lang))
+{
+	echo "Yes, the browser is configured for the Flemish language!";
+}
+	</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_properties" class="method">properties()</h4>
+					<p>回傳一個被檢測的瀏覽器的所有特性陣列。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>陣列</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得瀏覽器的特性
+$properties = Agent::properties();
+
+/**
+ * 這些都是支援的特性，以及它們的預設值
+ *
+ * $properties = array(
+ * 	'browser'             => "unknown",
+ * 	'version'             => 0,
+ * 	'majorver'            => 0,
+ * 	'minorver'            => 0,
+ * 	'platform'            => 'unknown',
+ * 	'alpha'               => false,
+ * 	'beta'                => false,
+ * 	'win16'               => false,
+ * 	'win32'               => false,
+ * 	'win64'               => false,
+ * 	'frames'              => false,
+ * 	'iframes'             => false,
+ * 	'tables'              => false,
+ * 	'cookies'             => false,
+ * 	'backgroundsounds'    => false,
+ * 	'javascript'          => false,
+ * 	'vbscript'            => false,
+ * 	'javaapplets'         => false,
+ * 	'activexcontrols'     => false,
+ * 	'isbanned'            => false,
+ * 	'ismobiledevice'      => false,
+ * 	'issyndicationreader' => false,
+ * 	'crawler'             => false,
+ * 	'cssversion'          => 0,
+ * 	'aolversion'          => 0,
+ * );
+ *
+ * 請注意，布林值表示支援一個特定的功能。
+ * 這並不表示啟用與否。
+ */</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_property" class="method">property($property = null)</h4>
+					<p>回傳一個特定的瀏覽器特性。請參閱 properties() 支援的特性列表。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$property</kbd></th>
+										<td><i>字串</i></td>
+										<td>要擷取的特性名稱。該名稱是區分大小寫的！</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>混合</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 檢查瀏覽器是否支援 Cookie
+if (Agent::property('cookies') === true)
+{
+	echo "Yes, the browser supports Cookies!";
+}
+	</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_is_mobiledevice" class="method">is_mobiledevice()</h4>
+					<p>檢查所使用的瀏覽器是否在行動裝置上運行。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 載入一個平台特定的檢視
+if (Agent::is_mobiledevice())
+{
+	$content = View::forge('mobile/viewname');
+}
+else
+{
+	$content = View::forge('standard/viewname');
+}</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_is_robot" class="method">is_robot()</h4>
+					<p>檢查是否瀏覽器代理表明訪問者是一個機器人或爬蟲。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 載入爬蟲特定檢視（請注意：這是不可取的！）
+if (Agent::is_robot())
+{
+	$content = View::forge('robot/viewname');
+}
+else
+{
+	$content = View::forge('standard/viewname');
+}</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

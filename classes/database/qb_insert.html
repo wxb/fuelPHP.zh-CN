@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/combined.css">
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/qb_insert.html';
+		var path = './../../';
+		var class_prefix = 'Query_Builder_Insert::';
+	</script>
+	<script src="../../assets/js/combined.js"></script>
+	<title>Query Builder Insert - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="qb_insert.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="introduction">Query_Builder_Insert 類別</h2>
+
+			<p>
+				（擴充 <a href="qb_where.html">Query_Builder_Where</a>）
+			</p>
+
+			<p>
+				Query_Builder_Insert 類別為查詢建立程序處理所有 insert 操作，它擴充
+				Query_Builder_Where 類別，所以所有方法都繼承。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_table">table($table)</h4>
+				<p><strong>table</strong> 方法設定／改變要新增的資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 insert 語句
+$query = DB::insert('users');
+
+// 更新要新增的資料表
+$query->table('admins');
+
+// INSERT INTO `admins` ...
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_columns">columns(array $columns)</h4>
+				<p><strong>columns</strong> 方法設定／改變要新增的行。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$columns</kbd></th>
+										<td><em>陣列</em></td>
+										<td><em>必要</em></td>
+										<td>行名稱的陣列</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 insert 語句
+$query = DB::insert('users');
+
+// 設定行
+$query->columns(array(
+	'name',
+	'surname',
+	'email')
+);
+
+// INSERT INTO `users` (`name`, `surname`, `email`)
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_values">values(array $values)</h4>
+				<p><strong>values</strong> 方法附加要新增的值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$values</kbd></th>
+										<td><em>陣列</em></td>
+										<td><em>必要</em></td>
+										<td>值的列表</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 insert 語句
+$query = DB::insert('users');
+
+// 設定行
+$query->columns(array(
+	'name',
+	'surname',
+	'email',
+));
+
+// 設定值
+
+$query->values(array(
+	'John',
+	'Doe',
+	'john@doe.com',
+));
+
+// INSERT INTO `users` (`name`, `surname`, `email`) VALUES ("John", "Doe", "john@doe.com")
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set(array $pairs)</h4>
+				<p><strong>set</strong> 方法設定行並附加要新增的值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$pairs</kbd></th>
+										<td><em>陣列</em></td>
+										<td><em>必要</em></td>
+										<td>行和值的關聯陣列</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 insert 語句
+$query = DB::insert('users');
+
+// 設定行和值
+$query->set(array(
+	'name' => 'John',
+	'surname' => 'Doe',
+	'email' => 'john@doe.com',
+));
+
+// INSERT INTO `users` (`name`, `surname`, `email`) VALUES ("John", "Doe", "john@doe.com")
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
+				<p><strong>compile</strong> 方法回傳 insert SQL 查詢做為一個字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><em>物件</em></td>
+										<td><em>必要</em></td>
+										<td>一個資料庫連線</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳 SQL 查詢做為一個字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 insert 語句
+$query = DB::select('*')->from('users');
+
+// 設定限制和偏移
+$query->limit(10);
+$query->offset(5);
+
+// 取得資料庫連線
+$connection = Database_Connection::instance();
+
+// 取得 SQL 查詢
+$sql = $query->compile($connection);
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_reset">reset()</h4>
+				<p><strong>reset</strong> 方法重置目前實例的所有值。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<em>無</em>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳目前實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 insert 語句
+$query = DB::insert('users');
+
+// 設定一些值
+$query->set(array(
+	'name' => 'John',
+	'surname' => 'Doe',
+));
+
+// 重置它
+$query->reset();
+
+// 設定新的值
+$query->table('admins')->set(array(
+	'name' => 'Mark',
+	'surname' => 'Handriks'
+));
+
+// SQL 查詢現在會是：
+// INSERT INTO `admins` (`name`, `surname`) VALUES ("Mark", "Hendriks")
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

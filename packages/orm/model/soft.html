@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/model/soft.html';
+		var path = './../../../';
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>虛刪除模型 - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+			<div id="main">
+				<section>
+					<h2 id="introduction">簡介</h2>
+					<p>虛刪除本質上是隱藏在資料庫中條目的能力，代替移除條目的一切痕跡。這意味著資料可在日後被用來檢索。另一種想法是歸檔資料。</p>
+					<p>例如，你可能有一套記錄員工工作時數的系統。每天員工紀錄他們的時間，如此報告可以被產生來淘汰偷懶的人。如果有人被開除，你不再希望他們可以存取該系統，但保留工作時間上的資料可能仍然是有用的。</p>
+					<p>如果該員工被虛刪除，那麼就系統涉及的而言，該員工不再存在。虛刪除模型提供一種方式來查詢此歸檔資料，如此報告仍然可以使用此「刪除的」資料來產生。</p>
+					<p>有人主張避免虛（或邏輯的）刪除。此模型並不強制你使用虛刪除，但提供了一種在你專案中快速實現的方式，如果你決定要使用它。</p>
+				</section>
+
+				<section>
+					<h2>基本使用</h2>
+					<p>使用虛刪除模型就像擴充 <kbd>Orm\Model_Soft</kbd> 而不是 <kbd>Orm\Model</kbd> 一樣的簡單。這標誌你的模型做為一個虛刪除模型，並且改變 <kbd>delete()</kbd> 和 <kbd>find()</kbd> 方法的預設行為。</p>
+					<pre id="php"><code>class Model_Employee extends \Orm\Model_Soft
+{
+	...
+}</code></pre>
+					<p>該模型設置像一般的 <a href="../creating_models.html">ORM 模型</a>，包含你想使用的任何關聯或其他特性。</p>
+				</section>
+
+				<section>
+					<h2 id="settings">設定</h2>
+					<p>目前有兩個額外的設定，可以為虛刪除模型被設定。</p>
+					<p><kbd>deleted_field</kbd> 是儲存時間戳記的欄位。在資料庫中這應該是一個 MySQL 或 unix 時間戳記，並預設為 <kbd>NULL</kbd>。任何有 <kbd>NULL</kbd> 時間戳記的條目不會被刪除。行名稱預設為 deleted_at。</p>
+					<p><kbd>mysql_timestamp</kbd> 是如果該時間戳記被產生，應該是一個 MySQL 時間戳記或一個 unix 時間戳記。此預設為 <kbd>false</kbd>（使用一個 unix 時間戳記）。</p>
+					<p>有預設設定的模型範例：</p>
+					<pre id="php"><code>class Model_Employee extends \Orm\Model_Soft
+{
+	protected static $_soft_delete = array(
+		'deleted_field' => 'deleted',
+		'mysql_timestamp' => false,
+	);
+}</code></pre>
+				</section>
+
+				<section>
+					<h2 id="delete">刪除</h2>
+					<p>要觸發虛刪除只要在該物件選擇之後呼叫一般的 <kbd>delete()</kbd> 函式。這用目前時間戳記更新資料庫條目並標誌該條目為刪除。該條目將不再出現在 <kbd>find()</kbd> 查詢中。</p>
+					<pre class="php"><code>$employee = Model_Employee::find(1);
+$employee->delete(); // 該員工現在被虛刪除了。</code></pre>
+				</section>
+
+				<section>
+					<h2 id="delete">永久刪除</h2>
+                    <p>要永久刪除一筆資料，在選擇之後於物件呼叫 <kbd>purge()</kbd> 函式。這會從資料庫永久刪除資料。</p>
+                    <pre id="php"><code>$employee = Model_Employee::find(1);
+$employee->purge(); // 該員工現在被刪除了。</code></pre>
+                </section>
+
+                <section>
+					<h2 id="find">尋找</h2>
+					<p>虛刪除條目不會被 <kbd>find()</kbd> 請求列出，他們從回傳結果被排除因為他們，就 <kbd>Model_Soft</kbd> 涉及的而言，已經被刪除。透過使用 <kbd>find_deleted()</kbd> 或 <kbd>deleted()</kbd> 來查詢刪除的條目是有可能的。這些都像 <kbd>find()</kbd> 一樣運作並且期望一樣的參數。</p>
+				</section>
+
+				<section>
+					<h2 id="restore">還原</h2>
+					<p>已虛刪除的條目可以在日後被還原。假設我們的員工之一回歸，我們可以只還原虛刪除的條目並讓一切再度為她運作，而不必建立新的員工。</p>
+					<p>這透過在刪除的條目上呼叫 <kbd>restore()</kbd> 或 <kbd>undelete()</kbd> 能輕易地做到。</p>
+					<pre class="php"><code>$employee = Model_Employee::find_deleted(1);
+// 或
+$employee = Model_Employee::deleted(1);
+
+$employee->restore(); // 該員工不再是被刪除的。
+$employee->undelete(); // 與上述執行相同。</code></pre>
+				</section>
+
+				<section>
+					<h2 id="relations">關聯</h2>
+					<h1>刪除</h1>
+					<p>delete 函式將虛刪除提供 <kbd>cascade_delete</kbd> 為 true 的關聯模型。如果該關聯模型不是虛刪除，那麼一個 <kbd>RelationNotSoft</kbd> 例外會被拋出。</p>
+					<h1>還原</h1>
+					<p>restore 函式也會為了關聯來還原提供 <kbd>cascade_delete</kbd> 為 true 的關聯條目。</p>
+				</section>
+			</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

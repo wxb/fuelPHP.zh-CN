@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/cache/config.html';
+		var path = './../../';
+		var class_prefix = "Cache::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Cache 配置 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Cache 類別</h2>
+
+			<p>Cache 類別能讓你快取資源大量操作的結果。</p>
+
+			<section>
+				<h3 id="config">配置</h3>
+
+				<p>Cache 類別預設透過 fuel/core/config/cache.php 配置檔案來配置。
+				它已經填入預設設定，你可以藉由添加一個相同名稱的配置檔案，
+				到你的應用程式 config 資料夾，並在此設定你想要的變更，以覆寫此設定。
+				這些將覆寫核心配置，但保持你沒有覆寫的部份。
+
+				<p>以下全域配置值可以被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>driver</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'file'</code></pre></td>
+							<td>
+								用於儲存快取的預設儲存驅動。
+							</td>
+						</tr>
+						<tr>
+							<th>expiration</th>
+							<td>整數</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								預設秒數直到過期，當沒給生存時間時使用，
+								設定為 null 時將不會到期。
+							</td>
+						</tr>
+						<tr>
+							<th>(type)_handler</th>
+							<td>字串</td>
+							<td><pre class="php"><code>serialize</code></pre></td>
+							<td>
+								快取字串時不會發生什麼事，除非當快取更複雜的內容像物件，
+								或更原始的像雙精度浮點數。在這些情況下，有 "內容處理程序"
+								被引入，它可以確保你會取回正確類型的物件。
+								預設情況下，處理程序被引入為了使用 PHP 序列化和 JSON 編碼。<br />
+								你可以添加你自己的或以不同方式處理不同類型的物件／原始類型
+								藉由添加每一種處理程序：'int_handler' => 'json'、'string_handler' => 'string'、
+								'Model_Post' => 'serialize'、等等……
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p>對於每一個快取儲存驅動，存在個別的配置段落，
+				此段落包含驅動的指定參數。</p>
+
+				<section>
+					<h5 id="file_driver_config">File 驅動程序配置</h5>
+
+					<p>儲存快取到檔案系統。</p>
+
+					<p>特定的驅動程序配置：</p>
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>參數</th>
+								<th>類型</th>
+								<th>預設</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<th>path</th>
+								<td>字串</td>
+								<td><pre class="php"><code>APPPATH.'cache/'</code></pre></td>
+								<td>用於儲存快取的基礎路徑。</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h5 id="memcache_driver_config">MemCached 驅動程序配置</h5>
+
+					<p>特定的驅動程序配置：</p>
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>參數</th>
+								<th>類型</th>
+								<th>預設</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<th>cache_id</th>
+								<td>字串</td>
+								<td><pre class="php"><code>'fuel'</code></pre></td>
+								<td>用來區分 Fuel 與其他儲存在相同伺服器快取項目的唯一 ID。</td>
+							</tr>
+							<tr>
+								<th>servers</th>
+								<td>字串</td>
+								<td><pre class="php"><code>array(
+		array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100)
+	)</code></pre></td>
+								<td>執行 memcached 服務的伺服器和埠號陣列。</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h5 id="redis_driver_config">Redis 驅動程序配置</h5>
+
+					<p>特定的驅動程序配置：</p>
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>參數</th>
+								<th>類型</th>
+								<th>預設</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<th>database</th>
+								<td>字串</td>
+								<td><pre class="php"><code>'default'</code></pre></td>
+								<td>Redis 使用的資料庫名稱（同 config/db.php 裡的配置）</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

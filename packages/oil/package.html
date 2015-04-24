@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/oil/package.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>套件 - Oil 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<section>
+
+				<h3 id="package">套件</h3>
+
+				<p>
+					套件可以手動下載安裝，但有套件命令的幫助下，它可以更快的運作。
+					它透過定義在 <kbd>fuel/core/config/package.php</kbd> 的來源列表，
+					及任何其他可以編輯或複製到 <kbd>fuel/app/config</kbd> 文件夾的配置檔案尋找套件。
+				</p>
+
+				<p>
+					Oil 很聰明，所以它在做任何套件命令之前，會檢查是否你已經在你的電腦上安裝 Git。
+					如果你已經安裝 Git，Oil 會安裝一個套件做為 Git 儲存庫，而非直接下載檔案，
+					直接下載檔案意味著更新、新發行及追蹤套件的自訂修改可能不容易。
+				</p>
+
+				<h3 id="install">安裝</h3>
+
+				<pre class="cli"><code>$ php oil package install test-package
+Downloading package: git://github.com/philsturgeon/fuel-test-package.git
+remote: Counting objects: 13, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 13 (delta 3), reused 0 (delta 0)
+Receiving objects: 100% (13/13), 10.85 KiB, done.
+Resolving deltas: 100% (3/3), done.
+
+Cloning into /Users/phil/Sites/fuel/fuel/packages/test-package...</code></pre>
+
+				<p>
+					如果 Git 沒有被安裝，或提供了 --direct 標誌，
+					那麼套件的 ZIP 檔案會被下載並解壓縮到 <kbd>fuel/packages/packagename</kbd>。
+				</p>
+
+				<pre class="cli"><code>$ php oil package install test-package --direct
+	Downloading package: http://github.com/philsturgeon/fuel-test-package/zipball/master
+	DOCROOT/fuel/packages/test-package/LICENSE.txt
+	DOCROOT/fuel/packages/test-package/README
+	DOCROOT/fuel/packages/test-package/classes/association.php
+	DOCROOT/fuel/packages/test-package/classes/belongsto.php
+	DOCROOT/fuel/packages/test-package/classes/exception.php
+	DOCROOT/fuel/packages/test-package/classes/hasmany.php
+	DOCROOT/fuel/packages/test-package/classes/hasone.php
+	DOCROOT/fuel/packages/test-package/classes/model.php</code></pre>
+
+				<h3 id="uninstall">反安裝</h3>
+
+				<pre class="cli"><code>$ php oil package uninstall test-package
+Uninstalling package "test-package"</code></pre>
+
+				<p class="note"><strong>請注意：</strong>不像安裝，這裡即使安裝了 Git 也沒有什麼不同，完全一樣全都刪除。</p>
+
+				<h3 id="update">更新</h3>
+
+				<p>即將來臨……</p>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

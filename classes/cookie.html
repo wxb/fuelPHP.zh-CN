@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/cookie.html';
+		var path = './../';
+		var class_prefix = "Cookie::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Cookie - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Cookie 類別</h2>
+
+			<p>Cookie 類別能讓你取得、設定及刪除 cookies。</p>
+
+			<h3 id="configuration">配置</h3>
+
+			<p>Cookie 類別透過全域應用程式配置檔案 <strong>app/config/config.php</strong> 進行配置。它定義一個稱為 '<strong>cookie</strong>' 的段落，在其中以下設定被定義：</p>
+			<table class="method">
+				<tbody>
+					<tr>
+						<th>變數</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th class="description">描述</th>
+					</tr>
+					<tr>
+						<th><kbd>expiration</kbd></th>
+						<td>整數</td>
+						<td><pre class="php"><code>0</code></pre></td>
+						<td>在 cookie 到期前的秒數。當你呼叫 set() 方法，而 $expiration 沒有被指定時，這個值將被使用。</td>
+					</tr>
+					<tr>
+						<th><kbd>path</kbd></th>
+						<td>字串</td>
+						<td><pre class="php"><code>'/'</code></pre></td>
+						<td>限制 cookie 可用的路徑。當你呼叫 set() 方法，而 $path 沒有被指定時，這個值將被使用。</td>
+					</tr>
+					<tr>
+						<th><kbd>domain</kbd></th>
+						<td>字串</td>
+						<td><pre class="php"><code>null</code></pre></td>
+						<td>限制 cookie 可用的網域。當你呼叫 set() 方法，而 $domain 沒有被指定時，這個值將被使用。</td>
+					</tr>
+					<tr>
+						<th><kbd>secure</kbd></th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>設為 true 如果你只想要透過安全連線傳輸 cookie。</td>
+					</tr>
+					<tr>
+						<th><kbd>httponly</kbd></th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>只允許透過 HTTP 傳輸 cookie，停用 javascript 存取。</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>如果全域配置中缺少這些值中的一個或多個時，類別將使用定義在這張表中的預設值。</p>
+			<p class="note">
+				當使用 cookie，請 <strong>務必</strong> 確保配置在你的 <em>app/config/config.php</em> 及／或你的
+				<em>php.ini</em> 檔案中的時區與設定在你伺服器上的時區相符。因為 cookie 的到期時間戳記是 GMT，當你時區有不相符時，
+				計算到期時間將導致嚴重錯誤，從不正確的過期到 cookie 完全不被設定，
+				因為它們到達瀏覽器時已經逾期。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_get">get($name = null, $default = null)</h4>
+				<p><strong>get</strong> 方法能讓你讀取一個 $_COOKIE 變數。如果沒有給名稱，會回傳所有 cookie。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>在 $_COOKIE 陣列裡的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果陣列項目沒有找到時應該要回傳什麼值？</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$theme = Cookie::get('theme', 'blue');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set($name, $value, $expiration = null, $path = null, $domain = null, $secure = null, $httponly = null)</h4>
+				<p><strong>set</strong> 方法能讓你建立一個 Cookie。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>必要</i></td>
+									<td>在 $_COOKIE 陣列裡的鍵。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>Cookie 的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$expiration</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>cookie 應該持續的秒數。</td>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>在伺服器上 cookie 可用的路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$domain</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>Cookie 可用的網域。</td>
+								</tr>
+								<tr>
+									<th><kbd>$secure</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設為 true 如果你只想要透過安全連線傳輸 cookie。</td>
+								</tr>
+								<tr>
+									<th><kbd>$httponly</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>只允許透過 HTTP 傳輸 cookie，停用 javascript 存取。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Cookie::set('theme', 'blue', 60 * 60 * 24);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p>對每個沒指定或定義為 <strong>null</strong> 的參數，將被替換為全域定義配置值。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete($name, $path = null, $domain = null, $secure = null, $httponly = null)</h4>
+				<p><strong>delete</strong> 方法從 $_COOKIE 陣列刪除一個參數。</p>
+				<p class="note">
+					當一個 cookie 被建立在指定的路徑或網域等，你也必須提供刪除函式。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>必要</i></td>
+									<td>移除一個 Cookie 項目。</td>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>在伺服器上 cookie 可用的路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$domain</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>Cookie 可用的網域。</td>
+								</tr>
+								<tr>
+									<th><kbd>$secure</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設為 true 如果你只想要透過安全連線傳輸 cookie。</td>
+								</tr>
+								<tr>
+									<th><kbd>$httponly</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>只允許透過 HTTP 傳輸 cookie，停用 javascript 存取。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 刪除通常的 Cookie
+\Cookie::delete('theme');
+
+// 設定路徑的 Cookie
+\Cookie::set('theme', 'fuel', null, '/account/');
+
+// 刪除該 Cookie
+\Cookie::delete('theme', '/account/');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/extending_core.html';
+		var path = './../';
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>擴充核心 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>擴充核心類別</h2>
+
+			<p><strong>確認你知道自己在做什麼，擴充核心的方法在相同名稱下，不僅會被核心使用，
+			也會被你的應用程式使用，而這可能導致無法預期的行為。</strong></p>
+
+			<ul>
+				<li><a href="#extend_dont_replace">擴充但不取代核心類別</a></li>
+				<li><a href="#extend_and_replace">擴充 &amp; 取代核心類別</a></li>
+				<li><a href="#extend_from_packages">從套件擴充核心</a></li>
+				<li><a href="#extension_limitations">擴充限制</a></li>
+			</ul>
+
+			<article>
+				<h3 id="extend_dont_replace">擴充但不取代核心類別</h3>
+
+				<p>這些是最簡單且像任何其他你建立的類別一樣運作；
+				就讓它們擴充在全域命名空間的核心類別：</p>
+
+				<pre><code>class MyConfig extends Config {}</code></pre>
+			</article>
+
+			<article>
+				<h3 id="extend_and_replace">擴充 &amp; 取代核心類別</h3>
+
+				<p>如果你想要你的核心擴充，被核心和你的應用程式使用一樣好，
+				你需要以相同名稱但不在 "Fuel\Core" 命名空間下擴充它。以下是一個範例，
+				你建立在 "fuel/app/classes/lang.php" 的 Lang 類別：</p>
+
+				<pre><code>class Lang extends Fuel\Core\Lang {}</code></pre>
+
+				<p>但與核心類別同名的類別預設會被忽略，要讓 Autoloader 承認你的取代，
+				你需要在應用程式的 bootstrap 檔案註冊它。搜尋以下幾行：</p>
+
+				<pre><code>Autoloader::add_classes(array(
+	// Add classes you want to override here
+	// Example: 'View' => APPPATH.'classes/view.php',
+));</code></pre>
+
+				<p>如同註解所解釋，你需要添加新的 Lang 類別如下：</p>
+
+				<pre class="php"><code>Autoloader::add_classes(array(
+	// Add classes you want to override here
+	// Example: 'View' => APPPATH.'classes/view.php',
+	'Lang' => APPPATH.'classes/lang.php',
+));</code></pre>
+
+				<p>在此之後的核心類別已被你的擴充取代。</p>
+				<p class="note">核心類別仍可在有完整命名空間前綴時使用，在上面擴充 "Lang" 的例子中，
+				你仍可透過呼叫 "Fuel\Core\Lang" 使用原本的。</p>
+			</article>
+
+			<article>
+				<h3 id="extend_from_packages">從套件擴充核心</h3>
+
+				<p>藉由添加你的套件做為核心命名空間，自動載入器會試圖在從核心載入前由套件載入類別。
+					你必須對自動載入器註冊這些類別，即使它們能依序被偵測
+					（檔案系統自動載入器不支援對全域的別名）。
+					以下是一個擴充 <kbd>View</kbd> 類別的範例：</p>
+
+				<pre class="php"><code>Autoloader::add_core_namespace('Example');
+
+Autoloader::add_classes(array(
+	'Example\\View'  => __DIR__.'/classes/view.php',
+));</code></pre>
+			</article>
+
+			<article>
+				<h3 id="extension_limitations">擴充限制</h3>
+
+				<p>所有來自應用程式的類別可以被擴充。大部份來自套件的類別可以被擴充，但也有少數例外：</p>
+
+				<ul>
+					<li><kbd>Fuel</kbd></li>
+					<li><kbd>Config</kbd></li>
+					<li><kbd>Config_Php</kbd></li>
+					<li><kbd>Config_File</kbd></li>
+					<li><kbd>Config_Interface</kbd></li>
+					<li><kbd>Finder</kbd></li>
+					<li><kbd>Arr</kbd></li>
+					<li><kbd>Input</kbd></li>
+					<li><kbd>Security</kbd></li>
+					<li><kbd>Event</kbd></li>
+					<li><kbd>Event_Instance</kbd></li>
+					<li>以及在你主要的 <kbd>app/config/config.php</kbd> 中使用的任何類別</li>
+				</ul>
+
+				<p>如果你已經在你的配置中啟動分析器，你也不能從套件擴充這些類別：</p>
+
+				<ul>
+					<li><kbd>Cookie</kbd></li>
+					<li><kbd>Session</kbd></li>
+					<li><kbd>Session_Cookie</kbd>（或其他 session 驅動類別，根據你的 session 配置）</li>
+					<li><kbd>Session_Driver</kbd></li>
+					<li><kbd>Date</kbd></li>
+					<li><kbd>Profiler</kbd></li>
+				</ul>
+
+				<p>
+					你可以透過在 <kbd>app/bootstrap.php</kbd> 檔案中手動載入你的套件來繞過這些限制，
+					透過在 <kbd>Fuel::init()</kbd> 呼叫前添加 <kbd>Package::load('mypackagename');</kbd>
+					如果你這樣做，你的套件只不能擴充：
+				</p>
+
+				<ul>
+					<li><kbd>Fuel</kbd></li>
+					<li><kbd>Config</kbd></li>
+					<li><kbd>Package</kbd></li>
+					<li><kbd>Arr</kbd></li>
+					<li><kbd>Finder</kbd></li>
+				</ul>
+
+				<h4>自動載入器</h4>
+				<p>Autoloader 類別是個特例，你只能一次性擴充它做為 <code>Autoloader</code> 及使用。
+					擴充後你必須在 <kbd>app/bootstrap.php</kbd> 檔案裡原本的
+					 <code>Fuel\Core\Autoloader</code> 之後手動請求它。
+					別忘了移除別名核心類別到全域的那一行。</p>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

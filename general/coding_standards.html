@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/coding_standards.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>編碼標準 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="coding_standards.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>編碼標準</h2>
+
+			<p>這些程式碼格式與文件的標準，必須被任何對 Fuel 貢獻的人遵循，
+				任何不符合這些準則的貢獻將不被接受。</p>
+
+			<h3 id="file_formatting">檔案格式</h3>
+
+			<h5 id="closing_php_tag">PHP 結束標籤</h5>
+
+			<p>只包含 PHP 程式碼的文件應該總是省略 PHP 結束標籤（?>）。
+				這可以防止許多難以捉摸的死亡白螢幕。</p>
+
+			<h5 id="indentation">縮排</h5>
+
+			<p>所有縮排應該使用真正的 Tab，而非空格。<br />
+				但對齊縮排後的物件應該使用空格，而非 Tab。</p>
+
+			<pre class="php"><code>		// 縮排 2 個 Tab
+		$var       = 'something';  // 用 Tab 縮排並在值和註解
+		$variable  = 'else';       // 前／後使用空格對齊</code></pre>
+
+			<h5 id="line_endings">行結尾</h5>
+
+			<p>行結尾應為 Unix-style LF。</p>
+
+			<h5 id="file_naming">檔案命名</h5>
+
+			<p>所有檔案名稱必須全小寫，沒有例外。</p>
+
+			<h5 id="encoding">編碼</h5>
+
+			<p>檔案應以 UTF-8 編碼儲存且不應該使用 BOM。</p>
+
+			<h3 id="naming_conventions">命名慣例</h3>
+
+			<h5 id="namespaces">命名空間</h5>
+
+			<p>所有核心類別必須在 Fuel\Core 命名空間底下。</p>
+
+			<pre class="php"><code>namespace Fuel\Core;</code></pre>
+
+			<h5 id="classes">類別</h5>
+
+			<p>類別名稱應該使用底線來分隔單詞，而且類別名稱的每個單詞應以大寫字母開始。
+				然而，在自動載入期間，底線會被轉換成目錄分隔。
+				駝峰式的使用是被勸阻的，但在某些情況下不能防止，
+				當放置類別在一個子目錄時是沒有意義的。</p>
+
+			<pre class="php"><code>namespace Fuel\Core;
+
+class Session
+{
+
+}</code></pre>
+
+			<pre class="php"><code>namespace Fuel\Core;
+
+class Session_Cookie extends Session_Driver
+{
+
+}</code></pre>
+
+			<p>這將會是下列檔案路徑：</p>
+
+			<pre class="php"><code>core/classes/session.php
+core/classes/session/cookie.php</code></pre>
+
+			<h5 id="methods_standards">方法</h5>
+
+			<p>如同類別名稱，方法名稱應該使用底線來分隔單詞，而非駝峰式。
+				方法名稱也應該全部小寫，可見性應始終包括在（public、protected、private）。<br />
+				底線可以被用在名稱的開頭，以明白表示方法是保護／私有，
+				或當你需要方法是公共時，表示它應該被這樣認爲。</p>
+
+			<pre class="php"><code>class Session
+{
+
+	public static function get_flash($name, $data)
+	{
+		// 一些程式碼
+	}
+
+}</code></pre>
+
+			<pre class="php"><code>class View
+{
+
+	// 全域的檢視資料陣列
+	protected static $_global_data = array();
+
+	protected static function capture($view_filename, array $view_data)
+	{
+		// 一些程式碼
+	}
+
+}</code></pre>
+
+			<h5 id="variables">變數</h5>
+
+			<p>變數名稱應該要簡潔並只有小寫字母和底線。循環迭代應該是短的，
+				最好是單一字元。</p>
+
+			<pre class="php"><code>$first_name
+$buffer
+for ($i = 0; $i &lt; $max; $i++)</code></pre>
+
+			<h5 id="constants">常數</h5>
+
+			<p>常數遵循相同的準則如同變數，例外的是，
+				常數應該是全部大寫的。</p>
+
+			<pre class="php"><code>MY_CONSTANT
+TEMPLATE_PATH
+TEXT_DEFAULT</code></pre>
+
+			<h3 id="keywords">關鍵字</h3>
+
+			<p>如 <kbd>true</kbd>、<kbd>false</kbd>、<kbd>null</kbd>、<kbd>as</kbd> 等關鍵字應該全部小寫，
+				因為大寫保留給常數。同樣適用於原始類型，如 <kbd>array</kbd>、<kbd>integer</kbd>、<kbd>string</kbd>。</p>
+
+			<pre class="php"><code>$var = true;
+$var = false;
+$var = null;
+foreach ($array as $key => $value)
+public function my_function(array $array)
+function my_function($arg = null)</code></pre>
+
+			<h3 id="control_structures">控制結構</h3>
+
+			<p>結構關鍵字例如 <kbd>if</kbd>、<kbd>for</kbd>、<kbd>foreach</kbd>、<kbd>while</kbd>、<kbd>switch</kbd> 應該在一個空格後面加參數／變數列表和值。
+				大括號應該被放在新的一行，並且 <kbd>break</kbd>
+				在它的情況也應該有相同的標籤。</p>
+
+			<pre class="php"><code>if ($arg === true)
+{
+	// 做點什麼
+}
+elseif ($arg === null)
+{
+	// 做些其他事情
+}
+else
+{
+	// 捕捉所有的做點什麼
+}
+
+foreach ($array as $key => $value)
+{
+	// 迴圈
+}
+
+for ($i = 0; $i &lt; $max; $i++)
+{
+	// 迴圈
+}
+
+while ($i &lt; $max)
+{
+	// 迴圈
+}
+
+do
+{
+	// 迴圈
+}
+while ($i &lt; $max)
+
+switch ($var)
+{
+	case 'value1':
+		// 做點什麼
+	break;
+	default :
+		// 做點什麼
+	break;
+}</code></pre>
+
+			<h5 id="alternative_if">替代的 if 語句</h5>
+
+			<p>在某些情況下，簡單的條件分配或函式呼叫用一個完整的 <kbd>if</kbd> 語句的程式碼有點過多，
+				你可以使用 PHP 的執行邏輯來使用較短的布林運算子基礎句法。
+				使用 <kbd>and</kbd> 意指第二部份只在第一部份為 true 時獲得計算。
+				使用 <kbd>or</kbd> 意指第二部份只在第一部份為 false 時獲得執行。<br />
+				當 <kbd>if</kbd> 和 <kbd>else</kbd> 兩者都需要時不要使用，只在單一條件語句的情況下使用。</p>
+
+			<pre class="php"><code>// 代替 if (isset($var)) { Config::set('var', $var); }
+isset($var) and Config::set('var', $var);
+
+// 代替 if ( ! isset($var)) { $var = Config::get('var'); }
+isset($var) or $var = Config::get('var');
+
+// 千萬不要這樣做
+Uri::segment(3) and $var = Uri::segment(3);
+Uri::segment(3) or $var = 'default';
+
+// 這樣比較好：
+if (Uri::segment(3))
+{
+	$var = Uri::segment(3);
+}
+else
+{
+	$var = 'default';
+}
+
+// 或這樣：
+$var = Uri::segment(3) ? Uri::segment(3) : 'default';
+// 或實際上是這樣：
+$var = Uri::segment(3) ?: 'default';</code></pre>
+
+			<h3 id="comparison_logical">比較、邏輯運算子</h3>
+
+			<p>函式／方法比較回傳和變數應該是已知的類型，例如一些函式可能回傳 <kbd>false</kbd>，
+				且當此比較回傳類型敏感的運算子如 <kbd>===</kbd> 或 <kbd>!==</kbd>。
+				此外，使用 <kbd>and</kbd> 或 <kbd>or</kbd> 比 <kbd>&amp;&amp;</kbd> 或 <kbd>||</kbd> 來得有可讀性。在某些情況下，
+				如其所需也許會不可避免的使用 <kbd>&amp;&amp;</kbd> 或 <kbd>||</kbd>。當使用 <kbd>!</kbd> 時，應該在兩邊都有空格。</p>
+
+			<pre class="php"><code>if ($var == false and $other_var != 'some_value')
+if ($var === false or my_function() !== false)
+if ( ! $var)</code></pre>
+
+			<h5 id="class_interface">類別／介面宣告</h5>
+
+			<p>類別／介面宣告有下面一行的左大括號：</p>
+
+			<pre class="php"><code>class Session
+{
+
+}</code></pre>
+			<p>類別是空的情況下，括號將在同一行上如同定義：</p>
+
+			<pre class="php"><code>class Empty_Class { }</code></pre>
+
+			<h5 id="function_method">函式／方法／閉包（closure）宣告</h5>
+
+			<p>函式／方法／閉包（closure）的左大括號必須總是在新的一行開始，
+				其結構具有相同的縮排。</p>
+
+			<pre class="php"><code>class Session
+{
+
+	public static function get_flash($name, $data)
+	{
+		$closure = function($a, $b)
+		{
+			// 你的閉包（closure）程式碼
+		}
+	}
+
+}</code></pre>
+
+			<h5 id="variables">變數</h5>
+
+			<p>當初始化變數時，應每一行宣告一個變數。為了提高程式碼的可讀性，
+				這些都應該是獨立的一行。適當的對齊值和註解。</p>
+
+			<pre class="php"><code>$var        = ''; // 每一個都在自己的行處理
+$other_var  = ''; // 每一個都在自己的行處理</code></pre>
+
+			<h5 id="brackets_parenthesis">中括號和括號</h5>
+
+			<p>左中括號／括號前後應該沒有空格，右中括號／括號前不應該有空格。</p>
+
+			<pre class="php"><code>$array = array(1, 2, 3, 4);
+$array['my_index'] = 'something';
+for ($i = 0; $i < $max; $i++)</code></pre>
+
+			<h5 id="quotation">字串引號</h5>
+
+			<p>多用單引號，少用雙引號。</p>
+
+			<h5 id="concatenation">連接</h5>
+
+			<p>在組合字串連接部分的兩邊不應該包含空格。</p>
+
+			<pre class="php"><code>// 是
+$string = 'my string '.$var.' the rest of my string';
+
+// 否
+$string = 'my string ' . $var . ' the rest of my string';</code></pre>
+
+			<h5 id="operators">運算子</h5>
+
+			<pre class="php"><code>$var = 'something';
+if ($var == 'something') // 在邏輯運算子前後加上空格
+$var = $some_var + $other_var; // 在數學運算子前後加上空格
+$var++; // 遞增前無空格
+++$var; // 遞增後無空格</code></pre>
+
+			<h5 id="dot-notation">陣列句點表示法</h5>
+
+			<p>
+				雖然嚴格來說它不是一個編碼標準，但在框架範圍內的類別和此文件中大量使用，
+				並且因為它不是一個常見的 PHP 表示法，它可能會混淆初使用框架的人們。
+			</p>
+			<pre class="php"><code>// 當你看見 "always_load.packages = array()"，它是以下的簡寫：
+array("always_load" => array("packages" => array(...) ) );
+</code></pre>
+
+			<p>此表示法被用在 Arr 類別、以及 Lang、Config 和 Session 類別，以快速從一個多維陣列訪問個別元素。</p>
+			<pre class="php"><code>// 當你有一個陣列結構像這樣
+$array = array(
+    "always_load" => array(
+        "packages" => array(
+            "orm",
+            "package" => "/my/special/package.php",
+        )
+     )
+);
+
+// 那麼這將回傳 "/my/special/package.php":
+$path = Arr::get($array, 'always_load.packages.package');
+</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

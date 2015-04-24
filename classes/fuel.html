@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/fuel.html';
+		var path = './../';
+		var class_prefix = "Fuel::";
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>Fuel - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="fuel.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Fuel 類別</h2>
+
+			<p>
+				Fuel 類別包含 Fuel 框架的核心方法。
+				此類別能使用在你的應用程式的公開方法都記載在此。
+				所有其他的方法僅供內部使用，且不應被使用。</p>
+
+			<h3 id="class_constants">類別常數</h3>
+
+			<p style="margin-bottom:10px;">環境常數，這些被用於你的 config.php 以定義應用程式環境：</p>
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>名稱</th>
+						<th>類型</th>
+						<th>值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>TEST</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'test'</code></pre></td>
+						<td>
+							識別 TEST 環境。
+						</td>
+					</tr>
+					<tr>
+						<th>DEVELOPMENT</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'development'</code></pre></td>
+						<td>
+							識別 DEVELOPMENT 環境。
+						</td>
+					</tr>
+					<tr>
+						<th>STAGING</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'staging'</code></pre></td>
+						<td>
+							識別 STAGING 環境。
+						</td>
+					</tr>
+					<tr>
+						<th>PRODUCTION</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'production'</code></pre></td>
+						<td>
+							識別 PRODUCTION 環境。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p id="log_constants" style="margin-bottom:10px;">紀錄常數，這些被用於 <a href="log.html">Log</a> 類別及 <a href="log.html#function_logger">logger():</a> 函式。</p>
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>名稱</th>
+						<th>類型</th>
+						<th>值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>L_NONE</th>
+						<td>整數</td>
+						<td><pre class="php"><code>0</code></pre></td>
+						<td>
+							紀錄等級 0：不紀錄。
+						</td>
+					</tr>
+					<tr>
+						<th>L_ERROR</th>
+						<td>整數</td>
+						<td><pre class="php"><code>1</code></pre></td>
+						<td>
+							表示紀錄錯誤訊息。
+						</td>
+					</tr>
+					<tr>
+						<th>L_WARNING</th>
+						<td>整數</td>
+						<td><pre class="php"><code>2</code></pre></td>
+						<td>
+							表示紀錄警告訊息。
+						</td>
+					</tr>
+					<tr>
+						<th>L_DEBUG</th>
+						<td>整數</td>
+						<td><pre class="php"><code>3</code></pre></td>
+						<td>
+							表示紀錄除錯訊息。
+						</td>
+					</tr>
+					<tr>
+						<th>L_INFO</th>
+						<td>整數</td>
+						<td><pre class="php"><code>4</code></pre></td>
+						<td>
+							表示紀錄資訊訊息。
+						</td>
+					</tr>
+					<tr>
+						<th>L_ALL</th>
+						<td>整數</td>
+						<td><pre class="php"><code>5</code></pre></td>
+						<td>
+							所有紀錄等級。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p style="margin-bottom:10px;">其他常數：</p>
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>名稱</th>
+						<th>類型</th>
+						<th>值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>VERSION</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'<script type="text/javascript">document.write(DocVersion);</script>'</code></pre></td>
+						<td>
+							目前 Fuel 安裝的版本。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3>類別特性</h3>
+
+			<p style="margin-bottom:10px;">請注意，雖然這些特性定義為 public，你不應該無故改變它們。</p>
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>名稱</th>
+						<th>靜態</th>
+						<th>類型</th>
+						<th>值</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>$initialized</th>
+						<td>是</td>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							表示框架是否已經初始化。
+						</td>
+					</tr>
+					<tr>
+						<th>$env</th>
+						<td>是</td>
+						<td>字串</td>
+						<td><pre class="php"><code>Fuel::DEVELOPMENT</code></pre></td>
+						<td>
+							框架所運行的環境，必須是上面提到的環境常數之一。
+						</td>
+					</tr>
+					<tr>
+						<th>$profiling</th>
+						<td>是</td>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							如果為 true，分析器會被啟用。
+						</td>
+					</tr>
+					<tr>
+						<th>$locale</th>
+						<td>是</td>
+						<td>字串</td>
+						<td><pre class="php"><code>'en_US'</code></pre></td>
+						<td>
+							目前定義的語言環境。
+						</td>
+					</tr>
+					<tr>
+						<th>$timezone</th>
+						<td>是</td>
+						<td>字串</td>
+						<td><pre class="php"><code>'UTC'</code></pre></td>
+						<td>
+							目前定義的時區。
+						</td>
+					</tr>
+					<tr>
+						<th>$encoding</th>
+						<td>是</td>
+						<td>字串</td>
+						<td><pre class="php"><code>'UTF8'</code></pre></td>
+						<td>
+							目前定義的字符集編碼。
+						</td>
+					</tr>
+					<tr>
+						<th>$is_cli</th>
+						<td>是</td>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							如果是 true，框架運行在 CLI 模式。
+						</td>
+					</tr>
+					<tr>
+						<th>$is_test</th>
+						<td>是</td>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							如果是 true，框架運行在單元測試模式。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<article>
+				<h4 class="method" id="method_load">load($file)</h4>
+				<p><strong>load</strong> 方法載入（引入）一個所給的檔案，並回傳結果。例如這個方法被用於載入配置檔案，會回傳一個配置設定的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$file</kbd></th>
+									<td><i>必要</i></td>
+									<td>要被載入的檔案名稱</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 載入一個 PHP 檔案
+if (Fuel::load('myfile.php'))
+{
+	echo "MyFile was loaded successfully";
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">請注意，如果引入的文件不包含一個 <strong>return</strong> 語句，load() 如果載入成功將回傳 <strong>1</strong>，或是檔案無法被載入回傳 <strong>0</strong>！</p>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

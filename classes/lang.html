@@ -1,0 +1,525 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/lang.html';
+		var path = './../';
+		var class_prefix = "Lang::";
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>Lang - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="lang.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Lang 類別</h2>
+
+			<p>Lang 類別能讓你在你的應用程式中，使用語言檔案設定語言變數。</p>
+
+			<p>
+				預設語言是 <code>en</code>，設定在 <kbd>app/config/config.php</kbd>。
+				使用 <a href="config.html#method_set">Config set 方法</a>去變更值。
+			</p>
+			<pre class="php"><code>Config::set('language', 'cy');</code></pre>
+			<p>
+				你也可以在你的配置定義一個備用語言，它是語言代碼，或一個語言代碼的陣列。
+				備用用於只要你載入語言檔案，
+				且該指定語言的檔案不存在時。
+			</p>
+
+			<h3 id="multi_lang">多語言支援</h3>
+
+			<p>
+				Lang 類別支援多個語言，可同時使用。預設情況下，
+				目前設定的語言是用來載入檔案和取回語言字串，但你可以使用上述的方法動態切換，
+				或藉由在 Lang 類別其中之一的方法呼叫時，指定所需的語言代碼。
+			</p>
+
+			<h3 id="lang_groups">Lang 檔案類型</h3>
+
+			你可以使用不同的檔案佈局來儲存你的語言檔案，佈局類型是由副檔名決定：
+			<ul>
+				<li>
+					PHP。預設類型，一個 PHP 檔案應該回傳一個陣列結構。
+					<pre class="php"><code> return array('key' => 'value');</code></pre>
+				</li>
+				<li>
+					INI。ini 檔案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/INI_file">此頁</a>。
+					<pre class="ini"><code> [group]
+key=value</code></pre>
+				</li>
+				<li>
+					YAML。yaml 檔案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/YAML">此頁</a>。
+					<pre class="yaml"><code> group:
+   key: value</code></pre>
+				</li>
+				<li>
+					JSON。json 檔案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/JSON">此頁</a>。
+					<pre class="javascript"><code> {
+"group" :
+    {
+		"key": "value"
+	}
+}</code></pre>
+				</li>
+				<li>
+					DB。使用以下資料表結構：
+					<pre class="php"><code>  CREATE TABLE IF NOT EXISTS `lang` (
+  `identifier` char(100) NOT NULL,
+  `language` char(10) NOT NULL,
+  `lang` longtext NOT NULL,
+  `hash` char(13) NOT NULL,
+  PRIMARY KEY (`identifier`, `language`)
+)</code></pre>
+					預設情況下，它會使用名為 'lang' 的資料表。你可以透過在 <code>app/config/config.php</code> 中定義資料表名稱來覆寫，
+					使用 <strong>lang.table_name</strong> 鍵。
+				</li>
+			</ul>
+
+			<p>如果你沒有指定檔案類型，Lang::load() 將預設為 'php' 類型。</p>
+
+			<article>
+				<h4 class="method" id="method_load">load($file, $group = null, $language = null, $overwrite = false, $reload = false)</h4>
+				<p><strong>load</strong> 方法能讓你載入一個語言檔案。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$file</kbd></th>
+									<td><i>必要</i></td>
+									<td>所需的文件路徑。你可以加上一個命名空間的前綴以載入一個已載入的套件或模組的配置檔案。</td>
+								</tr>
+								<tr>
+									<th><kbd>$group</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設定要使用的語言群組。</td>
+								</tr>
+								<tr>
+									<th><kbd>$language</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設定要載入的特定語言。</td>
+								</tr>
+								<tr>
+									<th><kbd>$overwrite</kbd></th>
+									<td><kbd>false</kbd></td>
+									<td>（選擇性）如果設定為 <kbd>true</kbd>，被載入的語言項目將與已被載入的項目以非遞迴方式合併。一個多維陣列將被覆寫陣列值，而非合併。</td>
+								</tr>
+								<tr>
+									<th><kbd>$reload</kbd></th>
+									<td><kbd>false</kbd></td>
+									<td>（選擇性）如果設定為 <kbd>true</kbd>，請求語言檔案的重載是強制的，抹去快取的與被載入語言檔案相關的語言項目。</td>
+ 								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 語言檔案的例子：
+return array(
+	'hello' => 'Hello :name',
+	'something'=> 'something :name!',
+	'test'=> array('hello' => 'Hello', 'something' => 'Plop') // 群組
+);
+
+// 載入 example.php。
+// 請注意：如果在配置裡沒有語言被設定，將會退回至 English。
+Lang::load('example');
+
+// 將載入所給的檔案進 'test' 群組。
+Lang::load('example', 'test');
+
+// 輸出 Plop
+$this->output = Lang::get('test.test.something');
+
+// 將從模組 'foo' 載入 example 語言檔案進 'bar' 群組。
+Lang::load('foo::example', 'bar');
+
+// 將載入 example 語言檔案的義大利語。
+// 如果不存在，它會載入已配置的語言
+Lang::load('foo::example', 'bar', 'it');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get">get($line, $params = array(), $default = null, $language = null)</h4>
+				<p><strong>get</strong> 方法能讓你從語言檔案取得特定行。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$line</kbd></th>
+									<td><i>必要</i></td>
+									<td>所需行的識別符。</td>
+								</tr>
+								<tr>
+									<th><kbd>$parameters</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>設定一個能被傳遞至行的參數陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果找不到 $line 要回傳的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$language</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>應該被取回行的語言代碼。如果沒給，目前活躍的語言將被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。如果找到是字串，否則是 false</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+              <pre class="php"><code>// 給這個 lang 檔案
+return array('hello' => 'Hello :name');
+// 輸出 Hello world
+$this->output = Lang::get('hello', array('name' => 'world'));
+
+// 輸出 Plop
+$this->output = Lang::get('test.something');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set($line, $value, $group = null, $language = null)</h4>
+				<p><strong>set</strong> 方法能讓你設定一個特定行至語言檔案。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$line</kbd></th>
+									<td><i>必要</i></td>
+									<td>所需行的識別符。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>設定行的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$group</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設定要使用的語言組。</td>
+								</tr>
+								<tr>
+									<th><kbd>$language</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>應該被設定行的語言代碼。如果沒給，目前活躍的語言將被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 true
+Lang::set('hello', 'Ahoy!');
+
+// 使用群組
+Lang:set('hello', 'Ahoy!', 'test');
+
+// 也可如上運作
+Lang::load('test', 'test');
+Lang::set('hello', 'Ahoy!');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_save">save($file, $lang, $language = null)</h4>
+				<p>
+					<strong>save</strong> 方法儲存一個語言檔案到系統，它從語言目錄中搜尋請求檔案裡的請求語言。
+					如果沒有存在的檔案被找到，語言檔案會被建立在 APPPATH 語言目錄。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$file</kbd></th>
+									<td><i>必要</i></td>
+									<td>指向相對於配置目錄的配置檔案路徑，不包括副檔名（假設是".php"）。你可以用命名空間前綴它，來從已載入的套件或模組載入一個配置檔案。</td>
+								</tr>
+								<tr>
+									<th><kbd>$lang</kbd></th>
+									<td><i>必要</i></td>
+									<td>如果這是一個字串，它指定一個群組名稱來儲存。如果它是一個陣列，它被認為包含要儲存的語言字串。</td>
+								</tr>
+								<tr>
+									<th><kbd>$language</kbd></th>
+									<td><code>null</code></td>
+									<td>要儲存檔案的語言代碼，如果沒給，無論目前設定的語言代碼是什麼，它將被儲存。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>如果檔案被儲存為 <kbd>true</kbd>，如果錯誤發生為 <kbd>false</kbd>。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 載入 "custom" 語言檔案中名為 "foo" 的群組。
+Lang::load('custom', 'foo');
+
+// 更新一些語言項目
+Lang::set('foo.key', $value);
+
+// 儲存已更新的語言群組 'foo'（注意：它將儲存在群組內的所有東西！）
+Lang::save('custom', 'foo');
+
+// 儲存已更新的語言群組 'bar' 到模組 'foo' 裡的語言檔案 'custom'。
+Lang::save('foo::custom', 'bar');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete($item, $group = null, $language = null)</h4>
+				<p><strong>delete</strong> 方法能讓你從 <em>已載入</em> 的語言檔案刪除特定行。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$item</kbd></th>
+									<td><i>必要</i></td>
+									<td>所需行的識別符。</td>
+								</tr>
+								<tr>
+									<th><kbd>$group</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設定要使用的語言組。</td>
+								</tr>
+								<tr>
+									<th><kbd>$language</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>應該被刪除行的語言代碼。如果沒給，目前活躍的語言將被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 刪除 'hello' 語言鍵
+Lang::delete('hello');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					請注意，這樣會刪除儲存在語言類別中的語言項目，<em>不會</em> 從磁碟上的語言檔案刪除！
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_lang">get_lang()</h4>
+				<p><strong>get_lang</strong> 方法能讓你取回目前活躍的語言。通常會跟 <a href="config.html#method_get">Config::get('language')</a> 一樣。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td><i>無</i></td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><kbd>字串</kbd>，目前活躍的語言。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 將回傳目前活躍的語言，最可能是 'en'
+Lang::get_lang();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h3 id="procedural_helpers">程序助手</h3>
+
+			<article>
+				<h4 id="function___">__($string, $params = array())</h4>
+				<p><strong>__</strong> 函式是 <a href="lang.html#method_get">Lang::get</a> 的別名。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$string</kbd></th>
+									<td><i>必要</i></td>
+									<td>所需行的識別符。</td>
+								</tr>
+								<tr>
+									<th><kbd>$parameters</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>設定一個能被傳遞至行的參數陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串，來自 <a href="lang.html#method_get">Lang::get</a> 的結果</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 輸出 Hello world
+$this->output = __('hello', array('name' => 'world');
+
+// 輸出 Plop
+$this->output = __('test.something');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

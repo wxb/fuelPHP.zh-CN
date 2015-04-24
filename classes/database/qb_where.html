@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/combined.css">
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/qb_where.html';
+		var path = './../../';
+		var class_prefix = 'Query_Builder_Where::';
+	</script>
+	<script src="../../assets/js/combined.js"></script>
+	<title>Query Builder Where - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="qb_where.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="introduction">Query_Builder_Where 類別</h2>
+
+			<p>
+				<strong>Query_Builder_Where</strong> 類別處理為查詢建立條件和限制邏輯，
+				每一種類型的 where 語句（包括 BETWEEN 和 IN 等等……）也在此處理。此類別不是實例化的（它是抽象）
+				但被分享相同函式的其他類別所擴充，這些類別是：
+			</p>
+
+			<ul>
+				<li><a href="qb_select.html">Query_Builder_Select</a></li>
+				<li><a href="qb_update.html">Query_Builder_Update</a></li>
+				<li><a href="qb_delete.html">Query_Builder_Delete</a></li>
+			</ul>
+
+			<p id="returned_instance" class="note">
+				<strong>請注意：</strong> 因為被上列類別擴充，回傳的「目前實例」將會是那些其中之一。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_where">where()</h4>
+				<p><strong>where</strong> 方法是 <a href="qb_where.html#method_and_where">and_where</a> 的別名。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_and_where">and_where($column, $op = null, $value = null)</h4>
+				<p><strong>and_where</strong> 方法附加一個 WHERE 語句。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">類型</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$column</kbd></th>
+										<td><em>混合</em></td>
+										<td><em>必要</em></td>
+										<td>行名稱或 array($column, $alias)、物件或回呼（callback）</td>
+									</tr>
+									<tr>
+										<th><kbd>$op</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>邏輯操作符：=、!=、IN、BETWEEN 和 LIKE。如果沒有提供此將退回到 '='</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>行值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定第一個 where 語句
+$query->where('name', '!=', 'John');
+
+// 然後附加一個新的條件
+$query->and_where('surname', 'Doe');
+
+// 透過回呼（callback）巢狀 where
+$query->where(function($query){
+	$query->where('email', 'jim@jim.com')
+		->or_where('email', 'haha@joke.com');
+});
+
+// 結果如下：
+// SELECT * FROM `users` WHERE `name` != "John" AND `surname` = "Doe"
+// AND (`email` = "jim@jim.com" OR `email` = "haha@joke.com")
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_or_where">or_where($column, $op = null, $value = null)</h4>
+				<p><strong>or_where</strong> 方法附加一個 OR WHERE 語句。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">類型</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$column</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>行名稱或 array($column, $alias)、物件或回呼（callback）</td>
+									</tr>
+									<tr>
+										<th><kbd>$op</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>邏輯操作符：=、!=、IN、BETWEEN。如果沒有提供此將退回到 '='</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>行值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定第一個 where 語句
+$query->where('name', '=', 'John');
+
+// 然後附加一個新的條件
+$query->or_where('surname', 'Doe');
+
+// 透過回呼（callback）巢狀 where
+$query->or_where(function($query){
+	$query->where('email', 'jim@jim.com')
+		->and_where('id', 4);
+});
+
+// 結果如下：
+// SELECT * FROM `users` WHERE `name` != "John" OR `surname` = "Doe"
+// OR (`email` = "jim@jim.com" AND `id` = 4)
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_where_open">where_open()</h4>
+				<p><strong>where_open</strong> 方法是 <a href="qb_where.html#method_and_where_open">and_where_open</a> 的別名。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_and_where_open">and_where_open()</h4>
+				<p><strong>and_where_open</strong> 方法開啟一個 SQL 閉包（closure）並使用 AND 附加它。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<em>無</em>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定一個 where 語句
+$query->where('name', 'john');
+
+// 開啟一個閉包（closure）
+$query->and_where_open();
+
+// SELECT * FROM `users` WHERE `name` = "John" AND (
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_or_where_open">or_where_open()</h4>
+				<p><strong>or_where_open</strong> 方法開啟一個 SQL 閉包（closure）並使用 OR 附加它。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<em>無</em>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定一個 where 語句
+$query->where('name', 'john');
+
+// 開啟一個閉包（closure）
+$query->or_where_open();
+
+// SELECT * FROM `users` WHERE `name` = "John" OR (
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_where_close">where_close()</h4>
+				<p><strong>where_close</strong> 方法是 <a href="qb_where.html#method_and_where_close">and_where_close</a> 的別名。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_and_where_close">and_where_close()</h4>
+				<p><strong>and_where_close</strong> 方法開啟一個 SQL 閉包（closure）。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<em>無</em>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定一個 where 語句
+$query->where('email', 'like', '%@example.com');
+
+// 開啟一個閉包（closure）
+$query->and_where_open();
+
+// 設定一個 where 語句
+$query->where('name', 'John');
+$query->or_where('surname', 'Doe');
+
+$query->and_where_close();
+// SELECT * FROM `users`
+// WHERE `email` LIKE "%example.com" AND (`name` = "John" OR `surname` = "Doe")
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_or_where_close">or_where_close()</h4>
+				<p><strong>or_where_close</strong> 方法關閉一個 SQL 閉包（closure）。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<em>無</em>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定一個 where 語句
+$query->where('email', 'like', '%@example.com');
+
+// 開啟一個閉包（closure）
+$query->or_where_open();
+
+// 設定一個 where 語句
+$query->where('name', 'John');
+$query->and_where('surname', 'Doe');
+
+$query->or_where_close();
+// SELECT * FROM `users` WHERE `email` LIKE "%example.com" OR (`name` = "John" AND `surname` = "Doe")
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_order_by">order_by($column, $direction = NULL)</h4>
+				<p><strong>order_by</strong> 方法為結果／執行設定排序。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$column</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>必要</em></td>
+										<td>行名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$direction</kbd></th>
+										<td><em>字串</em></td>
+										<td><em>null</em></td>
+										<td>可以設定為 <em>'asc'</em> 或 <em>'desc'</em>。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定排序
+$query->order_by('name');
+$query->order_by('email', 'asc');
+$query->order_by('surname', 'desc');
+
+// SELECT * FROM `users` ORDER BY `name`, `email` ASC, `surname DESC
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_limit">limit($number)</h4>
+				<p><strong>limit</strong> 方法限制選擇／影響的列數。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$number</kbd></th>
+										<td><em>整數</em></td>
+										<td><em>必要</em></td>
+										<td>列數</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳<a href="qb_where.html#returned_instance">目前實例</a>。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 預處理一個 select 語句
+$query = DB::select('*')->from('users');
+
+// 設定限制
+$query->limit(10);
+
+// SELECT * FROM `users` LIMIT 10
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

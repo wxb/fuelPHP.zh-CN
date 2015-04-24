@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/num.html';
+		var path = './../';
+		var class_prefix = "Num::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Num - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="num_class">Num 類別</h2>
+
+			<p>Num 類別提供額外的格式化方法與數值協作</p>
+
+			<h3 id="config">配置</h3>
+
+			<p>
+				類別提供不同的方法以格式化某些類型的數字。
+				格式是字串，其中 0 代表回傳值的數字部分。
+			</p>
+
+			<p class="note">
+				<strong>請注意：</strong>當變更 Num 配置，複製檔案至 app/config/num.php
+				並變更設定，這能易於升級而不失去你的自訂設定。
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>鍵</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>phone</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'(000) 000-0000'</code></pre></td>
+						<td>
+							預設的電話號碼格式。
+						</td>
+					</tr>
+					<tr>
+						<th>smart_phone</th>
+						<td>陣列</td>
+						<td><pre class="php"><code>array(
+	7  => '000-0000',
+	10 => '(000) 000-0000',
+	11 => '0 (000) 000-0000',
+),</code></pre></td>
+						<td>
+							基於號碼長度的電話號碼格式。（長度 => 格式）
+						</td>
+					</tr>
+					<tr>
+						<th>exp</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'00-00'</code></pre></td>
+						<td>
+							信用卡到期日的預設格式。
+						</td>
+					</tr>
+					<tr>
+						<th>credit_card</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'00-00'</code></pre></td>
+						<td>
+							信用卡號碼遮罩預設格式。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<article>
+				<h4 class="method" id="method_bytes">bytes($size = 0)</h4>
+				<p>
+					<strong>bytes</strong> 方法轉換數字（檔案大小）為位元組值。
+					檔案大小定義的格式為：SB，其中 S 是大小（1、8.5、300等），B 是位元組單位（K、MiB、GB、等）。
+					所有有效的位元組單位被定義於 <em>core/lang/en/byte_units.php</em>
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$size</kbd></th>
+										<th><em>字串｜整數｜浮點數</em></th>
+										<td><pre class="php"><code>0</code></pre></td>
+										<td>要轉換的字串。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>浮點數</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::bytes('200K');  // 204800
+echo Num::bytes('5MiB');  // 5242880
+echo Num::bytes('1000');  // 1000
+echo Num::bytes('2.5GB'); // 2684354560</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_format_bytes">format_bytes($bytes = 0, $decimals = 0)</h4>
+				<p>
+					<strong>format_bytes</strong> 方法轉換位元組數字為可讀的格式。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$bytes</kbd></th>
+										<th><em>整數</em></th>
+										<td><pre class="php"><code>0</code></pre></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$decimals</kbd></th>
+										<th><em>整數</em></th>
+										<td><pre class="php"><code>0</code></pre></td>
+										<td>要四捨五入的小數位數。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串｜false</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::format_bytes('204800');     // 200 kB
+echo Num::format_bytes('214901', 1);  // 209.9 kB
+echo Num::format_bytes('2249010', 1); // 2.1 MB
+echo Num::format_bytes('badbytes');   // false
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_quantity">quantity($num, $decimals = 0)</h4>
+				<p>
+					<strong>quantity</strong> 方法轉換數字為可讀的格式。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$num</kbd></th>
+										<th><em>整數</em></th>
+										<td><em>必要</em></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$decimals</kbd></th>
+										<th><em>整數</em></th>
+										<td><pre class="php"><code>0</code></pre></td>
+										<td>要四捨五入的小數位數。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串｜false</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::quantity(7000);        // 7K
+echo Num::quantity(7500);        // 8K
+echo Num::quantity(7500, 1);     // 7.5K
+echo Num::quantity('badnumber'); // false
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_format">format($string = '', $format = '')</h4>
+				<p>
+					<strong>format</strong> 方法轉換數字為所給的格式。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$format</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>格式。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::format('1234567890', '(000) 000-0000'); // (123) 456-7890
+echo Num::format('1234567890', '000.000.0000');   // 123.456.7890
+echo Num::format('1234567890', '000.000.0000');   // 123.456.7890
+echo Num::format('1', '000.000.000');             // 1..
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_mask_string">mask_string($string = '', $format = '', $ignore = ' ')</h4>
+				<p>
+					<strong>mask_string</strong> 方法轉換數字為所給的格式。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$format</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>格式。</td>
+									</tr>
+									<tr>
+										<th><kbd>$ignore</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>要忽略的字元。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::mask_string('1234567812345678', '************0000');
+// ************5678
+
+echo Num::mask_string('1234567812345678', '**** **** **** 0000');
+// **** **** **** 5678
+
+echo Num::mask_string('1234567812345678', '**** - **** - **** - 0000', ' -');
+// **** - **** - **** - 5678
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_format_phone">format_phone($string = '', $format = null)</h4>
+				<p>
+					<strong>format_phone</strong> 方法轉換數字為所給的格式。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$format</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>格式。當 <em>null</em> 時預設指向 <strong>format_phone</strong> 配置設定。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::format_phone('0612345678');
+// (061) 234 5678
+
+echo Num::format_phone('0612345678', '(00) 000 000 00');
+// (06) 123 456 78
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_smart_format_phone">smart_format_phone($string)</h4>
+				<p>
+					<strong>smart_format_phone</strong> 方法基於號碼長度，
+					轉換數字為電話號碼格式。
+				</p>
+				<p class="note">
+					<strong>請注意：</strong> 數字依據長度被格式化，
+					這些定義在 <a href="#config">num 配置</a>。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<th><em>字串</em></th>
+										<td><em>必要</em></td>
+										<td>要格式化的數字。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::smart_format_phone('1234567');
+// 123-4567
+
+echo Num::smart_format_phone('01234567890');
+// 0 (123) 456-7890
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_format_exp">format_exp($string, $format = null)</h4>
+				<p>
+					<strong>format_exp</strong> 方法轉換數字為信用卡到期日字串。
+				</p>
+				<p class="note">
+					<strong>請注意：</strong> 此方法預計提供 4 位數。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<th><em>字串</em></th>
+										<td><em>必要</em></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$format</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>格式。當 <em>null</em> 時預設指向 <strong>exp</strong> 配置設定。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::format_exp('1234');
+// 12-34
+
+echo Num::format_exp('1234', '00/00');
+// 12/34
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_mask_credit_card">mask_credit_card($string, $format = null)</h4>
+				<p>
+					<strong>mask_credit_card</strong> 方法遮罩一組信用卡號碼。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>''</code></pre></td>
+										<td>要格式化的數字。</td>
+									</tr>
+									<tr>
+										<th><kbd>$format</kbd></th>
+										<th><em>字串</em></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>格式。當 <em>null</em> 時預設指向 <strong>credit_card</strong> 配置設定。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>echo Num::mask_credit_card('1234263583742938');
+// **** **** **** 2938
+
+echo Num::mask_credit_card('1234123412341234', '0000 **** **** ****');
+// 1234 **** **** ****</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

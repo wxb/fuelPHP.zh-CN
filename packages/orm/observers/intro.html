@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/observers/intro.html';
+		var path = './../../../';
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>簡介 - 觀察者 - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Orm</h2>
+
+			<p>Orm 是 <a href="http://en.wikipedia.org/wiki/Object_relational_mapper" target="_blank">物件關聯對映（Object
+				Relational Mapper）</a> 的簡寫，它做兩件事：<br />對應你資料庫裡的資料列到物件，
+				並能讓你在這些物件之間建立關係。<br />
+				它緊隨 <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">活動記錄模式（
+				Active Record Pattern）</a>，但也受到其他系統的影響。</p>
+
+			<article>
+				<h3 id="intro">觀察者：簡介</h3>
+
+				<p>一個事件基底系統能讓你添加行為到指定事件。當一個事件被觀察，
+					Orm 將自動呼叫所有添加的觀察者，去看是否有任何事情要它們去做。</p>
+
+				<ul>
+					<li><a href="intro.html#add_observers">添加觀察者到你的模型</a></li>
+					<li><a href="included.html">包含的觀察者</a></li>
+					<li><a href="creating.html">建立你自己的觀察者</a></li>
+				</ul>
+			</article>
+
+			<article id="add_observers">
+				<h3 id="adding">添加觀察者到你的模型</h3>
+
+				<p>你可以用兩種方式添加觀察者：只添加名稱讓觀察者在所有事件被呼叫，
+					或帶著觀察者做為名稱，以及一個要讓觀察者被呼叫的特定事件陣列。<br />
+					當觀察者與模型在相同命名空間並且以 <kbd>Observer_</kbd> 前綴時，
+					你可以略去 "Observer_" 前綴，其他情況下你必須提供完整的類別名稱。</p>
+
+				<pre class="php"><code>class Model_Article
+{
+	protected static $_observers = array(
+		'example', // 將為所有事件呼叫 Observer_Example 類別
+		'Orm\\Observer_CreatedOn' => array(
+			'events' => array('before_insert'), // 將只在 before_insert 事件呼叫 Orm\Observer_CreatedOn
+		)
+	);
+}</code></pre>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

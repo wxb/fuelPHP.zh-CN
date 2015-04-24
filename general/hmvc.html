@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/hmvc.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>HMVC 請求 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="hmvc.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>HMVC 請求</h2>
+
+			<p>
+				HMVC 請求是一個很好的方式來分離邏輯和重複使用控制器邏輯到多個地方。
+				常見的用法之一是當你使用一個主題或樣板引擎來產生你的頁面時，
+				每一個頁面分成幾個區塊，而區塊被部件填充。
+				藉由使用模組產生部件的輸出，你可使用易於重複使用的元件，建立一個高度模組化的應用程式。
+			</p>
+
+			<p>你使用 <a href="../classes/request/request.html">Request</a> 類別呼叫一個模組控制器方法：</p>
+			<pre class="php"><code>// 取回一個控制器的輸出
+$widget = Request::forge('mycontroller/mymethod/parms')->execute();
+echo $widget;
+
+// 或取回一個模組的輸出
+$widget = Request::forge('mymodule/mycontroller/mymethod/parms', false)->execute();
+echo $widget;
+
+// 而如果你需要傳遞一些資料
+$widget = Request::forge('mymodule/mycontroller/mymethod/parms', false)->execute(array('tree'=>'apple'));
+echo $widget;
+
+</code></pre>
+			<p class="note">
+				預設情況下，所有的請求是由 Fuel 的路由引擎處理。如果你想要請求一些不可路由的東西
+				（例如，因為你不希望瀏覽器去請求它），你應該傳遞 '<strong>false</strong>' 做為第二個參數到
+				forge() 呼叫。如果你不這樣做，當你執行該請求時，你將以一個 404 錯誤結束！
+			</p>
+
+			<p>
+				在 HMVC 請求中載入檢視與在一般請求中是相同的，且 HMVC 請求的控制器存取，
+				藉由瀏覽器也同樣平易近人。然而，在一些情況下，你可能不希望元件（例如，一個部件）
+				透過瀏覽器被存取。在這種情況下，你將想要檢查是否請求是透過 HMVC 或瀏覽器。
+				以下範例告訴你如何檢查一個 HMVC 請求：
+			</p>
+
+			<pre class="php"><code>&lt;?php
+
+class Controller_Widget extends Controller
+{
+
+	public function action_show()
+	{
+		if( ! Request::is_hmvc())
+		{
+			// 這是主要的請求
+		}
+		else
+		{
+			// 這是一個 HMVC 請求
+		}
+	}
+
+}</code></pre>
+
+			<h3>404 在 HMVC 請求期間</h3>
+
+			<p>
+				當 404 發生在一個 HMVC 請求期間，一個 <kbd>HttpNotFoundException</kbd> 被拋出。如果未被捕捉到，
+				它將觸發框架預設 404 頁面的載入。然而，你可以避免這樣並且自己處理
+				404：
+			</p>
+
+			<pre class="php"><code>try
+{
+	\Request::forge('this_will_fail');
+}
+catch (HttpNotFoundException $e)
+{
+	// 處理它
+}
+</code></pre>
+
+			<h3>穿越 Request 實例</h3>
+
+			<p>如果你想存取其他 Requests，你可以使用兩種方法穿越它們：
+				<kbd>$request->parent()</kbd> 和 <kbd>$request->children()</kbd>。parent 是在目前 Request
+				被建立（給主要 Request 的 <kbd>null</kbd>）期間的 Request。children 是在目前 Request
+				期間建立的所有 Request。</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

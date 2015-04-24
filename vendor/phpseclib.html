@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'vendor/phpseclib.html';
+		var path = './../';
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>提供者補充 - PHPSecLib - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>PHPSecLib</h2>
+
+			<h3>簡介</h3>
+
+			<p>
+				PHP 安全通信函式庫（The PHP Secure Communications Library）包含了 LGPL 許可的純 PHP 實現任意精度的整數，
+				充分 PKCS#1（v2.1）標準的 RSA、DES、3DES、RC4、Rijndael、AES、SSH-1、SSH-2、和 SFTP。本書討論如何使用它們。
+			</p>
+
+			<h3>文件</h3>
+
+			<p>你可以在<a href="http://phpseclib.sourceforge.net/documentation/" target="_blank">這裡</a>找到原始的 PHPSecLib 文件。</p>
+
+			<h3>FuelPHP 使用</h3>
+
+			<p>
+				提供者套件被 FuelPHP 用於 Crypt 類別以及 Auth 套件，使用 PBKDF2 來產生安全雜湊。
+			</p>
+
+			<h3>應用程式使用</h3>
+
+			<p>
+				為了在你的應用程式使用，PHPSecLib 套件已經被轉換成一個有命名空間、自動載入器友善的函式庫。
+				你可以直接在你的應用程式使用。
+			</p>
+<pre class="php"><code>&lt;?php
+/**
+ * 做一個 SSH 登入的控制器範例
+ */
+
+class Controller_Ssh extends Controller
+{
+	public function action_index()
+	{
+		// 連線到我的伺服器
+		$ssh = new \PHPSecLib\Net_SSH2('myserver.example.org');
+
+		// 登入
+		if ( ! $ssh->login('username', 'password'))
+		{
+			throw new \Exception('ssh login failed');
+		}
+
+		// 回傳格式化目錄列表的檢視
+		return View::forge('ssh/dirinfo', array(
+			'pwd' => $ssh->exec('pwd'),
+			'info' => $ssh->exec('ls -la'),
+		));
+	}
+}
+</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

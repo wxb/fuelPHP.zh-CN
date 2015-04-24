@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/mongo/introduction.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Mongo_Db 簡介 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Mongo_Db 類別</h2>
+
+			<h3 id="intro">簡介</h3>
+			<p>
+				Mongo_Db 類別提供方法與
+				<a href="http://www.mongodb.org/" target="_blank">Mongo 資料庫</a> 互動。
+			</p>
+			<p>
+				除了提供通常的新增、選擇、刪除和更新的功能之外，
+				它有一些管理方法幫助你對資料庫實用操作。
+			</p>
+
+			<h3 id="config">配置</h3>
+
+			<p>
+				對於每一個 Mongo 資料庫連線在 <em>app/config/db.php</em> 的
+				Mongo 陣列裡必須有一個配置。配置選項和解釋表列如下，
+				每個配置須包含主機名稱和資料庫名稱。
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>參數</th>
+						<th>類型</th>
+						<th>必要</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>hostname</th>
+						<td>字串</td>
+						<td>是</td>
+						<td>主機名稱</td>
+					</tr>
+					<tr>
+						<th>database</th>
+						<td>字串</td>
+						<td>是</td>
+						<td>資料庫名稱</td>
+					</tr>
+					<tr>
+						<th>port</th>
+						<td>數字</td>
+						<td>否</td>
+						<td>連線使用埠</td>
+					</tr>
+					<tr>
+						<th>replicaset</th>
+						<td>字串</td>
+						<td>否</td>
+						<td>用於連線的副本集名稱</td>
+					</tr>
+					<tr>
+						<th>username</th>
+						<td>字串</td>
+						<td>否</td>
+						<td>用於認證的使用者名稱，如果沒有已設定的密碼將忽略</td>
+					</tr>
+					<tr>
+						<th>password</th>
+						<td>字串</td>
+						<td>否</td>
+						<td>用於認證的密碼，如果沒有已設定的密碼將忽略</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>配置範例：</p>
+
+			<pre class="php"><code>// 在 app/config/db.php 裡
+
+		'mongo' => array(
+			// 當沒有實例名稱被提供時使用此群組。
+			'default' => array(
+				'hostname'   => 'localhost',
+				'database'   => 'mongo_fuel',
+			),
+
+			// 在下面表列你自己的群組。
+			'my_mongo_connection' => array(
+				'hostname'   => 'localhost',
+				'database'   => 'my_db',
+				'replicaset' => 'replica',
+				'username'   => 'user',
+				'password'   => 'p@s$w0rD',
+			),
+		),
+	</code></pre>
+
+			<p>一旦你設定到位，你可以開始使用 MongoDB。</p>
+
+			<p class="note">
+				為了使用 MongoDB 這必須在你的伺服器上可用，看看你的伺服器是否有支援 Mongo，
+				在你的 <em>phpinfo()</em> 尋找 Mongo 段落或詢問你的主機供應商。
+			</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

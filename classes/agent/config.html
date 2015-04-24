@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/agent/config.html';
+		var path = './../../';
+		var class_prefix = "Agent::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Agent 配置 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Agent 類別</h2>
+
+			<p>Agent 類別能讓你擷取關於瀏覽器的類型、版本、平台或操作系統等基於客戶使用者代理字串資訊。</p>
+
+			<section>
+				<h3 id="config">配置</h3>
+
+				<p>
+					Agent 類別使用 PHP <a href="http://php.net/manual/en/function.get-browser.php">get_browser()</a>
+					函式，它試圖確定用戶的瀏覽器的能力，在 browscap.ini 檔案尋找瀏覽器的資訊。
+				</p>
+
+				<p>以下全域的值可被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>browscap</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array(
+	'enabled' => true,
+	'url'     => 'http://browsers.garykeith.com/stream.asp?BrowsCapINI',
+	 'method' => 'wrapper',
+	 'file'   => '/tmp/php_browscap.ini',
+)</code></pre>
+							</td>
+							<td>
+								browscap.ini 取回配置。
+							</td>
+						</tr>
+						<tr>
+							<th>cache</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array(
+	'driver'     => '',
+	'expiry'     => 604800,
+	'identifier' => 'fuel.agent',
+)</code></pre>
+							</td>
+							<td>
+								browscap.ini 快取配置。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<section>
+					<h5 id="browsercap_config">Browscap.ini 配置</h5>
+
+					<p>
+						如果 PHP沒有被配置為使用 browscap.ini 檔案，Agent 類別將取回在
+						<strong>config/agent.php</strong> 配置中定義位置的檔案，並在本地快取以再利用，此快取將定期更新，
+						根據配置中定義的逾時值。
+					</p>
+
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>參數</th>
+								<th>類型</th>
+								<th>預設</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<th>enabled</th>
+								<td>布林</td>
+								<td><pre class="php"><code>true</code></pre></td>
+								<td>啟用 browscap.ini 檔案的下載，如果停用，且 PHP 沒有被配置透過 get_browser() 的 browscap 功能，瀏覽器檢測會停用，且 Agent 類別將回傳 'unknown'。</td>
+							</tr>
+							<tr>
+								<th>method</th>
+								<td>字串</td>
+								<td><pre class="php"><code>'wrapper'</code></pre></td>
+								<td>
+									方法用於取回 browscap.ini 文件。支援的方法是：<ul style="margin:0;">
+										<li>'wrapper'：此方法使用 <strong>file_get_contents()</strong> 函式。這是首選方案，但它可能會被你的託管提供商禁用。</li>
+										<li>'curl'：此方法使用 <strong>curl</strong> 擴充。你可以在 'wrapper' 的方法不起作用時使用。</li>
+										<li>'local'：使用外部方法來下載 browscap.ini 文件（例如一個排程工作）。</li>
+										<li>'sockets'：<em><strong>留作將來使用</strong></em></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<th>url</th>
+								<td>字串</td>
+								<td><pre class="php"><code>'http://browsers.garykeith.com/stream.asp?BrowsCapINI'</code></pre></td>
+								<td>給 'wrapper'、'curl' 和 'sockets' 方法使用，要下載一個 browscap.ini 檔案更新的路徑。</td>
+							</tr>
+							<tr>
+								<th>file</th>
+								<td>字串</td>
+								<td><pre class="php"><code>'/tmp/php_browscap.ini'</code></pre></td>
+								<td>給 'local' 方法使用，在本地儲存系統的 browscap.ini 檔案名稱及位置。</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h5 id="cache_config">快取配置</h5>
+
+					<p>
+						如果 Agent 類別被配置為處理 browscap.ini 檔案，它將快取 ini 檔案解析器和個人使用者代理請求的結果，
+						以增加類別的回應時間。這些配置設定確定資料如何被快取，更多資訊，請見 <a href="../cache/config.html">Cache</a> 類別文件。
+					</p>
+
+					<table class="config">
+						<tbody>
+							<tr class="header">
+								<th>參數</th>
+								<th>類型</th>
+								<th>預設</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<th>driver</th>
+								<td>字串</td>
+								<td><pre class="php"><code>''</code></pre></td>
+								<td>要快取代理資料的快取驅動程序，如果你留空，被配置在快取配置的預設快取驅動程序將被使用。</td>
+							</tr>
+							<tr>
+								<th>expiry</th>
+								<td>整數</td>
+								<td><pre class="php"><code>604800</code></pre></td>
+								<td>直到快取資料過期的秒數，預設是 7 天，因為 browscap.ini 檔案不常變更，建議不要一天刷新超過一次。
+									<br />最小值設定是 7200 秒（兩小時），如果你太常下載，你的伺服器將被 browscap 網站封鎖！</td>
+							</tr>
+							<tr>
+								<th>identifier</th>
+								<td>字串</td>
+								<td><pre class="php"><code>'fuel.agent'</code></pre></td>
+								<td>給快取名稱的前綴。</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

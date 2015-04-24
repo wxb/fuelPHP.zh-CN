@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/dbutil.html';
+		var path = './../../';
+		var class_prefix = "DBUtil::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>DBUtil - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>DBUtil 類別</h2>
+
+			<p>DBUtil 類別能讓你對資料庫做管理和執行例行操作。</p>
+
+			<h3 id="managing">管理函式</h3>
+
+			<p>DBUtil 能讓你建立、更名、改變和除去資料庫欄位。</p>
+
+			<article>
+				<h4 class="method" id="method_set_connection">set_connection($connection)</h4>
+				<p><strong>set_connection</strong> 方法為所有方法設定預設 DBUtil 連線。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$connection</kbd></th>
+										<td><strong>必要</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 為 DBUtil 設定一個替代的資料庫連線
+DBUtil::set_connection('my_database_group');
+
+// 用該連線做其他 DBUtil 呼叫。
+...
+
+// 然後設定它回到預設。
+DBUtil::set_connection(null);
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_create_database">create_database($database, charset = null, $if_not_exists = true, $db = null)</h4>
+				<p><strong>create_database</strong> 方法建立一個資料庫，如果失敗將拋出一個 Database_Exception。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$database</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料庫名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$charset</kbd></th>
+										<td><em>null</em></td>
+										<td>預設字符集</td>
+									</tr>
+									<tr>
+										<th><kbd>$if_not_exists</kbd></th>
+										<td><strong>true</strong></td>
+										<td>是否使用 <em>IF NOT EXISTS</em></td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 建立名為 `my_database` 的資料庫
+DBUtil::create_database('my_database');
+
+// 捕捉例外
+try
+{
+	DBUtil::create_database('my_database');
+}
+catch(\Database_Exception $e)
+{
+	// 建立失敗……
+}
+
+// 你也可以設定預設字符集。
+// CREATE DATABASE IF NOT EXISTS `new_database` DEFAULT CHARACTER SET 'utf8'
+DBUtil::create_database('new_database', 'utf8');
+
+// CREATE DATABASE IF NOT EXISTS `new_database  DEFAULT CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci'
+DBUtil::create_database('new_database', 'utf8_unicode_ci');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>如果沒有提供字符集，將退回到活動 db 群組的字符集。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_drop_database">drop_database($database, $db = null)</h4>
+				<p><strong>drop_database</strong> 方法除去一個資料庫，如果失敗將拋出一個 Database_Exception。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$database</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料庫名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 除去名為 `my_database` 的資料庫
+DBUtil::drop_database('my_database');
+
+// 捕捉例外
+try
+{
+	DBUtil::drop_database('my_database');
+}
+catch(\Database_Exception $e)
+{
+	// 除去失敗……
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_table_exists">table_exists($table, $db = null)</h4>
+				<p><strong>table_exists</strong> 方法確認所給的資料表是否存在。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<td><kbd>$table</kbd></td>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳 true 如果資料表存在，false 如果不存在。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 確認名為 'my_table' 的資料表是否存在
+if(DBUtil::table_exists('my_table'))
+{
+	// 資料表存在
+} else
+{
+	// 資料表不存在，建立它！
+}</code>
+								</pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_drop_table">drop_table($table, $db = null)</h4>
+				<p><strong>drop_table</strong> 方法除去一張資料表，如果失敗將拋出一個 Database_Exception。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 除去名為 `my_table` 的資料表
+DBUtil::drop_table('my_table');
+
+// 捕捉例外
+try
+{
+	DBUtil::drop_table('my_table');
+}
+catch(\Database_Exception $e)
+{
+	// 除去失敗……
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_rename_table">rename_table($table, $new_table_name, $db = null)</h4>
+				<p><strong>rename_table</strong> 方法更名一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>舊的資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$new_table_name</kbd></th>
+										<td><em>必要</em></td>
+										<td>新的資料表名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 更名 `my_table` 為 `my_new_table`
+DBUtil::rename_table('my_table', 'my_new_table');
+
+// 捕捉例外
+try
+{
+	DBUtil::rename_table('my_table', 'my_new_table');
+}
+catch(\Database_Exception $e)
+{
+	// 更名失敗……
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_create_table">create_table($table, $fields, $primary_keys = array(), $if_not_exists = true, $engine = false, $charset = null, $foreign_keys = array(), $db = null)</h4>
+				<p><strong>create_table</strong> 方法建立一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$fields</kbd></th>
+										<td><em>必要</em></td>
+										<td>包含欄位的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$primary_keys</kbd></th>
+										<td><strong>array()</strong></td>
+										<td>包含主鍵的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$if_not_exists</kbd></th>
+										<td><strong>true</strong></td>
+										<td>是否使用 <em>IF NOT EXISTS</em></td>
+									</tr>
+									<tr>
+										<th><kbd>$engine</kbd></th>
+										<td><strong>false</strong></td>
+										<td>要使用哪個儲存引擎（MyISAM、InnoDB、……）</td>
+									</tr>
+									<tr>
+										<th><kbd>$charset</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>預設字符集，退回到活動 db 群組字符集</td>
+									</tr>
+									<tr>
+										<th><kbd>$foreign_keys</kbd></th>
+										<td><strong>array()</strong></td>
+										<td>外鍵約束定義的陣列，陣列鍵 'key' 和 'reference' 是必要的，且如果缺少會拋出一個錯誤，所有其他的是選擇性的。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::create_table(
+	'users',
+	array(
+		'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
+		'name' => array('type' => 'text'),
+		'email' => array('constraint' => 50, 'type' => 'varchar'),
+		'title' => array('constraint' => 50, 'type' => 'varchar', 'default' => 'mr.'),
+		'password' => array('constraint' => 125, 'type' => 'varchar'),
+	),
+	array('id'), false, 'InnoDB', 'utf8_unicode_ci',
+	array(
+		array(
+			'constraint' => 'constraintA',
+			'key' => 'keyA',
+			'reference' => array(
+				'table' => 'table',
+				'column' => 'field',
+			),
+			'on_update' => 'CASCADE',
+			'on_delete' => 'RESTRICT'
+		),
+		array(
+			'key' => 'keyB',
+			'reference' => array(
+				'table' => 'table',
+				'column' => array(
+					'fieldA',
+					'fieldB'
+				),
+			),
+		),
+	),
+);
+
+/* 產生以下的 SQL 語句：
+CREATE TABLE `users` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` text NOT NULL,
+	`email` varchar(50) NOT NULL,
+	`title` varchar(50) DEFAULT 'mr.' NOT NULL,
+	`password` varchar(125) NOT NULL,
+	PRIMARY KEY `id` (`id`),
+	CONSTRAINT constraintA FOREIGN KEY (keyA) REFERENCES table (field) ON UPDATE CASCADE ON DELETE RESTRICT,
+	FOREIGN KEY (keyB) REFERENCES table (fieldA, fieldB)
+) ENGINE = InnoDB  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+*/</code></pre>
+							</td>
+						</tr>
+						<tr>
+							<th>可能的參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>name</kbd></th>
+										<td>欄位名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>type</kbd></th>
+										<td>欄位型態（varchar、enum、text、……）</td>
+									</tr>
+									<tr>
+										<th><kbd>constraint</kbd></th>
+										<td>長度或值，值可以被提供在一個陣列中</td>
+									</tr>
+									<tr>
+										<th><kbd>charset</kbd></th>
+										<td>欄位字符集</td>
+									</tr>
+									<tr>
+										<th><kbd>unsigned</kbd></th>
+										<td>布林，<em>true</em> 如果無符號，預設為 <em>false</em></td>
+									</tr>
+									<tr>
+										<th><kbd>default</kbd></th>
+										<td>預設值</td>
+									</tr>
+									<tr>
+										<th><kbd>null</kbd></th>
+										<td>布林，<em>true</em> 如果可為空，預設為 <em>false</em></td>
+									</tr>
+									<tr>
+										<th><kbd>auto_increment</kbd></th>
+										<td>設為 <em>true</em> 以使用自動遞增</td>
+									</tr>
+									<tr>
+										<th><kbd>comment</kbd></th>
+										<td>添加註釋到你的欄位</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p>預設欄位值預設情況下會被轉義，在一些情況下你可能不想轉義此值，如果是這樣，你可以使用 <a href="./db.html#method_expr">DB::expr</a>。</p>
+				<pre class="php"><code>\DBUtil::create_table('users', array(
+	'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
+	'name' => array('type' => 'text'),
+	'email' => array('constraint' => 50, 'type' => 'varchar'),
+	'title' => array('constraint' => 50, 'type' => 'varchar', 'default' => 'mr.'),
+	'created' => array('type' => 'timestamp', 'default' => \DB::expr('CURRENT_TIMESTAMP')),
+	'password' => array('constraint' => 125, 'type' => 'varchar'),
+), array('id'));
+</code></pre>
+
+				<p>轉義值也同樣運作在 DBUtil::add_fields 和 DBUtil::modify_fields</p>
+
+			</article>
+
+			<article>
+				<h4 class="method" id="method_field_exists">field_exists($table, $columns, $db = null)</h4>
+				<p><strong>field_exists</strong> 方法確認是否所給的欄位（們）在所給的資料表中存在。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<td>$table</td>
+										<td>必要</td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<td>$columns</td>
+										<td>必要</td>
+										<td>包含欄位的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳 true 如果欄位／行存在，否則 false</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>
+if(DBUtil::field_exists('my_table', array('my_field_or_column')))
+{
+	// 欄位存在
+}
+else
+{
+	// 欄位在資料表不可用
+}</code>
+								</pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_fields">add_fields($table, $fields, $db = null)</h4>
+				<p><strong>add_fields</strong> 方法添加欄位到資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$fields</kbd></th>
+										<td><em>必要</em></td>
+										<td>包含欄位的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::add_fields('users', array(
+	'surname' => array('constraint' => 100, 'type' => 'varchar'),
+	'twitter_name' => array('constraint' => 100, 'type' => 'varchar'),
+));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_drop_fields">drop_fields($table, $fields, $db = null)</h4>
+				<p><strong>drop_fields</strong> 方法從資料表除去欄位。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱的字串</td>
+									</tr>
+									<tr>
+										<th><kbd>$fields</kbd></th>
+										<td><em>必要</em></td>
+										<td>字串或包含欄位的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::drop_fields('users', 'surname');</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_modify_fields">modify_fields($table, $fields, $db = null)</h4>
+				<p><strong>modify_fields</strong> 方法修改在資料表中的欄位。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$fields</kbd></th>
+										<td><em>必要</em></td>
+										<td>包含欄位的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::modify_fields('users2', array(
+	'name' => array('constraint' => 100, 'type' => 'varchar', 'charset' => 'utf8_general_ci'),
+	'title' => array('constraint' => 50, 'type' => 'varchar', 'default' => 'mrs.'),
+));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_create_index">create_index($table, $index_columns, $index_name, $index = '', $db = null)</h4>
+				<p><strong>create_index</strong> 方法能讓你在資料表建立次要索引。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$index_columns</kbd></th>
+										<td><em>選擇性</em></td>
+										<td>混合，字串或包含欄位字串的陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$index_name</kbd></th>
+										<td><em>必要</em></td>
+										<td>要被建立的索引名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$index</kbd></th>
+										<td><em>選擇性</em></td>
+										<td>要被建立的索引類型。<br />目前支援：UNIQUE、FULLTEXT、SPATIAL、NONCLUSTERED</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳資料庫操作的結果。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::create_index('table', 'name');
+// 產生 CREATE INDEX name ON table ( `name` )
+
+\DBUtil::create_index('table', array('nameA', 'nameB'), 'name');
+// 產生 CREATE INDEX name ON table ( `nameA`, `nameB` )
+
+\DBUtil::create_index('table', array('nameA' => 'ASC', 'nameB'), 'name', 'fulltext');
+// 產生 CREATE FULLTEXT INDEX name ON table ( `nameA` ASC, `nameB` )
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_drop_index">drop_index($table, $index_name, $db = null)</h4>
+				<p><strong>drop_index</strong> 方法能讓你從資料表除去次要索引。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$index_name</kbd></th>
+										<td><em>必要</em></td>
+										<td>要被除去的索引名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳資料庫操作的結果。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::drop_index('table', 'name');
+// 產生 DROP INDEX name ON table
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_foregin_key">add_foregin_key($table, $foreign_key)</h4>
+				<p><strong>add_foreign_key</strong> 方法能讓你在資料表建立後添加外鍵。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$foreign_key</kbd></th>
+										<td><em>必要</em></td>
+										<td>包含外鍵定義的陣列。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳資料庫操作的結果。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\InvalidArgumentException 在無效輸入時，\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::add_foreign_key('users', array(
+	'constraint' => 'constraintA',
+	'key' => 'keyA',
+	'reference' => array(
+		'table' => 'table',
+		'column' => 'field',
+	),
+	'on_update' => 'CASCADE',
+	'on_delete' => 'RESTRICT'
+));</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_drop_foreign_key">drop_foreign_key($table, $fk_name)</h4>
+				<p><strong>drop_foreign_key</strong> 方法能讓你從資料表除去外鍵。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td>資料表名稱</td>
+									</tr>
+									<tr>
+										<th><kbd>$fk_name</kbd></th>
+										<td><em>必要</em></td>
+										<td>要被除去的外鍵名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳資料庫操作的結果。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 在失敗時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::drop_foreign_key('table', 'name');
+// 產生 ALTER TABLE `table` DROP FOREIGN KEY name
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h3 id="database-operations">資料庫操作</h3>
+
+			<article>
+				<h4 class="method" id="method_truncate_table">truncate_table($table, $db = null)</h4>
+				<p><strong>truncate_table</strong> 方法截斷一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">資料表名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳受影響的列數。</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\Database_Exception 當不支援時</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>\DBUtil::truncate_table('my_table');</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_analyze_table">analyze_table($table, $db = null)</h4>
+				<p><strong>analyze_table</strong> 分析一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">資料表名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>True</em> 如果資料表是 OK 的。<em>False</em> 當需要注意時。如果不支援它會記錄錯誤訊息。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>if(\DBUtil::analyze_table('table_name') === false)
+{
+	// 做點什麼
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_check_table">check_table($table, $db = null)</h4>
+				<p><strong>check_table</strong> 方法確認一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">資料表名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>True</em> 如果資料表是 OK 的。<em>False</em> 當需要注意時。如果不支援它會記錄錯誤訊息。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>if(\DBUtil::check_table('table_name') === false)
+{
+	// 做點什麼
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_optimize_table">optimize_table($table, $db = null)</h4>
+				<p><strong>optimize_table</strong> 方法優化一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">資料表名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>True</em> 如果資料表是 OK 或已優化的。<em>False</em> 在失敗時。如果不支援或失敗它會記錄錯誤訊息。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>if(\DBUtil::optimize_table('table_name') === false)
+{
+	// 做點什麼
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_repair_table">repair_table($table, $db = null)</h4>
+				<p><strong>repair_table</strong> 方法修復一張資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">資料表名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>True</em> 如果資料表是 OK 或已修復的。<em>false</em> 在失敗時。如果不支援或失敗它會記錄錯誤訊息。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>if(\DBUtil::repair_table('table_name') === false)
+{
+	// 做點什麼
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

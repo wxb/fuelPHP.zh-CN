@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/constants.html';
+		var path = './../';
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>常數 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>常數</h2>
+
+			<p>
+				Fuel 在全域的命名空間有四個常數導引你到重要的目錄，Fuel 從內部使用他們去定位類別與其他檔案。
+				這些常數被設定在 <em>public/index.php</em> 。
+			</p>
+
+			<p class="note">
+				<strong>請注意：</strong>當你移動任何 Fuel 的基礎文件夾（app, core, public, packages）時，確認更新你的 index.php 導引 Fuel 至正確的路徑。
+			</p>
+
+			<table class="config valign">
+				<tbody>
+					<tr class="header">
+						<th>鍵</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>APPPATH</th>
+						<td>
+							到應用程式目錄的路徑（<em>/path/to/fuel/app</em>）。
+							你的應用程式目錄與程式碼駐留的地方。
+						</td>
+					</tr>
+					<tr>
+						<th>COREPATH</th>
+						<td>
+							到核心目錄的路徑（<em>/path/to/fuel/core</em>）。
+							所有 Fuel 類別居住的地方。
+						</td>
+					</tr>
+					<tr>
+						<th>DOCROOT</th>
+						<td>
+							到「啟動指令碼」所在的路徑。
+							對你的網頁應用程式來說，是到公開目錄的路徑（<em>/path/to/public</em>），
+							這是 index.php 駐留的地方，對使用者來說一切是可經由瀏覽器存取的。
+							對 oil 命令來說，是命令駐留的路徑。
+						</td>
+					</tr>
+					<tr>
+						<th>PKGPATH</th>
+						<td>
+							到套件目錄的路徑（<em>/path/to/fuel/packages</em>）。
+							你的套件被安裝的地方（透過 oil 安裝時）。
+						</td>
+					</tr>
+					<tr>
+						<th>VENDORPATH</th>
+						<td>
+							到 composer 根目錄的路徑（<em>/path/to/fuel/vendor</em>）。
+							這是你的 composer 安裝從 packagist.org 下載的函式庫的地方。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p class="note">
+				<strong>請注意：</strong>當你使用 Oil 套件，你必須在你網站文件根目錄裡的 'oil' 檔案做出相同變更。
+			</p>
+
+			<p class="note">
+				<strong>請注意：</strong>當你想要運行單元測試，你必須在 fuelphp 核心文件夾裡的 'phpunit.xml' 檔案做出相同變更。
+			</p>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

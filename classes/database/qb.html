@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/qb.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>查詢建立器 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="introduction">建立查詢</h2>
+
+			<p class="note">
+				<strong>注：</strong>
+				在撰寫時，查詢建立器類別會被重新改動，所以他們可以處理多個 SQL 語支。
+			</p>
+			<p>
+				資料庫查詢 SQL 撰寫的抽象化是藉由 <strong>查詢建立器</strong> 達成，
+				查詢建立器由一系列類別組成，每一個處理建立查詢過程中特定的部分。
+			</p>
+			<p>
+				使用查詢建立器將幾乎忽視像 <a href="db.html">DB 類別</a>
+				為建立新查詢建立器物件所提供的快捷方式。建議使用這些方法來取得正確的查詢建立器。
+				這是常見的做法，並會保持你程式碼的可讀性。
+			</p>
+
+			<p>
+				查詢建立器由以下的類別組成：
+			</p>
+
+			<ul>
+				<li>Query_Builder（抽象）</li>
+				<li><a href="qb_where.html">Query_Builder_Where</a>（抽象）</li>
+				<li><a href="qb_select.html">Query_Builder_Select</a></li>
+				<li><a href="qb_insert.html">Query_Builder_Insert</a></li>
+				<li><a href="qb_update.html">Query_Builder_Update</a></li>
+				<li><a href="qb_delete.html">Query_Builder_Delete</a></li>
+				<li>Query_Builder_Join</li>
+			</ul>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/theme/methods.html';
+		var path = './../../';
+		var class_prefix = "Theme::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Theme 方法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Theme 類別方法</h2>
+
+			<p>
+				Theme 類別為你的應用程式提供主題。
+			</p>
+
+
+			<article>
+				<h4 class="method" id="method_instance">instance($name = '_default_', array $config = array())</h4>
+				<p>
+					<strong>instance</strong> 方法扮演一個多例（multiton）。它會回傳透過 $name 識別的實例。
+					如果此實例不存在，它會建立一個新的 Theme 實例，使用傳遞的配置陣列。
+					如果沒傳遞參數，instance 會建立預設的 Theme 實例，
+					使用指定在 theme 設定檔中的預設配置。
+				</p>
+
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>'_default_'</code></pre></td>
+									<td>Theme 類別實例名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td><em>陣列</em></td>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>主題實例配置。如果該實例已經存在會被忽略。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個 Theme 實例</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 取得一個自訂的實例
+$theme = \Theme::instance(
+	'custom',
+	array(
+		'active' => 'custom',
+		'view_ext' => '.twig'
+	)
+);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_forge">forge(array $config = array())</h4>
+				<p>
+					<strong>forge</strong> 方法回傳一個新的 Theme 實例。
+				</p>
+
+				<p class="note">
+					如果沒傳遞配置，該配置會從全域的配置檔案載入。
+					請注意，如果你傳遞部份的配置，它會與<a href="./introduction.html#config">簡介</a>所示的預設值合併，
+					<strong>而不是</strong>在你配置檔案中的預設值！
+				</p>
+
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td><em>陣列</em></td>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>Theme 實例配置。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個 Theme 實例</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得一個 Theme 實例
+$theme = \Theme::forge(array(
+	'active' => 'custom',
+	'fallback' => 'default',
+	'view_ext' => '.html',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_view">view($view, $data = array(), $auto_filter = null)</h4>
+				<p>
+					The <strong>view</strong> method loads a view from the currently loaded theme.
+					It will try to load it from the active theme first. If it doesn't exist in the active theme, and a fallback
+					theme is defined, it will load it from the fallback theme instead. If it can't be found there either, the
+					request is passed to the View class where it follows the normal flow of locating the view file.
+				</p>
+
+				<p class="note">這使用 <a href="../view.html#method_forge">View::forge()</a> 來回傳檢視。這意味著 Parser 套件也支援定義在主題中的檢視。</p>
+
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$view</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td class="description">檢視名稱。檢視檔案名稱應該給相對於主題的路徑。</td>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><em>陣列</em></td>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td class="description">值的陣列</td>
+								</tr>
+								<tr>
+									<th><kbd>$auto_filter</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td class="description">設為 <em>true</em> 或 <em>false</em> 來設定自動編碼，預設是主要的配置設定（app/config/config.php）</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個新的 <em>View</em> 物件</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，在請求的檢視檔案找不到時。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 會帶預設設定載入 THEMEDIR.'/template/homepage.php'
+$view = $theme->view('template/homepage');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_presenter">presenter($view, $method = 'view', $auto_filter = null)</h4>
+				<p>
+					<strong>presenter</strong> 方法載入並回傳一個基於所傳 $view 字串的 Presenter 物件。
+					它會使用上面記錄的 <strong>view</strong> 方法來傳遞主題檢視到該表現控件。
+				</p>
+
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$view</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td class="description">表現控件名稱。更多資訊見 <a href="../../general/presenters.html">Presenter</a>。</td>
+								</tr>
+								<tr>
+									<th><kbd>$method</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>'view'</code></pre></td>
+									<td class="description">在 Presenter 實例中優先於呈現檢視，會被呼叫來處理資料的方法名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$auto_filter</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td class="description">設為 <em>true</em> 或 <em>false</em> 來設定自動編碼，預設是主要的配置設定（app/config/config.php）</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>新的 <em>Presenter</em> 物件</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，在請求的檢視檔案找不到時。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+/**
+ * 在預設設定，會載入定義在
+ * APPPATH.'classes/view/template/homepage.php' 的 Presenter，使用
+ * THEMEDIR.'/template/homepage.php' 檢視檔案
+ */
+$presenter = $theme->presenter('template/homepage');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_asset_path">asset_path($path)</h4>
+				<p>
+					<strong>asset_path</strong> 方法回傳指向在 $path 中請求的 asset 路徑，相對於 <strong>DOCROOT</strong>。
+					如果配置的 asset 文件夾是一個指向請求 $path  的 URL 會回傳 $path。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>請求的資產。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 會回傳 &lt;img src="/THEMEDIR/assets/img/test.png" /&gt;
+$img = \Html::img($theme->asset_path('img/test.png'));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">請注意，每個 Theme 類別實例都有指派一個 Asset 類別實例。如何使用 Asset 類別實例詳見 <a href="./advanced.html">進階</a> 頁面。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_path">add_path($path)</h4>
+				<p>
+					<strong>add_path</strong> 方法能讓你在執行階段添加一個主題路徑。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>指向包含主題文件夾的路徑。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 添加 'mythemes' 文件夾到主題搜尋路徑
+$theme->add_path(DOCROOT.'mythemes');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_paths">add_paths(array $paths)</h4>
+				<p>
+					<strong>add_paths</strong> 方法能讓你在執行階段添加多個主題路徑。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$paths</kbd></th>
+									<td><em>陣列</em></td>
+									<td><strong>必要</strong></td>
+									<td>指向包含主題文件夾的路徑。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 添加 'mythemes' 文件夾到主題搜尋路徑
+$theme->add_paths(
+	array(
+		DOCROOT.'mythemes'
+	),
+);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_active">active($theme = null)</h4>
+				<p>
+					<strong>active</strong> 方法能讓你設定活躍主題。它會回傳活躍主題的定義陣列。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$theme</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要選擇的活躍主題名稱。如果為 <strong>null</strong>，它會回傳目前活躍主題。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，當請求的主題找不到。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 設定活躍主題為 'darkglow'，並回傳其定義
+$active = $theme->active('darkglow');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_fallback">fallback($theme = null)</h4>
+				<p>
+					<strong>fallback</strong> 方法能讓你設定備用主題。它會回傳備用主題的定義陣列。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$theme</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要選擇的備用主題名稱。如果為 <strong>null</strong>，它會回傳目前備用主題。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，當請求的主題找不到。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 設定備用主題為 'basic'，並回傳其定義
+$fallback = $theme->fallback('basic');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_template">get_template()</h4>
+				<p>
+					<strong>get_template()</strong> 方法將回傳目前載入主題樣板的 View 實例。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>View</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 檢索目前樣板來設定頁面標題
+$theme->get_template()->set('title', 'This is the page title');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_template">set_template($template)</h4>
+				<p>
+					<strong>set_template</strong> 方法能讓你為頁面設定主題樣板。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$template</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>要載入的主題樣板檢視的名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>View</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 設定頁面樣板為 subpage 布局，並設定頁面標題
+$theme->set_template('layouts/subpage')->set('title', 'Subpage title');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_partial">get_partial($section, $view)</h4>
+				<p>
+					The <strong>get_partial</strong> method allow you to get the view instance of a previously set partial in a named section of your page template.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$section</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>你想要取得局部的頁面樣板段落的名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$view</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>要給局部使用的檢視名稱</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>View</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+/**
+ * Get the View instance of the 'partials/menu' view in the 'sidebar' section of the
+ * currently loaded page template, and assign a variable to it.
+ */
+$theme->get_partial('sidebar', 'partials/menu')->set('class', 'menu green');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					When you get a partial, use the name of the view you used to set it. If you assign the same view to the same
+					section multiple times, the first one will be returned. If you have passed a View instance to set_partial(),
+					you can get it using the number of the partial, prefixed with 'partial_'.
+					Example: you retrieve the second partial using the view name 'partial_2'.
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_partial">set_partial($section, $view, $overwrite = false)</h4>
+				<p>
+					The <strong>set_partial</strong> method allow you to set a view partial for a named section of your page template.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$section</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of page template section you want to add this partial to.</td>
+								</tr>
+								<tr>
+									<th><kbd>$view</kbd></th>
+									<td class="fixed_width"><em>字串｜View</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of view to use for the partial, or a View object.</td>
+								</tr>
+								<tr>
+									<th><kbd>$overwrite</kbd></th>
+									<td><em>布林</em></td>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>If <strong>false</strong>, append the partial to any partials already defined for this section. If <strong>true</strong>, existing contents will be deleted.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>View</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+/**
+ * Assign the 'partials/menu' view to the 'sidebar' section of the
+ * currently loaded page template.
+ *
+ * In the template, this partial is echo'd out as $partials['sidebar'];
+ */
+$theme->set_partial('sidebar', 'partials/menu');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_partial_count">partial_count($section)</h4>
+				<p>
+					The <strong>partial_count</strong> method returns a count of the number of partials defined for the given section.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$section</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of page template section you want to check for defined partials.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>整數</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// Get the number of partials assigned to the sidebar
+$partials = $theme->partial_count('sidebar');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_has_partials">has_partials($section)</h4>
+				<p>
+					The <strong>has_partials</strong> method allows you to check if a template section has any partials defined.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$section</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of page template section you want to check for defined partials.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// Check if we have sidebar partials defined
+if ( ! $theme->has_partials('sidebar'))
+{
+	// some code here to hide the sidebar...
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_chrome">get_chrome($section)</h4>
+				<p>
+					The <strong>get_chrome</strong> method allow you to get the view instance of a previously set partial chrome.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$section</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of section you want to get the partial chrome from.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>View</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+/**
+ * Get the View instance for the chrome assigned to the 'sidebar' of the
+ * template and assign a variable to it.
+ */
+$theme->get_chrome('sidebar')->set('title', 'This is a sidebar');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_chrome">set_chrome($section, $view, $var = 'content')</h4>
+				<p>
+					<strong>set_chrome</strong> 方法能讓你為你頁面樣板的局部段落定義 chrome。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$section</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of page template section you want to add this partial to.</td>
+								</tr>
+								<tr>
+									<th><kbd>$view</kbd></th>
+									<td class="fixed_width"><em>字串｜View</em></td>
+									<td><strong>必要</strong></td>
+									<td>The name of view to use for the chome of the partial, or a View object.</td>
+								</tr>
+								<tr>
+									<th><kbd>$var</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>'content'</code></pre></td>
+									<td>The name of the variable in the chrome view used to output the partial content.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>View</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+/**
+ * 指派 'chrome/roundedcorners' 檢視
+ * 到目前載入頁面樣板的 'sidebar' 段落
+ * 來給該局部段落一個圓角邊框。
+ *
+ * 在 chrome 檢視中，局部輸出會輸出為 $body；
+ */
+$theme->set_chrome('sidebar', 'chrome/roundedcorners', 'body');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find">find($theme)</h4>
+				<p>
+					<strong>find</strong> 方法會檢索定義的搜尋路徑來尋找請求的主題。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$theme</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>要尋找的主題名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。如果找到回傳指向主題的路徑，或沒有是 <strong>false</strong>。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 尋找 'darkglow' 主題
+if ($path = $theme->find('darkglow'))
+{
+	// 該主題可以在 $path 中找到
+}
+else
+{
+	// 無法找到主題
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_all">all()</h4>
+				<p>
+					<strong>all</strong> 方法回傳一個在所有主題路徑中的主題陣列，按字母順序排序。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 取回所有安裝的主題
+$themes = $theme->all();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_use_modules">use_modules($enable = true)</h4>
+				<p>
+					<strong>use_modules</strong> 方法啟用或停用模組的自動前綴功能。
+					在載入一個主題檢視時，如果啟用，該檢視檔案會帶有目前活躍模組的名稱前綴。
+					如果找不到，它會不帶前綴再檢查一次，
+					允許來自模組內的全域檢視。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$enable</kbd></th>
+									<td><em>布林</em>｜<em>字串</em></td>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>True 和一個包含文件夾名的字串來啟用該功能，false 以停用它。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Theme</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 當在 'test' 模組，這會載入主題檢視 'test/controller/view'
+$info = $theme->use_modules()->set_partial('content', 'controller/view')->use_modules(false);
+
+// 當在 'test' 模組，這會載入主題檢視 'modules/test/controller/view'
+$info = $theme->use_modules('modules')->set_partial('content', 'controller/view')->use_modules(false);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					你可以透過 theme.php 配置檔案的 <strong>use_modules</strong> 鍵來設定一個全域的預設值。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_load_info">load_info($theme = null)</h4>
+				<p>
+					<strong>load_info</strong> 方法回傳主題的完整資訊陣列。
+					如果沒有指定主題，會回傳活躍的主題資訊。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$theme</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>主題名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，當請求的主題找不到。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 取得 'basic' 主題的資訊陣列。
+$info = $theme->load_info('basic');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					如果找不到主題資訊檔案，這個方法 Throws \ThemeException 如果 <strong>require_info_file</strong>
+					設為 <strong>true</strong>，或回傳一個空陣列如果 <strong>require_info_file</strong>
+					設為 <strong>false</strong>。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_save_info">save_info($type = 'active')</h4>
+				<p>
+					<strong>save_info</strong>
+					儲存主題資訊陣列的內容回到該主題資訊檔案。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$type</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>'active'</code></pre></td>
+									<td>應該被儲存的活躍或備用主題資訊。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，當請求的主題找不到。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 為活躍主題儲存資訊陣列
+$info = $theme->save_info('active');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					如果找不到主題資訊檔案，這個方法 Throws \ThemeException 如果 <strong>require_info_file</strong>
+					設為 <strong>true</strong>，或回傳一個空陣列如果 <strong>require_info_file</strong>
+					設為 <strong>false</strong>。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_info">get_info($var, $default = null, $theme = null)</h4>
+				<p>
+					<strong>get_info</strong> 方法回傳一個來自主題資訊陣列的指定變數。
+					如果沒有指定主題，會使用活躍主題的資訊陣列。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$var</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>要檢索的資訊變數名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><em>混合</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果請求的 $var 不存在要回傳的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$theme</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>應該被搜尋的主題資訊檔案名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>拋出</th>
+						<td>\ThemeException，當請求的主題找不到。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 取得 'basic' 主題定義的 color，如果沒設定，使用 'blue'
+$var = $theme->get_info('color', 'blue', 'basic');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					如果你指定一個主題，該值會從主題資訊檔案被載入。這是真的，即使指定的主題是目前設為活躍或被動的主題。
+					對於他們來說，不使用載入（並可能修改）的資訊！
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_info">set_info($var, $value = null, $type = 'active')</h4>
+				<p>
+					<strong>set_info</strong> 方法能讓你在活躍或備用主題資訊陣列中設定變數。
+					如果沒有指定主題，會使用活躍主題的資訊陣列。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$var</kbd></th>
+									<td><em>字串</em></td>
+									<td><strong>必要</strong></td>
+									<td>要設定的資訊變數的名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><em>混合</em></td>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要設定的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$type</kbd></th>
+									<td><em>字串</em></td>
+									<td><pre class="php"><code>'active'</code></pre></td>
+									<td>無論在活躍或備用主題中，該變數應該被設定。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Theme</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得預設實例
+$theme = \Theme::instance();
+
+// 設定 fallback 主題的 color 為 blue
+$theme->set_info('color', 'blue', 'fallback');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

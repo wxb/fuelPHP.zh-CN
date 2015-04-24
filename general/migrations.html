@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/migrations.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>遷移 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="migrations.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>遷移</h2>
+
+			<p>遷移是一種方便的方法，讓你在一個結構化和有組織的方式下改變你的資料庫。你可以手工編輯 SQL 片段，然後負責通知其他開發人員需要去執行它們。你也必須保持追蹤那些在下次佈署時，需要針對生產機器執行的變化。</p>
+
+			<p>資料表 `migration` 追蹤那些已經被運行的遷移，因此你所需要做的，就只是更新你的應用程式檔案，並呼叫 <kbd>Migrate::current()</kbd> 以計算出應該被運行的遷移。current 版本能在 core/config/migration.php 裡找到，所以就像任何其他配置檔案一樣，你應該複製一份到 app/config 進行修改。</p>
+
+			<h3><a class="internal_link" href="migrations.html#/config">配置</a></h3>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>鍵</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>folder</th>
+						<td>字串</td>
+						<td>
+							<pre class="php">
+								<code>'migrations/'</code>
+							</pre>
+						</td>
+						<td>
+							遷移檔案將被找到的文件夾。
+						</td>
+					</tr>
+					<tr>
+						<th>connection</th>
+						<td>字串</td>
+						<td>
+							<pre class="php">
+								<code>null</code>
+							</pre>
+						</td>
+						<td>
+							要用來寫入遷移的資料庫連線的配置名稱。
+						</td>
+					</tr>
+					<tr>
+						<th>table</th>
+						<td>字串</td>
+						<td>
+							<pre class="php">
+								<code>'migration'</code>
+							</pre>
+						</td>
+						<td>
+							用來儲存遷移資料的資料庫表。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p class="note">
+				<strong>請注意：</strong>
+				在運行遷移之後，配置文件將被覆寫版本資訊。這些版本號在內部使用，並且不應該被改變。
+			</p>
+
+			<h3>建立遷移</h3>
+
+			<p>在 app/migrations 文件夾中建立一個檔案。前綴應為一個從 001 起遞增的計數，不跳號且不重複。第一個將像 <kbd>app/migrations/001_example.php</kbd>。</p>
+			<pre class="php"><code>namespace Fuel\Migrations;
+
+class Example
+{
+
+    function up()
+    {
+        \DBUtil::create_table('posts', array(
+			'id' => array('type' => 'int', 'constraint' => 5),
+			'title' => array('type' => 'varchar', 'constraint' => 100),
+			'body' => array('type' => 'text'),
+		), array('id'));
+    }
+
+    function down()
+    {
+       \DBUtil::drop_table('posts');
+    }
+}</code></pre>
+
+			<h3 id="run_a_migration">執行遷移</h3>
+
+			<p>遷移可以兩種方法執行：</p>
+
+			<ol>
+				<li><a href="../classes/migrate.html">Migrate 類別</a></li>
+				<li><a href="../packages/oil/refine.html">Oil 提煉命令</a></li>
+			</ol>
+
+			<p>Oil 命令使用提煉命令以呼叫遷移 <a href="tasks.html">任務</a>。</p>
+
+			<pre class="cli"><code>$ php oil refine migrate
+$ php oil refine migrate:current
+$ php oil refine migrate:up
+$ php oil refine migrate:down
+$ php oil refine migrate --version=10</code></pre>
+
+			<p>
+				遷移也支援模組和套件，如果你想要遷移全部的話，
+				可以在 oil 命令列指定，或只指定類別和（或）套件。如果你這樣做，你可以使用 '--default'，
+				以表明你要包含應用程式的遷移。
+			</p>
+
+			<pre class="cli"><code>$ php oil refine migrate -all
+$ php oil refine migrate --modules=module1,module2 --packages=package1
+$ php oil refine migrate:up --packages=package1
+$ php oil refine migrate:down --modules=module1,module2 --default
+$ php oil refine migrate --version=10</code></pre>
+
+			<p class="note">
+				<strong>請注意：</strong>
+				migrate:current 任務符合你的架構到被列在 <kbd>fuel/[app|core]/config/migrate.php</kbd>
+				裡的版本，就像你才剛得到一份應用程式的副本，該副本最新的遷移不被認為是穩定的。使用 Oil 進行遷移將會修改此遷移配置版號，
+				所以 current 命令在許多情況下將是不相關的。
+			</p>
+
+			<h3 id="skip_migrations">略過遷移</h3>
+
+			<p>
+				你可以藉由使你的 <kbd>up()</kbd> 或 <kbd>down()</kbd> 方法回傳 <kbd>false</kbd> 來中斷遷移處理。
+				如果你的遷移具有外部相依性，這可能是有用的，例如，
+				在不同的遷移中建立一張表的存在。
+			</p>
+			<p class="note">
+				這將只中斷目前被處理的遷移堆疊，無論應用程式遷移，或者在一個單一模組或套件的遷移。
+				所有在其他堆疊的遷移將正常被處理。
+			</p>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

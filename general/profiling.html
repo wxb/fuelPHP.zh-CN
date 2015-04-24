@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/profiling.html';
+		var path = './../';
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>分析 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>分析</h2>
+
+			<p>綁定於 FuelPHP 的應用程式分析器是基於 <a href="http://particletree.com/features/php-quick-profiler/">PHP Quick Profiler</a>。</p>
+
+			<h3 id="what_is_profiling">分析是什麼？</h3>
+
+			<p>
+				分析器提供分析及除錯相關資訊而不須添加大量方案的開銷到程式碼。
+				你只需要切換一個配置設定為 true，你就有一個自動化工具的入口，
+				以幫助建立一個更快更一致的審查經驗。因為任何人都可以使用它，
+				分析器也在審查前給你一個程式碼定位的想法。
+			</p>
+
+			<p>分析器提供一個頁籤介面，你可以在其中找到以下資訊：</p>
+			<ul>
+				<li>Console。這是預設的頁籤，給你關於錯誤、紀錄條目、記憶體使用或執行時間的資訊。</li>
+				<li>Load time。這是請求載入時間，它會在頁籤主體顯示執行詳情。</li>
+				<li>Database。查詢執行數、執行時間以及如果支援的話有查詢分析。</li>
+				<li>Memory。請求所使用的總峰值記憶體。</li>
+				<li>Files。所有 PHP 引入檔案的明確名稱及其大小。</li>
+				<li>Config。在請求結束時配置儲存的內容。</li>
+				<li>Session。在請求結束時 session 儲存的內容。</li>
+				<li>GET。$_GET 陣列的內容。</li>
+				<li>POST。$_POST 陣列的內容。</li>
+			</ul>
+
+			<p>一個典型的分析器螢幕看起來像這樣：<img width="850" src="../assets/img/profiler.png" /></p>
+
+			<p>在分析器螢幕的底部，你將發現三個選項：</p>
+			<ul>
+				<li>Bottom。預設情況下，分析器是一個覆蓋層。如果你想看見所有輸出，按這個選項，分析器將移動到你的輸出結尾，再按一次它會移回原位。</li>
+				<li>Height。切換分析器控制台的大（如同截圖）或小。</li>
+				<li>Details。切換分析器詳情，如果關閉，只有頁籤列是可見的。</li>
+			</ul>
+
+			<h3 id="application_profiling">應用程式分析</h3>
+
+				<p>
+					分析你的應用程式預設是停用的。你可以在應用程式的 config/config.php 檔案裡配置 Fuel 以啟動分析器。
+				</p>
+				<pre class="php"><code>'profiling'  => true,
+</code></pre>
+				<p>
+					在分析器啟用之後，你將會看到它出現在你的瀏覽器視窗底部。
+				</p>
+
+			<h3 id="database_profiling">資料庫分析</h3>
+
+				<p>
+					資料庫分析預設也是停用的。資料庫分析在每個定義的資料庫啟動，
+					並且透過設定在
+					config/&lt;環境&gt;/db.php 中資料庫配置的 'profiling' 選項為 true 來啟動。
+				</p>
+
+				<pre class="php"><code>'profiling'  => true,
+</code></pre>
+				<p class="note">如果你使用多個環境，確認選擇正確的 db.php 配置檔案。</p>
+
+			<h3 id="adding_profiler_information">添加資訊到分析器</h3>
+
+				<p>見 <a href="../classes/profiler.html">Profiler</a> 類別的文件，以了解你能如何與分析器互動。</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

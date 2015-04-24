@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/combined.css">
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/request/request.html';
+		var path = './../../';
+		var class_prefix = "Request::";
+	</script>
+	<script src="../../assets/js/combined.js"></script>
+	<title>Request - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="request.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Request 類別</h2>
+
+			<p>Request 類別處理 URI 請求。它被 Fuel 用在 index.php 處理使用者 URI 請求，在一個 HMVC 情境下你需要它來產生請求。</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($uri = null, $route = true)</h4>
+				<p><strong>forge</strong> 方法回傳一個新的 Request 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$uri</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要被請求的 URI。如果這個參數不存在，URI 類別將被用來偵測 URI。</td>
+								</tr>
+								<tr>
+									<th><kbd>$route</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>如果為 true，被傳遞或被偵測到的 URI 將被路由類別處理。如果路徑不存在，一個 404 將被產生。如果你請求一個非公開的 URI，設定它為 <strong>false</strong>。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Request 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 為 admin 控制器的 login 方法建立請求物件
+$request = Request::forge('admin/login');
+
+// 請注意這只建立物件，它沒有執行請求！</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">你也可以使用 Request::forge() 來鍛造一個 <a href="curl.html">cURL</a> 或一個 <a href="soap.html">SOAP</a> 請求物件。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_execute">execute($method_params = null)</h4>
+				<p><strong>execute</strong> 方法執行一個請求並在該請求物件儲存回應的結果讓後續使用。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$method_params</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要傳給被呼叫控制器的任何選擇性參數的陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Request 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 為 admin 控制器的 login 方法建立並執行 Request 物件
+$request = Request::forge('admin/login')->execute();
+
+// 傳遞一個物件到 login 控制器
+$object = new Object();
+$request = Request::forge('admin/login')->execute(array('object' => $object));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_response">response()</h4>
+				<p><strong>response</strong> 方法取回執行請求的回應物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Response 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 執行請求、取回回應、並顯示它
+$response = Request::forge('admin/login')->execute()->response();
+echo $response;
+
+// Request 物件包含一個 __toString() 方法做為一個替代方法來取回輸出
+$output = Request::forge('admin/login')->execute();
+echo $output;</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_params">params()</h4>
+				<p>回傳一個觸發此請求的路由中所有具名參數的陣列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得具名參數的列表
+$params = Request::active()->params();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_method">get_method()</h4>
+				<p>取得請求方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>請求方法</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在一個鍛造的 Request 取得請求方法
+$method = Request::main()->get_method();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_method">set_method($method)</h4>
+				<p>設定請求方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$method</kbd></th>
+									<td>字串，必要</td>
+									<td>要被回傳的參數名稱。這必須與路徑中定義的完全相同。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>目前實例</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在一個鍛造的 Request 設定請求方法
+$params = Request::forge('some/route')->set_method('POST');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_param">param($param, $default = null)</h4>
+				<p>回傳一個觸發此請求路徑中的指定具名參數，或如果該參數找不到時回傳預設值。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$param</kbd></th>
+									<td>字串，必要</td>
+									<td>要被回傳的參數名稱。這必須與路徑中定義的完全相同。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果請求的具名參數未被定義時要回傳的值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得稱為 'name' 的指定具名參數
+$param = Request::active()->param('name', 'none');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note"><a href="../../general/routing.html#/named_routes">路由</a>段落介紹命名的參數如何被定義在路徑中。</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_parent">parent()</h4>
+				<p>建立此 Request 的 <strong>Request</strong>。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Request 物件或當它是主要請求時為 null</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得目前活躍的 Request 的父代
+$parent = Request::active()->parent();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_children">children()</h4>
+				<p>在此 Request 期間建立的 <strong>Request</strong> 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Request 物件陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得在主要的 Request 期間建立的 Requests。
+$children = Request::main()->children();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_main">main()</h4>
+				<p><strong>main</strong> 方法回傳主要的 Request
+					實例（由初始頁面請求所建立）。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Request 物件，或 false 如果沒有主要的 Request 實例存在。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$main = Request::main();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">這是第一個執行的 Request 實例，並不一定是目前 Request 的根父代。
+					這可能是這種情況，例如，如果主要的 Request 發生 404，而且你在那之後建立一個新的
+					Request（發生在 <kbd>_404_</kbd> 路徑）。
+			</article>
+
+			<article>
+				<h4 class="method" id="method_active">active()</h4>
+				<p><strong>active</strong> 方法回傳目前活躍的 Request 實例。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Request 物件，或 false 如果沒有活躍的 Request 實例存在。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$active = Request::active();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_path">add_path($path, $prefix = false)</h4>
+				<p><strong>add_path</strong> 方法能讓你添加一個搜尋路徑到目前的 Request 實例。搜尋路徑被 Finder::search() 用來定位你的應用程式內的檔案。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><i>必要</i></td>
+									<td>要被添加到 Request 本地搜尋路徑列表的路徑</td>
+								</tr>
+								<tr>
+									<th><kbd>$prefix</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>如果為 <strong>false</strong>，路徑將被附加到搜尋路徑。如果為 <strong>true</strong>，它將被附加在前。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>空</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 添加應用程式 myfiles 文件夾到活躍的 Request 實例的搜尋路徑
+Request::active()->add_path(APPPATH.'myfiles'.DS);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_paths">get_paths()</h4>
+				<p><strong>get_paths</strong> 方法回傳已定義的搜尋路徑列表。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>空</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得活躍的 Request 實例定義的搜尋路徑
+$paths = Request::active()->get_paths();</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

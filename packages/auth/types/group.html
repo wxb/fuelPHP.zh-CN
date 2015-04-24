@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/auth/types/group.html';
+		var path = './../../../';
+		var class_prefix = "$object->";
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>Group - 驅動類型 - Auth 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Auth 套件</h2>
+
+			<p>Auth 套件在 Fuel 裡提供一個標準化的認證介面。
+			這使得我們的使用者能編寫自己的驅動程序，並且輕鬆地將新的驅動程序與舊的程式碼整合，
+			以保持基本方法一致。</p>
+
+			<section>
+				<h2 id="driver_types">Auth_Group_Driver</h2>
+
+				<p>
+					此驅動是所有 Auth 群組驅動的基礎類別。它被定義為一個抽象類別，
+					該類別包含了通用於所有群組驅動的所有方法，
+					以及定義給任何群組驅動<strong>必須</strong>實現的所有抽象方法。
+				</p>
+
+				<h3 id="driver_config">驅動配置</h3>
+
+				<p>
+					一個群組驅動可以載入它所依賴的額外驅動。一般情況下，這些是 ACL 驅動。
+					但你的實現情況可以是引進和使用自訂的驅動類型。要做到這一點，添加此結構到你的驅動類別：
+				</p>
+
+								<pre class="php"><code>// 當載入此群組驅動時自動載入 Simpleacl acl 驅動
+	protected $config = array(
+		'drivers' => array('acl' => array('Simpleacl'))
+	);
+</code></pre>
+
+				<h3 id="static">靜態介面</h3>
+
+				<p>為了易於使用，<kbd>member()</kbd> 方法透過通用 Auth 靜態介面曝光。</p>
+
+				<p>使用靜態介面，你能做到</p>
+
+								<pre class="php"><code>// 回傳 true 如果目前使用者是群組 16 的成員。
+$is_member = Auth::member(16);
+</code></pre>
+
+				<h3 id="generic_methods">通用方法</h3>
+
+				<p>
+					通用方法被定義在群組基礎驅動，而且能透過擴充到達所有的 Auth
+					群組驅動。這些方法提供功能來與群組互動，並檢查存取。
+				</p>
+				<p class="note">定義在類別中而沒記錄在此的方法是內部使用，而且不應該直接被呼叫。</p>
+
+				<article>
+					<h4 id="method_get_id" class="method">get_id()</h4>
+					<p>回傳驅動的唯一 ID。這可被用於識別驅動，或用來選擇一個特定的驅動實例。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>驅動 ID 字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 回傳 'simpleauth'
+$id = Auth::group()->get_id();
+</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_set_config" class="method">set_config($key, $value)</h4>
+					<p>設定一個驅動配置值。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td>必要</td>
+										<td>配置鍵名</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td>必要</td>
+										<td>此配置鍵的值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>空</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 在 simplegroup 驅動設定一個配置值
+Auth::group()->set_config('key', 'value');
+</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_get_config" class="method">get_config($key, $default = null)</h4>
+					<p>取得一個驅動配置值。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td>必要</td>
+										<td>配置鍵名</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><i>null</i></td>
+										<td>如果請求的鍵不存在時要回傳的預設值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>混合</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得一個 simplegroup 驅動的配置值，如果不存在回傳 false
+$key = Auth::instance(simplegroup)->get_config('key', false);
+</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<h3 id="abstract_methods">抽象方法</h3>
+
+				<p>
+					你所開發的每個群組驅動<strong>必須</strong>提供這些所有的方法，且<strong>必須</strong>回傳此處記錄的值。
+				</p>
+
+				<article>
+					<h4 id="method_member" class="method">member($group, $specific = null)</h4>
+					<p>檢查是否使用者是所給群組中的成員，無論是所有載入的群組驅動，
+						或只是指定為第二參數的那些。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$group</kbd></th>
+										<td><i>必要</i></td>
+										<td>群組 ID</td>
+									</tr>
+									<tr>
+										<th><kbd>$specific</kbd></th>
+										<td><i>null</i></td>
+										<td>null 以檢查所有，或一個或更多驅動 ID（單一字串或字串陣列）</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林，是否（所給）的驅動之一將目前使用者註冊為一個成員</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>if ( ! Auth::member(100) )
+{
+	Response::redirect('no_admin');
+}
+
+// 指定驅動
+Auth::member(1, 'simplegroup');
+
+// 多個驅動
+Auth::member(0, array('simplegroup', 'genericgroup'));</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+				<article>
+					<h4 id="method_get_name" class="method">get_name($group)</h4>
+					<p>取得所給群組名稱的顯示名稱。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$group</kbd></th>
+										<td><i>null</i></td>
+										<td>你想要取得顯示名稱的群組名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>混合，取回的群組顯示名稱，或 <strong>false</strong> 如果所給群組不存在。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得 admin 群組的顯示名稱
+Auth::instance('simplegroup')->get_name('admin');</code></pre>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</article>
+
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

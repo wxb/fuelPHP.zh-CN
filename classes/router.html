@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/router.html';
+		var path = './../';
+		var class_prefix = "Router::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Router - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Router 類別</h2>
+
+			<p><kbd>Router</kbd> 類別根據傳遞給它的請求，確定哪個控制器需要被載入，並定義路由。</p>
+
+			<article>
+				<h4 class="method" id="method_process">process(\Request $request, $route = true)</h4>
+				<p>
+					<strong>process</strong> 方法使用一個 request 物件，並將嘗試為包含在 request 內的 URI 尋找一個路由配對。
+					如果沒有路由能被配對，路由將建立一個基於 URI 資訊的新路由，
+					並遵循 控制器／方法 或 模組／控制器／方法 的 URI 格式。它將不檢查已決定的路由是否有效！
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th class="fixed_width">預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$request</kbd></th>
+									<td><i>必要</i></td>
+									<td>一個有效的 Request 物件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$route</kbd></th>
+									<td><code>true</code></td>
+									<td>
+										如果為 'true'，已載入的路由將被用於尋找配對。如果為 'false'，已載入的路由將被忽略且一個新的路由將被建構。
+										這是用於 HMVC 呼叫到無法從 URL 路由的控制器。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>Route 物件，或如果沒有有效的 Route 物件能被建構時 null</i></td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					正常情況下，你不會需要這個方法，
+					它在框架內部被用來載入控制器。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add">add($path, $options = null, $prepend = false, $case_sensitive = null)</h4>
+				<p>
+					<strong>add</strong> 方法能讓你在執行階段手動添加新路由。你可能需要此方法，
+					如果你想要載入不遵循正常 URI 格式的控制器，或如果你想要從 routes.php
+					配置檔案之外的其他來源載入路由。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><i>必要</i></td>
+									<td>要符合的 URI 路徑，這是你的 routes.php 路由定義的左邊。</td>
+								</tr>
+								<tr>
+									<th><kbd>$options</kbd></th>
+									<td class="fixed_width"><i>字串｜陣列｜Route</i></td>
+									<td>$path 的轉化、一個變數路由的陣列（就像你的 routes.php 路由定義的右邊）或一個 Route 實例。</td>
+								</tr>
+								<tr>
+									<th><kbd>$prepend</kbd></th>
+									<td><code>false</code></td>
+									<td>如果為 true，新路由將被附加到已載入路由之前。</td>
+								</tr>
+								<tr>
+									<th><kbd>$case_sensitive</kbd></th>
+									<td><code>null</code></td>
+									<td>如果為 false，新路由將不分大小寫針對 URI 配對。<br>如果為 true，配對將區分大小寫。如果沒給，預設配置將被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>空</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 載入一個新路由 'this/that' => 'something/else'
+Router::add('this/that', 'something/else');
+
+// 強制區分大小寫
+Router::add('this/that', 'something/else', true);
+
+// 手動建立一個 實例，該實例將被視為不區分大小寫
+$path = 'this/that';
+Router::add($path, new Route($path, 'something/else', false));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get">get($name, $named_params = array())</h4>
+				<p>
+					<strong>get</strong> 方法能讓你為具名路由做路由反轉，基於傳遞的名稱，
+					它將取回定義的路徑，並回傳一個你可以使用在你的檢視中的 URL。
+					這意味著，如果你變更你的路由，在你檢視中的連結將被相應地更新。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><kbd>null</kbd></td>
+									<td>要載入的路由名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$named_params</kbd></th>
+									<td><code>array()</code></td>
+									<td>要被添加到建立的 URI 的參數陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><kbd>布林｜陣列</kbd></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 如果你的路由是像這樣定義：
+return array(
+	'_root_'  => 'welcome/index',  // 預設路由
+	'_404_'   => 'welcome/404',    // 主要的 404 路由
+
+	'hello(/:name)?' => array('welcome/hello', 'name' => 'hello'),
+);
+
+// 此呼叫將回傳 'http://your_base_url/welcome/hello'
+echo Router::get('hello');
+</code></pre>
+<br />
+<p>
+	你也可以這樣做，如果你的路由包含一個具名參數、正規表達式、或兩者的結合。
+</p>
+							<pre class="php"><code>// 如果你的路由是像這樣定義：
+return array(
+    'thread/(?P&lt;thread_id&gt;\d+?)/post' => array('post', 'name' => 'post'),
+);
+
+// 這些會回傳 'thread/1/post'：
+echo Router::get('post', array('thread_id' => 1));
+echo Router::get('post', array('$1' => 1));
+echo Router::get('post', array(1));
+
+// 如果你的路由是像這樣定義：
+return array(
+    'country/(?P&lt;country&gt;\d+?)/state/(?P&lt;state&gt;\d+?)/location' => array('location', 'name' => 'location'),
+);
+
+// 這些會回傳 'country/japan/state/tokyo/location'：
+echo Router::get('location', array('country' => 'japan', 'state' => 'tokyo'));
+echo Router::get('location', array('$1' => 'japan', '$2' => 'tokyo'));
+echo Router::get('location', array('japan', 'tokyo'));
+echo Router::get('location', array('country' => 'japan', 'tokyo'));
+echo Router::get('location', array('$1' => 'japan', 'tokyo'));
+</code></pre>
+<br />
+<p class="note">
+	請注意，如果你的路由包含一個傳統正規表達式和一個具名參數，或一個簡潔的正規表達式，
+	它們將被一起取代，這可能導致意想不到的結果。
+</p>
+							<pre class="php"><code>// 如果你的路由是像這樣定義：
+return array(
+	'hello/(:name)(/:segment)' => array('welcome/user', 'name' => 'user'),
+);
+
+// 請注意 "(/:segment)" 將完全地被取代為 "article"，所以
+// 此呼叫將回傳 'http://your_base_url/welcome/user/johnarticle' ！
+echo Router::get('user', array('name' => 'john', 'article'));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete($path, $case_sensitive = null)</h4>
+				<p>
+					<strong>delete</strong> 方法能讓你在執行階段手動刪除存在的路由。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><i>必要</i></td>
+									<td>要符合的 URI 路徑，這是你的 routes.php 路由定義的左邊。</td>
+								</tr>
+								<tr>
+									<th><kbd>$case_sensitive</kbd></th>
+									<td><code>null</code></td>
+									<td>如果為 false，所給的路由將不分大小寫針對 URI 配對。<br>如果為 true，配對將區分大小寫。如果沒所給，預設配置將被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>空</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 刪除 'this/that' 路由
+Router::delete('this/that');
+
+// 強制區分大小寫
+Router::delete('this/that', true);
+
+// 刪除所有指向一個模組控制器的路由
+Router::delete('module/controller(:any)');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

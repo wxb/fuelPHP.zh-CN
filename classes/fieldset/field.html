@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/fieldset/field.html';
+		var path = './../../';
+		var class_prefix = "Fieldset_Field::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Fieldset_Field - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Fieldset_Field 類別</h2>
+
+			<p>
+				The Fieldset_Field class defines a single field inside a fieldset. It defines the type of field, how the field
+				should be rendered, and which validation rules should be used when validating field input.
+			</p>
+
+			<p class="note">
+				Although it is technically possible to create stand-alone Fieldset_Field instances, normally they will be created
+				as part of a Fieldset, using the Fieldsets <kbd>add_field()</kbd> method.
+			</p>
+
+			<article>
+				<h4 class="method" id="method_set_fieldset">set_fieldset(Fieldset $fieldset)</h4>
+				<p>
+					If you have created a standalone Fieldset_Field object (i.e. not via the Fieldset class), you can use the
+					<strong>set_fieldset</strong> method to assign the field object to a fieldset object.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$fieldset</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Instance of Fieldset you want to assign this Field object to.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$fieldset = \Fieldset::forge('myfieldset');
+$field = new \Fieldset_Field('client', 'Name of the client');
+$field-&gt;set_fieldset($fieldset);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_label">set_label($label)</h4>
+				<p>
+					Set or change the label of a field.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$label</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Label to be displayed for the field when generating the HTML for this field.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$fieldset-&gt;field('fieldname')-&gt;set_label('New Label');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_type">set_type($type)</h4>
+				<p>
+					Set or change the HTML form field type.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$type</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Input field type used when generating the HTML for this field.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// will generate &lt;input type="hidden"... &gt;
+$fieldset-&gt;field('fieldname')-&gt;set_type('hidden');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_value">set_value($value, $repopulate = false)</h4>
+				<p>
+					Set or changes the value of the field. For radio buttons and checkboxes, you can choose to repopulate, which
+					will recalculate the "checked" value of the field based on the current and the passed value.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$type</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Input field type used when generating the HTML for this field.</td>
+									</tr>
+									<tr>
+										<th><kbd>$repopulate</kbd></th>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>If true, the field will be repopulated based on the value (only for radio buttons and checkboxes).</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$fieldset-&gt;field('fieldname')-&gt;set_value('this is the new value');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_description">set_description($description)</h4>
+				<p>
+					Set or changes the fields description. The description is mapped to the <strong>{description}</strong>  ta
+					in the form field template, and can for example be used to display a help text.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$description</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>欄位描述。</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$fieldset
+	-&gt;field('fieldname')
+	-&gt;set_description('We would like you to enter something here');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_template">set_template($template = null)</h4>
+				<p>
+					Sets or resets a custom form field template for this field.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$template</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>The template to be used to render the HTML for this field.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$fieldset
+	-&gt;field('fieldname')
+	-&gt;set_template('&lt;div class=\"{error_class}\"&gt;{label}{required}&lt;/div&gt;&lt;div class="field-fieldname">{field} {description} {error_msg}&lt;/div&gt;');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">If you don't pass anything, or pass <kbd>null</kbd>, the default field template as defined in the <strong>form.php</strong> config file will be used.</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_error_message">set_error_message($rule, $msg)</h4>
+				<p>
+					Set a custom error message for a specific validation rule.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$rule</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Validation rule for which you want to override the default error message.</td>
+									</tr>
+									<tr>
+										<th><kbd>$msg</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>
+											The message to display. You can use <strong>:label</strong> as a placeholder for the field label, and
+											<strong>:param:&lt;number&gt;</strong> for the parameters passed to the rule.
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// set a custom error message for the "valid_string" validation rule
+$fieldset
+	-&gt;field('fieldname')
+	-&gt;set_error_message('valid_string', ':label must contain both upper and lowercase characters!');
+
+// set a custom error message for "exact_length"
+
+$fieldset
+	-&gt;field('fieldname')
+	-&gt;set_error_message('exact_length', ':label is not exactly :param:1 long!');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_error_message">get_error_message($rule)</h4>
+				<p>
+					Checks if a custom message for a validation rule is defined, and if so, the message is returned.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$rule</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>The name of the validation rule who's message should be fetched.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Mixed, string if there is a custom message, or <kbd>null</kbd> if not</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// set a custom error message for the "valid_string" validation rule
+$fieldset
+	-&gt;field('fieldname')
+	-&gt;set_error_message('valid_string', ':label must contain both upper and lowercase characters!');
+
+// returns: :label must contain both upper and lowercase characters!
+$message = $fieldset-&gt;field('fieldname')-&gt;get_error_message('valid_string');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_rule">add_rule($callback)</h4>
+				<p>
+					Add a validation rule to a field, either an internal validation rule identified by name, or a valid callback that
+					validates the field.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$callback</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Either a string with a valid validation rule name, or full callback.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// set a valid_string rule on the field
+$fieldset-&gt;field('fieldname')-&gt;add_rule('valid_string', array('alpha-numeric', 'dots', 'spaces'));
+
+// and make the field required
+$message = $fieldset->field('fieldname')->add_rule('required');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">When you set the required rule, the "required" attribute of the form input tag will be set.</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete_rule">delete_rule($callback, $set_attr = true)</h4>
+				<p>
+					Removes a validation rule to a field, identified by either an internal validation rule identified by name, or a valid callback that
+					validates the field.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$callback</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Either a string with a valid validation rule name, or full callback.</td>
+									</tr>
+									<tr>
+										<th><kbd>$set_attr</kbd></th>
+										<td><pre class="php"><code>true</code></pre></td>
+										<td>If true, attributes related to the rule are updated too.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// remove the valid_string rule from the field
+$fieldset-&gt;field('fieldname')-&gt;delete_rule('valid_string');
+
+// and make the field no longer required
+$message = $fieldset->field('fieldname')->delete_rule('required', true);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">When you remove the required rule, the "required" attribute of the form input tag will be removed if <kbd>$set_attr</kbd> is set to <kbd>true</kbd>.</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_attribute">set_attribute($attr, $value = null)</h4>
+				<p>
+					Set one or more HTML field attributes for the field.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$attr</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Either a string with the name of the attribute, or an assoc array of attributes and values.</td>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>The attributes value. Ignored if $attr is an array.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// add a custom CSS style
+$fieldset-&gt;field('fieldname')
+	-&gt;set_attribute('style', 'font-weight:bold;color:yellow;');
+
+// or multiple attributes at once
+$fieldset-&gt;field('fieldname')-&gt;set_attribute(array(
+	'style' => 'font-weight:bold;color:yellow;',
+	'disabled' => 'disabled'
+));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">If you pass <kbd>null</kbd> as a value, the attribute will be removed from the field attribute list.</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_attribute">get_attribute($key = null, $default = null)</h4>
+				<p>
+					Get one or all HTML field attributes of the field.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Name or array of names of attribute(s) to get. If null, all attributes set are returned.</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Value to return if the requested attribute has not been set.</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Mixed, a single attribute value, or multiple values in an array if $key was an array of attributes</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// get any custom style defined, or false if no style is set
+$style = $fieldset-&gt;field('fieldname')
+	-&gt;get_attribute('style', false);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_options">set_options($value, $label = null, $replace_options = false)</h4>
+				<p>
+					Set one or more options. Only valid for radio buttons, checkboxes and selects.
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tbody>
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$value</kbd></th>
+										<td><pre class="php">必要</pre></td>
+										<td>Value of the option, or an assoc array of values and labels.</td>
+									</tr>
+									<tr>
+										<th><kbd>$label</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Label to be set on the value. Only used if $value is not an array.</td>
+									</tr>
+									<tr>
+										<th><kbd>$replace_options</kbd></th>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>If true, existing options will be deleted before setting the new one(s).</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset_Field 物件，鍊結用</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 如果該欄位是一個 select： &lt;option value="1"&gt;Label&lt;/option&gt;
+// 如果該欄位是一個 checkbox： &lt;label&gt;Label&lt;/label&gt;&lt;input type="checkbox" ... /&gt;
+$style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_fieldset">fieldset()</h4>
+				<p>
+					取得此 Field 關聯的 Fieldset 物件。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fieldset 實例</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 回傳 true
+$same = ($fieldset === $fieldset-&gt;field('fieldname')-&gt;fieldset());</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add">add($name, $label = '', array $attributes = array(), array $rules = array())</h4>
+				<p>
+					<a href="fieldset.html#method_add">Fieldset add()</a> 方法的別名。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_before">add_before($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)</h4>
+				<p>
+					<a href="fieldset.html#method_add_before">Fieldset add_before()</a> 方法的別名。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_after">add_after($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)</h4>
+				<p>
+					<a href="fieldset.html#method_add_after">Fieldset add_after()</a> 方法的別名。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_build">build()</h4>
+				<p>
+					為該欄位產生表單 HTML。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>無</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串，產生的 HTML</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 如果該欄位是一個 select：&lt;option value="1"&gt;Label&lt;/option&gt;
+// 如果該欄位是一個 checkbox：&lt;label&gt;Label&lt;/label&gt;&lt;input type="checkbox" ... /&gt;
+$style = $fieldset-&gt;field('fieldname')-&gt;set_options('1', 'Label');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_input">input()</h4>
+				<p>
+					<a href="../validation/methods.html#method_input">Validation input()</a> 方法的別名，
+					並為目前欄位回傳輸入值。回傳 <kbd>null</kbd>
+					如果沒有輸入值存在。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_validated">validated()</h4>
+				<p>
+					<a href="../validation/methods.html#method_validated">Validation validated()</a> 方法的別名，
+					並為目前欄位回傳驗證的輸入值。回傳 <kbd>null</kbd>
+					如果沒有輸入值存在。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_error">error()</h4>
+				<p>
+					<a href="../validation/methods.html#method_error">Validation error()</a> 方法的別名，
+					並在此欄位執行驗證之後回傳任何存在的錯誤訊息。回傳 <kbd>false</kbd>
+					如果沒有偵測到錯誤。
+				</p>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

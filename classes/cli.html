@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/cli.html';
+		var path = './../';
+		var class_prefix = "Cli::";
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>Cli - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="cli.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Cli 類別</h2>
+
+			<p>透過接受輸入選項、參數及輸出文字，與命令列互動。</p>
+
+			<article>
+				<h4 class="method" id="method_beep">beep($num = 1)</h4>
+				<p><strong>beep</strong> 方法在運行命令的電腦上觸發系統提示聲。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$num</kbd></th>
+									<td><em>1</em></td>
+									<td>嗶聲次數。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Cli::beep(25);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_color">color($text, $foreground, $background = null, $format = null)</h4>
+				<p><strong>color</strong> 方法改變一段文字的顏色。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$text</kbd></th>
+									<td><i>必要</i></td>
+									<td>要上色的字串。</td>
+								</tr>
+								<tr>
+									<th><kbd>$foreground</kbd></th>
+									<td><i>必要</i></td>
+									<td>字串的前景色。</td>
+								</tr>
+								<tr>
+									<th><kbd>$background</kbd></th>
+									<td><i>null</i></td>
+									<td>字串的背景色。</td>
+								</tr>
+								<tr>
+									<th><kbd>$format</kbd></th>
+									<td><i>null</i></td>
+									<td>其他要套用的格式。目前只支援 'underline' 格式。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>if (true === false)
+{
+	$message = Cli::color('Error: The universe is broken.', 'red');
+}
+
+else
+{
+	$message = Cli::color('All is well with the world.', 'green');
+}
+
+Cli::write($message);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_error">error($text)</h4>
+				<p><strong>error</strong> 方法會寫一行文字到命令列做為一個錯誤（類似 <strong>write</strong> 但使用 STDERR 而非 STDOUT）。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$text</kbd></th>
+									<td><i>空字串</i></td>
+									<td>要輸出到 STDERR 的文字。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Cli::error('Failure: You hit the wrong key with your chubby hands, try using a stick to poke the keyboard.');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_prompt">prompt($question = null, $options = array())</h4>
+				<p><strong>prompt</strong> 方法提示使用者輸入。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$question</kbd></th>
+									<td><i>null</i></td>
+									<td>詢問使用者問題且等待輸入。</td>
+								</tr>
+								<tr>
+									<th><kbd>$options</kbd></th>
+									<td><i>array()</i></td>
+									<td>提供使用者選擇的選項陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 等待按任何鍵
+Cli::prompt();
+
+// 接受任何輸入
+$color = Cli::prompt('What is your favorite color?');
+
+// 接受任何輸入，但提供預設值
+$color = Cli::prompt('What is your favorite color?', 'white');
+
+// 只接受陣列中的選項
+$ready = Cli::prompt('Are you ready?', array('y','n'));</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_option">option($name, null)</h4>
+				<p><strong>option</strong> 接受來自初始命令的選項。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><em>必要</em></td>
+									<td>選項名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><em>null</em></td>
+									<td>當選項未被提供時的預設值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="cli"><code>$ php index.php user -v --v -name=John --name=John</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_wait">wait($seconds = 0, $countdown = false)</h4>
+				<p><strong>wait</strong> 方法使 cli 輸出等待一個所給的秒數，且可選擇性的顯示倒數計時。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$seconds</kbd></th>
+									<td><i>0</i></td>
+									<td>等待的秒數。</td>
+								</tr>
+								<tr>
+									<th><kbd>$countdown</kbd></th>
+									<td><i>false</i></td>
+									<td>在輸出顯示倒數計時。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Cli::write('Loading...');
+Cli::wait(5, true);</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_write">write($text = '', $foreground = null, $background = null)</h4>
+				<p><strong>write</strong> 方法將寫一行文字到命令列。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$text</kbd></th>
+									<td><i>空字串</i></td>
+									<td>要輸出到命令列的文字。</td>
+								</tr>
+								<tr>
+									<th><kbd>$foreground</kbd></th>
+									<td><i>null</i></td>
+									<td>字串的前景色。</td>
+								</tr>
+								<tr>
+									<th><kbd>$background</kbd></th>
+									<td><i>null</i></td>
+									<td>字串的背景色。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Cli::write('Hello World!');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_stdout">stdout($resource = null)</h4>
+				<p>Changes or retrieves the current stdout stream. This is STDOUT by default.<br/>
+                    <br/>
+                    Note the public property <code>$nocolor</code> can be set to true to force all output
+                    to plaintext.
+                </p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$resource</kbd></th>
+									<td><i>null</i></td>
+									<td>Any writable filehandle, or null to retrieve the current filehandle.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>The previous value of the filehandle (or current value if you are not changing it)</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$buffer = fopen('php://temp', 'w');
+$stdout = Cli::stdout($buffer);
+Cli::write("Hello World!");
+Cli::error("Where's my text? :(");
+Cli::stdout($stdout);
+Cli::write("There it is!");
+
+rewind($buffer);
+file_put_contents('out.log', stream_get_contents($buffer));
+
+// $ cat out.log
+// Hello World!</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+
+			<article>
+				<h4 class="method" id="method_stderr">stderr($resource = null)</h4>
+				<p>Changes or retrieves the current stderr stream. This is STDERR by default.<br/>
+                    <br/>
+                    Note the public property <code>$nocolor</code> can be set to true to force all output
+                    to plaintext.
+                </p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$resource</kbd></th>
+									<td><i>null</i></td>
+									<td>Any writable filehandle, or null to retrieve the current filehandle.</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>The previous value of the filehandle (or current value if you are not changing it)</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$errors = fopen('php://temp', 'w');
+$stderr = Cli::stderr($errors);
+Cli::write("Hello World!");
+Cli::error("Where's my text? :(");
+Cli::stderr($stderr);
+Cli::write("There it is!");
+
+rewind($errors);
+file_put_contents('out.log', stream_get_contents($errors));
+
+// $ cat out.log
+// Where's my text? :(
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http")  "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

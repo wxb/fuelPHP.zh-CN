@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/views.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>檢視 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="views.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>檢視</h2>
+
+			<h3 id="what_is_a_view">檢視是什麼？</h3>
+
+			<p>檢視是呈現資料到瀏覽器的檔案。這些檔案可以讓你的應用程式分離邏輯和呈現。檢視通常是 html、javascript、或 css 但可以包含從控制器傳入的變數。</p>
+
+			<h3>建立檢視</h3>
+
+			<p>在 FuelPHP 中，檢視被放在 <kbd>APPPATH/views</kbd> 目錄中。檢視可以被放在子目錄。檢視的命名是透過它們相對 fuel/app/views 的目錄路徑以及檔案名稱，所以一個位於 <em>fuel/app/views/user/join.php</em> 的檢視檔案會被命名為 <kbd>user/join</kbd>。</p>
+
+			<p>範例：</p>
+
+	<pre class="html"><code>&lt;html&gt;
+	&lt;head&gt;
+		&lt;title>&lt;?php echo $title; ?&gt;&lt;/title>
+	&lt;/head&gt;
+	&lt;body&gt;
+		Welcome, &lt;?php echo $username; ?&gt;.
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+			<h3 id="using_views">使用檢視</h3>
+
+			<p>在 Fuel 框架中檢視是非常靈活的。你可以建立單一檢視以及在其他檢視內的巢狀檢視。這可用很多方式達成。</p>
+
+			<p><strong>檢視範例（fuel/app/views/home/index.php）：</strong></p>
+			<pre class="html"><code>&lt;html&gt;
+	&lt;head&gt;
+		&lt;title>&lt;?php echo $title; ?&gt;&lt;/title>
+	&lt;/head&gt;
+	&lt;body&gt;
+		Welcome, &lt;?php echo $username; ?&gt;.
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+			<p><strong>方法 1（使用上面的檢視範例）：</strong></p>
+
+			<pre class="php"><code>class Controller_Home extends Controller
+{
+	public function action_index()
+	{
+		$data = array(); // 儲存要給檢視的變數
+
+		$data['username'] = 'Joe14';
+		$data['title'] = 'Home';
+
+		// 指派檢視到瀏覽器輸出
+		return View::forge('home/index', $data);
+	}
+}</code></pre>
+
+			<p><strong>方法 2（使用上面的檢視範例）：</strong></p>
+
+			<pre class="php"><code>class Controller_Home extends Controller
+{
+	public function action_index()
+	{
+		// 建立檢視
+		$view = View::forge('home/index');
+
+		// 指派變數給檢視
+		$view->username = 'Joe14';
+		$view->title = 'Home';
+
+		// 另一種指派變數給檢視的方法
+		$view->set('username', 'Joe14');
+		$view->set('title', 'Home');
+
+		// 指派檢視到瀏覽器輸出
+		return $view;
+	}
+}</code></pre>
+
+			<h3 id="security">安全性</h3>
+
+			<p>檢視使用編碼輸出來消毒你傳給它們的任何事物。在預設安裝中，安全方法
+				Security::htmlentities() 被定義為輸出過濾器。你可以修改在你應用程式的 config.php 檔案中的過濾器。
+				如果你想要傳遞一些不被過濾的東西，你可以使用 <kbd>set($name, $value, false)</kbd> 方法。</p>
+
+			<pre class="php"><code>class Controller_Example extends Controller
+{
+	public function action_index()
+	{
+		$view = \View::forge('example');
+
+		// 添加過濾，輸出：&amp;lt;strong&amp;gt;not bold because filtered&amp;lt;/strong&amp;gt;
+		$view->title = '&lt;strong&gt;not bold because filtered&lt;/strong&gt;';
+
+		// 添加未經過濾的，輸出：&lt;strong&gt; bold because unfiltered&lt;/strong&gt;
+		$view->set('title', '&lt;strong&gt; bold because unfiltered&lt;/strong&gt;', false);
+
+		// 或使用 set_safe() 方法，它與 set() 一致但預設為 'false'
+		$view->set_safe('title', '&lt;strong&gt; bold because unfiltered&lt;/strong&gt;');
+
+		return $view;
+	}
+}</code></pre>
+
+			<p>如果你不希望你的檢視這樣運作，你可以傳遞 <kbd>false</kbd> 做為 <kbd>View::forge()</kbd> 的第三參數，
+			現在添加到此檢視物件的所有事物將不被過濾。如果你之後需要過濾一些值，你可以使用
+			<kbd>set($name, $value, true)</kbd>。<br />
+			你也可以透過設定應用程式配置值
+			<kbd>security.auto_filter_output</kbd> 為 <kbd>false</kbd> 來全域地停用過濾輸出。為了安全起見，
+			強烈建議你別這麼做！</p>
+
+			<p class="note"><strong>注意物件：</strong> 除非傳遞的物件是檢視、表現控件或閉包（closure）類型，
+			當過濾輸出被啟用時，它被預期有一個 <kbd>__toString()</kbd> 方法並強制是一個字串。
+			如果你無論如何都希望傳遞它，你需要使用 <kbd>set($name, $value, false)</kbd>，
+			但別忘了過濾你所使用的東西！<br />
+			檢視＆表現控件被預期包含 HTML 並打理它們自己的過濾，這就是為什麼它們不消毒。
+			閉包（closure）不能被消毒，而且你應該小心確保在它們內部完成，
+			如果必要的話。</p>
+
+			<h3>延遲呈現（Lazy rendering）</h3>
+
+			<p>
+				當實例化一個檢視物件時，只有需要產生輸出的環境被設置。
+				檢視文件沒有被讀取，沒有變數會被解譯，也沒有輸出會被呈現。
+			</p>
+			<p>
+				這只有發生在你明確地在檢視物件呼叫 <code>render()</code> 方法，
+				或當你轉換檢視物件為字串（自動發生在你寫出它時）。這意味著非到絕對必要，
+				沒有檢視會進行處理。這也意味著 Fuel 不在記憶體中保留呈現的檢視，
+				直到把它們發送到瀏覽器的時候。
+			</p>
+
+			<h3>巢狀檢視</h3>
+
+			<p>檢視也可以被巢狀包含在其他檢視。這可用很多方式達成。</p>
+
+			<h3>檢視範例</h3>
+
+			<p>fuel/app/views/layout.php</p>
+
+			<pre class="html"><code>&lt;html&gt;
+	&lt;head&gt;
+		&lt;?php echo $head; ?&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;?php echo $header; ?&gt;
+		&lt;?php echo $content; ?&gt;
+		&lt;?php echo $footer; ?&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+			<p>fuel/app/views/head.php</p>
+
+			<pre class="html"><code>&lt;title&gt;&lt;?php echo $title; ?&gt;&lt;/title&gt;</code></pre>
+
+			<p>fuel/app/views/header.php</p>
+
+			<pre class="html"><code>&lt;div class=&quot;logo&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;logo_text&quot;&gt;&lt;?php echo $site_title; ?&gt;&lt;/div&gt;</code></pre>
+
+			<p>fuel/app/views/content.php</p>
+
+			<pre class="html"><code>&lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;
+&lt;div class=&quot;welcome_user&quot;&gt;Welcome &lt;?php echo $username; ?&gt;&lt;/div&gt;</code></pre>
+
+			<p>fuel/app/views/footer.php</p>
+
+			<pre class="html"><code>&lt;div class=&quot;footer&quot;&gt;
+	&amp;copy; Copyright &lt;?php echo date('Y');?&gt; &lt;?php echo $site_title; ?&gt;
+&lt;/div&gt;</code></pre>
+
+			<h3 id="method_one">方法 1（使用以上的檢視範例並且延遲呈現）：</h3>
+
+			<pre class="php"><code>class Controller_Home extends Controller
+{
+	public function action_index()
+	{
+		// 建立 layout 檢視
+		$view = View::forge('layout');
+
+		// 指派全域變數如此所有檢視可以存取它們
+		$view->set_global('username', 'Joe14');
+		$view->set_global('title', 'Home');
+		$view->set_global('site_title', 'My Website');
+
+		// 指派檢視做為變數，延遲呈現
+		$view->head = View::forge('head');
+		$view->header = View::forge('header');
+		$view->content = View::forge('content');
+		$view->footer = View::forge('footer');
+
+		// 回傳檢視物件到 Request
+		return $view;
+	}
+}</code></pre>
+
+			<h3 id="method_two">方法 2（使用以上的檢視範例並且強制呈現）：</h3>
+
+			<pre class="php"><code>class Controller_Home extends Controller
+{
+	public function action_index()
+	{
+		// 指派變數
+		$data = array();
+		$data['title'] = 'Home';
+		$data['site_title'] = 'My Website';
+		$data['username'] = 'Joe14';
+
+		// 指派檢視做為變數，強制呈現
+		$views = array();
+		$views['head'] = View::forge('head', $data)->render();
+		$views['header'] = View::forge('header', $data)->render();
+		$views['content'] = View::forge('content', $data)->render();
+		$views['footer'] = View::forge('footer', $data)->render();
+
+		// 回傳呈現的 HTML 到 Request
+		return View::forge('layout', $views)->render();
+	}
+}</code></pre>
+
+			<h3 id="method_two">方法 3（使用以上的檢視範例，無全域資料，延遲呈現）：</h3>
+
+			<pre class="php"><code>class Controller_Home extends Controller
+{
+	public function action_index()
+	{
+		// 建立 layout 檢視
+		$view = View::forge('layout');
+
+		// 本地檢視變數，強制呈現
+		$view->head = View::forge('head', array('title' =&gt; 'Home'));
+		$view->header = View::forge('header', array('site_title' =&gt; 'My Website'));
+		$view->content = View::forge('content', array('username' =&gt; 'Joe14', 'title' =&gt; 'Home'));
+		$view->footer = View::forge('footer', array('site_title' =&gt; 'My Website'));
+
+		// 回傳檢視物件到 Request
+		return $view;
+	}
+}</code></pre>
+
+			<p>詳見<a href="../classes/view.html">在類別章節中的 View 類別</a>，以了解檢視的函式敘述。</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

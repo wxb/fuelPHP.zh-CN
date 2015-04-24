@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/module.html';
+		var path = './../';
+		var class_prefix = "Module::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Module - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Module 類別</h2>
+
+			<p><kbd>Module</kbd> 類別能讓你簡易的載入、卸載、檢查一個模組是否存在或是否已被載入，或取得一個所有已載入的模組列表。</p>
+
+			<article>
+				<h4 class="method" id="method_load">load($module, $path = null)</h4>
+				<p><strong>load</strong> 方法能讓你在執行階段載入一個或更多模組，如果模組無法被找到，一個 <kbd>ModuleNotFoundException</kbd> 將被拋出。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$module</kbd></th>
+									<td><i>必要</i></td>
+									<td>要被載入的模組名稱，或一個模組陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$path</kbd></th>
+									<td><code>null</code></td>
+									<td>指向所給模組的路徑，你可以使用它從定義的模組路徑外部載入模組。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>空</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 載入 users 模組
+Module::load('users');
+
+// 從指定的目錄載入 users 模組
+Module::load('users', '/path/to/modules/users/');
+
+// 從單一模組安裝程序載入多個模組
+Module::load( array('Users' => '/path/to/modules/users/', 'Groups' => '/path/to/modules/groups/') );
+
+// 載入不存在的模組
+Module::load('awesome'); // 拋出一個 ModuleNotFoundException
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_unload">unload($module)</h4>
+				<p><strong>unload</strong> 方法能讓你在執行階段卸載一個模組。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$module</kbd></th>
+									<td><i>必要</i></td>
+									<td>要被卸載的模組名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><i>空</i></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 卸載 users 模組
+Module::unload('users');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">這將移除所有已載入指向此模組的路由！</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_loaded">loaded($module = null)</h4>
+				<p><strong>loaded</strong> 方法能讓你檢查一個模組目前是否已載入。如果沒給模組名稱，會回傳所有已載入的模組。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$module</kbd></th>
+									<td><kbd>null</kbd></td>
+									<td>要被檢查的模組名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><kbd>布林｜陣列</kbd></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 檢查 users 模組是否已載入
+$loaded = Module::loaded('users');
+
+// 取得所有已載入的模組
+$loaded = Module::loaded();
+/*
+回傳一些東西像：
+array(
+    'users' => '/path/to/users',
+    'groups' => '/path/to/groups',
+)
+*/
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_exists">exists($module)</h4>
+				<p>
+					<strong>exists</strong> 方法能讓你檢查一個模組是否存在。換句話說，是否它能在配置模組路徑之中被找到。
+					如果找到的話，會回傳指向模組的路徑，否則的話回傳 <strong>false</strong>。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$module</kbd></th>
+									<td><kbd>null</kbd></td>
+									<td>要被檢查的模組名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td><kbd>布林｜字串</kbd></td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 選擇性的載入 comments 模組
+if (Module::exists('comments'))
+{
+	Module::load('comments');
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

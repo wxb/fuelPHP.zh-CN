@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/tasks.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>任務 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="tasks.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>任務</h2>
+
+			<h3 id="what_are_tasks">任務是什麼？</h3>
+
+			<p>任務是可以透過命令列運行或設置為一個排程工作（cron job）的類別。它們通常用於背景進程、定時任務和維護任務。任務就像控制器，可以呼叫模型和其他類別。</p>
+
+			<h3 id="creating_tasks">建立任務</h3>
+
+			<p>在 Fuel，控制器放在 <kbd>fuel/app/tasks</kbd> 目錄。以下是一個 "example" 的任務範例：</p>
+
+	<pre class="php"><code>namespace Fuel\Tasks;
+
+class Example
+{
+
+	public function run($message = 'Hello!')
+	{
+		echo $message;
+	}
+}</code></pre>
+
+			<p>將藉由在 Oil 內的提煉工具呼叫：</p>
+
+			<pre class="cli"><code>$ php oil refine example "Good morning"</code></pre>
+
+			<p>只有當任務名稱在命令列被使用，<kbd>"run()"</kbd> 方法會被呼叫。</p>
+
+			<h3 id="more_methods">分割任務到更多方法</h3>
+
+			<p>你可以添加更多方法到你的任務類別，將一個任務群組分解為更具體可被分別呼叫的任務。</p>
+
+	<pre class="php"><code>public function current_date()
+{
+	echo date('Y-m-d');
+}</code></pre>
+
+			<p>然後我們就可以呼叫這個方法：</p>
+
+			<pre class="cli"><code>$ php oil refine example:current_date</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

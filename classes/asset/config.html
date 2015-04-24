@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/asset/config.html';
+		var path = './../../';
+		var class_prefix = "Asset::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Asset 配置 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Asset 類別</h2>
+
+			<p>Asset 類別是一系列協助收集、分組和顯示資產（js、css、img）的方法。</p>
+
+			<section>
+				<h3 id="config">配置</h3>
+
+				<p>Asset 類別的預設是透過 fuel/core/config/asset.php 配置檔案來配置。
+				它已經填入了一個預設配置。
+				你可以透過添加一個同名的配置檔案到你應用程式的 config 目錄來覆寫此配置，並在這裡設定你想要變更的值。
+				這些將覆寫核心配置，但保留你沒有覆寫的部份。</p>
+
+				<p>以下全域配置值可以被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>paths</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('assets/')</code></pre></td>
+							<td>
+								預設 asset 根路徑。路徑必須包含一個斜線。
+							</td>
+						</tr>
+						<tr>
+							<th>css_dir</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'css/'</code></pre></td>
+							<td>
+								預設 css 子文件夾。必須包含一個斜線。
+							</td>
+						</tr>
+						<tr>
+							<th>js_dir</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'js/'</code></pre></td>
+							<td>
+								預設 js 子文件夾。必須包含一個斜線。
+							</td>
+						</tr>
+						<tr>
+							<th>img_dir</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'img/'</code></pre></td>
+							<td>
+								預設 image 子文件夾。必須包含一個斜線。
+							</td>
+						</tr>
+						<tr>
+							<th>folders</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array(
+	'css' => array(),
+	'js'  => array(),
+	'img' => array(),
+),
+</code></pre></td>
+							<td>
+								為每個資產類型指定一個或更多各自的資產文件夾。
+							</td>
+						</tr>
+						<tr>
+							<th>url</th>
+							<td>字串</td>
+							<td><pre class="php"><code>\Config::get('base_url')</code></pre></td>
+							<td>
+								指向你資產的 root URL。當載入一個資產，資產路徑以及資產名稱會被附加到此 URL。
+							</td>
+						</tr>
+						<tr>
+							<th>add_mtime</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								是否附加資產最後修改時間戳記到 URL，這將有助於快取資產，值得推薦。
+							</td>
+						</tr>
+						<tr>
+							<th>indent_level</th>
+							<td>整數</td>
+							<td><pre class="php"><code>1</code></pre></td>
+							<td>
+								為了保持產生的 HTML 整齊，Asset 類可以縮排標籤。這設定縮排的級別。
+							</td>
+						</tr>
+						<tr>
+							<th>indent_with</th>
+							<td>字串</td>
+							<td><pre class="php"><code>"\t"</code></pre></td>
+							<td>
+								要用來縮排產生的 HTML 的字串。這預設是一個 tab。
+							</td>
+						</tr>
+						<tr>
+							<th>auto_render</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								這控制當一個資產方法沒帶群組名稱被呼叫時，是否回傳產生的 HTML。
+								如果為 false，該資產將被添加到預設群組以在之後呈現。
+							</td>
+						</tr>
+						<tr>
+							<th>fail_silently</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								當設為 true，當資產檔案沒被找到時，例外將不會被拋出。
+								該資產將會被忽略。
+							</td>
+						</tr>
+						<tr>
+							<th>always_resolve</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								當設為 true，Asset 類別始終會嘗試在本地解析資產。當設為 false，
+								it will only resolve it the asset URL is relative (i.e. pointing to the local host itself). This
+								is useful if you have a copy of your assets on a separate asset server, or behind an asset cache
+								like Varnish.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section>
+				<h3 id="asset_paths">Asset 路徑</h3>
+
+				<p>
+					有一些方法可以定義資產路徑。你可以定義全域的資產搜尋路徑，它定義你資產的 'root'。
+					當搜尋一個資產時，為已載入資產定義的子文件夾會被附加到這些路徑。
+					如果你使用多個全域搜尋路徑，它們必須都使用相同的子文件夾結構。
+					<pre class="php"><code>// 假設：
+// - 你的 URL 是 "http://example.org/"
+// - 你的 全域搜尋路徑是 "assets/"
+// - 你的 img_dir 是 "img/"
+// 這將回傳 &lt;img src="http://example.org/assets/img/icons/myicon.png" /&gt;
+echo Asset::img('icons/myicon.png');
+</code></pre>
+				</p>
+
+				<p>
+					如果你不想要一個標準的子文件夾結構，或你必須在現有環境的工作，
+					而該環境的資產路徑已被定義，
+					Asset 類別能讓你為每種支援的資產類型定義個別的資產搜尋文件夾。
+					<pre class="php"><code>// 如果這是你的配置
+// 'folders' => array(
+//	'css' => array('assets/css'),
+//	'js'  => array('assets/js', 'global/js/'),
+//	'img' => array('assets/img/', 'assets/icons'),
+// ),
+// 而你的圖示在 'assets/icons'，
+// 這將回傳 &lt;img src="http://example.org/assets/icons/myicon.png" /&gt;
+echo Asset::img('myicon.png');
+</code></pre>
+				</p>
+
+
+				<p>搜尋路徑和搜尋文件夾都可以使用 <a href="./usage.html#method_add_path">add_path()</a> 方法在執行階段定義。</p>
+			</section>
+
+			<section>
+				<h3 id="static_assets">靜態資產</h3>
+
+				<p>
+					如果你的（一些）資產沒儲存在應用程式根目錄，而是在 URL 使用不同主機，
+					你可以使用下面的技術來載入一個資產：
+					<pre class="php"><code>// 每個資產個別地
+echo Asset::img('http://static.example.org/icons/myicon.png');
+
+// 對所有組別，設定你的 Asset URL 到 'http://static.example.org/'
+echo Asset::img('icons/myicon.png');
+</code></pre>
+					在這個情況下搜尋路徑會被忽略。
+				</p>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

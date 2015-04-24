@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/format.html';
+		var path = './../';
+		var class_prefix = "Form::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Format - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Format 類別</h2>
+			<p>Format 類別幫助你在各種格式間轉換，如 XML、JSON、CSV 等。</p>
+
+			<article>
+				<h3 id="configuration">配置</h3>
+
+				<p>Format 類別是透過 <kbd>fuel/core/config/format.php</kbd> 配置檔案進行配置。它已經填充了一個預設配置群組。你可以藉由複製此配置檔案到你的應用程式 config 目錄，並根據需求修改該檔案，以覆寫此配置群組並添加新群組。</p>
+				<p>以下配置設定可以被定義：</p>
+
+				<h4>CSV</h4>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>delimiter</th>
+							<td>字串</td>
+							<td><pre class="php"><code>','</code></pre></td>
+							<td>欄位分隔符</td>
+						</tr>
+						<tr>
+							<th>enclosure</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'"'</code></pre></td>
+							<td>包圍符</td>
+						</tr>
+						<tr>
+							<th>newline</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'\n'</code></pre></td>
+							<td>給 to_csv() 方法使用的換行符</td>
+						</tr>
+						<tr>
+							<th>escape</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'\\'</code></pre></td>
+							<td>轉義字元</td>
+						</tr>
+					</tbody>
+				</table>
+				<p>
+					預設情況下，這些配置設定被用來導入及導出 CSV 資料。
+					在你需要為導入或導出配置不同設定的情況，你可以給它一個陣列鍵，並把配置移到那裡。
+					預設配置檔案已經給你這個設置。
+				</p>
+
+				<table class="config">
+					<tbody>
+						<tr>
+							<th>regex_newline</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'\n'</code></pre></td>
+							<td>給正規表達式使用的換行符以轉換輸入資料</td>
+						</tr>
+							<th>enclose_numbers</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>如果為 false，數字不會被包圍。如果為 true，數字也會被包圍</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h4>XML</h4>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>basenode</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'xml'</code></pre></td>
+							<td>XML 基礎節點名稱</td>
+						</tr>
+						<tr>
+							<th>use_cdata</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>是否要在節點中使用 CDATA</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h4>JSON</h4>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>options</th>
+							<td>整數</td>
+							<td><pre class="php"><code>JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP</code></pre></td>
+							<td>json_encode() 選項</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<p class="note">
+				 請注意，某些組合的結果是不可預知的。例如，如果你有 CSV 資料，沒有包圍字元、沒有標題、並在第一列中嵌入換行符號，檔案中的正確欄位數無法被計算。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($data = null, $from_type = null, $params = null)</h4>
+				<p><strong>forge</strong> 方法回傳一個新的 format 物件。<strong>$from_type</strong> 支援 <strong>'xml'</strong>、<strong>'yaml'</strong>、<strong>'csv'</strong>、<strong>'json'</strong>、<strong>'serialize'</strong> 和 <strong>'xml:ns'</strong>。'xml:ns' 能讓你完全解析 namespaced-xml。沒指定 $from_type 時，<strong>$data</strong> 會直接被傳遞。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要轉換的資料。</td>
+								</tr>
+								<tr>
+									<th><kbd>$from_type</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>所提供的資料格式。</td>
+								</tr>
+								<tr>
+									<th><kbd>$param</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要被傳遞給轉換器的選擇性參數。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Fuel\Core\Format 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$array = array('foo' => 'bar');
+print_r(Format::forge($array));
+
+// 回傳
+Fuel\Core\Format Object
+(
+	[_data:protected] => Array
+	(
+		[foo] => bar
+	)
+)</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">
+						當從 CSV 格式轉換，你可以傳遞 <kbd>false</kbd> 做為 <kbd>$param</kbd> 來指示 CSV 來源不包含任何表頭。如果是這樣，最終結果會是一個索引陣列。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to_array">to_array($data = null)</h4>
+				<p><strong>to_array</strong> 方法回傳所給的資料為陣列。不要直接呼叫，使用如範例所述的 <strong>forge</strong> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要轉換的資料。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$json_string = '{"foo":"bar","baz":"qux"}';
+print_r(Format::forge($json_string, 'json')->to_array());
+
+// 回傳
+Array
+(
+	[foo] => bar
+	[baz] => qux
+)</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to_xml">to_xml($data = null, $structure = null, $basenode = 'xml', $use_cdata = false)</h4>
+				<p><strong>to_xml</strong> 方法回傳所給的資料為一個 XML 字串。不要直接呼叫，使用如範例所述的 <strong>forge</strong> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要轉換的資料。</td>
+								</tr>
+								<tr>
+									<th><kbd>$structure</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>SimpleXMLElement 類別物件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$basenode</kbd></th>
+									<td>"xml"</td>
+									<td>XML 標記的基本節點。</td>
+								</tr>
+								<tr>
+									<th><kbd>$use_cdata</kbd></th>
+									<td>false</td>
+									<td>是否要在節點中使用 CDATA</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$array = array('foo' => 'bar', 'baz' => 'qux');
+print_r(Format::forge($array)->to_xml());
+
+// 回傳
+// &lt;?xml version="1.0" encoding="utf-8"?&gt;
+// &lt;xml&gt;
+// 	&lt;foo&gt;bar&lt;/foo&gt;
+// 	&lt;baz&gt;qux&lt;/baz&gt;
+// &lt;/xml&gt;</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to_csv">to_csv($data = null, $delimiter = null, $enclose_numbers = null, array $headings = array())</h4>
+				<p><strong>to_csv</strong> 方法回傳所給的資料為一個 CSV 字串。不要直接呼叫，使用如範例所述的 <strong>forge</strong> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要轉換的資料。如果沒給，forge() 的輸入會被使用。</td>
+								</tr>
+								<tr>
+									<th><kbd>$delimiter</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>CSV 欄位分隔符。如果沒給，預設配置會被使用。</td>
+								</tr>
+								<tr>
+									<th><kbd>$enclose_numbers</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果為 false，不會被包圍。如果為 true，數字也會被包圍。如果沒給，預設配置會被使用。</td>
+								</tr>
+								<tr>
+									<th><kbd>$headings</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>CSV 欄位名稱的陣列。如果沒給，欄位名稱會根據資料陣列中的第一列來定義。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$json_string = '{"foo":"bar","baz":"qux","nr":1}';
+print_r(Format::forge($json_string, 'json')->to_csv(null, null, false));
+
+// 回傳
+// "foo","baz","nr"
+// "bar","qux",1
+
+$json_string = '{"foo":"bar","baz":"qux","nr":1}';
+print_r(Format::forge($json_string, 'json')->to_csv(null, null, false, array('this', 'that', 'num')));
+
+// 回傳
+// "this","that","num"
+// "bar","qux",1</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+			<article>
+				<h4 class="method" id="method_to_json">to_json()</h4>
+				<p><strong>to_json</strong> 方法回傳所給的資料為一個 JSON 字串。不要直接呼叫，使用如範例所述的 <strong>forge</strong> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$array = array('foo' => 'bar', 'baz' => 'qux');
+print_r(Format::forge($array)->to_json());
+
+// 回傳
+// {"foo":"bar","baz":"qux"}</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to_serialized">to_serialized()</h4>
+				<p><strong>to_serialized</strong> 方法回傳所給的資料為一個序列化字串。不要直接呼叫，使用如範例所述的 <strong>forge</strong> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$array = array('foo' => 'bar', 'baz' => 'qux');
+print_r(Format::forge($array)->to_serialized());
+
+// 回傳
+// a:2:{s:3:"foo";s:3:"bar";s:3:"baz";s:3:"qux";}</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to_php">to_php()</h4>
+				<p><strong>to_php</strong> 方法回傳所給的資料為 PHP 表達字串中的資料。你可以傳進 eval() 或用做其他瘋狂的事情。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$array = array(1, 2, array('a', 'b', 'c'));
+print_r(Format::forge($array)->to_php());
+
+// 回傳
+Array
+(
+	0 => 1,
+	1 => 2,
+	2 => array(
+		0 => 'a',
+		1 => 'b',
+		2 => 'c',
+	),
+)</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

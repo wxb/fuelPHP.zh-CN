@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/mvc.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>模型-檢視-控制器 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="mvc.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>模型-檢視-控制器（MVC）</h2>
+
+			<h3 id="what_is_mvc">MVC 是什麼？</h3>
+
+			<p>MVC 是一種分離你的程式碼的方式，取決於程式碼在你的應用程式裡扮演何種角色。
+			在應用程式流程裡，它始於一個被載入的控制器，該控制器執行一個方法使用模型取回資料。
+			一旦完成，控制器決定要載入哪個檢視，
+			其中包含你的訪客能看見的輸出。</p>
+
+			<h3 id="controllers">控制器</h3>
+
+			<p>控制器類別被放在 <kbd>APPPATH/classes/controllers</kbd></p>
+
+			<p>Fuel 的路由根據請求的 URL 決定要載入的控制器及被呼叫的方法。
+			這是你的應用程式開始運作的地方，控制器決定採取什麼行動、
+			任何使用者輸入要做什麼、什麼資料被操縱、和顯示檢視給使用者。
+			然而控制器本身沒有這些東西，它呼叫模組和類別後去做這些事情。</p>
+
+			<p>閱讀更多關於 <a href="controllers/base.html">控制器</a>。</p>
+
+			<h3 id="models">模型</h3>
+			<p>模型類別被放在 <kbd>APPPATH/classes/models</kbd></p>
+
+			<p>每當需要取回、操縱或刪除資料時，應始終藉由模型來完成。
+			模型是一些類型資料與變更它們的方法的代表。例如：
+			你不會把 SQL 查詢放在一個控制器，這些查詢被放在模型裡，且控制器會在呼叫模型後執行它們。
+			如此一來，如果你的資料庫改變，你將只要變更後面作用的模型，
+			而不需要變更你所有的控制器。</p>
+
+			<p>閱讀更多關於 <a href="models.html">模型</a>。</p>
+
+			<h3 id="views">檢視</h3>
+
+			<p>檢視被放在 <kbd>APPPATH/views</kbd></p>
+
+			<p>檢視包含你的 HTML，它應該永遠不會在你的控制器，或任何其他不是專門為了建立輸出的類別被發現。
+			從你的邏輯來分離你的佈局，可以確保當你決定變更你的佈局時，
+			只需要變更檢視，而不需要關心控制器。<br />
+			因此，檢視應該包含僅在 PHP 使用的 <kbd>echo</kbd> 和 <kbd>foreach</kbd>。</p>
+
+
+
+			<p>閱讀更多關於 <a href="views.html">檢視</a>。</p>
+
+			<h3 id="presenters">表現控件</h3>
+
+			<p>表現控件類別被放在 <kbd>APPPATH/classes/presenter</kbd></p>
+
+			<p>一旦你的應用程式變得越來越複雜，你會發現很難決定是否一塊邏輯真的屬於控制器，
+			是否它是非常具體相關於檢視，且幾乎與你的應用程式邏輯無關？
+			這就是為什麼要有表現控件；它們是你控制器與檢視間的膠水。
+			</p>
+
+			<p>閱讀更多關於 <a href="presenters.html">表現控件</a>。</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

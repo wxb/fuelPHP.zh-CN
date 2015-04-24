@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/presenters.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>表現控件 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="presenters.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<article>
+				<h2>表現控件</h2>
+
+				<h3 id="what_is_a_presenter">表現控件是什麼？</h3>
+
+				<p>A Presenter is a class that contains the logic that is needed to generate your view (or views). When the controller
+				is done with your user input and is done with whatever actions it needed to take, it turns execution over to
+				the Presenter to retrieve and process whatever data is needed for the view. A Presenter shouldn't do any data manipulation
+				but can contain database calls and any other retrieval or preparation operations needed to generate the View's
+				data.</p>
+
+				<p class="note">表現控件是選擇性的，如果你不需要它們，你可以直接使用 <a href="views.html">Views</a>，並保持在控制器中預處理邏輯。</p>
+
+
+				<h3 id="creating_presenters">建立一個表現控件</h3>
+
+				<p>首先我們在 <code>APPPATH/classes/presenter/index.php</code> 建立一個空的 Presenter 類別：</p>
+
+				<pre><code>class Presenter_Index extends Presenter
+{
+}</code></pre>
+
+				<p>Then you create the view that is associated with the presenter in <code>app/views/index.php</code>:</p>
+
+				<pre><code>&lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;?php
+	foreach ($articles as $a)
+	{
+		echo '&lt;li&gt;'.$a-&gt;title.'&lt;/li&gt;';
+	}
+?&gt;
+&lt;/ul&gt;</code></pre>
+
+				<p class="note"><strong>關於檢視名稱</strong><br />
+				A Presenter and its view are by default expected to share the same name. Thus a
+				Presenter <code>Presenter_Index</code> expects the view to be in <code>app/views/index.php</code>. And underscores
+				work here the same as with classes, which means that the view for <code>Presenter_Some_Thing</code> is expected
+				to be in <code>app/views/some/thing.php</code>.<br />
+				This default can be overwritten by setting a non-static <code>$_view</code> property in your Presenter with the
+				View name (without it's suffix), or passing a custom View name when forging the Presenter.</p>
+
+				<p>And last we'll create the Presenter from the controller:</p>
+
+				<pre class="php"><code>$presenter = Presenter::forge('index');</code></pre>
+
+				<p>Now we have everything setup; however, there is still no data passed to the view. It still needs to get a
+				<code>$title</code> string and <code>$articles</code> array passed to it. We do this by adding a <code>view()</code> method
+				to the Presenter which will assign this data:</p>
+
+				<pre><code>class Presenter_Index extends Presenter
+{
+
+	public function view()
+	{
+		$this->title = 'Testing this Presenter thing';
+
+		$this->articles = Model_Articles::find('all');
+	}
+}</code></pre>
+
+				<p>你就大功告成了。</p>
+
+				<p class="note">
+					In your code, Views and Presenters are interchangeable. You can return Presenters from your controller actions,
+					you can set a Presenter as a Theme partial, or assign it to a section of your page template. The basic API of the
+					Presenter is compatible with the View. This makes it easy to swap a View for a Presenter in your code without having
+					to do a major code overhaul.
+				</p>
+
+				<h3 id="functions">傳遞函式到檢視</h3>
+
+				<p>To pass a View specific function from your Presenter to your View, you use <a href="http://www.php.net/manual/functions.anonymous.php">Closures</a>:</p>
+
+				<pre class="php"><code>// 在 Presenter 中
+class Presenter_Index extends Presenter
+{
+
+	public function view()
+	{
+		$this->echo_upper = function($string) { echo strtoupper($string); };
+	}
+}
+
+// 然後你可以在你的檢視使用：
+$echo_upper('this string'); // 輸出："THIS STRING"</code></pre>
+			</article>
+
+			<article>
+				<h3 id="security">安全性</h3>
+
+				<p>它與 View 運作相同。這意味著任何在 Presenter 的設定將被輸出編碼，
+					只要你不關掉它的話。你可以直接在 Presenter 使用相同的 <code>set($name, $value, $encode)</code> 方法，
+					就像你在 View 使用那樣。更多關於此在
+					<a href="views.html#security">View 的安全性章節</a>。</p>
+			</article>
+
+			<article>
+				<h3 id="advanced">進階用法</h3>
+
+				<h4 id="more_methods">更多方法</h4>
+
+				<p>If there are different ways of parsing the same View, you can add multiple methods to the Presenter other
+				than the default <code>view()</code> method. To use those, you need to add the method's name as the second parameter to the
+				<code>Presenter::forge()</code> method:</p>
+
+				<pre class="php"><code>// will call other_method() upon the Presenter from the above example
+$presenter = Presenter::forge('index', 'other_method');</code></pre>
+
+				<h4 id="before_after">Before 和 after 方法</h4>
+
+				<p>如果你需要讓一些資料添加到 Presenter 中的所有方法，你可以添加一個 <code>before()</code>
+				或 <code>after()</code> 方法。就像你在 Controllers 做的那樣。</p>
+
+				<h4 id="changing_view">變更檢視</h4>
+
+				<p>By default, the <code>$this->_view</code> gets a View object assigned to it. You can replace this object by
+				making your own <code>set_view()</code> method in the Presenter and setting the <code>$this->_view</code> to
+				an object of your choosing.<br />
+				However, this object must allow you to set properties on it (which are used as the template data) and must have
+				a <code>__toString()</code> magic method that will render and return the parsed contents. In other works, it must be
+				compatible with the behaviour of the View class.<br />
+				The name of the expected view is available in the <code>$this->_view</code> property.</p>
+
+				<h4 id="alternative_view">Using a different view file, or an existing View object</h4>
+
+				<p>You can also tell the Presenter instance to use a different view, and not use the automatic mechanism
+				for determining the view to load, by using the forth parameter of the forge() method:</p>
+
+				<pre class="php"><code>// 使用 'other/index' 檢視來代替 'index' 檢視
+$presenter = Presenter::forge('index', 'other_method', null, 'other/index');
+
+// 你也可以直接傳遞一個 View 物件
+$view = View::forge('other/index');
+$presenter = Presenter::forge('index', 'other_method', null, $view);</code></pre>
+
+				<h4 id="access_to_view">存取檢視</h4>
+				<p>你可以使用 <code>get_view()</code> 方法在 Presenter 以外的地方存取 View 物件。</p>
+
+				<h4>從其他命名空間或非 Presenter_ 前綴的地方使用 Presenter</h4>
+
+				<p>如果你想要使用這些，你必須對 <code>forge()</code>使用完整的類別名稱，包含命名空間。
+				在這些情況下，預設的命名往往會不如預期般運作， 所以鼓勵設定 <code>$_view</code>
+				特性，或傳遞一個自訂檢視名稱。</p>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/classes.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>類別 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="classes.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>類別</h2>
+
+			<h3 id="what_is_a_class">類別是什麼？</h3>
+
+			<p>類別就是普通的 PHP 類別。它不需要擴充任何東西，或依循除了命名慣例的任何慣例，Fuel 內的所有其他類別也相同。</p>
+
+			<pre class="php"><code>class Session</code></pre>
+
+			<p>將載入 app/classes/session.php。</p>
+
+			<h3 id="loading_classes">載入類別</h3>
+
+			<p>不像一些其他框架，類別不需要手動載入。當你在程式碼（控制器、模型等）中引用它們，它們將會自動載入。</p>
+
+			<h3 id="classes_subdirectories">子目錄中的類別</h3>
+
+			<p>就像 <a href="controllers/base.html">控制器</a>，類別必須是小寫且第一個字母大寫，同時底線將置類別於子目錄。</p>
+
+			<pre class="php"><code>Class Session_Driver</code></pre>
+
+			<p>將載入 app/classes/session/driver.php</p>
+
+			<h3 id="classes_namespaces">類別與命名空間</h3>
+
+			<p>
+				為了確定要讀哪個 PHP 檔案，FuelPHP 的自動載入器將把命名空間與使用底線的類別名稱視為完全相同。
+				這意味著在子目錄裡的類別，你可以混搭命名空間與底線來符合你的需求。
+			</p>
+
+			<p>例如有一個類別在 app/classes/core/system/messages.php 檔案裡，此類別可以被定義為：</p>
+
+				<pre class="php"><code>// 全域的命名空間，完全底線的類別名稱
+class Core_System_Messages {}
+
+// 結合一個命名空間與底線
+namespace Core;
+class System_Messages {}
+
+// 或完全的命名空間
+namespace Core\System;
+class Messages {}
+</code></pre>
+
+			<p class="note">
+				第一種方法是最常用且最容易理解的，如果你結合 Use 聲明使用已定義的類別，
+				命名空間的版本是特別方便的。
+			</p>
+
+			<article>
+				<h2 id="init_method">初始化你的類別</h2>
+
+				<p>類別被載入時，讓 Fuel 的自動載入器實施某些自動的任務是可能的，
+					有點像類別的實例 <code>__construct()</code> 所做的。
+					你可以透過添加一個公開的靜態 <code>_init()</code> 方法到類別達成。</p>
+
+				<pre class="php"><code>class Example {
+	public static function _init()
+	{
+		// 緊接在載入類別後被呼叫
+	}
+}</code></pre>
+
+				<p class="note">如果一個被載入的類別有它自己的 <code>_init()</code> 方法及父層，必須跟著被載入，
+					父層的初始化方法不會被呼叫，除非你使用
+					<code>parent::_init();</code></p>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

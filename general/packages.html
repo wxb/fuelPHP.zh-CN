@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/packages.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>套件 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="packages.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>套件</h2>
+
+			<p>
+				當談論到組織、重用及分享你的程式碼，套件是能讓你達成的好方法。
+				它們可以包含所有種類像模型、第三方函式庫、配置等。
+				套件也能讓你擴充核心而不搞亂你的 app/classes 目錄。
+				要澄清套件是什麼，以下有套件的「是」與「否」。
+			</p>
+
+			<h4 id="they_are">套件……</h4>
+			<ul>
+				<li>是組織你程式碼的好方法，</li>
+				<li>提供一個儲存第三方函式庫的地方，</li>
+				<li>能讓你擴充其他套件而不與別人的程式碼搞亂，</li>
+				<li>一個擴充 Fuel 而不搞亂核心文件的地方。</li>
+			</ul>
+
+			<h4 id="they_are_not">但……</h4>
+			<ul>
+				<li>套件並不對應到 URL，</li>
+				<li>且透過 HMVC 請求是不易接近的。</li>
+			</ul>
+
+			<h3 id="installing">安裝套件</h3>
+			<p>安裝套件可以手動或透過 <a href="../packages/oil/package.html">oil</a>。要手動安裝可下載套件並放進你的套件目錄（預設在 fuel/packages）。</p>
+			<p class="note">要真正能夠使用你的套件，你必須將其添加到 <code>app/config/config.php</code> 裡的
+			<code>always_load</code> 或使用 <a href="../classes/package.html#method_load">Package::load()</a>。</p>
+
+			<h3 id="creation">建立套件</h3>
+			<p>為了幫助人們了解你在做什麼，最好建構你的套件像這樣：</p>
+
+			<pre><code>/packages
+    /package
+        /bootstrap.php
+        /classes
+            /your.php
+            /classes.php
+            /here.php
+        /config
+            /packageconfig.php
+        /and_so_on
+</code></pre>
+
+			<p>
+				每個套件都預期有一個 <em>bootstrap.php</em> 位於套件的基底。
+				使用引導程序去添加命名空間（添加至全域，如果你願意）。並且為了較好的效能添加類別。
+			</p>
+
+			<pre class="php"><code>// 添加命名空間，如果你想要自動載入器能找到類別
+Autoloader::add_namespace('Mypackage', __DIR__.'/classes/');
+
+// 添加為核心命名空間
+Autoloader::add_core_namespace('Mypackage');
+
+// 添加為核心命名空間（類別是對全域的別名，因此無須命名空間前綴便可使用）
+// 設定第二個參數為 <kbd>true</kbd> 成為前綴，且能覆寫核心類別
+Autoloader::add_core_namespace('Mypackage', true);
+
+// 然後添加類別，這是有用的：
+// - 優化：不需要搜尋路徑
+// - 它必須是能夠使用為核心的命名空間
+// - 如果你想打破自動載入器的路徑搜索規則
+Autoloader::add_classes(array(
+	'Mypackage\\Classname' => __DIR__.'/classes/classname.php',
+	'Mypackage\\Anotherclass' => __DIR__.'/classes/anotherclass.php',
+));
+</code></pre>
+
+			<p>一旦你將你的類別放至定位，你現在可以開始使用它們。</p>
+
+			<p class="note">請注意：如果套件命名空間不是對全域的別名，你必須提供它：</p>
+
+			<pre class="php"><code>// 如果是對全域的別名，直接使用
+$instance = new Myclass;
+
+// 當不是對全域的別名時
+$instance = new Mynamespace\Myclass;
+</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

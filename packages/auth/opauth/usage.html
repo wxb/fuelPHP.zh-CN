@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/auth/opauth/usage.html';
+		var path = './../../../';
+		var class_prefix = "$object->";
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>用法 - Opauth - Auth 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="usage">Opauth 用法</h2>
+
+			<p>如同擴充 Auth 的 Opauth <a href="intro.html">簡介</a> 所言，
+			包裝類別自動配置自身為 Simpleauth 或 Ormauth，根據配置在 <strong>auth.php</strong>
+			配置檔案中的驅動。</p>
+
+			<p>如果你不使用這些驅動，但已經在 Auth 框架中登記自己的驅動，你仍然可以使用 Opauth 整合類別，
+			但你不得不手動建立定義在 migration 008 的 'providers' 資料表。
+			你可以命名成任何你喜歡的。此外，你的自訂 Login 驅動應該提供 <strong>Auth::check()</strong>、
+			<strong>Auth::instance()->get_user_id()</strong>、<strong>Auth::instance()->force_login()</strong> 和
+			<strong>Auth::create_user()</strong> 方法，與 Simpleauth 原型相容。沒有這些，它不會運作。</p>
+
+			<h3 id="runtime_config">執行階段配置</h3>
+
+			<p>Opauth 大部分的配置已經透過 <strong>opauth.php</strong> 配置檔案完成，
+			而且所有在該檔案中的選項都可以在執行階段透過使用 $config 陣列傳遞一個新值到 forge() 來修改。此外，
+			有些配置值你只能在執行階段傳遞，他們不支援在配置檔案中：
+			</p>
+
+			<table class="config">
+				<thead>
+					<tr class="header">
+						<th style="width:20%;">參數</th>
+						<th style="width:10%;">類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>table</td>
+						<td>字串</td>
+						<td><pre><i>自動偵測</i></pre></td>
+						<td>
+							允許你手動定義包含提供者資訊的資料表名稱。當使用 Simpleauth 或 Ormauth 時，
+							這個資料表的名稱是自動偵測的。如果你使用自訂的 Auth 驅動組，並已經手動建立資料表，
+							你將不得不在每次 forge 呼叫傳遞此資料表名稱。
+						</td>
+					</tr>
+					<tr>
+						<td>path</td>
+						<td>字串</td>
+						<td><pre><i>自動偵測</i></pre></td>
+						<td>
+							指向做你的 OAuth 認證的控制器方法的 URI 路徑。預設情況下，
+							它是設為在你鍛造一個 Opauth 物件時的目前路徑。
+						</td>
+					</tr>
+					<tr>
+						<td>callback_url</td>
+						<td>字串</td>
+						<td><pre><i>自動偵測</i></pre></td>
+						<td>
+							指向處理 OAuth 提供者回呼的控制器方法的 URI 路徑。預設情況下，
+							它是設為呼叫 <strong>path</strong> 指向的同一控制器中的 'action_callback' 或 'get_callback' 方法。
+						</td>
+					</tr>
+					<tr>
+						<td>provider</td>
+						<td>字串</td>
+						<td><pre><i>自動偵測</i></pre></td>
+						<td>
+							如果你已經手動設定 <strong>path</strong>，OAuth 提供者呼叫的自動偵測會失效，
+							而且你將不得不手動定義提供者名稱。這有區分大小寫，且<strong>必須</strong>與被策略提供者使用的字母，
+							以及在 <strong>opauth.php</strong> 配置檔案中用來定義策略的鍵相符合。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="note">當使用 Simpleauth 或 Ormauth，而且你已經在你的應用程式中遵循範例程式碼整合 Opauth，
+			這些執行階段配置值都是不需要的，自動偵測值會做得很不錯。</p>
+
+			<h3 id="classmethods">類別方法</h3>
+
+			<article>
+				<h4 id="method_forge" class="method">forge($config = array(), $autorun = true)</h4>
+				<p><strong>forge</strong> 方法建立一個 Auth_Opauth 類別的實例，它提供 OAuth 與你的應用程式整合。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>任何你想傳遞給該實例的執行階段配置值</td>
+								</tr>
+								<tr>
+									<th><kbd>$autorun</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>如果為 true，它會自動初始化一條到 OAuth 提供者的連線。如果為 false，它會只初始化該物件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Auth_Opauth</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>/**
+ * 載入包裝物件，並讓它處理定義在 URI 中的提供者
+ *
+ * 這重導頁到提供者的認證頁面，所以它應該
+ * 在你方法的最後一行
+ */
+\Auth_Opauth::forge();
+
+// 鍛造一個有執行階段配置的物件
+\Auth_Opauth::forge(array(
+    'default_group' => $custom_group_id,
+));
+
+// 鍛造一個有執行階段配置的物件，來處理一個回呼
+$opauth = \Auth_Opauth::forge(array(
+    'default_group' => $custom_group_id,
+), false);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">如果你想要處理回呼而不傳遞自訂配置，你不必傳遞一個空陣列，
+				你可以使用 <strong>\Auth_Opauth::forge(false);</strong> 做為捷徑。</p>
+			</article>
+
+			<article>
+				<h4 id="method_login_or_register" class="method">login_or_register()</h4>
+				<p><strong>login_or_register</strong> 方法處理提供者回呼。如果回傳的提供者 UID 是已知的，
+				使用者會使用與本地關聯的帳戶登入。如果不是，使用者會被要求註冊一個新帳戶，
+				或用已存在的帳戶登入並與其 UID 關聯。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							無
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>
+							字串，狀態碼。支援以下狀態碼：
+							<ul>
+								<li>'linked'：UID 成功連結到目前登入的使用者</li>
+								<li>'logged_in'：使用者成功使用 OAuth 帳戶登入</li>
+								<li>'registered'：UID 連結到新註冊的帳戶，並且使用者已登入</li>
+								<li>'register'：UID 是未知的，並且沒有登入使用者存在，讓使用者先註冊</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得 Opauth 物件
+$opauth = \Auth_Opauth::forge(false);
+
+// 嘗試使用提供者回呼資料來自動登入
+$status = $opauth->login_or_register();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 id="method_link_provider" class="method">link_provider(array $data)</h4>
+				<p><strong>link_provider</strong> 方法能讓你手動連結本地的使用者帳戶到 OAuth 登入。
+				你需要這個，如果你想為新使用者提供選項，首先註冊一個本地帳戶，
+				然後手動建立該帳戶與提供者 UID 的連結。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>有全部所需用來建立連結（見範例）資料的陣列</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。建立提供者連結紀錄的 <strong>insert id</strong>，或 <strong>false</strong> 如果建立失敗。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得 opauth 物件
+$opauth = \Auth_Opauth::forge(false);
+
+// 我們有 OAuth 策略資料嗎？
+if ($authentication = \Session::get('auth-strategy.authentication', array()))
+{
+	// 取得目前的 Auth userid
+	list(, $userid) = \Auth::instance()->get_user_id();
+
+	// 並連結到提供者
+	$insert_id = $opauth->link_provider(array(
+		'parent_id' => $userid,
+		'provider' => $authentication['provider'],
+		'uid' => $authentication['uid'],
+		'access_token' => $authentication['access_token'],
+		'secret' => $authentication['secret'],
+		'refresh_token' => $authentication['refresh_token'],
+		'expires' => $authentication['expires'],
+		'created_at' => time(),
+	));
+}
+else
+{
+	// 沒有可用的資料，看來我們沒收到先前 OAuth 的回呼？
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 id="method_get" class="method">get($key, $default = null)</h4>
+				<p><strong>get</strong> 方法是一個 getter，
+				允許直接存取由 Opauth 策略建立的原始提供者回呼的回應結構。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$key</kbd></th>
+									<td><em>必要</em></td>
+									<td>在回應陣列中期望值的鍵名稱</td>
+								</tr>
+								<tr>
+									<th><kbd>$default</kbd></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>如果請求的鍵不存在要回傳的預設值</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。被所給鍵參照的值，或任何定義的 $default。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得 opauth 物件
+$opauth = \Auth_Opauth::forge(false);
+
+// 取得一些 auth 資料
+$provider = $opauth->get('auth.provider');
+$uid = $opauth->get('auth.uid');
+$token = $opauth->get('credentials.token', null);
+$secret = $opauth->get('credentials.secret', null);
+$expires = $opauth->get('credentials.expires', null);
+$refresh_token = $opauth->get('credentials.refresh_token', null);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<p class="note">你只能在你處理回呼時使用此方法。在所有其他情況下，
+				沒有 OAuth 回應可用。如果先前有一個有效的回應處理，
+				其基本資料會使用 session 鍵 "auth-strategy" 儲存在 session 中。</p>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

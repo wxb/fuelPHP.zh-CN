@@ -1,0 +1,1416 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/model_crud/methods.html';
+		var path = './../../';
+		var class_prefix = "Model_Crud::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Model_Crud 方法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Model_Crud 方法</h2>
+
+			<p class="note">使用範例的類別是假設它擴充 Model_Crud 類別。</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($data = array())</h4>
+				<p><strong>forge</strong> 方法回傳一個新的 Model_Crud 類別實例。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<th><em>陣列</em></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>給新實例的值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個擴充類別的新實例（Model_Crud 子代）。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得一個新實例
+$user = Model_User::forge();
+
+// 一個有值的新實例
+$user = Model_User::forge(array(
+	'name' => 'John',
+	'surname' => 'Doe',
+	'email' => 'john@doe.org',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find_by_pk">find_by_pk($value)</h4>
+				<p><strong>find_by_pk</strong> 方法藉由主鍵尋找一筆紀錄，內部使用 <a href="#method_find_one_by">find_one_by</a> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<th><em>混合</em></th>
+									<td><em>必要</em></td>
+									<td>要尋找的主鍵值。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個有已載入結果的 Model_Crud 實例，當沒找到時 <em>null</em>。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得一筆 `id` = 2 的資料
+$user = Model_User::find_by_pk(2);
+
+if ($user === null)
+{
+	// 沒找到
+}
+else
+{
+	// 找到
+	echo $user->email;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find_one_by">find_one_by($column, $value = null, $operator = '=')</h4>
+				<p><strong>find_one_by</strong> 方法藉由所給的行與值尋找一筆紀錄，內部使用 <a href="#method_find">find</a> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$column</kbd></th>
+									<th><em>字串</em></th>
+									<td><em>必要</em></td>
+									<td>要使用的行。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<th><em>混合</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要檢查的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$operator</kbd></th>
+									<th><em>字串</em></th>
+									<td><pre class="php"><code>'='</code></pre></td>
+									<td>要使用的運算子</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個有已載入結果的 Model_Crud 實例，當沒找到時 <em>null</em>。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 取得一筆 `email` = "info@example.com" 的資料
+$user = Model_User::find_one_by('email', 'info@example.com');
+
+if ($user === null)
+{
+	// 沒找到
+}
+else
+{
+	// 找到
+	echo $user->email;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find_by">find_by($column = null, $value = null, $operator = '=', $limit = null, $offset = 0)</h4>
+				<p><strong>find_by</strong> 方法尋找所有吻合所給的行與值的紀錄，你可選擇性的給運算子、限制及偏移，內部使用 <a href="#method_find">find</a> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$column</kbd></th>
+									<th><em>字串</em></th>
+									<td><em>必要</em></td>
+									<td>要使用的行或一個 where 語句的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<th><em>混合</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要檢查的值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$operator</kbd></th>
+									<th><em>字串</em></th>
+									<td><pre class="php"><code>'='</code></pre></td>
+									<td>要使用的運算子。</td>
+								</tr>
+								<tr>
+									<th><kbd>$limit</kbd></th>
+									<th><em>整數</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>限制。</td>
+								</tr>
+								<tr>
+									<th><kbd>$offset</kbd></th>
+									<th><em>整數</em></th>
+									<td><pre class="php"><code>0</code></pre></td>
+									<td>偏移。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// SELECT * FROM `users` WHERE `email` LIKE "%@example.com" LIMIT 5 OFFSET 10
+$users = Model_User::find_by('email', '%@example.com', 'like', 5, 10);
+
+// Select * FROM `users` WHERE `name` = "John" AND `surname` LIKE "%Surname%" LIMIT 10
+$users = \Model_User::find_by(array(
+	'name' => 'John',
+	array('surname', 'like', '%Surname%'),
+), null, null, 10);
+
+if ($users === null)
+{
+	// 沒找到
+}
+else
+{
+	foreach($users as $user)
+	{
+		// 對 $user 做處理
+	}
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find_by_magic">find_by_*($value = null)</h4>
+				<p>這是一個魔術方法，你可以藉由修改 <code>find_by_</code> 方法名稱的一部份，指定行的名稱去尋找。</p>
+
+				<strong>範例</strong><br>
+				<pre class="php"><code>// 這等同於 $user = Model_User::find_by('email', 'foo@example.com');
+$user = Model_User::find_by_email('foo@example.com');
+</code></pre>
+			</article>
+			<article>
+				<h4 class="method" id="method_find_one_by_magic">find_one_by_*($value = null)</h4>
+				<p>這是一個回傳單筆紀錄的魔術方法，你可以藉由修改 <code>find_one_by_</code> 方法名稱的一部份，指定行的名稱去尋找。</p>
+
+				<strong>範例</strong><br>
+				<pre class="php"><code>// 這等同於 $user = Model_User::find_one_by('email', 'foo@example.com');
+$user = Model_User::find_one_by_email('foo@example.com');
+</code></pre>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find_all">find_all($limit = null, $offset = 0)</h4>
+				<p><strong>find_all</strong> 方法可選擇性的使用限制與偏移來尋找所有紀錄。內部使用 <a href="#method_find">find</a> 方法。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$limit</kbd></th>
+									<th><em>整數</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>限制。</td>
+								</tr>
+								<tr>
+									<th><kbd>$offset</kbd></th>
+									<th><em>整數</em></th>
+									<td><pre class="php"><code>0</code></pre></td>
+									<td>偏移。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// SELECT * FROM `users` LIMIT 10 OFFSET 20
+$users = Model_User::find_all(10, 20);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_find">find($config = array(), $key = null)</h4>
+				<p><strong>find</strong> 方法使用一個影響查詢的條件陣列尋找所有紀錄。</p>
+				<p>此方法也接受一個 <code>閉包（closure）</code> 做為第一個參數，當一個閉包（closure）被傳送時，它被呼叫並傳送一個 <code>Database_Query</code> 物件。你可以使用此方法在查詢執行前去修改它，閉包（closure）應該回傳修改的 Database_Query 物件。</p>
+				<p class="note">此方法被所有其他 find 方法使用，當建立自訂的尋找程序時，你也應該使用它。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<th><em>陣列｜閉包（closure）</em></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>條件陣列或一個閉包（closure）以修改查詢。</td>
+								</tr>
+								<tr>
+									<th><kbd>$key</kbd></th>
+									<th><em>字串</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>設定此為要使用的資料表列，做為結果陣列的鍵。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<strong>基本用法</strong>
+							<pre class="php"><code>$users = Model_User::find(array(
+	'select' => array('id', 'name', 'email'),
+	'where' => array(
+		array('name', 'like', '%Name%'),
+		'suspended' => 'no',
+		array('id', 'in', array(1, 2, 3, 4)),
+	),
+	'order_by' => array(
+		'name' => 'asc',
+		'surname' => 'desc',
+	),
+	'limit' => 10,
+	'offset' => 20,
+));</code></pre>
+							<hr>
+							<strong>使用鍵的基本用法</strong>
+							<pre class="php"><code>$users = Model_User::find(array(
+	'where' => array(
+		'active' => 'yes',
+		'banned' => 'no',
+	),
+	'order_by' => array('id' => 'desc'),
+), 'id');</code></pre>
+							<hr>
+							<strong>使用閉包（closure）的進階用法</strong>
+							<pre class="php"><code>$users = Model_User::find(function ($query)
+{
+	return $query->join('roles')
+	             ->on('roles.id', '=', 'users.role_id')
+	             ->where('roles.name', 'admin');
+});
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pre_find">pre_find(&amp;$query)</h4>
+				<p>取代 <strong>pre_find</strong> 方法以在執行前修改查詢。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$query</kbd></th>
+									<th><em>\Query_Builder_Select 物件</em></th>
+									<td><em>必要</em></td>
+									<td>查詢物件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected static function pre_find(&$query)
+{
+	// 修改查詢
+	$query->where('active', 'yes');
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_post_find">post_find($result)</h4>
+				<p>取代 <strong>post_find</strong> 方法以在回傳前修改結果。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$key</kbd></th>
+									<th><em>\Query_Builder_Select 物件</em></th>
+									<td><em>必要</em></td>
+									<td>當找不到結果時 null，或一個結果的陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>必須回傳的結果（陣列或 null）。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected static function post_find($result)
+{
+	if ($result !== null)
+	{
+		// 修改結果陣列
+	}
+
+	// 回傳結果
+	return $result;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set">set($values)</h4>
+				<p><strong>set</strong> 方法設定一組值的陣列到目前的模型實例。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$values</kbd></th>
+									<th><em>陣列</em></th>
+									<td><em>必要</em></td>
+									<td>值的陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>目前的模型實例。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::forge()->set(array(
+	'name' => 'My Name',
+	'surname' => 'My Surname',
+));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_save">save($validate = true)</h4>
+				<p><strong>save</strong> 方法新增或更新一筆資料。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$validate</kbd></th>
+									<th><em>布林</em></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>是否執行驗證。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>當沒通過驗證時 false，新增時為新增結果，更新時為更新結果。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::forge()->set(array(
+	'name' => 'My Name',
+	'surname' => 'My Surname',
+));
+
+// 新增使用者
+$result = $user->save();
+
+$user = Model_User::find_by_pk(2);
+
+$user->name = 'New Name';
+
+// 更新使用者
+$user->save();
+
+// 更新但不執行驗證
+$user->save(false);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete()</h4>
+				<p><strong>delete</strong> 方法刪除一筆紀錄。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Delete 查詢結果，受影響的筆數。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::find_by_pk(2);
+if ($user)
+{
+	// 刪除使用者
+	$user->delete();
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_new">is_new($new = null)</h4>
+				<p><strong>is_new</strong> 方法檢查是否為新的紀錄，或設定它是否為新。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$new</kbd></th>
+									<th><em>null｜布林</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>提供一個布林值以設定紀錄是否為新。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>目前的實例。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::forge(array(
+	'id' => 3,
+	'name' => 'John',
+	'surname' => 'Otherdoe',
+));
+
+$user->is_new(false);
+
+// 更新
+$user->save();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_count">count($column = null, $distinct = true, $where = array(), $group_by = null)</h4>
+				<p><strong>count</strong> 方法回傳一個資料列計數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$column</kbd></th>
+									<th><em>字串</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要計數的行名稱。如果沒給，主鍵會被使用。</td>
+								</tr>
+								<tr>
+									<th><kbd>$distinct</kbd></th>
+									<th><em>布林</em></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>是否執行一個相異值的查詢。</td>
+								</tr>
+								<tr>
+									<th><kbd>$where</kbd></th>
+									<th><em>陣列</em></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>要篩選結果的 where 子句的陣列。</td>
+								</tr>
+								<tr>
+									<th><kbd>$group_by</kbd></th>
+									<th><em>字串</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>要群組的行。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合。計數查詢的整數結果，或 false 在查詢失敗時。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 計數資料表中的所有紀錄
+$nbr_of_records = Model_User::count();
+
+// 只計數管理使用者的篩選結果數
+$nbr_of_records = Model_User::count('id', true, array('group', '=', 100));
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_frozen">frozen($frozen = null)</h4>
+				<p><strong>frozen</strong> 方法檢查是否為凍結的紀錄，或設定它是否為凍結。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$frozen</kbd></th>
+									<th><em>null｜布林</em></th>
+									<td><pre class="php"><code>null</code></pre></td>
+									<td>提供一個布林值以設定紀錄是否為凍結。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>目前的實例。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::find_by_pk(2);
+$user->frozen(true);
+
+// 傳遞凍結物件，沒有人可以改變它……
+
+$user->frozen(false);
+// 現在你可以再度使用它。
+
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_validation">validation()</h4>
+				<p><strong>validation</strong> 方法（建立並）回傳模型 Validation 實例。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個 Validation 實例。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::find_by_pk(2);
+$validation_object = $user->validation();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_validates">validates()</h4>
+				<p><strong>validates</strong> 方法回傳實例是否能通過驗證。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>一個成功的布林。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$model = new Model_User;
+$model->set(array(
+	'name' => 'John',
+	'surname' => 'Doe',
+));
+
+if ($model->validates())
+{
+	// 模型是有效的，跳過驗證。
+	$model->save(false)
+}
+else
+{
+	// 模型是無效的
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_to_array">to_array()</h4>
+				<p><strong>to_array</strong> 方法回傳模型的公開變數。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<em>無</em>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>陣列</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>$user = Model_User::find_by_pk(2);
+$user_array = $user->to_array();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pre_save">pre_save(&$query)</h4>
+				<p>取代 <strong>pre_save</strong> 方法以在新增前修改查詢。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$query</kbd></th>
+									<th><em>\Database_Query_Builder_Insert 物件</em></th>
+									<td><em>必要</em></td>
+									<td>Insert 查詢物件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function pre_save(&$query)
+{
+	// 變更查詢
+	$query->set(array('field' => 'value'));
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_post_save">post_save($result)</h4>
+				<p>取代 <strong>post_save</strong> 方法以在新增結果修改／行動。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$result</kbd></th>
+									<th><em>陣列</em></th>
+									<td><em>必要</em></td>
+									<td>新增結果陣列。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>新增結果陣列。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function post_save($result)
+{
+	// 對結果做處理
+	return $result;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pre_update">pre_update(&$query)</h4>
+				<p>取代 <strong>pre_update</strong> 方法以在更新前修改查詢。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$query</kbd></th>
+									<th><em>\Database_Query_Builder_Update 物件</em></th>
+									<td><em>必要</em></td>
+									<td>Update 查詢物件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function pre_update(&$query)
+{
+	// 變更 Update 查詢。
+	$query->set(array('field' => 'value'));
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_post_update">post_update($result)</h4>
+				<p>取代 <strong>post_update</strong> 方法以修改 Update 查詢結果。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$result</kbd></th>
+									<th><em>整數</em></th>
+									<td><em>必要</em></td>
+									<td>受影響的筆數。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Update 查詢物件。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function post_update($result)
+{
+	// 對結果做處理
+	return $result;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pre_delete">pre_delete(&$query)</h4>
+				<p>取代 <strong>pre_delete</strong> 方法以在刪除前修改查詢。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$query</kbd></th>
+									<th><em>\Database_Query_Builder_Delete 物件</em></th>
+									<td><em>必要</em></td>
+									<td>Delete 查詢物件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function pre_delete(&$query)
+{
+	// 對刪除查詢做處理
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_post_delete">post_delete($result)</h4>
+				<p>取代 <strong>post_delete</strong> 方法以修改刪除結果。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$result</kbd></th>
+									<th><em>整數</em></th>
+									<td><em>必要</em></td>
+									<td>受影響的筆數。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>受影響的筆數。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function post_delete($result)
+{
+	// 對結果做處理
+	return $result;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pre_validate">pre_validate($data)</h4>
+				<p>取代 <strong>pre_validate</strong> 方法以在驗證前修改新增／更新資料。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<th><em>陣列</em></th>
+									<td><em>必要</em></td>
+									<td>模型的紀錄資料。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>模型的紀錄資料。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function pre_validate($data)
+{
+	// 對資料做處理
+	return $data;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_post_validate">post_validate($data)</h4>
+				<p>取代 <strong>post_validate</strong> 方法以在驗證後修改新增／更新資料。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<th><em>陣列</em></th>
+									<td><em>必要</em></td>
+									<td>模型的紀錄資料。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>模型的紀錄資料。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function post_validate($data)
+{
+	// 對資料做處理
+	return $data;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_prep_values">prep_values($data)</h4>
+				<p>取代 <strong>prep_values</strong> 方法以在驗證或查詢執行前修改新增／更新資料。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>類型</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<th><em>陣列</em></th>
+									<td><em>必要</em></td>
+									<td>模型的紀錄資料。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>模型的紀錄資料。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 在你的模型
+protected function prep_values($data)
+{
+	// 對資料做處理
+	return $data;
+}
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

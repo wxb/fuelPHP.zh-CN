@@ -1,0 +1,957 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/validation/methods.html';
+		var path = './../../';
+		var class_prefix = "Validation::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Validation 方法 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Validation 類別</h2>
+
+			<p>
+				類別幫助你驗證使用者輸入，如果你想要同時建立一個表單＆它的驗證，
+				使用 <a href="../fieldset/fieldset.html">Fieldset</a> 類別代替。
+			</p>
+
+			<h3 id="class_methods">類別方法</h3>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($fieldset = 'default')</h4>
+
+				<p>
+					<strong>forge</strong> 方法回傳一個新的 Validation 實例。
+					並用一個 $fieldset 與 Fieldset 連結。
+				</p>
+
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$fieldset</kbd></th>
+										<td><em>字串｜Fieldset</em></td>
+										<td><pre class="php"><code>'default'</code></pre></td>
+										<td>名稱或要連結的 Fieldset 實例。</td>
+									</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Validation 物件</td>
+						</tr>
+						<tr>
+							<th>拋出</th>
+							<td>\DomainException，當 Fieldset 名稱或實例已經有一個關聯的 Validation 實例。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 建立一個新的 Validation 實例
+$val = Validation::forge();
+
+// 關聯新的 Validation 實例與一個Fieldset，使用 Fieldset 名稱
+$val = Validation::forge('my_fieldset');
+
+// 關聯新的 Validation 實例與一個Fieldset，透過傳遞 Fieldset 實例
+$fieldset = Fieldset::instance('my_fieldset');
+$val = Validation::forge($fieldset);
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_instance">instance($name = null)</h4>
+
+				<p>
+					<strong>instance</strong> 方法回傳與 Vaildation 實例關聯的
+					Fieldset 實例的識別符 $name，
+					或預設的 Fieldset（如果需要的話會建立）。
+				</p>
+
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$name</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>你想回傳的 Validation 的 Fieldset 名稱。</td>
+									</tr>
+							</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>
+								Validation 物件<br />
+								或 <strong>false</strong> 如果指定 Fieldset 實例不存在
+							</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得預設 Fieldset 的 Validation 實例
+$val = Validation::instance();
+
+// 取得一個特定 Fieldset 的 Validation 實例
+$val = Validation::instance('my_fieldset');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_active">active()</h4>
+				<p>
+					<strong>active</strong> 方法回傳目前活躍的 Validation 實例。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Validation - 目前活躍的 Validation 實例</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得目前活躍的 Validation 實例
+$val = Validation::active();
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_active_field">active_field()</h4>
+				<p>
+					<strong>active_field</strong> 方法回傳目前被驗證的欄位。
+				</p>
+
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Fieldset_Field - 目前被驗證的欄位</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得目前被驗證的欄位
+$field = Validation::active_field();
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_fieldset">fieldset()</h4>
+				<p>
+					<strong>fieldset</strong> 方法回傳關聯的 Fieldset。
+				</p>
+
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Fieldset - 關聯的 Fieldset</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 取得關聯的 Fieldset
+$val = Validation::forge('my_fieldset');
+$fieldset = $val->fieldset();
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_field">add_field($name, $label, $rules)</h4>
+				<p>
+					<strong>add_field</strong> 方法是 add() 方法一個更簡單的別名，它可以在一個步驟指定欄位名稱、標籤以及規則。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">類型</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$name</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>要指派驗證規則的欄位名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$label</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>欄位的標籤。</td>
+									</tr>
+									<tr>
+										<th><kbd>$rules</kbd></th>
+										<td><em>混合</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>
+											帶有群組在方括號內的規則參數（選擇性）的驗證規則組，
+											並用逗號分隔。在被用垂直線或管道符號（|）的規則可被傳遞做為一個字串，
+											或做為一個規則陣列。
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Fieldset_Field</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 在不同類型的欄位設定規則
+$val->add_field('username', 'Username', 'required|trim|valid_string[alpha,lowercase,numeric]');
+$val->add_field('email', 'Email', 'required|trim|valid_email');
+$val->add_field('age', 'Age', 'valid_string[numeric]');
+
+// 做為一個陣列
+$val->add_field('username', 'Username', array('required', 'trim', 'valid_string[alpha,lowercase,numeric]'));</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_message">set_message($rule, $message)</h4>
+				<p>
+					<strong>set_message</strong> 方法為此 Validation 實例覆寫語言檔案訊息。當沒有訊息被指派到你正在使用的規則時，它也是有用的。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$rule</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>要指派此訊息的規則名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$message</kbd></th>
+										<td class="fixed_width"><em>字串｜null</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>要為此規則顯示的訊息，如果傳遞一個字串，或 null 來回復到語言檔案。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Validation 實例</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 覆寫 required 規則訊息
+$val->set_message('required', 'You have to fill in your :label so you can proceed');
+// ……完成時，設回預設訊息
+$val->set_message('required', null);
+// 給你建立自訂規則的訊息
+$val->set_message('custom_rule', 'The :label you entered is previously registered. Please choose another one');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_message">get_message($rule)</h4>
+				<p>
+					<strong>get_message</strong> 方法為此 Validation 實例取回一個指定的錯誤訊息。只有透過 <a href="#method_set_message">set_message</a> 方法設定的訊息會被回傳。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$rule</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>你需要取得訊息的規則名稱。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 覆寫需要的規則訊息
+$val->set_message('custom_rule', 'The :label you entered is previously registered. Please choose another one');
+// ……之後，或在你程式碼中的其他地方，取得此訊息
+$val->get_message('required', null);
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_callable">add_callable($class)</h4>
+				<p>
+					<strong>add_callable</strong> 方法添加一組自訂或擴充的驗證驗證規則。你不須要寫一個完整的回呼（callback），只要一個類別名稱的字串。這也允許從此物件覆寫功能，因為新類別是附加在前的。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$class</kbd></th>
+										<td><em>字串｜物件</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>做為字串的類別名稱，或物件名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Validation 實例</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<p><pre class="php"><code>$val->add_callable('myvalidation');</code></pre></p>
+								<p>為了完整使用此方法的範例，檢查<a href="validation.html#/extending_validation">擴充 Validation 類別</a>，以及所需要的類別。</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_remove_callable">remove_callable($class)</h4>
+				<p>
+					<strong>remove_callable</strong> 方法從可呼叫陣列移除一個可呼叫。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$class</kbd></th>
+										<td><em>字串｜物件</em></td>
+										<td><pre class="php"><code>無</code></pre></td>
+										<td>做為字串的類別名稱，或物件名稱</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Validation 實例</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val->remove_callable('myvalidation');</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_callables">callables()</h4>
+				<p>
+					<strong>callables</strong> 方法取回你不需要添加一個完整回呼（callback）但只要方法名稱的物件
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>無</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>陣列</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_run">run($input = null, $allow_partial = false, $temp_callables = array())</h4>
+				<p>
+					針對傳遞的 input 運行定義的驗證規則，或 Input::post() 如果沒傳東西的話。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$input</kbd></th>
+										<td><em>陣列</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>input 欄位和值的關聯陣列</td>
+									</tr>
+									<tr>
+										<th><kbd>$allow_partial</kbd></th>
+										<td><em>布林</em></td>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>如果為 false，全部有定義驗證規則的欄位<strong>必須</strong>在 input 出現</td>
+									</tr>
+									<tr>
+										<th><kbd>$temp_callables</kbd></th>
+										<td><em>陣列</em></td>
+										<td><pre class="php"><code>array()</code></pre></td>
+										<td>Any additional callables required to run all defined validation rules</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>布林，如果驗證過為 true，如果失敗為 false</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val = Validation::forge('article');
+$val->add_field('title', 'Title', 'required');
+
+if ( ! $val->run())
+{
+	foreach ($val->error() as $field => $error)
+	{
+		echo $error->get_message();
+		// Title 欄位是必要且必須包含一個值。
+	}
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_input">input($key = null, $default = null)</h4>
+				<p>
+					Returns one or all input values, or the default value if the requested key is not present in the input.
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$key</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Name of the input field, or null to return all input</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><em>混合</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Value to return if the key is not present in the input</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Mixed, the input value or the value specified as $default</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val = Validation::forge('article');
+$val->add_field('title', 'Title', 'required');
+
+if ($val->run())
+{
+	// if something was posted, echo it
+	echo $val->input('title');
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					Input is only available after the validation rules have run.
+					By default, <kbd>input()</kbd> will fall back to <kbd>Input::param()</kbd> when no rules have run. This behaviour can be controlled through the validation config file.</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_validated">validated($field = null, $default = false)</h4>
+				<p>
+					Returns one or all validated input values, or the default value if the requested key is not present in the validated input.
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$field</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Name of the input field, or null to return all input</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><em>混合</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>Value to return if the key is not present in the input</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Mixed, the validated input value or the value specified as $default</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val = Validation::forge('article');
+$val->add_field('title', 'Title', 'required');
+
+if ($val->run())
+{
+	// if something was posted, echo it
+	echo $val->validated('title');
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					Where <kbd>input()</kbd> returns the raw input value, <kbd>validated()</kbd> will return the validated value,
+					which might be different than the input because some validation rules alter the input (for example a rule like <kbd>strtoupper</kbd>).
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_error">error($field = null, $default = false)</h4>
+				<p>
+					<strong>error</strong> 方法回傳在驗證期間發生的指定或所有錯誤。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$field</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>你想要回傳的 Validation_Error 實例的欄位名稱。如果你沒指定，會回傳所有錯誤物件。</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><em>混合</em></td>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>如果指定欄位的錯誤不存在，回傳這個值。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>Validation_Error 實例<br>
+或 <strong>陣列</strong> 如果你沒指定欄位名稱</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val = Validation::forge('article');
+$val->add_field('title', 'Title', 'required');
+
+if ( ! $val->run(array()))
+{
+	foreach ($val->error() as $field => $error)
+	{
+		echo $error->get_message();
+		// Title 欄位是 required 的並且必須包含一個值。
+	}
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_error_message">error_message($field = null, $default = false)</h4>
+				<p>
+					<strong>error_message</strong> 方法回傳在驗證期間發生的指定或所有錯誤訊息。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$field</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td>你想要回傳的錯誤訊息的欄位名稱。如果你沒指定，會回傳所有錯誤訊息。</td>
+									</tr>
+									<tr>
+										<th><kbd>$default</kbd></th>
+										<td><em>字串</em></td>
+										<td><pre class="php"><code>false</code></pre></td>
+										<td>如果指定欄位的錯誤不存在，回傳這個值。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串<br>
+或 <strong>陣列</strong> 如果你沒指定欄位名稱</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val = Validation::forge('article');
+$val->add_field('title', 'Title', 'required');
+
+if ( ! $val->run(array()))
+{
+	foreach ($val->error_message() as $field => $message)
+	{
+		echo $message;
+		// Title 欄位是 required 的並且必須包含一個值。
+	}
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_show_errors">show_errors($options = array())</h4>
+				<p>
+					<strong>show_errors</strong> 根據定義的樣板回傳呈現在 HTML 中的驗證錯誤列表。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th class="legend">靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>類型</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$options</kbd></th>
+										<td><em>陣列</em></td>
+										<td><pre class="php"><code>array()</code></pre></td>
+										<td>HTML 樣板的選項，以覆寫來自驗證配置檔案的預設值</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>字串，呈現的 HTML</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$val = Validation::forge('article');
+$val->add_field('title', 'Title', 'required');
+
+if ( ! $val->run(array()))
+{
+	echo $val->show_errors();
+}
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					以下選項可以被傳遞：'open_list'、'close_list'、'open_error'、'close_error' 和 'no_errors'。
+					預設情況下會產生一個無序清單，且如果沒找到驗證錯誤會回傳一個空字串。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add">add($name, $label = '', array $attributes = array(), array $rules = array())</h4>
+				<p>
+					<a href="../fieldset/fieldset.html#method_add">Fieldset add()</a> 方法的別名。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_add_model">add_model($class, $instance = null, $method = 'set_form_fields')</h4>
+				<p>
+					<a href="../fieldset/fieldset.html#method_add_model">Fieldset add_model()</a> 方法的別名。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_field">field($name = null, $flatten = false)</h4>
+				<p>
+					<a href="../fieldset/fieldset.html#method_field">Fieldset field()</a> 方法的別名。
+				</p>
+			</article>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

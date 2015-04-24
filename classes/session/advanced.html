@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/session/advanced.html';
+		var path = './../../';
+		var class_prefix = "Session::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Session 進階 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Session 類別</h2>
+
+			<p>Session 類別能讓你為你的應用程式在無狀態（stateless）的 web 環境下保持狀態。
+				它能讓你在伺服器上使用各種變數解決方案來儲存變數，並且在下個頁面請求再呼叫變數。</p>
+
+			<h3 id="manual_loading">手動載入</h3>
+
+			<p>
+				在大多數情況下，配置所需的驅動是足夠的，使用方法記錄在 <a href="./usage.html">用法</a> 頁面。
+				不過，也有一些情況你會想要更進一步控制 session 的行為方式。
+				你可能想要使用一個配置在 session 配置檔案中不同的 session 驅動。
+				或你有多個驅動並行的需要。這就是為什麼要有 <kbd>forge</kbd> 方法。
+			</p>
+			<p>
+				<kbd>forge</kbd> 方法回傳一個 session 類別的實例，使用定義在配置檔案的驅動或透過參數。
+				你可以在回傳的物件使用紀錄在 <a href="./usage.html">用法</a> 頁面的方法，使用動態呼叫。
+			</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($config = array())</h4>
+				<p>
+					<strong>forge</strong> 能讓你手動實例化一個 session 驅動。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th>描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$config</kbd></th>
+									<td class="fixed_width"><i>選擇性</i></td>
+									<td>
+										你可以透過簡單地傳遞驅動名稱到 forge 方法來選擇驅動。
+										如果你需要更多的自訂配置，定義一個 $config 陣列，使用記錄在 <a href="./config.html">配置</a> 頁面上的參數。
+										這裡你傳遞的配置設定將覆寫在配置文件中定義的。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>物件 - 實例化的 session 物件。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 實例化一個資料庫 session
+$session = Session::forge('db');
+
+// 取得來自 session 的 counter
+$counter = $session->get('counter');
+
+// 如果不存在，設定一個預設值
+if ($counter === false)
+{
+	$counter = 0;
+}
+
+// 寫回 counter
+$session->set('counter', $counter);
+
+// 沒有需要明確寫入，Fuel 會打理好……
+
+// 你也可以帶設定載入一個驅動，它將覆蓋在配置檔案的預設值
+$session = Session::forge( array('driver' => 'memcached', 'expiration_time' => 3600, 'memcached' = array('cookie_name' => 'appcookie')) );
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					<kbd>請注意：</kbd>當你想同時使用多個 session 驅動，這些驅動實例中的 <kbd>cookie_name</kbd> 必須是唯一的。
+					如果你試圖載入一個使用已經被使用的 <kbd>cookie_name</kbd> 的驅動，而且該實例使用與你嘗試載入的相同驅動，該實例會重複使用。
+					如果該實例使用不同的驅動，一個例外會被拋出。
+				</p>
+
+			</article>
+
+			<article>
+				<h4 class="method" id="method_rotate">rotate()</h4>
+				<p>
+					<strong>rotate</strong> 方法能讓你手動強制一個 session id 的轉動。你可以使用它做為一個額外的安全對策，例如，當目前使用者的安全等級被修改時。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							無
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 實例化一個資料庫 session
+$session = Session::forge('db');
+
+// 強制一個 session id 的轉動
+$session->rotate();
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_config">get_config()</h4>
+				<p>
+					<strong>get_config</strong> 方法能檢索一個 session 驅動配置項目。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th>描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>必要</i></td>
+									<td>
+										session 配置變數的名稱。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合，請求的值，或 null 當請求變數不存在。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 實例化一個資料庫 session
+$session = Session::forge('db');
+
+// 取得定義的 session cookie 名稱
+$cookiename = $session->get_config('cookie_name');
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_config">set_config()</h4>
+				<p>
+					<strong>set_config</strong> 方法能在執行階段改變一個 session 驅動配置項目。
+				</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th>靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th>描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><i>必要</i></td>
+									<td>
+										session 配置變數的名稱。
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>空</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 實例化一個資料庫 session
+$session = Session::forge('db');
+
+// 為此 session 設定逾期時間為 2 小時
+$session->set_config('expiration_time', 7200);
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+			</article>
+
+			<h2>在 Flash 使用 session</h2>
+
+			<p>
+				在網站中使用 Flash 物件的問題之一，是與你的 Web 應用程式互動時，他們不送回已儲存在瀏覽器的 cookie。
+				由於這個問題，就很難讓他們明白應用程序的 session 狀態。
+			</p>
+
+			<p>
+				為了解決這個問題，Session 類別能讓你使用一個 POST 變數，傳遞 cookie 到應用程式。
+				你可以使用 'post_cookie_name' 配置設定來設定該變數名稱。如果 Session 類別找到一個有此名稱的 $_POST 變數，
+				它將假設它包含 session cookie，並且不會使用該 session cookie。這能讓你使用一點 javascript 來複製客戶端的
+				session cookie 的內容到該 POST 變數。
+			</p>
+
+			<p class="note">
+				當你使用 Flash 為底的上傳程序時。你將必須設定 <kbd>match_ua</kbd> 為 <kbd>false</kbd>。
+				你必須這樣做，因為 Flash 使用一個不同的使用者代理，
+				這將阻止 Session 類別正確地識別使用者 session。
+			</p>
+
+							<pre class="javascript"><code>// 取得 session cookie 的函式
+// 你可以使用自己的，或使用一個你喜愛的 javascript 框架提供的
+function getCookie(c_name)
+{
+	if (document.cookie.length > 0)
+	{
+		c_start = document.cookie.indexOf(c_name + "=");
+
+		if (c_start != -1)
+		{
+			c_start = c_start + c_name.length + 1;
+			c_end = document.cookie.indexOf(";", c_start);
+			if (c_end == -1) c_end = document.cookie.length;
+			return unescape(document.cookie.substring(c_start, c_end));
+		}
+	}
+
+	return "";
+}
+
+// 在這個範例中，我們正在使用 jquery 和 uploadify，而且我們正在
+// formData 中傳遞 fuel cookie（這裡稱為 'fuelcid'） 做為 'fuelcid'
+
+// 注意：在產生此程式碼時，不要硬寫 cookie 名稱，
+// 而是從 session 配置檔案取得 cookie 名稱。
+
+// 注意：檢查下面的「無 cookie 的 session」段落
+// 如果你沒有 cookie 可用來傳回 session id
+
+// （參數與 Uploadify 3.2 版相關）
+
+$(function()
+{
+	$('#custom_file_upload').uploadify(
+	{
+		'swf'            : '/uploadify/uploadify.swf',
+		'uploader'       : '/uploadify/uploadify.php',
+		'multi'          : true,
+		'auto'           : true,
+		'fileTypeExts'   : '*.jpg;*.gif;*.png',
+		'fileTypeDesc'   : 'Image Files (.JPG, .GIF, .PNG)',
+		'queueID'        : 'custom-queue',
+		'queueSizeLimit' : 3,
+		'removeCompleted': false,
+		'formData'       : {'fuelcid': getCookie('fuelcid')},
+		'onSelect'       : function(file)
+		{
+			alert('The file ' + file.name + ' was added to the queue.');
+		},
+		'onQueueComplete' : function(queueData)
+		{
+			alert(queueData.uploadsSuccessful + ' files were successfully uploaded.');
+		}
+	});
+}
+</code></pre>
+
+			<h3 id="concurrency">並行性</h3>
+
+			<p>
+				當論及 session、session cookie、和他們的行為，了解他們如何運作、
+				以及有什麼可能性和侷限性是非常重要的。
+			</p>
+			<p>
+				當涉及到並行性時尤其如此。
+				對於 web 為底的應用程式，如果你在你的網頁上使用多個異步 ajax 呼叫，你會有並行性，
+				或如果你允許瀏覽器開啟多個相同應用程式的視窗（讓我們面對它，你無法阻止）。
+			</p>
+			<p>
+				其他你需要知道的事是，預設情況下，session 類別會定期轉動（或重新產生）session id，
+				來防止由於 session id 固定的 session 劫持（有人偷取你的 session cookie 並用它來接手你的 session）。
+				你可以使用配置設定來控制轉動的時間，或甚至停用它，但從安全性的角度來看，這是個壞主意。
+				把這兩樣放在一起，你就有潛在的災難在手中！
+			</p>
+			<p>
+				一個實例：<br />
+				- 你請求一個頁面，包含 ID-A 的 session cookie 被發送到伺服器。<br />
+				- 你的頁面發送兩個 ajax 請求。包含 ID-A 的 session cookie 隨著每個請求再度被發送到伺服器。<br />
+				- ajax 請求 1 完成，並轉動 ID。一個有 ID-B 的 cookie 被發送到瀏覽器。<br />
+				- 現在 ajax 請求 2 完成。因為它發送相同的 cookie，它也判斷要旋轉，此時是 ID-C。<br />
+				（你將取得一個不同的 ID，因為 session ID 是使用隨機演算法產生）<br />
+			</p>
+			<p>
+				現在我們有個問題。session 類別嘗試更新儲存的 session 從 ID-A 到 ID-C，但它無法找到該 session。
+				請記住，它已經被第一個 ajax 呼叫從 ID-A 更新為 ID-B！所以它判斷該 session 無效，建立一個新的空 session，
+				並回傳該 cookie 到瀏覽器。現在你有效的 cookie 已經被新的空 session cookie 覆寫。
+				結果：你已經遺失 session。
+			</p>
+			<p>
+				這是一個大多數框架沒有解決的問題，進入 Fuel！
+			</p>
+			<p>
+				Fuel 的 session 類別包含兩個機制來偵測並減輕這個問題。
+				每個 session 鍵儲存包含兩個 session ID：目前 ID 及前一個 ID。
+				如果請求在 session id 剛被轉動之後進來，正確的 session 可以使用前一個儲存在鍵儲存區中的 session id 來定位。
+				並且在 session id 不能使用前一個 id 還原而不符合的情況下，沒有更新的 cookie 會被送回到瀏覽器。
+				結果是你遺失了該請求的 session 資料，但你不會遺失 session 本身。
+			</p>
+
+			<h3 id="no-cookies">無 cookie 的 session</h3>
+
+			<p>
+				在 session 資料變更後，Session 類別總是會產生一個 session cookie，並在 HTTP 回應表頭中發送它到客戶端。
+				然而，也有情況是不希望，甚至是不可能使用 cookie。
+				例如僅僅是因為客戶端不支援他們。
+			</p>
+			<p>
+				在這些情況下，有很多替代方案在請求中從客戶端傳遞 Session ID 回到應用程式：
+			</p>
+
+			<ul>
+				<li>經由一個 <strong>GET</strong> 變數。在 URL 中變數的名稱必須與定義在配置中的 cookie 名稱相等。</li>
+				<li>經由一個 <strong>POST</strong> 變數。你可以定義表單欄位名稱（post_cookie_name）包含配置中的 session-id。</li>
+				<li>經由 <strong>HTTP header</strong>。在客戶端建構 HTTP 請求時，你可以添加一個有 session id 的 "Session-Id" HTTP 表頭。</li>
+			</ul>
+
+			<p>
+				你可以使用 <code>Session::key()</code> 來檢索目前的 session id，如此你可以在回應中傳遞它到客戶端，
+				而不須使用 cookie。如果你已經在你的 session 配置中配置了加密，你需要加密 id：
+			</p>
+
+			<pre class="php"><code>// 取回 session ID 並加密
+$session_id = \Crypt::encode(\Session::key());
+</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

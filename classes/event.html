@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/event.html';
+		var path = './../';
+		var class_prefix = "Event::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Event - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Event 類別</h2>
+
+			<p>Event 類別能讓你在無須修改任何核心檔案之下與 Fuel 核心互動。</p>
+
+			<h3 id="system_events">系統定義事件</h3>
+
+			<p>
+				FuelPHP 在 <kbd>fuelphp</kbd> 實例定義了幾個事件，你可以掛接到核心而不須擴充它。
+				這些事件是：
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>事件</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>app_created</th>
+						<td>
+							在 FuelPHP 框架被初始化後，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>request_created</th>
+						<td>
+							在一個新的 <kbd>Request</kbd> 物件被請求後，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>request_started</th>
+						<td>
+							當一個 <kbd>Request</kbd> 被請求執行時，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>controller_started</th>
+						<td>
+							在控制器 <kbd>before()</kbd> 方法被呼叫前，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>controller_finished</th>
+						<td>
+							在控制器 <kbd>after()</kbd> 方法被呼叫並接收回傳後，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>response_created</th>
+						<td>
+							在一個新 <kbd>Response</kbd> 物件被鍛造後，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>request_finished</th>
+						<td>
+							當一個 <kbd>Request</kbd> 已完成並接收到一個回傳時，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<th>shutdown</th>
+						<td>
+							在主要請求已處理並且輸出被送出後，此事件將被觸發。
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							在 <strong>app/config/event.php</strong>
+							<pre class="php"><code>&lt;?php
+
+return array(
+	'fuelphp' => array(
+		'app_created' => function()
+		{
+			// FuelPHP 初始化之後
+		},
+		'request_created' => function()
+		{
+			// Request 鍛造之後
+		},
+		'request_started' => function()
+		{
+			// Request 被請求
+		},
+		'controller_started' => function()
+		{
+			// 控制器 before() 方法呼叫之前
+		},
+		'controller_finished' => function()
+		{
+			// 控制器 after() 方法呼叫之後
+		},
+		'response_created' => function()
+		{
+			// Response 鍛造之後
+		},
+		'request_finished' => function()
+		{
+			// Request 完成且接收 Response
+		},
+		'shutdown' => function()
+		{
+			// 輸出已被送出
+		},
+	),
+);
+</code></pre>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 id="class_methods">類別方法</h3>
+
+			<article>
+				<h4 class="method" id="method_register">register($event, $callback)</h4>
+				<p><strong>register</strong> 方法能讓檔案註冊一個物件，將在 <kbd>trigger</kbd> 方法被呼叫時運行。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$event</kbd></th>
+									<td><i>必要</i></td>
+									<td>你要對程式碼註冊的事件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$callback</kbd></th>
+									<td><i>必要</i></td>
+									<td>回呼（callback）方法。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Event::register('user_login', 'Class::method');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_unregister">unregister($event, $callback = null)</h4>
+				<p><strong>unregister</strong> 方法能讓檔案註銷一個物件，將在 <kbd>trigger</kbd> 方法被呼叫時運行。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$event</kbd></th>
+									<td><i>必要</i></td>
+									<td>你要對程式碼註銷的事件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$callback</kbd></th>
+									<td><i>選擇性</i></td>
+									<td>回呼（callback）方法。如果沒有提供，所有的回呼（callback）將被移除。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 定義兩個事件回呼（callback）
+$callback_one = function()
+{
+	echo 'callback one';
+}
+
+$callback_two = function()
+{
+	echo 'callback two';
+}
+
+// 註冊事件到 "my_event"
+Event::register('my_event', $callback_one);
+Event::register('my_event', $callback_two);
+
+// 註銷第一個回呼（callback）
+Event::unregister('my_event', $callback_one);
+
+// 觸發事件
+Event::trigger('my_event');
+// 這裡只會寫出 "callback two"
+
+// 註銷所有來自 "my_event" 的回呼（callback）;
+Event::unregister('my_event');
+
+// 觸發事件
+Event::trigger('my_event');
+// 將沒有輸出。</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_trigger">trigger($event, $data = '', $return_type = 'string', $reversed = false)</h4>
+				<p><strong>trigger</strong> 方法用於觸發或啟動透過 register 方法的回呼（callback）。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$event</kbd></th>
+									<td><i>必要</i></td>
+									<td>你要觸發的事件。</td>
+								</tr>
+								<tr>
+									<th><kbd>$data</kbd></th>
+									<td><pre class="php"><code>''</code></pre></td>
+									<td>任何你想要送到已註冊方法的資料。</td>
+								</tr>
+								<tr>
+									<th><kbd>$return_type</kbd></th>
+									<td><pre class="php"><code>'string'</code></pre></td>
+									<td>你期望回傳的資料類型。（string、array、json、none、serialized） - <strong>預設是 string</strong></td>
+								</tr>
+								<tr>
+									<th><kbd>$reversed</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>設定為 true 以反序觸發事件，LIFO 而非 FIFO。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合 - 依據 <var>$return_type</var>。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Event::trigger('user_login', $data)</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_has_events">has_events($event)</h4>
+				<p><strong>has_events</strong> 方法是可利用的，所以你可以檢查特殊的已註冊事件是否有觸發器。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$event</kbd></th>
+									<td><i>必要</i></td>
+									<td>你要檢查的事件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>Event::has_events('user_login')</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_forge">forge(array $events = array())</h4>
+				<p><strong>forge</strong> 回傳一個新的 event 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$events</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>你要檢查的事件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Event_Instance 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 建立一個新的 event 物件
+$events = Event::forge();
+
+// 建立一個新的 event 物件
+// 加上事件
+$events = Event::forge(array(
+	'update' => function(){
+		// 在更新時做點什麼
+	},
+	'register' => function(){
+		// 在註冊時做點什麼
+	},
+));
+
+/**
+ * !! 所有其他 Event 方法應用到實例
+ */
+$events->register('my_event', function(){
+	echo 'this is awesome';
+});
+
+$events->trigger('my_event');
+// 將輸出 "this is awesome"
+</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_instance">instance($name = 'fuelphp', array $events = array())</h4>
+				<p><strong>instance</strong> 回傳一個新的唯一 event 物件。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$name</kbd></th>
+									<td><pre class="php"><code>'fuelphp'</code></pre></td>
+									<td>實例名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$events</kbd></th>
+									<td><pre class="php"><code>array()</code></pre></td>
+									<td>你要檢查的事件。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>Event_Instance 物件</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 建立一個新的 event 實例
+$events = Event::instance('my_instance');
+
+$same = Event::instance('my_instance');
+
+$events->register('my_event', function(){
+	echo 'awesome!';
+});
+
+$same->register('my_event', function(){
+	echo 'this is ';
+});
+
+Event::instance('my_instance')->trigger('my_event');
+// 將輸出 "this is awesome!"</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

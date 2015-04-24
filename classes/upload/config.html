@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/upload/config.html';
+		var path = './../../';
+		var class_prefix = "Upload::";
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Upload 配置 - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Upload 類別</h2>
+
+			<p>
+				Upload 類別可以安全地處理被上傳到應用程式的檔案。
+				它能讓你用不同的方式過濾上傳、定義目標檔案名稱應該像怎樣、或過濾檔案名稱的大小或長度。
+			</p>
+
+			<section>
+				<h3 id="configuration">配置</h3>
+
+				<p>Upload 類別是透過 <kbd>fuel/core/config/upload.php</kbd> 配置檔案進行配置。它已經填充了一個預設配置群組。你可以藉由複製此配置檔案到你的應用程式 config 目錄，並根據需求修改該檔案，以覆寫此配置群組並添加新群組。</p>
+				<p>以下的配置設定可以被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>auto_process</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								如果為 true，只要你使用 Upload 類別，上傳的檔案將被使用儲存在配置檔案的配置驗證。
+							</td>
+						</tr>
+						<tr>
+							<th>max_size</th>
+							<td>整數</td>
+							<td><pre class="php"><code>0</code></pre></td>
+							<td>
+								每個上傳檔案的最大大小（以位元組為單位）。要停用最大尺寸的限制，設定此參數為 0。
+							</td>
+						</tr>
+						<tr>
+							<th>ext_whitelist</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								允許的副檔名陣列。如果為空或沒定義，所有副檔名都被允許。
+								副檔名需要被定義為只有小寫。如果上傳的檔案是大寫，
+								它的副檔名將以小寫字母針對白名單比對。
+							</td>
+						</tr>
+						<tr>
+							<th>ext_blacklist</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								不允許的副檔名陣列。如果為空或沒定義，所有副檔名都被允許。
+								副檔名需要被定義為只有小寫。如果上傳的檔案是大寫，
+								它的副檔名將以小寫字母針對黑名單比對。
+							</td>
+						</tr>
+						<tr>
+							<th>type_whitelist</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								允許的檔案類型陣列。如果為空或沒定義，所有檔案類型都被允許。
+								檔案類型是檔案 MIME 類型斜線前的部份。因此如果 MIME 類型是 "text/plain"，添加 "text" 到此陣列來允許此類型的檔案。
+							</td>
+						</tr>
+						<tr>
+							<th>type_blacklist</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								不允許的檔案類型陣列。如果為空或沒定義，所有檔案類型都被允許。
+							</td>
+						</tr>
+						<tr>
+							<th>mime_whitelist</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								允許的檔案 MIME 類型陣列。如果為空或沒定義，所有檔案 MIME 類型都被允許。
+							</td>
+						</tr>
+						<tr>
+							<th>mime_blacklist</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								不允許的檔案 MIME 類型陣列。如果為空或沒定義，所有檔案 MIME 類型都被允許。
+							</td>
+						</tr>
+						<tr>
+							<th>prefix</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								當你儲存一個上傳的檔案時，檔案名稱將以此字串前綴。
+							</td>
+						</tr>
+						<tr>
+							<th>suffix</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								當你儲存一個上傳的檔案時，檔案名稱將以此字串後綴。
+							</td>
+						</tr>
+						<tr>
+							<th>extension</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								當你儲存一個上傳的檔案時，檔案名稱的副檔名將被此字串取代。
+							</td>
+						</tr>
+						<tr>
+							<th>path</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								要儲存上傳檔案的路徑。
+							</td>
+						</tr>
+						<tr>
+							<th>create_path</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								如果為 true，定義的路徑將被建立如果不存在的話。
+								Upload 類別支援目錄遞迴的建立，因此，如果權限設置妥當，任何路徑可以被建立。
+							</td>
+						</tr>
+						<tr>
+							<th>path_chmod</th>
+							<td>整數</td>
+							<td><pre class="php"><code>0777</code></pre></td>
+							<td>
+								在路徑被建立後，要被設定的權限。這個值必須被定義為八進位制，開頭有 0。
+							</td>
+						</tr>
+						<tr>
+							<th>file_chmod</th>
+							<td>整數</td>
+							<td><pre class="php"><code>0666</code></pre></td>
+							<td>
+								在上傳檔案被儲存到定義的路徑之後，要被設定的權限。這個值必須被定義為八進位制，開頭有 0。
+							</td>
+						</tr>
+						<tr>
+							<th>auto_rename</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								如果為 true，在檔案已經存在於指定路徑時，檔案名稱將被後綴一個流水號。該流水號將是下一個可用的數字，從 1 開始。
+							</td>
+						</tr>
+						<tr>
+							<th>overwrite</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								如果為 true，當儲存時檔案已存在，該檔案將被覆寫。此設定將被忽略如果 'auto_rename' 為 true。
+							</td>
+						</tr>
+						<tr>
+							<th>randomize</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								如果為 true，當儲存時，檔案將被指派為一個 32 字元的名稱（一個 MD5 字串）。其他設定仍會被套用。
+							</td>
+						</tr>
+						<tr>
+							<th>normalize</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								如果為 true，檔案名稱將被轉換為一個 ASCII 名稱，並且在儲存時，所有空白會被底線取代。
+							</td>
+						</tr>
+						<tr>
+							<th>normalize_separator</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'_'</code></pre></td>
+							<td>
+								如果你已經設定 normalize 為 <code>true</code> ，你可以更改空白要變為什麼，而不是預設的底線。
+							</td>
+						</tr>
+						<tr>
+							<th>max_length</th>
+							<td>整數</td>
+							<td><pre class="php"><code>0</code></pre></td>
+							<td>
+								檔案名稱的最大長度。這是計算在所有檔案名稱選項被處理之後，要儲存的檔案名稱，要停用最大尺寸的限制，設定此參數為 0。
+							</td>
+						</tr>
+						<tr>
+							<th>new_name</th>
+							<td>字串</td>
+							<td><em>無</em></td>
+							<td>
+								<p>
+									新的檔案名稱。此設定沒有設定在預設配置，但支援 <em>Upload::process</em> 配置。新名稱將不會覆蓋前綴和後綴。
+								</p>
+								<p class="note" style="margin-bottom: 0;">
+									<strong>注意：</strong>上傳多個檔案時，確保 auto_rename 設定是設為 true，以避免多個上傳覆寫相同的目標檔案！
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th>change_case</th>
+							<td>布林</td>
+							<td><em>false</em></td>
+							<td>
+								<p>
+									此選項能讓你強迫檔案名稱的大小寫。可能的值有 'upper' 和 'lower'。
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">警告：如果你打算手動呼叫 Upload::process()，確保 <strong>auto_process</strong> 是設為 <strong>false</strong>。否則，上傳的檔案會被處理兩次，而以重複的檔案條目為結果。</p>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

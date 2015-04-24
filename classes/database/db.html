@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../assets/css/combined.css">
+	<link rel="shortcut icon" href="../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/database/db.html';
+		var path = './../../';
+		var class_prefix = "DB::";
+	</script>
+	<script src="../../assets/js/combined.js"></script>
+	<title>DB - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="db.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>DB 類別</h2>
+
+			<p>DB 類別能讓你建立及執行資料庫查詢並取得結果。</p>
+
+			<article>
+				<h4 class="method" id="method_query">query($sql, $type = null)</h4>
+				<p>
+					<strong>query</strong> 方法回傳一個新的 Database_Query_Builder 物件。
+					確切的物件取決於傳遞的類型。如果沒傳遞類型，Fuel 選擇 DB::SELECT 如果該 SQL 查詢以 'SELECT' 開頭，而且它將回傳一個
+					<a href="qb_select.html">Database_Query_Builder_Select</a> 物件。
+				</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th class="fixed_width">預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$query</kbd></th>
+										<td><em>必要</em></td>
+										<td>SQL 查詢</td>
+									</tr>
+									<tr>
+										<th><kbd>$type</kbd></th>
+										<td><em>null</em></td>
+										<td>SQL 查詢類型。可能的值有：DB::SELECT、DB::INSERT、DB::UPDATE 和 DB::DELETE。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 Database_Query_Builder 請求類型的物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將預處理：SELECT * FROM `users`
+$query = DB::query('SELECT * FROM `users`');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					請注意，傳遞正確類型是重要的。
+					資料庫驅動會有不同的對待。
+					如果你有一個必須回傳一組結果的查詢，但不是 SELECT，使用
+					DB::SELECT 來確保結果會正確回傳。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_last_query">last_query()</h4>
+				<p><strong>last_query</strong> 方法回傳最後執行的 SQL 查詢。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><em>null</em></td>
+										<td>資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>最後執行的 SQL 查詢。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 執行查詢
+$user = DB::select()->from('users')->where('id', 1)->execute();
+
+echo DB::last_query();
+// SELECT * FROM `users` WHERE `id` = 1
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+					<h4 class="method" id="method_select">select()</h4>
+					<p><strong>select</strong> 方法回傳一個新的 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</p>
+					<table class="method">
+						<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$columns</kbd></th>
+										<td><strong>null</strong></td>
+										<td>要選擇的行。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將預處理：SELECT *
+$query = DB::select();
+
+// 將預處理：SELECT `id`, `name`
+$query = DB::select('id', 'name');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_select_array">select_array($columns)</h4>
+				<p><strong>select_array</strong> 方法回傳一個新的 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$columns</kbd></th>
+										<td><strong>array();</strong></td>
+										<td>要選擇行的陣列。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將預處理：SELECT *
+$query = DB::select_array();
+
+// 將預處理：SELECT `id`, `name`
+$query = DB::select_array(array('id', 'name'));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_insert">insert($table = null, $columns = array())</h4>
+				<p><strong>insert</strong> 方法回傳一個新的 <a href="qb_insert.html">Database_Query_Builder_Insert</a> 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">要新增資料的資料表。</td>
+									</tr>
+									<tr>
+										<th><kbd>$columns</kbd></th>
+										<td><strong>array();</strong></td>
+										<td class="description">要選擇行的陣列。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 <a href="qb_insert.html">Database_Query_Builder_Insert</a> 物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將預處理：INSERT INTO `table_name`
+$query = DB::insert('table_name');
+
+// 將預處理：INSERT INTO `table_name` (`id`, `name`)
+$query = DB::insert('table_name', array('id', 'name'));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_update">update($table = null)</h4>
+				<p><strong>update</strong> 方法回傳一個新的 <a href="qb_update.html">Database_Query_Builder_Update</a> 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">要更新的資料表。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 <a href="qb_update.html">Database_Query_Builder_Update</a> 物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將預處理：UPDATE `table_name`
+$query = DB::update('table_name');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_delete">delete($table = null)</h4>
+				<p><strong>delete</strong> 方法回傳一個新的 <a href="qb_delete.html">Database_Query_Builder_Delete</a> 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">要刪除的資料表。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 <a href="qb_delete.html">Database_Query_Builder_Delete</a> 物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 將預處理：DELETE FROM `table_name`
+$query = DB::delete('table_name');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_expr">expr($expression)</h4>
+				<p><strong>expr</strong> 方法回傳一個新的 Database_Expression 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$expression</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">表達式。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個 Database_Expression 物件。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 回傳 new Database_Expression('COUNT(table_name.table_column)');
+$expr = DB::expr('COUNT(table_name.table_column)');
+
+// 在產生查詢的表達式中防止不正確的引號
+$expr = DB::expr('columnname + 1');</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					你必須在你查詢中所有的表達式使用 DB:expr()，換句話說，其中的一切不是一個欄位名稱，
+					以確保你傳遞的值沒有被包在引號或反引號中。
+				</p>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_quote">quote($string, $db = null)</h4>
+				<p><strong>quote</strong> 方法回傳一個為 SQL 查詢帶引號的字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要上引號的字串</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個為 SQL 查詢帶引號的字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 回傳 'something\'s quoted'.
+$query = DB::quote("'something's quoted'");
+
+// 回傳 'something\'s quoted' 透過一個已定義的資料庫連線。
+$query = DB::quote("'something's quoted'", $db_connection);
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_quote_identifier">quote_identifier($string, $db)</h4>
+				<p><strong>quote_identifier</strong> 方法回傳一個為 SQL 查詢帶引號的字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要上引號的字串或字串陣列。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個為 SQL 查詢帶引號的字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// `users`.`name`
+print_r(DB::quote_identifier('users.name'));
+
+// array(
+//    [0] => `users`.`name`
+// )
+print_r(DB::quote_identifier(array('users.name')));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_quote_table">quote_table($string, $db = null)</h4>
+				<p><strong>quote_table</strong> 方法回傳一個為 SQL 查詢帶引號的字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要上引號的字串或字串陣列。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個為 SQL 查詢帶引號的字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// `users`
+print_r(DB::quote_table('users'));
+
+// array(
+//    [0] => `users`
+// )
+print_r(DB::quote_identifier(array('users')));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_table_prefix">table_prefix($table, $db = null)</h4>
+				<p><strong>table_prefix</strong> 方法回傳帶有配置前綴的資料表名稱。
+				如果沒值的話，只有前綴會被回傳。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要前綴的資料表名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳前綴的資料表名稱或資料表名稱。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// prefixed_table_name
+print_r(DB::table_prefix('table_name'));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_escape">escape($string, $db = null)</h4>
+				<p><strong>escape</strong> 方法回傳一個為 SQL 查詢轉義的字串。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$string</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要轉義的字串。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個為 SQL 查詢轉義的字串。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 'or *\' \"'
+print_r(DB::escape('or *\' "'));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_list_columns">list_columns($table, $like = null, $db = null)</h4>
+				<p><strong>list_columns</strong> 方法回傳一個在資料庫表所有行的清單。
+				選擇性的，一個 LIKE 字串可被用於搜尋指定的欄位。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要觀察的資料表。</td>
+									</tr>
+									<tr>
+										<th><kbd>$like</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">要搜尋的行。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個帶有欄位資料的陣列。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>/*
+Array
+(
+	[id] => Array
+	(
+		[type] => int
+		[min] => -2147483648
+		[max] => 2147483647
+		[column_name] => id
+		[column_default] =>
+		[data_type] => int
+		[is_nullable] =>
+		[ordinal_position] => 1
+		[display] => 255
+		[comment] =>
+		[extra] => auto_increment
+		[key] => PRI
+		[privileges] => select,insert,update,references
+	)
+
+	[name] => Array
+	(
+		[type] => string
+		[column_name] => name
+		[column_default] =>
+		[data_type] => varchar
+		[is_nullable] =>
+		[ordinal_position] => 3
+		[character_maximum_length] => 255
+		[collation_name] => utf8_unicode_ci
+		[comment] =>
+		[extra] =>
+		[key] =>
+		[privileges] => select,insert,update,references
+	)
+)
+*/
+print_r(DB::list_columns('users'));
+
+/*
+Array
+(
+	[name] => Array
+	(
+		[type] => string
+		[column_name] => name
+		[column_default] =>
+		[data_type] => varchar
+		[is_nullable] =>
+		[ordinal_position] => 3
+		[character_maximum_length] => 255
+		[collation_name] => utf8_unicode_ci
+		[comment] =>
+		[extra] =>
+		[key] =>
+		[privileges] => select,insert,update,references
+	)
+)
+*/
+print_r(DB::list_columns('users','%name%'));
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_list_tables">list_tables($like = null, $db = null)</h4>
+				<p><strong>list_tables</strong> 方法回傳一個在資料庫裡所有資料表的清單。
+				選擇性的，一個 LIKE 字串可被用於搜尋指定的資料表。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$like</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">要搜尋的資料表。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個帶有資料表名稱的陣列。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>/*
+Array
+(
+    [0] => areas
+    [1] => fuel_sessions
+    [2] => config
+    [3] => files
+)
+*/
+DB::list_tables();
+
+/*
+Array
+(
+    [0] => fuel_sessions
+
+)
+*/
+DB::list_tables('%sessions%');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_datatypes">datatype($type, $db = null)</h4>
+				<p><strong>datatype</strong> 方法回傳一個描述 SQL 資料類型的正規化陣列。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$type</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">SQL 資料類型。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳一個描述 SQL 資料類型的正規化陣列。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>/*
+Array
+(
+    [type] => string
+    [exact] => 1
+)
+*/
+DB::datatype('char');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_count_records">count_records($table, $db = null)</h4>
+				<p><strong>count_records</strong> 方法回傳資料表中的記錄筆數。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$table</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">要計算紀錄的來源資料表。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳資料表中的記錄筆數。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// (int) 14
+DB::count_records('users');
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_count_last_query">count_last_query($db = null)</h4>
+				<p><strong>count_last_query</strong> 方法回傳最後查詢的記錄筆數，沒有應用 LIMIT 或 OFFSET。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>回傳最後查詢的記錄筆數，沒有應用 LIMIT 或 OFFSET。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// SELECT * FROM `users` WHERE `active` = "yes" LIMIT 10;
+$limited_result = DB::select()->from('users')->where('active', '=', 'yes')->limit(10)->execute();
+
+// SELECT count(*) as count FROM `users` WHERE `active` = "yes";
+DB::count_last_query();
+</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_set_charset">set_charset($charset, $db)</h4>
+				<p><strong>set_charset</strong> 方法設定連線字符集，此方法由 [static::connect] 自動呼叫。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$charset</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">字符集名稱。</td>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>空</em></td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>DB::set_charset('utf8');</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_error_info">error_info()</h4>
+				<p><strong>error_info</strong> 回傳一個關於最後資料庫錯誤訊息的陣列。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>array($unified_code, $platform_code, $error_text)</em></td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>$lasterror = DB::error_info();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_in_transaction">in_transaction($db = null)</h4>
+				<p><strong>in_transaction</strong> 方法確認連線是否在交易中。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tbody>
+										<tr>
+											<th>參數</th>
+											<th>預設</th>
+											<th class="description">描述</th>
+										</tr>
+										<tr>
+											<th><kbd>$db</kbd></th>
+											<td><strong>null</strong></td>
+											<td class="description">資料庫連線。</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>布林</em> - 只對 PDO 驅動程序有意義，如果在交易中回傳 true，否則回傳 false。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code class="php" >DB::in_transaction();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_start_transaction">start_transaction($db = null)</h4>
+				<p><strong>start_transaction</strong> 方法在實例開始一個交易。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>布林</em> - 只對 PDO 驅動程序有意義，所有其他的總是回傳 true，
+								但當 SQL 命令失敗時，會拋出一個 Exception。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>DB::start_transaction();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_commit_transaction">commit_transaction($db = null)</h4>
+				<p><strong>commit_transaction</strong> 方法送交所有等待中的交易查詢。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>布林</em> - 只對 PDO 驅動程序有意義，所有其他的總是回傳 true，
+								但當 SQL 命令失敗時，會拋出一個 Exception。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>DB::commit_transaction();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_rollback_transaction">rollback_transaction($db = null, $rollback_all = true)</h4>
+				<p><strong>rollback_transaction</strong> 方法回滾所有等待中的交易查詢。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$db</kbd></th>
+										<td><strong>null</strong></td>
+										<td class="description">資料庫連線。</td>
+									</tr>
+									<tr>
+										<th><kbd>$rollback_all</kbd></th>
+										<td><strong>true</strong></td>
+										<td class="description">回滾模式：<br>true - 回滾並關閉交易機制；<br>false - 只在目前層級回滾。</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td><em>布林</em> - 只對 PDO 驅動程序有意義，所有其他的總是回傳 true，
+								但當 SQL 命令失敗時，會拋出一個 Exception。</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>DB::rollback_transaction();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<h3 id="transaction">交易範例</h3>
+
+				<pre class="php"><code>// 典型的交易程式碼流程
+try
+{
+    DB::start_transaction();
+
+    // 一些查詢……
+
+    DB::commit_transaction();
+
+    // 回傳查詢結果
+}
+catch (Exception $e)
+{
+    // 回滾等待中的交易查詢
+    DB::rollback_transaction();
+
+    throw $e;
+}
+</code></pre>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

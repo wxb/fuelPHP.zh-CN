@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/auth/opauth/intro.html';
+		var path = './../../../';
+	</script>
+	<script src="./../../../assets/js/combined.js"></script>
+	<title>簡介 - Opauth - Auth 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Opauth - 簡介</h2>
+
+			<p>Opauth is a multi-provider authentication framework that offers support for authentication against OAuth or OpenID providers.
+			By using Opauth in your application, you can allow your users to use their existing credentials from one of the major web
+			applications using OAuth, instead of having to create a new set of credentials, and a new password to remember. Web applications
+			that support OAuth include Facebook, Twitter, Google, Instagram, Paypal, LinkedIn, Vimeo, Foursquare and Flickr.
+			</p>
+			<p>Besides using the OAuth service from one of these OAuth providers, Opauth also provides single-sign-on. When a user is already
+			logged-in on the website of one of these services (for example, Facebook), and they come to your website and indicate they want to
+			login using their Facebook account, Opauth will detect they are already logged in, and will not prompt the user for any
+			credentials. Instead, the user is logged into your application transparently.</p>
+
+			<h3 id="integration">整合</h3>
+
+			<p>Auth 套件為 Opauth 函式庫提供一個包裝類別，它讓你可以很容易地在應用程式中使用，
+			並為 Simpleauth 和 Ormauth 驅動組提供無縫整合。</p>
+
+			<p>The complete integration means that when a user visits your application for the first time and chooses an OAuth provider as the means
+			to login, the Opauth integration class will transparently create a local user account, and logs the user in using that local account.
+			This means that all functionality of the Auth driver set you have selected (such as group assignments or ACL's) will also work for users
+			logging in through Opauth.
+			</p>
+
+			<p>You can also enable multiple provider support. This allows a user to link additional OAuth providers to an existing account,
+			whether it is an account transparently created, or an account created manually. So whether they want to use their Facebook, Twitter
+			or Google credentials, your application sees the same user account, and ACL's can be applied without having to worry about a user
+			being in your system multiple times, which would be more difficult to manage.
+			</p>
+
+			<h3 id="install_and_config">安裝與配置</h3>
+
+			<p>如果這是你第一次接觸 Auth 套件，首先檢查在 <a href="../simpleauth/intro.html">Simpleauth</a> 和 <a href="../ormauth/intro.html">Ormauth</a> 的段落，
+			做出你要使用哪一個的選擇，並根據指示安裝。
+			一旦你完成了，回到這裡並繼續閱讀。</p>
+
+			<p>為了能使用 Opauth，首先你需要透過 composer 安裝 Opauth 函式庫。
+			添加到你的 FuelPHP 安裝根目錄 <strong>composer.json</strong> 檔案中：
+			</p>
+
+<pre class="javascript"><code>"require": {
+	"php": ">=5.3.3",
+	"monolog/monolog": "1.5.*",
+	"opauth/opauth": "0.4.*",
+	"fuelphp/upload": "2.0"
+},</code></pre>
+
+			<p>除了 Opauth 本身的函式庫，你也需要安裝每一個你想要在你應用程式中支援的 OAuth 提供者的策略套件。
+			檢查 <a href="https://packagist.org/packages/opauth/">Packagist</a> 網站來看哪些是現成可用的 composer 套件。
+			比方說，你想使用 Facebook、Google 和 Github。你的 <strong>composer.json</strong>
+			應該看起來像這樣：</p>
+
+<pre class="javascript"><code>"require": {
+	"php": ">=5.3.3",
+	"monolog/monolog": "1.5.*",
+	"opauth/opauth": "0.4.*",
+	"opauth/facebook": "dev-master",
+	"opauth/google": "dev-master",
+	"opauth/github": "dev-master",
+	"fuelphp/upload": "2.0"
+},</code></pre>
+
+			<p>在此之後，運行 composer 來讓全部安裝：</p>
+
+				<pre class="cli"><code>$ cd /data/www/myfuelwebsite
+$ php composer.phar update</code></pre>
+
+			<p>Opauth requires a database table in which the relation between the OAuth credentials and the local user account is stored.
+			This table is automatically created for you when you have installed either <a href="../simpleauth/intro.html#database">Simpleauth</a> or
+			<a href="../ormauth/intro.html#database">Ormauth</a>.</p>
+
+			<h3 id="configuration">配置</h3>
+
+			<p>
+				The Opauth wrapper class is configured through a configuration file, not suprisingly called
+				<strong>opauth.php</strong>. A default file is provided in the Auth package. You should copy this file
+				to your app/config folder before making any changes.
+			</p>
+
+			<p>以下配置設定值可以被定義：</p>
+			<table class="config">
+				<thead>
+					<tr class="header">
+						<th style="width:20%;">參數</th>
+						<th style="width:10%;">類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>link_multiple_providers</td>
+						<td>布林</td>
+						<td><pre class="php"><code>true</code></pre>
+						</td>
+						<td>
+							Whether or not you want to support linking multiple OAuth providers to a single local account.
+							If it is set to <strong>false</strong> and a provider is already linked, the user will get an
+							error message when a second provider is used, and the login will be rejected.
+						</td>
+					</tr>
+					<tr>
+						<td>auto_registration</td>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre>
+						</td>
+						<td>
+							If <strong>true</strong>, a login via a provider will automatically create a dummy local user account with a
+							random password, if a nickname and an email address is present.
+						</td>
+					</tr>
+					<tr>
+						<td>default_group</td>
+						<td>整數</td>
+						<td><pre class="php"><code>1</code></pre>
+						</td>
+						<td>
+							Group ID to assign to new local user accounts transparently created when a user uses an OAuth
+							provider for the first time. By default this is the ID of the Simpleauth 'users' group.
+						</td>
+					</tr>
+					<tr>
+						<td>debug</td>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre>
+						</td>
+						<td>
+							If <strong>true</strong> it enables the display of debugging messages within the Opauth library
+							and Strategy classes. Do not enable this on production sites!
+						</td>
+					</tr>
+					<tr>
+						<td>security_salt</td>
+						<td>字串</td>
+						<td><pre class="php"><code>null</code></pre>
+						</td>
+						<td>
+							A random string of characters which is used to salt the signing key of the authentication response.
+							You are required to define one, make sure it is sufficiently long and completely random!
+						</td>
+					</tr>
+					<tr>
+						<td>security_iteration</td>
+						<td>整數</td>
+						<td><pre class="php"><code>300</code></pre>
+						</td>
+						<td>
+							Number of iterations to use when generating the signing hash. The higher the number, the more secure
+							your signing key is, but also the slower the login process is. This seems to be an acceptable default.
+						</td>
+					</tr>
+					<tr>
+						<td>security_timeout</td>
+						<td>字串</td>
+						<td><pre class="php"><code>'2 minutes'</code></pre>
+						</td>
+						<td>
+							Time limit allowed for an auth response to be considered valid. Starting from auth response generation
+							(ie. the time when callback is first requested) to the time when auth response is received and attempts
+							validation. Use any value compatible with <strong>strtotime()</strong>.
+						</td>
+					</tr>
+					<tr>
+						<td>Strategy</td>
+						<td>陣列</td>
+						<td><pre class="php"><code>array()</code></pre>
+						</td>
+						<td>
+							The list of strategies supported by your application, which will include per stategy at your application ID
+							and application secret (as assigned to you by the OAuth provider), and any other optional configuration
+							items. It is possible to define multiple strategies for the same provider. See
+							<a href="https://github.com/opauth/opauth/wiki/Opauth-configuration#guide-to-multiple-configurations-for-a-single-strategy">this page</a>
+							for more information.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>
+				當談及回呼時，注意 OpAuth Auth 驅動中的不同。例如，
+				Facebook 不要求你定義一個回呼（重導向）URL，Twitter 要求一個 <strong>http://example.com/&lt;controller&gt;/callback/</strong> 的形式，
+				而 Google 像這樣：<strong>http://example.com/&lt;controller&gt;/&lt;method&gt;/google/oauth2callback</strong>
+				（"method" 是在你控制器中實例化 Auth_Opauth 驅動的方法名稱。）
+			</p>
+
+			<p class="note">You should only use <strong>auto_registration = 'true'</strong> if you don't care about local account, and you don't want to
+			link accounts. It's there for simple "login using <provider>" kind of scenario's.</p>
+
+			<p class="note">Pay very close attention to the value of <strong>default_group</strong>. For Ormauth, group id's are
+			not fixed as they are autoincrement in your database table. You don't want to define the wrong one, and ending up
+			giving every OAuth user administrator access!!!</p>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

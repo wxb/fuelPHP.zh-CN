@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/combined.css">
+	<link rel="shortcut icon" href="../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/models.html';
+		var path = './../';
+	</script>
+	<script src="../assets/js/combined.js"></script>
+	<title>模型 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="models.html#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>模型</h2>
+
+			<h3>模型是什麼？</h3>
+
+			<p>
+				每當需要取回、操縱或刪除資料時，應始終藉由模型來完成。模型是一些類型資料與變更它們的方法的代表。
+				例如：你不會把 SQL 查詢放在一個控制器，這些查詢被放在模型裡，且控制器會在呼叫模型後執行它們。
+				如此一來，如果你的資料庫改變，你將只要變更後面作用的模型，而不需要變更你所有的控制器。
+			</p>
+
+			<h3 id="using_models">模型如何使用？</h3>
+
+			<p>
+				在 Fuel 裡，模型就像任何其他的 <a href="classes.html" title="Class Documentation">類別</a> 一樣。它們做的也不比函式庫多，
+				但模組前綴幫助它與其他類別做區別。要用模型做一些有用的事情，你將需要使用其他類別。
+			</p>
+
+			<h3 id="creating_models">建立模型</h3>
+
+			<pre class="php"><code>
+namespace Model;
+
+class Welcome extends \Model {
+
+    public static function get_results()
+    {
+        // 資料庫互動
+    }
+
+}</code></pre>
+
+			<p class="note">在命名空間外，記得前綴一個反斜線到你正在使用的來自全域的類別。
+				如果你不明白為什麼，在
+				<a href="http://www.php.net/namespaces">PHP.net</a> 閱讀關於命名空間。</p>
+
+			<h3 id="accessing_models">存取模型</h3>
+
+			<p>PHP 有 <code>use</code> 關鍵字用來導入類別到目前命名空間，
+				這能讓你在一個指定類別的檔案內：把 Model 的名稱從 <code>Model\Welcome</code>
+				縮短到只有 <code>Welcome</code>：</p>
+
+            <pre class="php"><code>
+use \Model\Welcome;
+
+class Controller_Welcome extends Controller
+{
+    public function action_index()
+    {
+        $results = Welcome::get_results();
+    }
+}   </code></pre>
+
+
+
+			<h3 id="writing_own_models">撰寫你自己的模型</h3>
+
+			<p>雖然模型可被用於任何類型的資料儲存，我們將著重於與 SQL 的使用，因為那是最常見的用法。
+				幾乎你的模型都至少會有所有的 <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank">CRUD</a>
+				方法：建立、讀取、更新、刪除（或這些的變化）。在 Fuel 裡你的模型預設不需要擴充任何東西，
+				當然你可以建立你自己的基礎模型或使用 Fuel 的
+				<a href="models.html#orm_models">Orm 套件</a>。</p>
+
+			<h3 id="writing_queries">撰寫 SQL 查詢</h3>
+
+			<p>你可以使用 <a href="../classes/database/db.html">DB 類別</a>建立像這樣的原生 SQL：</p>
+
+			<pre class="php"><code>DB::query('SELECT * FROM users WHERE id = 5');</code></pre>
+
+			<h3 id="use_query_builder">使用查詢建立器</h3>
+
+			<p>當談到轉義資料，與在陣列中的資料協作或使應用程式移植到多個資料庫引擎，
+				你會發現原生 SQL 相當麻煩。使用 DB 類別中的 Query Builder 方法，你可以抽象撰寫原生 SQL：
+			</p>
+
+			<pre class="php"><code>DB::select('title','content')->from('articles')->execute()->get('title');</code></pre>
+
+			<p>從 <a href="../classes/database/db.html">DB 類別</a> 文件了解更多關於原生 SQL 查詢和使用 Query Builder。</p>
+
+			<h3 id="model_crud_models">使用 Model_Crud 建立模型</h3>
+
+			<p>一個建立模型可能的方式是藉由使用 <a href="../classes/model_crud/introduction.html">Model_Crud</a>，添加一個常用功能到你的模型來與資料庫表互動。下面有一個使用的範例。</p>
+
+			<pre class="php"><code>// 尋找所有文章
+$entry = Model_Article::find_all();
+
+// 從種類 1 以日期降序排列尋找所有文章
+$entry = Model_Article::find(array(
+    'where' => array('category_id', 1),
+    'order_by' => array('date' => 'desc')
+));</code></pre>
+
+			<h3 id="orm_models">使用 Orm 建立模型</h3>
+
+			<p>對於具有更多功能的模型，像支援關聯，你可以使用 <a href="../packages/orm/intro.html">Orm 套件</a>，其中增加了很多開箱即用的功能到你的模型。下面有一個使用的範例。</p>
+
+			<pre class="php"><code>// 尋找所有文章
+$entry = Model_Article::find('all');
+
+// 從種類 1 以日期降序排列尋找所有文章
+$entry = Model_Article::find('all', array(
+    'where' => array('category_id', 1),
+    'order_by' => array('date', 'desc')
+));</code></pre>
+
+			<p>Model_Crud 和 ORM 套件使用類似的語法，一旦你需要比 Model_Crud 可提供更多的功能時，這使它能簡單的遷移。</p>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

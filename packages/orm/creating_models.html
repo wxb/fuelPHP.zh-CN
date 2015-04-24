@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/orm/creating_models.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>建立模型 - Orm 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Orm</h2>
+
+			<p>Orm 是 <a href="http://en.wikipedia.org/wiki/Object_relational_mapper" target="_blank">物件關聯對映（Object
+				Relational Mapper）</a> 的簡寫，它做兩件事：<br />對應你資料庫裡的資料列到物件，
+				並能讓你在這些物件之間建立關係。<br />
+				它緊隨 <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">活動記錄模式（
+				Active Record Pattern）</a>，但也受到其他系統的影響。</p>
+
+			<section>
+				<h2 id="creation">建立模型</h2>
+
+				<p>建立模型花費極少時間，慣例是給類別使用 <kbd>Model_</kbd> 前綴
+					（例如 Model_Article 使用檔案名稱 article.php）
+					並因此把它們放在 <kbd>app/classes/model/</kbd>，
+					但你可以自由使用任何你選擇的名稱。</p>
+
+				<pre class="php"><code>class Model_Article extends Orm\Model {}</code></pre>
+
+				<p class="note">以上方法只適用於 MySQL 和 MySQLi 的驅動，因為它需要從資料庫中取回模型特性。
+					然而，這不是很有效率，因此<strong>不鼓勵</strong>使用這種方式，
+					因為你始終需要在每個模型多一個額外的查詢就為了取回行名。</p>
+
+				<pre class="php"><code>class Model_Article extends Orm\Model
+{
+	protected static $_properties = array('id', 'title', 'contents', 'publish');
+}</code></pre>
+
+				<h2 id="config">配置</h2>
+
+				<p>你可以添加靜態特性到該模型來配置它。正如我們看到的，沒有要求但鼓勵設定
+					<kbd>$_properties</kbd>。這些全部可以是 <kbd>public</kbd> 和
+					<kbd>protected</kbd> 但可能<strong>不</strong>是 <kbd>private</kbd>。<br />
+					請注意，所有配置特性都以單一底線前綴，
+					以預防與你的行名碰撞。</p>
+
+				<h3 id="table_name">protected static $_table_name</h3>
+
+				<p>When this isn't set the <kbd>Model_</kbd> prefix is removed from the class name and the class name is
+					pluralized. Thus "Model_Article" expects table "articles". If you don't follow this convention you can
+					change it by setting the <kbd>$_table_name</kbd> property.</p>
+
+				<pre class="php"><code>class Model_Article extends Orm\Model
+{
+	protected static $_table_name = 'myarticles';
+}</code></pre>
+
+				<h3 id="primary_key">protected static $_primary_key</h3>
+
+				<p>預設情況下，這設為 <kbd>array('id')</kbd>，如果你使用其他行名稱或多個主鍵，
+					你需要設定此特性。</p>
+
+				<pre class="php"><code>class Model_Article extends Orm\Model
+{
+	protected static $_primary_key = array('aid');
+}</code></pre>
+
+				<p class="note">The primary key must be a real primary key: unique and unchanging. Don't use it for other
+					purposes (like a foreign key in a one-one relation) as well, that won't work as the PK can't be
+					changed. The Orm won't check this, and while it might seem to work at first glance: you'll get
+					into trouble.<br />
+					It is not required for the PK to be auto_increment (though preferred) and you can specify the PK
+					yourself, but only the first time. Once it's set, it's set.</p>
+
+				<h3 id="propperties">protected static $_properties</h3>
+
+				<p>There's already a simple example above of adding all model properties, they can also be configured by
+				using the column name as the key and setting options like type, label and validation.</p>
+
+				<pre class="php"><code>class Model_Article extends Orm\Model
+{
+	protected static $_properties = array(
+		'id', // both validation &amp; typing observers will ignore the PK
+		'name' => array(
+			'data_type' => 'varchar',
+			'label' => 'Article Name',
+			'validation' => array('required', 'min_length' => array(3), 'max_length' => array(20)),
+			'form' => array('type' => 'text'),
+			'default' => 'New article',
+		),
+		'gender' => array(
+			'data_type' => 'varchar',
+			'label' => 'Gender',
+			'form' => array('type' => 'select', 'options' => array('m' => 'Male', 'f' => 'Female')),
+			'validation' => array('required'),
+		),
+		'created_at' => array(
+			'data_type' => 'int',
+			'label' => 'Created At',
+			'form' => array(
+				'type' => false, // this prevents this field from being rendered on a form
+			),
+		),
+		'updated_at' => array('data_type' => 'int', 'label' => 'Updated At')
+	);
+}</code></pre>
+
+				<p>Form attributes can be passed in the form of an array as shown in the example.</p>
+
+				<p>Validation rules can be passed as either just the rule: <kbd>array('required')</kbd> or as the rule
+					with an array of params: <kbd>array('min_length' => array(3))</kbd> both are shown in the example
+					above. A full explanation of the Validation class and it's rule can be found under
+					<a href="../../classes/validation/validation.html">Core</a>.</p>
+
+				<h3 id="conditions">protected static $_conditions</h3>
+
+				<p>By default this property does not exist and Model::condition() returns <kbd>array()</kbd>, but you can set
+				on the model if you want any conditions defined on every query run. Currently 'order_by' and 'where' conditions
+				are supported.
+				</p>
+
+				<pre class="php"><code>class Model_Article extends Orm\Model
+{
+	protected static $_conditions = array(
+		'order_by' => array('id' => 'desc'),
+		'where' => array(
+			array('publish_date', '>', 1370721177),
+			array('published', '=', 1),
+		),
+	);
+}</code></pre>
+				<p class="note">
+					The <kbd>order_by</kbd> condition is only applied if no other order by clause is defined.
+					The <kbd>where</kbd> conditions are added using <kbd>and</kbd> to any other defined where clauses.
+				</p>
+
+				<h3 id="relations">protected static $_has_one, $_belongs_to, $_has_many, $_many_many</h3>
+
+				<p>模型的相互關聯在 <a href="relations/intro.html">關聯模型</a> 裡有解釋。</p>
+
+				<h3 id="connection">protected static $_connection</h3>
+
+				<p>在預設情況下這個特性不存在，且 Model::connection() 回傳 <kbd>null</kbd>，
+				但你可以設定它為任何其他配置在 <kbd>app/config/db.php</kbd> 的資料庫名稱。</p>
+
+				<h3 id="write_connection">protected static $_write_connection</h3>
+
+				<p>If you have a master/slave setup for your database environment, you can use this property to define the
+				connection to use for the write master. If configured, the <kbd>$_connection</kbd> property will be used
+				to connect to the read slaves.</p>
+				<p>By default this property does not exist and Model::connection(true) returns either the configured <kbd>$_connection</kbd>,
+				or <kbd>null</kbd>, but you can set it to any other database name configured in <kbd>app/config/db.php</kbd>.</p>
+
+				<pre class="php"><code>// 給單一資料庫使用的配置
+class Model_Article extends Orm\Model
+{
+	// 'articles_db' 必須被配置在你的 db.php 配置檔案
+	protected static $_connection = 'articles_db';
+}
+
+// 給 master/slave 資料庫使用的配置
+class Model_Article extends Orm\Model
+{
+	// 'articles_master_db' 和 'articles_slave_db' 必須被配置在你的 db.php 配置檔案
+	protected static $_write_connection = 'articles_master_db';
+	protected static $_connection = 'articles_slave_db';
+}</code></pre>
+
+				<p class="note">Note that relations do not work across connections, so when you define your connections in the model,
+				make sure your related models have exactly the same configuration, both for reads and writes!</p>
+
+				<h3 id="to_array_exclude">protected static $_to_array_exclude</h3>
+
+				<p>
+					If you are writing an API driven application, often you want to limit the columns that are exposed to the
+					API interface. For example, when exposing a user record, you would not want to expose the user's password,
+					login hash or salt.
+				</p>
+				<p>
+					In your model definition, you can add a list of columns to the <strong>to_array_exclude</strong> array to exclude
+					them from being exported using to_array().
+				</p>
+				<pre class="php"><code>class Model_User extends Orm\Model
+{
+	protected static $_to_array_exclude = array(
+		'password', 'login_hash', 'salt'	// 排除這些行被導出
+	);
+}</code></pre>
+				<p class="note">
+					By default the to_array() method exports both column and relation data loaded in the current model object.
+					Optionally, it allows you to export the custom properties too. Array exclusion works on column names,
+					custom properties and relations, allowing you to exclude properties from all of them.
+				</p>
+
+				<h3 id="observers">protected static $_observers</h3>
+
+				<p>添加觀察者在 <a href="observers/intro.html">觀察者</a> 裡有解釋。</p>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

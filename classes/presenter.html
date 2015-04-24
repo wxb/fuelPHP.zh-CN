@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/presenter.html';
+		var path = './../';
+		var class_prefix = "Presenter::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Presenter - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Presenter 類別</h2>
+
+			<p>
+				The Presenter class acts as an object wrapper for "views", and is used to abstract all logic
+				related to the view away from the controller. <a href="../general/presenters.html">閱讀更多關於使用表現控件。</a>
+				就像 Controller，Presenter 支援 <kbd>before()</kbd> 和 <kbd>after()</kbd> 方法，你可以用來which you can use for code generic to all methods for view prepping.
+			</p>
+
+			<article>
+				<h4 class="method" id="method_forge">forge($presenter, $method = 'view', $auto_filter = null, $view = null)</h4>
+				<p><strong>forge</strong> 方法回傳一個新的 Presenter 物件。</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>是</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								<table class="parameters">
+									<tr>
+										<th>參數</th>
+										<th>預設</th>
+										<th class="description">描述</th>
+									</tr>
+									<tr>
+										<th><kbd>$presenter</kbd></th>
+										<td><em>必要</em></td>
+										<td class="description">表現控件的名稱，以及預設其關聯的檢視，使用 <a href="./view.html#method_forge">View</a> 表示。</td>
+									</tr>
+									<tr>
+										<th><kbd>$method</kbd></th>
+										<td><pre class="php"><code>'view'</code></pre></td>
+										<td class="description">Name of the presenter method that will prep the View for rendering. You can have multiple prep methods defined in the Presenter, for example to generate different layouts of the same view.</td>
+									</tr>
+									<tr>
+										<th><kbd>$auto_filter</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description">set to <em>true</em> or <em>false</em> to set auto encoding, defaults to main config setting (app/config/config.php)</td>
+									</tr>
+									<tr>
+										<th><kbd>$view</kbd></th>
+										<td><pre class="php"><code>null</code></pre></td>
+										<td class="description"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>一個新的 <em>Presenter</em> 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 會為 APPPATH/views/admin/index.php 檢視檔案
+// 建立一個 Presenter 物件
+// 使用在 APPPATH/classes/presenter/admin/index.php 中的 Presenter_Admin_Index 類別
+
+$presenter = Presenter::Forge('admin/index');
+
+// 使用 presenter 中的 custom() 方法來呈現不同的檢視
+$presenter = Presenter::Forge('admin/index', 'custom');
+
+// 使用一個自訂檢視
+$presenter = Presenter::Forge('admin/index', 'custom', null, 'admin/different/view');
+
+// 或甚至一個自訂的檢視物件
+$view = View::forge('admin/different/view', array(
+	'menu' => $menu,
+	'articles' => $articles,
+	'footer_links' => $footer_links,
+));
+
+$presenter = Presenter::Forge('admin/index', 'custom', null, $view);</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_view">get_view()</h4>
+				<p>The <strong>get_view</strong> method returns the View instance associated with the Presenter object.</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						</tr>
+						<tr>
+							<th>回傳</th>
+							<td>關聯的 View 物件</td>
+						</tr>
+						<tr>
+							<th>範例</th>
+							<td>
+								<pre class="php"><code>// 建立一個表現控件實例
+$presenter = Presenter::Forge('admin/index');
+
+// and the view associated with it
+$view = $presenter->get_view();</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_view">view()</h4>
+				<p>The <strong>view</strong> method is the default method which is called when the Presenter is rendered. It contains the logic to prep the view for rendering.</p>
+				<table class="method">
+					<tbody>
+						<tr>
+							<th>靜態</th>
+							<td>否</td>
+						</tr>
+						<tr>
+							<th>參數</th>
+							<td>
+								無
+							</td>
+						<tr>
+							<th>範例</th>
+							<td>
+								參閱 <a href="../general/presenter.html">Presenter</a> 預覽頁面。
+							</td>
+						</tr>
+						</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					A presenter can contain multiple prepping methods, which are used when you need multiple sets of logic for generating the view.
+					You could for example have a custom method that generates the view without headers and footers, or one that creates a custom
+					view optimized for mobile devices. It allows you to keep the controller generic, it doesn't need to know what output has to be
+					generated by the presenter.
+				</p>
+			</article>
+
+			<h3 id="view">View 物件相容性</h3>
+
+			<p>
+				The Presenter class is interchangeable with the View class in your code. This means that if you start with Views, and later
+				realize you need to have additional view prepping logic and you want to use a Presenter instead, you don't have to change
+				your controller code, other than forging a Presenter instead of a View.
+			</p>
+			<p>
+				To support this, the Presenter exposes the <kbd>set()</kbd>, <kbd>set_safe()</kbd>, <kbd>bind()</kbd>, <kbd>auto_filter()</kbd> and
+				<kbd>render()</kbd> methods of the associated View object. Is also has magic getter and setters to access and set properties on the
+				associated View object.
+			</p>
+			<p>
+				The Presenter doesn't support the static methods <kbd>set_global()</kbd> and <kbd>bind_global()</kbd>, if you need global variables
+				for your views, you still have to set them on the View class. For the Presenter, this is transparent.
+			</p>
+
+			<p class="note">
+				If you want to extend the Presenter to be able to swap View instances after the Presenter object has been created, know that the
+				presenter doesn't have it's own data container. Instead, it uses the associated View object to store all data, which means that
+				if you swap that View object by a new one, you lose all variables set on it!
+			</p>
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+</body>
+</html>

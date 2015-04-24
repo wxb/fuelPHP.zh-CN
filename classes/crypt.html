@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/crypt.html';
+		var path = './../';
+		var class_prefix = "Crypt::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Crypt - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Crypt 類別</h2>
+
+			<p>
+				Crypt 類別允許加密或解密一個字串。Crypt 類別也可用於內部例如 Fuel Session 類別。
+			</p>
+			<p>它使用由 PHPSecLib 提供的加密和雜湊方法，所以它不是依賴外部模組如 mcrypt 來作用的。</p>
+
+			<section>
+				<h3 id="configuration">配置</h3>
+
+				<p>
+					Crypt 類別透過 <kbd>app/config/crypt.php</kbd> 配置檔案做配置，當你第一次使用 Crypt 類別，或如果缺少必要配置值之一時，它將會被產生和填充隨機值。
+				</p>
+				<p class="note">
+					請注意，這將需要寫入 app/config/crypt.php！如果這是辦不到的，確認所有配置設定已經設好！
+				</p>
+				<p>以下配置設定可以被定義：</p>
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>crypto_key</th>
+							<td>字串</td>
+							<td>沒有</td>
+							<td>
+								用於加密程序的隨機加密鍵值，確認你設定的值是唯一且隨機！
+							</td>
+						</tr>
+						<tr>
+							<th>crypto_iv</th>
+							<td>字串</td>
+							<td>沒有</td>
+							<td>
+								用於加密程序的隨機加密初始向量，確認你設定的值是唯一且隨機！
+							</td>
+						</tr>
+						<tr>
+							<th>crypto_hmac</th>
+							<td>字串</td>
+							<td>沒有</td>
+							<td>
+								用於雜湊訊息確認碼（HMAC）程序的隨機值，確認你設定的值是唯一且隨機！
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="note">
+					如果你手動指派鍵，注意它們是 base64_encoded，且長度必須是 4 的倍數以讓它能夠被解碼，確認長度是正確的！
+				</p>
+			</section>
+
+			<article>
+				<h4 class="method" id="method_encode">encode($value, $key = false)</h4>
+				<p><strong>encode</strong> 方法加密一個字串值，選擇性的使用自訂鍵。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>要加密的字串值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$key</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>選擇性的自訂鍵值以使用於加密傳遞的值，如果為 false，配置值 '<strong>crypto_key</strong>' 會被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 使用自訂鍵加密一個變數
+$value = Crypt::encode($value, 'R@nd0mK~Y');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_decode">decode($value, $key = false)</h4>
+				<p><strong>decode</strong> 方法解密一個字串值，選擇性的使用自訂鍵。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>否</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$value</kbd></th>
+									<td><i>必要</i></td>
+									<td>要解密的字串值。</td>
+								</tr>
+								<tr>
+									<th><kbd>$key</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>選擇性的自訂鍵值以使用於解密傳遞的值，如果為 false，配置值 '<strong>crypto_key</strong>' 會被使用。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>混合 - 隨著解密值的字串值，或 <kbd>false</kbd> 如果價無法被解密。</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>// 使用自訂鍵解密一個變數
+$value = Crypt::decode($value, 'R@nd0mK~Y');</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

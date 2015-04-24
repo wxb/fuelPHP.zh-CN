@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'classes/inflector.html';
+		var path = './../';
+		var class_prefix = "Inflector::";
+	</script>
+	<script src="./../assets/js/combined.js"></script>
+	<title>Inflector - 類別 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2>Inflector 類別</h2>
+
+			<p>Inflector 類別能讓你轉換詞語從單數變複數、類別名稱變資料表名稱、模組化類別名稱變沒有、以及類別名稱變外鍵。</p>
+
+			<article>
+				<h4 class="method" id="method_ascii">ascii($str, $allow_non_ascii = false)</h4>
+				<p><strong>ascii</strong> 方法能讓你轉化一個字串為一個 7 位元 ASCII 字串，此方法只作用於 UTF-8。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$str</kbd></th>
+									<td><i>必要</i></td>
+									<td>要轉化的字串。</td>
+								</tr>
+								<tr>
+									<th><kbd>$allow_non_ascii</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>是否允許非 ASCII 字元。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::ascii('Inglés'); // 回傳 Ingles</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_camelize">camelize($underscored_word)</h4>
+				<p><strong>camelize</strong> 方法能讓你轉換一個以底線分隔詞語的字串為一個駝峰式大小寫的字串。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$underscored_word</kbd></th>
+									<td><i>必要</i></td>
+									<td>有底線的詞語。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::camelize('apples_and_oranges'); // 回傳 ApplesAndOranges</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_words_to_upper">words_to_upper($class)</h4>
+				<p><strong>words_to_upper</strong> 方法使有著底線分隔詞語的類別名稱，
+					其中每個詞語的首字母為大寫。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$class</kbd></th>
+									<td><i>必要</i></td>
+									<td>類別名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$sep</kbd></th>
+									<td><i>_</i></td>
+									<td>分隔符</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::words_to_upper('fuel_users'); // 回傳 Fuel_Users
+echo Inflector::words_to_upper('module::method', '::'); // 回傳 Module::Method</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_classify">classify($table_name)</h4>
+				<p><strong>classify</strong> 方法能讓你轉換一個資料表名稱為一個類別名稱。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$table_name</kbd></th>
+									<td><i>必要</i></td>
+									<td>資料表名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$singularize</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>是否在詞語被轉為大寫之前 $tablename 是單數的。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::classify('fuel_users'); // 回傳 Fuel_User</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_demodulize">demodulize($class_name_in_module)</h4>
+				<p><strong>demodulize</strong> 方法能讓你從模組化字串脫離類別名稱。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$class_name_in_module</kbd></th>
+									<td><i>必要</i></td>
+									<td>模組化的類別。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::demodulize('Uri::main()'); // 回傳 main()</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_denamespace">denamespace($class_name)</h4>
+				<p><strong>denamespace</strong> 方法能讓你所給的類別名稱脫離命名空間。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$class_name</kbd></th>
+									<td><i>必要</i></td>
+									<td>類別名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::denamespace('Fuel\\Core\\Config'); // 回傳 Config</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_get_namespace">get_namespace($class_name)</h4>
+				<p><strong>get_namespace</strong> 方法回傳所給的類別名稱的命名空間。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$class_name</kbd></th>
+									<td><i>必要</i></td>
+									<td>類別名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串，命名空間</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::get_namespace('Fuel\\Core\\Config'); // 回傳 Fuel\Core\</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_foreign_key">foreign_key($class_name, $use_underscore = true)</h4>
+				<p><strong>foreign_key</strong> 方法能讓你取得所給的類別的外鍵。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$class_name</kbd></th>
+									<td><i>必要</i></td>
+									<td>類別名稱。</td>
+								</tr>
+								<tr>
+									<th><kbd>$use_underscore</kbd></th>
+									<td><pre class="php"><code>true</code></pre></td>
+									<td>是否使用底線。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::foreign_key('Inflector'); // 回傳 inflector_id
+echo Inflector::foreign_key('Inflector', false); // 回傳 inflectorid</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_friendly_title">friendly_title($str, $sep = '-', $lowercase = false, $allow_non_ascii = false)</h4>
+				<p><strong>friendly_title</strong> 方法能讓你轉換你的文本為 URL 友好的標題以便在 URL 中使用，它只作用於 UTF-8 輸入且輸出 7 位元 ASCII 字元。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$str</kbd></th>
+									<td><i>必要</i></td>
+									<td>要轉換的文本。</td>
+								</tr>
+								<tr>
+									<th><kbd>$sep</kbd></th>
+									<td><pre class="php"><code>-</code></pre></td>
+									<td>分隔符（- 或 _ 兩者之一）</td>
+								</tr>
+								<tr>
+									<th><kbd>$lowercase</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>是否使用小寫。</td>
+								</tr>
+								<tr>
+									<th><kbd>$allow_non_ascii</kbd></th>
+									<td><pre class="php"><code>false</code></pre></td>
+									<td>是否允許非 ASCII 字元。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::friendly_title('Fuel is a community driven PHP 5 web framework.', '-', true);
+// 回傳 fuel-is-a-community-driven-php-5-web-framework</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_humanize">humanize($lower_case_and_underscored_word)</h4>
+				<p><strong>humanize</strong> 方法能讓你翻轉一個底線分隔詞語，並將它轉為人類閱讀的字串。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$lower_case_and_underscored_word</kbd></th>
+									<td><i>必要</i></td>
+									<td>要轉換的詞語。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::humanize('apples_and_oranges'); // 回傳 Apples and oranges</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_is_countable">is_countable($word)</h4>
+				<p><strong>is_countable</strong> 能讓你確認所給的詞語是否有複數版本。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$word</kbd></th>
+									<td><i>必要</i></td>
+									<td>要確認的詞語。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>布林</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::is_countable('fish'); // 回傳 false
+echo Inflector::is_countable('apple'); // 回傳 true</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_pluralize">pluralize($word, $count)</h4>
+				<p><strong>pluralize</strong> 能讓你取得所給詞語的複數版本。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$word</kbd></th>
+									<td><i>必要</i></td>
+									<td>你想要成複數的詞語。</td>
+								</tr>
+								<tr>
+									<th><kbd>$count</kbd></th>
+									<td><strong>0</strong></td>
+									<td>實例，如果等於 <kbd>1</kbd> 將回傳單數的字串。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::pluralize('apple'); // 回傳 apples
+echo Inflector::pluralize('apple', 1); // 回傳 apple</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_ordinalize">ordinalize($number)</h4>
+				<p><strong>ordinalize</strong> 方法能讓你添加一個英語序號後綴。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$number</kbd></th>
+									<td><i>必要</i></td>
+									<td>你想要上序號的號碼。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::ordinalize(2); // 回傳 2nd</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_singularize">singularize($word)</h4>
+				<p><strong>singularize</strong> 方法能讓你取得所給詞語的單數版本。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$word</kbd></th>
+									<td><i>必要</i></td>
+									<td>你想要成單數的詞語。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::singularize('apples'); // 回傳 apple</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_tableize">tableize($class_name)</h4>
+				<p><strong>tableize</strong> 方法能讓你轉換一個類別名稱為一個資料表名稱。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$class_name</kbd></th>
+									<td><i>必要</i></td>
+									<td>類別名稱。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::tableize('FuelUser'); // 回傳 fuel_users</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+			<article>
+				<h4 class="method" id="method_underscore">underscore($camel_cased_word)</h4>
+				<p><strong>underscore</strong> 方法能讓你轉換一個駝峰式大小寫的字串為一個底線分隔的字串。</p>
+				<table class="method">
+					<tbody>
+					<tr>
+						<th class="legend">靜態</th>
+						<td>是</td>
+					</tr>
+					<tr>
+						<th>參數</th>
+						<td>
+							<table class="parameters">
+								<tr>
+									<th>參數</th>
+									<th>預設</th>
+									<th class="description">描述</th>
+								</tr>
+								<tr>
+									<th><kbd>$camel_cased_word</kbd></th>
+									<td><i>必要</i></td>
+									<td>駝峰式大小寫的詞語。</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th>回傳</th>
+						<td>字串</td>
+					</tr>
+					<tr>
+						<th>範例</th>
+						<td>
+							<pre class="php"><code>echo Inflector::underscore('ApplesAndOranges'); // 回傳 apples_and_oranges</code></pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

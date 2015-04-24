@@ -1,0 +1,321 @@
+﻿<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'general/controllers/rest.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>Rest 控制器 - 一般 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+
+			<h2 id="rest_controller">Rest 控制器</h2>
+
+			<h3 id="what_is_rest">Rest 控制器是什麼？</h3>
+
+			<p>
+				Rest 控制器是 Base 控制器的擴充並內建支援 RESTful。
+				這能讓你輕鬆建立 API。
+			</p>
+
+			<p class="note">
+				<strong>請注意：</strong> 如果你在你的 REST 控制器使用 <kbd>before()</kbd> 或 <kbd>router</kbd> 方法，
+				你 <strong>必須</strong> 呼叫父層方法
+				<kbd>parent::before()</kbd>（或路由）以保持正常運作。
+			</p>
+
+			<h3 id="usage">使用 Rest 控制器</h3>
+
+			<p>
+				如同所有的控制器，你在 <kbd>fuel/app/classes/controller</kbd> 目錄裡建立一個類別。
+				它們需要擴充 <kbd>Controller_Rest</kbd> 類別並且預設前綴為 "Controller_"。
+				下面是一個控制器 "test" 的範例：
+			</p>
+
+			<pre class="php"><code>class Controller_Test extends Controller_Rest
+{
+
+	public function get_list()
+	{
+		return $this->response(array(
+			'foo' => Input::get('foo'),
+			'baz' => array(
+				1, 50, 219
+			),
+			'empty' => null
+		));
+	}
+}</code></pre>
+
+			<p>
+				此控制器的 "list" 方法被以下的 URL 呼叫：
+				<pre>http://localhost/test/list.json?foo=bar</pre>
+			</p>
+
+
+			<p class="note">
+				你會注意到，Rest 控制器使用 HTTP 方法做為前綴，而不是常見的 "action_"。
+				當沒有發現相對應於 HTTP 方法前綴的方法時，將退回到 "action_" 前綴。
+				Rest 控制器支援所有常見的 HTTP 方法，比如：
+			</p>
+
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>HTTP 方法</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>GET</th>
+						<td>
+							用於取出關於現有資源的資訊。
+							當你輸入一個 URL 並前往瀏覽，或當你點下一個連結，這會被瀏覽器使用。
+							所以它適合取回在你資源（如使用者）的資訊。表單也可以使用此方法來取回送交查詢字串的資訊（即搜尋表單）。
+						</td>
+					</tr>
+					<tr>
+						<th>POST</th>
+						<td>
+							用於建立新資源。由於 HTML 支援 PUT 方法的不足，它也被用於更新資源。大多數表單使用 POST 方法，除了當它們打算取回送交查詢字串的資訊。
+						</td>
+					</tr>
+					<tr>
+						<th>PUT</th>
+						<td>
+							用於建立或更新有已知 ID 的資源。你被預期傳遞所有特性。遺漏的應該被設為 NULL。較不常用因為還不被 HTML（5）支援。雖然大多數的瀏覽器支援 XMLHttpRequests。
+						</td>
+					</tr>
+					<tr>
+						<th>DELETE</th>
+						<td>
+							用於刪除現有資源。如同 PUT，不被 HTML（5）支援但大多數瀏覽器支援 XMLHttpRequests。
+						</td>
+					</tr>
+					<tr>
+						<th>PATCH</th>
+						<td>
+							用於更新有已知 ID 的資源。你只傳遞你想要更新的特性。較不常用因為還不被 HTML（5）支援。雖然大多數的瀏覽器支援 XMLHttpRequests。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="note">這不是一個限制性的清單，FuelPHP 框架接受任何你網頁伺服器接受的 HTTP 方法。</p>
+
+			<h3 id="output">輸出</h3>
+
+			<pre class="javascript"><code>{
+	"foo":"bar",
+	"baz":[1,50,219],
+	"empty":null
+}</code></pre>
+
+			<p>
+				這輸出為 json，因為副檔名被定義在 URL。預設情況下，
+				回應將被格式化為 XML 或其他設定在 <em>fuel/core/config/rest.php</em> 中的格式。
+			</p>
+
+			<h3 id="config">配置</h3>
+
+			<p>
+				REST 控制器可以透過 <strong>fuel/core/config/rest.php</strong> 配置檔案全域地配置。
+				它已經填入了一個預設配置。你可以透過添加一個同名的配置檔案到你應用程式的 config 目錄來覆寫此配置，
+				並在這裡設定你想要變更的值。
+				這些將覆寫核心配置，但保留你沒有覆寫的部份。
+			</p>
+
+			<p>以下的全域配置值可以被定義：</p>
+			<table class="config">
+				<tbody>
+					<tr class="header">
+						<th>參數</th>
+						<th>類型</th>
+						<th>預設</th>
+						<th>描述</th>
+					</tr>
+					<tr>
+						<th>default_format</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'xml'</code></pre></td>
+						<td>
+							要回傳結果的預設格式。這只用在控制器中沒定義格式，
+							而且所有自動檢測機制失效時。
+						</td>
+					</tr>
+					<tr>
+						<th>xml_basenode</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'xml'</code></pre></td>
+						<td>
+							要被用在輸出 XML 結構時的<a href="#xml_basenode">基本節點 XML 標籤</a>。
+						</td>
+					</tr>
+					<tr>
+						<th>realm</th>
+						<td>字串</td>
+						<td><pre class="php"><code>'REST API'</code></pre></td>
+						<td>
+							受密碼保護的 REST API 顯示在登入對話框的名稱。
+						</td>
+					</tr>
+					<tr>
+						<th>auth</th>
+						<td>字串</td>
+						<td><pre class="php"><code>''</code></pre></td>
+						<td>
+							定義所需的認證類型。有效的值有 'basic' 和 'digest'。
+							你也可以定義一個必須被呼叫來檢查認證的控制方法名稱。此方法可能回傳一個布林。
+							（true 將允許請求，false 將回傳一個預設的 401 回應），或一個 Response 物件。
+							<br />留空如果沒有認證需要被執行。
+						</td>
+					</tr>
+					<tr>
+						<th>valid_logins</th>
+						<td>字串</td>
+						<td><pre class="php"><code>array('admin' => '1234')</code></pre></td>
+						<td>
+							一個鍵／值配對的陣列，為 'basic' 和 'digest' 授權方法定義有效的使用者名稱及密碼。
+						</td>
+					</tr>
+					<tr>
+						<th>ignore_http_accept</th>
+						<td>布林</td>
+						<td><pre class="php"><code>false</code></pre></td>
+						<td>
+							HTTP_ACCEPT 表頭是否應該在一個 REST 請求被解析，以確定回傳的格式。
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 id="formats">支援格式</h3>
+
+			<ul>
+				<li><strong>xml</strong> - 幾乎任何程式語言可以閱讀 XML</li>
+				<li><strong>json</strong> - 對 JavaScript 和越來越多的 PHP 應用程式來說很有用</li>
+				<li><strong>csv</strong> - 用試算表程式開啟</li>
+				<li><strong>html</strong> - 任何經由你方法回傳的字串</li>
+				<li><strong>php</strong> - 可以被 <kbd>eval()</kbd> 執行的 PHP 程式碼表示形式</li>
+				<li><strong>serialize</strong> - 可以在 PHP 中被反序列化的序列化資料</li>
+			</ul>
+			<p class="note">
+				如果你的控制器方法回傳一個陣列，但請求的輸出格式是陣列不能被轉換的（例如 <strong>html</strong>），
+				當你的應用程式運行在一個生產環境時，你會得到一個 406 NOT ACCEPTABLE 狀態，
+				或在任何其他環境時，
+				是一個警告訊息以及一個陣列倒出的 JSON。
+			</p>
+
+			<h3 id="format_determination">確定格式</h3>
+
+			<p>
+				要確定結果應該被回傳的格式，REST 控制器使用以下的演算法：
+			</p>
+			<ul>
+				<li>使用 protected 特性 <kbd>$format</kbd> 如果它包含一個支援的格式</li>
+				<li>使用 URL 擴充如果它包含一個支援的格式</li>
+				<li>使用被指定在路徑中的 <kbd>:format</kbd> 變數的格式如果它包含一個支援的格式</li>
+				<li>使用指定在請求 <kbd>format</kbd> 變數中的格式</li>
+				<li>使用定義在 <kbd>HTTP_ACCEPT</kbd> 表頭的格式</li>
+				<li>使用你類別的 <kbd>$rest_format</kbd> 特性所定義的預設值</li>
+				<li>使用定義在全域配置檔案的 <kbd>default_format</kbd> 值</li>
+			</ul>
+
+			<p>
+				在大多數情況下，<kbd>HTTP_ACCEPT</kbd> 會呈現並包含（至少）<u>text/html</u>，這是一個有效的結果格式。
+				這意味著 <kbd>$rest_format</kbd>、以及任何定義在 <strong>rest.php</strong> 配置檔案中的全域預設，
+				將永遠不會被使用。
+			</p>
+
+			<p>
+				要停用 <kbd>HTTP_ACCEPT</kbd> 做為一個有效的格式來源，
+				設定在 <strong>rest.php</strong> 裡的 <strong>ignore_http_accept</strong> 配置鍵為 <code>true</code>。
+			</p>
+
+			<p class="note">
+				請注意，在你的 REST 控制器硬寫任何結果格式被認為是不好的做法。
+				它應該是由客戶端指定應該回傳的結果格式。在 <kbd>HTTP_ACCEPT</kbd> 的情況下，大多數 ajax 解決方案，例如
+				<code>jQuery.ajax()</code>，允許你設定接收表頭為 <u>application/json</u>。
+			</p>
+
+			<h3 id="xml_basenode">XML 基本節點名稱</h3>
+
+			<p>
+				當使用 XML 輸出你可以透過設定 <code>$xml_basenode</code> 參數來設定 XML 基本節點。
+			</p>
+
+			<pre class="php"><code>class Controller_Test extends Controller_Rest
+{
+	// 設定給全控制器
+	protected $xml_basenode = 'my_basenode';
+
+	// 或在你的控制器函式內
+	public function get_items()
+	{
+		$this->xml_basenode = 'other_basenode';
+
+		return $this->response(array(
+			'foo' => Input::get('foo'),
+			'baz' => array(
+				1, 50, 219
+			),
+			'empty' => null
+		));
+	}
+}</code></pre>
+
+			<h3 id="special_methods">特殊控制器方法</h3>
+
+			<article>
+				<h4 id="response">response($data = array(), $http_code = 200)</h4>
+				<p>
+					此方法是用來透過格式化和輸出邏輯傳送你的回應資料。
+					你可以選擇性的設定一個狀態碼做為第二參數。
+				</p>
+			</article>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

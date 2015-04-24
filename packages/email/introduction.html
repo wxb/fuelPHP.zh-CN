@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./../../assets/css/combined.css">
+	<link rel="shortcut icon" href="./../../favicon.ico" />
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		var pagepath = 'packages/email/introduction.html';
+		var path = './../../';
+	</script>
+	<script src="./../../assets/js/combined.js"></script>
+	<title>簡介 - Email 套件 - FuelPHP 正體中文文件</title>
+</head>
+<body>
+	<div id="container">
+		<header id="header">
+			<div class="table">
+				<h1>
+					<strong>FuelPHP，PHP 5.3 框架</strong>
+					正體中文文件
+				</h1>
+
+				<form id="google_search">
+					<p>
+						<span id="search_clear">&nbsp;</span>
+						<input type="submit" name="search_submit" id="search_submit" value="搜尋" />
+						<input type="text" value="" id="search_input" name="search_input" />
+					</p>
+				</form>
+			</div>
+			<nav>
+
+				<div class="clear"></div>
+			</nav>
+			<a href="#" id="toc_handle">目錄</a>
+			<div class="clear"></div>
+		</header>
+
+		<div id="cse">
+			<div id="cse_point"></div>
+			<div id="cse_content"></div>
+		</div>
+
+		<div id="main">
+			<h2>Email 套件</h2>
+
+			<p>
+				Email 套件提供了一個介面使用 PHP 的 mail 函式、sendmail 或 SMTP來發送郵件。
+				套件支援：
+			</p>
+
+			<ul>
+				<li>純文本郵件</li>
+				<li>HTML 郵件，和選擇性的替代主體</li>
+				<li>附件</li>
+				<li>內嵌附件</li>
+			</ul>
+
+			<section>
+
+				<h3 id="installation">安裝</h3>
+
+				<p>
+					Email 套件已成為官方下載的一部分（自 1.1 版起）。
+					你將必須在應用程式配置或動態引入以啟用套件。
+				</p>
+
+				<pre class="php"><code>'always_load' => array(
+	'packages' => array(
+		'email',
+	),
+),
+
+// 或在控制器中：
+
+\Package::load('email');
+</code></pre>
+
+			</section>
+
+			<section>
+
+				<h3 id="configuration">配置</h3>
+
+				<p>
+					建立（或從套件複製）一個在 <em>app/config/email.php</em> 的配置檔。並更改所需的配置。
+				</p>
+
+				<p class="note">
+					<strong>請注意：</strong>Email 套件為你載入 email 配置，所以不需要自動載入它。
+				</p>
+
+				<h4 id="general_config">一般配置</h4>
+
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>defaults</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array( /* default 配置陣列 */ )</code></pre></td>
+							<td>
+								每個設定組使用的預設設定。在你的設置組覆寫這些值。
+							</td>
+						</tr>
+						<tr>
+							<th>default_setup</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'default'</code></pre></td>
+							<td>
+								如果沒有提供，使用的預設設定。
+							</td>
+						</tr>
+						<tr>
+							<th>setups</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array(
+		'default' => array(),
+	)</code></pre></td>
+							<td>
+								帶有一個預設設定的設定陣列。添加你自己的或修改預設設定組。
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h4 id="group_config">群組配置</h4>
+
+				<table class="config">
+					<tbody>
+						<tr class="header">
+							<th>參數</th>
+							<th>類型</th>
+							<th>預設</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<th>useragent</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'FuelPHP, PHP 5.3 Framework'</code></pre></td>
+							<td>
+								使用者代理。
+							</td>
+						</tr>
+						<tr>
+							<th>driver</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'mail'</code></pre></td>
+							<td>
+								使用的驅動程序。可以是 mail、smtp、sendmail、mailgun、mandrill 或 noop（只寫 log 記錄），必須為小寫。
+							</td>
+						</tr>
+						<tr>
+							<th>is_html</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								做為 HTML 電子郵件或普通郵件發送。
+							</td>
+						</tr>
+						<tr>
+							<th>encode_headers</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								是否對主題及接收者名稱進行編碼。
+								需要 <a href="http://www.php.net/manual/en/ref.mbstring.php" target="_blank">mbstring 擴充</a>。
+							</td>
+						</tr>
+						<tr>
+							<th>charset</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'utf-8'</code></pre></td>
+							<td>
+								電子郵件訊息的字符集。
+							</td>
+						</tr>
+						<tr>
+							<th>encoding</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'8bit'</code></pre></td>
+							<td>
+								電子郵件訊息編碼。可以是 7bit、8bit、quoted-printable 和 base64。
+							</td>
+						</tr>
+						<tr>
+							<th id="config_priority">priority</th>
+							<td>字串</td>
+							<td><pre class="php"><code>\Email::P_NORMAL</code></pre></td>
+							<td>
+								電子郵件的優先權。可以是：
+								<ul style="padding-bottom: 5px; padding-top: 5px;">
+									<li>\Email::P_LOWEST</li>
+									<li>\Email::P_LOW</li>
+									<li>\Email::P_NORMAL</li>
+									<li>\Email::P_HIGH</li>
+									<li>\Email::P_HIGHEST</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th>from.email</th>
+							<td>字串｜false</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								使用它設定預設的 from 電子郵件地址。
+							</td>
+						</tr>
+						<tr>
+							<th>from.name</th>
+							<td>字串｜false</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								使用它設定預設的 from 名稱。
+							</td>
+						</tr>
+						<tr>
+							<th>validate</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								設定為false，如果你不想驗證地址。在發送時可能導致失敗。
+							</td>
+						</tr>
+						<tr>
+							<th>auto_attach</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								是否從一個 HTML 主體自動附加（背景）圖片。
+							</td>
+						</tr>
+						<tr>
+							<th>generate_alt</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								是否自動從 HTML 主體產生一個替代的主體。
+							</td>
+						</tr>
+						<tr>
+							<th>wordwrap</th>
+							<td>整數｜false</td>
+							<td><pre class="php"><code>76</code></pre></td>
+							<td>
+								文字換行的大小。如果低於任何大於 0 的大小將換行。當使用 base64 或 quoted-printable 時，此設定將被忽略。
+							</td>
+						</tr>
+						<tr>
+							<th>sendmail_path</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'/usr/sbin/sendmail'</code></pre></td>
+							<td>
+								sendmail 路徑。
+							</td>
+						</tr>
+						<tr>
+							<th>smtp.host</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								SMTP 主機。
+							</td>
+						</tr>
+						<tr>
+							<th>smtp.port</th>
+							<td>整數</td>
+							<td><pre class="php"><code>25</code></pre></td>
+							<td>
+								SMTP 埠。
+							</td>
+						</tr>
+						<tr>
+							<th>smtp.username</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								SMTP 帳號。
+							</td>
+						</tr>
+						<tr>
+							<th>smtp.password</th>
+							<td>字串</td>
+							<td><pre class="php"><code>''</code></pre></td>
+							<td>
+								SMTP 密碼。
+							</td>
+						</tr>
+						<tr>
+							<th>smtp.timeout</th>
+							<td>整數</td>
+							<td><pre class="php"><code>5</code></pre></td>
+							<td>
+								SMTP 逾時。當 SMTP 伺服器在發送程序期間逾時時增加它。
+							</td>
+						</tr>
+						<tr>
+							<th>smtp.starttls</th>
+							<td>bool</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								SMTP 伺服器是否需要 STARTTLS 命令。
+							</td>
+						</tr>
+						<tr>
+							<th>newline</th>
+							<td>字串</td>
+							<td><pre class="php"><code>"\n"</code></pre></td>
+							<td>
+								換行。
+							</td>
+						</tr>
+						<tr>
+							<th>attach_paths</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array('');</code></pre></td>
+							<td>
+								附件路徑陣列。添加附件時，
+								驅動程序會在這些路徑尋找，並附加第一個發現的。
+								留下空 ('') 以允許絕對路徑。
+							</td>
+						</tr>
+						<tr>
+							<th>return_path</th>
+							<td>字串｜false</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								使用它設定預設的回傳路徑郵件地址。
+							</td>
+						</tr>
+						<tr>
+							<th>remove_html_comments</th>
+							<td>布林</td>
+							<td><pre class="php"><code>true</code></pre></td>
+							<td>
+								When true, all comments inside the HTML body will be stripped.
+							</td>
+						</tr>
+						<tr>
+							<th>relative_protocol_replacement</th>
+							<td>字串｜false</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								When set to a string, all relative protocol URI's (those starting with // instead of http://)
+								will be replaced by the value you specify here. This allows you to convert them to http:// or
+								https://, since some Email clients (Outlook!) do not support relative protocol URI's.
+							</td>
+						</tr>
+						<tr>
+							<th>mandrill.key</th>
+							<td>字串</td>
+							<td><pre class="php"><code>'api_key'</code></pre></td>
+							<td>
+								你的 Mandrill API 鑰匙。
+							</td>
+						</tr>
+						<tr>
+							<th>mandrill.message_options</th>
+							<td>陣列</td>
+							<td><pre class="php"><code>array()</code></pre></td>
+							<td>
+								Check Mandrill <a href="https://mandrillapp.com/api/docs/messages.JSON.html#method=send">docs</a>. (Look for message struct)
+							</td>
+						</tr>
+						<tr>
+							<th>mandrill.send_options.async</th>
+							<td>布林</td>
+							<td><pre class="php"><code>false</code></pre></td>
+							<td>
+								Enable a background sending mode
+							</td>
+						</tr>
+						<tr>
+							<th>mandrill.send_options.ip_pool</th>
+							<td>字串</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								The name of the dedicated ip pool that should be used to send the message
+							</td>
+						</tr>
+						<tr>
+							<th>mandrill.send_options.send_at</th>
+							<td>字串</td>
+							<td><pre class="php"><code>null</code></pre></td>
+							<td>
+								When this message should be sent as a UTC timestamp in YYYY-MM-DD HH:MM:SS format.
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p class="note">
+					Make sure to install <strong>mandrill/mandrill</strong> composer package if you want to use the mandrill driver.
+				</p>
+
+                <h4 id="mailgun">Mailgun 配置</h4>
+
+                <table class="config">
+                    <tbody>
+                    <tr class="header">
+                        <th>參數</th>
+                        <th>類型</th>
+                        <th>預設</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <th>key</th>
+                        <td>字串</td>
+                        <td><pre class="php"><code>'YOUR KEY'</code></pre></td>
+                        <td>
+                            你的 mailgun 的 key。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>domain</th>
+                        <td>字串</td>
+                        <td><pre class="php"><code>'YOUR DOMAIN'</code></pre></td>
+                        <td>
+                            你網站的網域
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>
+				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+			</p>
+		</footer>
+	</div>
+<!-- Piwik --><script type="text/javascript">var _paq = _paq || [];_paq.push(["trackPageView"]);_paq.push(["enableLinkTracking"]);(function() {var u=(("https:" == document.location.protocol) ? "https" : "http")  "://piwik.ycnets.com/";_paq.push(["setTrackerUrl", u"piwik.php"]);_paq.push(["setSiteId", "1"]);var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";g.defer=true; g.async=true; g.src=u"piwik.js"; s.parentNode.insertBefore(g,s);})();</script><!-- End Piwik Code -->
+<body>
+</html>

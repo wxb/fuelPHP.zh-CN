@@ -377,50 +377,50 @@ var pane_names = {
 };
 
 panes.main = {
-	"基礎": {
-		"首頁":	"index.html",
-		"目錄":	"toc.html",
+	"基础": {
+		"首页":	"index.html",
+		"目录":	"toc.html",
 		"需求":	"requirements.html",
-		"授權":	"license.html",
-		"貢獻":	"contribute.html",
-		"製作群":  "credits.html"
+		"授权":	"license.html",
+		"贡献":	"contribute.html",
+		"制作群":  "credits.html"
 	},
 	"安裝": {
 		"指示":	"installation/instructions.html",
-		"下載":	"installation/download.html",
-		"升級":	"installation/upgrade.html",
-		"教學":	"installation/tutorials.html",
+		"下载":	"installation/download.html",
+		"升级":	"installation/upgrade.html",
+		"教程":	"installation/tutorials.html",
 		"故障排除":		"installation/troubleshooting.html"
 	},
 	"一般": {
-		"類別": {
+		"类": {
 			"簡介":		"general/classes.html",
-			"擴充核心":	"general/extending_core.html"
+			"扩展核心类":	"general/extending_core.html"
 		},
-		"編碼標準":	"general/coding_standards.html",
+		"编码标准":	"general/coding_standards.html",
 		"配置":	"general/configuration.html",
-		"常數":		"general/constants.html",
-		"*環境":		"general/environments.html",
-		"模型-檢視-控制器":	"general/mvc.html",
+		"常量":		"general/constants.html",
+		"*环境":		"general/environments.html",
+		"模型-视图-控制器":	"general/mvc.html",
 		"模型":			"general/models.html",
-		"檢視":			"general/views.html",
+		"视图":			"general/views.html",
 		"*表現控件":		"general/presenters.html",
 		"控制器": {
-			"基礎" :		"general/controllers/base.html",
-			"樣板":		"general/controllers/template.html",
+			"基础" :		"general/controllers/base.html",
+			"模板":		"general/controllers/template.html",
 			"Rest":		"general/controllers/rest.html",
 			"混合":		"general/controllers/hybrid.html"
 		},
-		"*命名空間":		"general/namespacing.html",
+		"*命名空间":		"general/namespacing.html",
 		"路由":			"general/routing.html",
 		"安全性":			"general/security.html",
 		"模組":			"general/modules.html",
 		"套件":			"general/packages.html",
-		"HMVC 請求":	"general/hmvc.html",
-		"遷移":		"general/migrations.html",
-		"任務":			"general/tasks.html",
-		"單元測試":		"general/unit_testing.html",
-		"錯誤處理":	"general/error.html",
+		"HMVC 请求":	"general/hmvc.html",
+		"迁移":		"general/migrations.html",
+		"任务":			"general/tasks.html",
+		"单元测试":		"general/unit_testing.html",
+		"错误处理":	"general/error.html",
 		"分析":		"general/profiling.html",
 	},
 	"第三方": {
@@ -844,7 +844,7 @@ var _gaq = _gaq || [];
 	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
+})(); 
 function implode (glue, pieces) {
 	// http://kevin.vanzonneveld.net
 	// +   original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)

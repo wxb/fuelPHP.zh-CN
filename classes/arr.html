@@ -12,7 +12,7 @@
 		var class_prefix = "Arr::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Arr - 類別 - FuelPHP 简体中文手册</title>
+	<title>Arr - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,9 +40,9 @@
 
 		<div id="main">
 
-			<h2>Arr 類別</h2>
+			<h2>Arr 类別</h2>
 
-			<p>Arr 類別是一系列與陣列協作的輔助函式。</p>
+			<p>Arr 类別是一系列與陣列協作的輔助函式。</p>
 
 			<article>
 				<h4 class="method" id="method_is_multi">is_multi($arr, $all_keys = false)</h4>
@@ -54,11 +54,11 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -84,7 +84,7 @@
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 單一陣列
+							<pre class="php"><code>// 单一陣列
 $arr = array('one' => 1, 'two' => 2);
 echo Arr::is_multi($arr);
 // 結果：false
@@ -94,7 +94,7 @@ $arr = array('one' => array('test' => 1), 'two' => array('test' => 2), 'three' =
 echo Arr::is_multi($arr);
 // 結果：true
 
-// 多維陣列並檢查元素
+// 多維陣列并檢查元素
 $arr = array('one' => array('test' => 1), 'two' => array('test' => 2), 'three' => 3);
 
 echo Arr::is_multi($arr, false); // 結果：true
@@ -116,11 +116,11 @@ echo Arr::is_multi($arr, true);  // 結果：false
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -148,8 +148,8 @@ echo Arr::is_assoc($arr);
 // 結果：true
 
 /*
- * 請注意，即使 '2' 是定義做為一個字串，PHP 將在內部儲存它
- * 做為一個整數，因此這「不」被認為是一個關聯陣列！
+ * 請注意，即使 '2' 是定義做为一个字串，PHP 将在內部儲存它
+ * 做为一个整数，因此这「不」被認为是一个關聯陣列！
  */
 $arr = array(0 => 'foo', 1 => 'bar', '2' => 'baz', 3 => 'yay');
 echo Arr::is_assoc($arr);
@@ -163,7 +163,7 @@ echo Arr::is_assoc($arr);
 
 			<article>
 				<h4 class="method" id="method_to_assoc">to_assoc($arr)</h4>
-				<p><strong>to_assoc</strong> 方法轉換一個非關聯陣列成為一個關聯陣列如果它有偶數片段。</p>
+				<p><strong>to_assoc</strong> 方法轉換一个非關聯陣列成为一个關聯陣列如果它有偶数片段。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -171,11 +171,11 @@ echo Arr::is_assoc($arr);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -194,7 +194,7 @@ echo Arr::is_assoc($arr);
 					<tr>
 						<th>拋出</th>
 						<td><kbd>BadMethodCallException</kbd>
-							當所給陣列的值數非偶數時</td>
+							當所給陣列的值数非偶数時</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -221,7 +221,7 @@ echo Arr::to_assoc($arr);
 
 			<article>
 				<h4 id="method_assoc_to_keyval" class="method">assoc_to_keyval($assoc, $key_field, $val_field)</h4>
-				<p><strong>assoc_to_keyval</strong> 方法轉換一個多維陣列成為一個鍵 => 值陣列。</p>
+				<p><strong>assoc_to_keyval</strong> 方法轉換一个多維陣列成为一个鍵 => 值陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -229,11 +229,11 @@ echo Arr::to_assoc($arr);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -245,12 +245,12 @@ echo Arr::to_assoc($arr);
 								<tr>
 									<th><kbd>$key_field</kbd></th>
 									<td><em>必要</em></td>
-									<td>要對映為鍵的關聯陣列欄位。</td>
+									<td>要對映为鍵的關聯陣列欄位。</td>
 								</tr>
 								<tr>
 									<th><kbd>$val_field</kbd></th>
 									<td><em>必要</em></td>
-									<td>要對映為值的關聯陣列欄位。</td>
+									<td>要對映为值的關聯陣列欄位。</td>
 								</tr>
 							</table>
 						</td>
@@ -261,8 +261,8 @@ echo Arr::to_assoc($arr);
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td><kbd>InvalidArgumentException</kbd> 當第一個變數不是一個陣列，
-							或沒有實現 Iterator 介面。</td>
+						<td><kbd>InvalidArgumentException</kbd> 當第一个變数不是一个陣列，
+							或沒有實现 Iterator 介面。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -295,7 +295,7 @@ Array
 
 			<article>
 				<h4 id="method_keyval_to_assoc" class="method">keyval_to_assoc($array, $key_field, $val_field)</h4>
-				<p><strong>keyval_to_assoc</strong> 方法用提供的欄位名稱轉換一個鍵 => 值陣列成為一個多維陣列。</p>
+				<p><strong>keyval_to_assoc</strong> 方法用提供的欄位名稱轉換一个鍵 => 值陣列成为一个多維陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -303,11 +303,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -319,12 +319,12 @@ Array
 								<tr>
 									<th><kbd>$key_field</kbd></th>
 									<td><em>必要</em></td>
-									<td>要對映為鍵的關聯陣列欄位。</td>
+									<td>要對映为鍵的關聯陣列欄位。</td>
 								</tr>
 								<tr>
 									<th><kbd>$val_field</kbd></th>
 									<td><em>必要</em></td>
-									<td>要對映為值的關聯陣列欄位。</td>
+									<td>要對映为值的關聯陣列欄位。</td>
 								</tr>
 							</table>
 						</td>
@@ -335,8 +335,8 @@ Array
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td><kbd>InvalidArgumentException</kbd> 當第一個變數不是一個陣列，
-							或沒有實現 Iterator 介面。</td>
+						<td><kbd>InvalidArgumentException</kbd> 當第一个變数不是一个陣列，
+							或沒有實现 Iterator 介面。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -371,7 +371,7 @@ Array
 
 			<article>
 				<h4 id="method_average" class="method">average($array)</h4>
-				<p><strong>average</strong> 方法取所有值並回傳平均值。</p>
+				<p><strong>average</strong> 方法取所有值并回傳平均值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -379,11 +379,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -412,7 +412,7 @@ Array
 
 			<article>
 				<h4 id="method_flatten" class="method">flatten($array, $glue = ':', $reset = true)</h4>
-				<p><strong>flatten</strong> 方法扁平化一個多維陣列（關聯和索引）成為一個一維陣列。</p>
+				<p><strong>flatten</strong> 方法扁平化一个多維陣列（關聯和索引）成为一个一維陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -420,11 +420,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -441,7 +441,7 @@ Array
 								<tr>
 									<th><kbd>$reset</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>我們應該建立一個新值的陣列而非合併它們進入由 <strong>flatten</strong> 所建立最後的陣列？</td>
+									<td>我們應該建立一个新值的陣列而非合併它們進入由 <strong>flatten</strong> 所建立最後的陣列？</td>
 								</tr>
 							</table>
 						</td>
@@ -476,7 +476,7 @@ Array
 
 			<article>
 				<h4 id="method_flatten_assoc" class="method">flatten_assoc($array, $glue = ':', $reset = true)</h4>
-				<p><strong>flatten_assoc</strong> 方法扁平化一個多維關聯陣列成為一個一維陣列。</p>
+				<p><strong>flatten_assoc</strong> 方法扁平化一个多維關聯陣列成为一个一維陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -484,11 +484,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -505,7 +505,7 @@ Array
 								<tr>
 									<th><kbd>$reset</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>我們應該建立一個新值的陣列而非合併它們進入由 <strong>flatten_assoc</strong> 所建立最後的陣列？</td>
+									<td>我們應該建立一个新值的陣列而非合併它們進入由 <strong>flatten_assoc</strong> 所建立最後的陣列？</td>
 								</tr>
 							</table>
 						</td>
@@ -539,7 +539,7 @@ Array
 	[1:age]  => 23
 )
 
-// 讓我們扁平化上面的另一個陣列
+// 让我們扁平化上面的另一个陣列
 print_r(Arr::flatten_assoc(array(array("name" => "Humpty", "age" => 11)), ":", false));
 
 // 結果：
@@ -559,7 +559,7 @@ Array
 
 			<article>
 				<h4 id="method_reverse_flatten" class="method">reverse_flatten($array, $glue = ':')</h4>
-				<p><strong>reverse_flatten</strong> 方法反轉一個已扁平化的多維陣列（關聯和索引）成為它的原始形式。</p>
+				<p><strong>reverse_flatten</strong> 方法反轉一个已扁平化的多維陣列（關聯和索引）成为它的原始形式。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -567,11 +567,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -627,7 +627,7 @@ Array
 
 			<article>
 				<h4 id="method_filter_prefixed" class="method">filter_prefixed($array, $prefix, $remove_prefix = true)</h4>
-				<p><strong>filter_prefixed</strong> 方法以前綴過濾陣列。它回傳一個開頭是指定前綴的鍵的陣列。</p>
+				<p><strong>filter_prefixed</strong> 方法以前綴過濾陣列。它回傳一个開頭是指定前綴的鍵的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -635,11 +635,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -684,7 +684,7 @@ Array
 	[surname] => Lastname
 )
 
-// 讓我們保留前綴
+// 让我們保留前綴
 print_r(Arr::filter_prefixed($arr, "project_", false);
 
 // 結果：
@@ -702,7 +702,7 @@ Array
 
 			<article>
 				<h4 id="method_remove_prefixed" class="method">remove_prefixed($array, $prefix)</h4>
-				<p><strong>remove_prefixed</strong> 方法從一個陣列移除值如果它們與所給前綴相符。</p>
+				<p><strong>remove_prefixed</strong> 方法從一个陣列移除值如果它們與所給前綴相符。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -710,11 +710,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -762,7 +762,7 @@ Array
 
 			<article>
 				<h4 id="method_filter_suffixed" class="method">filter_suffixed($array, $suffix, $remove_suffix = true)</h4>
-				<p><strong>filter_suffixed</strong> 方法以後綴過濾陣列。它回傳一個結尾是指定後綴的鍵的陣列。</p>
+				<p><strong>filter_suffixed</strong> 方法以後綴過濾陣列。它回傳一个結尾是指定後綴的鍵的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -770,11 +770,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -819,7 +819,7 @@ Array
 	[surname] => Lastname
 )
 
-// 讓我們保留後綴
+// 让我們保留後綴
 print_r(Arr::filter_suffixed($arr, "_1", false);
 
 // 結果：
@@ -837,7 +837,7 @@ Array
 
 			<article>
 				<h4 id="method_remove_suffixed" class="method">remove_suffixed($array, $suffix)</h4>
-				<p><strong>remove_suffixed</strong> 方法從一個陣列移除值如果它們與所給後綴相符。</p>
+				<p><strong>remove_suffixed</strong> 方法從一个陣列移除值如果它們與所給後綴相符。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -845,11 +845,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -897,7 +897,7 @@ Array
 
 			<article>
 				<h4 id="method_filter_keys" class="method">filter_keys($array, $keys, $remove = false)</h4>
-				<p><strong>filter_keys</strong> 方法過濾一個所給陣列成一組鍵。它回傳一個只包含在 <kbd>$keys</kbd> 陣列中項目的鍵的陣列。也可以從一個陣列移除指定的 <kbd>$keys</kbd>。</p>
+				<p><strong>filter_keys</strong> 方法過濾一个所給陣列成一組鍵。它回傳一个只包含在 <kbd>$keys</kbd> 陣列中項目的鍵的陣列。也可以從一个陣列移除指定的 <kbd>$keys</kbd>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -905,11 +905,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -926,7 +926,7 @@ Array
 								<tr>
 									<th><kbd>$remove</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果為 true，從 <kbd>$array</kbd> 移除 <kbd>$keys</kbd> 而非取回它們。</td>
+									<td>如果为 true，從 <kbd>$array</kbd> 移除 <kbd>$keys</kbd> 而非取回它們。</td>
 								</tr>
 							</table>
 						</td>
@@ -954,7 +954,7 @@ Array
 	[user_name] => John
 )
 
-// 讓我們移除一些鍵
+// 让我們移除一些鍵
 print_r(Arr::filter_keys($arr, array('user_name', 'user_surname'), true));
 
 // 結果：
@@ -972,7 +972,7 @@ Array
 
 			<article>
 				<h4 id="method_filter_recursive" class="method">filter_recursive($array, $callback = null)</h4>
-				<p><strong>filter_recursive</strong> 方法提供一個遞迴版本的 PHP array_filter() 函式。就像它的對應，你可以選擇性地傳遞一個回呼（callback）函式來決定什麼應該被過濾。</p>
+				<p><strong>filter_recursive</strong> 方法提供一个遞迴版本的 PHP array_filter() 函式。就像它的對應，你可以選擇性地傳遞一个回呼（callback）函式來決定什么應該被過濾。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -980,11 +980,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -996,7 +996,7 @@ Array
 								<tr>
 									<th><kbd>$callback</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>一個有效的回呼（callback）回傳一個布林。</td>
+									<td>一个有效的回呼（callback）回傳一个布林。</td>
 								</tr>
 							</table>
 						</td>
@@ -1040,7 +1040,7 @@ Array
 	)
 )
 
-// 讓我們使用一個回呼（callback）
+// 让我們使用一个回呼（callback）
 print_r(Arr::filter_recursive($arr, function($item){ return $item !== ""; });
 
 // 結果：
@@ -1069,8 +1069,8 @@ Array
 
 			<article>
 				<h4 id="method_subset" class="method">subset($array, $keys, $default = null)</h4>
-				<p>與 <a href="#method_filter_keys"><strong>filter_keys</strong></a> 相似，<strong>subset</strong> 方法使用 <kbd>$keys</kbd> 中的值來存取此陣列並回傳關聯的值。不同的地方是 <strong>subset</strong> 回傳所有請求的鍵，為任何缺少的鍵提供 <kbd>$default</kbd>。</p>
-				<p>這個方法內部使用 <a href="#method_get"><strong>get</strong></a> 和 <a href="#method_set"><strong>set</strong></a>，所以 <kbd>$keys</kbd> 可以包含句點表示法。</p>
+				<p>與 <a href="#method_filter_keys"><strong>filter_keys</strong></a> 相似，<strong>subset</strong> 方法使用 <kbd>$keys</kbd> 中的值來存取此陣列并回傳關聯的值。不同的地方是 <strong>subset</strong> 回傳所有請求的鍵，为任何缺少的鍵提供 <kbd>$default</kbd>。</p>
+				<p>这个方法內部使用 <a href="#method_get"><strong>get</strong></a> 和 <a href="#method_set"><strong>set</strong></a>，所以 <kbd>$keys</kbd> 可以包含句點表示法。</p>
 
 				<table class="method">
 					<tbody>
@@ -1079,11 +1079,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1100,7 +1100,7 @@ Array
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>在 <kbd>$array</kbd> 中找不到的鍵會給這個值來代替。</td>
+									<td>在 <kbd>$array</kbd> 中找不到的鍵会給这个值來代替。</td>
 								</tr>
 							</table>
 						</td>
@@ -1176,7 +1176,7 @@ Array
 
 			<article>
 				<h4 id="method_get" class="method">get($array, $key, $default = false)</h4>
-				<p><strong>get</strong> 方法回傳所給使用句點表示法陣列的一個元素，或預設值如果它沒被設定的話。</p>
+				<p><strong>get</strong> 方法回傳所給使用句點表示法陣列的一个元素，或預設值如果它沒被設定的話。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1184,11 +1184,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1200,7 +1200,7 @@ Array
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><em>必要</em></td>
-									<td>在 $array 中請求的鍵。如果 <strong>null</strong> 被傳遞做為鍵，整個陣列會被回傳。</td>
+									<td>在 $array 中請求的鍵。如果 <strong>null</strong> 被傳遞做为鍵，整个陣列会被回傳。</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
@@ -1212,7 +1212,7 @@ Array
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合。如果你傳遞一個鍵的陣列，回傳值將會是一個有所有請求刪除結果的陣列。</td>
+						<td>混合。如果你傳遞一个鍵的陣列，回傳值将会是一个有所有請求刪除結果的陣列。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -1233,7 +1233,7 @@ echo Arr::get($person, "name", "Unknown Name");
 echo Arr::get($person, "job", "Unknown job");
 // 結果："Unknown job"
 
-// 這個方法也可以透過使用一個點來分隔鍵與鍵之間，來深入到陣列
+// 这个方法也可以透過使用一个點來分隔鍵與鍵之間，來深入到陣列
 echo Arr::get($person, "location.city", "Unknown City");
 // 結果："Pittsburgh"</code></pre>
 						</td>
@@ -1245,7 +1245,7 @@ echo Arr::get($person, "location.city", "Unknown City");
 			<article>
 				<h4 id="method_set" class="method">set(&amp;$array, $key, $value = null)</h4>
 				<p><strong>set</strong> 方法設定所給使用句點表示法陣列的元素。</p>
-				<p class="note"><strong>警告</strong>：原始陣列透過參照被編輯</p>
+				<p class="note"><strong>警告</strong>：原始陣列透過參照被编輯</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1253,11 +1253,11 @@ echo Arr::get($person, "location.city", "Unknown City");
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1269,12 +1269,12 @@ echo Arr::get($person, "location.city", "Unknown City");
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><em>必要</em></td>
-									<td>在 $array 中請求的鍵。如果沒有傳遞鍵，或 <strong>null</strong> 被傳遞做為鍵，該陣列會取消設定。如果你傳遞一個鍵 - 值配對的陣列，所有陣列中的值將被設定。</td>
+									<td>在 $array 中請求的鍵。如果沒有傳遞鍵，或 <strong>null</strong> 被傳遞做为鍵，該陣列会取消設定。如果你傳遞一个鍵 - 值配對的陣列，所有陣列中的值将被設定。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要被設定的值。如果 $key 是一個陣列會被忽略。</td>
+									<td>要被設定的值。如果 $key 是一个陣列会被忽略。</td>
 								</tr>
 							</table>
 						</td>
@@ -1297,13 +1297,13 @@ echo Arr::get($person, "location.city", "Unknown City");
 );
 
 Arr::set($person, "name", "John");
-// $person['name'] 設為 "John"
+// $person['name'] 設为 "John"
 
-// 這個方法也可以透過使用一個點來分隔鍵與鍵之間，來深入到陣列
+// 这个方法也可以透過使用一个點來分隔鍵與鍵之間，來深入到陣列
 Arr::set($person, "location.city", "Philadelphia");
-// $person['location']['city'] 設為 "Philadelphia"
+// $person['location']['city'] 設为 "Philadelphia"
 
-// 或一次設定多個值
+// 或一次設定多个值
 Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</code></pre>
 						</td>
 					</tr>
@@ -1313,7 +1313,7 @@ Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</
 
 			<article>
 				<h4 id="method_pluck" class="method">pluck($array, $key, $index = null)</h4>
-				<p><strong>pluck</strong> 方法從一個陣列的集合或物件採集值。</p>
+				<p><strong>pluck</strong> 方法從一个陣列的集合或物件採集值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1321,11 +1321,11 @@ Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1372,11 +1372,11 @@ Arr::set($person, array("name" => "John", "location.city" => "Philadelphia"));</
 	),
 );
 
-// 取得一個 ID 的陣列
+// 取得一个 ID 的陣列
 $ids = \Arr::pluck($collection, 'id');
 // array(2, 5, 7);
 
-// 取得一個名稱以 ID 為索引的陣列
+// 取得一个名稱以 ID 为索引的陣列
 $names = \Arr::pluck($collection, 'name', 'id');
 // array(2 => 'Bill', 5 => 'Chris', 7 => 'Bert');
 </code></pre>
@@ -1389,7 +1389,7 @@ $names = \Arr::pluck($collection, 'name', 'id');
 			<article>
 				<h4 id="method_delete" class="method">delete(&amp;$array, $key)</h4>
 				<p><strong>delete</strong> 方法刪除所給使用句點表示法陣列的元素。<br />
-				<u>警告</u>：原始陣列透過參照被編輯，只有回傳成功的布林值</p>
+				<u>警告</u>：原始陣列透過參照被编輯，只有回傳成功的布林值</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1397,11 +1397,11 @@ $names = \Arr::pluck($collection, 'name', 'id');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1413,14 +1413,14 @@ $names = \Arr::pluck($collection, 'name', 'id');
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><em>必要</em></td>
-									<td>請求在 $array 中的鍵。如果沒有傳遞鍵，或傳遞 <strong>null</strong> 做為鍵值，該陣列會取消設定。</td>
+									<td>請求在 $array 中的鍵。如果沒有傳遞鍵，或傳遞 <strong>null</strong> 做为鍵值，該陣列会取消設定。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，<strong>true</strong> 如果該鍵被刪除，<strong>false</strong> 如果該鍵不存在。如果你傳遞一個鍵的陣列，回傳值將會是一個有所有請求刪除結果的陣列。</td>
+						<td>混合，<strong>true</strong> 如果該鍵被刪除，<strong>false</strong> 如果該鍵不存在。如果你傳遞一个鍵的陣列，回傳值将会是一个有所有請求刪除結果的陣列。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -1438,11 +1438,11 @@ $names = \Arr::pluck($collection, 'name', 'id');
 $result = Arr::delete($person, "name");
 // 從該陣列刪除 $person['name']，回傳 true
 
-// 這個方法也可以透過使用一個點來分隔鍵與鍵之間，來深入到陣列
+// 这个方法也可以透過使用一个點來分隔鍵與鍵之間，來深入到陣列
 $result = Arr::delete($person, "location.city");
 // 從該陣列刪除 $person['location']['city']，回傳 true
 
-// 或一次刪除多個值
+// 或一次刪除多个值
 $result = Arr::delete($person, array("name", "location.doesnotexist"));
 // 刪除 $person['name']，回傳 array('name' => true, 'location.doesnotexist' => false)</code></pre>
 						</td>
@@ -1453,8 +1453,8 @@ $result = Arr::delete($person, array("name", "location.doesnotexist"));
 
 			<article>
 				<h4 id="method_insert" class="method">insert(Array &amp;$original, $value, $pos)</h4>
-				<p><strong>insert</strong> 方法主要是一個 array_splice 的別名，添加了錯誤檢查<br />
-				<u>警告</u>：原始陣列透過參照被編輯，只有回傳成功的布林值</p>
+				<p><strong>insert</strong> 方法主要是一个 array_splice 的別名，添加了错误檢查<br />
+				<u>警告</u>：原始陣列透過參照被编輯，只有回傳成功的布林值</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1462,11 +1462,11 @@ $result = Arr::delete($person, array("name", "location.doesnotexist"));
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1478,12 +1478,12 @@ $result = Arr::delete($person, array("name", "location.doesnotexist"));
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><em>必要</em></td>
-									<td>要新增的（多個）值</td>
+									<td>要新增的（多个）值</td>
 								</tr>
 								<tr>
 									<th><kbd>$pos</kbd></th>
 									<td><em>必要</em></td>
-									<td>要插入的數字位置，負數會從結尾向後算</td>
+									<td>要插入的数字位置，負数会從結尾向後算</td>
 								</tr>
 							</table>
 						</td>
@@ -1497,7 +1497,7 @@ $result = Arr::delete($person, array("name", "location.doesnotexist"));
 						<td>
 							<pre class="php"><code>$people = array("Jack", "Jill");
 
-// 添加一個值
+// 添加一个值
 Arr::insert($people, "Humpty", 0);
 print_r($people);
 // 結果：
@@ -1508,7 +1508,7 @@ Array
 	[2] => Jill
 )
 
-// 添加多個值
+// 添加多个值
 Arr::insert($people, array("Hansel", "Gretel"), 1);
 print_r($people);
 // 結果：
@@ -1521,7 +1521,7 @@ Array
 	[4] => Jill
 )
 
-// 添加一個陣列
+// 添加一个陣列
 Arr::insert($people, array( array("name" => "Wolf", "teeth" => "sharp")), 0);
 print_r($people);
 
@@ -1550,8 +1550,8 @@ Array
 
 			<article>
 				<h4 id="method_insert_assoc" class="method">insert_assoc(array &amp;$original, array $values, $pos)</h4>
-				<p><strong>insert_assoc</strong> 方法新增元素進入一個關聯陣列的指定位置。<br />
-				<u>警告</u>：原始陣列透過參照被編輯，只有回傳成功的布林值。</p>
+				<p><strong>insert_assoc</strong> 方法新增元素進入一个關聯陣列的指定位置。<br />
+				<u>警告</u>：原始陣列透過參照被编輯，只有回傳成功的布林值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1559,11 +1559,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1575,21 +1575,21 @@ Array
 								<tr>
 									<th><kbd>$values</kbd></th>
 									<td><em>必要</em></td>
-									<td>要新增的（多個）值</td>
+									<td>要新增的（多个）值</td>
 								</tr>
 								<tr>
 									<th><kbd>$pos</kbd></th>
 									<td><em>必要</em></td>
 									<td>
 										新值應該被新增到原始陣列的位置。
-										如果給了一個負值，位置會從陣列後面算起。</td>
+										如果給了一个負值，位置会從陣列後面算起。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>布林，成功時為 true，如果 $pos 超出界限為 false。</td>
+						<td>布林，成功時为 true，如果 $pos 超出界限为 false。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -1615,8 +1615,8 @@ Array
 
 			<article>
 				<h4 id="method_insert_before_key" class="method">insert_before_key(Array &amp;$original, $value, $key)</h4>
-				<p><strong>insert_before_key</strong> 方法添加一個元素到一個陣列在指定鍵之前<br />
-				<u>警告</u>：原始陣列透過參照被編輯，只有回傳成功的布林值</p>
+				<p><strong>insert_before_key</strong> 方法添加一个元素到一个陣列在指定鍵之前<br />
+				<u>警告</u>：原始陣列透過參照被编輯，只有回傳成功的布林值</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1624,11 +1624,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1640,12 +1640,12 @@ Array
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><em>必要</em></td>
-									<td>要新增的（多個）值</td>
+									<td>要新增的（多个）值</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><em>必要</em></td>
-									<td>要在哪個鍵之前新增</td>
+									<td>要在哪个鍵之前新增</td>
 								</tr>
 							</table>
 						</td>
@@ -1678,8 +1678,8 @@ Array
 
 			<article>
 				<h4 id="method_insert_after_key" class="method">insert_after_key(Array &amp;$original, $value, $key, $is_assoc = false)</h4>
-				<p><strong>insert_after_key</strong> 方法添加一個元素到一個陣列在指定鍵之後。<br />
-				<u>警告</u>：原始陣列透過參照被編輯，只有回傳成功的布林值。</p>
+				<p><strong>insert_after_key</strong> 方法添加一个元素到一个陣列在指定鍵之後。<br />
+				<u>警告</u>：原始陣列透過參照被编輯，只有回傳成功的布林值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1687,11 +1687,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1703,17 +1703,17 @@ Array
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><em>必要</em></td>
-									<td>要新增的（多個）值</td>
+									<td>要新增的（多个）值</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><em>必要</em></td>
-									<td>要在哪個鍵之後新增</td>
+									<td>要在哪个鍵之後新增</td>
 								</tr>
 								<tr>
 									<th><kbd>$is_assoc</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>該陣列是否為關聯</td>
+									<td>該陣列是否为關聯</td>
 								</tr>
 							</table>
 						</td>
@@ -1746,8 +1746,8 @@ Array
 
 			<article>
 				<h4 id="method_insert_after_value" class="method">insert_after_value(Array &amp;$original, $value, $search, $is_assoc = false)</h4>
-				<p><strong>insert_after_value</strong> 方法添加一個元素到一個陣列在指定值之後<br />
-				<u>警告</u>：原始陣列透過參照被編輯，只有回傳成功的布林值</p>
+				<p><strong>insert_after_value</strong> 方法添加一个元素到一个陣列在指定值之後<br />
+				<u>警告</u>：原始陣列透過參照被编輯，只有回傳成功的布林值</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1755,11 +1755,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1771,17 +1771,17 @@ Array
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><em>必要</em></td>
-									<td>要新增的（多個）值</td>
+									<td>要新增的（多个）值</td>
 								</tr>
 								<tr>
 									<th><kbd>$search</kbd></th>
 									<td><em>必要</em></td>
-									<td>要在哪個值之後新增</td>
+									<td>要在哪个值之後新增</td>
 								</tr>
 								<tr>
 									<th><kbd>$is_assoc</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>該陣列是否為關聯</td>
+									<td>該陣列是否为關聯</td>
 								</tr>
 							</table>
 						</td>
@@ -1814,7 +1814,7 @@ Array
 
 			<article>
 				<h4 id="method_sort" class="method">sort($array, $key, $order = 'asc', $sort_flags = SORT_REGULAR)</h4>
-				<p><strong>sort</strong> 方法透過它自己的值來排序一個多維陣列。</p>
+				<p><strong>sort</strong> 方法透過它自己的值來排序一个多維陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1822,11 +1822,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1848,7 +1848,7 @@ Array
 								<tr>
 									<th><kbd>$sort_flags</kbd></th>
 									<td><pre class="php"><code>SORT_REGULAR</code></pre></td>
-									<td>PHP 排序類型標誌（<a href="http://php.net/manual/en/function.sort.php">http://php.net/manual/en/function.sort.php</a>）</td>
+									<td>PHP 排序类型标誌（<a href="http://php.net/manual/en/function.sort.php">http://php.net/manual/en/function.sort.php</a>）</td>
 								</tr>
 							</table>
 						</td>
@@ -1917,7 +1917,7 @@ array(
 
 			<article>
 				<h4 id="method_multisort" class="method">multisort($array, $conditions, $ignore_case = false)</h4>
-				<p><strong>sort</strong> 方法透過多個值來排序一個多維陣列。</p>
+				<p><strong>sort</strong> 方法透過多个值來排序一个多維陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1925,11 +1925,11 @@ array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2039,7 +2039,7 @@ Array
 
 			<article>
 				<h4 id="method_in_array_recursive" class="method">in_array_recursive($needle, $haystack, $strict = false)</h4>
-				<p><strong>in_array_recursive</strong> 方法以遞迴方式檢查一個值是否在陣列中。</p>
+				<p><strong>in_array_recursive</strong> 方法以遞迴方式檢查一个值是否在陣列中。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2047,11 +2047,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2097,11 +2097,11 @@ echo Arr::in_array_recursive(87, $arr, true);
 			</article>
 			<article>
 				<h4 id="method_merge" class="method">merge($array)</h4>
-				<p><strong>merge</strong> 方法遞迴地合併兩個陣列，與 array_merge_recursive() 有兩個不同的重要方式：<br />
-				- 當有兩個不同值且都不是陣列時，後者的值將覆寫前者，
-				  而非將兩者合併到一個陣列中<br />
-				- 數字鍵不衝突就不會改變，
-				  只有當數字鍵已存在且使用 array_push() 添加值時。</p>
+				<p><strong>merge</strong> 方法遞迴地合併兩个陣列，與 array_merge_recursive() 有兩个不同的重要方式：<br />
+				- 當有兩个不同值且都不是陣列時，後者的值将覆寫前者，
+				  而非将兩者合併到一个陣列中<br />
+				- 数字鍵不衝突就不会改變，
+				  只有當数字鍵已存在且使用 array_push() 添加值時。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2109,12 +2109,12 @@ echo Arr::in_array_recursive(87, $arr, true);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2122,7 +2122,7 @@ echo Arr::in_array_recursive(87, $arr, true);
 									<th><kbd>$array</kbd></th>
 									<td><em>陣列</em></td>
 									<td><em>必要</em></td>
-									<td>必須都是陣列的多個變數</td>
+									<td>必須都是陣列的多个變数</td>
 								</tr>
 							</table>
 						</td>
@@ -2133,7 +2133,7 @@ echo Arr::in_array_recursive(87, $arr, true);
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td><kbd>InvalidArgumentException</kbd> 當傳遞的參數之一不是陣列。</td>
+						<td><kbd>InvalidArgumentException</kbd> 當傳遞的參数之一不是陣列。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2185,10 +2185,10 @@ Array
 			</article>
 			<article>
 			<h4 id="method_merge_assoc" class="method">merge_assoc($array)</h4>
-				<p><strong>merge_assoc</strong> 方法遞迴地合併兩個以上的陣列，與 array_merge_recursive() 有兩個不同的重要方式：<br />
-				- 當有兩個不同值且都不是陣列時，後者的值將覆寫前者，
-	 			  而非將兩者合併到一個陣列中<br />
-	 			- 數字鍵不會改變</p>
+				<p><strong>merge_assoc</strong> 方法遞迴地合併兩个以上的陣列，與 array_merge_recursive() 有兩个不同的重要方式：<br />
+				- 當有兩个不同值且都不是陣列時，後者的值将覆寫前者，
+	 			  而非将兩者合併到一个陣列中<br />
+	 			- 数字鍵不会改變</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2196,12 +2196,12 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2209,7 +2209,7 @@ Array
 									<th><kbd>$array</kbd></th>
 									<td><em>陣列</em></td>
 									<td><em>必要</em></td>
-									<td>多個都必須是陣列的變數</td>
+									<td>多个都必須是陣列的變数</td>
 								</tr>
 							</table>
 						</td>
@@ -2220,7 +2220,7 @@ Array
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td><kbd>InvalidArgumentException</kbd> 在傳遞的參數之一不是陣列時。</td>
+						<td><kbd>InvalidArgumentException</kbd> 在傳遞的參数之一不是陣列時。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2269,8 +2269,8 @@ Array
 			</article>
 			<article>
 				<h4 id="method_search" class="method">search($array, $value, $default = null, $recursive = true, $delimiter = '.', $strict = false)</h4>
-				<p><strong>search</strong> 方法在陣列搜尋所給值並回傳相應的鍵或預設值。<br />
-				- 如果 $recursive 設為 true，那麼 <strong>search</strong> 方法將回傳一個使用 $delimiter 的分隔符表示的鍵。</p>
+				<p><strong>search</strong> 方法在陣列搜尋所給值并回傳相應的鍵或預設值。<br />
+				- 如果 $recursive 設为 true，那麼 <strong>search</strong> 方法将回傳一个使用 $delimiter 的分隔符表示的鍵。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2278,12 +2278,12 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2315,7 +2315,7 @@ Array
 									<th><kbd>$delimiter</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>'.'</code></pre></td>
-									<td>當 $recursive 為 true 的分隔符</td>
+									<td>當 $recursive 为 true 的分隔符</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
@@ -2328,14 +2328,14 @@ Array
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>整數｜字串｜null</td>
+						<td>整数｜字串｜null</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidArgumentException</kbd> 當第一變數不是陣列。
-							<kbd>InvalidArgumentException</kbd> $default 變數不是字串或整數或 null。
-							<kbd>InvalidArgumentException</kbd> $delimiter 變數不是字串。
+							<kbd>InvalidArgumentException</kbd> 當第一變数不是陣列。
+							<kbd>InvalidArgumentException</kbd> $default 變数不是字串或整数或 null。
+							<kbd>InvalidArgumentException</kbd> $delimiter 變数不是字串。
 						</td>
 					</tr>
 					<tr>
@@ -2389,20 +2389,20 @@ echo Arr::search($arr, 'deep', null, true);
 			<article>
 				<h4 id="method_unique" class="method">unique($array)</h4>
 				<p>
-					<strong>unique</strong> 回傳一個來源陣列中所有唯一值的陣列。
-					第一個符合的值將被保留，重複的會被丟棄，鍵將被保留。
+					<strong>unique</strong> 回傳一个來源陣列中所有唯一值的陣列。
+					第一个符合的值将被保留，重複的会被丟棄，鍵将被保留。
 					此方法的運作像 <kbd>array_unique()</kbd>，但不先排序陣列，
-					並能讓你去掉包含物件或閉包（closure）陣列的重複資料。
+					并能让你去掉包含物件或閉包（closure）陣列的重複資料。
 				</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2437,7 +2437,7 @@ $result = Arr::unique($array);
 
 			<article>
 				<h4 id="method_sum" class="method">sum($array, $key)</h4>
-				<p><strong>sum</strong> 方法計算一個透過 $key 採集陣列中值的總和。</p>
+				<p><strong>sum</strong> 方法計算一个透過 $key 採集陣列中值的總和。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2445,12 +2445,12 @@ $result = Arr::unique($array);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2471,11 +2471,11 @@ $result = Arr::unique($array);
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>整數</td>
+						<td>整数</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td><kbd>InvalidArgumentException</kbd> 當傳遞的變數之一不是陣列。</td>
+						<td><kbd>InvalidArgumentException</kbd> 當傳遞的變数之一不是陣列。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2504,10 +2504,10 @@ $result = Arr::unique($array);
 	),
 );
 
-// 計算一個陣列 age 的總和。
+// 計算一个陣列 age 的總和。
 $total_age = Arr::sum($collection, 'age'); // 83
 
-// 計算一個透過 'scores.math' 採集的陣列的總和
+// 計算一个透過 'scores.math' 採集的陣列的總和
 $total_score = Arr::sum($collection, 'scores.math'); // 30
 </code></pre>
 						</td>
@@ -2518,7 +2518,7 @@ $total_score = Arr::sum($collection, 'scores.math'); // 30
 
 			<article>
 				<h4 id="method_reindex" class="method">reindex($array)</h4>
-				<p><strong>reindex</strong> 方法遞迴地重新索引一個陣列的數字鍵。它不會改變字串鍵。</p>
+				<p><strong>reindex</strong> 方法遞迴地重新索引一个陣列的数字鍵。它不会改變字串鍵。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2526,12 +2526,12 @@ $total_score = Arr::sum($collection, 'scores.math'); // 30
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2587,8 +2587,8 @@ Array
 
 			<article>
 				<h4 id="method_previous_by_key" class="method">previous_by_key($array, $key, $get_value = false, $strict = false)</h4>
-				<p><strong>previous_by_key</strong> 方法能讓你透過所給現有的鍵，
-				 來取回陣列前一個元素的鍵或值。
+				<p><strong>previous_by_key</strong> 方法能让你透過所給现有的鍵，
+				 來取回陣列前一个元素的鍵或值。
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2596,11 +2596,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2617,7 +2617,7 @@ Array
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果為 false，回傳前一個陣列鍵，如果為 true，回傳自身值</td>
+									<td>如果为 false，回傳前一个陣列鍵，如果为 true，回傳自身值</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
@@ -2629,7 +2629,7 @@ Array
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，回傳的值、null 如果沒有前一個陣列元素、或 false 如果目前鍵不存在。</td>
+						<td>混合，回傳的值、null 如果沒有前一个陣列元素、或 false 如果目前鍵不存在。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2640,7 +2640,7 @@ $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 // 回傳 false，沒有鍵 1 在該陣列
 $result = Arr::previous_by_key($arr, 1);
 
-// 回傳 null，沒有前一個鍵
+// 回傳 null，沒有前一个鍵
 $result = Arr::previous_by_key($arr, 2);
 
 // 回傳 false，沒有鍵 2 在該陣列
@@ -2649,7 +2649,7 @@ $result = Arr::previous_by_key($arr, '2', false, true);
 // 回傳 2，在該陣列中它是鍵 4 之前的鍵
 $result = Arr::previous_by_key($arr, 4);
 
-// 回傳 'A'，在該陣列中它是指向前一個鍵的值
+// 回傳 'A'，在該陣列中它是指向前一个鍵的值
 $result = Arr::previous_by_key($arr, 4, true);
 </code></pre>
 						</td>
@@ -2660,8 +2660,8 @@ $result = Arr::previous_by_key($arr, 4, true);
 
 			<article>
 				<h4 id="method_next_by_key" class="method">next_by_key($array, $key, $get_value = false, $strict = false)</h4>
-				<p><strong>next_by_key</strong> 方法能讓你透過所給現有的鍵，
-				 來取回陣列下一個元素的鍵或值。
+				<p><strong>next_by_key</strong> 方法能让你透過所給现有的鍵，
+				 來取回陣列下一个元素的鍵或值。
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2669,11 +2669,11 @@ $result = Arr::previous_by_key($arr, 4, true);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2690,7 +2690,7 @@ $result = Arr::previous_by_key($arr, 4, true);
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果為 false，回傳下一個陣列鍵，如果為 true，回傳自身值</td>
+									<td>如果为 false，回傳下一个陣列鍵，如果为 true，回傳自身值</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
@@ -2702,7 +2702,7 @@ $result = Arr::previous_by_key($arr, 4, true);
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，回傳的值、null 如果沒有下一個陣列元素、或 false 如果目前鍵不存在。</td>
+						<td>混合，回傳的值、null 如果沒有下一个陣列元素、或 false 如果目前鍵不存在。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2713,7 +2713,7 @@ $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 // 回傳 false，沒有鍵 1 在該陣列
 $result = Arr::next_by_key($arr, 1);
 
-// 回傳 null，沒有下一個鍵
+// 回傳 null，沒有下一个鍵
 $result = Arr::next_by_key($arr, 6);
 
 // 回傳 false，沒有鍵 2 在該陣列
@@ -2722,7 +2722,7 @@ $result = Arr::next_by_key($arr, '2', false, true);
 // 回傳 6，在該陣列中它是鍵 4 之後的鍵
 $result = Arr::next_by_key($arr, 4);
 
-// 回傳 'C'，在該陣列中它是指向下一個鍵的值
+// 回傳 'C'，在該陣列中它是指向下一个鍵的值
 $result = Arr::next_by_key($arr, 4, true);
 </code></pre>
 						</td>
@@ -2733,8 +2733,8 @@ $result = Arr::next_by_key($arr, 4, true);
 
 			<article>
 				<h4 id="method_previous_by_value" class="method">previous_by_value($array, $value, $get_value = true, $strict = false)</h4>
-				<p><strong>previous_by_value</strong> 方法能讓你透過所給現有的元素值，
-				 來取回陣列前一個元素的鍵或值。
+				<p><strong>previous_by_value</strong> 方法能让你透過所給现有的元素值，
+				 來取回陣列前一个元素的鍵或值。
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2742,11 +2742,11 @@ $result = Arr::next_by_key($arr, 4, true);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2763,7 +2763,7 @@ $result = Arr::next_by_key($arr, 4, true);
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>如果為 false，回傳前一個陣列鍵，如果為 true，回傳自身值</td>
+									<td>如果为 false，回傳前一个陣列鍵，如果为 true，回傳自身值</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
@@ -2775,7 +2775,7 @@ $result = Arr::next_by_key($arr, 4, true);
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，回傳的值、null 如果沒有前一個陣列元素、或 false 如果找不到目前值。</td>
+						<td>混合，回傳的值、null 如果沒有前一个陣列元素、或 false 如果找不到目前值。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2786,16 +2786,16 @@ $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 // 回傳 false，沒有值 'Z' 在該陣列
 $result = Arr::previous_by_value($arr, 'Z');
 
-// 回傳 null，沒有前一個鍵
+// 回傳 null，沒有前一个鍵
 $result = Arr::previous_by_value($arr, 'A');
 
 // 回傳 false，沒有值 2 在該陣列，只有 '2'
 $result = Arr::previous_by_value($arr, 2, false, true);
 
-// 回傳 'A'，在該陣列中它是指向前一個鍵的值
+// 回傳 'A'，在該陣列中它是指向前一个鍵的值
 $result = Arr::previous_by_value($arr, '2');
 
-// 回傳 2，它是前一個陣列元素的鍵
+// 回傳 2，它是前一个陣列元素的鍵
 $result = Arr::previous_by_value($arr, '2', false);
 </code></pre>
 						</td>
@@ -2806,8 +2806,8 @@ $result = Arr::previous_by_value($arr, '2', false);
 
 			<article>
 				<h4 id="method_next_by_value" class="method">next_by_value($array, $value, $get_value = true, $strict = false)</h4>
-				<p><strong>next_by_value</strong> 方法能讓你透過所給現有的元素值，
-				 來取回陣列下一個元素的鍵或值。
+				<p><strong>next_by_value</strong> 方法能让你透過所給现有的元素值，
+				 來取回陣列下一个元素的鍵或值。
 				<table class="method">
 					<tbody>
 					<tr>
@@ -2815,11 +2815,11 @@ $result = Arr::previous_by_value($arr, '2', false);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2836,7 +2836,7 @@ $result = Arr::previous_by_value($arr, '2', false);
 								<tr>
 									<th><kbd>$get_value</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>如果為 false，回傳下一個陣列鍵，如果為 true，回傳自身值</td>
+									<td>如果为 false，回傳下一个陣列鍵，如果为 true，回傳自身值</td>
 								</tr>
 								<tr>
 									<th><kbd>$strict</kbd></th>
@@ -2848,7 +2848,7 @@ $result = Arr::previous_by_value($arr, '2', false);
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，回傳的值、null 如果沒有下一個陣列元素、或 false 如果找不到目前值。</td>
+						<td>混合，回傳的值、null 如果沒有下一个陣列元素、或 false 如果找不到目前值。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -2859,23 +2859,23 @@ $arr = array(2 => 'A', 4 => '2', 6 => 'C');
 // 回傳 false，沒有值 'Z' 在該陣列
 $result = Arr::next_by_value($arr, 'Z');
 
-// 回傳 null，沒有下一個鍵
+// 回傳 null，沒有下一个鍵
 $result = Arr::next_by_value($arr, 'C');
 
 // 回傳 false，沒有值 2 在該陣列，只有 '2'
 $result = Arr::next_by_value($arr, 2, false, true);
 
-// 回傳 'C'，在該陣列中它是指向下一個鍵的值
+// 回傳 'C'，在該陣列中它是指向下一个鍵的值
 $result = Arr::next_by_value($arr, '2');
 
-// 回傳 6，它是下一個陣列元素的鍵
+// 回傳 6，它是下一个陣列元素的鍵
 $result = Arr::next_by_value($arr, '2', false);
 </code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">請注意，'by_key' 和 'by_value' 方法使用回傳值 <strong>null</strong> 和 <strong>false</strong> 來標記錯誤條件。
+				<p class="note">請注意，'by_key' 和 'by_value' 方法使用回傳值 <strong>null</strong> 和 <strong>false</strong> 來标記错误條件。
 				因此，傳遞的陣列不得包含 <strong>null</strong> 或 <strong>false</strong> 的鍵或值。</p>
 			</article>
 
@@ -2883,16 +2883,16 @@ $result = Arr::next_by_value($arr, '2', false);
 
 			<article>
 				<h4 id="function_in_arrayi" class="method" data-class="">in_arrayi($needle, $haystack)</h4>
-				<p><strong>in_arrayi</strong> 函式是一個不區分大小寫版本的 in_array。</p>
+				<p><strong>in_arrayi</strong> 函式是一个不區分大小寫版本的 in_array。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -2933,7 +2933,7 @@ echo in_arrayi('Thi', array('something','tHis'));
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="base.html#" id="toc_handle">目錄</a>
+			<a href="base.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,22 +41,22 @@
 
 			<h2>控制器</h2>
 
-			<h3 id="what_is_a_controller">控制器是什麼？</h3>
+			<h3 id="what_is_a_controller">控制器是什么？</h3>
 
 			<p>
-				控制器是可透過 URL 到達，並打理處理請求的類別。
-				控制器呼叫模型和其他類別來取回資訊。最後，
-				它將傳遞所有東西到檢視來輸出。如果像 www.yoursite.com/example/index 的 URL 被請求，
-				第一分段 ("example") 將會是被呼叫的控制器，
-				而第二分段 ("index") 將會是控制器被呼叫的方法。
+				控制器是可透過 URL 到達，并打理处理請求的类別。
+				控制器呼叫模型和其他类別來取回資訊。最後，
+				它将傳遞所有東西到檢視來輸出。如果像 www.yoursite.com/example/index 的 URL 被請求，
+				第一分段 ("example") 将会是被呼叫的控制器，
+				而第二分段 ("index") 将会是控制器被呼叫的方法。
 			</p>
 
 			<h3 id="creating_a_controller">建立控制器</h3>
 
 			<p>
-				在 FuelPHP，控制器被置於 <kbd>fuel/app/classes/controller</kbd> 目錄，
-				並以 <kbd>"Controller_"</kbd> 前綴。（選擇性）它們應該為了完整的功能集擴充 <kbd>Controller</kbd> 類別。
-				下面是一個控制器 "example" 的範例：
+				在 FuelPHP，控制器被置於 <kbd>fuel/app/classes/controller</kbd> 目录，
+				并以 <kbd>"Controller_"</kbd> 前綴。（選擇性）它們應該为了完整的功能集擴充 <kbd>Controller</kbd> 类別。
+				下面是一个控制器 "example" 的範例：
 			</p>
 
 			<pre class="php"><code>class Controller_Example extends Controller
@@ -71,52 +71,52 @@
 
 			<p>
 				可以透過 URL 被請求的方法有 <kbd>"action_"</kbd> 前綴。This means
-				這意味著你可能使用的名稱（例如：方法 "list" 不被允許，"action_list" 就沒問題）
-				不會被 PHP 的結構限制。但這也意味著，
-				你可以讓你的控制器公開方法能從其他類別被使用但不能路由。
+				这意味著你可能使用的名稱（例如：方法 "list" 不被允許，"action_list" 就沒問題）
+				不会被 PHP 的結構限制。但这也意味著，
+				你可以让你的控制器公開方法能從其他类別被使用但不能路由。
 			</p>
 
-			<h3 id="http_method_prefixed_actions">HTTP 方法前綴動作。</h3>
+			<h3 id="http_method_prefixed_actions">HTTP 方法前綴动作。</h3>
 
 			<p>
-				路由到 HTTP 方法前綴的動作是可能的，這裡有個範例：
+				路由到 HTTP 方法前綴的动作是可能的，这裡有个範例：
 			</p>
 
 			<pre class="php"><code>class Controller_Example extends Controller
 {
 	public function get_index()
 	{
-		// 當 HTTP 方法是 GET 時將被呼叫。
+		// 當 HTTP 方法是 GET 時将被呼叫。
 	}
 
 	public function post_index()
 	{
-		// 當 HTTP 方法是 POST 時將被呼叫。
+		// 當 HTTP 方法是 POST 時将被呼叫。
 	}
 }
 </code></pre>
 
-			<h4 id="controller_in_subdir">在子目錄的控制器</h4>
+			<h4 id="controller_in_subdir">在子目录的控制器</h4>
 
 			<p>
-				你也可以將控制器放進子目錄中，像
+				你也可以将控制器放進子目录中，像
 				<kbd>fuel/app/classes/controller/subdir/test.php</kbd>。在該情況，
-				控制器必須在類別名稱中包含目錄名稱，像這樣：<var>Controller_Subdir_Test</var>。
+				控制器必須在类別名稱中包含目录名稱，像这樣：<var>Controller_Subdir_Test</var>。
 			</p>
 
 			<p>
-				支援無限巢狀的子目錄，所以
-				<kbd>fuel/app/classes/controller/subdir1/subdir2/subdir3/test.php</kbd> 會有一個
-				<var>Controller_Subdir1_Subdir2_Subdir3_Test</var> 的類別名稱。
+				支援無限巢狀的子目录，所以
+				<kbd>fuel/app/classes/controller/subdir1/subdir2/subdir3/test.php</kbd> 会有一个
+				<var>Controller_Subdir1_Subdir2_Subdir3_Test</var> 的类別名稱。
 			</p>
 
 			<h4 id="controller_namespacing">控制器的命名空間方式</h4>
 
 			<p>參閱 <a href="../namespacing.html">命名空間</a> 頁面來了解你能如何給你控制器的命名空間</p>
 
-			<h4 id="more_parameters">從 URL 使用更多參數</h4>
+			<h4 id="more_parameters">從 URL 使用更多參数</h4>
 
-			<p>現在，我們在我們的 Controller_Example 也有以下方法：</p>
+			<p>现在，我們在我們的 Controller_Example 也有以下方法：</p>
 
 	<pre class="php"><code>public function action_name_to_upper($name_1, $name_2)
 {
@@ -127,41 +127,41 @@
 
 			<p>
 				如果我們使用 <kbd>www.yoursite.com/example/name_to_upper/fuel/php</kbd> 呼叫此方法，
-				它將回傳 <kbd>test/name_to_upper</kbd> 檢視。"FUEL" 以及 "PHP" 將被傳遞做為
+				它将回傳 <kbd>test/name_to_upper</kbd> 檢視。"FUEL" 以及 "PHP" 将被傳遞做为
 				<var>$data</var> 陣列中的 <var>$name_1</var> 和 <var>$name_2</var> 的值。
 			</p>
 
 			<h4 id="returning_results">回傳結果</h4>
 
 			<p>
-				理想情況下，一個控制器動作必須回傳一個 Response 物件。你可以選擇性的指定特別的 HTTP 表頭，
-				或一個自訂的 HTTP 狀態碼（"200 OK" 以外的）。如果你沒回傳一個 Response 物件，預設
-				<kbd>after()</kbd> 方法會為你包裹動作的回傳值在一個 Response 物件中。
+				理想情況下，一个控制器动作必須回傳一个 Response 物件。你可以選擇性的指定特別的 HTTP 表頭，
+				或一个自訂的 HTTP 狀態码（"200 OK" 以外的）。如果你沒回傳一个 Response 物件，預設
+				<kbd>after()</kbd> 方法会为你包裹动作的回傳值在一个 Response 物件中。
 			</p>
 
 			<p>
-				如果你的控制器擴充了基礎控制器，你的動作也可以回傳任何可被轉換為字串的任何值，
-				例如像一個 View 物件。基礎控制器的 after() 方法將為你把它轉換為一個 Response 物件。
+				如果你的控制器擴充了基础控制器，你的动作也可以回傳任何可被轉換为字串的任何值，
+				例如像一个 View 物件。基础控制器的 after() 方法将为你把它轉換为一个 Response 物件。
 			</p>
 			<p>
-				如果你的控制器不擴充基礎控制器，而且你想要使用此功能，
-				你的控制器必須包含它自己的 after() 方法，該方法將接受動作回傳的值，
-				並把它包成一個必須回傳的 Reponse 物件。
+				如果你的控制器不擴充基础控制器，而且你想要使用此功能，
+				你的控制器必須包含它自己的 after() 方法，該方法将接受动作回傳的值，
+				并把它包成一个必須回傳的 Reponse 物件。
 			</p>
 
 			<h3 id="special_methods">特殊控制器方法</h3>
 
 			<p class="note">
-				不要覆寫類別建構式 <kbd>__construct()</kbd>，使用 <kbd>before()</kbd> 替代。
-				除非你已經先從 Core 研究基礎控制器，
-				並了解它應該如何被擴充而不破壞 Fuel。
+				不要覆寫类別建構式 <kbd>__construct()</kbd>，使用 <kbd>before()</kbd> 替代。
+				除非你已经先從 Core 研究基础控制器，
+				并了解它應該如何被擴充而不破壞 Fuel。
 			</p>
 
 			<article>
 				<h4 id="action_index">action_index()</h4>
 				<p>
-					這個方法將在呼叫控制器如果沒帶第二參數的時候被呼叫。
-					在以上範例 <kbd>www.yoursite.com/example/index</kbd> 將與
+					这个方法将在呼叫控制器如果沒帶第二參数的時候被呼叫。
+					在以上範例 <kbd>www.yoursite.com/example/index</kbd> 将與
 					<kbd>www.yoursite.com/example</kbd> 一樣。
 				</p>
 			</article>
@@ -169,22 +169,22 @@
 			<article>
 				<h4 id="before">before()</h4>
 				<p>
-					before() 方法被用來當作一個通用方法的前預備方法，來執行在每個控制器方法呼叫時所須的程式碼。
-					這個方法將在來自 URL 的方法在你控制器呼叫<strong>之前</strong>被執行。
-					它將不會被呼叫如果該方法不存在。
-					你不應該使用這方法來作路由決策，如果需要的話，使用 <strong>router</strong> 方法替代。
+					before() 方法被用來當作一个通用方法的前預備方法，來执行在每个控制器方法呼叫時所須的程式码。
+					这个方法将在來自 URL 的方法在你控制器呼叫<strong>之前</strong>被执行。
+					它将不会被呼叫如果該方法不存在。
+					你不應該使用这方法來作路由決策，如果需要的話，使用 <strong>router</strong> 方法替代。
 				</p>
 			</article>
 
 			<article>
 				<h4 id="after">after($response)</h4>
 				<p>
-					這個方法將在來自 URL 的方法成功呼叫<strong>之後</strong>被執行，
-					這將不會被呼叫如果該方法不存在。<a href="base.html#response"><var>$response</var></a> 參數是必要的。
-					after() 方法<strong>必須</strong>回傳一個 Response 物件。
+					这个方法将在來自 URL 的方法成功呼叫<strong>之後</strong>被执行，
+					这将不会被呼叫如果該方法不存在。<a href="base.html#response"><var>$response</var></a> 參数是必要的。
+					after() 方法<strong>必須</strong>回傳一个 Response 物件。
 				</p>
 				<p class="note">
-					如果 <kbd>after()</kbd> 方法必須建構一個 Response 物件，它可以使用控制器的 <kbd>response_status</kbd> 特性來設定回傳的 HTTP 狀態碼。
+					如果 <kbd>after()</kbd> 方法必須建構一个 Response 物件，它可以使用控制器的 <kbd>response_status</kbd> 特性來設定回傳的 HTTP 狀態码。
 					預設情況下，此特性包含 "200" (OK)。
 				</p>
 			</article>
@@ -192,17 +192,17 @@
 			<article>
 				<h4 id="router">router($method, $params)</h4>
 				<p>
-					這個方法將接管內部的控制器路由。一旦控制器被載入，
-					router() 方法將被呼叫並且使用被傳入的 <var>$method</var>，
-					代替預設的方法。它也會傳入 <var>$params</var>，以一個陣列，
-					到該 <var>$method</var>。before() 和 after() 方法仍會如預期運作。
+					这个方法将接管內部的控制器路由。一旦控制器被載入，
+					router() 方法将被呼叫并且使用被傳入的 <var>$method</var>，
+					代替預設的方法。它也会傳入 <var>$params</var>，以一个陣列，
+					到該 <var>$method</var>。before() 和 after() 方法仍会如預期運作。
 				</p>
 			</article>
 
 			<h3 id="extending_other_controllers">擴充其他控制器</h3>
 
 			<p>
-				幸好有自動載入器，你可以擴充其他控制器，除了該類別所定義的名稱，
+				幸好有自动載入器，你可以擴充其他控制器，除了該类別所定義的名稱，
 				不用寫更多：
 			</p>
 
@@ -214,16 +214,16 @@
 }</code></pre>
 
 			<p>
-				這剛開始聽起來可能很奇怪，
-				但擴充控制器能讓你分享方法並很輕鬆地建立基礎控制器。
+				这剛開始聽起來可能很奇怪，
+				但擴充控制器能让你分享方法并很輕鬆地建立基础控制器。
 			</p>
 
-			<h3>建立基礎控制器</h3>
+			<h3>建立基础控制器</h3>
 
 			<p>
-				基礎控制器是一個共享控制器，像 <kbd>Controller_Public</kbd> 或 <kbd>Controller_Admin</kbd> 是用來分享控制器群組之間的邏輯。
-				例如，<kbd>Controller_Admin</kbd> 控制器可能包含你的 login/logout 動作也許還有一個儀表板，但它也可能包含一個檢查使用者是否登入做為一個管理者的 <kbd>before()</kbd> 方法。
-				那麼所有在你的管理控制台中其他的控制器將擴充它並且自動被保護。
+				基础控制器是一个共享控制器，像 <kbd>Controller_Public</kbd> 或 <kbd>Controller_Admin</kbd> 是用來分享控制器群組之間的邏輯。
+				例如，<kbd>Controller_Admin</kbd> 控制器可能包含你的 login/logout 动作也許還有一个儀表板，但它也可能包含一个檢查使用者是否登入做为一个管理者的 <kbd>before()</kbd> 方法。
+				那麼所有在你的管理控制台中其他的控制器将擴充它并且自动被保護。
 			</p>
 
 			<pre class="php"><code>class Controller_Admin extends Controller
@@ -248,8 +248,8 @@
 }</code></pre>
 
 			<p>
-				該程式碼將會在 <kbd>fuel/app/classes/controller/admin.php</kbd>，
-				並且你所有其他的控制器應該在 <kbd>fuel/app/classes/controller/admin/</kbd>，像這樣：
+				該程式码将会在 <kbd>fuel/app/classes/controller/admin.php</kbd>，
+				并且你所有其他的控制器應該在 <kbd>fuel/app/classes/controller/admin/</kbd>，像这樣：
 			</p>
 
 			<pre class="php"><code>class Controller_Admin_User extends Controller_Admin
@@ -262,7 +262,7 @@
 
 	public function action_edit($id)
 	{
-		// 編輯使用者
+		// 编輯使用者
 	}
 }</code></pre>
 
@@ -270,7 +270,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

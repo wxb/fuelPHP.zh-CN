@@ -12,7 +12,7 @@
 		var class_prefix = 'Query_Builder_Select::';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Database 用法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Database 用法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,13 +42,13 @@
 
 			<h2>Database 用法</h2>
 			<p>
-				正常的資料庫是透過 <a href="./db.html">DB 類別</a> 去互動，
-				下面的範例會讓你感覺到在 Fuel 裡如何使用資料庫。
+				正常的資料庫是透過 <a href="./db.html">DB 类別</a> 去互动，
+				下面的範例会让你感覺到在 Fuel 裡如何使用資料庫。
 			</p>
-			<p>Database 用法分為幾段：</p>
+			<p>Database 用法分为幾段：</p>
 
 			<ul>
-				<li><a href="#running-queries">執行查詢</a></li>
+				<li><a href="#running-queries">执行查詢</a></li>
 				<li><a href="#selecting">選擇</a>、</li>
 				<li><a href="#results">結果</a>、</li>
 				<li><a href="#filtering">過濾</a>（where、order by、limit、offset）、</li>
@@ -63,23 +63,23 @@
 
 
 			<article>
-				<h3 id="running-queries">執行查詢</h3>
-				<p>首先我們使用 <a href="./db.html#method_query">DB::query</a> 預處理一個查詢。</p>
-				<pre class="php"><code>// 回傳一個新的 Database_Query
+				<h3 id="running-queries">执行查詢</h3>
+				<p>首先我們使用 <a href="./db.html#method_query">DB::query</a> 預处理一个查詢。</p>
+				<pre class="php"><code>// 回傳一个新的 Database_Query
 $query = DB::query('SELECT * FROM `users`');
 </code></pre>
-				<p>現在我們可以執行查詢：</p>
+				<p>现在我們可以执行查詢：</p>
 				<pre class="php"><code>$query = DB::query('SELECT * FROM `users`');
 
-// 回傳一個新的 Database_MySQLi_Result
+// 回傳一个新的 Database_MySQLi_Result
 $query->execute();
 
-// 或執行在不同的資料庫群組
+// 或执行在不同的資料庫群組
 $query->execute('another_group');
 // 或
 $query->execute(Database_Connection::instance('another_group'));
 
-// 而且我們可以像這樣串聯：
+// 而且我們可以像这樣串聯：
 $result = DB::query('SELECT * FROM `users`')->execute();
 </code></pre>
 			</article>
@@ -87,9 +87,9 @@ $result = DB::query('SELECT * FROM `users`')->execute();
 			<article>
 				<h3 id="selecting">選擇資料</h3>
 				<p>
-					首先讓我們使用 <a href="./db.html#method_query">DB::query</a> 選擇資料，
+					首先让我們使用 <a href="./db.html#method_query">DB::query</a> 選擇資料，
 					由於我們要取出此查詢結果，
-					我們需要讓它知道我們要運行什麼樣的查詢。
+					我們需要让它知道我們要运行什么樣的查詢。
 				</p>
 				<pre class="php"><code>
 $result = DB::query('SELECT * FROM `users`', DB::SELECT)->execute();
@@ -97,25 +97,25 @@ $result = DB::query('SELECT * FROM `users`', DB::SELECT)->execute();
 				<p>
 					我們也可以使用 <a href="./db.html#method_select">DB::select</a> 選擇資料
 				</p>
-				<pre class="php"><code>// 將執行 SELECT `id`, `name` FROM `users`
+				<pre class="php"><code>// 将执行 SELECT `id`, `name` FROM `users`
 $result = DB::select('id','name')->from('users')->execute();
 </code></pre>
 				<p>
 					或使用 <a href="./db.html#method_select_array">DB::select_array</a>
-					可以讓你動態建立你的列名稱陣列。
+					可以让你动態建立你的列名稱陣列。
 				</p>
-				<pre class="php"><code>// 將執行 SELECT `id`, `name` FROM `users`
+				<pre class="php"><code>// 将执行 SELECT `id`, `name` FROM `users`
 $colums = array('id', 'name');
 $result = DB::select_array($columns)->from('users')->execute();
 </code></pre>
 
 				<p>如果你想要別名行，使用陣列代替字串。</p>
 
-				<pre class="php"><code>// 將執行 SELECT `name` as `the_name` FROM `users`;
+				<pre class="php"><code>// 将执行 SELECT `name` as `the_name` FROM `users`;
 $result = DB::select(array('name','the_name'))->from('users')->execute();
 </code></pre>
 
-				<p>要選擇相異的值設定 distinct 為 <em>true</em>：</p>
+				<p>要選擇相異的值設定 distinct 为 <em>true</em>：</p>
 				<pre class="php"><code>// SELECT DISTINCT `name` FROM `users`
 $users = DB::select('name')->from('users')->distinct(true)->execute();
 
@@ -139,43 +139,43 @@ Array
 
 				<h3 id="results">結果</h3>
 				<p>
-					執行 Select 查詢將產生一個結果物件，包含請求的資料庫紀錄。
-					預設情況下，結果被取出做為關聯陣列，
-					這裡有一個範例如何牽動此行為。
+					执行 Select 查詢将產生一个結果物件，包含請求的資料庫紀錄。
+					預設情況下，結果被取出做为關聯陣列，
+					这裡有一个範例如何牽动此行为。
 				</p>
-				<pre class="php"><code>// 將取出結果做為一個關聯陣列。
+				<pre class="php"><code>// 将取出結果做为一个關聯陣列。
 $result = DB::select('id','name')->from('users')->as_assoc()->execute();
 
-// 將取出結果做為一個物件。
+// 将取出結果做为一个物件。
 $result = DB::select('id','name')->from('users')->as_object()->execute();
 
-// 將取出結果做為一個 Model_Users 物件。
+// 将取出結果做为一个 Model_Users 物件。
 $result = DB::select()->from('users')->as_object('Model_Users')->execute();
 
-// 將取出結果做為一個 Model_Users 物件（一個來自 Users 模組的模型）。
+// 将取出結果做为一个 Model_Users 物件（一个來自 Users 模組的模型）。
 $result = DB::select()->from('users')->as_object('\\Users\\Model_Users')->execute();
 </code></pre>
 				<p class="note">
-					當你傳遞一個類別名稱到 as_object()，確認你引入任何有需要的命名空間。
-					如果指定類別不存在，as_object() 將被忽略，並且將回傳一個索引陣列。
+					當你傳遞一个类別名稱到 as_object()，確認你引入任何有需要的命名空間。
+					如果指定类別不存在，as_object() 将被忽略，并且将回傳一个索引陣列。
 				</p>
-				<p>想知道你取出多少條紀錄？極度簡單！</p>
+				<p>想知道你取出多少條紀錄？極度简单！</p>
 				<pre class="php"><code>
 $result = DB::select('*')->from('users')->execute();
-// 只要計算結果，它回傳一個整數。
+// 只要計算結果，它回傳一个整数。
 $num_rows = count($result);
 </code></pre>
-				<p>要存取這些結果，你可以直接透過結果物件做迴圈，或取得結果陣列。</p>
+				<p>要存取这些結果，你可以直接透過結果物件做迴圈，或取得結果陣列。</p>
 				<pre class="php"><code>$result = DB::select()->from('users')->execute();
 foreach($result as $item)
 {
-	// 用 $item 做點什麼
+	// 用 $item 做點什么
 }
 
 $result_array = $result->as_array();
 foreach($result_array as $item)
 {
-	// 用 $item 做點什麼
+	// 用 $item 做點什么
 }
 </code></pre>
 
@@ -184,15 +184,15 @@ foreach($result_array as $item)
 $on_key = $result->as_array('id');
 foreach($on_key as $id => $item)
 {
-	// $id 將包含紀錄的 id
-	// 用 $item 或它的 $id 做點什麼
+	// $id 将包含紀錄的 id
+	// 用 $item 或它的 $id 做點什么
 }
 
 $key_value = $result->as_array('id', 'email');
 foreach($key_value as $id => $email)
 {
-	// 現在 $email 將成為 email 欄位。
-	// 所以你可以用 $id 或 $email 做點什麼
+	// 现在 $email 将成为 email 欄位。
+	// 所以你可以用 $id 或 $email 做點什么
 }
 </code></pre>
 
@@ -203,28 +203,28 @@ foreach($key_value as $id => $email)
 				<h3 id="filtering">過濾</h3>
 				<h4 id="where_statements">Where 語句</h4>
 				<p>
-					為了在我們的查詢設定條件，我們可以設定 WHERE 條件。
-					這些範例也適用於更新和刪除。
+					为了在我們的查詢設定條件，我們可以設定 WHERE 條件。
+					这些範例也適用於更新和刪除。
 				</p>
-				<pre class="php"><code>// 將執行 SELECT * FROM `users` WHERE `id` = 1
+				<pre class="php"><code>// 将执行 SELECT * FROM `users` WHERE `id` = 1
 $result = DB::select()->from('users')->where('id', 1)->execute();
 </code></pre>
 
-				<p>要影響運算子，像這樣提供它：</p>
-				<pre class="php"><code>// 將執行 SELECT * FROM `users` WHERE `id` = 1
+				<p>要影響運算子，像这樣提供它：</p>
+				<pre class="php"><code>// 将执行 SELECT * FROM `users` WHERE `id` = 1
 $result = DB::select()->from('users')->where('id', '=', 1)->execute();
 
-// 將執行 SELECT * FROM `users` WHERE `id` IN (1, 2, 3)
+// 将执行 SELECT * FROM `users` WHERE `id` IN (1, 2, 3)
 $id_array = array(1,2,3);
 $result = DB::select()->from('users')->where('id', 'in', $id_array)->execute();
 
-// 將執行 SELECT * FROM `users` WHERE `id` BETWEEN 1 AND 2
+// 将执行 SELECT * FROM `users` WHERE `id` BETWEEN 1 AND 2
 $result = DB::select()->from('users')->where('id', 'between', array(1, 2))->execute();
 
-// 將執行 SELECT * FROM `users` WHERE `id` != 1
+// 将执行 SELECT * FROM `users` WHERE `id` != 1
 $result = DB::select()->from('users')->where('id', '!=', 1)->execute();
 
-// 將執行 SELECT * FROM `users` WHERE `name` LIKE "john%"
+// 将执行 SELECT * FROM `users` WHERE `name` LIKE "john%"
 $who = "john%";
 $result = DB::select()->from('users')->where('name', 'like', $who)->execute();
 </code></pre>
@@ -260,13 +260,13 @@ DB::select()->from('users')->order_by('name','asc');
 // SELECT * FROM `users` ORDER BY `name` ASC, `surname` DESC
 DB::select()->from('users')->order_by('name','asc')->order_by('surname', 'desc');
 
-// 你可以藉由略去第二個參數來省略方向。
+// 你可以藉由略去第二个參数來省略方向。
 // SELECT * FROM `users` ORDER BY `name`
 DB::select()->from('users')->order_by('name');
 </code></pre>
 
 				<h4 id="limit_offset">Limit 和 offset</h4>
-				<p>我們使用 limit 和 offset 函式來限制取回的筆數。請注意，offset 函式只在選擇資料時可用。</p>
+				<p>我們使用 limit 和 offset 函式來限制取回的筆数。請注意，offset 函式只在選擇資料時可用。</p>
 				<pre class="php"><code>// SELECT * FROM `users` LIMIT 1
 DB::select()->from('users')->limit(1);
 
@@ -284,20 +284,20 @@ DB::select()->from('users')->order_by('id','asc')->limit(10);
 				<h3 id="updating">更新</h3>
 				<p>
 					我們使用 <a href="./db.html#method_update">DB::update</a> 來更新資料，
-					如果成功執行一個 Update 查詢將回傳一個整數，
-					代表受影響的筆數。
+					如果成功执行一个 Update 查詢将回傳一个整数，
+					代表受影響的筆数。
 				</p>
 
-				<p>要更新單一行。</p>
-				<pre class="php"><code>// 將執行 UPDATE `users` SET `name` = "John Random" WHERE `id` = "2";
+				<p>要更新单一行。</p>
+				<pre class="php"><code>// 将执行 UPDATE `users` SET `name` = "John Random" WHERE `id` = "2";
 $result = DB::update('users')
 	->value("name", "John Random")
 	->where('id', '=', '2')
 	->execute();
 </code></pre>
 
-				<p>要更新多個行。</p>
-				<pre class="php"><code>// 將執行 UPDATE `users`
+				<p>要更新多个行。</p>
+				<pre class="php"><code>// 将执行 UPDATE `users`
 // SET `group` = "Peter Griffon", `email` = "peter@thehindenpeter.com"
 // WHERE `id` = "16";
 $result = DB::update('users')
@@ -316,10 +316,10 @@ $result = DB::update('users')
 				<h3 id="inserting">新增</h3>
 				<p>
 					我們使用 <a href="./db.html#method_insert">DB::insert</a> 新增資料，
-					如果成功執行一個 Insert 查詢將回傳一個陣列，
+					如果成功执行一个 Insert 查詢将回傳一个陣列，
 					包含新增 ID 和建立列的列表。
 				</p>
-				<pre class="php"><code>// 將執行 INSERT INTO `users`(`name`,`email`,`password`)
+				<pre class="php"><code>// 将执行 INSERT INTO `users`(`name`,`email`,`password`)
 // VALUES ("John Random", "john@example.com", "s0_s3cr3t")
 list($insert_id, $rows_affected) = DB::insert('users')->set(array(
 	'name' => 'John Random',
@@ -329,7 +329,7 @@ list($insert_id, $rows_affected) = DB::insert('users')->set(array(
 </code></pre>
 				<p>你也可以分別設定行和值</p>
 
-				<pre class="php"><code>// 將執行 INSERT INTO `users`(`name`,`email`,`password`)
+				<pre class="php"><code>// 将执行 INSERT INTO `users`(`name`,`email`,`password`)
 // VALUES ("John Random", "john@example.com", "s0_s3cr3t")
 list($insert_id, $rows_affected) = DB::insert('users')->columns(array(
 	'name', 'email', 'password'
@@ -346,12 +346,12 @@ list($insert_id, $rows_affected) = DB::insert('users')->columns(array(
 
 				<p>
 					要刪除資料，使用 <a href="./db.html#method_delete">DB::delete</a>。
-					當執行時將回傳受影響的筆數。
+					當执行時将回傳受影響的筆数。
 				</p>
-				<pre class="php"><code>// 清空整個 users 表
+				<pre class="php"><code>// 清空整个 users 表
 $result = DB::delete('users')->execute(); // (int) 20
 
-// 執行 DELETE FROM `users` WHERE `email` LIKE "%@example.com"
+// 执行 DELETE FROM `users` WHERE `email` LIKE "%@example.com"
 $result = DB::delete('users')->where('email', 'like', '%@example.com')->execute(); // (int) 7
 </code></pre>
 
@@ -362,13 +362,13 @@ $result = DB::delete('users')->where('email', 'like', '%@example.com')->execute(
 				<h3 id="joins">組合</h3>
 				<p>當選擇資料，你也可以組合其他表到結果。</p>
 
-				<pre class="php"><code>// 將執行 SELECT * FROM `users` LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+				<pre class="php"><code>// 将执行 SELECT * FROM `users` LEFT JOIN `roles` ON `roles`.`id` = `users`.`role_id`
 $result = DB::select()->from('users')->join('roles','LEFT')->on('roles.id', '=', 'users.role_id');
 
-// 將執行 SELECT * FROM `users` RIGHT OUTER JOIN `roles` ON `roles`.`id` = `users`.`role_id`
+// 将执行 SELECT * FROM `users` RIGHT OUTER JOIN `roles` ON `roles`.`id` = `users`.`role_id`
 $result = DB::select()->from('users')->join('roles','right outer')->on('roles.id', '=', 'users.role_id');
 
-// 在一個字面值 1 組合，而不是行名
+// 在一个字面值 1 組合，而不是行名
 $result = DB::select()->from('users')->join('roles','right outer')->on('roles.id', '=', DB::expr('1'));
 </code></pre>
 
@@ -378,10 +378,10 @@ $result = DB::select()->from('users')->join('roles','right outer')->on('roles.id
 
 				<h3 id="escaping">轉義</h3>
 
-				<p>在資料庫呼叫中，欄位和值是預設轉義。在某些情況下，你會希望不要轉義資料，DB 類別提供一個 <a href="./db.html#method_expr">DB::expr</a> 方法來建立<em>資料庫表達式</em>。如果你不想要一個值被轉義，只要在一個資料庫表達式包住它。</p>
-				<p>資料庫表達式在處理像是 MySQL 的原生函式（如 <em>COUNT</em>）和預定義常數（如 <em>DEFAULT</em>）時特別有用。</p>
+				<p>在資料庫呼叫中，欄位和值是預設轉義。在某些情況下，你会希望不要轉義資料，DB 类別提供一个 <a href="./db.html#method_expr">DB::expr</a> 方法來建立<em>資料庫表達式</em>。如果你不想要一个值被轉義，只要在一个資料庫表達式包住它。</p>
+				<p>資料庫表達式在处理像是 MySQL 的原生函式（如 <em>COUNT</em>）和預定義常数（如 <em>DEFAULT</em>）時特別有用。</p>
 
-				<pre class="php"><code>// 設定一個欄位為它的預設
+				<pre class="php"><code>// 設定一个欄位为它的預設
 DB::update('users')->where('id', '=', 1)->set(array(
 	'some_column' => DB::expr('DEFAULT'),
 ))->execute();
@@ -392,7 +392,7 @@ $result = DB::select(DB::expr('COUNT(*) as count'))->from('users')->execute();
 // 取得目前／第一筆結果
 $result_arr = $result->current();
 
-// 取得筆數
+// 取得筆数
 $count = $result_arr['count'];
 </code></pre>
 
@@ -403,45 +403,45 @@ $count = $result_arr['count'];
 				<h3 id="binding">賦值查詢</h3>
 
 				<p>查詢建立器支援賦值查詢，它是一種技術，
-				能讓你在安全可靠的方法指派變數到你手寫查詢。</p>
+				能让你在安全可靠的方法指派變数到你手寫查詢。</p>
 
 				<p>賦值查詢藉由放置在你的查詢中唯一可辨認的占位符運作。
-				賦值查詢藉由放置在你的查詢中唯一可辨認的占位符運作。當查詢被編譯執行時（你連接它時！），
-				查詢建立器將以它們對應的值取代這些占位符。</p>
+				賦值查詢藉由放置在你的查詢中唯一可辨認的占位符運作。當查詢被编譯执行時（你連接它時！），
+				查詢建立器将以它們對應的值取代这些占位符。</p>
 
-				<p>你可以使用 FuelPHP 標準表示法定義占位符，它是一個以冒號前綴
-				（:變數名稱）的字串。</p>
+				<p>你可以使用 FuelPHP 标准表示法定義占位符，它是一个以冒號前綴
+				（:變数名稱）的字串。</p>
 
-				<pre class="php"><code>$name = 'John'; // 設定我們想要連接的變數
+				<pre class="php"><code>$name = 'John'; // 設定我們想要連接的變数
 $query = "SELECT * FROM users WHERE username = :name"; // 我們的查詢
 
-// 連接變數並執行查詢，產生 SELECT * FROM users WHERE username = 'John'
+// 連接變数并执行查詢，產生 SELECT * FROM users WHERE username = 'John'
 $result = DB::query($query)->bind('name', $name)->execute();</code></pre>
 
-				<p>變數藉由參照綁定，所以你可以輕易地在你的程式碼中，定義你的查詢和賦值，
-				並在稍後修改綁定的變數。</p>
+				<p>變数藉由參照綁定，所以你可以輕易地在你的程式码中，定義你的查詢和賦值，
+				并在稍後修改綁定的變数。</p>
 
 				<pre class="php"><code>// 建立查詢物件
 $query = DB::query("SELECT * FROM users WHERE username = :name");
 
-$name = 'unknown';                // 設定變數預設值
-$query->bind('name', $name);     // 並連接到查詢
+$name = 'unknown';                // 設定變数預設值
+$query->bind('name', $name);     // 并連接到查詢
 
-// 在一些程式碼之後，變更綁定的變數
+// 在一些程式码之後，變更綁定的變数
 $name = 'Sally';
 
-// 連接變數並執行查詢，產生 SELECT * FROM users WHERE username = 'Sally'
+// 連接變数并执行查詢，產生 SELECT * FROM users WHERE username = 'Sally'
 $result = $query->execute();</code></pre>
 
-				<p>因為變數藉由參照綁定，你不能連接一個文字。
-				如果你這樣做，將得到一個 "Cannot pass parameter 2 by reference" 例外！</p>
+				<p>因为變数藉由參照綁定，你不能連接一个文字。
+				如果你这樣做，将得到一个 "Cannot pass parameter 2 by reference" 例外！</p>
 
-				<pre class="php"><code>// 這將產生一個例外！
+				<pre class="php"><code>// 这将產生一个例外！
 $query = DB::query("SELECT * FROM users WHERE username = :name")->bind('name', 'value')->execute();</code></pre>
 
 				<p>你可以使用 param() 方法指派值：</p>
 
-				<pre class="php"><code>// 這會運作
+				<pre class="php"><code>// 这会運作
 $query = DB::query("SELECT * FROM users WHERE username = :name")->param('name', 'value')->execute();</code></pre>
 
 				<p>最後，你可以使用 parameters() 方法，如果你想要混合兩者的話：</p>
@@ -449,19 +449,19 @@ $query = DB::query("SELECT * FROM users WHERE username = :name")->param('name', 
 				<pre class="php"><code>// 建立查詢物件
 $query = DB::query("SELECT * FROM users WHERE username = :name AND state = :state");
 
-$name = 'John'; // 設定我們想要連接的變數
+$name = 'John'; // 設定我們想要連接的變数
 
-// 連接變數和文字
+// 連接變数和文字
 $query->parameters(array('name' => &amp;$name, 'state' => 'new'));
 
-// 並執行查詢，產生 SELECT * FROM users WHERE username = 'John' AND state = 'new'
+// 并执行查詢，產生 SELECT * FROM users WHERE username = 'John' AND state = 'new'
 $result = $query->execute();</code></pre>
 
-				<p class="note">有些框架使用問號做為占位符，這適用於它們，因為它們的賦值系統是定位的，
-				第一個問號被第一個綁定的變數取代，以此類推。
+				<p class="note">有些框架使用問號做为占位符，这適用於它們，因为它們的賦值系统是定位的，
+				第一个問號被第一个綁定的變数取代，以此类推。
 				在 FuelPHP 中，賦值的順序是不相關的，
-				在占位符和綁定的變數之間是一對一的連結，
-				這也意味著，你可以在單一查詢中多次使用相同的占位符。</p>
+				在占位符和綁定的變数之間是一對一的連結，
+				这也意味著，你可以在单一查詢中多次使用相同的占位符。</p>
 
 			</article>
 
@@ -470,32 +470,32 @@ $result = $query->execute();</code></pre>
 				<h3 id="caching">快取查詢</h3>
 
 				<p>查詢建立器也支援快取查詢的結果，以幫助你減低你的資料庫存取。
-					為了實現此目標，它在幕後使用 Cache 類別，
-					但處理快取的取回和再生。<br />
-					<code>cached()</code> 方法使用 3 個參數：到期時間（以秒為單位的快取有效期）；
-					第二個參數為查詢設定一個自訂的鍵（預設是一個查詢的 md5 雜湊）；
-					一個布林可用來表示你不想要快取空結果。
-					使用一個自訂快取鍵將能讓你更易於手動刪除特定查詢，
-					及組合一組查詢快取進特定的目錄。</p>
+					为了實现此目标，它在幕後使用 Cache 类別，
+					但处理快取的取回和再生。<br />
+					<code>cached()</code> 方法使用 3 个參数：到期時間（以秒为单位的快取有效期）；
+					第二个參数为查詢設定一个自訂的鍵（預設是一个查詢的 md5 雜湊）；
+					一个布林可用來表示你不想要快取空結果。
+					使用一个自訂快取鍵将能让你更易於手动刪除特定查詢，
+					及組合一組查詢快取進特定的目录。</p>
 
-				<pre class="php"><code>// 執行一個查詢並快取它 1 小時
-// 如果你下一次執行確切相同的查詢，它將回傳快取的結果。
-// 這將發生在快取的 3600 秒內，否則將執行
-// 並且產生另一次快取。
+				<pre class="php"><code>// 执行一个查詢并快取它 1 小時
+// 如果你下一次执行確切相同的查詢，它将回傳快取的結果。
+// 这将发生在快取的 3600 秒內，否則将执行
+// 并且產生另一次快取。
 $query = DB::query("SELECT * FROM users")->cached(3600)->execute();
 
-// 你可以指定一個鍵來處理快取結果的刪除，如果你
-// 知道該鍵將被更新和在它顯示前需要被刪除的話是有用的。
-// 空查詢結果將不會被快取。
+// 你可以指定一个鍵來处理快取結果的刪除，如果你
+// 知道該鍵将被更新和在它顯示前需要被刪除的話是有用的。
+// 空查詢結果将不会被快取。
 $query = DB::query("SELECT * FROM users")->cached(3600, "foo.bar", false)->execute();
 
-// 從快取刪除前一個查詢
+// 從快取刪除前一个查詢
 Cache::delete("foo.bar");
-// 或刪除在 "foo" 目錄中的所有快取
+// 或刪除在 "foo" 目录中的所有快取
 Cache::delete_all("foo");
 
-// 預設情況下所有查詢被放在 "db" 目錄
-// 因此，不手動設定其中的鍵，要刪除所有查詢快取
+// 預設情況下所有查詢被放在 "db" 目录
+// 因此，不手动設定其中的鍵，要刪除所有查詢快取
 Cache::delete_all("db");</code></pre>
 
 			</article>
@@ -504,7 +504,7 @@ Cache::delete_all("db");</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

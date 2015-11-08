@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="hmvc.html#" id="toc_handle">目錄</a>
+			<a href="hmvc.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,18 +42,18 @@
 			<h2>HMVC 請求</h2>
 
 			<p>
-				HMVC 請求是一個很好的方式來分離邏輯和重複使用控制器邏輯到多個地方。
-				常見的用法之一是當你使用一個主題或樣板引擎來產生你的頁面時，
-				每一個頁面分成幾個區塊，而區塊被部件填充。
-				藉由使用模組產生部件的輸出，你可使用易於重複使用的元件，建立一個高度模組化的應用程式。
+				HMVC 請求是一个很好的方式來分離邏輯和重複使用控制器邏輯到多个地方。
+				常見的用法之一是當你使用一个主題或樣板引擎來產生你的頁面時，
+				每一个頁面分成幾个區塊，而區塊被部件填充。
+				藉由使用模組產生部件的輸出，你可使用易於重複使用的元件，建立一个高度模組化的应用程序。
 			</p>
 
-			<p>你使用 <a href="../classes/request/request.html">Request</a> 類別呼叫一個模組控制器方法：</p>
-			<pre class="php"><code>// 取回一個控制器的輸出
+			<p>你使用 <a href="../classes/request/request.html">Request</a> 类別呼叫一个模組控制器方法：</p>
+			<pre class="php"><code>// 取回一个控制器的輸出
 $widget = Request::forge('mycontroller/mymethod/parms')->execute();
 echo $widget;
 
-// 或取回一個模組的輸出
+// 或取回一个模組的輸出
 $widget = Request::forge('mymodule/mycontroller/mymethod/parms', false)->execute();
 echo $widget;
 
@@ -63,16 +63,16 @@ echo $widget;
 
 </code></pre>
 			<p class="note">
-				預設情況下，所有的請求是由 Fuel 的路由引擎處理。如果你想要請求一些不可路由的東西
-				（例如，因為你不希望瀏覽器去請求它），你應該傳遞 '<strong>false</strong>' 做為第二個參數到
-				forge() 呼叫。如果你不這樣做，當你執行該請求時，你將以一個 404 錯誤結束！
+				預設情況下，所有的請求是由 Fuel 的路由引擎处理。如果你想要請求一些不可路由的東西
+				（例如，因为你不希望瀏覽器去請求它），你應該傳遞 '<strong>false</strong>' 做为第二个參数到
+				forge() 呼叫。如果你不这樣做，當你执行該請求時，你将以一个 404 错误結束！
 			</p>
 
 			<p>
 				在 HMVC 請求中載入檢視與在一般請求中是相同的，且 HMVC 請求的控制器存取，
-				藉由瀏覽器也同樣平易近人。然而，在一些情況下，你可能不希望元件（例如，一個部件）
-				透過瀏覽器被存取。在這種情況下，你將想要檢查是否請求是透過 HMVC 或瀏覽器。
-				以下範例告訴你如何檢查一個 HMVC 請求：
+				藉由瀏覽器也同樣平易近人。然而，在一些情況下，你可能不希望元件（例如，一个部件）
+				透過瀏覽器被存取。在这種情況下，你将想要檢查是否請求是透過 HMVC 或瀏覽器。
+				以下範例告訴你如何檢查一个 HMVC 請求：
 			</p>
 
 			<pre class="php"><code>&lt;?php
@@ -84,11 +84,11 @@ class Controller_Widget extends Controller
 	{
 		if( ! Request::is_hmvc())
 		{
-			// 這是主要的請求
+			// 这是主要的請求
 		}
 		else
 		{
-			// 這是一個 HMVC 請求
+			// 这是一个 HMVC 請求
 		}
 	}
 
@@ -97,8 +97,8 @@ class Controller_Widget extends Controller
 			<h3>404 在 HMVC 請求期間</h3>
 
 			<p>
-				當 404 發生在一個 HMVC 請求期間，一個 <kbd>HttpNotFoundException</kbd> 被拋出。如果未被捕捉到，
-				它將觸發框架預設 404 頁面的載入。然而，你可以避免這樣並且自己處理
+				當 404 发生在一个 HMVC 請求期間，一个 <kbd>HttpNotFoundException</kbd> 被拋出。如果未被捕捉到，
+				它将觸发框架預設 404 頁面的載入。然而，你可以避免这樣并且自己处理
 				404：
 			</p>
 
@@ -108,7 +108,7 @@ class Controller_Widget extends Controller
 }
 catch (HttpNotFoundException $e)
 {
-	// 處理它
+	// 处理它
 }
 </code></pre>
 
@@ -123,7 +123,7 @@ catch (HttpNotFoundException $e)
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

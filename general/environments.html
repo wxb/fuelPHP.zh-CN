@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>環境 - 一般 - FuelPHP 简体中文手册</title>
+	<title>环境 - 一般 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="environments.html#" id="toc_handle">目錄</a>
+			<a href="environments.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,15 +39,15 @@
 
 		<div id="main">
 
-			<h2>環境</h2>
+			<h2>环境</h2>
 
 			<p>
-				環境的支援幫助 FuelPHP 和你的應用程式在環境設定的基礎上作出決定。
-				FuelPHP 本身根據現行的環境，
-				使用環境設定去載入／覆寫額外的配置設定。
+				环境的支援幫助 FuelPHP 和你的应用程序在环境設定的基础上作出決定。
+				FuelPHP 本身根據现行的环境，
+				使用环境設定去載入／覆寫額外的配置設定。
 			</p>
 
-			<h3 id="env_config">環境和設定</h3>
+			<h3 id="env_config">环境和設定</h3>
 
 			<p>
 				Based on the environment the app is set to, the Config class looks for environment-specific config files.
@@ -80,47 +80,47 @@
 				A real-life example for this is the database configuration. There are no default configuration settings (this is possibly very dangerous).  There are only environment-specific config settings.
 			</p>
 
-			<h3 id="possible_envs">預定義環境</h3>
+			<h3 id="possible_envs">預定義环境</h3>
 
 			<p>
-				FuelPHP 有四個預定義環境。你也可以 <a href="environments.html#create_env">建立你自己的自訂環境。</a>
+				FuelPHP 有四个預定義环境。你也可以 <a href="environments.html#create_env">建立你自己的自訂环境。</a>
 			</p>
 
 			<ul>
 				<li>
 					<strong>\Fuel::DEVELOPMENT</strong><br/>
-					開發環境。
+					开发环境。
 				</li>
 				<li>
 					<strong>\Fuel::TEST</strong><br/>
-					測試環境。
+					测试环境。
 				</li>
 				<li>
 					<strong>\Fuel::STAGING</strong><br/>
-					臨時環境。
+					臨時环境。
 				</li>
 				<li>
 					<strong>\Fuel::PRODUCTION</strong><br/>
-					生產環境。
+					生產环境。
 				</li>
 			</ul>
 
-			<h3 id="create_env">建立自訂環境</h3>
+			<h3 id="create_env">建立自訂环境</h3>
 			<p>
-				要建立一個自訂環境，只要使用一個自訂字串，例如 <em>mike_dev</em> 並在 /fuel/app/config/ 中建立一個匹配文件夾。
+				要建立一个自訂环境，只要使用一个自訂字串，例如 <em>mike_dev</em> 并在 /fuel/app/config/ 中建立一个匹配文件夾。
 			</p>
 			<p>
 				例如：
 				</br>
-				如果你有一個名為 Mike 的開發人員，你可以建立一個稱為 <i>mike_dev</i> 的自訂環境。
+				如果你有一个名为 Mike 的开发人員，你可以建立一个稱为 <i>mike_dev</i> 的自訂环境。
 				<ol>
-					<li>在 /fuel/app/config/ 中建立一個稱為 <i>mike_dev</i> 的文件夾。</li>
+					<li>在 /fuel/app/config/ 中建立一个稱为 <i>mike_dev</i> 的文件夾。</li>
 					<li>Place any config files that pertain to Mike in the new config folder, for example, place db.php in /fuel/app/config/mike_dev/ to a load custom database configuration when the <em>mike_dev</em> environment is set.</li>
 					<li>Follow the instructions on <a href="environments.html#setting_env">setting your environment</a> below. When setting the environment, instead of using a predefined FuelPHP Environment such as PRODUCTION, use the custom string <em>mike_dev</em></li>
 				</ol>
 			</p>
 
-			<h3 id="setting_env">設定你的環境</h3>
+			<h3 id="setting_env">設定你的环境</h3>
 
 			<p>
 				There are three ways to set your environment. The first two allow you to set the environment that FuelPHP will use when loading web pages. The third option shows you how to set your environment when using FuelPHP's Oil. Oil does not use the environment you set in the first two options below, it has to be set separately, every time you use Oil.
@@ -199,7 +199,7 @@ Fuel::$env = (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : Fuel::PRODUCT
 			<h3 id="env_oil">Set Environment when using Oil</h3>
 
 			<p>
-				當使用一個 *unix 的操作系統，你可以在開始 oil 之前使用 <kbd>env</kbd> 命令來定義該變數。
+				當使用一个 *unix 的操作系统，你可以在開始 oil 之前使用 <kbd>env</kbd> 命令來定義該變数。
 			</p>
 
 			<pre class="cli"><code><strong>$</strong> env FUEL_ENV=production php oil -v</code></pre>
@@ -208,7 +208,7 @@ Fuel::$env = (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : Fuel::PRODUCT
 				FuelPHP's Oil does not use the same environment that is set for your application. The environment Oil runs in must be set separately, each time you run an Oil instance. The following instructions tell you how to do so. If you are looking to set the environment for your application, see <a href="environments.html#env_server">Set Environment with server environment variables (Recommended)</a> or <a href="environments.html#env_manual">Set Environment with <em>/fuel/app/bootstrap.php</em></a>
 			</p>
 			<p>
-				當使用 Windows 時，這已經被回報可以運作：
+				當使用 Windows 時，这已经被回報可以運作：
 			</p>
 
 			<pre class="cli"><code><strong>C:\> </strong>set FUEL_ENV=production &amp;&amp; php oil -v</code></pre>
@@ -217,7 +217,7 @@ Fuel::$env = (isset($_SERVER['FUEL_ENV']) ? $_SERVER['FUEL_ENV'] : Fuel::PRODUCT
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

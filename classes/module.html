@@ -12,7 +12,7 @@
 		var class_prefix = "Module::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Module - 類別 - FuelPHP 简体中文手册</title>
+	<title>Module - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Module 類別</h2>
+			<h2>Module 类別</h2>
 
-			<p><kbd>Module</kbd> 類別能讓你簡易的載入、卸載、檢查一個模組是否存在或是否已被載入，或取得一個所有已載入的模組列表。</p>
+			<p><kbd>Module</kbd> 类別能让你简易的載入、卸載、檢查一个模組是否存在或是否已被載入，或取得一个所有已載入的模組列表。</p>
 
 			<article>
 				<h4 class="method" id="method_load">load($module, $path = null)</h4>
-				<p><strong>load</strong> 方法能讓你在執行階段載入一個或更多模組，如果模組無法被找到，一個 <kbd>ModuleNotFoundException</kbd> 將被拋出。</p>
+				<p><strong>load</strong> 方法能让你在执行階段載入一个或更多模組，如果模組無法被找到，一个 <kbd>ModuleNotFoundException</kbd> 将被拋出。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -54,18 +54,18 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$module</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被載入的模組名稱，或一個模組陣列。</td>
+									<td>要被載入的模組名稱，或一个模組陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
@@ -85,14 +85,14 @@
 							<pre class="php"><code>// 載入 users 模組
 Module::load('users');
 
-// 從指定的目錄載入 users 模組
+// 從指定的目录載入 users 模組
 Module::load('users', '/path/to/modules/users/');
 
-// 從單一模組安裝程序載入多個模組
+// 從单一模組安装程序載入多个模組
 Module::load( array('Users' => '/path/to/modules/users/', 'Groups' => '/path/to/modules/groups/') );
 
 // 載入不存在的模組
-Module::load('awesome'); // 拋出一個 ModuleNotFoundException
+Module::load('awesome'); // 拋出一个 ModuleNotFoundException
 </code></pre>
 						</td>
 					</tr>
@@ -102,7 +102,7 @@ Module::load('awesome'); // 拋出一個 ModuleNotFoundException
 
 			<article>
 				<h4 class="method" id="method_unload">unload($module)</h4>
-				<p><strong>unload</strong> 方法能讓你在執行階段卸載一個模組。</p>
+				<p><strong>unload</strong> 方法能让你在执行階段卸載一个模組。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -110,11 +110,11 @@ Module::load('awesome'); // 拋出一個 ModuleNotFoundException
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -141,12 +141,12 @@ Module::unload('users');
 					</tbody>
 				</table>
 
-				<p class="note">這將移除所有已載入指向此模組的路由！</p>
+				<p class="note">这将移除所有已載入指向此模組的路由！</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_loaded">loaded($module = null)</h4>
-				<p><strong>loaded</strong> 方法能讓你檢查一個模組目前是否已載入。如果沒給模組名稱，會回傳所有已載入的模組。</p>
+				<p><strong>loaded</strong> 方法能让你檢查一个模組目前是否已載入。如果沒給模組名稱，会回傳所有已載入的模組。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -154,11 +154,11 @@ Module::unload('users');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -199,8 +199,8 @@ array(
 			<article>
 				<h4 class="method" id="method_exists">exists($module)</h4>
 				<p>
-					<strong>exists</strong> 方法能讓你檢查一個模組是否存在。換句話說，是否它能在配置模組路徑之中被找到。
-					如果找到的話，會回傳指向模組的路徑，否則的話回傳 <strong>false</strong>。
+					<strong>exists</strong> 方法能让你檢查一个模組是否存在。換句話說，是否它能在配置模組路徑之中被找到。
+					如果找到的話，会回傳指向模組的路徑，否則的話回傳 <strong>false</strong>。
 				</p>
 				<table class="method">
 					<tbody>
@@ -209,11 +209,11 @@ array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -248,7 +248,7 @@ if (Module::exists('comments'))
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

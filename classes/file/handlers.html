@@ -12,7 +12,7 @@
 		var class_prefix = "File_Handler_File::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>File 處理程序 - 類別 - FuelPHP 简体中文手册</title>
+	<title>File 处理程序 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,28 +40,28 @@
 
 		<div id="main">
 
-			<h2>處理程序</h2>
+			<h2>处理程序</h2>
 
 			<article>
-				<h3 id="introduction">簡介</h3>
+				<h3 id="introduction">简介</h3>
 
 				<p>
-					Fuel 能讓你包裝目錄和檔案在物件中。透過這樣做，
-					它能讓你在一個 OO 基礎上存取及修改檔案系統項目（檔案及目錄）。
+					Fuel 能让你包裝目录和档案在物件中。透過这樣做，
+					它能让你在一个 OO 基础上存取及修改档案系统項目（档案及目录）。
 				</p>
 
 				<p>
-					接收自 File 類別（或檔案區域）的物件是<em>檔案處理程序</em>。Fuel
-					有兩個核心檔案處理程序：<em>檔案處理程序</em> 以及 <em>目錄處理程序</em>。
-					就像你所期望的，這些類別處理檔案和目錄。
+					接收自 File 类別（或档案區域）的物件是<em>档案处理程序</em>。Fuel
+					有兩个核心档案处理程序：<em>档案处理程序</em> 以及 <em>目录处理程序</em>。
+					就像你所期望的，这些类別处理档案和目录。
 				</p>
 
 				<h3 id="topics">主題</h3>
 				<ul>
 					<li><a href="#usage">用法</a></li>
-					<li><a href="#file_handler">檔案處理程序</a></li>
-					<li><a href="#directory_handler">目錄處理程序</a></li>
-					<li><a href="#writing_handlers">撰寫處理程序</a></li>
+					<li><a href="#file_handler">档案处理程序</a></li>
+					<li><a href="#directory_handler">目录处理程序</a></li>
+					<li><a href="#writing_handlers">撰寫处理程序</a></li>
 				</ul>
 
 			</article>
@@ -71,30 +71,30 @@
 				<h3 id="usage">用法</h3>
 
 				<p>
-					每個輔助類別帶有一組方法，
-					能讓你對包裝在檔案或目錄中的物件執行操作。這裡是一些使用
+					每个輔助类別帶有一組方法，
+					能让你對包裝在档案或目录中的物件执行操作。这裡是一些使用
 					<a href="usage.html#method_get">File::get</a> 的範例：
 				</p>
 
-				<pre class="php"><code> // 首先我們會取得一個檔案
+				<pre class="php"><code> // 首先我們会取得一个档案
 $file = \File::get(DOCROOT.'/here_is_my/textfile.txt');
 </code></pre>
 
-			<p>現在我們已經取得檔案處理程序，我們可以使用它的方法來完成某事。</p>
+			<p>现在我們已经取得档案处理程序，我們可以使用它的方法來完成某事。</p>
 
-			<pre class="code"><code>// 讓我們重新命名它。
+			<pre class="code"><code>// 让我們重新命名它。
 $file->rename('new_name');
 
-// 取得檔案的內容
+// 取得档案的內容
 $content = $file->read();
 
-// 並且改回原來的名稱
+// 并且改回原來的名稱
 $file->rename('textfile');
 </code></pre>
 
 				<p>
-					正如你可以在上面的例子看到，重新命名文件時，你不需要重新取回該處理程序。
-					你可以一遍又遍地重複使用相同物件，直到你刪除該檔案或清除該變數。
+					正如你可以在上面的例子看到，重新命名文件時，你不需要重新取回該处理程序。
+					你可以一遍又遍地重複使用相同物件，直到你刪除該档案或清除該變数。
 				</p>
 
 
@@ -102,17 +102,17 @@ $file->rename('textfile');
 
 			<section>
 
-				<h3 id="file_handler">檔案處理程序</h3>
+				<h3 id="file_handler">档案处理程序</h3>
 
 				<p>
-					檔案處理程序處理與檔案的基礎互動。每個範例都假設 <strong>
-					$handler</strong> 變數是取回的處理程序。想知道如何取得處理程序？
+					档案处理程序处理與档案的基础互动。每个範例都假設 <strong>
+					$handler</strong> 變数是取回的处理程序。想知道如何取得处理程序？
 					請看<a href="#usage">用法段落</a>。
 				</p>
 
 				<article>
 					<h4 class="method" id="method_file_forge">forge($path, $config = array(), $area = null, $content = array())</h4>
-					<p><strong>forge</strong> 方法回傳一個新的 File_Handler_File 物件。</p>
+					<p><strong>forge</strong> 方法回傳一个新的 File_Handler_File 物件。</p>
 					<table class="method">
 						<tbody>
 							<tr>
@@ -120,18 +120,18 @@ $file->rename('textfile');
 								<td>是</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$path</kbd></th>
 											<td><em>必要</em></td>
-											<td>指向檔案的路徑</td>
+											<td>指向档案的路徑</td>
 										</tr>
 										<tr>
 											<th><kbd>$config</kbd></th>
@@ -153,7 +153,7 @@ $file->rename('textfile');
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>回傳一個新的 File_Handler_File 物件。</td>
+								<td>回傳一个新的 File_Handler_File 物件。</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -175,25 +175,25 @@ $file->rename('textfile');
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$as_string</kbd></th>
 											<td><em>false</em></td>
-											<td>設為 <em>true</em> 以使用 file_get_contents() 而不是 readfile()</td>
+											<td>設为 <em>true</em> 以使用 file_get_contents() 而不是 readfile()</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>回傳 IO 或字串（檔案內容）</td>
+								<td>回傳 IO 或字串（档案內容）</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -215,23 +215,23 @@ $file->rename('textfile');
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_name</kbd></th>
 											<td><em>必要</em></td>
-											<td>新檔案名稱</td>
+											<td>新档案名稱</td>
 										</tr>
 										<tr>
 											<th><kbd>$new_extension</kbd></th>
 											<td><em>false</em></td>
-											<td>新副檔名</td>
+											<td>新副档名</td>
 										</tr>
 									</table>
 								</td>
@@ -260,18 +260,18 @@ $file->rename('textfile');
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_path</kbd></th>
 											<td><em>必要</em></td>
-											<td>指向新目錄的路徑，必須是有效的</td>
+											<td>指向新目录的路徑，必須是有效的</td>
 										</tr>
 									</table>
 								</td>
@@ -300,18 +300,18 @@ $file->rename('textfile');
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_path</kbd></th>
 											<td><em>必要</em></td>
-											<td>指向要複製目錄到的路徑，必須是有效的</td>
+											<td>指向要複製目录到的路徑，必須是有效的</td>
 										</tr>
 									</table>
 								</td>
@@ -340,18 +340,18 @@ $file->rename('textfile');
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_content</kbd></th>
 											<td><em>必要</em></td>
-											<td>新的檔案內容</td>
+											<td>新的档案內容</td>
 										</tr>
 									</table>
 								</td>
@@ -427,7 +427,7 @@ $file->rename('textfile');
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>八進位制的檔案權限</td>
+								<td>八進位制的档案權限</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -449,11 +449,11 @@ $file->rename('textfile');
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
@@ -467,7 +467,7 @@ $file->rename('textfile');
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>檔案的建立或修改時間戳記</td>
+								<td>档案的建立或修改時間戳記</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -475,7 +475,7 @@ $file->rename('textfile');
 									<pre class="php"><code>$created_at = $handler->get_time('created');
 
 $modified_at = $handler->get_time('modified');
-// 或簡寫
+// 或简寫
 $modified_at = $handler->get_time();
 </code></pre>
 								</td>
@@ -495,7 +495,7 @@ $modified_at = $handler->get_time();
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>檔案大小（位元組）</td>
+								<td>档案大小（位元組）</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -509,7 +509,7 @@ $modified_at = $handler->get_time();
 
 				<article>
 					<h4 class="method" id="method_file_get_path">get_path()</h4>
-					<p><strong>get_path</strong> 方法回傳檔案路徑。</p>
+					<p><strong>get_path</strong> 方法回傳档案路徑。</p>
 					<table class="method">
 						<tbody>
 							<tr>
@@ -518,7 +518,7 @@ $modified_at = $handler->get_time();
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>檔案路徑</td>
+								<td>档案路徑</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -535,17 +535,17 @@ $modified_at = $handler->get_time();
 
 			<section>
 
-				<h2 id="directory_handler">目錄處理程序</h2>
+				<h2 id="directory_handler">目录处理程序</h2>
 
 				<p>
-					目錄處理程序處理與目錄的基礎互動。每個範例都假設 <strong>
-					$handler</strong> 變數是取回的處理程序。想知道如何取得處理程序？
+					目录处理程序处理與目录的基础互动。每个範例都假設 <strong>
+					$handler</strong> 變数是取回的处理程序。想知道如何取得处理程序？
 					請看<a href="#usage">用法段落</a>。
 				</p>
 
 				<article>
 					<h4 class="method" id="method_directory_forge" data-class="File_Handler_Directory">forge($path, $config = array(), $area = null, $content = array())</h4>
-					<p><strong>forge</strong> 方法回傳一個新的 File_Handler_Directory 物件。</p>
+					<p><strong>forge</strong> 方法回傳一个新的 File_Handler_Directory 物件。</p>
 					<table class="method">
 						<tbody>
 							<tr>
@@ -553,18 +553,18 @@ $modified_at = $handler->get_time();
 								<td>是</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$path</kbd></th>
 											<td><em>必要</em></td>
-											<td>指向目錄的路徑</td>
+											<td>指向目录的路徑</td>
 										</tr>
 										<tr>
 											<th><kbd>$config</kbd></th>
@@ -579,14 +579,14 @@ $modified_at = $handler->get_time();
 										<tr>
 											<th><kbd>$content</kbd></th>
 											<td><em>陣列</em></td>
-											<td><em>目錄的內容</em></td>
+											<td><em>目录的內容</em></td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>回傳一個新的 File_Handler_File 物件。</td>
+								<td>回傳一个新的 File_Handler_File 物件。</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -608,18 +608,18 @@ $modified_at = $handler->get_time();
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$depth</kbd></th>
 											<td><em>0</em></td>
-											<td>要遞迴目錄的深度，1 是只有目前，而 0 或更小是無限</td>
+											<td>要遞迴目录的深度，1 是只有目前，而 0 或更小是無限</td>
 										</tr>
 										<tr>
 											<th><kbd>$filters</kbd></th>
@@ -631,7 +631,7 @@ $modified_at = $handler->get_time();
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>回傳目錄內容在一個陣列中</td>
+								<td>回傳目录內容在一个陣列中</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -653,18 +653,18 @@ $modified_at = $handler->get_time();
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_name</kbd></th>
 											<td><em>必要</em></td>
-											<td>新目錄名稱</td>
+											<td>新目录名稱</td>
 										</tr>
 
 									</table>
@@ -694,18 +694,18 @@ $modified_at = $handler->get_time();
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_path</kbd></th>
 											<td><em>必要</em></td>
-											<td>指向新目錄的路徑，必須是有效的</td>
+											<td>指向新目录的路徑，必須是有效的</td>
 										</tr>
 									</table>
 								</td>
@@ -734,18 +734,18 @@ $modified_at = $handler->get_time();
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$new_path</kbd></th>
 											<td><em>必要</em></td>
-											<td>指向要複製目錄到的路徑，必須是有效的</td>
+											<td>指向要複製目录到的路徑，必須是有效的</td>
 										</tr>
 									</table>
 								</td>
@@ -774,23 +774,23 @@ $modified_at = $handler->get_time();
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
 										<tr>
 											<th><kbd>$recursive</kbd></th>
 											<td><em>true</em></td>
-											<td>是否也刪除子目錄內容</td>
+											<td>是否也刪除子目录內容</td>
 										</tr>
 										<tr>
 											<th><kbd>$delete_top</kbd></th>
 											<td><em>true</em></td>
-											<td>是否在為空時刪除上層目錄</td>
+											<td>是否在为空時刪除上層目录</td>
 										</tr>
 									</table>
 								</td>
@@ -820,7 +820,7 @@ $modified_at = $handler->get_time();
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>八進位制的目錄權限</td>
+								<td>八進位制的目录權限</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -842,11 +842,11 @@ $modified_at = $handler->get_time();
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
@@ -860,7 +860,7 @@ $modified_at = $handler->get_time();
 							</tr>
 							<tr>
 								<th>回傳</th>
-								<td>目錄的建立或修改時間戳記</td>
+								<td>目录的建立或修改時間戳記</td>
 							</tr>
 							<tr>
 								<th>範例</th>
@@ -868,7 +868,7 @@ $modified_at = $handler->get_time();
 									<pre class="php"><code>$created_at = $handler->get_time('created');
 
 $modified_at = $handler->get_time('modified');
-// 或簡寫
+// 或简寫
 $modified_at = $handler->get_time();
 </code></pre>
 								</td>
@@ -881,20 +881,20 @@ $modified_at = $handler->get_time();
 
 			<article>
 
-				<h2 id="writing_handlers">撰寫處理程序</h2>
+				<h2 id="writing_handlers">撰寫处理程序</h2>
 
 				<p>
-					正如前面所提到，Fuel 帶有兩個預定義的處理程序。一個用於目錄以及一個用於檔案。
-					透過撰寫你自己的處理程序，你可以改變行為並且藉由檔案類型添加相應功能。
-					例如處理 csv 文件時，你可能希望在讀取時自動解析他們，
-					或可以從一個圖像檔案取回圖像。
+					正如前面所提到，Fuel 帶有兩个預定義的处理程序。一个用於目录以及一个用於档案。
+					透過撰寫你自己的处理程序，你可以改變行为并且藉由档案类型添加相應功能。
+					例如处理 csv 文件時，你可能希望在讀取時自动解析他們，
+					或可以從一个圖像档案取回圖像。
 				</p>
 
 				<h4 id="writing_handlers_how_to">如何撰寫他們……</h4>
 
 				<p>
-					處理程序是擴充 File Handler 類別（<strong>\File_Handler_File</strong>）的類別。
-					這裡是一個範例：
+					处理程序是擴充 File Handler 类別（<strong>\File_Handler_File</strong>）的类別。
+					这裡是一个範例：
 				</p>
 
 				<pre class="php"><code>&lt;?php
@@ -903,7 +903,7 @@ class File_Handler_XML extends \File_Handler_File
 {
 
 	/**
-	 * Read 方法指定此處理程序會如何處理檔案內容
+	 * Read 方法指定此处理程序会如何处理档案內容
 	 */
 	public function read()
 	{
@@ -914,15 +914,15 @@ class File_Handler_XML extends \File_Handler_File
 /* End of file xml.php */
 </code></pre>
 
-				<p class="note">注意 <strong>$this->path</strong>。這將一直保持路徑為目前檔案，即使在移動或改名時。</p>
+				<p class="note">注意 <strong>$this->path</strong>。这将一直保持路徑为目前档案，即使在移动或改名時。</p>
 
 				<h4 id="writing_handlers_adding">添加他們……</h4>
 
 				<p>
-					File 處理程序可以透過在 file 配置中添加來指派。
-					透過添加它們到基礎配置，所有來自特定副檔名的檔案將被所需的處理程序取回。
-					你也可以在一個區域基礎上，
-					透過添加它們到你想使用的區域配置中來指派處理程序。
+					File 处理程序可以透過在 file 配置中添加來指派。
+					透過添加它們到基础配置，所有來自特定副档名的档案将被所需的处理程序取回。
+					你也可以在一个區域基础上，
+					透過添加它們到你想使用的區域配置中來指派处理程序。
 				</p>
 
 				<pre class="php"><code>// 在 app/config/file.php
@@ -948,7 +948,7 @@ class File_Handler_XML extends \File_Handler_File
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

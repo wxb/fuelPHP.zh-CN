@@ -12,7 +12,7 @@
 		var class_prefix = "Event::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Event - 類別 - FuelPHP 简体中文手册</title>
+	<title>Event - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,15 +40,15 @@
 
 		<div id="main">
 
-			<h2>Event 類別</h2>
+			<h2>Event 类別</h2>
 
-			<p>Event 類別能讓你在無須修改任何核心檔案之下與 Fuel 核心互動。</p>
+			<p>Event 类別能让你在無須修改任何核心档案之下與 Fuel 核心互动。</p>
 
-			<h3 id="system_events">系統定義事件</h3>
+			<h3 id="system_events">系统定義事件</h3>
 
 			<p>
-				FuelPHP 在 <kbd>fuelphp</kbd> 實例定義了幾個事件，你可以掛接到核心而不須擴充它。
-				這些事件是：
+				FuelPHP 在 <kbd>fuelphp</kbd> 實例定義了幾个事件，你可以掛接到核心而不須擴充它。
+				这些事件是：
 			</p>
 
 			<table class="config">
@@ -60,49 +60,49 @@
 					<tr>
 						<th>app_created</th>
 						<td>
-							在 FuelPHP 框架被初始化後，此事件將被觸發。
+							在 FuelPHP 框架被初始化後，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>request_created</th>
 						<td>
-							在一個新的 <kbd>Request</kbd> 物件被請求後，此事件將被觸發。
+							在一个新的 <kbd>Request</kbd> 物件被請求後，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>request_started</th>
 						<td>
-							當一個 <kbd>Request</kbd> 被請求執行時，此事件將被觸發。
+							當一个 <kbd>Request</kbd> 被請求执行時，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>controller_started</th>
 						<td>
-							在控制器 <kbd>before()</kbd> 方法被呼叫前，此事件將被觸發。
+							在控制器 <kbd>before()</kbd> 方法被呼叫前，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>controller_finished</th>
 						<td>
-							在控制器 <kbd>after()</kbd> 方法被呼叫並接收回傳後，此事件將被觸發。
+							在控制器 <kbd>after()</kbd> 方法被呼叫并接收回傳後，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>response_created</th>
 						<td>
-							在一個新 <kbd>Response</kbd> 物件被鍛造後，此事件將被觸發。
+							在一个新 <kbd>Response</kbd> 物件被鍛造後，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>request_finished</th>
 						<td>
-							當一個 <kbd>Request</kbd> 已完成並接收到一個回傳時，此事件將被觸發。
+							當一个 <kbd>Request</kbd> 已完成并接收到一个回傳時，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
 						<th>shutdown</th>
 						<td>
-							在主要請求已處理並且輸出被送出後，此事件將被觸發。
+							在主要請求已处理并且輸出被送出後，此事件将被觸发。
 						</td>
 					</tr>
 					<tr>
@@ -156,11 +156,11 @@ return array(
 				</tbody>
 			</table>
 
-			<h3 id="class_methods">類別方法</h3>
+			<h3 id="class_methods">类別方法</h3>
 
 			<article>
 				<h4 class="method" id="method_register">register($event, $callback)</h4>
-				<p><strong>register</strong> 方法能讓檔案註冊一個物件，將在 <kbd>trigger</kbd> 方法被呼叫時運行。</p>
+				<p><strong>register</strong> 方法能让档案註冊一个物件，将在 <kbd>trigger</kbd> 方法被呼叫時运行。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -168,18 +168,18 @@ return array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$event</kbd></th>
 									<td><i>必要</i></td>
-									<td>你要對程式碼註冊的事件。</td>
+									<td>你要對程式码註冊的事件。</td>
 								</tr>
 								<tr>
 									<th><kbd>$callback</kbd></th>
@@ -205,7 +205,7 @@ return array(
 
 			<article>
 				<h4 class="method" id="method_unregister">unregister($event, $callback = null)</h4>
-				<p><strong>unregister</strong> 方法能讓檔案註銷一個物件，將在 <kbd>trigger</kbd> 方法被呼叫時運行。</p>
+				<p><strong>unregister</strong> 方法能让档案註銷一个物件，将在 <kbd>trigger</kbd> 方法被呼叫時运行。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -213,23 +213,23 @@ return array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$event</kbd></th>
 									<td><i>必要</i></td>
-									<td>你要對程式碼註銷的事件。</td>
+									<td>你要對程式码註銷的事件。</td>
 								</tr>
 								<tr>
 									<th><kbd>$callback</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>回呼（callback）方法。如果沒有提供，所有的回呼（callback）將被移除。</td>
+									<td>回呼（callback）方法。如果沒有提供，所有的回呼（callback）将被移除。</td>
 								</tr>
 							</table>
 						</td>
@@ -241,7 +241,7 @@ return array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 定義兩個事件回呼（callback）
+							<pre class="php"><code>// 定義兩个事件回呼（callback）
 $callback_one = function()
 {
 	echo 'callback one';
@@ -256,19 +256,19 @@ $callback_two = function()
 Event::register('my_event', $callback_one);
 Event::register('my_event', $callback_two);
 
-// 註銷第一個回呼（callback）
+// 註銷第一个回呼（callback）
 Event::unregister('my_event', $callback_one);
 
-// 觸發事件
+// 觸发事件
 Event::trigger('my_event');
-// 這裡只會寫出 "callback two"
+// 这裡只会寫出 "callback two"
 
 // 註銷所有來自 "my_event" 的回呼（callback）;
 Event::unregister('my_event');
 
-// 觸發事件
+// 觸发事件
 Event::trigger('my_event');
-// 將沒有輸出。</code></pre>
+// 将沒有輸出。</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -277,7 +277,7 @@ Event::trigger('my_event');
 
 			<article>
 				<h4 class="method" id="method_trigger">trigger($event, $data = '', $return_type = 'string', $reversed = false)</h4>
-				<p><strong>trigger</strong> 方法用於觸發或啟動透過 register 方法的回呼（callback）。</p>
+				<p><strong>trigger</strong> 方法用於觸发或啟动透過 register 方法的回呼（callback）。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -285,18 +285,18 @@ Event::trigger('my_event');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$event</kbd></th>
 									<td><i>必要</i></td>
-									<td>你要觸發的事件。</td>
+									<td>你要觸发的事件。</td>
 								</tr>
 								<tr>
 									<th><kbd>$data</kbd></th>
@@ -306,12 +306,12 @@ Event::trigger('my_event');
 								<tr>
 									<th><kbd>$return_type</kbd></th>
 									<td><pre class="php"><code>'string'</code></pre></td>
-									<td>你期望回傳的資料類型。（string、array、json、none、serialized） - <strong>預設是 string</strong></td>
+									<td>你期望回傳的資料类型。（string、array、json、none、serialized） - <strong>預設是 string</strong></td>
 								</tr>
 								<tr>
 									<th><kbd>$reversed</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>設定為 true 以反序觸發事件，LIFO 而非 FIFO。</td>
+									<td>設定为 true 以反序觸发事件，LIFO 而非 FIFO。</td>
 								</tr>
 							</table>
 						</td>
@@ -332,7 +332,7 @@ Event::trigger('my_event');
 
 			<article>
 				<h4 class="method" id="method_has_events">has_events($event)</h4>
-				<p><strong>has_events</strong> 方法是可利用的，所以你可以檢查特殊的已註冊事件是否有觸發器。</p>
+				<p><strong>has_events</strong> 方法是可利用的，所以你可以檢查特殊的已註冊事件是否有觸发器。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -340,11 +340,11 @@ Event::trigger('my_event');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -372,7 +372,7 @@ Event::trigger('my_event');
 
 			<article>
 				<h4 class="method" id="method_forge">forge(array $events = array())</h4>
-				<p><strong>forge</strong> 回傳一個新的 event 物件。</p>
+				<p><strong>forge</strong> 回傳一个新的 event 物件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -380,11 +380,11 @@ Event::trigger('my_event');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -403,17 +403,17 @@ Event::trigger('my_event');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 建立一個新的 event 物件
+							<pre class="php"><code>// 建立一个新的 event 物件
 $events = Event::forge();
 
-// 建立一個新的 event 物件
+// 建立一个新的 event 物件
 // 加上事件
 $events = Event::forge(array(
 	'update' => function(){
-		// 在更新時做點什麼
+		// 在更新時做點什么
 	},
 	'register' => function(){
-		// 在註冊時做點什麼
+		// 在註冊時做點什么
 	},
 ));
 
@@ -425,7 +425,7 @@ $events->register('my_event', function(){
 });
 
 $events->trigger('my_event');
-// 將輸出 "this is awesome"
+// 将輸出 "this is awesome"
 </code></pre>
 						</td>
 					</tr>
@@ -435,7 +435,7 @@ $events->trigger('my_event');
 
 			<article>
 				<h4 class="method" id="method_instance">instance($name = 'fuelphp', array $events = array())</h4>
-				<p><strong>instance</strong> 回傳一個新的唯一 event 物件。</p>
+				<p><strong>instance</strong> 回傳一个新的唯一 event 物件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -443,11 +443,11 @@ $events->trigger('my_event');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -471,7 +471,7 @@ $events->trigger('my_event');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 建立一個新的 event 實例
+							<pre class="php"><code>// 建立一个新的 event 實例
 $events = Event::instance('my_instance');
 
 $same = Event::instance('my_instance');
@@ -485,7 +485,7 @@ $same->register('my_event', function(){
 });
 
 Event::instance('my_instance')->trigger('my_event');
-// 將輸出 "this is awesome!"</code></pre>
+// 将輸出 "this is awesome!"</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -496,7 +496,7 @@ Event::instance('my_instance')->trigger('my_event');
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

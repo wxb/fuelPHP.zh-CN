@@ -12,7 +12,7 @@
 		var class_prefix = "Log::";
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>Log - 類別 - FuelPHP 简体中文手册</title>
+	<title>Log - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="log.html#" id="toc_handle">目錄</a>
+			<a href="log.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,25 +40,25 @@
 
 		<div id="main">
 
-			<h2>Log 類別</h2>
+			<h2>Log 类別</h2>
 
-			<p>Log 類別能讓你寫訊息到紀錄檔案。</p>
+			<p>Log 类別能让你寫訊息到紀錄档案。</p>
 
 			<h3 id="configuration">配置</h3>
 
-			<p>紀錄檔案被放置在 <strong>config.php</strong> 的 '<strong>log_path</strong>' 屬性所指定的文件夾。你也可以在那裡設定 '<strong>log_threshold</strong>' 與 '<strong>log_date_format</strong>' 參數。<br/>這些設定也可以藉由使用 <a href="config.html">Config 類別</a> 動態地改變。</p>
+			<p>紀錄档案被放置在 <strong>config.php</strong> 的 '<strong>log_path</strong>' 屬性所指定的文件夾。你也可以在那裡設定 '<strong>log_threshold</strong>' 與 '<strong>log_date_format</strong>' 參数。<br/>这些設定也可以藉由使用 <a href="config.html">Config 类別</a> 动態地改變。</p>
 
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>參數</th>
-						<th>類型</th>
+						<th>參数</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th>描述</th>
 					</tr>
 					<tr>
 						<th>log_threshold</th>
-						<td>常數</td>
+						<td>常数</td>
 						<td><pre class="php"><code>Fuel::L_WARNING</code></pre></td>
 						<td>
 							可以是以下任何一種：<code>Fuel::L_NONE、Fuel::L_ERROR、Fuel::L_WARNING、Fuel::L_DEBUG、Fuel::L_INFO 或 Fuel::L_ALL</code>
@@ -69,7 +69,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							紀錄檔案的名稱。如果沒給，它會被產生為 "./YYYY/MM/DD.log" 的形式，每天一個紀錄檔案。
+							紀錄档案的名稱。如果沒給，它会被產生为 "./YYYY/MM/DD.log" 的形式，每天一个紀錄档案。
 						</td>
 					</tr>
 					<tr>
@@ -77,7 +77,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>APPPATH.'logs/'</code></pre></td>
 						<td>
-							要放置紀錄檔案的地方（文件夾必須為可寫入）
+							要放置紀錄档案的地方（文件夾必須为可寫入）
 						</td>
 					</tr>
 					<tr>
@@ -99,43 +99,43 @@ Log::debug()
 Log::warning()
 Log::error()</code></pre>
 
-			<p>它們都使用主要的 <strong>Log::write()</strong> 函式，此函式需要 <strong>$level</strong> 參數做為第一個變數。</p>
+			<p>它們都使用主要的 <strong>Log::write()</strong> 函式，此函式需要 <strong>$level</strong> 參数做为第一个變数。</p>
 
 			<h6>一些範例：</h6>
-			<pre class="php"><code>// 以 "Info" 等級寫入一個紀錄條目到紀錄檔案
+			<pre class="php"><code>// 以 "Info" 等級寫入一个紀錄條目到紀錄档案
 $var = 1;
 Log::info('Application started (with $var = '.$var.')', 'my_init_function()');
 
-// 儲存 $var 新的值到紀錄檔案而不使用 $method 參數
+// 儲存 $var 新的值到紀錄档案而不使用 $method 參数
 $var = 5;
 Log::debug('$var is now '.$var);
 
-// 發送一個警告紀錄條目
+// 发送一个警告紀錄條目
 if($var !== 1) Log::warning('Although $var has been changed, we will keep going.');
 
-// 發送一個錯誤紀錄條目
+// 发送一个错误紀錄條目
 if($var !== 1) Log::error('We cannot keep going, $var has been changed! :o');
 
-// 最後，建立一個自訂 $level 的紀錄條目
+// 最後，建立一个自訂 $level 的紀錄條目
 Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 
 			<h5 id="output">輸出</h5>
 
 			<p>
-				所有紀錄檔案被放置在定義的文件夾中（見上文）。<br />
-				如果你已經配置了一個檔案名稱，所有紀錄會被寫到這個檔案。你需要設置你自己的紀錄輪換機制
-				（例如 Linux logrotate）來避免檔案變得非常大。如果你還沒配置一個檔案名稱，
-				紀錄檔案會在透過目前<strong>年</strong>其次是<strong>月</strong>（例如 <em>"2013/06"</em>）命名的文件夾中，
-				帶著日期做為檔案名稱（例如 <em>"15.php"</em>）揭露。<br/>
-				指向我們的範例紀錄檔案的完整路徑會是：<strong>APPPATH.'logs/2011/06/15.php'</strong>
+				所有紀錄档案被放置在定義的文件夾中（見上文）。<br />
+				如果你已经配置了一个档案名稱，所有紀錄会被寫到这个档案。你需要設置你自己的紀錄輪換機制
+				（例如 Linux logrotate）來避免档案變得非常大。如果你還沒配置一个档案名稱，
+				紀錄档案会在透過目前<strong>年</strong>其次是<strong>月</strong>（例如 <em>"2013/06"</em>）命名的文件夾中，
+				帶著日期做为档案名稱（例如 <em>"15.php"</em>）揭露。<br/>
+				指向我們的範例紀錄档案的完整路徑会是：<strong>APPPATH.'logs/2011/06/15.php'</strong>
 			</p>
 
-			<p><strong>上面的範例將會寫入以下的程式碼到紀錄檔案：</strong></p>
+			<p><strong>上面的範例将会寫入以下的程式码到紀錄档案：</strong></p>
 			<pre class="php"><code>&lt;?php defined('COREPATH') or exit('No direct script access allowed'); ?&gt;<br/><br/>Info - 2011-01-03 18:44:45 --> my_init_function() - Application started (with $var = 1)<br/>Debug - 2011-01-03 18:44:45 --> $var is now 5<br/>Warning - 2011-01-03 18:44:45 --> Although $var has been changed, we will keep going.<br/>Error - 2011-01-03 18:44:45 --> We cannot keep going, $var has been changed! :o<br/>Link - 2011-01-03 18:44:45 --> More info on http://fuelphp.com/</code></pre>
 
 			<article>
 				<h4 class="method" id="method_info">info($msg, $method = null)</h4>
-				<p><strong>info</strong> 方法能讓你以 "Info" 的 <strong>$level</strong> 寫一個紀錄條目。</p>
+				<p><strong>info</strong> 方法能让你以 "Info" 的 <strong>$level</strong> 寫一个紀錄條目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -143,11 +143,11 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -180,7 +180,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_debug">debug($msg, $method = null)</h4>
-				<p><strong>debug</strong> 方法能讓你以 "Debug" 的 <strong>$level</strong> 寫一個紀錄條目。</p>
+				<p><strong>debug</strong> 方法能让你以 "Debug" 的 <strong>$level</strong> 寫一个紀錄條目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -188,11 +188,11 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -225,7 +225,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_warning">warning($msg, $method = null)</h4>
-				<p><strong>warning</strong> 方法能讓你以 "Warning" 的 <strong>$level</strong> 寫一個紀錄條目。</p>
+				<p><strong>warning</strong> 方法能让你以 "Warning" 的 <strong>$level</strong> 寫一个紀錄條目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -233,11 +233,11 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -261,7 +261,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 我們發送一個警告紀錄條目<br/>if($var !== 1) Log::warning('Although $var has been changed, we will keep going.');</code></pre>
+							<pre class="php"><code>// 我們发送一个警告紀錄條目<br/>if($var !== 1) Log::warning('Although $var has been changed, we will keep going.');</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -270,7 +270,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_error">error($msg, $method = null)</h4>
-				<p><strong>error</strong> 方法能讓你以 "Error" 的 <strong>$level</strong> 寫一個紀錄條目。</p>
+				<p><strong>error</strong> 方法能让你以 "Error" 的 <strong>$level</strong> 寫一个紀錄條目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -278,11 +278,11 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -306,7 +306,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 我們發送一個錯誤紀錄條目<br/>if($var !== 1) Log::error('We cannot keep going, $var has been changed! :o');</code></pre>
+							<pre class="php"><code>// 我們发送一个错误紀錄條目<br/>if($var !== 1) Log::error('We cannot keep going, $var has been changed! :o');</code></pre>
 						</td>
 					</tr>
 					</tbody>
@@ -315,7 +315,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_write">write($level, $msg, $method = null)</h4>
-				<p><strong>write</strong> 方法能讓你以自訂的 <strong>$level</strong> 寫一個紀錄條目。</p>
+				<p><strong>write</strong> 方法能让你以自訂的 <strong>$level</strong> 寫一个紀錄條目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -323,11 +323,11 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -356,7 +356,7 @@ Log::write('Link', 'More info on http://fuelphp.com/');</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 最後，我們以自訂 $level 建立一個紀錄條目
+							<pre class="php"><code>// 最後，我們以自訂 $level 建立一个紀錄條目
 Log::write('Link', 'More info on http://fuelphp.com/')</code></pre>
 						</td>
 					</tr>
@@ -372,11 +372,11 @@ Log::write('Link', 'More info on http://fuelphp.com/')</code></pre>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -416,7 +416,7 @@ Log::write('Link', 'More info on http://fuelphp.com/')</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

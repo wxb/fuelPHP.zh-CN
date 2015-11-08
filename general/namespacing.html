@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="namespacing.html#" id="toc_handle">目錄</a>
+			<a href="namespacing.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,7 +42,7 @@
 			<h2>命名空間</h2>
 
 			<p>
-				FuelPHP，做為一個 PHP 5.3+ 框架，很大程度依賴命名空間來分隔框架和你的應用程式的不同元件，
+				FuelPHP，做为一个 PHP 5.3+ 框架，很大程度依賴命名空間來分隔框架和你的应用程序的不同元件，
 				to make the code as portable as possible, and to prevent any collisons in class names when you're moving
 				bits of your application around.
 			</p>
@@ -56,7 +56,7 @@
 				make those classes less portable or interchangable.
 			</p>
 
-			<h3 id="controllers">為你的控制器加上命名空間</h3>
+			<h3 id="controllers">为你的控制器加上命名空間</h3>
 
 			<p>
 				As mentioned in the <a href="controllers/base.html">introduction</a>, by default controllers are created in the <code>APPPATH/classes/controller</code> folder,
@@ -76,7 +76,7 @@ class Example extends \Controller
 {
 	public function action_index()
 	{
-		// 一些程式碼
+		// 一些程式码
 	}
 }</code></pre>
 
@@ -91,7 +91,7 @@ class Example extends \Controller
 {
 	public function action_index()
 	{
-		// 一些程式碼
+		// 一些程式码
 	}
 }</code></pre>
 
@@ -107,29 +107,29 @@ class Example extends \Controller
 				current namespace.
 			</p>
 
-			<h3 id="models">為你的模型加上命名空間</h3>
+			<h3 id="models">为你的模型加上命名空間</h3>
 
 			<p>
-				你可以立即開始為你的模型加上命名空間，不需要額外的配置。
+				你可以立即開始为你的模型加上命名空間，不需要額外的配置。
 			</p>
 
 			<pre class="php"><code>namespace Model;
 
 class Example extends \Orm\Model
 {
-	// 一些程式碼
+	// 一些程式码
 }</code></pre>
 
-			<p>或在一個模組中：</p>
+			<p>或在一个模組中：</p>
 
 			<pre class="php"><code>namespace Mymodule\Model;
 
 class Example extends \Model_Crud
 {
-	// 一些程式碼
+	// 一些程式码
 }</code></pre>
 
-			<p>然後你可以在你的控制器中像這樣存取模型：</p>
+			<p>然後你可以在你的控制器中像这樣存取模型：</p>
 
 			<pre class="php"><code>// the ORM model created above
 $orm = \Model\Example::forge();
@@ -137,14 +137,14 @@ $orm = \Model\Example::forge();
 // the module crud model created above
 $crud = \Mymodule\Model\Example::forge();</code></pre>
 
-			<h3 id="presenters">為你的表現控件加上命名空間</h3>
+			<h3 id="presenters">为你的表现控件加上命名空間</h3>
 
 			<p>
 				Since there is no configuration for the Presenter prefix, namespacing your presenters is a bit more complicated.
 				It requires an extension of the Presenter class in your app. Create the following class:
 			</p>
 
-			<pre class="php"><code>// 位於 APPPATH/classes/presenter.php 的檔案
+			<pre class="php"><code>// 位於 APPPATH/classes/presenter.php 的档案
 class Presenter extends \Fuel\Core\Presenter
 {
 	// 命名空間前綴
@@ -167,7 +167,7 @@ Autoloader::add_classes(array(
 				Once you have made this change, you can define your Presenters like so:
 			</p>
 
-			<pre class="php"><code>// 位於 APPPATH/classes/presenter/users/group.php 的檔案
+			<pre class="php"><code>// 位於 APPPATH/classes/presenter/users/group.php 的档案
 namespace Presenter\Admin\Users;
 
 class Group
@@ -179,19 +179,19 @@ class Group
 }
 </code></pre>
 
-			<h3 id="others">為其他類別加上命名空間</h3>
+			<h3 id="others">为其他类別加上命名空間</h3>
 
 			<p>
 				Any other class in the classes folder can be namespaced without problems, as long as the fully namespaced name of class
 				can be mapped to the file which defines the class:
 			</p>
 
-			<pre class="php"><code>// 位於 APPPATH/classes/admin/users/group.php 的檔案
+			<pre class="php"><code>// 位於 APPPATH/classes/admin/users/group.php 的档案
 namespace Admin\Users;
 
 class Group
 {
-	// 一些程式碼
+	// 一些程式码
 }
 
 // alternative for the same file and class
@@ -199,13 +199,13 @@ namespace Admin;
 
 class Users_Group
 {
-	// 一些程式碼
+	// 一些程式码
 }
 
 // or even old style without namespace
 class Admin_Users_Group
 {
-	// 一些程式碼
+	// 一些程式码
 }
 </code></pre>
 
@@ -244,7 +244,7 @@ class Admin_Users_Group
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

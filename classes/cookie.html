@@ -12,7 +12,7 @@
 		var class_prefix = "Cookie::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Cookie - 類別 - FuelPHP 简体中文手册</title>
+	<title>Cookie - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,44 +40,44 @@
 
 		<div id="main">
 
-			<h2>Cookie 類別</h2>
+			<h2>Cookie 类別</h2>
 
-			<p>Cookie 類別能讓你取得、設定及刪除 cookies。</p>
+			<p>Cookie 类別能让你取得、設定及刪除 cookies。</p>
 
 			<h3 id="configuration">配置</h3>
 
-			<p>Cookie 類別透過全域應用程式配置檔案 <strong>app/config/config.php</strong> 進行配置。它定義一個稱為 '<strong>cookie</strong>' 的段落，在其中以下設定被定義：</p>
+			<p>Cookie 类別透過全域应用程序配置档案 <strong>app/config/config.php</strong> 進行配置。它定義一个稱为 '<strong>cookie</strong>' 的段落，在其中以下設定被定義：</p>
 			<table class="method">
 				<tbody>
 					<tr>
-						<th>變數</th>
-						<th>類型</th>
+						<th>變数</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th class="description">描述</th>
 					</tr>
 					<tr>
 						<th><kbd>expiration</kbd></th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>0</code></pre></td>
-						<td>在 cookie 到期前的秒數。當你呼叫 set() 方法，而 $expiration 沒有被指定時，這個值將被使用。</td>
+						<td>在 cookie 到期前的秒数。當你呼叫 set() 方法，而 $expiration 沒有被指定時，这个值将被使用。</td>
 					</tr>
 					<tr>
 						<th><kbd>path</kbd></th>
 						<td>字串</td>
 						<td><pre class="php"><code>'/'</code></pre></td>
-						<td>限制 cookie 可用的路徑。當你呼叫 set() 方法，而 $path 沒有被指定時，這個值將被使用。</td>
+						<td>限制 cookie 可用的路徑。當你呼叫 set() 方法，而 $path 沒有被指定時，这个值将被使用。</td>
 					</tr>
 					<tr>
 						<th><kbd>domain</kbd></th>
 						<td>字串</td>
 						<td><pre class="php"><code>null</code></pre></td>
-						<td>限制 cookie 可用的網域。當你呼叫 set() 方法，而 $domain 沒有被指定時，這個值將被使用。</td>
+						<td>限制 cookie 可用的網域。當你呼叫 set() 方法，而 $domain 沒有被指定時，这个值将被使用。</td>
 					</tr>
 					<tr>
 						<th><kbd>secure</kbd></th>
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
-						<td>設為 true 如果你只想要透過安全連線傳輸 cookie。</td>
+						<td>設为 true 如果你只想要透過安全連線傳輸 cookie。</td>
 					</tr>
 					<tr>
 						<th><kbd>httponly</kbd></th>
@@ -87,17 +87,17 @@
 					</tr>
 				</tbody>
 			</table>
-			<p>如果全域配置中缺少這些值中的一個或多個時，類別將使用定義在這張表中的預設值。</p>
+			<p>如果全域配置中缺少这些值中的一个或多个時，类別将使用定義在这張表中的預設值。</p>
 			<p class="note">
 				當使用 cookie，請 <strong>務必</strong> 確保配置在你的 <em>app/config/config.php</em> 及／或你的
-				<em>php.ini</em> 檔案中的時區與設定在你伺服器上的時區相符。因為 cookie 的到期時間戳記是 GMT，當你時區有不相符時，
-				計算到期時間將導致嚴重錯誤，從不正確的過期到 cookie 完全不被設定，
-				因為它們到達瀏覽器時已經逾期。
+				<em>php.ini</em> 档案中的時區與設定在你伺服器上的時區相符。因为 cookie 的到期時間戳記是 GMT，當你時區有不相符時，
+				計算到期時間将導致嚴重错误，從不正確的過期到 cookie 完全不被設定，
+				因为它們到達瀏覽器時已经逾期。
 			</p>
 
 			<article>
 				<h4 class="method" id="method_get">get($name = null, $default = null)</h4>
-				<p><strong>get</strong> 方法能讓你讀取一個 $_COOKIE 變數。如果沒有給名稱，會回傳所有 cookie。</p>
+				<p><strong>get</strong> 方法能让你讀取一个 $_COOKIE 變数。如果沒有給名稱，会回傳所有 cookie。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -105,11 +105,11 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -121,7 +121,7 @@
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>如果陣列項目沒有找到時應該要回傳什麼值？</td>
+									<td>如果陣列項目沒有找到時應該要回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -142,7 +142,7 @@
 
 			<article>
 				<h4 class="method" id="method_set">set($name, $value, $expiration = null, $path = null, $domain = null, $secure = null, $httponly = null)</h4>
-				<p><strong>set</strong> 方法能讓你建立一個 Cookie。</p>
+				<p><strong>set</strong> 方法能让你建立一个 Cookie。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -150,11 +150,11 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -171,7 +171,7 @@
 								<tr>
 									<th><kbd>$expiration</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>cookie 應該持續的秒數。</td>
+									<td>cookie 應該持續的秒数。</td>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
@@ -186,7 +186,7 @@
 								<tr>
 									<th><kbd>$secure</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>設為 true 如果你只想要透過安全連線傳輸 cookie。</td>
+									<td>設为 true 如果你只想要透過安全連線傳輸 cookie。</td>
 								</tr>
 								<tr>
 									<th><kbd>$httponly</kbd></th>
@@ -208,14 +208,14 @@
 					</tr>
 					</tbody>
 				</table>
-				<p>對每個沒指定或定義為 <strong>null</strong> 的參數，將被替換為全域定義配置值。</p>
+				<p>對每个沒指定或定義为 <strong>null</strong> 的參数，将被替換为全域定義配置值。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_delete">delete($name, $path = null, $domain = null, $secure = null, $httponly = null)</h4>
-				<p><strong>delete</strong> 方法從 $_COOKIE 陣列刪除一個參數。</p>
+				<p><strong>delete</strong> 方法從 $_COOKIE 陣列刪除一个參数。</p>
 				<p class="note">
-					當一個 cookie 被建立在指定的路徑或網域等，你也必須提供刪除函式。
+					當一个 cookie 被建立在指定的路徑或網域等，你也必須提供刪除函式。
 				</p>
 				<table class="method">
 					<tbody>
@@ -224,18 +224,18 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><i>必要</i></td>
-									<td>移除一個 Cookie 項目。</td>
+									<td>移除一个 Cookie 項目。</td>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
@@ -250,7 +250,7 @@
 								<tr>
 									<th><kbd>$secure</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>設為 true 如果你只想要透過安全連線傳輸 cookie。</td>
+									<td>設为 true 如果你只想要透過安全連線傳輸 cookie。</td>
 								</tr>
 								<tr>
 									<th><kbd>$httponly</kbd></th>
@@ -286,7 +286,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

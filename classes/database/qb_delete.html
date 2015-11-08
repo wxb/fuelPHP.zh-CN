@@ -12,7 +12,7 @@
 		var class_prefix = 'Query_Builder_Delete::';
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Query Builder Delete - 類別 - FuelPHP 简体中文手册</title>
+	<title>Query Builder Delete - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="qb_delete.html#" id="toc_handle">目錄</a>
+			<a href="qb_delete.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,15 +40,15 @@
 
 		<div id="main">
 
-			<h2 id="introduction">Query_Builder_Delete 類別</h2>
+			<h2 id="introduction">Query_Builder_Delete 类別</h2>
 
 			<p>
 				（擴充 <a href="qb_where.html">Query_Builder_Where</a>）
 			</p>
 
 			<p>
-				Query_Builder_Delete 類別為查詢建立程序處理所有 delete 操作，它擴充
-				Query_Builder_Where 類別，所以所有方法都繼承。
+				Query_Builder_Delete 类別为查詢建立程序处理所有 delete 操作，它擴充
+				Query_Builder_Where 类別，所以所有方法都繼承。
 			</p>
 
 			<article>
@@ -61,12 +61,12 @@
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -86,7 +86,7 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 delete 語句
+								<pre class="php"><code>// 預处理一个 delete 語句
 $query = DB::delete('users');
 
 // 設定要刪除的資料表
@@ -102,7 +102,7 @@ $query->table('admins');
 
 			<article>
 				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
-				<p><strong>compile</strong> 方法回傳 delete SQL 查詢做為一個字串。</p>
+				<p><strong>compile</strong> 方法回傳 delete SQL 查詢做为一个字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -110,12 +110,12 @@ $query->table('admins');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -123,22 +123,22 @@ $query->table('admins');
 										<th><kbd>$db</kbd></th>
 										<td><em>物件</em></td>
 										<td><em>必要</em></td>
-										<td>一個資料庫連線</td>
+										<td>一个資料庫連線</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳 SQL 查詢做為一個字串。</td>
+							<td>回傳 SQL 查詢做为一个字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 delete 語句
+								<pre class="php"><code>// 預处理一个 delete 語句
 $query = DB::delete('users');
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('looks', 'like', '%spammer%');
 
 // 取得資料庫連線
@@ -165,7 +165,7 @@ $sql = $query->compile($connection);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -177,16 +177,16 @@ $sql = $query->compile($connection);
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 delete 語句
+								<pre class="php"><code>// 預处理一个 delete 語句
 $query = DB:delete('users');
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('it_look', 'ok to me');
 
 // 重置它
 $query->reset();
 
-// 另一個 where 語句
+// 另一个 where 語句
 $query->where('looks', 'like', '%bad mister%');
 
 // 取得資料庫連線
@@ -207,7 +207,7 @@ $sql = $query->compile($connection);
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

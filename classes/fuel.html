@@ -12,7 +12,7 @@
 		var class_prefix = "Fuel::";
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>Fuel - 類別 - FuelPHP 简体中文手册</title>
+	<title>Fuel - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="fuel.html#" id="toc_handle">目錄</a>
+			<a href="fuel.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,21 +40,21 @@
 
 		<div id="main">
 
-			<h2>Fuel 類別</h2>
+			<h2>Fuel 类別</h2>
 
 			<p>
-				Fuel 類別包含 Fuel 框架的核心方法。
-				此類別能使用在你的應用程式的公開方法都記載在此。
+				Fuel 类別包含 Fuel 框架的核心方法。
+				此类別能使用在你的应用程序的公開方法都記載在此。
 				所有其他的方法僅供內部使用，且不應被使用。</p>
 
-			<h3 id="class_constants">類別常數</h3>
+			<h3 id="class_constants">类別常数</h3>
 
-			<p style="margin-bottom:10px;">環境常數，這些被用於你的 config.php 以定義應用程式環境：</p>
+			<p style="margin-bottom:10px;">环境常数，这些被用於你的 config.php 以定義应用程序环境：</p>
 			<table class="config">
 				<tbody>
 					<tr class="header">
 						<th>名稱</th>
-						<th>類型</th>
+						<th>类型</th>
 						<th>值</th>
 						<th>描述</th>
 					</tr>
@@ -63,7 +63,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'test'</code></pre></td>
 						<td>
-							識別 TEST 環境。
+							識別 TEST 环境。
 						</td>
 					</tr>
 					<tr>
@@ -71,7 +71,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'development'</code></pre></td>
 						<td>
-							識別 DEVELOPMENT 環境。
+							識別 DEVELOPMENT 环境。
 						</td>
 					</tr>
 					<tr>
@@ -79,7 +79,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'staging'</code></pre></td>
 						<td>
-							識別 STAGING 環境。
+							識別 STAGING 环境。
 						</td>
 					</tr>
 					<tr>
@@ -87,24 +87,24 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'production'</code></pre></td>
 						<td>
-							識別 PRODUCTION 環境。
+							識別 PRODUCTION 环境。
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<p id="log_constants" style="margin-bottom:10px;">紀錄常數，這些被用於 <a href="log.html">Log</a> 類別及 <a href="log.html#function_logger">logger():</a> 函式。</p>
+			<p id="log_constants" style="margin-bottom:10px;">紀錄常数，这些被用於 <a href="log.html">Log</a> 类別及 <a href="log.html#function_logger">logger():</a> 函式。</p>
 			<table class="config">
 				<tbody>
 					<tr class="header">
 						<th>名稱</th>
-						<th>類型</th>
+						<th>类型</th>
 						<th>值</th>
 						<th>描述</th>
 					</tr>
 					<tr>
 						<th>L_NONE</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>0</code></pre></td>
 						<td>
 							紀錄等級 0：不紀錄。
@@ -112,15 +112,15 @@
 					</tr>
 					<tr>
 						<th>L_ERROR</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>1</code></pre></td>
 						<td>
-							表示紀錄錯誤訊息。
+							表示紀錄错误訊息。
 						</td>
 					</tr>
 					<tr>
 						<th>L_WARNING</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>2</code></pre></td>
 						<td>
 							表示紀錄警告訊息。
@@ -128,15 +128,15 @@
 					</tr>
 					<tr>
 						<th>L_DEBUG</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>3</code></pre></td>
 						<td>
-							表示紀錄除錯訊息。
+							表示紀錄除错訊息。
 						</td>
 					</tr>
 					<tr>
 						<th>L_INFO</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>4</code></pre></td>
 						<td>
 							表示紀錄資訊訊息。
@@ -144,7 +144,7 @@
 					</tr>
 					<tr>
 						<th>L_ALL</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>5</code></pre></td>
 						<td>
 							所有紀錄等級。
@@ -153,12 +153,12 @@
 				</tbody>
 			</table>
 
-			<p style="margin-bottom:10px;">其他常數：</p>
+			<p style="margin-bottom:10px;">其他常数：</p>
 			<table class="config">
 				<tbody>
 					<tr class="header">
 						<th>名稱</th>
-						<th>類型</th>
+						<th>类型</th>
 						<th>值</th>
 						<th>描述</th>
 					</tr>
@@ -167,21 +167,21 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'<script type="text/javascript">document.write(DocVersion);</script>'</code></pre></td>
 						<td>
-							目前 Fuel 安裝的版本。
+							目前 Fuel 安装的版本。
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<h3>類別特性</h3>
+			<h3>类別特性</h3>
 
-			<p style="margin-bottom:10px;">請注意，雖然這些特性定義為 public，你不應該無故改變它們。</p>
+			<p style="margin-bottom:10px;">請注意，雖然这些特性定義为 public，你不應該無故改變它們。</p>
 			<table class="config">
 				<tbody>
 					<tr class="header">
 						<th>名稱</th>
 						<th>靜態</th>
-						<th>類型</th>
+						<th>类型</th>
 						<th>值</th>
 						<th>描述</th>
 					</tr>
@@ -191,7 +191,7 @@
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							表示框架是否已經初始化。
+							表示框架是否已经初始化。
 						</td>
 					</tr>
 					<tr>
@@ -200,7 +200,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>Fuel::DEVELOPMENT</code></pre></td>
 						<td>
-							框架所運行的環境，必須是上面提到的環境常數之一。
+							框架所运行的环境，必須是上面提到的环境常数之一。
 						</td>
 					</tr>
 					<tr>
@@ -209,7 +209,7 @@
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							如果為 true，分析器會被啟用。
+							如果为 true，分析器会被啟用。
 						</td>
 					</tr>
 					<tr>
@@ -218,7 +218,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'en_US'</code></pre></td>
 						<td>
-							目前定義的語言環境。
+							目前定義的語言环境。
 						</td>
 					</tr>
 					<tr>
@@ -236,7 +236,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'UTF8'</code></pre></td>
 						<td>
-							目前定義的字符集編碼。
+							目前定義的字符集编码。
 						</td>
 					</tr>
 					<tr>
@@ -245,7 +245,7 @@
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							如果是 true，框架運行在 CLI 模式。
+							如果是 true，框架运行在 CLI 模式。
 						</td>
 					</tr>
 					<tr>
@@ -254,7 +254,7 @@
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							如果是 true，框架運行在單元測試模式。
+							如果是 true，框架运行在单元测试模式。
 						</td>
 					</tr>
 				</tbody>
@@ -262,7 +262,7 @@
 
 			<article>
 				<h4 class="method" id="method_load">load($file)</h4>
-				<p><strong>load</strong> 方法載入（引入）一個所給的檔案，並回傳結果。例如這個方法被用於載入配置檔案，會回傳一個配置設定的陣列。</p>
+				<p><strong>load</strong> 方法載入（引入）一个所給的档案，并回傳結果。例如这个方法被用於載入配置档案，会回傳一个配置設定的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -270,18 +270,18 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$file</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被載入的檔案名稱</td>
+									<td>要被載入的档案名稱</td>
 								</tr>
 							</table>
 						</td>
@@ -293,7 +293,7 @@
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 載入一個 PHP 檔案
+							<pre class="php"><code>// 載入一个 PHP 档案
 if (Fuel::load('myfile.php'))
 {
 	echo "MyFile was loaded successfully";
@@ -303,14 +303,14 @@ if (Fuel::load('myfile.php'))
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">請注意，如果引入的文件不包含一個 <strong>return</strong> 語句，load() 如果載入成功將回傳 <strong>1</strong>，或是檔案無法被載入回傳 <strong>0</strong>！</p>
+				<p class="note">請注意，如果引入的文件不包含一个 <strong>return</strong> 語句，load() 如果載入成功将回傳 <strong>1</strong>，或是档案無法被載入回傳 <strong>0</strong>！</p>
 			</article>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -12,7 +12,7 @@
 		var class_prefix = "Config::";
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>Config - 類別 - FuelPHP 简体中文手册</title>
+	<title>Config - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="config.html#" id="toc_handle">目錄</a>
+			<a href="config.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,30 +40,30 @@
 
 		<div id="main">
 
-			<h2>Config 類別</h2>
+			<h2>Config 类別</h2>
 
-			<p>Config 類別處理 Fuel 裡幾乎所有的配置選項。無論何時你需要載入一個配置檔案、取得一個值或設定一個值，你都使用此類別。</p>
+			<p>Config 类別处理 Fuel 裡幾乎所有的配置選項。無論何時你需要載入一个配置档案、取得一个值或設定一个值，你都使用此类別。</p>
 
-			<h3 id="config_groups">Config 檔案類型</h3>
+			<h3 id="config_groups">Config 档案类型</h3>
 
-			你可以使用不同的檔案佈局來儲存你的配置，佈局類型是由副檔名決定：
+			你可以使用不同的档案佈局來儲存你的配置，佈局类型是由副档名決定：
 			<ul>
 				<li>
-					PHP。預設類型，一個 PHP 檔案應該回傳一個陣列結構。
+					PHP。預設类型，一个 PHP 档案應該回傳一个陣列結構。
 					<pre class="php"><code> return array('key' => 'value');</code></pre>
 				</li>
 				<li>
-					INI。ini 檔案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/INI_file">此頁</a>。
+					INI。ini 档案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/INI_file">此頁</a>。
 					<pre class="ini"><code> [group]
 key=value</code></pre>
 				</li>
 				<li>
-					YAML。yaml 檔案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/YAML">此頁</a>。
+					YAML。yaml 档案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/YAML">此頁</a>。
 					<pre class="yaml"><code> group:
    key: value</code></pre>
 				</li>
 				<li>
-					JSON。json 檔案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/JSON">此頁</a>。
+					JSON。json 档案的佈局定義，請參閱 <a href="http://en.wikipedia.org/wiki/JSON">此頁</a>。
 					<pre class="javascript"><code> {
 "group" :
     {
@@ -79,20 +79,20 @@ key=value</code></pre>
   `hash` char(13) NOT NULL,
   PRIMARY KEY (`identifier`)
 )</code></pre>
-					預設情況下，它會使用名為 'config' 的資料表。你可以透過在 <code>app/config/config.php</code> 中定義資料表名稱來覆寫，
+					預設情況下，它会使用名为 'config' 的資料表。你可以透過在 <code>app/config/config.php</code> 中定義資料表名稱來覆寫，
 					使用 <strong>config.table_name</strong> 鍵。
 				</li>
 			</ul>
 
-			<p>如果你沒有指定檔案類型，Config::load() 將預設為 'php' 類型。</p>
+			<p>如果你沒有指定档案类型，Config::load() 将預設为 'php' 类型。</p>
 
 			<h3 id="config_groups">Config 群組</h3>
 
-			<p>配置群組是一個劃分配置選項範圍的簡單方式。這可避免命名衝突。所有配置檔案（db.php、routes.php、等等）被載入到相同名稱的群組，除了主要的 <kbd>config.php</kbd> 檔案。</p>
+			<p>配置群組是一个劃分配置選項範圍的简单方式。这可避免命名衝突。所有配置档案（db.php、routes.php、等等）被載入到相同名稱的群組，除了主要的 <kbd>config.php</kbd> 档案。</p>
 
 			<article>
 				<h4 class="method" id="method_get">get($item, $default = null)</h4>
-				<p><strong>get</strong> 方法回傳想要的配置項目。如果該項目不存在會回傳 <kbd>$default</kbd>。如果你正要取回的項目是一個群組，會回傳整個群組。</p>
+				<p><strong>get</strong> 方法回傳想要的配置項目。如果該項目不存在会回傳 <kbd>$default</kbd>。如果你正要取回的項目是一个群組，会回傳整个群組。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -100,11 +100,11 @@ key=value</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -123,7 +123,7 @@ key=value</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td><kbd>$item</kbd>，如果 <kbd>$item</kbd> 不存在的話是 <kbd>$default</kbd>。如果 <kbd>$item</kbd> 是一個群組，會是一個包含整個群組的 <kbd>陣列</kbd>。</td>
+						<td><kbd>$item</kbd>，如果 <kbd>$item</kbd> 不存在的話是 <kbd>$default</kbd>。如果 <kbd>$item</kbd> 是一个群組，会是一个包含整个群組的 <kbd>陣列</kbd>。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -131,23 +131,23 @@ key=value</code></pre>
 							<pre class="php"><code>// 輸出在 config.php 中目前的語言設定
 echo Config::get('language');
 
-// 預設情況下，不存在的項目將回傳 null
+// 預設情況下，不存在的項目将回傳 null
 if (Config::get('items_to_display') === null)
 {
 	throw new Exception('You must set the number of items to display in config.php');
 }
 
-// 你可以像這樣為不存在的項目設定一個預設值
+// 你可以像这樣为不存在的項目設定一个預設值
 $items_to_display = Config::get('items_to_display', 10);
 
-// 這將載入整個 db 群組，該群組是 config/db.php 的內容
+// 这将載入整个 db 群組，該群組是 config/db.php 的內容
 $db_configs = Config::get('db');
 
-// 這將取得在 db 配置中的設定為 的 db 連線
+// 这将取得在 db 配置中的設定为 的 db 連線
 $active_db = Config::get('db.active');
 
-// 你可以像這樣多層深入。
-// 這將取回 db 群組中 'dev' 的主機名稱
+// 你可以像这樣多層深入。
+// 这将取回 db 群組中 'dev' 的主機名稱
 $dev_host = Config::get('db.dev.connection.hostname');</code></pre>
 						</td>
 					</tr>
@@ -157,7 +157,7 @@ $dev_host = Config::get('db.dev.connection.hostname');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_set">set($item, $value)</h4>
-				<p><strong>set</strong> 方法設定一個所給的 <kbd>$item</kbd> 為 <kbd>$value</kbd>。<kbd>$item</kbd> 可以被點（<kbd>.</kbd>）分隔，就像 <kbd>get()</kbd>。</p>
+				<p><strong>set</strong> 方法設定一个所給的 <kbd>$item</kbd> 为 <kbd>$value</kbd>。<kbd>$item</kbd> 可以被點（<kbd>.</kbd>）分隔，就像 <kbd>get()</kbd>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -165,18 +165,18 @@ $dev_host = Config::get('db.dev.connection.hostname');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$item</kbd></th>
 									<td><i>必要</i></td>
-									<td>要設定的項目名稱。可藉由點（<kbd>.</kbd>）分隔層級來設定群組和多維陣列。如果 <kbd>$item</kbd> 不存在將被建立。</td>
+									<td>要設定的項目名稱。可藉由點（<kbd>.</kbd>）分隔層級來設定群組和多維陣列。如果 <kbd>$item</kbd> 不存在将被建立。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
@@ -199,7 +199,7 @@ Config::set('language', 'en');
 // 設定 active db 連線
 Config::set('db.active', 'test');
 
-// 設定一個你可以稍後使用的自訂值
+// 設定一个你可以稍後使用的自訂值
 Config::set('items_to_display', 5);
 
 // 你也可以使用點去建立自訂的群組和項目
@@ -212,7 +212,7 @@ Config::set('blog.items_to_display', 5);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_delete">delete($item)</h4>
-				<p><strong>delete</strong> 方法移除一個所給的 <kbd>$item</kbd>。<kbd>$item</kbd> 可以被點（<kbd>.</kbd>）分隔，就像 <kbd>set()</kbd> 和 <kbd>get()</kbd>。</p>
+				<p><strong>delete</strong> 方法移除一个所給的 <kbd>$item</kbd>。<kbd>$item</kbd> 可以被點（<kbd>.</kbd>）分隔，就像 <kbd>set()</kbd> 和 <kbd>get()</kbd>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -220,11 +220,11 @@ Config::set('blog.items_to_display', 5);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -243,7 +243,7 @@ Config::set('blog.items_to_display', 5);</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 使用點符號移除一個配置項目
+							<pre class="php"><code>// 使用點符號移除一个配置項目
 Config::delete('blog.items_to_display');</code></pre>
 						</td>
 					</tr>
@@ -253,7 +253,7 @@ Config::delete('blog.items_to_display');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_load">load($file, $group = null, $reload = false, $overwrite = false)</h4>
-				<p><strong>load</strong> 方法讀取一個配置檔案進入系統中。它在配置目錄搜尋請求檔案。你可以選擇性的將配置檔案分組，以避免命名衝突。</p>
+				<p><strong>load</strong> 方法讀取一个配置档案進入系统中。它在配置目录搜尋請求档案。你可以選擇性的将配置档案分組，以避免命名衝突。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -261,54 +261,54 @@ Config::delete('blog.items_to_display');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$file</kbd></th>
 									<td><i>必要</i></td>
-									<td>相對於配置目錄，指向配置檔案的路徑。不要包含副檔名（假設是 ".php"）。你可以用模組名稱前綴它，從已載入的模組來強制載入一個配置檔案。</td>
+									<td>相對於配置目录，指向配置档案的路徑。不要包含副档名（假設是 ".php"）。你可以用模組名稱前綴它，從已載入的模組來強制載入一个配置档案。</td>
 								</tr>
 								<tr>
 									<th><kbd>$group</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>（選擇性）要使用的群組名稱。如果設為 <kbd>true</kbd>，那麼一個與 <kbd>$file</kbd> 同名的群組會被建立。如果沒有設定或是 <kbd>null</kbd>，那麼載入的配置將與根配置合併。</td>
+									<td>（選擇性）要使用的群組名稱。如果設为 <kbd>true</kbd>，那麼一个與 <kbd>$file</kbd> 同名的群組会被建立。如果沒有設定或是 <kbd>null</kbd>，那麼載入的配置将與根配置合併。</td>
 								</tr>
 								<tr>
 									<th><kbd>$reload</kbd></th>
 									<td><kbd>false</kbd></td>
-									<td>（選擇性）如果設為 <kbd>true</kbd>，強制重新載入請求的配置，抹去與要被載入的配置檔案相關的快取配置項目。</td>
+									<td>（選擇性）如果設为 <kbd>true</kbd>，強制重新載入請求的配置，抹去與要被載入的配置档案相關的快取配置項目。</td>
 								</tr>
 								<tr>
 									<th><kbd>$overwrite</kbd></th>
 									<td><kbd>false</kbd></td>
-									<td>（選擇性）如果設為 <kbd>true</kbd>，載入的配置項目將以非遞迴方法與已載入的項目合併，且將覆寫多維陣列的陣列值，而非合併。</td>
+									<td>（選擇性）如果設为 <kbd>true</kbd>，載入的配置項目将以非遞迴方法與已載入的項目合併，且将覆寫多維陣列的陣列值，而非合併。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含被載入的配置<kbd>陣列</kbd>。如果配置檔案已經被載入，那麼將回傳 <kbd>false</kbd></td>
+						<td>包含被載入的配置<kbd>陣列</kbd>。如果配置档案已经被載入，那麼将回傳 <kbd>false</kbd></td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 合併 "custom" 配置檔案和根配置。
+							<pre class="php"><code>// 合併 "custom" 配置档案和根配置。
 Config::load('custom');
 
-// 載入 "custom" 配置檔案進入名為 "custom" 的群組。
+// 載入 "custom" 配置档案進入名为 "custom" 的群組。
 Config::load('custom', true);
 
-// 載入 "custom" 配置檔案進入名為 "foo" 的群組。
+// 載入 "custom" 配置档案進入名为 "foo" 的群組。
 Config::load('custom', 'foo');
 
-// 從 foo 模組載入 "custom" 配置檔案進入名為 "bar" 的群組。
+// 從 foo 模組載入 "custom" 配置档案進入名为 "bar" 的群組。
 Config::load('foo::custom', 'bar');</code></pre>
 						</td>
 					</tr>
@@ -318,7 +318,7 @@ Config::load('foo::custom', 'bar');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_save">save($file, $config)</h4>
-				<p><strong>save</strong> 方法儲存一個配置檔案進入系統。它在配置目錄搜尋請求檔案。如果沒有找到存在的檔案，配置檔案將被建立在 APPPATH 的配置目錄。</p>
+				<p><strong>save</strong> 方法儲存一个配置档案進入系统。它在配置目录搜尋請求档案。如果沒有找到存在的档案，配置档案将被建立在 APPPATH 的配置目录。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -326,44 +326,44 @@ Config::load('foo::custom', 'bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$file</kbd></th>
 									<td><i>必要</i></td>
-									<td>相對於配置目錄，指向配置檔案的路徑。不要包含副檔名（假設是 ".php"）。你可以用命名空間前綴它，從已載入的套件或模組來載入一個配置檔案。</td>
+									<td>相對於配置目录，指向配置档案的路徑。不要包含副档名（假設是 ".php"）。你可以用命名空間前綴它，從已載入的套件或模組來載入一个配置档案。</td>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
 									<td><i>必要</i></td>
-									<td>如果是字串，它指定一個要儲存的群組名稱。如果是一個陣列，它被假設為包含要儲存的配置。</td>
+									<td>如果是字串，它指定一个要儲存的群組名稱。如果是一个陣列，它被假設为包含要儲存的配置。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td><kbd>true</kbd> 如果配置被儲存，<kbd>false</kbd> 如果發生錯誤</td>
+						<td><kbd>true</kbd> 如果配置被儲存，<kbd>false</kbd> 如果发生错误</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 載入 "custom" 配置檔案進入名為 "foo" 的群組。
+							<pre class="php"><code>// 載入 "custom" 配置档案進入名为 "foo" 的群組。
 Config::load('custom', 'foo');
 
 // 更新一些配置項目
 Config::set('foo.key', $value);
 
-// 儲存更新的配置群組 'foo'（注：將儲存該群組的任何東西 ）
+// 儲存更新的配置群組 'foo'（注：将儲存該群組的任何東西 ）
 Config::save('custom', 'foo');
 
-// 儲存更新的配置群組 'bar' 到 'foo' 模組的 'custom' 配置檔案
+// 儲存更新的配置群組 'bar' 到 'foo' 模組的 'custom' 配置档案
 Config::save('foo::custom', 'bar');</code></pre>
 						</td>
 					</tr>
@@ -375,7 +375,7 @@ Config::save('foo::custom', 'bar');</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

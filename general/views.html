@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="views.html#" id="toc_handle">目錄</a>
+			<a href="views.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,13 +41,13 @@
 
 			<h2>檢視</h2>
 
-			<h3 id="what_is_a_view">檢視是什麼？</h3>
+			<h3 id="what_is_a_view">檢視是什么？</h3>
 
-			<p>檢視是呈現資料到瀏覽器的檔案。這些檔案可以讓你的應用程式分離邏輯和呈現。檢視通常是 html、javascript、或 css 但可以包含從控制器傳入的變數。</p>
+			<p>檢視是呈现資料到瀏覽器的档案。这些档案可以让你的应用程序分離邏輯和呈现。檢視通常是 html、javascript、或 css 但可以包含從控制器傳入的變数。</p>
 
 			<h3>建立檢視</h3>
 
-			<p>在 FuelPHP 中，檢視被放在 <kbd>APPPATH/views</kbd> 目錄中。檢視可以被放在子目錄。檢視的命名是透過它們相對 fuel/app/views 的目錄路徑以及檔案名稱，所以一個位於 <em>fuel/app/views/user/join.php</em> 的檢視檔案會被命名為 <kbd>user/join</kbd>。</p>
+			<p>在 FuelPHP 中，檢視被放在 <kbd>APPPATH/views</kbd> 目录中。檢視可以被放在子目录。檢視的命名是透過它們相對 fuel/app/views 的目录路徑以及档案名稱，所以一个位於 <em>fuel/app/views/user/join.php</em> 的檢視档案会被命名为 <kbd>user/join</kbd>。</p>
 
 			<p>範例：</p>
 
@@ -63,7 +63,7 @@
 
 			<h3 id="using_views">使用檢視</h3>
 
-			<p>在 Fuel 框架中檢視是非常靈活的。你可以建立單一檢視以及在其他檢視內的巢狀檢視。這可用很多方式達成。</p>
+			<p>在 Fuel 框架中檢視是非常靈活的。你可以建立单一檢視以及在其他檢視內的巢狀檢視。这可用很多方式達成。</p>
 
 			<p><strong>檢視範例（fuel/app/views/home/index.php）：</strong></p>
 			<pre class="html"><code>&lt;html&gt;
@@ -82,7 +82,7 @@
 {
 	public function action_index()
 	{
-		$data = array(); // 儲存要給檢視的變數
+		$data = array(); // 儲存要給檢視的變数
 
 		$data['username'] = 'Joe14';
 		$data['title'] = 'Home';
@@ -101,11 +101,11 @@
 		// 建立檢視
 		$view = View::forge('home/index');
 
-		// 指派變數給檢視
+		// 指派變数給檢視
 		$view->username = 'Joe14';
 		$view->title = 'Home';
 
-		// 另一種指派變數給檢視的方法
+		// 另一種指派變数給檢視的方法
 		$view->set('username', 'Joe14');
 		$view->set('title', 'Home');
 
@@ -116,8 +116,8 @@
 
 			<h3 id="security">安全性</h3>
 
-			<p>檢視使用編碼輸出來消毒你傳給它們的任何事物。在預設安裝中，安全方法
-				Security::htmlentities() 被定義為輸出過濾器。你可以修改在你應用程式的 config.php 檔案中的過濾器。
+			<p>檢視使用编码輸出來消毒你傳給它們的任何事物。在預設安装中，安全方法
+				Security::htmlentities() 被定義为輸出過濾器。你可以修改在你应用程序的 config.php 档案中的過濾器。
 				如果你想要傳遞一些不被過濾的東西，你可以使用 <kbd>set($name, $value, false)</kbd> 方法。</p>
 
 			<pre class="php"><code>class Controller_Example extends Controller
@@ -129,47 +129,47 @@
 		// 添加過濾，輸出：&amp;lt;strong&amp;gt;not bold because filtered&amp;lt;/strong&amp;gt;
 		$view->title = '&lt;strong&gt;not bold because filtered&lt;/strong&gt;';
 
-		// 添加未經過濾的，輸出：&lt;strong&gt; bold because unfiltered&lt;/strong&gt;
+		// 添加未经過濾的，輸出：&lt;strong&gt; bold because unfiltered&lt;/strong&gt;
 		$view->set('title', '&lt;strong&gt; bold because unfiltered&lt;/strong&gt;', false);
 
-		// 或使用 set_safe() 方法，它與 set() 一致但預設為 'false'
+		// 或使用 set_safe() 方法，它與 set() 一致但預設为 'false'
 		$view->set_safe('title', '&lt;strong&gt; bold because unfiltered&lt;/strong&gt;');
 
 		return $view;
 	}
 }</code></pre>
 
-			<p>如果你不希望你的檢視這樣運作，你可以傳遞 <kbd>false</kbd> 做為 <kbd>View::forge()</kbd> 的第三參數，
-			現在添加到此檢視物件的所有事物將不被過濾。如果你之後需要過濾一些值，你可以使用
+			<p>如果你不希望你的檢視这樣運作，你可以傳遞 <kbd>false</kbd> 做为 <kbd>View::forge()</kbd> 的第三參数，
+			现在添加到此檢視物件的所有事物将不被過濾。如果你之後需要過濾一些值，你可以使用
 			<kbd>set($name, $value, true)</kbd>。<br />
-			你也可以透過設定應用程式配置值
-			<kbd>security.auto_filter_output</kbd> 為 <kbd>false</kbd> 來全域地停用過濾輸出。為了安全起見，
-			強烈建議你別這麼做！</p>
+			你也可以透過設定应用程序配置值
+			<kbd>security.auto_filter_output</kbd> 为 <kbd>false</kbd> 來全域地停用過濾輸出。为了安全起見，
+			強烈建議你別这麼做！</p>
 
-			<p class="note"><strong>注意物件：</strong> 除非傳遞的物件是檢視、表現控件或閉包（closure）類型，
-			當過濾輸出被啟用時，它被預期有一個 <kbd>__toString()</kbd> 方法並強制是一個字串。
+			<p class="note"><strong>注意物件：</strong> 除非傳遞的物件是檢視、表现控件或閉包（closure）类型，
+			當過濾輸出被啟用時，它被預期有一个 <kbd>__toString()</kbd> 方法并強制是一个字串。
 			如果你無論如何都希望傳遞它，你需要使用 <kbd>set($name, $value, false)</kbd>，
 			但別忘了過濾你所使用的東西！<br />
-			檢視＆表現控件被預期包含 HTML 並打理它們自己的過濾，這就是為什麼它們不消毒。
+			檢視＆表现控件被預期包含 HTML 并打理它們自己的過濾，这就是为什么它們不消毒。
 			閉包（closure）不能被消毒，而且你應該小心確保在它們內部完成，
 			如果必要的話。</p>
 
-			<h3>延遲呈現（Lazy rendering）</h3>
+			<h3>延遲呈现（Lazy rendering）</h3>
 
 			<p>
-				當實例化一個檢視物件時，只有需要產生輸出的環境被設置。
-				檢視文件沒有被讀取，沒有變數會被解譯，也沒有輸出會被呈現。
+				當實例化一个檢視物件時，只有需要產生輸出的环境被設置。
+				檢視文件沒有被讀取，沒有變数会被解譯，也沒有輸出会被呈现。
 			</p>
 			<p>
-				這只有發生在你明確地在檢視物件呼叫 <code>render()</code> 方法，
-				或當你轉換檢視物件為字串（自動發生在你寫出它時）。這意味著非到絕對必要，
-				沒有檢視會進行處理。這也意味著 Fuel 不在記憶體中保留呈現的檢視，
-				直到把它們發送到瀏覽器的時候。
+				这只有发生在你明確地在檢視物件呼叫 <code>render()</code> 方法，
+				或當你轉換檢視物件为字串（自动发生在你寫出它時）。这意味著非到絕對必要，
+				沒有檢視会進行处理。这也意味著 Fuel 不在記憶體中保留呈现的檢視，
+				直到把它們发送到瀏覽器的時候。
 			</p>
 
 			<h3>巢狀檢視</h3>
 
-			<p>檢視也可以被巢狀包含在其他檢視。這可用很多方式達成。</p>
+			<p>檢視也可以被巢狀包含在其他檢視。这可用很多方式達成。</p>
 
 			<h3>檢視範例</h3>
 
@@ -206,7 +206,7 @@
 	&amp;copy; Copyright &lt;?php echo date('Y');?&gt; &lt;?php echo $site_title; ?&gt;
 &lt;/div&gt;</code></pre>
 
-			<h3 id="method_one">方法 1（使用以上的檢視範例並且延遲呈現）：</h3>
+			<h3 id="method_one">方法 1（使用以上的檢視範例并且延遲呈现）：</h3>
 
 			<pre class="php"><code>class Controller_Home extends Controller
 {
@@ -215,12 +215,12 @@
 		// 建立 layout 檢視
 		$view = View::forge('layout');
 
-		// 指派全域變數如此所有檢視可以存取它們
+		// 指派全域變数如此所有檢視可以存取它們
 		$view->set_global('username', 'Joe14');
 		$view->set_global('title', 'Home');
 		$view->set_global('site_title', 'My Website');
 
-		// 指派檢視做為變數，延遲呈現
+		// 指派檢視做为變数，延遲呈现
 		$view->head = View::forge('head');
 		$view->header = View::forge('header');
 		$view->content = View::forge('content');
@@ -231,31 +231,31 @@
 	}
 }</code></pre>
 
-			<h3 id="method_two">方法 2（使用以上的檢視範例並且強制呈現）：</h3>
+			<h3 id="method_two">方法 2（使用以上的檢視範例并且強制呈现）：</h3>
 
 			<pre class="php"><code>class Controller_Home extends Controller
 {
 	public function action_index()
 	{
-		// 指派變數
+		// 指派變数
 		$data = array();
 		$data['title'] = 'Home';
 		$data['site_title'] = 'My Website';
 		$data['username'] = 'Joe14';
 
-		// 指派檢視做為變數，強制呈現
+		// 指派檢視做为變数，強制呈现
 		$views = array();
 		$views['head'] = View::forge('head', $data)->render();
 		$views['header'] = View::forge('header', $data)->render();
 		$views['content'] = View::forge('content', $data)->render();
 		$views['footer'] = View::forge('footer', $data)->render();
 
-		// 回傳呈現的 HTML 到 Request
+		// 回傳呈现的 HTML 到 Request
 		return View::forge('layout', $views)->render();
 	}
 }</code></pre>
 
-			<h3 id="method_two">方法 3（使用以上的檢視範例，無全域資料，延遲呈現）：</h3>
+			<h3 id="method_two">方法 3（使用以上的檢視範例，無全域資料，延遲呈现）：</h3>
 
 			<pre class="php"><code>class Controller_Home extends Controller
 {
@@ -264,7 +264,7 @@
 		// 建立 layout 檢視
 		$view = View::forge('layout');
 
-		// 本地檢視變數，強制呈現
+		// 本地檢視變数，強制呈现
 		$view->head = View::forge('head', array('title' =&gt; 'Home'));
 		$view->header = View::forge('header', array('site_title' =&gt; 'My Website'));
 		$view->content = View::forge('content', array('username' =&gt; 'Joe14', 'title' =&gt; 'Home'));
@@ -275,13 +275,13 @@
 	}
 }</code></pre>
 
-			<p>詳見<a href="../classes/view.html">在類別章節中的 View 類別</a>，以了解檢視的函式敘述。</p>
+			<p>詳見<a href="../classes/view.html">在类別章節中的 View 类別</a>，以了解檢視的函式敘述。</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

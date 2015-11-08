@@ -12,7 +12,7 @@
 		var class_prefix = "Model_Crud::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Model_Crud 方法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Model_Crud 方法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,11 +42,11 @@
 
 			<h2>Model_Crud 方法</h2>
 
-			<p class="note">使用範例的類別是假設它擴充 Model_Crud 類別。</p>
+			<p class="note">使用範例的类別是假設它擴充 Model_Crud 类別。</p>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($data = array())</h4>
-				<p><strong>forge</strong> 方法回傳一個新的 Model_Crud 類別實例。</p>
+				<p><strong>forge</strong> 方法回傳一个新的 Model_Crud 类別實例。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -54,12 +54,12 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -74,15 +74,15 @@
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個擴充類別的新實例（Model_Crud 子代）。</td>
+						<td>一个擴充类別的新實例（Model_Crud 子代）。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個新實例
+							<pre class="php"><code>// 取得一个新實例
 $user = Model_User::forge();
 
-// 一個有值的新實例
+// 一个有值的新實例
 $user = Model_User::forge(array(
 	'name' => 'John',
 	'surname' => 'Doe',
@@ -105,12 +105,12 @@ $user = Model_User::forge(array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -125,7 +125,7 @@ $user = Model_User::forge(array(
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個有已載入結果的 Model_Crud 實例，當沒找到時 <em>null</em>。</td>
+						<td>一个有已載入結果的 Model_Crud 實例，當沒找到時 <em>null</em>。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -159,12 +159,12 @@ else
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -191,7 +191,7 @@ else
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個有已載入結果的 Model_Crud 實例，當沒找到時 <em>null</em>。</td>
+						<td>一个有已載入結果的 Model_Crud 實例，當沒找到時 <em>null</em>。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -225,12 +225,12 @@ else
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -238,7 +238,7 @@ else
 									<th><kbd>$column</kbd></th>
 									<th><em>字串</em></th>
 									<td><em>必要</em></td>
-									<td>要使用的行或一個 where 語句的陣列。</td>
+									<td>要使用的行或一个 where 語句的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
@@ -254,13 +254,13 @@ else
 								</tr>
 								<tr>
 									<th><kbd>$limit</kbd></th>
-									<th><em>整數</em></th>
+									<th><em>整数</em></th>
 									<td><pre class="php"><code>null</code></pre></td>
 									<td>限制。</td>
 								</tr>
 								<tr>
 									<th><kbd>$offset</kbd></th>
-									<th><em>整數</em></th>
+									<th><em>整数</em></th>
 									<td><pre class="php"><code>0</code></pre></td>
 									<td>偏移。</td>
 								</tr>
@@ -269,7 +269,7 @@ else
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
+						<td>一个有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -291,7 +291,7 @@ else
 {
 	foreach($users as $user)
 	{
-		// 對 $user 做處理
+		// 對 $user 做处理
 	}
 }
 </code></pre>
@@ -303,19 +303,19 @@ else
 
 			<article>
 				<h4 class="method" id="method_find_by_magic">find_by_*($value = null)</h4>
-				<p>這是一個魔術方法，你可以藉由修改 <code>find_by_</code> 方法名稱的一部份，指定行的名稱去尋找。</p>
+				<p>这是一个魔術方法，你可以藉由修改 <code>find_by_</code> 方法名稱的一部份，指定行的名稱去尋找。</p>
 
 				<strong>範例</strong><br>
-				<pre class="php"><code>// 這等同於 $user = Model_User::find_by('email', 'foo@example.com');
+				<pre class="php"><code>// 这等同於 $user = Model_User::find_by('email', 'foo@example.com');
 $user = Model_User::find_by_email('foo@example.com');
 </code></pre>
 			</article>
 			<article>
 				<h4 class="method" id="method_find_one_by_magic">find_one_by_*($value = null)</h4>
-				<p>這是一個回傳單筆紀錄的魔術方法，你可以藉由修改 <code>find_one_by_</code> 方法名稱的一部份，指定行的名稱去尋找。</p>
+				<p>这是一个回傳单筆紀錄的魔術方法，你可以藉由修改 <code>find_one_by_</code> 方法名稱的一部份，指定行的名稱去尋找。</p>
 
 				<strong>範例</strong><br>
-				<pre class="php"><code>// 這等同於 $user = Model_User::find_one_by('email', 'foo@example.com');
+				<pre class="php"><code>// 这等同於 $user = Model_User::find_one_by('email', 'foo@example.com');
 $user = Model_User::find_one_by_email('foo@example.com');
 </code></pre>
 			</article>
@@ -330,24 +330,24 @@ $user = Model_User::find_one_by_email('foo@example.com');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$limit</kbd></th>
-									<th><em>整數</em></th>
+									<th><em>整数</em></th>
 									<td><pre class="php"><code>null</code></pre></td>
 									<td>限制。</td>
 								</tr>
 								<tr>
 									<th><kbd>$offset</kbd></th>
-									<th><em>整數</em></th>
+									<th><em>整数</em></th>
 									<td><pre class="php"><code>0</code></pre></td>
 									<td>偏移。</td>
 								</tr>
@@ -356,7 +356,7 @@ $user = Model_User::find_one_by_email('foo@example.com');
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
+						<td>一个有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -372,8 +372,8 @@ $users = Model_User::find_all(10, 20);
 
 			<article>
 				<h4 class="method" id="method_find">find($config = array(), $key = null)</h4>
-				<p><strong>find</strong> 方法使用一個影響查詢的條件陣列尋找所有紀錄。</p>
-				<p>此方法也接受一個 <code>閉包（closure）</code> 做為第一個參數，當一個閉包（closure）被傳送時，它被呼叫並傳送一個 <code>Database_Query</code> 物件。你可以使用此方法在查詢執行前去修改它，閉包（closure）應該回傳修改的 Database_Query 物件。</p>
+				<p><strong>find</strong> 方法使用一个影響查詢的條件陣列尋找所有紀錄。</p>
+				<p>此方法也接受一个 <code>閉包（closure）</code> 做为第一个參数，當一个閉包（closure）被傳送時，它被呼叫并傳送一个 <code>Database_Query</code> 物件。你可以使用此方法在查詢执行前去修改它，閉包（closure）應該回傳修改的 Database_Query 物件。</p>
 				<p class="note">此方法被所有其他 find 方法使用，當建立自訂的尋找程序時，你也應該使用它。</p>
 				<table class="method">
 					<tbody>
@@ -382,12 +382,12 @@ $users = Model_User::find_all(10, 20);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -395,20 +395,20 @@ $users = Model_User::find_all(10, 20);
 									<th><kbd>$config</kbd></th>
 									<th><em>陣列｜閉包（closure）</em></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>條件陣列或一個閉包（closure）以修改查詢。</td>
+									<td>條件陣列或一个閉包（closure）以修改查詢。</td>
 								</tr>
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<th><em>字串</em></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>設定此為要使用的資料表列，做為結果陣列的鍵。</td>
+									<td>設定此为要使用的資料表列，做为結果陣列的鍵。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
+						<td>一个有已載入結果的 Model_Crud 實例陣列，當沒找到時 null。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -454,7 +454,7 @@ $users = Model_User::find_all(10, 20);
 
 			<article>
 				<h4 class="method" id="method_pre_find">pre_find(&amp;$query)</h4>
-				<p>取代 <strong>pre_find</strong> 方法以在執行前修改查詢。</p>
+				<p>取代 <strong>pre_find</strong> 方法以在执行前修改查詢。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -462,12 +462,12 @@ $users = Model_User::find_all(10, 20);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -510,12 +510,12 @@ protected static function pre_find(&$query)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -523,7 +523,7 @@ protected static function pre_find(&$query)
 									<th><kbd>$key</kbd></th>
 									<th><em>\Query_Builder_Select 物件</em></th>
 									<td><em>必要</em></td>
-									<td>當找不到結果時 null，或一個結果的陣列。</td>
+									<td>當找不到結果時 null，或一个結果的陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -563,12 +563,12 @@ protected static function post_find($result)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -609,12 +609,12 @@ protected static function post_find($result)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -622,14 +622,14 @@ protected static function post_find($result)
 									<th><kbd>$validate</kbd></th>
 									<th><em>布林</em></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>是否執行驗證。</td>
+									<td>是否执行驗證。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>當沒通過驗證時 false，新增時為新增結果，更新時為更新結果。</td>
+						<td>當沒通過驗證時 false，新增時为新增結果，更新時为更新結果。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -649,7 +649,7 @@ $user->name = 'New Name';
 // 更新使用者
 $user->save();
 
-// 更新但不執行驗證
+// 更新但不执行驗證
 $user->save(false);
 </code></pre>
 						</td>
@@ -668,14 +668,14 @@ $user->save(false);
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>Delete 查詢結果，受影響的筆數。</td>
+						<td>Delete 查詢結果，受影響的筆数。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -695,7 +695,7 @@ if ($user)
 
 			<article>
 				<h4 class="method" id="method_is_new">is_new($new = null)</h4>
-				<p><strong>is_new</strong> 方法檢查是否為新的紀錄，或設定它是否為新。</p>
+				<p><strong>is_new</strong> 方法檢查是否为新的紀錄，或設定它是否为新。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -703,12 +703,12 @@ if ($user)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -716,7 +716,7 @@ if ($user)
 									<th><kbd>$new</kbd></th>
 									<th><em>null｜布林</em></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>提供一個布林值以設定紀錄是否為新。</td>
+									<td>提供一个布林值以設定紀錄是否为新。</td>
 								</tr>
 							</table>
 						</td>
@@ -747,7 +747,7 @@ $user->save();
 
 			<article>
 				<h4 class="method" id="method_count">count($column = null, $distinct = true, $where = array(), $group_by = null)</h4>
-				<p><strong>count</strong> 方法回傳一個資料列計數。</p>
+				<p><strong>count</strong> 方法回傳一个資料列計数。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -755,12 +755,12 @@ $user->save();
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -768,13 +768,13 @@ $user->save();
 									<th><kbd>$column</kbd></th>
 									<th><em>字串</em></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要計數的行名稱。如果沒給，主鍵會被使用。</td>
+									<td>要計数的行名稱。如果沒給，主鍵会被使用。</td>
 								</tr>
 								<tr>
 									<th><kbd>$distinct</kbd></th>
 									<th><em>布林</em></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>是否執行一個相異值的查詢。</td>
+									<td>是否执行一个相異值的查詢。</td>
 								</tr>
 								<tr>
 									<th><kbd>$where</kbd></th>
@@ -793,15 +793,15 @@ $user->save();
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合。計數查詢的整數結果，或 false 在查詢失敗時。</td>
+						<td>混合。計数查詢的整数結果，或 false 在查詢失敗時。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 計數資料表中的所有紀錄
+							<pre class="php"><code>// 計数資料表中的所有紀錄
 $nbr_of_records = Model_User::count();
 
-// 只計數管理使用者的篩選結果數
+// 只計数管理使用者的篩選結果数
 $nbr_of_records = Model_User::count('id', true, array('group', '=', 100));
 </code></pre>
 						</td>
@@ -812,7 +812,7 @@ $nbr_of_records = Model_User::count('id', true, array('group', '=', 100));
 
 			<article>
 				<h4 class="method" id="method_frozen">frozen($frozen = null)</h4>
-				<p><strong>frozen</strong> 方法檢查是否為凍結的紀錄，或設定它是否為凍結。</p>
+				<p><strong>frozen</strong> 方法檢查是否为凍結的紀錄，或設定它是否为凍結。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -820,12 +820,12 @@ $nbr_of_records = Model_User::count('id', true, array('group', '=', 100));
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -833,7 +833,7 @@ $nbr_of_records = Model_User::count('id', true, array('group', '=', 100));
 									<th><kbd>$frozen</kbd></th>
 									<th><em>null｜布林</em></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>提供一個布林值以設定紀錄是否為凍結。</td>
+									<td>提供一个布林值以設定紀錄是否为凍結。</td>
 								</tr>
 							</table>
 						</td>
@@ -851,7 +851,7 @@ $user->frozen(true);
 // 傳遞凍結物件，沒有人可以改變它……
 
 $user->frozen(false);
-// 現在你可以再度使用它。
+// 现在你可以再度使用它。
 
 </code></pre>
 						</td>
@@ -862,7 +862,7 @@ $user->frozen(false);
 
 			<article>
 				<h4 class="method" id="method_validation">validation()</h4>
-				<p><strong>validation</strong> 方法（建立並）回傳模型 Validation 實例。</p>
+				<p><strong>validation</strong> 方法（建立并）回傳模型 Validation 實例。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -870,14 +870,14 @@ $user->frozen(false);
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個 Validation 實例。</td>
+						<td>一个 Validation 實例。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -901,14 +901,14 @@ $validation_object = $user->validation();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個成功的布林。</td>
+						<td>一个成功的布林。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -937,7 +937,7 @@ else
 
 			<article>
 				<h4 class="method" id="method_to_array">to_array()</h4>
-				<p><strong>to_array</strong> 方法回傳模型的公開變數。</p>
+				<p><strong>to_array</strong> 方法回傳模型的公開變数。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -945,7 +945,7 @@ else
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -976,12 +976,12 @@ $user_array = $user->to_array();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1016,7 +1016,7 @@ protected function pre_save(&$query)
 
 			<article>
 				<h4 class="method" id="method_post_save">post_save($result)</h4>
-				<p>取代 <strong>post_save</strong> 方法以在新增結果修改／行動。</p>
+				<p>取代 <strong>post_save</strong> 方法以在新增結果修改／行动。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1024,12 +1024,12 @@ protected function pre_save(&$query)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1052,7 +1052,7 @@ protected function pre_save(&$query)
 							<pre class="php"><code>// 在你的模型
 protected function post_save($result)
 {
-	// 對結果做處理
+	// 對結果做处理
 	return $result;
 }
 </code></pre>
@@ -1072,12 +1072,12 @@ protected function post_save($result)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1120,20 +1120,20 @@ protected function pre_update(&$query)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$result</kbd></th>
-									<th><em>整數</em></th>
+									<th><em>整数</em></th>
 									<td><em>必要</em></td>
-									<td>受影響的筆數。</td>
+									<td>受影響的筆数。</td>
 								</tr>
 							</table>
 						</td>
@@ -1148,7 +1148,7 @@ protected function pre_update(&$query)
 							<pre class="php"><code>// 在你的模型
 protected function post_update($result)
 {
-	// 對結果做處理
+	// 對結果做处理
 	return $result;
 }
 </code></pre>
@@ -1168,12 +1168,12 @@ protected function post_update($result)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1196,7 +1196,7 @@ protected function post_update($result)
 							<pre class="php"><code>// 在你的模型
 protected function pre_delete(&$query)
 {
-	// 對刪除查詢做處理
+	// 對刪除查詢做处理
 }
 </code></pre>
 						</td>
@@ -1215,27 +1215,27 @@ protected function pre_delete(&$query)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$result</kbd></th>
-									<th><em>整數</em></th>
+									<th><em>整数</em></th>
 									<td><em>必要</em></td>
-									<td>受影響的筆數。</td>
+									<td>受影響的筆数。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>受影響的筆數。</td>
+						<td>受影響的筆数。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -1243,7 +1243,7 @@ protected function pre_delete(&$query)
 							<pre class="php"><code>// 在你的模型
 protected function post_delete($result)
 {
-	// 對結果做處理
+	// 對結果做处理
 	return $result;
 }
 </code></pre>
@@ -1263,12 +1263,12 @@ protected function post_delete($result)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1291,7 +1291,7 @@ protected function post_delete($result)
 							<pre class="php"><code>// 在你的模型
 protected function pre_validate($data)
 {
-	// 對資料做處理
+	// 對資料做处理
 	return $data;
 }
 </code></pre>
@@ -1311,12 +1311,12 @@ protected function pre_validate($data)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1339,7 +1339,7 @@ protected function pre_validate($data)
 							<pre class="php"><code>// 在你的模型
 protected function post_validate($data)
 {
-	// 對資料做處理
+	// 對資料做处理
 	return $data;
 }
 </code></pre>
@@ -1351,7 +1351,7 @@ protected function post_validate($data)
 
 			<article>
 				<h4 class="method" id="method_prep_values">prep_values($data)</h4>
-				<p>取代 <strong>prep_values</strong> 方法以在驗證或查詢執行前修改新增／更新資料。</p>
+				<p>取代 <strong>prep_values</strong> 方法以在驗證或查詢执行前修改新增／更新資料。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1359,12 +1359,12 @@ protected function post_validate($data)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1387,7 +1387,7 @@ protected function post_validate($data)
 							<pre class="php"><code>// 在你的模型
 protected function prep_values($data)
 {
-	// 對資料做處理
+	// 對資料做处理
 	return $data;
 }
 </code></pre>
@@ -1401,7 +1401,7 @@ protected function prep_values($data)
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

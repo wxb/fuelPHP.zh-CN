@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>類別 - 一般 - FuelPHP 简体中文手册</title>
+	<title>类別 - 一般 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="classes.html#" id="toc_handle">目錄</a>
+			<a href="classes.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,41 +39,41 @@
 
 		<div id="main">
 
-			<h2>類別</h2>
+			<h2>类別</h2>
 
-			<h3 id="what_is_a_class">類別是什麼？</h3>
+			<h3 id="what_is_a_class">类別是什么？</h3>
 
-			<p>類別就是普通的 PHP 類別。它不需要擴充任何東西，或依循除了命名慣例的任何慣例，Fuel 內的所有其他類別也相同。</p>
+			<p>类別就是普通的 PHP 类別。它不需要擴充任何東西，或依循除了命名慣例的任何慣例，Fuel 內的所有其他类別也相同。</p>
 
 			<pre class="php"><code>class Session</code></pre>
 
-			<p>將載入 app/classes/session.php。</p>
+			<p>将載入 app/classes/session.php。</p>
 
-			<h3 id="loading_classes">載入類別</h3>
+			<h3 id="loading_classes">載入类別</h3>
 
-			<p>不像一些其他框架，類別不需要手動載入。當你在程式碼（控制器、模型等）中引用它們，它們將會自動載入。</p>
+			<p>不像一些其他框架，类別不需要手动載入。當你在程式码（控制器、模型等）中引用它們，它們将会自动載入。</p>
 
-			<h3 id="classes_subdirectories">子目錄中的類別</h3>
+			<h3 id="classes_subdirectories">子目录中的类別</h3>
 
-			<p>就像 <a href="controllers/base.html">控制器</a>，類別必須是小寫且第一個字母大寫，同時底線將置類別於子目錄。</p>
+			<p>就像 <a href="controllers/base.html">控制器</a>，类別必須是小寫且第一个字母大寫，同時底線将置类別於子目录。</p>
 
 			<pre class="php"><code>Class Session_Driver</code></pre>
 
-			<p>將載入 app/classes/session/driver.php</p>
+			<p>将載入 app/classes/session/driver.php</p>
 
-			<h3 id="classes_namespaces">類別與命名空間</h3>
+			<h3 id="classes_namespaces">类別與命名空間</h3>
 
 			<p>
-				為了確定要讀哪個 PHP 檔案，FuelPHP 的自動載入器將把命名空間與使用底線的類別名稱視為完全相同。
-				這意味著在子目錄裡的類別，你可以混搭命名空間與底線來符合你的需求。
+				为了確定要讀哪个 PHP 档案，FuelPHP 的自动載入器将把命名空間與使用底線的类別名稱視为完全相同。
+				这意味著在子目录裡的类別，你可以混搭命名空間與底線來符合你的需求。
 			</p>
 
-			<p>例如有一個類別在 app/classes/core/system/messages.php 檔案裡，此類別可以被定義為：</p>
+			<p>例如有一个类別在 app/classes/core/system/messages.php 档案裡，此类別可以被定義为：</p>
 
-				<pre class="php"><code>// 全域的命名空間，完全底線的類別名稱
+				<pre class="php"><code>// 全域的命名空間，完全底線的类別名稱
 class Core_System_Messages {}
 
-// 結合一個命名空間與底線
+// 結合一个命名空間與底線
 namespace Core;
 class System_Messages {}
 
@@ -83,26 +83,26 @@ class Messages {}
 </code></pre>
 
 			<p class="note">
-				第一種方法是最常用且最容易理解的，如果你結合 Use 聲明使用已定義的類別，
+				第一種方法是最常用且最容易理解的，如果你結合 Use 聲明使用已定義的类別，
 				命名空間的版本是特別方便的。
 			</p>
 
 			<article>
-				<h2 id="init_method">初始化你的類別</h2>
+				<h2 id="init_method">初始化你的类別</h2>
 
-				<p>類別被載入時，讓 Fuel 的自動載入器實施某些自動的任務是可能的，
-					有點像類別的實例 <code>__construct()</code> 所做的。
-					你可以透過添加一個公開的靜態 <code>_init()</code> 方法到類別達成。</p>
+				<p>类別被載入時，让 Fuel 的自动載入器實施某些自动的任務是可能的，
+					有點像类別的實例 <code>__construct()</code> 所做的。
+					你可以透過添加一个公開的靜態 <code>_init()</code> 方法到类別達成。</p>
 
 				<pre class="php"><code>class Example {
 	public static function _init()
 	{
-		// 緊接在載入類別後被呼叫
+		// 緊接在載入类別後被呼叫
 	}
 }</code></pre>
 
-				<p class="note">如果一個被載入的類別有它自己的 <code>_init()</code> 方法及父層，必須跟著被載入，
-					父層的初始化方法不會被呼叫，除非你使用
+				<p class="note">如果一个被載入的类別有它自己的 <code>_init()</code> 方法及父層，必須跟著被載入，
+					父層的初始化方法不会被呼叫，除非你使用
 					<code>parent::_init();</code></p>
 			</article>
 
@@ -110,7 +110,7 @@ class Messages {}
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

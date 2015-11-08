@@ -12,7 +12,7 @@
 		var class_prefix = "$object->";
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>Group - 驅動類型 - Auth 套件 - FuelPHP 简体中文手册</title>
+	<title>Group - 驅动类型 - Auth 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,27 +41,27 @@
 		<div id="main">
 			<h2>Auth 套件</h2>
 
-			<p>Auth 套件在 Fuel 裡提供一個標準化的認證介面。
-			這使得我們的使用者能編寫自己的驅動程序，並且輕鬆地將新的驅動程序與舊的程式碼整合，
+			<p>Auth 套件在 Fuel 裡提供一个标准化的認證介面。
+			这使得我們的使用者能编寫自己的驅动程序，并且輕鬆地将新的驅动程序與舊的程式码整合，
 			以保持基本方法一致。</p>
 
 			<section>
 				<h2 id="driver_types">Auth_Group_Driver</h2>
 
 				<p>
-					此驅動是所有 Auth 群組驅動的基礎類別。它被定義為一個抽象類別，
-					該類別包含了通用於所有群組驅動的所有方法，
-					以及定義給任何群組驅動<strong>必須</strong>實現的所有抽象方法。
+					此驅动是所有 Auth 群組驅动的基础类別。它被定義为一个抽象类別，
+					該类別包含了通用於所有群組驅动的所有方法，
+					以及定義給任何群組驅动<strong>必須</strong>實现的所有抽象方法。
 				</p>
 
-				<h3 id="driver_config">驅動配置</h3>
+				<h3 id="driver_config">驅动配置</h3>
 
 				<p>
-					一個群組驅動可以載入它所依賴的額外驅動。一般情況下，這些是 ACL 驅動。
-					但你的實現情況可以是引進和使用自訂的驅動類型。要做到這一點，添加此結構到你的驅動類別：
+					一个群組驅动可以載入它所依賴的額外驅动。一般情況下，这些是 ACL 驅动。
+					但你的實现情況可以是引進和使用自訂的驅动类型。要做到这一點，添加此結構到你的驅动类別：
 				</p>
 
-								<pre class="php"><code>// 當載入此群組驅動時自動載入 Simpleacl acl 驅動
+								<pre class="php"><code>// 當載入此群組驅动時自动載入 Simpleacl acl 驅动
 	protected $config = array(
 		'drivers' => array('acl' => array('Simpleacl'))
 	);
@@ -69,7 +69,7 @@
 
 				<h3 id="static">靜態介面</h3>
 
-				<p>為了易於使用，<kbd>member()</kbd> 方法透過通用 Auth 靜態介面曝光。</p>
+				<p>为了易於使用，<kbd>member()</kbd> 方法透過通用 Auth 靜態介面曝光。</p>
 
 				<p>使用靜態介面，你能做到</p>
 
@@ -80,14 +80,14 @@ $is_member = Auth::member(16);
 				<h3 id="generic_methods">通用方法</h3>
 
 				<p>
-					通用方法被定義在群組基礎驅動，而且能透過擴充到達所有的 Auth
-					群組驅動。這些方法提供功能來與群組互動，並檢查存取。
+					通用方法被定義在群組基础驅动，而且能透過擴充到達所有的 Auth
+					群組驅动。这些方法提供功能來與群組互动，并檢查存取。
 				</p>
-				<p class="note">定義在類別中而沒記錄在此的方法是內部使用，而且不應該直接被呼叫。</p>
+				<p class="note">定義在类別中而沒記錄在此的方法是內部使用，而且不應該直接被呼叫。</p>
 
 				<article>
 					<h4 id="method_get_id" class="method">get_id()</h4>
-					<p>回傳驅動的唯一 ID。這可被用於識別驅動，或用來選擇一個特定的驅動實例。</p>
+					<p>回傳驅动的唯一 ID。这可被用於識別驅动，或用來選擇一个特定的驅动實例。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -95,14 +95,14 @@ $is_member = Auth::member(16);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>驅動 ID 字串。</td>
+							<td>驅动 ID 字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -118,7 +118,7 @@ $id = Auth::group()->get_id();
 
 				<article>
 					<h4 id="method_set_config" class="method">set_config($key, $value)</h4>
-					<p>設定一個驅動配置值。</p>
+					<p>設定一个驅动配置值。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -126,11 +126,11 @@ $id = Auth::group()->get_id();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -154,7 +154,7 @@ $id = Auth::group()->get_id();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 在 simplegroup 驅動設定一個配置值
+								<pre class="php"><code>// 在 simplegroup 驅动設定一个配置值
 Auth::group()->set_config('key', 'value');
 </code></pre>
 							</td>
@@ -165,7 +165,7 @@ Auth::group()->set_config('key', 'value');
 
 				<article>
 					<h4 id="method_get_config" class="method">get_config($key, $default = null)</h4>
-					<p>取得一個驅動配置值。</p>
+					<p>取得一个驅动配置值。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -173,11 +173,11 @@ Auth::group()->set_config('key', 'value');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -201,7 +201,7 @@ Auth::group()->set_config('key', 'value');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取得一個 simplegroup 驅動的配置值，如果不存在回傳 false
+								<pre class="php"><code>// 取得一个 simplegroup 驅动的配置值，如果不存在回傳 false
 $key = Auth::instance(simplegroup)->get_config('key', false);
 </code></pre>
 							</td>
@@ -213,13 +213,13 @@ $key = Auth::instance(simplegroup)->get_config('key', false);
 				<h3 id="abstract_methods">抽象方法</h3>
 
 				<p>
-					你所開發的每個群組驅動<strong>必須</strong>提供這些所有的方法，且<strong>必須</strong>回傳此處記錄的值。
+					你所开发的每个群組驅动<strong>必須</strong>提供这些所有的方法，且<strong>必須</strong>回傳此处記錄的值。
 				</p>
 
 				<article>
 					<h4 id="method_member" class="method">member($group, $specific = null)</h4>
-					<p>檢查是否使用者是所給群組中的成員，無論是所有載入的群組驅動，
-						或只是指定為第二參數的那些。</p>
+					<p>檢查是否使用者是所給群組中的成員，無論是所有載入的群組驅动，
+						或只是指定为第二參数的那些。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -227,11 +227,11 @@ $key = Auth::instance(simplegroup)->get_config('key', false);
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -243,14 +243,14 @@ $key = Auth::instance(simplegroup)->get_config('key', false);
 									<tr>
 										<th><kbd>$specific</kbd></th>
 										<td><i>null</i></td>
-										<td>null 以檢查所有，或一個或更多驅動 ID（單一字串或字串陣列）</td>
+										<td>null 以檢查所有，或一个或更多驅动 ID（单一字串或字串陣列）</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>布林，是否（所給）的驅動之一將目前使用者註冊為一個成員</td>
+							<td>布林，是否（所給）的驅动之一将目前使用者註冊为一个成員</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -260,10 +260,10 @@ $key = Auth::instance(simplegroup)->get_config('key', false);
 	Response::redirect('no_admin');
 }
 
-// 指定驅動
+// 指定驅动
 Auth::member(1, 'simplegroup');
 
-// 多個驅動
+// 多个驅动
 Auth::member(0, array('simplegroup', 'genericgroup'));</code></pre>
 							</td>
 						</tr>
@@ -281,11 +281,11 @@ Auth::member(0, array('simplegroup', 'genericgroup'));</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -318,7 +318,7 @@ Auth::instance('simplegroup')->get_name('admin');</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -12,7 +12,7 @@
 		var class_prefix = "Asset::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Asset 用法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Asset 用法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,22 +40,22 @@
 
 		<div id="main">
 
-			<h2>Asset 類別</h2>
+			<h2>Asset 类別</h2>
 
-			<p>Asset 類別是一系列協助收集、分組和顯示資產（js、css、img）的方法。</p>
+			<p>Asset 类別是一系列協助收集、分組和顯示資產（js、css、img）的方法。</p>
 
 			<section>
 				<h3 id="usage">用法</h3>
 
 				<p>
-					使用資產可用兩種方式做到：透過靜態的 Asset 類別用法以及透過由
+					使用資產可用兩種方式做到：透過靜態的 Asset 类別用法以及透過由
 					Asset::forge() 或 Asset::instance() 回傳的資產物件。此段落包括靜態用法，
-					它將始終與指定在<a href="config.html">配置</a>中的預設實例協作。
+					它将始終與指定在<a href="config.html">配置</a>中的預設實例協作。
 				</p>
 
 				<p class="note">
-					<strong>注：</strong>當添加到一個群組，css、js 和 img 方法將回傳目前實例。
-					這將發生在你提供一個群組或 <em>auto_render</em> 是 <em>false</em> 且沒有群組（或
+					<strong>注：</strong>當添加到一个群組，css、js 和 img 方法将回傳目前實例。
+					这将发生在你提供一个群組或 <em>auto_render</em> 是 <em>false</em> 且沒有群組（或
 					<em>null</em>）在呼叫中被提供。
 				</p>
 
@@ -67,7 +67,7 @@
 					<h4 id="method_add_path" class="method">add_path($path, $type = null)</h4>
 					<p>
 						<strong>add_path</strong> 方法添加所給路徑到全域資產搜尋路徑陣列的前面。
-						如果指定一個 $type，它將添加該路徑到所給類型的搜尋文件夾陣列的前面。
+						如果指定一个 $type，它将添加該路徑到所給类型的搜尋文件夾陣列的前面。
 					</p>
 					<table class="method">
 						<tbody>
@@ -76,26 +76,26 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$path</kbd></th>
 										<td><i>必要</i></td>
-										<td>要添加到資產路徑陣列（<strong>相對</strong>於資產路徑並且<strong>帶有</strong>結尾斜線）前面的路徑。</td>
+										<td>要添加到資產路徑陣列（<strong>相對</strong>於資產路徑并且<strong>帶有</strong>結尾斜線）前面的路徑。</td>
 									</tr>
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
 										<td>
-											如果添加一個文件夾，要添加的類型。Asset 類別有預定義的 'img'、'css' 和 'js' 類型。
-											如果你傳遞一個未定義類型，一個新路徑結構將為此類型建立。
-											要添加相同路徑到多個類型，傳遞一個類型的陣列給它們。
+											如果添加一个文件夾，要添加的类型。Asset 类別有預定義的 'img'、'css' 和 'js' 类型。
+											如果你傳遞一个未定義类型，一个新路徑結構将为此类型建立。
+											要添加相同路徑到多个类型，傳遞一个类型的陣列給它們。
 										</td>
 									</tr>
 								</table>
@@ -109,15 +109,15 @@
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>/*
- * 這些路徑將需要在配置文件中定義的子文件夾，
- * 這取決於你試圖使用的內容類型。
+ * 这些路徑将需要在配置文件中定義的子文件夾，
+ * 这取決於你试圖使用的內容类型。
  */
 Asset::add_path('resources/template_1/');
 Asset::add_path('resources/template_2/');
 
 /*
- * 添加一個全域路徑給所有資產類型，然後添加個別路徑到
- * images 和 css 檔案。
+ * 添加一个全域路徑給所有資產类型，然後添加个別路徑到
+ * images 和 css 档案。
  */
 Asset::add_path('assets/global/', array('css', 'js', 'img'));
 Asset::add_path('assets/icons/', 'img');
@@ -125,12 +125,12 @@ Asset::add_path('assets/images/', 'img');
 Asset::add_path('assets/css/', 'css');
 
 /*
- * 建立一個新的資產類型
+ * 建立一个新的資產类型
  */
 Asset::add_path('assets/docs/', 'pdf');
 
 /*
- * 你可以像這樣鍊結呼叫。
+ * 你可以像这樣鍊結呼叫。
  */
 Asset::add_path('resources/templates/dark/')
 	->add_path('resources/templates/light')
@@ -144,7 +144,7 @@ Asset::add_path('resources/templates/dark/')
 
 				<article>
 					<h4 id="method_css" class="method">css($stylesheets = array(), $attr = array(), $group = NULL, $raw = false)</h4>
-					<p><strong>css</strong> 方法添加 css 到一個具名群組，預設群組，或回傳 css 標籤。</p>
+					<p><strong>css</strong> 方法添加 css 到一个具名群組，預設群組，或回傳 css 标籤。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -152,51 +152,51 @@ Asset::add_path('resources/templates/dark/')
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$stylesheets</kbd></th>
 										<td><i>必要</i></td>
-										<td>一個要被添加到群組或被回傳為標籤的樣式表檔案名稱的陣列／字串，或一個包含內嵌 CSS 的字串。</td>
+										<td>一个要被添加到群組或被回傳为标籤的樣式表档案名稱的陣列／字串，或一个包含內嵌 CSS 的字串。</td>
 									</tr>
 									<tr>
 										<th><kbd>$attr</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>一個要被應用在 css 檔案的屬性陣列。</td>
+										<td>一个要被應用在 css 档案的屬性陣列。</td>
 									</tr>
 									<tr>
 										<th><kbd>$group</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>歸類 css 的群組名稱。如果為 null，該方法將回傳 css 標籤。</td>
+										<td>歸类 css 的群組名稱。如果为 null，該方法将回傳 css 标籤。</td>
 									</tr>
 									<tr>
 										<th><kbd>$raw</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果設為 true，結果的 css 標籤將直接包含字串或檔案內容，而不是藉由一個 link 標籤。</td>
+										<td>如果設为 true，結果的 css 标籤将直接包含字串或档案內容，而不是藉由一个 link 标籤。</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>呈現的資產字串，或目前實例當添加到群組時。</td>
+							<td>呈现的資產字串，或目前實例當添加到群組時。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 添加檔案到群組並回傳 '' 如果群組不是 null
+								<pre class="php"><code>// 添加档案到群組并回傳 '' 如果群組不是 null
 Asset::css(array('header.css', 'footer.css'), array(), 'layout', false);
 
 /* 回傳
  * &lt;link href="../assets/css/inline.css" rel="stylesheet" /&gt;
- * 如果在配置中的 auto_render 被設為 true。
- * 如果不是，該資產將被添加到預設群組給之後呈現
+ * 如果在配置中的 auto_render 被設为 true。
+ * 如果不是，該資產将被添加到預設群組給之後呈现
  */
 echo Asset::css('inline.css');
 
@@ -217,7 +217,7 @@ echo Asset::css('inline.css', array(), null, true);
 Asset::css(".bold_class { font-weight: bold }\n#header {height: 50px}", array(), 'inline', true);
 echo Asset::render('inline');
 
-/* 這會是一樣 */
+/* 这会是一樣 */
 echo Asset::css(".bold_class { font-weight: bold }\n#header {height: 50px}", array(), null, true);
 </code></pre>
 							</td>
@@ -228,7 +228,7 @@ echo Asset::css(".bold_class { font-weight: bold }\n#header {height: 50px}", arr
 
 				<article>
 					<h4 id="method_find_file" class="method">find_file($file, $type, $folder = '')</h4>
-					<p><strong>find_file</strong> 在所有為該類別定義的資產搜尋文件夾中定位所給類型的檔案。</p>
+					<p><strong>find_file</strong> 在所有为該类別定義的資產搜尋文件夾中定位所給类型的档案。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -236,43 +236,43 @@ echo Asset::css(".bold_class { font-weight: bold }\n#header {height: 50px}", arr
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$file</kbd></th>
 										<td><i>必要</i></td>
-										<td>你要搜尋的檔案名稱。</td>
+										<td>你要搜尋的档案名稱。</td>
 									</tr>
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><i>必要</i></td>
-										<td>要被搜尋的資產類型（css、js、img）。</td>
+										<td>要被搜尋的資產类型（css、js、img）。</td>
 									</tr>
 									<tr>
 										<th><kbd>$folder</kbd></th>
 										<td><pre class="php"><code>''</code></pre></td>
-										<td>要附加到每個搜尋文件夾的子文件夾名稱。</td>
+										<td>要附加到每个搜尋文件夾的子文件夾名稱。</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>指向檔案的路徑或 false 如果找不到</td>
+							<td>指向档案的路徑或 false 如果找不到</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 尋找一個 CSS 檔案
+								<pre class="php"><code>// 尋找一个 CSS 档案
 $path = Asset::find_file('layout.css', 'css');
 
-// 尋找一個圖示（假設圖示在一個稱為 'icons' 的 img 子文件夾）
+// 尋找一个圖示（假設圖示在一个稱为 'icons' 的 img 子文件夾）
 $path = Asset::find_file('icon.png', 'img','icons/');</code></pre>
 							</td>
 						</tr>
@@ -282,7 +282,7 @@ $path = Asset::find_file('icon.png', 'img','icons/');</code></pre>
 
 				<article>
 					<h4 id="method_img" class="method">img($images = array(), $attr = array(), $group = NULL)</h4>
-					<p><strong>img</strong> 方法添加圖像到具名群組，預設群組，或回傳圖像標籤。</p>
+					<p><strong>img</strong> 方法添加圖像到具名群組，預設群組，或回傳圖像标籤。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -290,23 +290,23 @@ $path = Asset::find_file('icon.png', 'img','icons/');</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$images</kbd></th>
 										<td><i>必要</i></td>
-										<td>一個要被應用到群組或被回傳為標籤的圖像檔案名稱的陣列／字串。</td>
+										<td>一个要被應用到群組或被回傳为标籤的圖像档案名稱的陣列／字串。</td>
 									</tr>
 									<tr>
 										<th><kbd>$attr</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>一個要應用在圖像標籤的屬性陣列。</td>
+										<td>一个要應用在圖像标籤的屬性陣列。</td>
 									</tr>
 									<tr>
 										<th><kbd>$group</kbd></th>
@@ -318,15 +318,15 @@ $path = Asset::find_file('icon.png', 'img','icons/');</code></pre>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>呈現的資產字串，或目前實例當添加到群組時。</td>
+							<td>呈现的資產字串，或目前實例當添加到群組時。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>/* 回傳
  * &lt;img src="../assets/img/logo.png" id="logo"&gt;
- * 如果在配置中的 auto_render 被設為 true。
- * 如果不是，該資產將被添加到預設群組給之後呈現
+ * 如果在配置中的 auto_render 被設为 true。
+ * 如果不是，該資產将被添加到預設群組給之後呈现
  */
 echo Asset::img('logo.png', array('id' => 'logo'));
 
@@ -339,7 +339,7 @@ Asset::img(array('bob.jpg', 'joe.jpg', 'sally.jpg'), array('class' => 'thumbnail
 
 				<article>
 					<h4 id="method_js" class="method">js($scripts = array(), $attr = array(), $group = NULL, $raw = false)</h4>
-					<p><strong>js</strong> 方法添加 javascript 到具名群組，預設群組，或回傳 script 標籤。</p>
+					<p><strong>js</strong> 方法添加 javascript 到具名群組，預設群組，或回傳 script 标籤。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -347,45 +347,45 @@ Asset::img(array('bob.jpg', 'joe.jpg', 'sally.jpg'), array('class' => 'thumbnail
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$scripts</kbd></th>
 										<td><i>必要</i></td>
-										<td>一個要被應用到群組或被回傳為標籤的 js 檔案名稱的陣列／字串，或一個包含內嵌 javascript 的字串。</td>
+										<td>一个要被應用到群組或被回傳为标籤的 js 档案名稱的陣列／字串，或一个包含內嵌 javascript 的字串。</td>
 									</tr>
 									<tr>
 										<th><kbd>$attr</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>一個要應用到 js 檔案的屬性陣列。</td>
+										<td>一个要應用到 js 档案的屬性陣列。</td>
 									</tr>
 									<tr>
 										<th><kbd>$group</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>歸類 js 的群組名稱。如果為 null，該方法將回傳 js 標籤。</td>
+										<td>歸类 js 的群組名稱。如果为 null，該方法将回傳 js 标籤。</td>
 									</tr>
 									<tr>
 										<th><kbd>$raw</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果設為 true，結果的 js 標籤將直接包含字串或檔案內容，而不是藉由一個 script 標籤。</td>
+										<td>如果設为 true，結果的 js 标籤将直接包含字串或档案內容，而不是藉由一个 script 标籤。</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>呈現的資產字串，或目前實例當添加到群組時。</td>
+							<td>呈现的資產字串，或目前實例當添加到群組時。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 回傳 '' 如果 $raw 設為 false
+								<pre class="php"><code>// 回傳 '' 如果 $raw 設为 false
 Asset::js(array('jquery.js', 'jqueryui.js'), array(), 'jquery', false);
 
 /* 回傳
@@ -398,8 +398,8 @@ echo Asset::js('menu_init.js', array(), null, true);
 
 /* 回傳
  * &lt;script type="text/javascript" src="../assets/js/jquery.js"&gt;&lt;/script&gt;
- * 如果在配置中的 auto_render 被設為 true。
- * 如果不是，該資產將被添加到預設群組給之後呈現
+ * 如果在配置中的 auto_render 被設为 true。
+ * 如果不是，該資產将被添加到預設群組給之後呈现
  */
 echo Asset::js('jquery.js');
 
@@ -412,7 +412,7 @@ echo Asset::js('jquery.js');
 Asset::js("var menu = getElementById('menu');\nmenu.initialize_menu();", array(), 'inline', true);
 echo Asset::render('inline');
 
-/* 這會是一樣 */
+/* 这会是一樣 */
 echo Asset::js("var menu = getElementById('menu');\nmenu.initialize_menu();", array(), null, true);
 </code></pre>
 							</td>
@@ -423,7 +423,7 @@ echo Asset::js("var menu = getElementById('menu');\nmenu.initialize_menu();", ar
 
 				<article>
 					<h4 id="method_get_file" class="method">get_file($file, $type, $folder = '')</h4>
-					<p><strong>get_file</strong> 方法能讓你取得指向資產檔案的 URL。</p>
+					<p><strong>get_file</strong> 方法能让你取得指向資產档案的 URL。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -431,11 +431,11 @@ echo Asset::js("var menu = getElementById('menu');\nmenu.initialize_menu();", ar
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -447,7 +447,7 @@ echo Asset::js("var menu = getElementById('menu');\nmenu.initialize_menu();", ar
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><i>必要</i></td>
-										<td>要搜尋的資產類型。'img'、'css'、和 'js' 是支援的類型。</td>
+										<td>要搜尋的資產类型。'img'、'css'、和 'js' 是支援的类型。</td>
 									</tr>
 									<tr>
 										<th><kbd>$folder</kbd></th>
@@ -476,7 +476,7 @@ echo Asset::get_file('jquery.js', 'js');</code></pre>
 					<h4 id="method_remove_path" class="method">remove_path($path, $type = null)</h4>
 					<p>
 						<strong>remove_path</strong> 方法從全域資產搜尋路徑陣列中移除所給路徑。
-						如果指定一個 $type，它將從所給類型的搜尋文件夾陣列移除該路徑。
+						如果指定一个 $type，它将從所給类型的搜尋文件夾陣列移除該路徑。
 					</p>
 					<table class="method">
 						<tbody>
@@ -485,11 +485,11 @@ echo Asset::get_file('jquery.js', 'js');</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -502,8 +502,8 @@ echo Asset::get_file('jquery.js', 'js');</code></pre>
 										<th><kbd>$type</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
 										<td>
-											如果添加一個文件夾，要加進的類型。目前支援：'img'、'css' 和 'js'。
-											要添加相同路徑到多個類型，傳遞一個類型的陣列給它們。
+											如果添加一个文件夾，要加進的类型。目前支援：'img'、'css' 和 'js'。
+											要添加相同路徑到多个类型，傳遞一个类型的陣列給它們。
 										</td>
 									</tr>
 								</table>
@@ -523,7 +523,7 @@ Asset::remove_path('resources/template_1/');
 Asset::remove_path('resources/template_2/');
 
 /*
- * 為不同資產類型移除個別的路徑
+ * 为不同資產类型移除个別的路徑
  */
 Asset::remove_path('assets/global/', array('css', 'js', 'img'));
 Asset::remove_path('assets/icons/', 'img');
@@ -546,8 +546,8 @@ Asset::remove_path('resources/templates/dark/')
 				<article>
 					<h4 id="method_render" class="method">render($group = null, $raw = false)</h4>
 					<p>
-						<strong>render</strong> 呈現資產的群組並且回傳標籤。
-						如果沒指定群組，預設群組會被呈現。
+						<strong>render</strong> 呈现資產的群組并且回傳标籤。
+						如果沒指定群組，預設群組会被呈现。
 					</p>
 					<table class="method">
 						<tbody>
@@ -556,23 +556,23 @@ Asset::remove_path('resources/templates/dark/')
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$group</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>要呈現的群組名稱，或 null 是預設群組。</td>
+										<td>要呈现的群組名稱，或 null 是預設群組。</td>
 									</tr>
 									<tr>
 										<th><kbd>$raw</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果為 true，此方法將包含要嵌入的 css／js 檔案內容。</td>
+										<td>如果为 true，此方法将包含要嵌入的 css／js 档案內容。</td>
 									</tr>
 								</table>
 							</td>
@@ -590,7 +590,7 @@ Asset::remove_path('resources/templates/dark/')
  */
 echo Asset::render('layout');
 
-// 呈現預設群組
+// 呈现預設群組
 echo Asset::render();</code></pre>
 							</td>
 						</tr>
@@ -604,7 +604,7 @@ echo Asset::render();</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

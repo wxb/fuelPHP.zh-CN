@@ -12,7 +12,7 @@
 		var class_prefix = 'Query_Builder_Update::';
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Query Builder Update - 類別 - FuelPHP 简体中文手册</title>
+	<title>Query Builder Update - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="qb_update.html#" id="toc_handle">目錄</a>
+			<a href="qb_update.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2 id="introduction">Query_Builder_Update 類別</h2>
+			<h2 id="introduction">Query_Builder_Update 类別</h2>
 
 			<p>（擴充 <a href="qb_where.html">Query_Builder_Where</a>）</p>
 
 			<p>
-				Query_Builder_Update 類別為查詢建立程序處理所有 update 操作，它擴充
-				Query_Builder_Where 類別，所以所有方法都繼承。
+				Query_Builder_Update 类別为查詢建立程序处理所有 update 操作，它擴充
+				Query_Builder_Where 类別，所以所有方法都繼承。
 			</p>
 
 			<article>
@@ -59,12 +59,12 @@
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -84,7 +84,7 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 update 語句
+								<pre class="php"><code>// 預处理一个 update 語句
 $query = DB::update('users');
 
 // 設定要更新的資料表
@@ -109,12 +109,12 @@ $query->table('admins');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -140,7 +140,7 @@ $query->table('admins');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 update 語句
+								<pre class="php"><code>// 預处理一个 update 語句
 $query = DB::update('users');
 
 // 設定行
@@ -156,7 +156,7 @@ $query->value('name', 'Frank');
 
 			<article>
 				<h4 class="method" id="method_set">set(array $pairs)</h4>
-				<p><strong>set</strong> 方法設定行並附加要更新的值。</p>
+				<p><strong>set</strong> 方法設定行并附加要更新的值。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -164,12 +164,12 @@ $query->value('name', 'Frank');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -189,7 +189,7 @@ $query->value('name', 'Frank');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 update 語句
+								<pre class="php"><code>// 預处理一个 update 語句
 $query = DB::update('users');
 
 // 設定行和值
@@ -208,7 +208,7 @@ $query->set(array(
 
 			<article>
 				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
-				<p><strong>compile</strong> 方法回傳 update SQL 查詢做為一個字串。</p>
+				<p><strong>compile</strong> 方法回傳 update SQL 查詢做为一个字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -216,12 +216,12 @@ $query->set(array(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -229,22 +229,22 @@ $query->set(array(
 										<th><kbd>$db</kbd></th>
 										<td><em>物件</em></td>
 										<td><em>必要</em></td>
-										<td>一個資料庫連線</td>
+										<td>一个資料庫連線</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳 SQL 查詢做為一個字串。</td>
+							<td>回傳 SQL 查詢做为一个字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 update 語句
+								<pre class="php"><code>// 預处理一个 update 語句
 $query = DB::update('users');
 
-// 設定兩個值
+// 設定兩个值
 $query->set(array(
 	'name' => 'Bert',
 	'surname' => 'Klaassen',
@@ -272,7 +272,7 @@ $sql = $query->compile($connection);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -284,10 +284,10 @@ $sql = $query->compile($connection);
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 update 語句
+								<pre class="php"><code>// 預处理一个 update 語句
 $query = DB::update('users');
 
-// 設定兩個值
+// 設定兩个值
 $query->set(array(
 	'name' => 'Bert',
 	'surname' => 'Klaassen',
@@ -296,7 +296,7 @@ $query->set(array(
 // 重置它
 $query->reset();
 
-// 設定一個
+// 設定一个
 $query->value('name', 'Hank');
 
 // 取得資料庫連線
@@ -323,12 +323,12 @@ $sql = $query->compile($connection);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -342,7 +342,7 @@ $sql = $query->compile($connection);
 										<th><kbd>$type</kbd></th>
 										<td><em>混合</em></td>
 										<td><pre class="php"><code>true</code></pre></td>
-										<td>組合類型（LEFT、RIGHT、INNER、等等）</td>
+										<td>組合类型（LEFT、RIGHT、INNER、等等）</td>
 									</tr>
 								</table>
 							</td>
@@ -354,7 +354,7 @@ $sql = $query->compile($connection);
 						<tr>
 							<th>範例</th>
 							<td>
-								<a href="qb_update.html#join_example">請看這裡的範例</a>
+								<a href="qb_update.html#join_example">請看这裡的範例</a>
 							</td>
 						</tr>
 					</tbody>
@@ -363,7 +363,7 @@ $sql = $query->compile($connection);
 
 			<article>
 				<h4 class="method" id="method_on">on($c1, $op, $c2)</h4>
-				<p><strong>on</strong> 方法為最後建立的 JOIN 語句添加 "ON ..." 條件。</p>
+				<p><strong>on</strong> 方法为最後建立的 JOIN 語句添加 "ON ..." 條件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -371,12 +371,12 @@ $sql = $query->compile($connection);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -408,14 +408,14 @@ $sql = $query->compile($connection);
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre id="join_example" class="php"><code>// 預處理一個 update 語句
+								<pre id="join_example" class="php"><code>// 預处理一个 update 語句
 $query = DB::update('users');
 
 // 組合一張資料表
 $query->join('profiles');
 $query->on('users.id', '=', 'profiles.user_id');
 
-// 使用一個 Database_Expression 如此值不會被轉義。
+// 使用一个 Database_Expression 如此值不会被轉義。
 $query->value('users.profile_type', \DB::expr('`profiles`.`type`'));
 
 // UPDATE `users` JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` SET `users`.`profile_type` = `profiles`.`type`
@@ -430,7 +430,7 @@ $query->value('users.profile_type', \DB::expr('`profiles`.`type`'));
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

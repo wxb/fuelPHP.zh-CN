@@ -12,7 +12,7 @@
 		var class_prefix = "Presenter::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Presenter - 類別 - FuelPHP 简体中文手册</title>
+	<title>Presenter - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,17 +40,17 @@
 
 		<div id="main">
 
-			<h2>Presenter 類別</h2>
+			<h2>Presenter 类別</h2>
 
 			<p>
 				The Presenter class acts as an object wrapper for "views", and is used to abstract all logic
-				related to the view away from the controller. <a href="../general/presenters.html">閱讀更多關於使用表現控件。</a>
+				related to the view away from the controller. <a href="../general/presenters.html">閱讀更多關於使用表现控件。</a>
 				就像 Controller，Presenter 支援 <kbd>before()</kbd> 和 <kbd>after()</kbd> 方法，你可以用來which you can use for code generic to all methods for view prepping.
 			</p>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($presenter, $method = 'view', $auto_filter = null, $view = null)</h4>
-				<p><strong>forge</strong> 方法回傳一個新的 Presenter 物件。</p>
+				<p><strong>forge</strong> 方法回傳一个新的 Presenter 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -58,18 +58,18 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$presenter</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">表現控件的名稱，以及預設其關聯的檢視，使用 <a href="./view.html#method_forge">View</a> 表示。</td>
+										<td class="description">表现控件的名稱，以及預設其關聯的檢視，使用 <a href="./view.html#method_forge">View</a> 表示。</td>
 									</tr>
 									<tr>
 										<th><kbd>$method</kbd></th>
@@ -91,24 +91,24 @@
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>一個新的 <em>Presenter</em> 物件</td>
+							<td>一个新的 <em>Presenter</em> 物件</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 會為 APPPATH/views/admin/index.php 檢視檔案
-// 建立一個 Presenter 物件
-// 使用在 APPPATH/classes/presenter/admin/index.php 中的 Presenter_Admin_Index 類別
+								<pre class="php"><code>// 会为 APPPATH/views/admin/index.php 檢視档案
+// 建立一个 Presenter 物件
+// 使用在 APPPATH/classes/presenter/admin/index.php 中的 Presenter_Admin_Index 类別
 
 $presenter = Presenter::Forge('admin/index');
 
-// 使用 presenter 中的 custom() 方法來呈現不同的檢視
+// 使用 presenter 中的 custom() 方法來呈现不同的檢視
 $presenter = Presenter::Forge('admin/index', 'custom');
 
-// 使用一個自訂檢視
+// 使用一个自訂檢視
 $presenter = Presenter::Forge('admin/index', 'custom', null, 'admin/different/view');
 
-// 或甚至一個自訂的檢視物件
+// 或甚至一个自訂的檢視物件
 $view = View::forge('admin/different/view', array(
 	'menu' => $menu,
 	'articles' => $articles,
@@ -132,7 +132,7 @@ $presenter = Presenter::Forge('admin/index', 'custom', null, $view);</code></pre
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -144,7 +144,7 @@ $presenter = Presenter::Forge('admin/index', 'custom', null, $view);</code></pre
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 建立一個表現控件實例
+								<pre class="php"><code>// 建立一个表现控件實例
 $presenter = Presenter::Forge('admin/index');
 
 // and the view associated with it
@@ -165,7 +165,7 @@ $view = $presenter->get_view();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -213,7 +213,7 @@ $view = $presenter->get_view();</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -12,7 +12,7 @@
 		var class_prefix = "View::";
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>View - 類別 - FuelPHP 简体中文手册</title>
+	<title>View - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="view.html#" id="toc_handle">目錄</a>
+			<a href="view.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,11 +40,11 @@
 
 		<div id="main">
 
-			<h2>View 類別</h2>
+			<h2>View 类別</h2>
 
 			<p>
-				View 類別做為一個包裝嵌入式 PHP 的 HTML 頁面的物件，稱為「檢視」。
-				變數可以被指派給檢視物件，並且可以在檢視內本地引用。
+				View 类別做为一个包裝嵌入式 PHP 的 HTML 頁面的物件，稱为「檢視」。
+				變数可以被指派給檢視物件，并且可以在檢視內本地引用。
 			</p>
 
 			<p>
@@ -60,18 +60,18 @@
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$file</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">檢視檔案名稱，如果沒提供你之後必須透過 <em>set_filename</em> 或在 <em>render</em> 中提供。檢視檔案應該被對應到 <em>app/views</em> 目錄。</td>
+										<td class="description">檢視档案名稱，如果沒提供你之後必須透過 <em>set_filename</em> 或在 <em>render</em> 中提供。檢視档案應該被對應到 <em>app/views</em> 目录。</td>
 									</tr>
 									<tr>
 										<th><kbd>$data</kbd></th>
@@ -81,14 +81,14 @@
 									<tr>
 										<th><kbd>$filter</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">設定為 <em>true</em> 或 <em>false</em> 來設定自動編碼，預設是主要配置設定（app/config/config.php）</td>
+										<td class="description">設定为 <em>true</em> 或 <em>false</em> 來設定自动编码，預設是主要配置設定（app/config/config.php）</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>一個新的 <em>View</em> 物件</td>
+							<td>一个新的 <em>View</em> 物件</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -106,7 +106,7 @@
 
 			<article>
 				<h4 class="method" id="method_forge">forge($file = null, $data = null, $filter = null)</h4>
-				<p><strong>forge</strong> 方法回傳一個新的 View 物件。</p>
+				<p><strong>forge</strong> 方法回傳一个新的 View 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -114,18 +114,18 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$file</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">檢視檔案名稱，如果沒提供你之後必須透過 <em>set_filename</em> 或在 <em>render</em> 中提供。檢視檔案應該被對應到 <em>app/views</em> 目錄，並且不提供 <strong>.php</strong> 副檔名。</td>
+										<td class="description">檢視档案名稱，如果沒提供你之後必須透過 <em>set_filename</em> 或在 <em>render</em> 中提供。檢視档案應該被對應到 <em>app/views</em> 目录，并且不提供 <strong>.php</strong> 副档名。</td>
 									</tr>
 									<tr>
 										<th><kbd>$data</kbd></th>
@@ -135,19 +135,19 @@
 									<tr>
 										<th><kbd>$filter</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">設定為 <em>true</em> 或 <em>false</em> 來設定自動編碼，預設是主要配置設定（app/config/config.php）</td>
+										<td class="description">設定为 <em>true</em> 或 <em>false</em> 來設定自动编码，預設是主要配置設定（app/config/config.php）</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>一個新的 <em>View</em> 物件</td>
+							<td>一个新的 <em>View</em> 物件</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將建立一個對 APPPATH/ 的 View 物件
+								<pre class="php"><code>// 将建立一个對 APPPATH/ 的 View 物件
 $view = View::forge('path/to/view', array(
 	'menu' => $menu,
 	'articles' => $articles,
@@ -161,7 +161,7 @@ $view = View::forge('path/to/view', array(
 
 			<article>
 				<h4 class="method" id="method_auto_encode">auto_filter($filter = true)</h4>
-				<p><strong>auto_filter</strong> 方法設定在 View 實例上是否編碼資料。</p>
+				<p><strong>auto_filter</strong> 方法設定在 View 實例上是否编码資料。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -169,18 +169,18 @@ $view = View::forge('path/to/view', array(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$filter</kbd></th>
 										<td><pre class="php"><code>true</code></pre></td>
-										<td class="description">在 View 實例上是否編碼資料</td>
+										<td class="description">在 View 實例上是否编码資料</td>
 									</tr>
 								</table>
 							</td>
@@ -200,7 +200,7 @@ $view = View::forge('path/to/view', array(
 
 $view->auto_filter();
 
-// 或設定它為 false
+// 或設定它为 false
 
 $view->auto_filter(false);
 
@@ -219,7 +219,7 @@ $view = View::forge('path/to/view', array(
 
 			<article>
 				<h4 class="method" id="method_set_filename">set_filename($file)</h4>
-				<p><strong>set_filename</strong> 方法能讓你設定或變更檢視檔案名稱。</p>
+				<p><strong>set_filename</strong> 方法能让你設定或變更檢視档案名稱。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -227,18 +227,18 @@ $view = View::forge('path/to/view', array(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$file</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">檢視檔案名稱，檢視檔案應該被對應到 <em>app/views</em> 目錄，並且不提供 <strong>.php</strong> 副檔名。</td>
+										<td class="description">檢視档案名稱，檢視档案應該被對應到 <em>app/views</em> 目录，并且不提供 <strong>.php</strong> 副档名。</td>
 									</tr>
 								</table>
 							</td>
@@ -261,7 +261,7 @@ $view->set_filename('path/to/view');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get">get($key = null, $default = null)</h4>
-				<p><strong>get</strong> 方法檢索一個或全部設定在檢視上的變數。</p>
+				<p><strong>get</strong> 方法檢索一个或全部設定在檢視上的變数。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -269,23 +269,23 @@ $view->set_filename('path/to/view');</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">變數名稱</td>
+										<td class="description">變数名稱</td>
 									</tr>
 									<tr>
 										<th><kbd>$default</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">如果變數沒設定要回傳的預設值</td>
+										<td class="description">如果變数沒設定要回傳的預設值</td>
 									</tr>
 								</table>
 							</td>
@@ -297,14 +297,14 @@ $view->set_filename('path/to/view');</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 建立一個檢視並設定一些資料
+								<pre class="php"><code>// 建立一个檢視并設定一些資料
 $view = new View;
 $view->set(array('field1' =&gt; 'value1', 'field2' =&gt; 'value2');
 
-// 取得單一值
+// 取得单一值
 $field1 = $view->get('field1');
 
-// 取得單一值，設定一個預設值如果該欄位不存在
+// 取得单一值，設定一个預設值如果該欄位不存在
 $field3 = $view->get('field3', 'value3');
 
 // 取得所有值
@@ -317,7 +317,7 @@ $fields = $view->get();</code></pre>
 
 			<article>
 				<h4 class="method" id="method_set">set($key, $value = null, $filter = null)</h4>
-				<p><strong>set</strong> 方法指派一個變數到檢視。</p>
+				<p><strong>set</strong> 方法指派一个變数到檢視。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -325,18 +325,18 @@ $fields = $view->get();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">變數名稱或變數陣列</td>
+										<td class="description">變数名稱或變数陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -346,7 +346,7 @@ $fields = $view->get();</code></pre>
 									<tr>
 										<th><kbd>$filter</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">設為 <em>true</em> 或 <em>false</em> 來編碼，預設是主要自動編碼設定</td>
+										<td class="description">設为 <em>true</em> 或 <em>false</em> 來编码，預設是主要自动编码設定</td>
 									</tr>
 								</table>
 							</td>
@@ -361,15 +361,15 @@ $fields = $view->get();</code></pre>
 								<pre class="php"><code>$view = new View;
 $view->set('users', $users, false);
 
-// 或設定一個陣列
+// 或設定一个陣列
 
 $view->set(array(
 	'users' => $users,
 	'articles' => $articles,
 ), null, true);
 
-// 當編碼輸出啟用時，
-// 如果你需要傳遞 HTML／Javascript，你需要設定最後參數為 false。
+// 當编码輸出啟用時，
+// 如果你需要傳遞 HTML／Javascript，你需要設定最後參数为 false。
 $view->set('example', '&lt;h1&gt;Heading&lt;/h1&gt;', false);</code></pre>
 							</td>
 						</tr>
@@ -379,7 +379,7 @@ $view->set('example', '&lt;h1&gt;Heading&lt;/h1&gt;', false);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_set_safe">set_safe($key, $value = null)</h4>
-				<p>與 <code>set()</code> 相同，除了它預設不在輸出時編碼變數。</p>
+				<p>與 <code>set()</code> 相同，除了它預設不在輸出時编码變数。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -387,18 +387,18 @@ $view->set('example', '&lt;h1&gt;Heading&lt;/h1&gt;', false);</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">變數名稱或變數陣列</td>
+										<td class="description">變数名稱或變数陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -418,7 +418,7 @@ $view->set('example', '&lt;h1&gt;Heading&lt;/h1&gt;', false);</code></pre>
 								<pre class="php"><code>$view = new View;
 $view->set_safe('users', $users);
 
-// 或設定一個陣列
+// 或設定一个陣列
 
 $view->set_safe(array(
 	'users' => $users,
@@ -432,7 +432,7 @@ $view->set_safe(array(
 
 			<article>
 				<h4 class="method" id="method_set_global">set_global($key, $value = null, $filter = null)</h4>
-				<p><strong>set_global</strong> 方法設定一個可存取的變數給所有檢視。</p>
+				<p><strong>set_global</strong> 方法設定一个可存取的變数給所有檢視。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -440,18 +440,18 @@ $view->set_safe(array(
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">變數名稱或變數陣列</td>
+										<td class="description">變数名稱或變数陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -461,7 +461,7 @@ $view->set_safe(array(
 									<tr>
 										<th><kbd>$filter</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">設為 <em>true</em> 或 <em>false</em> 來編碼，預設是主要自動編碼設定</td>
+										<td class="description">設为 <em>true</em> 或 <em>false</em> 來编码，預設是主要自动编码設定</td>
 									</tr>
 								</table>
 							</td>
@@ -475,7 +475,7 @@ $view->set_safe(array(
 							<td>
 								<pre class="php"><code>View::set_global('users', $users, false);
 
-// 或設定一個陣列
+// 或設定一个陣列
 
 View::set_global(array(
 	'users' => $users,
@@ -490,11 +490,11 @@ View::set_global(array(
 			<article>
 				<h4 class="method" id="method_bind">bind($key, $value = null)</h4>
 				<p>
-					透過參照指派一個值。綁定的好處是該值可以被修改，而不須重新設定它們。
-					也可能在變數有值之前綁定它們。在檢視檔案中，
-					指派值將可被做為一個變數。
+					透過參照指派一个值。綁定的好处是該值可以被修改，而不須重新設定它們。
+					也可能在變数有值之前綁定它們。在檢視档案中，
+					指派值将可被做为一个變数。
 				</p>
-				<p class="note">請注意：這些不能被編碼輸出淨化，因此應該被認為是不安全的。</p>
+				<p class="note">請注意：这些不能被编码輸出淨化，因此應該被認为是不安全的。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -502,18 +502,18 @@ View::set_global(array(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">變數名稱或變數陣列</td>
+										<td class="description">變数名稱或變数陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -533,7 +533,7 @@ View::set_global(array(
 								<pre class="php"><code>$view = new View;
 $view->bind('users', $users, false);
 
-// 或設定一個陣列
+// 或設定一个陣列
 
 $view->bind(array(
 	'users' => $users,
@@ -547,8 +547,8 @@ $view->bind(array(
 
 			<article>
 				<h4 class="method" id="method_bind_global">bind_global($key, $value = null)</h4>
-				<p><strong>bind_global</strong> 方法透過可存取的參照為所有檢視指派一個全域的變數。</p>
-				<p class="note">請注意：這些不能被編碼輸出淨化，因此應該被認為是不安全的。</p>
+				<p><strong>bind_global</strong> 方法透過可存取的參照为所有檢視指派一个全域的變数。</p>
+				<p class="note">請注意：这些不能被编码輸出淨化，因此應該被認为是不安全的。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -556,18 +556,18 @@ $view->bind(array(
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">變數名稱</td>
+										<td class="description">變数名稱</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -594,8 +594,8 @@ $view->bind(array(
 			<article>
 				<h4 class="method" id="method_render">render($file = null)</h4>
 				<p>
-					<strong>render</strong> 方法呈現檢視物件為一個字串。
-					全域和本地資料會合併並提取給檢視檔案，來建立本地變數。
+					<strong>render</strong> 方法呈现檢視物件为一个字串。
+					全域和本地資料会合併并提取給檢視档案，來建立本地變数。
 				</p>
 				<table class="method">
 					<tbody>
@@ -604,12 +604,12 @@ $view->bind(array(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -617,14 +617,14 @@ $view->bind(array(
 										<th><kbd>$file</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td class="description">沒有副檔名的檢視檔案名稱</td>
+										<td class="description">沒有副档名的檢視档案名稱</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><strong>呈現的檢視檔案</strong></td>
+							<td><strong>呈现的檢視档案</strong></td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -652,12 +652,12 @@ $html = View::forge()->set_filename('path/to/view')->render();</code></pre>
 				<table class="method">
 					<tbody>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -665,7 +665,7 @@ $html = View::forge()->set_filename('path/to/view')->render();</code></pre>
 										<th><kbd>$view</kbd></th>
 										<td><em>字串</em></td>
 										<td><em>必要</em></td>
-										<td class="description">沒有副檔名的檢視檔案名稱</td>
+										<td class="description">沒有副档名的檢視档案名稱</td>
 									</tr>
 									<tr>
 										<th><kbd>$data</kbd></th>
@@ -700,7 +700,7 @@ $html = View::forge()->set_filename('path/to/view')->render();</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

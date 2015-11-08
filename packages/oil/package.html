@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -44,18 +44,18 @@
 				<h3 id="package">套件</h3>
 
 				<p>
-					套件可以手動下載安裝，但有套件命令的幫助下，它可以更快的運作。
+					套件可以手动下载安装，但有套件命令的幫助下，它可以更快的運作。
 					它透過定義在 <kbd>fuel/core/config/package.php</kbd> 的來源列表，
-					及任何其他可以編輯或複製到 <kbd>fuel/app/config</kbd> 文件夾的配置檔案尋找套件。
+					及任何其他可以编輯或複製到 <kbd>fuel/app/config</kbd> 文件夾的配置档案尋找套件。
 				</p>
 
 				<p>
-					Oil 很聰明，所以它在做任何套件命令之前，會檢查是否你已經在你的電腦上安裝 Git。
-					如果你已經安裝 Git，Oil 會安裝一個套件做為 Git 儲存庫，而非直接下載檔案，
-					直接下載檔案意味著更新、新發行及追蹤套件的自訂修改可能不容易。
+					Oil 很聰明，所以它在做任何套件命令之前，会檢查是否你已经在你的電腦上安装 Git。
+					如果你已经安装 Git，Oil 会安装一个套件做为 Git 儲存庫，而非直接下载档案，
+					直接下载档案意味著更新、新发行及追蹤套件的自訂修改可能不容易。
 				</p>
 
-				<h3 id="install">安裝</h3>
+				<h3 id="install">安装</h3>
 
 				<pre class="cli"><code>$ php oil package install test-package
 Downloading package: git://github.com/philsturgeon/fuel-test-package.git
@@ -68,8 +68,8 @@ Resolving deltas: 100% (3/3), done.
 Cloning into /Users/phil/Sites/fuel/fuel/packages/test-package...</code></pre>
 
 				<p>
-					如果 Git 沒有被安裝，或提供了 --direct 標誌，
-					那麼套件的 ZIP 檔案會被下載並解壓縮到 <kbd>fuel/packages/packagename</kbd>。
+					如果 Git 沒有被安装，或提供了 --direct 标誌，
+					那麼套件的 ZIP 档案会被下载并解壓縮到 <kbd>fuel/packages/packagename</kbd>。
 				</p>
 
 				<pre class="cli"><code>$ php oil package install test-package --direct
@@ -83,16 +83,16 @@ Cloning into /Users/phil/Sites/fuel/fuel/packages/test-package...</code></pre>
 	DOCROOT/fuel/packages/test-package/classes/hasone.php
 	DOCROOT/fuel/packages/test-package/classes/model.php</code></pre>
 
-				<h3 id="uninstall">反安裝</h3>
+				<h3 id="uninstall">反安装</h3>
 
 				<pre class="cli"><code>$ php oil package uninstall test-package
 Uninstalling package "test-package"</code></pre>
 
-				<p class="note"><strong>請注意：</strong>不像安裝，這裡即使安裝了 Git 也沒有什麼不同，完全一樣全都刪除。</p>
+				<p class="note"><strong>請注意：</strong>不像安装，这裡即使安装了 Git 也沒有什么不同，完全一樣全都刪除。</p>
 
 				<h3 id="update">更新</h3>
 
-				<p>即將來臨……</p>
+				<p>即将來臨……</p>
 
 			</section>
 
@@ -100,7 +100,7 @@ Uninstalling package "test-package"</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

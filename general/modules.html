@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="modules.html#" id="toc_handle">目錄</a>
+			<a href="modules.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,27 +41,27 @@
 
 			<h2>模組</h2>
 
-			<h3>模組是什麼？</h3>
+			<h3>模組是什么？</h3>
 
 			<p>
-				模組是一組獨立的 MVC 元素。使用模組能讓你的程式碼有可重複使用性及封裝。
-				模組通常駐留在應用程式名為 <strong>modules</strong> 的子目錄中。
+				模組是一組獨立的 MVC 元素。使用模組能让你的程式码有可重複使用性及封裝。
+				模組通常駐留在应用程序名为 <strong>modules</strong> 的子目录中。
 				建議你可充分利用模組，每當在大型專案工作時，
-				且你相信該專案程式碼庫將不僅僅是幾行程式碼。
-				這將幫助你保持事物的整齊。
+				且你相信該專案程式码庫将不僅僅是幾行程式码。
+				这将幫助你保持事物的整齊。
 			</p>
 
 			<p>
-				模組可以獨立運作，例如像 blog 模組或相簿模組。你可以直接路由到模組控制器，而不須存取任何全域的程式碼。
-				模組也可被用於一個真正的 HMVC 情境，控制器呼叫其他控制器，它將產生（一部分的）產生頁面請求所需的結果。
+				模組可以獨立運作，例如像 blog 模組或相簿模組。你可以直接路由到模組控制器，而不須存取任何全域的程式码。
+				模組也可被用於一个真正的 HMVC 情境，控制器呼叫其他控制器，它将產生（一部分的）產生頁面請求所需的結果。
 			</p>
 
 			<h3 id="module_config">模組配置</h3>
 
 			<p>
-				為了能夠使用模組，你必須告訴 Fuel 你的模組處存在哪裡。
-				預設情況下，這在你應用程式的 modules 文件夾中。你使用在你應用程式 config.php 檔案的 'modules_path' 設定來定義你的模組路徑。
-				你也可以定義多個路徑。如果你這麼做，它們將在你已定義的序列中被搜尋。
+				为了能夠使用模組，你必須告訴 Fuel 你的模組处存在哪裡。
+				預設情況下，这在你应用程序的 modules 文件夾中。你使用在你应用程序 config.php 档案的 'modules_path' 設定來定義你的模組路徑。
+				你也可以定義多个路徑。如果你这麼做，它們将在你已定義的序列中被搜尋。
 			</p>
 
 			<pre class="php"><code>/**
@@ -70,15 +70,15 @@
  * here.
  */
 'module_paths' => array(
-	APPPATH.'modules'.DS,		// 指向應用程式模組
+	APPPATH.'modules'.DS,		// 指向应用程序模組
 	APPPATH.'..'.DS.'globalmods'.DS	// 指向我們的全域模組
 ),
 </code></pre>
-			<p>當你定義你的路徑時，確認它們以 DS 結尾，DS 是 Fuel 平台獨立的目錄分隔符。</p>
+			<p>當你定義你的路徑時，確認它們以 DS 結尾，DS 是 Fuel 平台獨立的目录分隔符。</p>
 
 			<h3 id="module_namespace">模組命名空間</h3>
 
-			<p>有一個經常遇到的問題，在與獨立開發的程式碼運作時，類別名稱碰撞。例如，有很多的模組有一個 admin 控制器。為了避免碰撞，在 Fuel 中每個模組都住在自己的 PHP 命名空間，它<strong><u>必須</u></strong>被命名與該模組文件夾名稱一致。</p>
+			<p>有一个经常遇到的問題，在與獨立开发的程式码運作時，类別名稱碰撞。例如，有很多的模組有一个 admin 控制器。为了避免碰撞，在 Fuel 中每个模組都住在自己的 PHP 命名空間，它<strong><u>必須</u></strong>被命名與該模組文件夾名稱一致。</p>
 
 			<pre class="php"><code>&lt;?php
 /**
@@ -90,25 +90,25 @@ namespace Mymodule;
 class Controller_Widget
 {
 
-	// 在這裡放你的控制器程式碼，就像一個應用程式的控制器
+	// 在这裡放你的控制器程式码，就像一个应用程序的控制器
 }
 </code></pre>
 
 			<p class="note">
-				如果你已經移動你的控制器到一個像是<a href="namespacing.html#controllers">這裡</a>解釋的命名空間中。
-				你必須為你的模組控制器使用相同設置。在這個例子中，命名空間會是 <var>Mymodule\Controller</var>、類別名稱是 <var>Widget</var>。
+				如果你已经移动你的控制器到一个像是<a href="namespacing.html#controllers">这裡</a>解釋的命名空間中。
+				你必須为你的模組控制器使用相同設置。在这个例子中，命名空間会是 <var>Mymodule\Controller</var>、类別名稱是 <var>Widget</var>。
 			</p>
 
 			<h3 id="folder_structure">模組文件夾結構</h3>
 
 			<p>
-				你可以透過在你已定義在配置的模組文件夾中，為你的新模組建立一個文件夾，來開始建立一個模組。
-				文件夾名稱決定模組名稱，以及給在模組中類別命名空間的名稱。
-				這個名稱也被用在你希望路由到模組控制的 URI，或做為一個 HMVC 呼叫情況下的 <a href="../classes/request/request.html">Request</a> 的一部份。
+				你可以透過在你已定義在配置的模組文件夾中，为你的新模組建立一个文件夾，來開始建立一个模組。
+				文件夾名稱決定模組名稱，以及給在模組中类別命名空間的名稱。
+				这个名稱也被用在你希望路由到模組控制的 URI，或做为一个 HMVC 呼叫情況下的 <a href="../classes/request/request.html">Request</a> 的一部份。
 			</p>
 			<p>
-				做為一個模組可被視為一個應用程式自身包含的部分，你會注意到模組文件夾結構十分熟悉。
-				這與應用程式文件夾的結構是相同的。以下是模組支援的文件夾結構：
+				做为一个模組可被視为一个应用程序自身包含的部分，你会注意到模組文件夾結構十分熟悉。
+				这與应用程序文件夾的結構是相同的。以下是模組支援的文件夾結構：
 			</p>
 			<ul style="margin-top:-20px">
 				<li>classes
@@ -124,43 +124,43 @@ class Controller_Widget
 				<li>views</li>
 			</ul>
 
-			<h3 id="cross_module_file_loading">跨模組載入檔案</h3>
+			<h3 id="cross_module_file_loading">跨模組載入档案</h3>
 
 			<p>
-				無論它是一個配置文件，或一個跨模組載入的檢視文件，
-				都必須在檔案名稱有模組前綴：
+				無論它是一个配置文件，或一个跨模組載入的檢視文件，
+				都必須在档案名稱有模組前綴：
 			</p>
 
-			<pre class="php"><code>// 跨模組載入一個配置
+			<pre class="php"><code>// 跨模組載入一个配置
 \Config::load('othermodule::myconfig');
 
-// 跨模組載入一個檢視
+// 跨模組載入一个檢視
 \View::forge('othermodule::subdir/view');</code></pre>
 
-            		<p>從模組運行一個任務：</p>
+            		<p>從模組运行一个任務：</p>
 
 			<pre class="cli"><code>$ php oil refine &lt;modulename&gt;::&lt;taskname&gt;:&lt;methodname&gt;</code></pre>
 
 			<h3 id="module_routing">模組路由</h3>
 
 			<p>
-				當你在路由模式下使用模組，你可以透過包含一個在你模組 config 文件夾中的 <b>routes.php</b> 來添加自訂路由到你的模組。
-				這些路由將被載入當 Fuel 偵測到第一個 URI 分段指的是一個模組，而且只有該模組的路由會被載入。
-				這些路由將被附加到路由陣列前面，所以一個在主要路由配置中可能的 (:any) 路由在模組路由處理之前將不會配對。
+				當你在路由模式下使用模組，你可以透過包含一个在你模組 config 文件夾中的 <b>routes.php</b> 來添加自訂路由到你的模組。
+				这些路由将被載入當 Fuel 偵测到第一个 URI 分段指的是一个模組，而且只有該模組的路由会被載入。
+				这些路由将被附加到路由陣列前面，所以一个在主要路由配置中可能的 (:any) 路由在模組路由处理之前将不会配對。
 			</p>
 
 			<p>
-				這暗示著模組路由不能被用來定義給全域或給其他模組的路由。
-				換言之，左側應始終包含目前模組做為第一個 URI 分段。
+				这暗示著模組路由不能被用來定義給全域或給其他模組的路由。
+				換言之，左側應始終包含目前模組做为第一个 URI 分段。
 				右側你可以使用以上段落所述的任何東西，
-				讓一個模組路由到一個應用程式控制器或其他模組是完全沒有問題的。
+				让一个模組路由到一个应用程序控制器或其他模組是完全沒有問題的。
 			</p>
 
 			<h3 id="modules_and_hmvc">模組與 HMVC 請求</h3>
 
 			<p>
-				除了使用模組做為分離應用程式獨立邏輯的部分，
-				你也可以在一個 HMVC 情境下使用模組控制器，你應用程式的控制器其中之一，
+				除了使用模組做为分離应用程序獨立邏輯的部分，
+				你也可以在一个 HMVC 情境下使用模組控制器，你应用程序的控制器其中之一，
 				呼叫更多模組控制器來建立 URI 請求的最終結果。
 			</p>
 
@@ -168,16 +168,16 @@ class Controller_Widget
 				閱讀 <a href="hmvc.html">HMVC 請求文件</a>了解更多資訊。
 			</p>
 
-			<h3 id="static_calls">在模組外使用模組類別</h3>
+			<h3 id="static_calls">在模組外使用模組类別</h3>
 
 			<p>
-				在模組外使用一個模組的類別當然也是可能的。
-				要讓它運作，Fuel 需要能夠自動載入該類別當你在你的程式碼中引用它。
-				這意味著你將必須告訴 Fuel 要在哪裡找到該模組。有兩種方法可以做到。
+				在模組外使用一个模組的类別當然也是可能的。
+				要让它運作，Fuel 需要能夠自动載入該类別當你在你的程式码中引用它。
+				这意味著你将必須告訴 Fuel 要在哪裡找到該模組。有兩種方法可以做到。
 			</p>
 
 			<p>
-				你可以預先載入模組透過在你應用程式的 <code>config.php</code> 檔案中的
+				你可以預先載入模組透過在你应用程序的 <code>config.php</code> 档案中的
 				<code>'always_load'</code>、<code>'modules'</code> 設定來指定要載入的模組：
 			</p>
 
@@ -193,12 +193,12 @@ class Controller_Widget
 	 */
 	'modules'	=> array('mymodule'),</code></pre>
 
-			<p>你也可以在執行階段手動添加模組，在你使用任何靜態方法之前：</p>
+			<p>你也可以在执行階段手动添加模組，在你使用任何靜態方法之前：</p>
 
 			<pre class="php"><code>// 使 Mymodule 模組可存取
 Module::load('mymodule');</code></pre>
 
-			<p>然後像這樣呼叫模組類別：</p>
+			<p>然後像这樣呼叫模組类別：</p>
 
 			<pre class="php"><code>\Mymodule\Myclass::mymethod('params');</code></pre>
 
@@ -206,7 +206,7 @@ Module::load('mymodule');</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

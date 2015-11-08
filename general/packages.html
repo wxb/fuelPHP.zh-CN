@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="packages.html#" id="toc_handle">目錄</a>
+			<a href="packages.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,33 +42,33 @@
 			<h2>套件</h2>
 
 			<p>
-				當談論到組織、重用及分享你的程式碼，套件是能讓你達成的好方法。
-				它們可以包含所有種類像模型、第三方函式庫、配置等。
-				套件也能讓你擴充核心而不搞亂你的 app/classes 目錄。
-				要澄清套件是什麼，以下有套件的「是」與「否」。
+				當談論到組織、重用及分享你的程式码，套件是能让你達成的好方法。
+				它們可以包含所有種类像模型、第三方函式庫、配置等。
+				套件也能让你擴充核心而不搞亂你的 app/classes 目录。
+				要澄清套件是什么，以下有套件的「是」與「否」。
 			</p>
 
 			<h4 id="they_are">套件……</h4>
 			<ul>
-				<li>是組織你程式碼的好方法，</li>
-				<li>提供一個儲存第三方函式庫的地方，</li>
-				<li>能讓你擴充其他套件而不與別人的程式碼搞亂，</li>
-				<li>一個擴充 Fuel 而不搞亂核心文件的地方。</li>
+				<li>是組織你程式码的好方法，</li>
+				<li>提供一个儲存第三方函式庫的地方，</li>
+				<li>能让你擴充其他套件而不與別人的程式码搞亂，</li>
+				<li>一个擴充 Fuel 而不搞亂核心文件的地方。</li>
 			</ul>
 
 			<h4 id="they_are_not">但……</h4>
 			<ul>
-				<li>套件並不對應到 URL，</li>
+				<li>套件并不對應到 URL，</li>
 				<li>且透過 HMVC 請求是不易接近的。</li>
 			</ul>
 
-			<h3 id="installing">安裝套件</h3>
-			<p>安裝套件可以手動或透過 <a href="../packages/oil/package.html">oil</a>。要手動安裝可下載套件並放進你的套件目錄（預設在 fuel/packages）。</p>
-			<p class="note">要真正能夠使用你的套件，你必須將其添加到 <code>app/config/config.php</code> 裡的
+			<h3 id="installing">安装套件</h3>
+			<p>安装套件可以手动或透過 <a href="../packages/oil/package.html">oil</a>。要手动安装可下载套件并放進你的套件目录（預設在 fuel/packages）。</p>
+			<p class="note">要真正能夠使用你的套件，你必須将其添加到 <code>app/config/config.php</code> 裡的
 			<code>always_load</code> 或使用 <a href="../classes/package.html#method_load">Package::load()</a>。</p>
 
 			<h3 id="creation">建立套件</h3>
-			<p>為了幫助人們了解你在做什麼，最好建構你的套件像這樣：</p>
+			<p>为了幫助人們了解你在做什么，最好建構你的套件像这樣：</p>
 
 			<pre><code>/packages
     /package
@@ -83,31 +83,31 @@
 </code></pre>
 
 			<p>
-				每個套件都預期有一個 <em>bootstrap.php</em> 位於套件的基底。
-				使用引導程序去添加命名空間（添加至全域，如果你願意）。並且為了較好的效能添加類別。
+				每个套件都預期有一个 <em>bootstrap.php</em> 位於套件的基底。
+				使用引導程序去添加命名空間（添加至全域，如果你願意）。并且为了較好的效能添加类別。
 			</p>
 
-			<pre class="php"><code>// 添加命名空間，如果你想要自動載入器能找到類別
+			<pre class="php"><code>// 添加命名空間，如果你想要自动載入器能找到类別
 Autoloader::add_namespace('Mypackage', __DIR__.'/classes/');
 
-// 添加為核心命名空間
+// 添加为核心命名空間
 Autoloader::add_core_namespace('Mypackage');
 
-// 添加為核心命名空間（類別是對全域的別名，因此無須命名空間前綴便可使用）
-// 設定第二個參數為 <kbd>true</kbd> 成為前綴，且能覆寫核心類別
+// 添加为核心命名空間（类別是對全域的別名，因此無須命名空間前綴便可使用）
+// 設定第二个參数为 <kbd>true</kbd> 成为前綴，且能覆寫核心类別
 Autoloader::add_core_namespace('Mypackage', true);
 
-// 然後添加類別，這是有用的：
+// 然後添加类別，这是有用的：
 // - 優化：不需要搜尋路徑
-// - 它必須是能夠使用為核心的命名空間
-// - 如果你想打破自動載入器的路徑搜索規則
+// - 它必須是能夠使用为核心的命名空間
+// - 如果你想打破自动載入器的路徑搜索規則
 Autoloader::add_classes(array(
 	'Mypackage\\Classname' => __DIR__.'/classes/classname.php',
 	'Mypackage\\Anotherclass' => __DIR__.'/classes/anotherclass.php',
 ));
 </code></pre>
 
-			<p>一旦你將你的類別放至定位，你現在可以開始使用它們。</p>
+			<p>一旦你将你的类別放至定位，你现在可以開始使用它們。</p>
 
 			<p class="note">請注意：如果套件命名空間不是對全域的別名，你必須提供它：</p>
 
@@ -122,7 +122,7 @@ $instance = new Mynamespace\Myclass;
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

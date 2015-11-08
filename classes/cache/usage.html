@@ -12,7 +12,7 @@
 		var class_prefix = "Cache::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Cache 用法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Cache 用法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,16 +40,16 @@
 
 		<div id="main">
 
-			<h2>Cache 類別</h2>
+			<h2>Cache 类別</h2>
 
-			<p>Cache 類別能讓你快取資源大量操作的結果。</p>
+			<p>Cache 类別能让你快取資源大量操作的結果。</p>
 
 			<section>
 				<h3 id="usage">用法</h3>
 
-				<p>可用兩種方法使用快取：透過靜態的 Cache 類別使用和透過
+				<p>可用兩種方法使用快取：透過靜態的 Cache 类別使用和透過
 				Cache::forge() 回傳的快取物件。此章節包括靜態的使用，
-				它將總是使用和 <a href="config.html">配置</a> 中指定的相同驅動。</p>
+				它将總是使用和 <a href="config.html">配置</a> 中指定的相同驅动。</p>
 
 				<p>使用快取物件和 Cache::forge()
 				在 <a href="advanced.html">進階</a> 段落裡有解釋。</p>
@@ -57,18 +57,18 @@
 				<h3 id="gc">垃圾回收</h3>
 
 				<p>
-					目前還 <strong>沒有</strong> 垃圾回收機制建構在 Cache 驅動之中，
+					目前還 <strong>沒有</strong> 垃圾回收機制建構在 Cache 驅动之中，
 					後端儲存有內建支援資料過期，如 APC、Memcached 或 Redis，
-					將使用該特性並將自動讓過舊的快取條目過期。
+					将使用該特性并将自动让過舊的快取條目過期。
 				</p>
 				<p class="note">
-					這意味著，如果你使用檔案儲存你的快取條目，你將必須寫一個排程工作（cron job），
-					基於最後修改的時間戳記，定期刪除所有舊檔案！
+					这意味著，如果你使用档案儲存你的快取條目，你将必須寫一个排程工作（cron job），
+					基於最後修改的時間戳記，定期刪除所有舊档案！
 				</p>
 
 				<article>
 					<h4 class="method" id="method_set">set($identifier, $contents = null, $expiration = false, $dependencies = array())</h4>
-					<p>寫入一個快取。</p>
+					<p>寫入一个快取。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -76,11 +76,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -96,15 +96,15 @@
 									</tr>
 									<tr>
 										<th><kbd>$expiration</kbd></th>
-										<td><i>整數</i></td>
-										<td>直到快取過期的秒數，null 將使它永不過期，
+										<td><i>整数</i></td>
+										<td>直到快取過期的秒数，null 将使它永不過期，
 										false 使它使用配置中的預設過期設定。</td>
 									</tr>
 									<tr>
 										<th><kbd>$dependencies</kbd></th>
 										<td><i>陣列</i></td>
-										<td>此快取依賴的識別碼陣列，如果其中之一是新的或已不存在了，
-										此快取將過期。</td>
+										<td>此快取依賴的識別码陣列，如果其中之一是新的或已不存在了，
+										此快取将過期。</td>
 									</tr>
 								</table>
 							</td>
@@ -116,10 +116,10 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 以識別碼 "test" 快取 'String to be cached' 3 小時
+								<pre class="php"><code>// 以識別码 "test" 快取 'String to be cached' 3 小時
 Cache::set('test', 'String to be cached.', 3600 * 3);
 
-// 你可以添加一個部份或用句點表示法的快取目錄
+// 你可以添加一个部份或用句點表示法的快取目录
 Cache::set('test.test', 'String to be cached.', 3600 * 3);
 </code></pre>
 							</td>
@@ -130,7 +130,7 @@ Cache::set('test.test', 'String to be cached.', 3600 * 3);
 
 				<article>
 					<h4 class="method" id="method_get">get($identifier, $use_expiration = true)</h4>
-					<p>取回一個快取。</p>
+					<p>取回一个快取。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -138,11 +138,11 @@ Cache::set('test.test', 'String to be cached.', 3600 * 3);
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -154,7 +154,7 @@ Cache::set('test.test', 'String to be cached.', 3600 * 3);
 									<tr>
 										<th><kbd>$use_expiration</kbd></th>
 										<td><i>true</i></td>
-										<td>藉由設定為 false 來為此次抓取停用快取</td>
+										<td>藉由設定为 false 來为此次抓取停用快取</td>
 									</tr>
 								</table>
 							</td>
@@ -165,12 +165,12 @@ Cache::set('test.test', 'String to be cached.', 3600 * 3);
 						</tr>
 						<tr>
 							<th>拋出</th>
-							<td>CacheNotFoundException 當快取不存在時，或 CacheExpiredException 當它已經過期時</td>
+							<td>CacheNotFoundException 當快取不存在時，或 CacheExpiredException 當它已经過期時</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 嘗試取回快取並儲存到 $content 變數
+								<pre class="php"><code>// 嘗试取回快取并儲存到 $content 變数
 try
 {
 	$content = Cache::get('test');
@@ -179,7 +179,7 @@ catch (\CacheNotFoundException $e)
 {
 	/*
 		捕捉 CacheNotFoundException 例外
-		將同時捕捉 CacheNotFoundException 和 CacheExpiredException。
+		将同時捕捉 CacheNotFoundException 和 CacheExpiredException。
 		使用此當捕捉例外時。
 	*/
 }
@@ -192,7 +192,7 @@ catch (\CacheNotFoundException $e)
 
 				<article>
 					<h4 class="method" id="method_delete">delete($identifier)</h4>
-					<p>刪除一個快取。</p>
+					<p>刪除一个快取。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -200,11 +200,11 @@ catch (\CacheNotFoundException $e)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -232,7 +232,7 @@ catch (\CacheNotFoundException $e)
 
 				<article>
 					<h4 class="method" id="method_delete_all">delete_all($section = null, $driver = null)</h4>
-					<p>為指定儲存驅動或只是其中的子段落清除全部快取。</p>
+					<p>为指定儲存驅动或只是其中的子段落清除全部快取。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -240,23 +240,23 @@ catch (\CacheNotFoundException $e)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$section</kbd></th>
 										<td><i>字串</i></td>
-										<td>快取的段落或目錄名稱，null 以刪除所有東西</td>
+										<td>快取的段落或目录名稱，null 以刪除所有東西</td>
 									</tr>
 									<tr>
 										<th><kbd>$driver</kbd></th>
 										<td><i>字串</i></td>
-										<td>要使用的驅動名稱，null 以使用預設驅動。</td>
+										<td>要使用的驅动名稱，null 以使用預設驅动。</td>
 									</tr>
 								</table>
 							</td>
@@ -268,10 +268,10 @@ catch (\CacheNotFoundException $e)
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 刪除預設驅動的全部快取
+								<pre class="php"><code>// 刪除預設驅动的全部快取
 Cache::delete_all();
 
-// 刪除 file 的子目錄 "test"
+// 刪除 file 的子目录 "test"
 Cache::delete_all('test', 'file');</code></pre>
 							</td>
 						</tr>
@@ -289,11 +289,11 @@ Cache::delete_all('test', 'file');</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -310,19 +310,19 @@ Cache::delete_all('test', 'file');</code></pre>
 									<tr>
 										<th><kbd>$args</kbd></th>
 										<td><i>陣列</i></td>
-										<td>給回呼（callback）的任何參數</td>
+										<td>給回呼（callback）的任何參数</td>
 									</tr>
 									<tr>
 										<th><kbd>$expiration</kbd></th>
-										<td><i>整數</i></td>
-										<td>直到快取過期的秒數，null 將使它永不過期，
+										<td><i>整数</i></td>
+										<td>直到快取過期的秒数，null 将使它永不過期，
 										false 使它使用配置中的預設過期設定。</td>
 									</tr>
 									<tr>
 										<th><kbd>$dependencies</kbd></th>
 										<td><i>陣列</i></td>
-										<td>此快取依賴的識別碼陣列，如果其中之一是新的或已不存在了，
-										此快取將過期。</td>
+										<td>此快取依賴的識別码陣列，如果其中之一是新的或已不存在了，
+										此快取将過期。</td>
 									</tr>
 								</table>
 							</td>
@@ -349,7 +349,7 @@ Cache::call('article_something', array('Model_Article', 'find'), array("all", ar
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>錯誤處理 - 一般 - FuelPHP 简体中文手册</title>
+	<title>错误处理 - 一般 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="error.html#" id="toc_handle">目錄</a>
+			<a href="error.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,70 +39,70 @@
 
 		<div id="main">
 
-			<h2>錯誤處理</h2>
+			<h2>错误处理</h2>
 
-			<h3 id="intro">簡介</h3>
+			<h3 id="intro">简介</h3>
 			<p>
-				正如大家（應該）知道的，在開發過程中，<a href="http://en.wikipedia.org/wiki/Exception_handling">錯誤處理</a>
+				正如大家（應該）知道的，在开发過程中，<a href="http://en.wikipedia.org/wiki/Exception_handling">错误处理</a>
 				是非常重要的部分。它不僅向使用者表明他／她／它所請求的頁面是不可用的，
-				也是一種透過提供一個 HTTP 錯誤狀態來通知機器
-				（瀏覽器等）發生了什麼事情的方式。
+				也是一種透過提供一个 HTTP 错误狀態來通知機器
+				（瀏覽器等）发生了什么事情的方式。
 			</p>
 
-			<h3 id="code_errors">程式碼錯誤</h3>
+			<h3 id="code_errors">程式码错误</h3>
 
 			<p>
-				FuelPHP 的內部錯誤處理是基於例外。這可以讓你在你的程式碼中捕捉它們，
-				因此你的應用程式可以優雅地處理發生的例外，且使用者可以繼續使用應用程式。
+				FuelPHP 的內部错误处理是基於例外。这可以让你在你的程式码中捕捉它們，
+				因此你的应用程序可以優雅地处理发生的例外，且使用者可以繼續使用应用程序。
 			</p>
 			<p>
-				FuelPHP 也改變預設 PHP 行為，當從舊的程序函式涉及 PHP 錯誤（不是例外）時。
-				取代在所有非致命錯誤繼續的是，<strong>FuelPHP 將會在所有錯誤發生時拋出一個 PhpErrorException</strong>。
-				這將強迫你解決所有錯誤，即使過去你可能會忽略的一個 E_NOTICE。
-				它也能讓你捕捉 PHP 錯誤。例如，當你有非程式設計師建立的檢視，
-				要在檢視檔案捕捉語法錯誤時。
+				FuelPHP 也改變預設 PHP 行为，當從舊的程序函式涉及 PHP 错误（不是例外）時。
+				取代在所有非致命错误繼續的是，<strong>FuelPHP 将会在所有错误发生時拋出一个 PhpErrorException</strong>。
+				这将強迫你解決所有错误，即使過去你可能会忽略的一个 E_NOTICE。
+				它也能让你捕捉 PHP 错误。例如，當你有非程式設計師建立的檢視，
+				要在檢視档案捕捉語法错误時。
 			</p>
 			<p>
-				你可以透過添加 PHP 錯誤類型（像 E_NOTICE 或 E_STRICT）到你應用程式 config/config.php 檔案中的
-				<a href="configuration.html#config">errors.continue_on</a> 鍵來修改此行為。這裡定義的錯誤將能讓你的指令碼繼續。
-				這些錯誤的例外不會被拋出，所以你可以不再捕捉它們。
+				你可以透過添加 PHP 错误类型（像 E_NOTICE 或 E_STRICT）到你应用程序 config/config.php 档案中的
+				<a href="configuration.html#config">errors.continue_on</a> 鍵來修改此行为。这裡定義的错误将能让你的指令码繼續。
+				这些错误的例外不会被拋出，所以你可以不再捕捉它們。
 			 </p>
 			 <p class="note">
-				 我們強烈建議在錯誤時別繼續，因為它可能會導致程式碼中的錯誤非常難以發現，
-				 一旦你的應用程式進入量產！
+				 我們強烈建議在错误時別繼續，因为它可能会導致程式码中的错误非常難以发现，
+				 一旦你的应用程序進入量產！
 			 </p>
 
-			<h3 id="application_errors">應用程式邏輯錯誤</h3>
+			<h3 id="application_errors">应用程序邏輯错误</h3>
 
-			<h4 id="config">錯誤 404</h4>
+			<h4 id="config">错误 404</h4>
 
 			<p>
-				404 路由設定在 <em>app/config/routes.php</em> 並且必須指向處理 404 頁面的控制器／方法。
+				404 路由設定在 <em>app/config/routes.php</em> 并且必須指向处理 404 頁面的控制器／方法。
 				<a href="routing.html">在路由章節閱讀更多關於它的部分。</a>
 			</p>
 
-			<h4 id="throw">拋出一個 404</h4>
+			<h4 id="throw">拋出一个 404</h4>
 
 			<p>
-				有些時候需要拋出一個 404 錯誤，像你自己處理路由時。
-				這可以透過拋出一個 <kbd>HttpNotFoundException</kbd> 來輕易辦到。
-				一旦你運行 404 頁面，Fuel 將 <kbd>結束</kbd>。
+				有些時候需要拋出一个 404 错误，像你自己处理路由時。
+				这可以透過拋出一个 <kbd>HttpNotFoundException</kbd> 來輕易辦到。
+				一旦你运行 404 頁面，Fuel 将 <kbd>結束</kbd>。
 			</p>
 
 			<pre class="php"><code>throw new HttpNotFoundException;</code></pre>
 
 			<p class="note">
-				此例外在你應用程式的 index.php 檔案被捕捉並且進行處理。被捕捉時，
-				它將尋找被定義的 404 路由，如果找到的話，它將鍛造一個使用該路由做為 URI 給新請求。
-				由於這是一個正常的請求，URI
-				將<strong>像任何其他請求一樣被路由！</strong>
+				此例外在你应用程序的 index.php 档案被捕捉并且進行处理。被捕捉時，
+				它将尋找被定義的 404 路由，如果找到的話，它将鍛造一个使用該路由做为 URI 給新請求。
+				由於这是一个正常的請求，URI
+				将<strong>像任何其他請求一樣被路由！</strong>
 			</p>
 
 			<p>
-				如果你不希望這樣的行為，變更你要讀取的 index.php 檔案。
+				如果你不希望这樣的行为，變更你要讀取的 index.php 档案。
 			</p>
 
-			<pre class="php"><code>// 產生請求、執行並發送輸出。
+			<pre class="php"><code>// 產生請求、执行并发送輸出。
 try
 {
 	$response = Request::forge()->execute()->response();
@@ -122,18 +122,18 @@ catch (HttpNotFoundException $e)
 }
 </code></pre>
 
-			<h4 id="404_handling">404 處理</h4>
+			<h4 id="404_handling">404 处理</h4>
 
 			<p>
-				當一個請求被建立，並在路由器尋找可能相符的卻找不到相符合之後，
-				404 處理就進場了。預設情況下 <strong>_404_</strong> 路徑指向 <em>welcome/404</em>，
-				讓我們看一下該方法：
+				當一个請求被建立，并在路由器尋找可能相符的卻找不到相符合之後，
+				404 处理就進場了。預設情況下 <strong>_404_</strong> 路徑指向 <em>welcome/404</em>，
+				让我們看一下該方法：
 			</p>
 
 			<pre class="php"><code>// 在 Controller_Welcome 中
 
 /**
- * 應用程式的 404 動作。
+ * 应用程序的 404 动作。
  *
  * @access  public
  * @return  void
@@ -143,13 +143,13 @@ public function action_404()
 	$messages = array('Aw, crap!', 'Bloody Hell!', 'Uh Oh!', 'Nope, not here.', 'Huh?');
 	$data['title'] = $messages[array_rand($messages)];
 
-	// 設定一個 HTTP 404 輸出表頭
+	// 設定一个 HTTP 404 輸出表頭
 	return Response::forge(Presenter::forge('welcome/404', $data), 404);
 }</code></pre>
 
 			<p>
-				在這裡，你可以看到 404 處理程序內部發生了什麼事。正如你可以看到它是一個正常的控制器動作。
-				關於這點好的地方是，它能讓你在頁面上顯示任何你喜歡的內容。
+				在这裡，你可以看到 404 处理程序內部发生了什么事。正如你可以看到它是一个正常的控制器动作。
+				關於这點好的地方是，它能让你在頁面上顯示任何你喜歡的內容。
 				你可以載入你自己的檢視，帶著從資料庫取回的資料。
 			</p>
 
@@ -161,9 +161,9 @@ public function action_404()
 			<h4 id="catch_all">捕捉全部</h4>
 
 			<p>
-				由於 Fuel 不設定 404 回應狀態，你可以使用它做為一個捕捉全部的函式。
-				你可能已經有一個可以透過 URI 從資料庫取回頁面的頁面模型。
-				下面是一個例子來說明此可能性：
+				由於 Fuel 不設定 404 回應狀態，你可以使用它做为一个捕捉全部的函式。
+				你可能已经有一个可以透過 URI 從資料庫取回頁面的頁面模型。
+				下面是一个例子來說明此可能性：
 			</p>
 
 			<pre class="php"><code>// 在你的 404 控制器中
@@ -185,37 +185,37 @@ public function action_my404()
 	}
 }</code></pre>
 
-			<h4 id="throw_500">拋出一個 500</h4>
+			<h4 id="throw_500">拋出一个 500</h4>
 
 			<p>
-				可能有些時候你的應用程式需要簡單地停止並顯示一個錯誤，
+				可能有些時候你的应用程序需要简单地停止并顯示一个错误，
 				來表明在伺服器上出了點問題。
-				通常這是一個
-				<a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error">500 內部伺服器錯誤</a>。
+				通常这是一个
+				<a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error">500 內部伺服器错误</a>。
 			</p>
 
 			<p>
-				相似於拋出一個 404，可以拋出一個 500 錯誤。
+				相似於拋出一个 404，可以拋出一个 500 错误。
 			</p>
 
 			<pre class="php"><code>throw new HttpServerErrorException;</code></pre>
 
-			<h3 id="cli">在 CLI 模式中的錯誤</h3>
+			<h3 id="cli">在 CLI 模式中的错误</h3>
 
 			<p>
-				當在 CLI 模式中發生一個錯誤，無論是透過 oil 控制台互動，或執行一個任務時，
-				錯誤會簡單呈現，並根據錯誤的類型，目前的動作可能會中止。
+				當在 CLI 模式中发生一个错误，無論是透過 oil 控制台互动，或执行一个任務時，
+				错误会简单呈现，并根據错误的类型，目前的动作可能会中止。
 			</p>
 			<p>
-				你可以啟用倒出回溯跟蹤（backtrace）當致命錯誤發生時，透過設定在
-				<kbd>config.php</kbd> 配置檔案中的 <code>cli_backtrace</code> 配置鍵為 <code>true</code>。
+				你可以啟用倒出回溯跟蹤（backtrace）當致命错误发生時，透過設定在
+				<kbd>config.php</kbd> 配置档案中的 <code>cli_backtrace</code> 配置鍵为 <code>true</code>。
 			</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

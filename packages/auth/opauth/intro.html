@@ -11,7 +11,7 @@
 		var path = './../../../';
 	</script>
 	<script src="./../../../assets/js/combined.js"></script>
-	<title>簡介 - Opauth - Auth 套件 - FuelPHP 简体中文手册</title>
+	<title>简介 - Opauth - Auth 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -38,7 +38,7 @@
 		</div>
 
 		<div id="main">
-			<h2>Opauth - 簡介</h2>
+			<h2>Opauth - 简介</h2>
 
 			<p>Opauth is a multi-provider authentication framework that offers support for authentication against OAuth or OpenID providers.
 			By using Opauth in your application, you can allow your users to use their existing credentials from one of the major web
@@ -52,8 +52,8 @@
 
 			<h3 id="integration">整合</h3>
 
-			<p>Auth 套件為 Opauth 函式庫提供一個包裝類別，它讓你可以很容易地在應用程式中使用，
-			並為 Simpleauth 和 Ormauth 驅動組提供無縫整合。</p>
+			<p>Auth 套件为 Opauth 函式庫提供一个包裝类別，它让你可以很容易地在应用程序中使用，
+			并为 Simpleauth 和 Ormauth 驅动組提供無縫整合。</p>
 
 			<p>The complete integration means that when a user visits your application for the first time and chooses an OAuth provider as the means
 			to login, the Opauth integration class will transparently create a local user account, and logs the user in using that local account.
@@ -67,14 +67,14 @@
 			being in your system multiple times, which would be more difficult to manage.
 			</p>
 
-			<h3 id="install_and_config">安裝與配置</h3>
+			<h3 id="install_and_config">安装與配置</h3>
 
-			<p>如果這是你第一次接觸 Auth 套件，首先檢查在 <a href="../simpleauth/intro.html">Simpleauth</a> 和 <a href="../ormauth/intro.html">Ormauth</a> 的段落，
-			做出你要使用哪一個的選擇，並根據指示安裝。
-			一旦你完成了，回到這裡並繼續閱讀。</p>
+			<p>如果这是你第一次接觸 Auth 套件，首先檢查在 <a href="../simpleauth/intro.html">Simpleauth</a> 和 <a href="../ormauth/intro.html">Ormauth</a> 的段落，
+			做出你要使用哪一个的選擇，并根據指示安装。
+			一旦你完成了，回到这裡并繼續閱讀。</p>
 
-			<p>為了能使用 Opauth，首先你需要透過 composer 安裝 Opauth 函式庫。
-			添加到你的 FuelPHP 安裝根目錄 <strong>composer.json</strong> 檔案中：
+			<p>为了能使用 Opauth，首先你需要透過 composer 安装 Opauth 函式庫。
+			添加到你的 FuelPHP 安装根目录 <strong>composer.json</strong> 档案中：
 			</p>
 
 <pre class="javascript"><code>"require": {
@@ -84,10 +84,10 @@
 	"fuelphp/upload": "2.0"
 },</code></pre>
 
-			<p>除了 Opauth 本身的函式庫，你也需要安裝每一個你想要在你應用程式中支援的 OAuth 提供者的策略套件。
-			檢查 <a href="https://packagist.org/packages/opauth/">Packagist</a> 網站來看哪些是現成可用的 composer 套件。
+			<p>除了 Opauth 本身的函式庫，你也需要安装每一个你想要在你应用程序中支援的 OAuth 提供者的策略套件。
+			檢查 <a href="https://packagist.org/packages/opauth/">Packagist</a> 網站來看哪些是现成可用的 composer 套件。
 			比方說，你想使用 Facebook、Google 和 Github。你的 <strong>composer.json</strong>
-			應該看起來像這樣：</p>
+			應該看起來像这樣：</p>
 
 <pre class="javascript"><code>"require": {
 	"php": ">=5.3.3",
@@ -99,7 +99,7 @@
 	"fuelphp/upload": "2.0"
 },</code></pre>
 
-			<p>在此之後，運行 composer 來讓全部安裝：</p>
+			<p>在此之後，运行 composer 來让全部安装：</p>
 
 				<pre class="cli"><code>$ cd /data/www/myfuelwebsite
 $ php composer.phar update</code></pre>
@@ -120,8 +120,8 @@ $ php composer.phar update</code></pre>
 			<table class="config">
 				<thead>
 					<tr class="header">
-						<th style="width:20%;">參數</th>
-						<th style="width:10%;">類型</th>
+						<th style="width:20%;">參数</th>
+						<th style="width:10%;">类型</th>
 						<th>預設</th>
 						<th>描述</th>
 					</tr>
@@ -150,7 +150,7 @@ $ php composer.phar update</code></pre>
 					</tr>
 					<tr>
 						<td>default_group</td>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>1</code></pre>
 						</td>
 						<td>
@@ -180,7 +180,7 @@ $ php composer.phar update</code></pre>
 					</tr>
 					<tr>
 						<td>security_iteration</td>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>300</code></pre>
 						</td>
 						<td>
@@ -216,10 +216,10 @@ $ php composer.phar update</code></pre>
 			</table>
 
 			<p>
-				當談及回呼時，注意 OpAuth Auth 驅動中的不同。例如，
-				Facebook 不要求你定義一個回呼（重導向）URL，Twitter 要求一個 <strong>http://example.com/&lt;controller&gt;/callback/</strong> 的形式，
-				而 Google 像這樣：<strong>http://example.com/&lt;controller&gt;/&lt;method&gt;/google/oauth2callback</strong>
-				（"method" 是在你控制器中實例化 Auth_Opauth 驅動的方法名稱。）
+				當談及回呼時，注意 OpAuth Auth 驅动中的不同。例如，
+				Facebook 不要求你定義一个回呼（重導向）URL，Twitter 要求一个 <strong>http://example.com/&lt;controller&gt;/callback/</strong> 的形式，
+				而 Google 像这樣：<strong>http://example.com/&lt;controller&gt;/&lt;method&gt;/google/oauth2callback</strong>
+				（"method" 是在你控制器中實例化 Auth_Opauth 驅动的方法名稱。）
 			</p>
 
 			<p class="note">You should only use <strong>auto_registration = 'true'</strong> if you don't care about local account, and you don't want to
@@ -232,7 +232,7 @@ $ php composer.phar update</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

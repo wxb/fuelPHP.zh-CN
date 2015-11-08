@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,36 +42,36 @@
 			<h2 id="usage">SimpleAuth 用法</h2>
 
 			<p>
-				如 Auth 套件中的 <a href="../intro.html">簡介</a> 所述，一套認證系統有三種不同的驅動，
-				每一種處理系統的一部分：
+				如 Auth 套件中的 <a href="../intro.html">简介</a> 所述，一套認證系统有三種不同的驅动，
+				每一種处理系统的一部分：
 			</p>
 			<p>
-				Simpleauth <kbd>login</kbd> 驅動提供了建立、更新、刪除和驗證儲存在本地資料庫表的使用者帳號、
-				取得關於那些帳號的資訊、產生或重設密碼、
-				以及登入和登出操作（建立一個使用者 session）的邏輯。
-			</p>
-
-			<p>
-				Simpleauth <kbd>group</kbd> 驅動在 simpleauth 配置檔案中儲存其群組定義。
-				它提供檢查使用者是否為群組中一員的邏輯，並且檢索群組資訊，或定義給群組的角色。
+				Simpleauth <kbd>login</kbd> 驅动提供了建立、更新、刪除和驗證儲存在本地資料庫表的使用者帳號、
+				取得關於那些帳號的資訊、產生或重設密码、
+				以及登入和登出操作（建立一个使用者 session）的邏輯。
 			</p>
 
 			<p>
-				Simpleauth <kbd>acl</kbd> 驅動是角色驅動的，並在 simpleauth 配置檔案儲存其 ACL 定義。
+				Simpleauth <kbd>group</kbd> 驅动在 simpleauth 配置档案中儲存其群組定義。
+				它提供檢查使用者是否为群組中一員的邏輯，并且檢索群組資訊，或定義給群組的角色。
+			</p>
+
+			<p>
+				Simpleauth <kbd>acl</kbd> 驅动是角色驅动的，并在 simpleauth 配置档案儲存其 ACL 定義。
 				它提供檢查使用者是否有存取 ACL 具名權限的邏輯。
 			</p>
 
-			<h3 id="classmethods">靜態 vs 動態</h3>
+			<h3 id="classmethods">靜態 vs 动態</h3>
 
-			<p>如同簡介中所解釋，Auth 套件提供一個靜態介面讓大多數方法可用，只提供你單一驅動組。
-			這些方法會在以下被定義為「靜態：是」。所有方法也可以經由 Auth 實例物件鍊結存取，
-			包括那些標記為靜態的。</p>
+			<p>如同简介中所解釋，Auth 套件提供一个靜態介面让大多数方法可用，只提供你单一驅动組。
+			这些方法会在以下被定義为「靜態：是」。所有方法也可以经由 Auth 實例物件鍊結存取，
+			包括那些标記为靜態的。</p>
 
-			<h3 id="classmethods">類別方法</h3>
+			<h3 id="classmethods">类別方法</h3>
 
 				<article>
 					<h4 id="method_validate_user" class="method">validate_user($username_or_email = '', $password = '')</h4>
-					<p><strong>validate_user</strong> 方法驗證使用者憑證。此方法支援 Email 和使用者名稱做為有效憑據。</p>
+					<p><strong>validate_user</strong> 方法驗證使用者憑證。此方法支援 Email 和使用者名稱做为有效憑據。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -79,11 +79,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -95,19 +95,19 @@
 									<tr>
 										<th><kbd>$password</kbd></th>
 										<td><pre class="php"><code>''</code></pre></td>
-										<td>使用者密碼</td>
+										<td>使用者密码</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>混合。<strong>false</strong> 如果使用者沒通過驗證，或一個有該使用者資訊的<strong>陣列</strong>，如果憑證有效的話。</td>
+							<td>混合。<strong>false</strong> 如果使用者沒通過驗證，或一个有該使用者資訊的<strong>陣列</strong>，如果憑證有效的話。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 驗證使用者名稱和密碼
+								<pre class="php"><code>// 驗證使用者名稱和密码
 if ($user = Auth::validate_user($name, $pass))
 {
 	// $name 和 $pass 的組合通過驗證，印出使用者名稱
@@ -118,14 +118,14 @@ if ($user = Auth::validate_user($name, $pass))
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">這個方法只驗證所給的使用者名稱及密碼的組合是否正確。它<strong>不</strong>登入使用者！</p>
+					<p class="note">这个方法只驗證所給的使用者名稱及密码的組合是否正確。它<strong>不</strong>登入使用者！</p>
 				</article>
 
 				<article>
 					<h4 id="method_login" class="method">login($username_or_email = '', $password = '')</h4>
-					<p><strong>login</strong> 方法執行一個登入請求。如果有參數沒給，它會試圖從 post 資料檢索，
-					使用配置在 simpleauth.php 配置檔案中的表單欄位名稱。
-					在嘗試登入之前，內部它呼叫 validate_user() 方法來驗證請求。</p>
+					<p><strong>login</strong> 方法执行一个登入請求。如果有參数沒給，它会试圖從 post 資料檢索，
+					使用配置在 simpleauth.php 配置档案中的表单欄位名稱。
+					在嘗试登入之前，內部它呼叫 validate_user() 方法來驗證請求。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -133,11 +133,11 @@ if ($user = Auth::validate_user($name, $pass))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -149,7 +149,7 @@ if ($user = Auth::validate_user($name, $pass))
 									<tr>
 										<th><kbd>$password</kbd></th>
 										<td><pre class="php"><code>''</code></pre></td>
-										<td>使用者密碼</td>
+										<td>使用者密码</td>
 									</tr>
 								</table>
 							</td>
@@ -161,7 +161,7 @@ if ($user = Auth::validate_user($name, $pass))
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 執行登入
+								<pre class="php"><code>// 执行登入
 if (Auth::login($name, $pass))
 {
 	// 該使用者成功登入
@@ -171,7 +171,7 @@ if (Auth::login($name, $pass))
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">在成功登入後，'username' 和目前的 'login_hash' 將可用做一個 session 變數。</p>
+					<p class="note">在成功登入後，'username' 和目前的 'login_hash' 将可用做一个 session 變数。</p>
 				</article>
 
 				<article>
@@ -184,7 +184,7 @@ if (Auth::login($name, $pass))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -211,8 +211,8 @@ if ( ! Auth::check())
 				<article>
 					<h4 id="method_force_login" class="method">force_login($user_id = '')</h4>
 					<p>
-						<strong>force_login</strong> 方法執行一個強制登入請求。你可以用它來自動登入，
-						在你知道使用者 ID，但不知道密碼時。例如，這可被用做一個「記住我」功能。</p>
+						<strong>force_login</strong> 方法执行一个強制登入請求。你可以用它來自动登入，
+						在你知道使用者 ID，但不知道密码時。例如，这可被用做一个「記住我」功能。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -220,11 +220,11 @@ if ( ! Auth::check())
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -243,10 +243,10 @@ if ( ! Auth::check())
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 為使用者 12121 執行強制登入
+								<pre class="php"><code>// 为使用者 12121 执行強制登入
 if (Auth::force_login(12121))
 {
-	// 該使用者成功登入。任何先前登入的使用者會被登出！
+	// 該使用者成功登入。任何先前登入的使用者会被登出！
 }
 </code></pre>
 							</td>
@@ -265,7 +265,7 @@ if (Auth::force_login(12121))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -277,20 +277,20 @@ if (Auth::force_login(12121))
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 執行登出
+								<pre class="php"><code>// 执行登出
 Auth::logout();
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果你已經啟用支援訪客使用者，訪客使用者將在成功登出之後被設置。</p>
+					<p class="note">如果你已经啟用支援訪客使用者，訪客使用者将在成功登出之後被設置。</p>
 				</article>
 
 				<article>
 					<h4 id="method_create_user" class="method">create_user($username, $password, $email, $group = 1, Array $profile_fields = array())</h4>
 					<p>
-						<strong>create_user</strong> 能讓你在使用者資料表建立一筆新的使用者紀錄。
+						<strong>create_user</strong> 能让你在使用者資料表建立一筆新的使用者紀錄。
 					</p>
 					<table class="method">
 						<tbody>
@@ -299,11 +299,11 @@ Auth::logout();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -315,7 +315,7 @@ Auth::logout();
 									<tr>
 										<th><kbd>$password</kbd></th>
 										<td>必要</td>
-										<td>你想要指派給該使用者的密碼</td>
+										<td>你想要指派給該使用者的密码</td>
 									</tr>
 									<tr>
 										<th><kbd>$email</kbd></th>
@@ -330,7 +330,7 @@ Auth::logout();
 									<tr>
 										<th><kbd>$profile_fields</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>你想要指派給此使用者的任何附加設定檔欄位</td>
+										<td>你想要指派給此使用者的任何附加設定档欄位</td>
 									</tr>
 								</table>
 							</td>
@@ -366,7 +366,7 @@ Auth::create_user(
 				<article>
 					<h4 id="method_update_user" class="method">update_user($values, $username = null)</h4>
 					<p>
-						<strong>update_user</strong> 方法能讓你更新使用者紀錄中的值，
+						<strong>update_user</strong> 方法能让你更新使用者紀錄中的值，
 						無論是具名的，或目前登入的使用者。
 					</p>
 					<table class="method">
@@ -376,18 +376,18 @@ Auth::create_user(
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$values</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>你想要更新的行或設定檔欄位的行名／值配對的關聯陣列。</td>
+										<td>你想要更新的行或設定档欄位的行名／值配對的關聯陣列。</td>
 									</tr>
 									<tr>
 										<th><kbd>$username</kbd></th>
@@ -408,13 +408,13 @@ Auth::create_user(
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 為目前使用者更新資料
+								<pre class="php"><code>// 为目前使用者更新資料
 Auth::update_user(
 	array(
-		'email'        => 'anewemail@example.org',  // 設定一個新的 Email 地址
-		'password'     => 'thisismynewpassword',    // 設定一個新密碼
-		'old_password' => 'thisismysecretpassword', // 要這樣做，給目前的密碼！
-		'phone'        => '+1 (555) 123-1212',	    // 並且添加電話號碼到詮釋資料
+		'email'        => 'anewemail@example.org',  // 設定一个新的 Email 地址
+		'password'     => 'thisismynewpassword',    // 設定一个新密码
+		'old_password' => 'thisismysecretpassword', // 要这樣做，給目前的密码！
+		'phone'        => '+1 (555) 123-1212',	    // 并且添加電話號码到詮釋資料
 	)
 );
 </code></pre>
@@ -423,15 +423,15 @@ Auth::update_user(
 						</tbody>
 					</table>
 					<p class="note">
-						這個方法主要是提供給使用者更新個人資料。並且做為安全措施，它<strong>不</strong>允許你變更使用者名稱，
-						而且如果你想變更密碼，你<strong>必須</strong>在 $values 中傳遞目前密碼做為 "old_password"。
+						这个方法主要是提供給使用者更新个人資料。并且做为安全措施，它<strong>不</strong>允許你變更使用者名稱，
+						而且如果你想變更密码，你<strong>必須</strong>在 $values 中傳遞目前密码做为 "old_password"。
 					</p>
 				</article>
 
 				<article>
 					<h4 id="method_change_password" class="method">change_password($old_password, $new_password, $username = null)</h4>
 					<p>
-						<strong>change_password</strong> 方法能讓你變更一個使用者密碼。
+						<strong>change_password</strong> 方法能让你變更一个使用者密码。
 					</p>
 					<table class="method">
 						<tbody>
@@ -440,28 +440,28 @@ Auth::update_user(
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$old_password</kbd></th>
 										<td>必要</td>
-										<td>使用者目前密碼</td>
+										<td>使用者目前密码</td>
 									</tr>
 									<tr>
 										<th><kbd>$new_password</kbd></th>
 										<td>必要</td>
-										<td>使用者新密碼</td>
+										<td>使用者新密码</td>
 									</tr>
 									<tr>
 										<th><kbd>$username</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>你想要變更密碼的使用者名稱</td>
+										<td>你想要變更密码的使用者名稱</td>
 									</tr>
 								</table>
 							</td>
@@ -472,12 +472,12 @@ Auth::update_user(
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>布林。回傳 <strong>true</strong> 如果密碼被變更，或 <strong>false</strong> 如果就密碼不正確。</td>
+							<td>布林。回傳 <strong>true</strong> 如果密码被變更，或 <strong>false</strong> 如果就密码不正確。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 為目前使用者變更密碼
+								<pre class="php"><code>// 为目前使用者變更密码
 Auth::change_password('mycurrentpassword','mynewpassword');
 </code></pre>
 							</td>
@@ -485,15 +485,15 @@ Auth::change_password('mycurrentpassword','mynewpassword');
 						</tbody>
 					</table>
 					<p class="note">
-						這個方法是提供給使用者變更他的密碼。並且做為安全措施，
-						你 <strong>必須</strong> 在 "old_password" 傳遞目前密碼。
+						这个方法是提供給使用者變更他的密码。并且做为安全措施，
+						你 <strong>必須</strong> 在 "old_password" 傳遞目前密码。
 					</p>
 				</article>
 
 				<article>
 					<h4 id="method_reset_password" class="method">reset_password($username)</h4>
 					<p>
-						<strong>reset_password</strong> 方法能讓你指派一個新的隨機密碼給使用者。
+						<strong>reset_password</strong> 方法能让你指派一个新的隨機密码給使用者。
 					</p>
 					<table class="method">
 						<tbody>
@@ -502,18 +502,18 @@ Auth::change_password('mycurrentpassword','mynewpassword');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$username</kbd></th>
 										<td>必要</td>
-										<td>你想要重設密碼的使用者名稱</td>
+										<td>你想要重設密码的使用者名稱</td>
 									</tr>
 								</table>
 							</td>
@@ -524,12 +524,12 @@ Auth::change_password('mycurrentpassword','mynewpassword');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>字串，產生的隨機密碼。</td>
+							<td>字串，產生的隨機密码。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 為目前使用者重設密碼
+								<pre class="php"><code>// 为目前使用者重設密码
 $new_password = Auth::reset_password('thisusername');
 </code></pre>
 							</td>
@@ -541,7 +541,7 @@ $new_password = Auth::reset_password('thisusername');
 				<article>
 					<h4 id="method_delete_user" class="method">delete_user($username)</h4>
 					<p>
-						<strong>delete_user</strong> 方法能讓你刪除一個使用者帳號。
+						<strong>delete_user</strong> 方法能让你刪除一个使用者帳號。
 					</p>
 					<table class="method">
 						<tbody>
@@ -550,11 +550,11 @@ $new_password = Auth::reset_password('thisusername');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -572,7 +572,7 @@ $new_password = Auth::reset_password('thisusername');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>布林。回傳 <strong>true</strong> 如果使用者帳號被刪除，或 <strong>false</strong> 如果失敗的話（因為使用者名稱不存在）。</td>
+							<td>布林。回傳 <strong>true</strong> 如果使用者帳號被刪除，或 <strong>false</strong> 如果失敗的話（因为使用者名稱不存在）。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -588,7 +588,7 @@ Auth::delete_user('thisusername');
 
 				<article>
 					<h4 id="method_create_login_hash" class="method">create_login_hash()</h4>
-					<p><strong>create_login_hash</strong> 方法為目前登入使用者產生一個新的登入雜湊。</p>
+					<p><strong>create_login_hash</strong> 方法为目前登入使用者產生一个新的登入雜湊。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -596,7 +596,7 @@ Auth::delete_user('thisusername');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -608,16 +608,16 @@ Auth::delete_user('thisusername');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 產生一個新的隨機雜湊
+								<pre class="php"><code>// 產生一个新的隨機雜湊
 Auth::create_login_hash();
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">這個方法通常用在使用者登入，但你可以使用它定期轉動登入使用者的雜湊，
-					來做為額外的安全措施。</p>
-					<p class="note">請注意，登入雜湊保護在多個登入啟用時<kbd>不會</kbd>使用！</p>
+					<p class="note">这个方法通常用在使用者登入，但你可以使用它定期轉动登入使用者的雜湊，
+					來做为額外的安全措施。</p>
+					<p class="note">請注意，登入雜湊保護在多个登入啟用時<kbd>不会</kbd>使用！</p>
 				</article>
 
 				<article>
@@ -630,11 +630,11 @@ Auth::create_login_hash();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -669,9 +669,9 @@ $created_at = Auth::get('created_at');
 
 				<article>
 					<h4 id="method_get_user_id" class="method">get_user_id()</h4>
-					<p><strong>get_user_id</strong> 方法回傳一個包含驅動 ID 值、以及目前登入使用者 ID 的陣列結構。
-					它使用這個結構因為你可以有多個活躍的 login 驅動，
-					每一個可以對目前登入使用者有不同 ID。</p>
+					<p><strong>get_user_id</strong> 方法回傳一个包含驅动 ID 值、以及目前登入使用者 ID 的陣列結構。
+					它使用这个結構因为你可以有多个活躍的 login 驅动，
+					每一个可以對目前登入使用者有不同 ID。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -679,14 +679,14 @@ $created_at = Auth::get('created_at');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>混合。回傳一個 <strong>array([0]=>driver_id, [1]=>user_id)</strong> 形式的數字陣列如果使用者登入的話，否則是 <strong>false</strong>。</td>
+							<td>混合。回傳一个 <strong>array([0]=>driver_id, [1]=>user_id)</strong> 形式的数字陣列如果使用者登入的話，否則是 <strong>false</strong>。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -694,7 +694,7 @@ $created_at = Auth::get('created_at');
 								<pre class="php"><code>// 取得所有登入 ID 資訊
 $id_info = Auth::get_user_id();
 
-// 印出驅動和 ID 資訊
+// 印出驅动和 ID 資訊
 if ($id_info)
 {
 	foreach ($id_info as $info)
@@ -707,17 +707,17 @@ else
 	echo 'Nobody is logged in!';
 }
 
-// 如果你只使用一個驅動，你也可以這樣做
+// 如果你只使用一个驅动，你也可以这樣做
 list($driver, $userid) = Auth::get_user_id();
 
-// 或這樣如果你只需要 userid
+// 或这樣如果你只需要 userid
 list(, $userid) = Auth::get_user_id();
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果啟用訪客登入支援，你將永遠取不到 <strong>false</strong> 回傳，因為該方法將回傳訪客使用者的使用者 ID。</p>
+					<p class="note">如果啟用訪客登入支援，你将永遠取不到 <strong>false</strong> 回傳，因为該方法将回傳訪客使用者的使用者 ID。</p>
 				</article>
 
 				<article>
@@ -730,21 +730,21 @@ list(, $userid) = Auth::get_user_id();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>混合。回傳一個 <strong>array(array(driver, group_id))</strong> 形式的陣列如果使用者登入的話，否則是 <strong>false</strong>。</td>
+							<td>混合。回傳一个 <strong>array(array(driver, group_id))</strong> 形式的陣列如果使用者登入的話，否則是 <strong>false</strong>。</td>
 						</tr>
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>// 取得所有群組 ID 資訊
 $id_info = Auth::get_groups();
 
-// 印出驅動和 ID 資訊
+// 印出驅动和 ID 資訊
 if ($id_info)
 {
 	foreach ($id_info as $info)
@@ -757,14 +757,14 @@ else
 	echo 'Nobody is logged in!';
 }
 
-// 如果你只使用一個驅動，你也可以這樣做
+// 如果你只使用一个驅动，你也可以这樣做
 list($driver, $groupid) = Auth::get_groups();
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果啟用訪客登入支援，你將永遠取不到 <strong>false</strong> 回傳，因為該方法將回傳訪客使用者的群組資訊。</p>
+					<p class="note">如果啟用訪客登入支援，你将永遠取不到 <strong>false</strong> 回傳，因为該方法将回傳訪客使用者的群組資訊。</p>
 				</article>
 
 				<article>
@@ -777,14 +777,14 @@ list($driver, $groupid) = Auth::get_groups();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>混合。回傳一個 Email 地址如果使用者有登入，或 <strong>false</strong> 如果沒有使用者登入。</td>
+							<td>混合。回傳一个 Email 地址如果使用者有登入，或 <strong>false</strong> 如果沒有使用者登入。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -806,7 +806,7 @@ if (empty($email))
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果啟用訪客登入支援，你將永遠取不到 <strong>false</strong> 回傳，因為該方法將回傳訪客使用者的 Email 地址。</p>
+					<p class="note">如果啟用訪客登入支援，你将永遠取不到 <strong>false</strong> 回傳，因为該方法将回傳訪客使用者的 Email 地址。</p>
 				</article>
 
 				<article>
@@ -819,7 +819,7 @@ if (empty($email))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -834,7 +834,7 @@ if (empty($email))
 								<pre class="php"><code>// 取得目前使用者的螢幕名稱
 $name = Auth::get_screen_name();
 
-// 名稱是必要的，所以如果沒出現，表示沒有人登入
+// 名稱是必要的，所以如果沒出现，表示沒有人登入
 if (empty($name))
 {
 	// 沒有人登入
@@ -844,12 +844,12 @@ if (empty($name))
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果啟用訪客登入支援，你將永遠取不到 <strong>false</strong> 回傳，因為該方法將回傳訪客使用者的使用者名稱。</p>
+					<p class="note">如果啟用訪客登入支援，你将永遠取不到 <strong>false</strong> 回傳，因为該方法将回傳訪客使用者的使用者名稱。</p>
 				</article>
 
 				<article>
 					<h4 id="method_get_profile_fields" class="method">get_profile_fields($field = null, $default = null)</h4>
-					<p><strong>get_profile_fields</strong> 方法回傳登入使用者的一個或所有儲存個人設定欄位。</p>
+					<p><strong>get_profile_fields</strong> 方法回傳登入使用者的一个或所有儲存个人設定欄位。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -857,23 +857,23 @@ if (empty($name))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$field</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>你想要取得個人設定欄位的名稱。</td>
+										<td>你想要取得个人設定欄位的名稱。</td>
 									</tr>
 									<tr>
 										<th><kbd>$default</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>如果請求的個人設定欄位不存在時，你想要回傳的值。</td>
+										<td>如果請求的个人設定欄位不存在時，你想要回傳的值。</td>
 									</tr>
 								</table>
 							</td>
@@ -885,7 +885,7 @@ if (empty($name))
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取得所有定義的個人設定欄位
+								<pre class="php"><code>// 取得所有定義的个人設定欄位
 $profile = Auth::get_profile_fields();
 </code></pre>
 							</td>
@@ -896,7 +896,7 @@ $profile = Auth::get_profile_fields();
 
 				<article>
 					<h4 id="method_member" class="method">member($group, $user = null)</h4>
-					<p><strong>member</strong> 方法能讓你檢查使用者是否為所給群組的一員。</p>
+					<p><strong>member</strong> 方法能让你檢查使用者是否为所給群組的一員。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -904,11 +904,11 @@ $profile = Auth::get_profile_fields();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -920,7 +920,7 @@ $profile = Auth::get_profile_fields();
 									<tr>
 										<th><kbd>$user</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>指定的使用者，透過 get_user_id() 的結果識別，或 <strong>null</strong> 為目前登入的使用者。</td>
+										<td>指定的使用者，透過 get_user_id() 的結果識別，或 <strong>null</strong> 为目前登入的使用者。</td>
 									</tr>
 								</table>
 							</td>
@@ -932,7 +932,7 @@ $profile = Auth::get_profile_fields();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 檢查目前使用者是否為管理員
+								<pre class="php"><code>// 檢查目前使用者是否为管理員
 if (Auth::member(100))
 {
 	// 我們在管理員群組！
@@ -946,7 +946,7 @@ if (Auth::member(100))
 
 				<article>
 					<h4 id="method_groups" class="method">groups($driver = null)</h4>
-					<p><strong>groups</strong> 方法能讓你取回所有定義的群組，或所有定義在指定驅動中的群組。</p>
+					<p><strong>groups</strong> 方法能让你取回所有定義的群組，或所有定義在指定驅动中的群組。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -954,49 +954,49 @@ if (Auth::member(100))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$driver</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>你想要從中取得群組的 group 驅動名稱</td>
+										<td>你想要從中取得群組的 group 驅动名稱</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>陣列。如果 group 驅動不存在或沒定義群組，會回傳空陣列。</td>
+							<td>陣列。如果 group 驅动不存在或沒定義群組，会回傳空陣列。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取得所有定義的群組（所有載入的 group 驅動）
+								<pre class="php"><code>// 取得所有定義的群組（所有載入的 group 驅动）
 $groups = Auth::groups();
 
-// 從預設 group 驅動取得所有群組
+// 從預設 group 驅动取得所有群組
 $groups = Auth::group()->groups();
 
-// 從指定驅動取得所有群組
+// 從指定驅动取得所有群組
 $groups = Auth::group('Simplegroup')->groups();
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果你想要透過指定驅動定義群組，你需要在 Auth group 驅動實例呼叫此方法。</p>
-					<p class="note">如果你使用多個驅動，此方法只適用於如果群組 ID 在<strong>所有</strong>驅動確實是唯一的！</p>
+					<p class="note">如果你想要透過指定驅动定義群組，你需要在 Auth group 驅动實例呼叫此方法。</p>
+					<p class="note">如果你使用多个驅动，此方法只適用於如果群組 ID 在<strong>所有</strong>驅动確實是唯一的！</p>
 				</article>
 
 				<article>
 					<h4 id="method_roles" class="method">roles($driver = null)</h4>
-					<p><strong>roles</strong> 方法能讓你取回所有定義的角色，或所有定義在指定驅動中的角色。</p>
+					<p><strong>roles</strong> 方法能让你取回所有定義的角色，或所有定義在指定驅动中的角色。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -1004,50 +1004,50 @@ $groups = Auth::group('Simplegroup')->groups();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$driver</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>你想要從中取得角色的 group 驅動名稱</td>
+										<td>你想要從中取得角色的 group 驅动名稱</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>陣列。如果 acl 驅動不存在或沒定義角色，會回傳空陣列。</td>
+							<td>陣列。如果 acl 驅动不存在或沒定義角色，会回傳空陣列。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取得所有定義的角色（所有載入的 acl 驅動）
+								<pre class="php"><code>// 取得所有定義的角色（所有載入的 acl 驅动）
 $roles = Auth::roles();
 
-// 從預設 acl 驅動取得所有角色
+// 從預設 acl 驅动取得所有角色
 $roles = Auth::acl()->roles();
 
-// 從指定驅動取得所有角色
+// 從指定驅动取得所有角色
 $roles = Auth::acl('Simpleacl')->roles();
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果你想要透過指定驅動定義群組，你需要在 Auth acl 驅動實例呼叫此方法。</p>
-					<p class="note">如果你使用多個驅動，此方法只適用於如果角色 ID 在<strong>所有</strong>驅動確實是唯一的！</p>
+					<p class="note">如果你想要透過指定驅动定義群組，你需要在 Auth acl 驅动實例呼叫此方法。</p>
+					<p class="note">如果你使用多个驅动，此方法只適用於如果角色 ID 在<strong>所有</strong>驅动確實是唯一的！</p>
 				</article>
 
 				<article>
 					<h4 id="method_get_name" class="method">get_name($group = null)</h4>
-					<p><strong>get_name</strong> 方法能讓你取回指定群組的名稱。如果沒給 group，
-					它會回傳目前登入使用者的群組名稱。</p>
+					<p><strong>get_name</strong> 方法能让你取回指定群組的名稱。如果沒給 group，
+					它会回傳目前登入使用者的群組名稱。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -1055,11 +1055,11 @@ $roles = Auth::acl('Simpleacl')->roles();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1081,19 +1081,19 @@ $roles = Auth::acl('Simpleacl')->roles();
 								<pre class="php"><code>// 取得目前登入使用者所有群組的名稱
 $name = Auth::group()->get_name();
 
-// 取得來自指定驅動指定群組的名稱
+// 取得來自指定驅动指定群組的名稱
 $name = Auth::group('Simplegroup')->get_name(100);	// 回傳 'Administrators'
 </code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-					<p class="note">如果你使用多個驅動，此方法只適用於如果群組 ID 在<strong>所有</strong>驅動確實是唯一的！</p>
+					<p class="note">如果你使用多个驅动，此方法只適用於如果群組 ID 在<strong>所有</strong>驅动確實是唯一的！</p>
 				</article>
 
 				<article>
 					<h4 id="method_has_access" class="method">has_access($condition)</h4>
-					<p><strong>has_access</strong> 方法能讓你檢查目前登入的使用者，是否有存取指定位置的指定權限。</p>
+					<p><strong>has_access</strong> 方法能让你檢查目前登入的使用者，是否有存取指定位置的指定權限。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -1101,11 +1101,11 @@ $name = Auth::group('Simplegroup')->get_name(100);	// 回傳 'Administrators'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1119,7 +1119,7 @@ $name = Auth::group('Simplegroup')->get_name(100);	// 回傳 'Administrators'
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>布林。<strong>true</strong> 如果使用者可存取，否則為 <strong>false</strong>。</td>
+							<td>布林。<strong>true</strong> 如果使用者可存取，否則为 <strong>false</strong>。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -1130,20 +1130,20 @@ if (Auth::has_access('blog.read'))
 	// 是的，使用者可存取
 }
 
-// 如果你有多個實例，使用該實例呼叫此方法。
-// 你也可以一次檢查多個權限
+// 如果你有多个實例，使用該實例呼叫此方法。
+// 你也可以一次檢查多个權限
 if (Auth::instance('simpleauth')->has_access('blog.[read,write,delete]'))
 {
 	// 是的，使用者有閱讀、撰寫和刪除的存取權限
 }
 
-// 你也可以指定權限為陣列來檢查
+// 你也可以指定權限为陣列來檢查
 if (Auth::has_access(array('blog' => array('read'), 'comments' => array('read')))
 {
 	// 是的，使用者有閱讀 blog 和評論的存取權限
 }
 
-// 如果你有多個 login 實例，你也可以取指定的 ACL 驅動
+// 如果你有多个 login 實例，你也可以取指定的 ACL 驅动
 if (Auth::acl('simpleacl')->has_access('blog.[read,write,delete]'))
 {
 	// 是的，使用者有閱讀、撰寫和刪除的存取權限
@@ -1157,7 +1157,7 @@ if (Auth::acl('simpleacl')->has_access('blog.[read,write,delete]'))
 
 				<article>
 					<h4 id="method_guest_login" class="method">guest_login()</h4>
-					<p><strong>guest_login</strong> 能讓你檢查訪客存取是否啟用。</p>
+					<p><strong>guest_login</strong> 能让你檢查訪客存取是否啟用。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -1165,7 +1165,7 @@ if (Auth::acl('simpleacl')->has_access('blog.[read,write,delete]'))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -1177,7 +1177,7 @@ if (Auth::acl('simpleacl')->has_access('blog.[read,write,delete]'))
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 重導到 login 如果我們要求一個使用者且訪客存取沒有啟用
+								<pre class="php"><code>// 重導到 login 如果我們要求一个使用者且訪客存取沒有啟用
 if ( ! Auth::check() and ! Auth::guest_login())
 {
 	Response::redirect('/login');
@@ -1191,7 +1191,7 @@ if ( ! Auth::check() and ! Auth::guest_login())
 
 				<article>
 					<h4 id="method_remember_me" class="method">remember_me($user_id = null)</h4>
-					<p><strong>remember_me</strong> 方法能讓你設定一個 remember_me cookie。如果沒給 $user_id，會使用目前登入的使用者。</p>
+					<p><strong>remember_me</strong> 方法能让你設定一个 remember_me cookie。如果沒給 $user_id，会使用目前登入的使用者。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -1199,11 +1199,11 @@ if ( ! Auth::check() and ! Auth::guest_login())
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1225,7 +1225,7 @@ if ( ! Auth::check() and ! Auth::guest_login())
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 處理登入表單 POST，並設定 remember-me cookie 如果需要
+								<pre class="php"><code>// 处理登入表单 POST，并設定 remember-me cookie 如果需要
 if (\Input::method() == 'POST')
 {
 	// 檢查憑證。
@@ -1248,7 +1248,7 @@ if (\Input::method() == 'POST')
 	}
 	else
 	{
-		// 登入失敗，顯示一個錯誤訊息
+		// 登入失敗，顯示一个错误訊息
 		$data['username']    = \Input::param('username');
 		$data['login_error'] = \Lang::get('login.failure');
 	}
@@ -1270,7 +1270,7 @@ if (\Input::method() == 'POST')
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -1288,7 +1288,7 @@ if (\Input::method() == 'POST')
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

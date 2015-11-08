@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>故障排除 - 安裝 - FuelPHP 简体中文手册</title>
+	<title>故障排除 - 安装 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,32 +41,32 @@
 
 			<h2>故障排除</h2>
 
-			<p>Fuel 支援各式各樣的配置，有時為了正常工作需要一些配置。以下列出了幾個當你在你的機器上設置 Fuel 時可能跳出的情況。</p>
+			<p>Fuel 支援各式各樣的配置，有時为了正常工作需要一些配置。以下列出了幾个當你在你的機器上設置 Fuel 時可能跳出的情況。</p>
 
 			<p>當你的問題沒有列在下面，或已列出但沒有提供適當的解決方案時，請在議題追蹤（http://dev.fuelphp.com）回報此問題。</p>
 
 			<ul>
-				<li><a href="#500_error_with_clean_install">純淨安裝下 500 錯誤</a></li>
-				<li><a href="#syntax_error_clean_install">純淨安裝下語法錯誤</a></li>
+				<li><a href="#500_error_with_clean_install">純淨安装下 500 错误</a></li>
+				<li><a href="#syntax_error_clean_install">純淨安装下語法错误</a></li>
 				<li><a href="#404_install">能運作，但首頁是 404。</a></li>
-				<li><a href="#oil_db_error">Oil 無法連到 DB 但應用程式可以</a></li>
+				<li><a href="#oil_db_error">Oil 無法連到 DB 但应用程序可以</a></li>
 				<li><a href="#htmlentities">ORM/DB 回傳我的資料爲 HTML 實體</a></li>
 				<li><a href="#orm_list_columns">Orm\Exception [ Error ]: Listing columns not failed</a></li>
 				<li><a href="#assets_error">在變更 index.php 的位置後，Asset 不運作。</a></li>
-				<li><a href="#symlinks_error">在我變更一個符號連結後，核心、應用程式或套件無法被找到</a></li>
+				<li><a href="#symlinks_error">在我變更一个符號連結後，核心、应用程序或套件無法被找到</a></li>
 				<li><a href="#stack_frame_error">Exception thrown without a stack frame</a></li>
 			</ul>
 			<article>
 
-				<h3 id="500_error_with_clean_install">純淨安裝下 500 錯誤</h3>
+				<h3 id="500_error_with_clean_install">純淨安装下 500 错误</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>當你的 HTTP 伺服器權限不足以在檔案系統中跟隨符號連結。</p>
+				<p>當你的 HTTP 伺服器權限不足以在档案系统中跟隨符號連結。</p>
 
 				<h4>解法</h4>
 
-				<p>檢查 <i>.htaccess</i> 檔案並修改下列行</p>
+				<p>檢查 <i>.htaccess</i> 档案并修改下列行</p>
 				<pre class="php"><code>Option +FollowSymLinks</code></pre>
 				<p>以便它讀取：</p>
 				<pre class="php"><code>Option +SymLinksIfOwnerMatch</code></pre>
@@ -74,19 +74,19 @@
 			</article>
 			<article>
 
-				<h3 id="syntax_error_clean_install">純淨安裝下語法錯誤</h3>
+				<h3 id="syntax_error_clean_install">純淨安装下語法错误</h3>
 
 				<pre class="php"><code>Parse error: syntax error, unexpected T_FUNCTION, expecting ')' in /Users/info/Sites/fuel/public/index.php on line 9</code></pre>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>當在低於 5.3 的 PHP 版本運行 Fuel 時。</p>
+				<p>當在低於 5.3 的 PHP 版本运行 Fuel 時。</p>
 
 				<h4>解法</h4>
 
-				<p>在一個分離的測試檔案檢查 phpinfo(); 並看看你是否正在運行 5.3 或更高版本。更多資訊在<a href="../requirements.html" title="需求 - FuelPHP 正體中文文件">需求</a>。</p>
+				<p>在一个分離的测试档案檢查 phpinfo(); 并看看你是否正在运行 5.3 或更高版本。更多資訊在<a href="../requirements.html" title="需求 - FuelPHP 简体中文手册">需求</a>。</p>
 
-				<p>當在本地開發時，更新你的伺服器到 PHP 5.3 的最新版本。如果你不是在本地開發，你將需要詢問你的主機供應商。PHP 5.3 以下的版本不只我們不支援，還有 <a href="http://www.php.net/archive/2011.php#id2011-03-17-1" title="PHP: News Archive - 2011">PHP 它們自己本身</a>也是。</p>
+				<p>當在本地开发時，更新你的伺服器到 PHP 5.3 的最新版本。如果你不是在本地开发，你将需要詢問你的主機供應商。PHP 5.3 以下的版本不只我們不支援，還有 <a href="http://www.php.net/archive/2011.php#id2011-03-17-1" title="PHP: News Archive - 2011">PHP 它們自己本身</a>也是。</p>
 
 			</article>
 
@@ -94,19 +94,19 @@
 
 				<h3 id="signal_bus_error">我在 autoloader.php 得到 "child pid [xxxx] exit signal Bus error"</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
 				<p>在未知的情況下，當使用多位元組支援。</p>
 
 				<h4>解法</h4>
 
 				<p>
-					這似乎是一個 PHP 的 bug，在撰寫本文的時候還沒有修正被發布。
-					大多數使用 PHP 5.3.3 和多位元組支援的人沒有回報此問題。
-					我們還沒有看到使用 PHP 5.4.x 的使用者遇到相同的錯誤。
+					这似乎是一个 PHP 的 bug，在撰寫本文的時候還沒有修正被发布。
+					大多数使用 PHP 5.3.3 和多位元組支援的人沒有回報此問題。
+					我們還沒有看到使用 PHP 5.4.x 的使用者遇到相同的错误。
 				</p>
 
-				<p>做為一種變通方法，建議停用 zend-multibyte 和 mbstring，或嘗試使用不同版本的 PHP。</p>
+				<p>做为一種變通方法，建議停用 zend-multibyte 和 mbstring，或嘗试使用不同版本的 PHP。</p>
 
 			</article>
 
@@ -114,18 +114,18 @@
 
 				<h3 id="404_install">能運作，但首頁是 404。</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>在某些 PHP 安裝必須在 .htaccess 檔案中的 <em>index.php</em> 後面添加一個問號</p>
+				<p>在某些 PHP 安装必須在 .htaccess 档案中的 <em>index.php</em> 後面添加一个問號</p>
 
 				<h4>解法</h4>
 
-				<p>像這樣添加問號：</p>
+				<p>像这樣添加問號：</p>
 
 				<pre class="plain"><code># 打開 URL 改寫
 RewriteEngine On
 
-# 安裝目錄
+# 安装目录
 RewriteBase /
 # 如果 fuel 不在上一層
 # RewriteBase /public
@@ -137,11 +137,11 @@ RewriteRule ^(.*)$ index.php?/$1 [L]
 # 注意 ? 在 index.php 之後
 </code></pre>
 
-			<p>一些 fcgi 安裝需要此解法的變種：</p>
+			<p>一些 fcgi 安装需要此解法的變種：</p>
 
 			<pre class="plain"><code>
 RewriteRule ^(.*)$ index.php?$1 [L]
-# 請注意 ? 後的斜線已經被移除的事實
+# 請注意 ? 後的斜線已经被移除的事實
 
 # 其他可能的設定：
 
@@ -152,27 +152,27 @@ RewriteRule ^(.*)$ /index.php/$1 [L]
 
 			<article>
 
-				<h3 id="oil_db_error">Oil 無法連到 DB 但應用程式可以</h3>
+				<h3 id="oil_db_error">Oil 無法連到 DB 但应用程序可以</h3>
 
 				<pre class="plain"><code>mysql_connect(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) in /Users/phil/Sites/fuel/fuel/core/classes/database/mysql/connection.php on 73</code></pre>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>發生在當你嘗試藉由命令列與資料庫互動，通常在你為你的 MySQL 伺服器使用 MAMP 時。造成這樣的原因是，MAMP 提供的 PHP-CLI 對 MAMP 來說是一個不同的安裝，所以 PHP 對資料庫伺服器一無所知。</p>
+				<p>发生在當你嘗试藉由命令列與資料庫互动，通常在你为你的 MySQL 伺服器使用 MAMP 時。造成这樣的原因是，MAMP 提供的 PHP-CLI 對 MAMP 來說是一个不同的安装，所以 PHP 對資料庫伺服器一無所知。</p>
 
-				<p>注：在執行以下步驟修正問題之前，驗證藉由正常瀏覽器存取的資料庫連線。</p>
+				<p>注：在执行以下步驟修正問題之前，驗證藉由正常瀏覽器存取的資料庫連線。</p>
 
 				<h4>解法</h4>
 
-				<p>在你的 database.php 變更 "localhost" 為 "127.0.0.1"</p>
+				<p>在你的 database.php 變更 "localhost" 为 "127.0.0.1"</p>
 
 				<strong>如果不行：</strong>
 
-				<p>建立一個指向 MAMP 的 mysql.socket 的符號連結。</p>
+				<p>建立一个指向 MAMP 的 mysql.socket 的符號連結。</p>
 
 				<pre class="cli"><code>$ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code></pre>
 
-				<p>在某些情況下你必須先建立目錄：</p>
+				<p>在某些情況下你必須先建立目录：</p>
 
 				<pre class="cli"><code>$ sudo mkdir /var/mysql
 $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code></pre>
@@ -183,16 +183,16 @@ $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code
 
 				<h3 id="htmlentities">ORM/DB 回傳我的資料爲 HTML 實體</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>Fuel 有安全性的對策被稱為「輸出編碼」，在預設情況下是打開的。
-					這意味著，任何傳遞給 View 或 Presenter 的值被認為是危險的，除非你明確地標記它為安全的。
-					所有不安全的值將透過 htmlentities，
+				<p>Fuel 有安全性的對策被稱为「輸出编码」，在預設情況下是打開的。
+					这意味著，任何傳遞給 View 或 Presenter 的值被認为是危險的，除非你明確地标記它为安全的。
+					所有不安全的值将透過 htmlentities，
 					包括陣列內容和物件特性。</p>
 
 				<h4>解法</h4>
 
-				<p>學習更多關於 <a href="../general/views.html#/security">View 類別中的安全性</a>。</p>
+				<p>學習更多關於 <a href="../general/views.html#/security">View 类別中的安全性</a>。</p>
 
 			</article>
 
@@ -200,23 +200,23 @@ $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code
 
 				<h3 id="orm_list_columns">Orm\Exception [ Error ]: Listing columns not failed</h3>
 
-				<h4>錯誤</h4>
+				<h4>错误</h4>
 
 				<pre class="php"><code>Orm\Exception [ Error ]: Listing columns not failed, you have to set the model properties with a static $_properties setting in the model.</code></pre>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
 				<p>當使用 ORM 模型不是藉由 MySQL 連線時。</p>
 
 				<h4>解法</h4>
 
-				<p>確認 db 配置值是正確的並且測試你的資料庫連線。</p>
+				<p>確認 db 配置值是正確的并且测试你的資料庫連線。</p>
 
 				<p>更新模型包含的特性。</p>
 
 				<pre class="php"><code>protected static $_properties = array('id', 'title', 'contents', 'publish');</code></pre>
 
-				<p>或在 APPATH/config/db.php 中變更 db 類型為 "mysql"</p>
+				<p>或在 APPATH/config/db.php 中變更 db 类型为 "mysql"</p>
 
 			</article>
 
@@ -224,17 +224,17 @@ $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code
 
 				<h3 id="assets_error">在變更 index.php 的位置後，Asset 不運作。</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>那是因為你的路徑沒有正確定義，Asset 類別使用一個相對於 index.php 的路徑。</p>
+				<p>那是因为你的路徑沒有正確定義，Asset 类別使用一个相對於 index.php 的路徑。</p>
 
 				<h4>解法</h4>
 
-				<p>要修正這個問題，你必須修改 app/config/asset.php 去設定正確路徑。注意，在 index.php 中一個名為 DOCROOT 的常數被定義：</p>
+				<p>要修正这个問題，你必須修改 app/config/asset.php 去設定正確路徑。注意，在 index.php 中一个名为 DOCROOT 的常数被定義：</p>
 
 				<pre class="php"><code>define('DOCROOT', __DIR__.DIRECTORY_SEPARATOR);</code></pre>
 
-				<p>你可以在 app/config/asset.php 中使用。這將設定路徑回到預設文件夾 DOCROOT/public/assets，子文件夾 css/ img/ 和 js/ 的所在：</p>
+				<p>你可以在 app/config/asset.php 中使用。这将設定路徑回到預設文件夾 DOCROOT/public/assets，子文件夾 css/ img/ 和 js/ 的所在：</p>
 
 				<pre class="php"><code>'paths' => array(DOCROOT.'public/assets/'),</code></pre>
 
@@ -242,18 +242,18 @@ $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code
 
 			<article>
 
-				<h3 id="symlinks_error">在我變更一個符號連結後，核心、應用程式或套件無法被找到</h3>
+				<h3 id="symlinks_error">在我變更一个符號連結後，核心、应用程序或套件無法被找到</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>這可能會發生，因為在 DOCROOT/index.php，realpath() 被用來處理相對路徑，這將快取路徑資訊，包括符號連結。</p>
+				<p>这可能会发生，因为在 DOCROOT/index.php，realpath() 被用來处理相對路徑，这将快取路徑資訊，包括符號連結。</p>
 
 				<h4>解法</h4>
 
 				<p>
-					要修正這個問題，你必須修改 DOCROOT/index.php 並為每一個包含符號連結的路徑使用 clearstatcache()
-					以清除快取。或者，你可以重載你的網頁伺服器以清除路徑快取。你不能手動發出 clearstatcache() 命令，
-					因為它被每一個線程快取，且發出該命令將只清除目前線程的快取。
+					要修正这个問題，你必須修改 DOCROOT/index.php 并为每一个包含符號連結的路徑使用 clearstatcache()
+					以清除快取。或者，你可以重載你的網頁伺服器以清除路徑快取。你不能手动发出 clearstatcache() 命令，
+					因为它被每一个線程快取，且发出該命令将只清除目前線程的快取。
 				</p>
 
 			</article>
@@ -262,16 +262,16 @@ $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code
 
 				<h3 id="stack_frame_error">Exception thrown without a stack frame</h3>
 
-				<h4>發生在……</h4>
+				<h4>发生在……</h4>
 
-				<p>造成此訊息的原因是當 PHP 已經在它的拆解階段（tear-down phase）發生了錯誤，而且沒有錯誤處理程序是可用的了。</p>
+				<p>造成此訊息的原因是當 PHP 已经在它的拆解階段（tear-down phase）发生了错误，而且沒有错误处理程序是可用的了。</p>
 
 				<h4>解法</h4>
 
 				<p>
-					為什麼會發生這種情況的原因有很多。我們會嘗試記錄最顯而易見的：
+					为什么会发生这種情況的原因有很多。我們会嘗试記錄最顯而易見的：
 					<ul>
-						<li>你的網頁伺服器沒有寫入儲存 log 檔案資料夾的權限（預設是 APPPATH.'logs'）。</li>
+						<li>你的網頁伺服器沒有寫入儲存 log 档案資料夾的權限（預設是 APPPATH.'logs'）。</li>
 					</ul>
 				</p>
 
@@ -281,7 +281,7 @@ $ sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock</code
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

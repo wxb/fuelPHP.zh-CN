@@ -12,7 +12,7 @@
 		var class_prefix = "Mongo_Db::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Mongo_Db 方法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Mongo_Db 方法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,27 +40,27 @@
 
 		<div id="main">
 
-			<h2>Mongo_Db 類別方法</h2>
+			<h2>Mongo_Db 类別方法</h2>
 
 			<p>
-				Mongo_Db 類別能讓你與 MongoDB 資料庫互動。雖然在某些情況下，
-				它與資料庫如 MySQL 的互動類似，也有一些明顯的差異。
+				Mongo_Db 类別能让你與 MongoDB 資料庫互动。雖然在某些情況下，
+				它與資料庫如 MySQL 的互动类似，也有一些明顯的差異。
 			</p>
 
 			<p class="note">
-				所有排序選項（order by 及 indexes）使用 -1、false、'desc' 或 'DESC' 做為 <em>DESC</em>。任何其他值會是 <em>ASC</em>。
+				所有排序選項（order by 及 indexes）使用 -1、false、'desc' 或 'DESC' 做为 <em>DESC</em>。任何其他值会是 <em>ASC</em>。
 			</p>
 
 
 			<article>
 				<h4 class="method" id="method_instance">instance($name = 'default')</h4>
 				<p>
-					<strong>instance</strong> 回傳一個新的 Mongo_Db 實例。使用
-					$name 參數來指定要使用的配置和資料庫。
+					<strong>instance</strong> 回傳一个新的 Mongo_Db 實例。使用
+					$name 參数來指定要使用的配置和資料庫。
 				</p>
 				<p class="note">
-					預設情況下，<strong>$name</strong> 是 <em>'default'</em>，它需要你有一個在你
-					db.php 配置檔案中的預設配置。<a href="introduction.html#config">閱讀關於更多 Mongo_Db 配置。</a>
+					預設情況下，<strong>$name</strong> 是 <em>'default'</em>，它需要你有一个在你
+					db.php 配置档案中的預設配置。<a href="introduction.html#config">閱讀關於更多 Mongo_Db 配置。</a>
 				</p>
 				<table class="method">
 					<tbody>
@@ -69,12 +69,12 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -89,7 +89,7 @@
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個新的 Mongo_Db 實例</td>
+						<td>一个新的 Mongo_Db 實例</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
@@ -101,7 +101,7 @@
 							<pre class="php"><code>// 取得預設群組
 $mongodb = \Mongo_Db::instance();
 
-// 取得一個自訂群組
+// 取得一个自訂群組
 $mongodb = \Mongo_Db::instance('my_group');
 </code></pre>
 						</td>
@@ -113,7 +113,7 @@ $mongodb = \Mongo_Db::instance('my_group');
 			<article>
 				<h4 class="method" id="method_get">get($collection = "")</h4>
 				<p>
-					<strong>get</strong> 方法從一個集合回傳結果。
+					<strong>get</strong> 方法從一个集合回傳結果。
 				</p>
 				<table class="method">
 					<tbody>
@@ -122,12 +122,12 @@ $mongodb = \Mongo_Db::instance('my_group');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -142,12 +142,12 @@ $mongodb = \Mongo_Db::instance('my_group');
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個包含結果陣列的 stdClass 物件。</td>
+						<td>一个包含結果陣列的 stdClass 物件。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $result = $mongodb->get('users');
@@ -165,7 +165,7 @@ foreach($result as $user)
 			<article>
 				<h4 class="method" id="method_get_cursor">get_cursor($collection = "")</h4>
 				<p>
-					<strong>get_cursor</strong> 方法回傳指定集合的 mongodb 游標。它提供了比一般 get() 方法更好的地方是，當處理大型資料集做為文件時，一次只會載入它們存取的進入記憶體而不是一次全部。對長時間執行的程序非常有用。
+					<strong>get_cursor</strong> 方法回傳指定集合的 mongodb 游标。它提供了比一般 get() 方法更好的地方是，當处理大型資料集做为文件時，一次只会載入它們存取的進入記憶體而不是一次全部。對長時間执行的程序非常有用。
 				</p>
 				<table class="method">
 					<tbody>
@@ -174,12 +174,12 @@ foreach($result as $user)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -194,18 +194,18 @@ foreach($result as $user)
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個 <a href="http://php.net/manual/en/class.mongocursor.php">MongoCursor</a> 物件。</td>
+						<td>一个 <a href="http://php.net/manual/en/class.mongocursor.php">MongoCursor</a> 物件。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $result = $mongodb->get_cursor('documents');
 foreach($result as $document)
 {
-	// 對 $document 做點什麼
+	// 對 $document 做點什么
 }
 </code></pre>
 						</td>
@@ -217,7 +217,7 @@ foreach($result as $document)
 			<article>
 				<h4 class="method" id="method_get">get_one($collection = "")</h4>
 				<p>
-					<strong>get_one</strong> 方法從一個集合回傳一個結果。
+					<strong>get_one</strong> 方法從一个集合回傳一个結果。
 				</p>
 				<table class="method">
 					<tbody>
@@ -226,12 +226,12 @@ foreach($result as $document)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -246,12 +246,12 @@ foreach($result as $document)
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個包含單一結果陣列的 stdClass 物件。</td>
+						<td>一个包含单一結果陣列的 stdClass 物件。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $user = $mongodb->get_one('users');
@@ -266,7 +266,7 @@ $user = $mongodb->get_one('users');
 				<h4 class="method" id="method_get_where">get_where($collection = "", $where = array(), $limit = 99999)</h4>
 				<p>
 					<strong>get_where</strong> 方法回傳來自集合的結果。另外，
-					你還可以提供一個調節結果以及提供限制的陣列。
+					你還可以提供一个調節結果以及提供限制的陣列。
 				</p>
 				<table class="method">
 					<tbody>
@@ -275,12 +275,12 @@ $user = $mongodb->get_one('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -294,19 +294,19 @@ $user = $mongodb->get_one('users');
 									<th><kbd>$where</kbd></th>
 									<td><em>陣列</em></td>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>一個 where 語句的陣列。</td>
+									<td>一个 where 語句的陣列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個包含結果陣列的 stdClass 物件。</td>
+						<td>一个包含結果陣列的 stdClass 物件。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 // 取得 'active' 是 "yes" 的前 10 筆結果
@@ -331,7 +331,7 @@ foreach($result as $user)
 					<strong>select</strong> 方法設定在查詢過程中要包含或排除哪些欄位。
 				</p>
 				<p class="note">
-					為了使用 excludes 陣列，includes 陣列必須為空。
+					为了使用 excludes 陣列，includes 陣列必須为空。
 				</p>
 				<table class="method">
 					<tbody>
@@ -340,12 +340,12 @@ foreach($result as $user)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -371,9 +371,9 @@ foreach($result as $user)
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
-// 只選擇這些欄位
+// 只選擇这些欄位
 $mongodb->select(array(
 	'name',
 	'surname',
@@ -384,7 +384,7 @@ $users = $mongodb->get('users');
 // 或使用排除陣列
 
 $mongodb = \Mongo_Db::instance();
-// 只選擇這些欄位
+// 只選擇这些欄位
 $mongodb->select(array(), array(
 	'not_this',
 	'or_this',
@@ -409,12 +409,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th class="fixed_width">類型</th>
+									<th>參数</th>
+									<th class="fixed_width">类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -422,7 +422,7 @@ $users = $mongodb->get('users');
 									<th><kbd>$wheres</kbd></th>
 									<td><em>陣列</em></td>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>有欄位做為鍵以及值做為搜尋準則的關聯陣列的陣列。</td>
+									<td>有欄位做为鍵以及值做为搜尋准則的關聯陣列的陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -434,7 +434,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例.
+							<pre class="php"><code>// 取得一个實例.
 $mongodb = \Mongo_Db::instance();
 
 $mongodb->where(array(
@@ -462,12 +462,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th class="fixed_width">類型</th>
+									<th>參数</th>
+									<th class="fixed_width">类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -475,7 +475,7 @@ $users = $mongodb->get('users');
 									<th><kbd>$wheres</kbd></th>
 									<td><em>陣列</em></td>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>有欄位做為鍵以及值做為搜尋準則的關聯陣列的陣列。</td>
+									<td>有欄位做为鍵以及值做为搜尋准則的關聯陣列的陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -487,7 +487,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where(array(
 	'name' => 'John',
@@ -515,12 +515,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -546,7 +546,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_in('name', array(
 	'John', 'James', 'Frank', 'Dave',
@@ -571,12 +571,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -602,7 +602,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_in_all('name', array(
 	'John', 'James', 'Frank', 'Dave',
@@ -627,12 +627,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -658,7 +658,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_not_in('name', array(
 	'John', 'James', 'Frank', 'Dave',
@@ -683,12 +683,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -714,7 +714,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_gt('age', 12);
 $users = $mongodb->get('users');
@@ -737,12 +737,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -768,7 +768,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_gte('age', 18);
 $users = $mongodb->get('users');
@@ -791,12 +791,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -822,7 +822,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_lt('age', 120);
 $users = $mongodb->get('users');
@@ -845,12 +845,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -876,7 +876,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_lt('age', 120);
 $users = $mongodb->get('users');
@@ -899,12 +899,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -936,7 +936,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_between('age', 10, 20);
 $users = $mongodb->get('users');
@@ -959,12 +959,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -996,7 +996,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_between_ne('age', 10, 20);
 $users = $mongodb->get('users');
@@ -1010,7 +1010,7 @@ $users = $mongodb->get('users');
 			<article>
 				<h4 class="method" id="method_ne">where_ne($field = "", $x)</h4>
 				<p>
-					<strong>where_ne</strong> 方法設定一個 'where not equal to' 語句。
+					<strong>where_ne</strong> 方法設定一个 'where not equal to' 語句。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1019,12 +1019,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1050,7 +1050,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->where_ne('name', 'Allerd');
 $users = $mongodb->get('users');
@@ -1064,7 +1064,7 @@ $users = $mongodb->get('users');
 			<article>
 				<h4 class="method" id="method_like">like($field = '', $value = '', $flags = 'i', $disable_start_wildcard = false, $disable_end_wildcard = false)</h4>
 				<p>
-					<strong>like</strong> 方法設定一個 'like' 語句。
+					<strong>like</strong> 方法設定一个 'like' 語句。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1073,12 +1073,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1099,12 +1099,12 @@ $users = $mongodb->get('users');
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>'i'</code></pre></td>
 									<td>
-										能讓你設定典型的正則表達式標誌：
+										能让你設定典型的正則表達式标誌：
 										<ul>
 											<li>i = 不區分大小寫</li>
 											<li>m = 多行</li>
 											<li>x = 可以包含註解</li>
-											<li>l = 語言環境</li>
+											<li>l = 語言环境</li>
 											<li>s = DOTALL，"." 符合任何字符，包括換行符</li>
 											<li>u = 符合 unicode</li>
 										</ul>
@@ -1114,13 +1114,13 @@ $users = $mongodb->get('users');
 									<th><kbd>$disable_start_wildcard</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>當設為 <em>false</em> 字串開頭必須符合。</td>
+									<td>當設为 <em>false</em> 字串開頭必須符合。</td>
 								</tr>
 								<tr>
 									<th><kbd>$disable_end_wildcard</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>當設為 <em>false</em> 字串結尾必須符合。</td>
+									<td>當設为 <em>false</em> 字串結尾必須符合。</td>
 								</tr>
 							</table>
 						</td>
@@ -1132,7 +1132,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 // 尋找名稱開頭是 'fran' 的使用者
@@ -1157,12 +1157,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th class="fixed_width">類型</th>
+									<th>參数</th>
+									<th class="fixed_width">类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1170,7 +1170,7 @@ $users = $mongodb->get('users');
 									<th><kbd>$fields</kbd></th>
 									<td><em>陣列</em></td>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>要設定值是降序排列，你必序傳遞值是 -1、FALSE、'desc' 或 'DESC'，否則都會被設為 1（ASC）。</td>
+									<td>要設定值是降序排列，你必序傳遞值是 -1、FALSE、'desc' 或 'DESC'，否則都会被設为 1（ASC）。</td>
 								</tr>
 							</table>
 						</td>
@@ -1182,7 +1182,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 $mongodb->order_by(array(
 	'age' => 'asc',
@@ -1200,7 +1200,7 @@ $users = $mongodb->get('users');
 			<article>
 				<h4 class="method" id="method_limit">limit($x = 99999)</h4>
 				<p>
-					<strong>limit</strong> 方法限制取回的筆數。
+					<strong>limit</strong> 方法限制取回的筆数。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1209,20 +1209,20 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$x</kbd></th>
-									<td><em>數字</em></td>
+									<td><em>数字</em></td>
 									<td><pre class="php"><code>99999</code></pre></td>
-									<td>要取回的筆數。</td>
+									<td>要取回的筆数。</td>
 								</tr>
 							</table>
 						</td>
@@ -1234,7 +1234,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 // 取得最舊 10 筆
 $mongodb->order_by(array(
@@ -1251,7 +1251,7 @@ $users = $mongodb->get('users');
 			<article>
 				<h4 class="method" id="method_offset">offset($x = 0)</h4>
 				<p>
-					<strong>offset</strong> 方法設定要略過的筆數。
+					<strong>offset</strong> 方法設定要略過的筆数。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1260,20 +1260,20 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$x</kbd></th>
-									<td><em>數字</em></td>
+									<td><em>数字</em></td>
 									<td><pre class="php"><code>0</code></pre></td>
-									<td>要略過的筆數。</td>
+									<td>要略過的筆数。</td>
 								</tr>
 							</table>
 						</td>
@@ -1285,7 +1285,7 @@ $users = $mongodb->get('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 // 取得第 10 到 15 列
 $mongodb->order_by(array(
@@ -1311,12 +1311,12 @@ $users = $mongodb->get('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1330,22 +1330,22 @@ $users = $mongodb->get('users');
 									<th><kbd>$foundonly</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果為 true，它會將目前限制以及略過選擇列入考慮。</td>
+									<td>如果为 true，它会将目前限制以及略過選擇列入考慮。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>筆數。</td>
+						<td>筆数。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
-// 取得使用者數量。
+// 取得使用者数量。
 $num_users = $mongodb->count('users');
 </code></pre>
 						</td>
@@ -1366,12 +1366,12 @@ $num_users = $mongodb->count('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1397,10 +1397,10 @@ $num_users = $mongodb->count('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
-// 新增一個新的使用者
+// 新增一个新的使用者
 $insert_id = $mongodb->insert('users', array(
 	'name' => 'John',
 	'surname' => 'Doe',
@@ -1419,7 +1419,7 @@ $insert_id = $mongodb->insert('users', array(
 					<strong>update</strong> 方法更新所給的集合。
 				</p>
 				<p class="note">
-					如果你沒有設定 <em>"multiple"</em> 選項為 <em>true</em>，只有最先遇到的紀錄會被更新。
+					如果你沒有設定 <em>"multiple"</em> 選項为 <em>true</em>，只有最先遇到的紀錄会被更新。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1428,12 +1428,12 @@ $insert_id = $mongodb->insert('users', array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1469,10 +1469,10 @@ $insert_id = $mongodb->insert('users', array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
-// 更新一個使用者
+// 更新一个使用者
 $bool = $mongodb->where(array('id' => $an_id))->update('users', array(
 	'name' => 'John',
 	'surname' => 'Doe',
@@ -1497,12 +1497,12 @@ $bool = $mongodb->where(array('id' => $an_id))->update('users', array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1528,7 +1528,7 @@ $bool = $mongodb->where(array('id' => $an_id))->update('users', array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 // 更新 Spammer 的 surname。
@@ -1545,7 +1545,7 @@ $bool = $mongodb->where('name', 'Spammer')->update_all('users', array(
 			<article>
 				<h4 class="method" id="method_delete">delete($collection = "")</h4>
 				<p>
-					<strong>delete</strong> 方法在一個所給的集合中刪除第一筆紀錄。
+					<strong>delete</strong> 方法在一个所給的集合中刪除第一筆紀錄。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1554,12 +1554,12 @@ $bool = $mongodb->where('name', 'Spammer')->update_all('users', array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1579,10 +1579,10 @@ $bool = $mongodb->where('name', 'Spammer')->update_all('users', array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
-// 刪除一個名為 Spammer 的使用者
+// 刪除一个名为 Spammer 的使用者
 $bool = $mongodb->where(array('name' => 'Spammer'))->delete('users');
 </code></pre>
 						</td>
@@ -1594,7 +1594,7 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete('users');
 			<article>
 				<h4 class="method" id="method_delete_all">delete_all($collection = "")</h4>
 				<p>
-					<strong>delete_all</strong> 方法在一個所給的集合中刪除所有紀錄。
+					<strong>delete_all</strong> 方法在一个所給的集合中刪除所有紀錄。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1603,12 +1603,12 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1628,10 +1628,10 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
-// 刪除所有名為 Spammer 的使用者
+// 刪除所有名为 Spammer 的使用者
 $bool = $mongodb->where(array('name' => 'Spammer'))->delete_all('users');
 </code></pre>
 						</td>
@@ -1643,7 +1643,7 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete_all('users');
 			<article>
 				<h4 class="method" id="method_command">command($query = array())</h4>
 				<p>
-					<strong>command</strong> 方法運行一個 MongoDB 命令。
+					<strong>command</strong> 方法运行一个 MongoDB 命令。
 					在 <a href="http://www.mongodb.org/display/DOCS/Commands" target="_blank">MongoDB 文件</a>尋找更多關於命令。
 				</p>
 				<table class="method">
@@ -1653,12 +1653,12 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete_all('users');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1666,7 +1666,7 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete_all('users');
 									<th><kbd>$query</kbd></th>
 									<td><em>陣列</em></td>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>一個命令參數的陣列。</td>
+									<td>一个命令參数的陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -1678,7 +1678,7 @@ $bool = $mongodb->where(array('name' => 'Spammer'))->delete_all('users');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $mongodb->command(array(
@@ -1697,7 +1697,7 @@ $mongodb->command(array(
 			<article>
 				<h4 class="method" id="method_add_index">add_index($collection = "", $keys = array(), $options = array())</h4>
 				<p>
-					<strong>add_index</strong> 方法添加一個帶選擇性參數集合的鍵的索引。
+					<strong>add_index</strong> 方法添加一个帶選擇性參数集合的鍵的索引。
 					在 <a href="http://php.net/manual/en/mongocollection.ensureindex.php#refsect1-mongocollection.ensureindex-parameters" target="_blank">php.net</a> 閱讀更多關於選項。
 				</p>
 				<table class="method">
@@ -1707,12 +1707,12 @@ $mongodb->command(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1744,7 +1744,7 @@ $mongodb->command(array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $mongodb->add_index('my_collection', array(
@@ -1763,7 +1763,7 @@ $mongodb->add_index('my_collection', array(
 			<article>
 				<h4 class="method" id="method_remove_index">remove_index($collection = "", $keys = array())</h4>
 				<p>
-					<strong>remove_index</strong> 方法從集合移除一個或更多索引。
+					<strong>remove_index</strong> 方法從集合移除一个或更多索引。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1772,12 +1772,12 @@ $mongodb->add_index('my_collection', array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1803,7 +1803,7 @@ $mongodb->add_index('my_collection', array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $mongodb->remove_index('my_collection', array(
@@ -1833,12 +1833,12 @@ $mongodb->remove_index('first_name');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1858,7 +1858,7 @@ $mongodb->remove_index('first_name');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $mongodb->remove_all_indexes('my_collection');
@@ -1872,7 +1872,7 @@ $mongodb->remove_all_indexes('my_collection');
 			<article>
 				<h4 class="method" id="method_list_indexes">list_indexes($collection = "")</h4>
 				<p>
-					<strong>list_indexes</strong> 方法回傳一個給此集合的索引名稱的陣列。
+					<strong>list_indexes</strong> 方法回傳一个給此集合的索引名稱的陣列。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1881,12 +1881,12 @@ $mongodb->remove_all_indexes('my_collection');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1906,7 +1906,7 @@ $mongodb->remove_all_indexes('my_collection');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個實例
+							<pre class="php"><code>// 取得一个實例
 $mongodb = \Mongo_Db::instance();
 
 $indexes = $mongodb->list_indexes('my_collection');
@@ -1920,7 +1920,7 @@ $indexes = $mongodb->list_indexes('my_collection');
 			<article>
 				<h4 class="method" id="get_collection">get_collection($collection = "")</h4>
 				<p>
-					<strong>get_collection</strong> 方法回傳一個來自 MongoDB PHP Driver 核心的 MongoCollection 物件。<a href="http://www.php.net/manual/en/book.mongo.php">(?)</a>
+					<strong>get_collection</strong> 方法回傳一个來自 MongoDB PHP Driver 核心的 MongoCollection 物件。<a href="http://www.php.net/manual/en/book.mongo.php">(?)</a>
 				</p>
 				<table class="method">
 					<tbody>
@@ -1929,12 +1929,12 @@ $indexes = $mongodb->list_indexes('my_collection');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1949,18 +1949,18 @@ $indexes = $mongodb->list_indexes('my_collection');
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個來自 MongoDB PHP Driver 核心的 MongoCollection 物件。</td>
+						<td>一个來自 MongoDB PHP Driver 核心的 MongoCollection 物件。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個集合
+							<pre class="php"><code>// 取得一个集合
 $mongodb       = \Mongo_Db::instance();
 $my_collection = $mongodb->get_collection('my_collection');
 $my_collection->update(array('_id' => $id), array('$push' => array('array.to.add.to' => $data)));
 </code></pre>
 						<br />
-						這被設立是由於缺乏內部 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-ModifierOperations">update modifier operation</a> 支援。
+						这被設立是由於缺乏內部 <a href="http://www.mongodb.org/display/DOCS/Updating#Updating-ModifierOperations">update modifier operation</a> 支援。
 						</td>
 					</tr>
 					</tbody>
@@ -1970,7 +1970,7 @@ $my_collection->update(array('_id' => $id), array('$push' => array('array.to.add
 			<article>
 				<h4 class="method" id="list_collections">list_collections($system_collections = false)</h4>
 				<p>
-					<strong>list_collections</strong> 方法回傳一個所有存在於資料庫集合的 MongoCollection 物件陣列。你也可以選擇性的指定你想要回傳所有系統集合。</a>
+					<strong>list_collections</strong> 方法回傳一个所有存在於資料庫集合的 MongoCollection 物件陣列。你也可以選擇性的指定你想要回傳所有系统集合。</a>
 				</p>
 				<table class="method">
 					<tbody>
@@ -1979,12 +1979,12 @@ $my_collection->update(array('_id' => $id), array('$push' => array('array.to.add
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1992,19 +1992,19 @@ $my_collection->update(array('_id' => $id), array('$push' => array('array.to.add
 									<th><kbd>system_collections</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>是否包含系統集合。</td>
+									<td>是否包含系统集合。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個 MongoCollection 物件的陣列。</td>
+						<td>一个 MongoCollection 物件的陣列。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得一個 mongo 實例
+							<pre class="php"><code>// 取得一个 mongo 實例
 $mongodb     = \Mongo_Db::instance();
 $collections = $mongodb->list_collections();
 </code></pre>
@@ -2016,7 +2016,7 @@ $collections = $mongodb->list_collections();
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -677,20 +677,6 @@ ol{
 	color: #fff;
 }
 
-#google_search{
-	height: 40px;
-	padding-top: 8px;
-	padding-right: 0px;
-	float: right;
-	width: 320px;
-	overflow: hidden;
-	margin-top: -60px;
-}
-
-#google_search input{
-	display: inline-block;
-	float: right;
-}
 
 #search_input{
 	height: 25px;
@@ -1009,9 +995,6 @@ table table{
 }
 
 @media screen and (max-width: 560px) {
-	#google_search{
-		display: none !important;
-	}
 	footer{
 		position: relative;
 		bottom: -30px;

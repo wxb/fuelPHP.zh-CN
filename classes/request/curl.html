@@ -12,7 +12,7 @@
 		var class_prefix = "Request_Curl::";
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Request_Curl - 類別 - FuelPHP 简体中文手册</title>
+	<title>Request_Curl - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="curl.html#" id="toc_handle">目錄</a>
+			<a href="curl.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,26 +40,26 @@
 
 		<div id="main">
 
-			<h2>Request_Curl 類別</h2>
+			<h2>Request_Curl 类別</h2>
 
 			<p>
-				Request_Curl 類別主要是用來透過 PHP 的 cURL 擴充處理 REST 請求，也可用來透過一個
+				Request_Curl 类別主要是用來透過 PHP 的 cURL 擴充处理 REST 請求，也可用來透過一个
 				HTTP 請求取回任何內容。
 			</p>
 
-			<h3>建立一個實例</h3>
+			<h3>建立一个實例</h3>
 
 			<p>
-				你可以透過 Request 類別鍛造一個此類別的實例：
+				你可以透過 Request 类別鍛造一个此类別的實例：
 			</p>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 請注意，這只建立物件，不會執行請求！</code></pre>
+// 請注意，这只建立物件，不会执行請求！</code></pre>
 
 			<article>
 				<h4 class="method" id="method_set_method">set_method($method)</h4>
-				<p><strong>set_method</strong> 方法能讓你設定 HTTP 請求方法。</p>
+				<p><strong>set_method</strong> 方法能让你設定 HTTP 請求方法。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -67,11 +67,11 @@ $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -90,10 +90,10 @@ $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 這將是一個 HTTP POST
+// 这将是一个 HTTP POST
 $curl->set_method('post');
 </code></pre>
 						</td>
@@ -104,7 +104,7 @@ $curl->set_method('post');
 
 			<article>
 				<h4 class="method" id="method_get_method">get_method()</h4>
-				<p><strong>get_method</strong> 方法能讓你取回目前設定的 HTTP 請求方法。</p>
+				<p><strong>get_method</strong> 方法能让你取回目前設定的 HTTP 請求方法。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -112,7 +112,7 @@ $curl->set_method('post');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							無。
 						</td>
@@ -124,10 +124,10 @@ $curl->set_method('post');
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 這將是一個 HTTP POST
+// 这将是一个 HTTP POST
 $curl->set_method('post');
 
 // 回傳 'POST'
@@ -141,7 +141,7 @@ $method = $curl->get_method();
 
 			<article>
 				<h4 class="method" id="method_set_params">set_params($params)</h4>
-				<p><strong>set_params</strong> 方法能讓你在 HTTP 請求時設定傳遞參數。</p>
+				<p><strong>set_params</strong> 方法能让你在 HTTP 請求時設定傳遞參数。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -149,18 +149,18 @@ $method = $curl->get_method();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$params</kbd></th>
 									<td><i>必要</i></td>
-									<td>給請求的參數陣列。</td>
+									<td>給請求的參数陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -172,10 +172,10 @@ $method = $curl->get_method();
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 設定一些參數
+// 設定一些參数
 $curl->set_params(array('userid' => 12, 'data' => $payload));
 </code></pre>
 						</td>
@@ -183,14 +183,14 @@ $curl->set_params(array('userid' => 12, 'data' => $payload));
 					</tbody>
 				</table>
 				<p class="note">
-					這些參數使用的方式取決於產生的請求。對於 GET 請求，這些將被轉換為一個查詢字串。
-					對於 POST 請求，他們將成為 POST 主體。
+					这些參数使用的方式取決於產生的請求。對於 GET 請求，这些将被轉換为一个查詢字串。
+					對於 POST 請求，他們将成为 POST 主體。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_set_option">set_option($option, $value)</h4>
-				<p><strong>set_option</strong> 方法能讓你定義一個 CURL 選項以被傳遞到該請求。</p>
+				<p><strong>set_option</strong> 方法能让你定義一个 CURL 選項以被傳遞到該請求。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -198,18 +198,18 @@ $curl->set_params(array('userid' => 12, 'data' => $payload));
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$option</kbd></th>
 									<td><i>必要</i></td>
-									<td>要設定的 cURL 選項。通常這是一個 cURL 常數。</td>
+									<td>要設定的 cURL 選項。通常这是一个 cURL 常数。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
@@ -226,10 +226,10 @@ $curl->set_params(array('userid' => 12, 'data' => $payload));
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 設定一組用於該請求的使用者名稱和密碼
+// 設定一組用於該請求的使用者名稱和密码
 $curl->set_option(CURLOPT_USERPWD, $username . ':' . $password);
 </code></pre>
 						</td>
@@ -240,7 +240,7 @@ $curl->set_option(CURLOPT_USERPWD, $username . ':' . $password);
 
 			<article>
 				<h4 class="method" id="method_set_options">set_options(array $options)</h4>
-				<p><strong>set_options</strong> 方法能讓你定義多個 CURL 選項以被傳遞到該請求。</p>
+				<p><strong>set_options</strong> 方法能让你定義多个 CURL 選項以被傳遞到該請求。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -248,11 +248,11 @@ $curl->set_option(CURLOPT_USERPWD, $username . ':' . $password);
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -271,7 +271,7 @@ $curl->set_option(CURLOPT_USERPWD, $username . ':' . $password);
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
 // 設定一些用於該請求的選項
@@ -289,7 +289,7 @@ $curl->set_options(array(
 
 			<article>
 				<h4 class="method" id="method_add_param">add_param($param, $value = null)</h4>
-				<p><strong>add_param</strong> 方法能讓你添加一個或更多參數到已定義的。</p>
+				<p><strong>add_param</strong> 方法能让你添加一个或更多參数到已定義的。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -297,23 +297,23 @@ $curl->set_options(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$param</kbd></th>
 									<td><i>必要</i></td>
-									<td>要設定的參數名稱，或一個參數和值的陣列。</td>
+									<td>要設定的參数名稱，或一个參数和值的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要被定義的值。只用於當 $param 是一個字串值。</td>
+									<td>要被定義的值。只用於當 $param 是一个字串值。</td>
 								</tr>
 							</table>
 						</td>
@@ -325,13 +325,13 @@ $curl->set_options(array(
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 添加一些參數
+// 添加一些參数
 $curl->add_param(array('userid' => 12, 'data' => $payload));
 
-// 或添加單一參數
+// 或添加单一參数
 $curl->add_param('data', $payload);
 </code></pre>
 						</td>
@@ -342,7 +342,7 @@ $curl->add_param('data', $payload);
 
 			<article>
 				<h4 class="method" id="method_set_header">set_header($header, $content = null)</h4>
-				<p><strong>set_header</strong> 方法能讓你設定一個 HTTP 請求表頭做為該請求的一部分。</p>
+				<p><strong>set_header</strong> 方法能让你設定一个 HTTP 請求表頭做为該請求的一部分。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -350,11 +350,11 @@ $curl->add_param('data', $payload);
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -378,22 +378,22 @@ $curl->add_param('data', $payload);
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 傳遞一個認證符記到後端伺服器
+// 傳遞一个認證符記到後端伺服器
 $curl->set_header('auth-token', 'WV4YaeV8QeWVVVOE');
 </code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">如果你需要設定一個非 "Name: Value" 形式的表頭，在 $header 傳遞值，並且不要傳遞任何內容。</p>
+				<p class="note">如果你需要設定一个非 "Name: Value" 形式的表頭，在 $header 傳遞值，并且不要傳遞任何內容。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_get_headers">get_headers()</h4>
-				<p><strong>get_headers</strong> 方法能讓你取回所有目前已定義的 HTTP 請求表頭。</p>
+				<p><strong>get_headers</strong> 方法能让你取回所有目前已定義的 HTTP 請求表頭。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -401,7 +401,7 @@ $curl->set_header('auth-token', 'WV4YaeV8QeWVVVOE');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							無。
 						</td>
@@ -413,10 +413,10 @@ $curl->set_header('auth-token', 'WV4YaeV8QeWVVVOE');
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 傳遞一個認證符記到後端伺服器
+// 傳遞一个認證符記到後端伺服器
 $curl->set_header('auth-token', 'WV4YaeV8QeWVVVOE');
 
 // 回傳 array('auth-token:WV4YaeV8QeWVVVOE')
@@ -430,7 +430,7 @@ $headers = $curl->get_headers();
 
 			<article>
 				<h4 class="method" id="method_set_mime_type">set_mime_type($mime)</h4>
-				<p><strong>set_mime_type</strong> 方法能讓你定義 HTTP ACCEPT 表頭。</p>
+				<p><strong>set_mime_type</strong> 方法能让你定義 HTTP ACCEPT 表頭。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -438,11 +438,11 @@ $headers = $curl->get_headers();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -450,8 +450,8 @@ $headers = $curl->get_headers();
 									<th><kbd>$mime</kbd></th>
 									<td><i>必要</i></td>
 									<td>
-										請求回應的 mime  類型。這將被用來設定 ACCEPT 表頭。
-			<pre class="php"><code>// 目前支援的類型有：
+										請求回應的 mime  类型。这将被用來設定 ACCEPT 表頭。
+			<pre class="php"><code>// 目前支援的类型有：
 'xml' => 'application/xml',
 'json' => 'application/json',
 'serialize' => 'application/vnd.php.serialized',
@@ -470,7 +470,7 @@ $headers = $curl->get_headers();
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
 // 告訴後端我們希望回傳的是 json
@@ -481,14 +481,14 @@ $curl->set_mime_type('json');
 					</tbody>
 				</table>
 				<p class="note">
-					這僅僅是一個請求。你應該驗證你正在呼叫的服務是否實際支援並使用在
-					HTTP ACCEPT 表頭中的 mime 類型，以及它是否支援你正在請求的類型。
+					这僅僅是一个請求。你應該驗證你正在呼叫的服務是否實際支援并使用在
+					HTTP ACCEPT 表頭中的 mime 类型，以及它是否支援你正在請求的类型。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_set_auto_format">set_auto_format($auto_format)</h4>
-				<p><strong>set_auto_format</strong> 方法能讓你切換自動格式化開關。 Since 1.7.2, this is switched of by default, and when switched off, you will have to parse the cURL response yourself.</p>
+				<p><strong>set_auto_format</strong> 方法能让你切換自动格式化開關。 Since 1.7.2, this is switched of by default, and when switched off, you will have to parse the cURL response yourself.</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -496,18 +496,18 @@ $curl->set_mime_type('json');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$auto_format</kbd></th>
 									<td><i>必要</i></td>
-									<td>True 如果你希望回傳的回應被轉換為一個陣列，false 如果你想要存取它所接收到的。</td>
+									<td>True 如果你希望回傳的回應被轉換为一个陣列，false 如果你想要存取它所接收到的。</td>
 								</tr>
 							</table>
 						</td>
@@ -519,10 +519,10 @@ $curl->set_mime_type('json');
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 我們希望回傳的是一個陣列
+// 我們希望回傳的是一个陣列
 $curl->set_auto_format(true);
 </code></pre>
 						</td>
@@ -552,7 +552,7 @@ $curl->set_auto_format(true);
 
 			<article>
 				<h4 class="method" id="method_execute">execute(array $additional_params = array())</h4>
-				<p><strong>execute</strong> 方法執行定義的 cURL 請求。</p>
+				<p><strong>execute</strong> 方法执行定義的 cURL 請求。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -560,18 +560,18 @@ $curl->set_auto_format(true);
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$additional_params</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>任何你想要傳遞給該請求的附加參數。</td>
+									<td>任何你想要傳遞給該請求的附加參数。</td>
 								</tr>
 							</table>
 						</td>
@@ -583,10 +583,10 @@ $curl->set_auto_format(true);
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 執行該請求
+// 执行該請求
 $result = $curl->execute();
 </code></pre>
 						</td>
@@ -605,18 +605,18 @@ $result = $curl->execute();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$body</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被設定做為回應主體的資料。</td>
+									<td>要被設定做为回應主體的資料。</td>
 								</tr>
 								<tr>
 									<th><kbd>$status</kbd></th>
@@ -626,7 +626,7 @@ $result = $curl->execute();
 								<tr>
 									<th><kbd>$mime</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>該資料的 mime 類型。這是用在 <em>auto_format</em> 以轉換該主體為一個陣列。</td>
+									<td>該資料的 mime 类型。这是用在 <em>auto_format</em> 以轉換該主體为一个陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$headers</kbd></th>
@@ -643,17 +643,17 @@ $result = $curl->execute();
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 建立一個自訂的回應
+// 建立一个自訂的回應
 $curl->set_response($body, $this->response_info('http_code', 200), 'json', array('auth-token' => 'WV4YaeV8QeWVVVOE'));
 </code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">一般情況下，你不應該使用這個方法。它是在請求執行之後用來預處理請求回應物件。</p>
+				<p class="note">一般情況下，你不應該使用这个方法。它是在請求执行之後用來預处理請求回應物件。</p>
 			</article>
 
 			<article>
@@ -666,7 +666,7 @@ $curl->set_response($body, $this->response_info('http_code', 200), 'json', array
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							無。
 						</td>
@@ -678,10 +678,10 @@ $curl->set_response($body, $this->response_info('http_code', 200), 'json', array
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 假設一些參數和選項已經被設定，並且執行
+// 假設一些參数和選項已经被設定，并且执行
 $curl->execute();
 
 // 取回 Response 物件的結果
@@ -695,7 +695,7 @@ $result = $curl->response();
 
 			<article>
 				<h4 class="method" id="method_response_info">response_info($key = null, $default = null)</h4>
-				<p><strong>response_info</strong> 方法能讓你取回一個 cURL 回應值，或所有回應值。</p>
+				<p><strong>response_info</strong> 方法能让你取回一个 cURL 回應值，或所有回應值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -703,11 +703,11 @@ $result = $curl->response();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -726,18 +726,18 @@ $result = $curl->response();
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，取決於請求值的資料類型。</td>
+						<td>混合，取決於請求值的資料类型。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 假設一些參數和選項已經被設定，並且執行
+// 假設一些參数和選項已经被設定，并且执行
 $curl->execute();
 
-// 取得在該請求中下載的位元組數
+// 取得在該請求中下载的位元組数
 $size = $curl->response_info(CURLINFO_SIZE_DOWNLOAD, false);
 </code></pre>
 						</td>
@@ -748,7 +748,7 @@ $size = $curl->response_info(CURLINFO_SIZE_DOWNLOAD, false);
 
 			<article>
 				<h4 class="method" id="method_http_login">http_login($username = '', $password = '', $type = 'any')</h4>
-				<p><strong>http_login</strong> 方法能讓你在執行請求時使用基本的認證。</p>
+				<p><strong>http_login</strong> 方法能让你在执行請求時使用基本的認證。</p>
 					<table class="method">
 					<tbody>
 					<tr>
@@ -756,28 +756,28 @@ $size = $curl->response_info(CURLINFO_SIZE_DOWNLOAD, false);
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$username</kbd></th>
 									<td><pre class="php"><code>''</code></pre></td>
-									<td>你想用來執行認證的使用者名稱。</td>
+									<td>你想用來执行認證的使用者名稱。</td>
 								</tr>
 								<tr>
 									<th><kbd>$password</kbd></th>
 									<td><pre class="php"><code>''</code></pre></td>
-									<td>使用者密碼。</td>
+									<td>使用者密码。</td>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td><pre class="php"><code>'any'</code></pre></td>
-									<td>要執行的認證類型。支援的有：BASIC、DIGEST、GSSNEGOTIATE、NTLM、ANY 和 ANYSAFE。</td>
+									<td>要执行的認證类型。支援的有：BASIC、DIGEST、GSSNEGOTIATE、NTLM、ANY 和 ANYSAFE。</td>
 								</tr>
 							</table>
 						</td>
@@ -789,10 +789,10 @@ $size = $curl->response_info(CURLINFO_SIZE_DOWNLOAD, false);
 					<tr>
 						<th>範例</th>
 						<td>
-			<pre class="php"><code>// 建立一個 Request_Curl 物件
+			<pre class="php"><code>// 建立一个 Request_Curl 物件
 $curl = Request::forge('http://rest.example.org/api/v1/this/info', 'curl');
 
-// 對一個 IIS 伺服器認證
+// 對一个 IIS 伺服器認證
 $curl->http_login('username', 'mypass', 'NTLM');
 </code></pre>
 						</td>
@@ -805,7 +805,7 @@ $curl->http_login('username', 'mypass', 'NTLM');
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

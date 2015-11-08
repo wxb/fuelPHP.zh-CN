@@ -12,7 +12,7 @@
 		var class_prefix = 'Query_Builder_Select::';
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Query Builder Select - 類別 - FuelPHP 简体中文手册</title>
+	<title>Query Builder Select - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="qb_select.html#" id="toc_handle">目錄</a>
+			<a href="qb_select.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,13 +39,13 @@
 		</div>
 
 		<div id="main">
-			<h2 id="introduction">Query_Builder_Select 類別</h2>
+			<h2 id="introduction">Query_Builder_Select 类別</h2>
 
 			<p>（擴充 <a href="qb_where.html">Query_Builder_Where</a>）</p>
 
 			<p>
-				Query_Builder_Select 類別為查詢建立程序處理所有 select 操作，它擴充
-				Query_Builder_Where 類別，所以所有方法都繼承。
+				Query_Builder_Select 类別为查詢建立程序处理所有 select 操作，它擴充
+				Query_Builder_Where 类別，所以所有方法都繼承。
 			</p>
 
 			<article>
@@ -58,12 +58,12 @@
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -71,7 +71,7 @@
 										<th><kbd>$value</kbd></th>
 										<td><em>布林</em></td>
 										<td><pre class="php"><code>true</code></pre></td>
-										<td>設定為 false 如果你不想要選擇相異值</td>
+										<td>設定为 false 如果你不想要選擇相異值</td>
 									</tr>
 								</table>
 							</td>
@@ -83,10 +83,10 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('name')->from('users');
 
-// 設定為相異
+// 設定为相異
 $query->distinct();
 
 // SELECT DISTINCT `name` FROM `users`
@@ -107,12 +107,12 @@ $query->distinct();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -132,7 +132,7 @@ $query->distinct();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('name')->from('users');
 
 // 附加其他的行到 select
@@ -162,12 +162,12 @@ $query->select(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -181,7 +181,7 @@ $query->select(
 										<th><kbd>$reset</kbd></th>
 										<td><em>布林</em></td>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果為 true，不附加，但覆寫</td>
+										<td>如果为 true，不附加，但覆寫</td>
 									</tr>
 								</table>
 							</td>
@@ -193,7 +193,7 @@ $query->select(
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('name')->from('users');
 
 // 附加其他的行到 select
@@ -207,7 +207,7 @@ $query->select_array(array(
 
 // 產生 SELECT `surname`, `email`, `is_active` as active, `birthdate` FROM `users ...
 
-// 提供一個陣列來使用別名且重置前一個 select
+// 提供一个陣列來使用別名且重置前一个 select
 $query->select_array(array(
 	array('surname', 'name'),
 	'birthdate'
@@ -232,12 +232,12 @@ $query->select_array(array(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -257,7 +257,7 @@ $query->select_array(array(
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select()->from('users');
 
 // 附加資料表到 select from
@@ -284,12 +284,12 @@ $query->from(
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -303,7 +303,7 @@ $query->from(
 										<th><kbd>$type</kbd></th>
 										<td><em>混合</em></td>
 										<td><pre class="php"><code>true</code></pre></td>
-										<td>組合類型（LEFT、RIGHT、INNER、等等）</td>
+										<td>組合类型（LEFT、RIGHT、INNER、等等）</td>
 									</tr>
 								</table>
 							</td>
@@ -315,7 +315,7 @@ $query->from(
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select()->from('users');
 
 // 組合一張資料表
@@ -340,7 +340,7 @@ $query->join('pictures', 'RIGHT OUTER');
 
 			<article>
 				<h4 class="method" id="method_on">on($c1, $op, $c2)</h4>
-				<p><strong>on</strong> 方法為最後建立的 JOIN 語句添加 "ON ..." 條件。</p>
+				<p><strong>on</strong> 方法为最後建立的 JOIN 語句添加 "ON ..." 條件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -348,12 +348,12 @@ $query->join('pictures', 'RIGHT OUTER');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -385,7 +385,7 @@ $query->join('pictures', 'RIGHT OUTER');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select()->from('users');
 
 // 組合一張資料表
@@ -407,7 +407,7 @@ $query->on('users.id', '=', 'profiles.user_id');
 
 			<article>
 				<h4 class="method" id="method_or_on">or_ on($c1, $op, $c2)</h4>
-				<p><strong>on</strong> 方法為最後建立的 JOIN 語句添加 "OR ON ..." 條件。</p>
+				<p><strong>on</strong> 方法为最後建立的 JOIN 語句添加 "OR ON ..." 條件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -415,12 +415,12 @@ $query->on('users.id', '=', 'profiles.user_id');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -452,14 +452,14 @@ $query->on('users.id', '=', 'profiles.user_id');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select()->from('users');
 
 // 組合一張資料表
 $query->join('profiles');
 $query->on('users.id', '=', 'profiles.user_id');
 
-// 添加一個 OR ON 條件
+// 添加一个 OR ON 條件
 $query->or_on('users.id', '=', 'profiles.other_id');
 
 // SELECT * FROM `users` JOIN `profiles` ON `users`.`id` = `profiles`.`user_id` OR `users`.`id` = `profiles`.`other_id`
@@ -472,7 +472,7 @@ $query->or_on('users.id', '=', 'profiles.other_id');
 
 			<article>
 				<h4 class="method" id="method_group_by">group_by($columns)</h4>
-				<p><strong>group_by</strong> 方法建立一個 "GROUP BY ..." 過濾器。</p>
+				<p><strong>group_by</strong> 方法建立一个 "GROUP BY ..." 過濾器。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -480,12 +480,12 @@ $query->or_on('users.id', '=', 'profiles.other_id');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -505,7 +505,7 @@ $query->or_on('users.id', '=', 'profiles.other_id');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select()->from('articles');
 
 // 藉由 'genre' 群組
@@ -526,7 +526,7 @@ $query->group_by('genre', 'category');
 
 			<article>
 				<h4 class="method" id="method_and_having">and_having($column, $op, $value = NULL)</h4>
-				<p><strong>and_having</strong> 方法附加一個 "AND HAVING" 語句。</p>
+				<p><strong>and_having</strong> 方法附加一个 "AND HAVING" 語句。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -534,12 +534,12 @@ $query->group_by('genre', 'category');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -571,16 +571,16 @@ $query->group_by('genre', 'category');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定第一個 HAVING 語句
+// 設定第一个 HAVING 語句
 $query->having('name', '!=', 'John');
 
-// 然後附加一個新的條件
+// 然後附加一个新的條件
 $query->and_having('surname', '=', 'Doe');
 
-// 使用回呼（callback）建立一個群組
+// 使用回呼（callback）建立一个群組
 $query->and_having(function($query){
 	$query->having('email', 'info@example.com');
 	$query->or_having('email', 'second@example.com');
@@ -598,7 +598,7 @@ $query->and_having(function($query){
 
 			<article>
 				<h4 class="method" id="method_or_having">or_having($column, $op, $value = NULL)</h4>
-				<p><strong>or_having</strong> 方法附加一個 "OR HAVING" 語句。</p>
+				<p><strong>or_having</strong> 方法附加一个 "OR HAVING" 語句。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -606,12 +606,12 @@ $query->and_having(function($query){
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -643,16 +643,16 @@ $query->and_having(function($query){
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定第一個 HAVING 語句
+// 設定第一个 HAVING 語句
 $query->having('name', '!=', 'John');
 
-// 然後附加一個新的條件
+// 然後附加一个新的條件
 $query->or_having('surname', '=', 'Doe');
 
-// 使用回呼（callback）建立一個群組
+// 使用回呼（callback）建立一个群組
 $query->or_having(function($query){
 	$query->having('email', 'info@example.com');
 	$query->and_having('email', 'second@example.com');
@@ -675,7 +675,7 @@ $query->or_having(function($query){
 
 			<article>
 				<h4 class="method" id="method_and_having_open">and_having_open()</h4>
-				<p><strong>and_having_open</strong> 方法開啟一個 SQL 閉包（closure）並使用 AND 附加它。</p>
+				<p><strong>and_having_open</strong> 方法開啟一个 SQL 閉包（closure）并使用 AND 附加它。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -683,7 +683,7 @@ $query->or_having(function($query){
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -695,13 +695,13 @@ $query->or_having(function($query){
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 HAVING 語句
+// 設定一个 HAVING 語句
 $query->having('name', '=', 'john')
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->and_having_open();
 
 // SELECT * FROM `users` HAVING `name` = "John" AND (
@@ -714,7 +714,7 @@ $query->and_having_open();
 
 			<article>
 				<h4 class="method" id="method_or_having_open">or_having_open()</h4>
-				<p><strong>or_having_open</strong> 方法開啟一個 SQL 閉包（closure）並使用 OR 附加它。</p>
+				<p><strong>or_having_open</strong> 方法開啟一个 SQL 閉包（closure）并使用 OR 附加它。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -722,7 +722,7 @@ $query->and_having_open();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -734,13 +734,13 @@ $query->and_having_open();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 HAVING 語句
+// 設定一个 HAVING 語句
 $query->having('name', '=', 'john')
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->or_having_open();
 
 // SELECT * FROM `users` HAVING `name` = "John" OR (
@@ -758,7 +758,7 @@ $query->or_having_open();
 
 			<article>
 				<h4 class="method" id="method_and_having_close">and_having_close()</h4>
-				<p><strong>and_having_close</strong> 方法關閉一個 SQL 閉包（closure）。</p>
+				<p><strong>and_having_close</strong> 方法關閉一个 SQL 閉包（closure）。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -766,7 +766,7 @@ $query->or_having_open();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -778,13 +778,13 @@ $query->or_having_open();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->and_having_open();
 
-// 設定一個 HAVING 語句
+// 設定一个 HAVING 語句
 $query->having('name', '=', 'john');
 
 $query->and_having_close();
@@ -798,7 +798,7 @@ $query->and_having_close();
 
 			<article>
 				<h4 class="method" id="method_or_having_close">or_having_close()</h4>
-				<p><strong>or_having_close</strong> 方法關閉一個 SQL 閉包（closure）。</p>
+				<p><strong>or_having_close</strong> 方法關閉一个 SQL 閉包（closure）。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -806,7 +806,7 @@ $query->and_having_close();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -818,16 +818,16 @@ $query->and_having_close();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 HAVING 語句
+// 設定一个 HAVING 語句
 $query->having('email', 'like', '%@example.com');
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->or_having_open();
 
-// 設定一個 HAVING 語句
+// 設定一个 HAVING 語句
 $query->having('name', '=' 'John');
 $query->and_having('surname', '=', 'Doe');
 
@@ -842,7 +842,7 @@ $query->or_having_close();
 
 			<article>
 				<h4 class="method" id="method_offset">offset($number)</h4>
-				<p><strong>offset</strong> 方法設定當選擇／更新／刪除時要開始的列數。</p>
+				<p><strong>offset</strong> 方法設定當選擇／更新／刪除時要開始的列数。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -850,20 +850,20 @@ $query->or_having_close();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$number</kbd></th>
-										<td><em>整數</em></td>
+										<td><em>整数</em></td>
 										<td><em>必要</em></td>
-										<td>要開始的列數</td>
+										<td>要開始的列数</td>
 									</tr>
 								</table>
 							</td>
@@ -875,7 +875,7 @@ $query->or_having_close();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
 // 設定限制
@@ -893,7 +893,7 @@ $query->offset(5);
 
 			<article>
 				<h4 class="method" id="method_compile">compile(\Database_Connection$db)</h4>
-				<p><strong>compile</strong> 方法回傳 select SQL 查詢做為一個字串。</p>
+				<p><strong>compile</strong> 方法回傳 select SQL 查詢做为一个字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -901,12 +901,12 @@ $query->offset(5);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -914,19 +914,19 @@ $query->offset(5);
 										<th><kbd>$db</kbd></th>
 										<td><em>物件</em></td>
 										<td><em>必要</em></td>
-										<td>一個資料庫連線</td>
+										<td>一个資料庫連線</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳 SQL 查詢做為一個字串。</td>
+							<td>回傳 SQL 查詢做为一个字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
 // 設定限制和偏移
@@ -955,7 +955,7 @@ $sql = $query->compile($connection);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -967,7 +967,7 @@ $sql = $query->compile($connection);
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
 // 設定一些條件
@@ -980,7 +980,7 @@ $query->reset();
 // 設定新的條件
 $query->select('email')->from('admins')->where('role', 'superadmin');
 
-// SQL 查詢現在會是：
+// SQL 查詢现在会是：
 // SELECT `email` FROM `admins` WHERE `role` = "superadmins"
 </code></pre>
 							</td>
@@ -993,7 +993,7 @@ $query->select('email')->from('admins')->where('role', 'superadmin');
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

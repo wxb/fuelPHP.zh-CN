@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Theme 簡介 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Theme 简介 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,36 +39,36 @@
 
 		<div id="main">
 
-			<h2>Theme 類別</h2>
+			<h2>Theme 类別</h2>
 
-			<h3 id="intro">簡介</h3>
+			<h3 id="intro">简介</h3>
 			<p>
-				Theme 類別為你的應用程式提供主題。
+				Theme 类別为你的应用程序提供主題。
 			</p>
 			<p>
-				一個主題會集合主題樣板（檢視）和資產，
-				並且允許你透過切換活躍主題來變更應用程式的外表與感覺。
+				一个主題会集合主題樣板（檢視）和資產，
+				并且允許你透過切換活躍主題來變更应用程序的外表與感覺。
 			</p>
 			<p>
-				就像模組和套件，主題可以被儲存在多個位置。你可以在配置檔案中定義到這些位置的路徑，
-				或在執行階段把他們添加到主題實例。一個主題是透過它的名稱來識別，必須等於在主題位置中使用的主題文件夾名稱。
-				如果該主題在多個位置被定義，
-				第一個找到的會被使用。
+				就像模組和套件，主題可以被儲存在多个位置。你可以在配置档案中定義到这些位置的路徑，
+				或在执行階段把他們添加到主題實例。一个主題是透過它的名稱來識別，必須等於在主題位置中使用的主題文件夾名稱。
+				如果該主題在多个位置被定義，
+				第一个找到的会被使用。
 			</p>
 
 			<h3 id="info">Theme 資訊</h3>
 
 			<p>
-				你可以透過主題資訊檔案來為你的主題提供設置。
-				所有你的主題的該檔案有一個固定名稱，它可以透過全域配置檔案來配置。
-				它也有一個讓該檔案為必要的選項。
+				你可以透過主題資訊档案來为你的主題提供設置。
+				所有你的主題的該档案有一个固定名稱，它可以透過全域配置档案來配置。
+				它也有一个让該档案为必要的選項。
 			</p>
 			<p>
-				資訊檔案的格式遵循相同的規則做為正常的配置檔案，並支援相同的檔案類型。
-				資訊檔案可以包含一個稱為 'options' 的特別段落。選項可以從你的程式碼被取得或設定，
-				可以用來控制你的主題的某些特性，例如使用的顏色，或自訂的 css 檔案名稱來選擇一個顏色方案。
+				資訊档案的格式遵循相同的規則做为正常的配置档案，并支援相同的档案类型。
+				資訊档案可以包含一个稱为 'options' 的特別段落。選項可以從你的程式码被取得或設定，
+				可以用來控制你的主題的某些特性，例如使用的顏色，或自訂的 css 档案名稱來選擇一个顏色方案。
 			</p>
-			<p class="note">在這個時候，資訊檔案是唯讀。你可以在執行階段改變，但你不能寫回。</p>
+			<p class="note">在这个時候，資訊档案是唯讀。你可以在执行階段改變，但你不能寫回。</p>
 
 			<h3 id="assets">Theme 資產</h3>
 
@@ -79,7 +79,7 @@
 				inside the <strong>DOCROOT</strong>. Alternatively, you can specify a base URL for your assets, for example if you use a CDN.
 			</p>
 			<p>
-				以下邏輯是用來檢測主題資產檔案的位置：
+				以下邏輯是用來檢测主題資產档案的位置：
 				<ul>
 					<li>
 						If your asset folder is a URL, it is suffixed by the theme name, and used as the base URL for your assets.
@@ -100,14 +100,14 @@
 				</ul>
 
 				<p class="note">
-					如果你想用內建的 Asset 類別支援，你的資產文件夾必須有相容的文件夾結構：/css、/img 和 /js 子文件夾。
+					如果你想用內建的 Asset 类別支援，你的資產文件夾必須有相容的文件夾結構：/css、/img 和 /js 子文件夾。
 				</p>
 			</p>
 
 			<h3 id="layouts">Theme 樣板或布局</h3>
 
 			<p>
-				Theme 與主題樣板或布局協作，他們是定義你頁面布局的檢視檔案。
+				Theme 與主題樣板或布局協作，他們是定義你頁面布局的檢視档案。
 			</p>
 
 			<h3 id="partials">Theme 樣板局部</h3>
@@ -124,7 +124,7 @@
 			<h3 id="chrome">局部 chrome</h3>
 
 			<p>
-				'Chrome' 是 UI 介面設計的術語，用來描述視窗邊框的風格及設計。在 Theme 類別的情境中， 
+				'Chrome' 是 UI 介面設計的術語，用來描述視窗邊框的風格及設計。在 Theme 类別的情境中， 
 				it is a view that can be used to encapsulate a template partial section, which allows you to style that section independent
 				of the template itself and of the partial output. Chrome will only be generated if there are partials to render. A chrome template
 				will encapsulate a partial section, which may contain multiple partials.
@@ -143,7 +143,7 @@
 class Homepage extends \Controller
 {
 	/**
-	 * 載入主題樣板，設定頁面標題及選單
+	 * 載入主題樣板，設定頁面标題及選单
 	 */
 	public function before()
 	{
@@ -153,16 +153,16 @@ class Homepage extends \Controller
 		// 設定頁面樣板
 		$this->theme->set_template('layouts/homepage');
 
-		// 設定頁面標題（也可以被鍊結到 set_template()）
+		// 設定頁面标題（也可以被鍊結到 set_template()）
 		$this->theme->get_template()->set('title', 'My homepage');
 
-		// 設定 homepage 導覽選單
+		// 設定 homepage 導覽選单
 		$this->theme->set_partial('navbar', 'homepage/navbar');
 
-		// 為 sidebar 部份定義有圓角窗框的 chrome
+		// 为 sidebar 部份定義有圓角窗框的 chrome
 		$this->theme->set_chrome('sidebar', 'chrome/borders/rounded', 'partial');
 
-		// 為 homepage sidebar 內容設定局部
+		// 为 homepage sidebar 內容設定局部
 		$this->theme->set_partial('sidebar', 'homepage/widgets/login');
 		$this->theme->set_partial('sidebar', 'homepage/widgets/news')->set('news', Model_News::latest(5));
 
@@ -196,7 +196,7 @@ class Homepage extends \Controller
 		// 如果該 action 沒有回傳 response 物件，
 		if (empty($response) or  ! $response instanceof Response)
 		{
-			// 呈現定義的樣板
+			// 呈现定義的樣板
 			$response = \Response::forge(\Theme::instance()->render());
 		}
 
@@ -208,16 +208,16 @@ class Homepage extends \Controller
 			<h3 id="config">配置</h3>
 
 			<p>
-				Theme 類別是透過 <strong>app/config/theme.php</strong> 配置檔案進行配置。
-				一個有以下提及配置的預設配置檔案已經存在 fuel/core/config 中。
-				你可以藉由複製此配置檔案到你的應用程式 config 目錄，並根據需求修改該檔案。
+				Theme 类別是透過 <strong>app/config/theme.php</strong> 配置档案進行配置。
+				一个有以下提及配置的預設配置档案已经存在 fuel/core/config 中。
+				你可以藉由複製此配置档案到你的应用程序 config 目录，并根據需求修改該档案。
 			</p>
 
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>參數</th>
-						<th>類型</th>
+						<th>參数</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th>描述</th>
 					</tr>
@@ -225,7 +225,7 @@ class Homepage extends \Controller
 						<th>active</th>
 						<td>字串</td>
 						<td><pre class="php"><code>'default'</code></pre></td>
-						<td>要使用的活躍主題。你之後可以使用 <a href="./methods.html#method_active">active()</a> 方法選擇一個。</td>
+						<td>要使用的活躍主題。你之後可以使用 <a href="./methods.html#method_active">active()</a> 方法選擇一个。</td>
 					</tr>
 					<tr>
 						<th>fallback</th>
@@ -249,25 +249,25 @@ class Homepage extends \Controller
 						<th>view_ext</th>
 						<td>字串</td>
 						<td><pre class="php"><code>'.html'</code></pre></td>
-						<td>主題檢視檔案的副檔名。</td>
+						<td>主題檢視档案的副档名。</td>
 					</tr>
 					<tr>
 						<th>info_file_name</th>
 						<td>字串</td>
 						<td><pre class="php"><code>'theme.info'</code></pre></td>
-						<td>主題資訊檔案名稱。</td>
+						<td>主題資訊档案名稱。</td>
 					</tr>
 					<tr>
 						<th>require_info_file</th>
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
-						<td>是否請求一個主題資訊檔案。</td>
+						<td>是否請求一个主題資訊档案。</td>
 					</tr>
 					<tr>
 						<th>info_file_type</th>
 						<td>字串</td>
 						<td><pre class="php"><code>'php'</code></pre></td>
-						<td>主題資訊檔案的類型。可能的值有：php、ini、json 和 yaml。</td>
+						<td>主題資訊档案的类型。可能的值有：php、ini、json 和 yaml。</td>
 					</tr>
 					<tr>
 						<th>use_modules</th>
@@ -289,10 +289,10 @@ class Homepage extends \Controller
 return array(
 	'active' => 'default',
 	'fallback' => 'default',
-	'paths' => array(			// 在這裡主題檔案在 DOCROOT 之外
+	'paths' => array(			// 在这裡主題档案在 DOCROOT 之外
 		APPPATH.'themes',
 	),
-	'assets_folder' => 'themes',	// 所以這意味著 &lt;localpath&gt;/public/themes/&lt;themename&gt;……
+	'assets_folder' => 'themes',	// 所以这意味著 &lt;localpath&gt;/public/themes/&lt;themename&gt;……
 	'view_ext' => '.html',
 	'info_file_name' => 'theme.info',
 	'require_info_file' => false,
@@ -301,13 +301,13 @@ return array(
 );
 	</code></pre>
 
-			<p>一旦你的設定到位，你可以開始<a href="./methods.html">使用</a> Theme 類別。</p>
+			<p>一旦你的設定到位，你可以開始<a href="./methods.html">使用</a> Theme 类別。</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

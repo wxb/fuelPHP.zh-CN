@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>指示 - 安裝 - FuelPHP 简体中文手册</title>
+	<title>指示 - 安装 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="instructions.html#" id="toc_handle">目錄</a>
+			<a href="instructions.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,70 +39,70 @@
 
 		<div id="main">
 
-			<h5>選擇一項：<a href="instructions.html#command">命令列安裝</a> | <a href="instructions.html#manual">手動安裝</a></h5>
+			<h5>選擇一項：<a href="instructions.html#command">命令列安装</a> | <a href="instructions.html#manual">手动安装</a></h5>
 			<br />
-			<h3 id="command">命令列安裝</h3>
-		    <p class="note">目前只能在 *nix 系統（Linux、OS X、Unix、等等）運行。</p>
-			<p>我們的快速安裝程序是一個精簡的 Oil 套件介面，能讓你以一行命令建立一個新的專案，你也不再需要在你的 Oil 命令前加上 'php'。</p>
+			<h3 id="command">命令列安装</h3>
+		    <p class="note">目前只能在 *nix 系统（Linux、OS X、Unix、等等）运行。</p>
+			<p>我們的快速安装程序是一个精简的 Oil 套件介面，能让你以一行命令建立一个新的專案，你也不再需要在你的 Oil 命令前加上 'php'。</p>
 
-			<p>要安裝快速安裝程序，只要打開一個 shell 並執行以下命令：</p>
+			<p>要安装快速安装程序，只要打開一个 shell 并执行以下命令：</p>
 
 			<pre class="cli"><code>$ curl get.fuelphp.com/oil | sh</code></pre>
 
-			<p class="note">這將會需要你的密碼授權，因為它會安裝指令碼到 /usr/bin。</p>
+			<p class="note">这将会需要你的密码授权，因为它会安装指令码到 /usr/bin。</p>
 
-			<p>現在你已經可以在你的專案裡使用 'oil' 這個命令取代 'php oil'。</p>
+			<p>现在你已经可以在你的專案裡使用 'oil' 这个命令取代 'php oil'。</p>
 
-			<p class="note">如果你已經在 1.6 版前安裝 oil 指令碼，你也必須重新安裝來讓它運行 composer！</p>
+			<p class="note">如果你已经在 1.6 版前安装 oil 指令码，你也必須重新安装來让它运行 composer！</p>
 
-			<p>要建立一個新的專案，只要運行：</p>
+			<p>要建立一个新的專案，只要运行：</p>
 
 			<pre class="cli"><code>$ oil create &lt;project_name&gt;</code></pre>
 
-			<p>這將在你所給名稱的目錄裡建立一個文件夾，接著複製儲存庫中的檔案與所有子模組到該目錄。</p>
+			<p>这将在你所給名稱的目录裡建立一个文件夾，接著複製儲存庫中的档案與所有子模組到該目录。</p>
 
 			<p>
-				請注意：這也將運行 <code class="cli">$ oil refine install</code>，使必要的目錄為可寫入，
+				請注意：这也将运行 <code class="cli">$ oil refine install</code>，使必要的目录为可寫入，
 				以及 <code class="cli">$ php composer.phar update</code> 來拉取（pull）定義在 composer 的相依套件。
 			</p>
 
-			<h3 id="manual">手動安裝簡介</h3>
+			<h3 id="manual">手动安装简介</h3>
 
-			<p>接下來的方法將在你的虛擬主機根目錄安裝預設的 Fuel 框架。</p>
+			<p>接下來的方法将在你的虛擬主機根目录安装預設的 Fuel 框架。</p>
 
-			<h4 id="from_github">從 github 複製最新的發行版本</h4>
+			<h4 id="from_github">從 github 複製最新的发行版本</h4>
 
 <pre class="cli"><code>$ cd /where/ever/your/virtualhost/root/is
 $ git clone git://github.com/fuel/fuel.git .
 $ ./composer.phar update
 </code></pre>
 
-			<h4 id="from_github">從 github 複製最新的開發分支</h4>
+			<h4 id="from_github">從 github 複製最新的开发分支</h4>
 
 <pre class="cli"><code>$ cd /where/ever/your/virtualhost/root/is
 $ git clone git://github.com/fuel/fuel.git -b 1.8/develop .
 $ ./composer.phar update --prefer-source
 </code></pre>
 
-			<p>或者，你也可以使用 composer 一氣呵成地安裝一切：</p>
+			<p>或者，你也可以使用 composer 一氣呵成地安装一切：</p>
 <pre class="cli"><code>$ composer create-project fuel/fuel:dev-1.8/develop --prefer-source
 </code></pre>
-			<p>別忘了那一個點號，否則這會在你的虛擬主機根目錄中建立一個稱為 <strong>fuel</strong> 的文件夾！</p>
+			<p>別忘了那一个點號，否則这会在你的虛擬主機根目录中建立一个稱为 <strong>fuel</strong> 的文件夾！</p>
 
-			<h4 id="from_zip">下載 zip 檔案</h4>
+			<h4 id="from_zip">下载 zip 档案</h4>
 
 			<ol>
-				<li><a href="download.html">下載 Fuel 框架</a></li>
-				<li>解壓縮下載的檔案</li>
-				<li>執行 <code class="cli">$ php composer.phar update</code> 來安裝所有依賴套件</li>
-				<li>將檔案移動到你的伺服器
+				<li><a href="download.html">下载 Fuel 框架</a></li>
+				<li>解壓縮下载的档案</li>
+				<li>执行 <code class="cli">$ php composer.phar update</code> 來安装所有依賴套件</li>
+				<li>将档案移动到你的伺服器
 					<ul>
-						<li>注意：在程式碼裡的 public 目錄，等於你的網頁伺服器的公開文件目錄，
-						也就是 public_html、public、htdocs 等。移動其內容到這些目錄，
-						或一個你要使用 Fuel 的網頁根目錄下的子目錄。</li>
+						<li>注意：在程式码裡的 public 目录，等於你的網頁伺服器的公開文件目录，
+						也就是 public_html、public、htdocs 等。移动其內容到这些目录，
+						或一个你要使用 Fuel 的網頁根目录下的子目录。</li>
 						<li>安全起見，
-						放置 Fuel 目錄於公開文件目錄之外。</li>
-						<li>編輯 index.php 裡的路徑指向你的應用程式、核心以及套件的目錄。</li>
+						放置 Fuel 目录於公開文件目录之外。</li>
+						<li>编輯 index.php 裡的路徑指向你的应用程序、核心以及套件的目录。</li>
 					</ul>
 <pre class="plain"><code>/
   docs/
@@ -119,8 +119,8 @@ $ ./composer.phar update --prefer-source
 				</li>
 			</ol>
 
-			<p>在安裝之後，確保框架需要存取文件夾的權限是正確的。
-			有一個 oil 任務能夠設定預設文件夾為可寫入：</p>
+			<p>在安装之後，確保框架需要存取文件夾的權限是正確的。
+			有一个 oil 任務能夠設定預設文件夾为可寫入：</p>
 <pre class="cli"><code>$ php oil refine install
 	Made writable: APPPATH/cache
 	Made writable: APPPATH/logs
@@ -132,59 +132,59 @@ $ ./composer.phar update --prefer-source
 			<h2 id="composer">Composer</h2>
 
 			<p>
-				隨著 1.6 版，FuelPHP 使用 <a href="http://getcomposer.org">Composer</a> 套件管理器來動態拉取（pull）相依套件，
-				不管是從 <a href="http://packagist.org">Packagist</a>、Github、或從一個自定義位置。
-				從 1.7.2 版開始，所有 FuelPHP 框架元件也透過 composer 安裝。
-				Composer 是經由 composer.json 檔案控制，你會在你的 FuelPHP 安裝的根目錄找到它。為了方便，
-				我們包括了 composer.phar 函式庫，這樣你就可以直接執行 composer：
+				隨著 1.6 版，FuelPHP 使用 <a href="http://getcomposer.org">Composer</a> 套件管理器來动態拉取（pull）相依套件，
+				不管是從 <a href="http://packagist.org">Packagist</a>、Github、或從一个自定義位置。
+				從 1.7.2 版開始，所有 FuelPHP 框架元件也透過 composer 安装。
+				Composer 是经由 composer.json 档案控制，你会在你的 FuelPHP 安装的根目录找到它。为了方便，
+				我們包括了 composer.phar 函式庫，这樣你就可以直接执行 composer：
 			</p>
 
 <pre class="cli"><code>$ php composer.phar self-update
 $ php composer.phar update
 </code>
 </pre>
-			<p class="note">如果你沒有執行此步驟，FuelPHP 將不會啟動，因為整個框架元件是透過 composer 被載入！</p>
+			<p class="note">如果你沒有执行此步驟，FuelPHP 将不会啟动，因为整个框架元件是透過 composer 被載入！</p>
 
 			<h2 id="configuration">配置</h2>
 
-			<p>主要的配置在 app/config/config.php，根據你的喜好編輯它。</p>
+			<p>主要的配置在 app/config/config.php，根據你的喜好编輯它。</p>
 
-			<h2 id="install_inside_root">安裝在文件根目錄</h2>
+			<h2 id="install_inside_root">安装在文件根目录</h2>
 
-			<p>如同第三點所提及的，為了安全起見，我們非常<strong>不</strong>建議將 Fuel 安裝在文件根目錄。</p>
+			<p>如同第三點所提及的，为了安全起見，我們非常<strong>不</strong>建議将 Fuel 安装在文件根目录。</p>
 			<p>
-				不過，也有一些情況下你想這樣做，例如：在（本地）開發環境，使用 Apache 的動態質量虛擬主機模組（Apache's dynamic mass virtual hosting module）
-				快速設定新的開發環境，而不須重啟網頁伺服器。
+				不過，也有一些情況下你想这樣做，例如：在（本地）开发环境，使用 Apache 的动態質量虛擬主機模組（Apache's dynamic mass virtual hosting module）
+				快速設定新的开发环境，而不須重啟網頁伺服器。
 			</p>
 			<p>
-				如果你需要它，在你已經設計用做安裝根目錄的文件夾安裝 FuelPHP。在你完成之後，進到 public 文件夾，
-				把 public 文件夾的東西移動到上一層，並移除 public 文件夾。該文件夾唯一的目的是為你的網頁伺服器根文件提供錨點。
-				你不再需要它了，因為你已經在根文件的文件夾安裝 FuelPHP。
+				如果你需要它，在你已经設計用做安装根目录的文件夾安装 FuelPHP。在你完成之後，進到 public 文件夾，
+				把 public 文件夾的東西移动到上一層，并移除 public 文件夾。該文件夾唯一的目的是为你的網頁伺服器根文件提供錨點。
+				你不再需要它了，因为你已经在根文件的文件夾安装 FuelPHP。
 			</p>
-			<p>在移動之後，變更你的 index.php 中的應用程式、套件和框架核心位置為：</p>
+			<p>在移动之後，變更你的 index.php 中的应用程序、套件和框架核心位置为：</p>
 			<pre class="php"><code>define('APPPATH', realpath(__DIR__.'/fuel/app/').DIRECTORY_SEPARATOR);<br>define('PKGPATH', realpath(__DIR__.'/fuel/packages/').DIRECTORY_SEPARATOR);<br>define('COREPATH', realpath(__DIR__.'/fuel/core/').DIRECTORY_SEPARATOR);</code></pre>
 
-			<h3 id="install_inside_root2">那關於多個文件夾深度呢？</h3>
+			<h3 id="install_inside_root2">那關於多个文件夾深度呢？</h3>
 
-			<p>並沒有什麼不同，過程完全一樣。</p>
+			<p>并沒有什么不同，過程完全一樣。</p>
 
 			<p>
-				然而在這種情況下，由於牽涉文件夾結構，存取你的應用程式可能會有點複雜。
-				但你不能只是放一個簡單的 .htaccess，你可能仍然想要存取安裝在相同文件夾結構下的其他東西。
+				然而在这種情況下，由於牽涉文件夾結構，存取你的应用程序可能会有點複雜。
+				但你不能只是放一个简单的 .htaccess，你可能仍然想要存取安装在相同文件夾結構下的其他東西。
 			</p>
 			<p>
-				假設你已經在根文件的 "/deep/sub/folder" 文件夾中安裝了 FuelPHP，
-				你通常不得不使用 URL http://example.org/deep/sub/folder 來存取你的 FuelPHP 應用程式。
+				假設你已经在根文件的 "/deep/sub/folder" 文件夾中安装了 FuelPHP，
+				你通常不得不使用 URL http://example.org/deep/sub/folder 來存取你的 FuelPHP 应用程序。
 			</p>
 
 			<h4>Apache</h4>
 			<p>
-				透過放置此 .htaccess 到更高的文件夾，如果沒有找到相符的檔案或目錄名稱，
-				你可以讓瀏覽器重導向到你的 FuelPHP 應用程式：</p>
+				透過放置此 .htaccess 到更高的文件夾，如果沒有找到相符的档案或目录名稱，
+				你可以让瀏覽器重導向到你的 FuelPHP 应用程序：</p>
 <pre class="plain"><code>&lt;IfModule mod_rewrite.c>
 	RewriteEngine on
 
-	# 發送請求到子文件夾，如果它不是真實檔案、文件夾，或者它是 root 請求
+	# 发送請求到子文件夾，如果它不是真實档案、文件夾，或者它是 root 請求
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d [OR]
 	RewriteCond $1 ^$
@@ -193,12 +193,12 @@ $ php composer.phar update
 &lt;/IfModule>
 </code>
 </pre>
-			<p>請注意，這會做重導向，因此它不會在來自使用者的路徑中隱藏子文件夾。如果你希望如此，使用這來代替：</p>
+			<p>請注意，这会做重導向，因此它不会在來自使用者的路徑中隱藏子文件夾。如果你希望如此，使用这來代替：</p>
 
 			<pre class="plain"><code>&lt;IfModule mod_rewrite.c>
 	RewriteEngine on
 
-	# 發送請求到子文件夾，如果它不是真實檔案、文件夾，或者它是 root 請求
+	# 发送請求到子文件夾，如果它不是真實档案、文件夾，或者它是 root 請求
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d [OR]
 	RewriteCond $1 ^$
@@ -210,21 +210,21 @@ $ php composer.phar update
 			<p>很顯然，如果你把它放在 "sub" 文件夾中，你可以在 URL 隱藏 "sub/folder"，但沒有 "deep"……</p>
 
 			<p class="note">
-				請注意，啟用 .htaccess 會大大拖慢你的 Apache 伺服器。如果你能連到伺服器配置，
-				考慮停用這個功能，並添加 rewrite 規則到 virtualhost 定義。
+				請注意，啟用 .htaccess 会大大拖慢你的 Apache 伺服器。如果你能連到伺服器配置，
+				考慮停用这个功能，并添加 rewrite 規則到 virtualhost 定義。
 			</p>
 
 			<h4>Nginx</h4>
 
 			<p>
-				Nginx 不支援客戶端配置檔案，所以你需要為虛擬主機添加 rewrite 到 Nginx 配置檔案中。
-				你可以使用這個做為指南：
+				Nginx 不支援客戶端配置档案，所以你需要为虛擬主機添加 rewrite 到 Nginx 配置档案中。
+				你可以使用这个做为指南：
 			</p>
 
 <pre class="plain"><code>server {
 	server_name fuelphp.local;
 
-	# 確保 Nginx 可以寫入這些檔案
+	# 確保 Nginx 可以寫入这些档案
 	access_log /var/www/fuelphp/nginxlogs/access.log;
 	error_log /var/www/fuelphp/nginxlogs/error.log;
 	root /var/www/fuelphp/public;
@@ -244,24 +244,24 @@ $ php composer.phar update
 }
 </code></pre>
 
-			<h2 id="setting_the_environment">設定環境</h2>
+			<h2 id="setting_the_environment">設定环境</h2>
 
 			<p>
-				預設情況下，環境設定為開發模式。Fuel 使用環境去定義使用哪個資料庫設定，但你也可以應用在其他事情上。
+				預設情況下，环境設定为开发模式。Fuel 使用环境去定義使用哪个資料庫設定，但你也可以應用在其他事情上。
 			</p>
 			<p>
-				要設定環境，將以下這行放進你的 .htaccess 中。
+				要設定环境，将以下这行放進你的 .htaccess 中。
 			</p>
 			<pre class="plain"><code>SetEnv FUEL_ENV production</code></pre>
 			<p>
-				對於 Nginx，你使用如上範例所見的 "fastcgi_param" 語句。詳細可用選項在 Fuel 類別裡的 <a href="../classes/fuel.html#class_constants">類別常數</a>。
+				對於 Nginx，你使用如上範例所見的 "fastcgi_param" 語句。詳細可用選項在 Fuel 类別裡的 <a href="../classes/fuel.html#class_constants">类別常数</a>。
 			</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

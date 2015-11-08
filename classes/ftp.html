@@ -12,7 +12,7 @@
 		var class_prefix = "Ftp::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Ftp - 類別 - FuelPHP 简体中文手册</title>
+	<title>Ftp - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,20 +40,20 @@
 
 		<div id="main">
 
-			<h2>Ftp 類別</h2>
+			<h2>Ftp 类別</h2>
 
-			<p>FTP 類別能讓你透過 FTP 協定對遠端伺服器上傳、下載、移動和鏡像檔案。</p>
+			<p>FTP 类別能让你透過 FTP 協定對遠端伺服器上傳、下载、移动和鏡像档案。</p>
 
 			<section>
 				<h3 id="configuration">配置</h3>
 
-				<p>FTP 類別透過 <kbd>fuel/core/config/ftp.php</kbd> 配置檔案進行配置。它已經填充了一個預設配置群組。你可以藉由複製此配置檔案到你的應用程式 config 目錄，並根據需求修改該檔案，以覆寫此配置群組並添加新群組。</p>
+				<p>FTP 类別透過 <kbd>fuel/core/config/ftp.php</kbd> 配置档案進行配置。它已经填充了一个預設配置群組。你可以藉由複製此配置档案到你的应用程序 config 目录，并根據需求修改該档案，以覆寫此配置群組并添加新群組。</p>
 				<p>以下配置設定可以被定義：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -78,12 +78,12 @@
 							<td>字串</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								選擇性：要連接的使用者密碼，如果登入是必要的話。
+								選擇性：要連接的使用者密码，如果登入是必要的話。
 							</td>
 						</tr>
 						<tr>
 							<th>timeout</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>90</code></pre></td>
 							<td>
 								所有後續的網路操作超時（秒）。
@@ -91,10 +91,10 @@
 						</tr>
 						<tr>
 							<th>port</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>21</code></pre></td>
 							<td>
-								你的 FTP 伺服器回應的連接埠號。大多數伺服器使用 21。
+								你的 FTP 伺服器回應的連接埠號。大多数伺服器使用 21。
 							</td>
 						</tr>
 						<tr>
@@ -102,7 +102,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								是否使用被動模式。預設情況下被動模式自動被設定。
+								是否使用被动模式。預設情況下被动模式自动被設定。
 							</td>
 						</tr>
 						<tr>
@@ -110,7 +110,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								使用比通常的 FTP 稍微安全一點的 FTPS。（注：這不是 SFTP）。
+								使用比通常的 FTP 稍微安全一點的 FTPS。（注：这不是 SFTP）。
 							</td>
 						</tr>
 						<tr>
@@ -118,7 +118,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								是否啟用除錯以顯示錯誤訊息。
+								是否啟用除错以顯示错误訊息。
 							</td>
 						</tr>
 					</tbody>
@@ -128,8 +128,8 @@
 
 			<article>
 				<h4 class="method" id="method_forge">forge($config = 'default', $connect = true)</h4>
-				<p><strong>forge</strong> 方法被用於建立一個新的 FTP 類別實例，可以是不同配置群組的參照，
-					或傳遞一個 <a href="config.html">配置選項</a> 的陣列。</p>
+				<p><strong>forge</strong> 方法被用於建立一个新的 FTP 类別實例，可以是不同配置群組的參照，
+					或傳遞一个 <a href="config.html">配置選項</a> 的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -137,23 +137,23 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
 									<td><pre class="php"><code>'default'</code></pre></td>
-									<td>要使用的配置群組名稱，或一個配置陣列。</td>
+									<td>要使用的配置群組名稱，或一个配置陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$connect</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>自動連接到此伺服器。</td>
+									<td>自动連接到此伺服器。</td>
 								</tr>
 							</table>
 						</td>
@@ -168,10 +168,10 @@
 							<pre class="php"><code>// 連接到預設伺服器
 $ftp = Ftp::forge();
 
-// 連接到一個預定義在 config/ftp.php 的伺服器
+// 連接到一个預定義在 config/ftp.php 的伺服器
 $ftp2 = Ftp::forge('image-storage');
 
-// 動態連接到一個伺服器
+// 动態連接到一个伺服器
 $ftp3 = Ftp::forge(array(
 	'hostname' => 'fuelphp.com',
 	'username' => '',
@@ -200,8 +200,8 @@ else
 			<article>
 				<h4 class="method" id="method_connect">connect()</h4>
 				<p>
-					<strong>connect</strong> 方法能讓你手動連接到一個 FTP 資源。
-					你只在當你 forge() ftp 物件而不自動連線時使用此方法。
+					<strong>connect</strong> 方法能让你手动連接到一个 FTP 資源。
+					你只在當你 forge() ftp 物件而不自动連線時使用此方法。
 				</p>
 				<table class="method">
 					<tbody>
@@ -210,7 +210,7 @@ else
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							無
 						</td>
@@ -222,7 +222,7 @@ else
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 建立一個 ftp 物件，但不連線
+							<pre class="php"><code>// 建立一个 ftp 物件，但不連線
 $ftp = Ftp::forge(array(
 	'hostname' => 'ftp.example.com',
 	'username' => '',
@@ -234,9 +234,9 @@ $ftp = Ftp::forge(array(
 	'debug'    => false
 ), false);
 
-// 在這裡做一些東西
+// 在这裡做一些東西
 
-// 現在連接到伺服器
+// 现在連接到伺服器
 $ftp->connect();</code></pre>
 						</td>
 					</tr>
@@ -246,7 +246,7 @@ $ftp->connect();</code></pre>
 
 			<article>
 				<h4 class="method" id="method_change_dir">change_dir($path = '')</h4>
-				<p><strong>change_dir</strong> 變更「目前目錄」。</p>
+				<p><strong>change_dir</strong> 變更「目前目录」。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -254,11 +254,11 @@ $ftp->connect();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -287,7 +287,7 @@ $ftp->change_dir('/public_html/some/path/');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_mkdir">mkdir($path, $permissions = null)</h4>
-				<p><strong>mkdir</strong> 方法用於在遠端伺服器建立一個新目錄。</p>
+				<p><strong>mkdir</strong> 方法用於在遠端伺服器建立一个新目录。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -295,23 +295,23 @@ $ftp->change_dir('/public_html/some/path/');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><i>必要</i></td>
-									<td>要建立的遠端目錄。</td>
+									<td>要建立的遠端目录。</td>
 								</tr>
 								<tr>
 									<th><kbd>$permissions</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>如果設定，權限將被應用到該目錄。</td>
+									<td>如果設定，權限将被應用到該目录。</td>
 								</tr>
 							</table>
 						</td>
@@ -323,7 +323,7 @@ $ftp->change_dir('/public_html/some/path/');</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 建立一個可寫入的上傳文件夾
+							<pre class="php"><code>// 建立一个可寫入的上傳文件夾
 $ftp->mkdir('/public_html/uploads/', 0777);</code></pre>
 						</td>
 					</tr>
@@ -333,7 +333,7 @@ $ftp->mkdir('/public_html/uploads/', 0777);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_upload">upload($local_path, $remote_path, $mode = 'auto', $permissions = null)</h4>
-				<p>從本地伺服器上傳一個檔案或目錄到遠端伺服器。</p>
+				<p>從本地伺服器上傳一个档案或目录到遠端伺服器。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -341,11 +341,11 @@ $ftp->mkdir('/public_html/uploads/', 0777);</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -364,12 +364,12 @@ $ftp->mkdir('/public_html/uploads/', 0777);</code></pre>
 									<td><pre class="php"><code>'auto'</code></pre></td>
 									<td>
 										選項有 <kbd>ascii</kbd>、<kbd>binary</kbd>、和 <kbd>auto</kbd>（預設）。
-										如果使用 <kbd>auto</kbd>，它將依據來源檔案的副檔名使用模式。</td>
+										如果使用 <kbd>auto</kbd>，它将依據來源档案的副档名使用模式。</td>
 								</tr>
 								<tr>
 									<th><kbd>$permissions</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>如果設定，權限將被應用到該目錄。</td>
+									<td>如果設定，權限将被應用到該目录。</td>
 								</tr>
 							</table>
 						</td>
@@ -391,7 +391,7 @@ $ftp->upload('/local/path/to/myfile.html', '/public_html/myfile.html', 'ascii', 
 
 			<article>
 				<h4 class="method" id="method_download">download($remote_path, $local_path, $mode = 'auto')</h4>
-				<p>從遠端伺服器下載一個檔案或目錄到本地伺服器。</p>
+				<p>從遠端伺服器下载一个档案或目录到本地伺服器。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -399,11 +399,11 @@ $ftp->upload('/local/path/to/myfile.html', '/public_html/myfile.html', 'ascii', 
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -422,7 +422,7 @@ $ftp->upload('/local/path/to/myfile.html', '/public_html/myfile.html', 'ascii', 
 									<td><pre class="php"><code>'auto'</code></pre></td>
 									<td>
 										選項有 <kbd>ascii</kbd>、<kbd>binary</kbd>、和 <kbd>auto</kbd>（預設）。
-										如果使用 <kbd>auto</kbd>，它將依據來源檔案的副檔名使用模式。</td>
+										如果使用 <kbd>auto</kbd>，它将依據來源档案的副档名使用模式。</td>
 									</td>
 								</tr>
 							</table>
@@ -435,7 +435,7 @@ $ftp->upload('/local/path/to/myfile.html', '/public_html/myfile.html', 'ascii', 
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 下載 myotherfile.html
+							<pre class="php"><code>// 下载 myotherfile.html
 $ftp->download('/public_html/myfile.html', '/local/path/to/myfile.html', 'ascii');</code></pre>
 						</td>
 					</tr>
@@ -446,7 +446,7 @@ $ftp->download('/public_html/myfile.html', '/local/path/to/myfile.html', 'ascii'
 			<article>
 				<h4 class="method" id="method_rename">rename($old_file, $new_file, $move = false)</h4>
 				<p>
-					在遠端伺服器移動或更名一個檔案。
+					在遠端伺服器移动或更名一个档案。
 				</p>
 				<table class="method">
 					<tbody>
@@ -455,30 +455,30 @@ $ftp->download('/public_html/myfile.html', '/local/path/to/myfile.html', 'ascii'
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$old_file</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被更名或移動的檔案。</td>
+									<td>要被更名或移动的档案。</td>
 								</tr>
 								<tr>
 									<th><kbd>$new_file</kbd></th>
 									<td><i>必要</i></td>
-									<td>移動或更名為目標的檔案。</td>
+									<td>移动或更名为目标的档案。</td>
 								</tr>
 								<tr>
 									<th><kbd>$move</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
 									<td>
-										'true' 如果這是移動，'false' 如果是一個更名。
-										此標誌只用於錯誤訊息除錯。
+										'true' 如果这是移动，'false' 如果是一个更名。
+										此标誌只用於错误訊息除错。
 									</td>
 								</tr>
 							</table>
@@ -491,10 +491,10 @@ $ftp->download('/public_html/myfile.html', '/local/path/to/myfile.html', 'ascii'
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 連線到一個 FTP 伺服器
+							<pre class="php"><code>// 連線到一个 FTP 伺服器
 $ftp = Ftp::forge($config);
 
-// 更名檔案
+// 更名档案
 $ftp->rename('/path/to/oldfile.txt', '/path/to/newfile.txt', false);
 
 // 關閉連線
@@ -508,14 +508,14 @@ $ftp->close();</code></pre>
 			<article>
 				<h4 class="method" id="method_move">move($old_file, $new_file)</h4>
 				<p>
-					<a href="#method_rename">rename()</a> 的別名，帶著 $move 標誌設為 <var>true</var>。
+					<a href="#method_rename">rename()</a> 的別名，帶著 $move 标誌設为 <var>true</var>。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_delete_file">delete_file($filepath)</h4>
 				<p>
-					從遠端伺服器刪除一個檔案。
+					從遠端伺服器刪除一个档案。
 				</p>
 				<table class="method">
 					<tbody>
@@ -524,18 +524,18 @@ $ftp->close();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$filepath</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被刪除的檔案。</td>
+									<td>要被刪除的档案。</td>
 								</tr>
 							</table>
 						</td>
@@ -547,10 +547,10 @@ $ftp->close();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 連線到一個 FTP 伺服器
+							<pre class="php"><code>// 連線到一个 FTP 伺服器
 $ftp = Ftp::forge($config);
 
-// 刪除一個檔案。
+// 刪除一个档案。
 if ( ! $ftp->delete_file('/path/to/file.txt'))
 {
 	// 刪除失敗
@@ -567,7 +567,7 @@ $ftp->close();</code></pre>
 			<article>
 				<h4 class="method" id="method_delete">delete_dir($filepath)</h4>
 				<p>
-					從遠端伺服器刪除一個目錄並遞迴在其中的任何東西。
+					從遠端伺服器刪除一个目录并遞迴在其中的任何東西。
 				</p>
 				<table class="method">
 					<tbody>
@@ -576,18 +576,18 @@ $ftp->close();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$filepath</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被刪除的檔案。</td>
+									<td>要被刪除的档案。</td>
 								</tr>
 							</table>
 						</td>
@@ -599,10 +599,10 @@ $ftp->close();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 連線到一個 FTP 伺服器
+							<pre class="php"><code>// 連線到一个 FTP 伺服器
 $ftp = Ftp::forge($config);
 
-// 刪除一個目錄及所有它的內容
+// 刪除一个目录及所有它的內容
 if ( ! $ftp->delete_dir('/path/to/folder'))
 {
 	// 刪除失敗
@@ -619,7 +619,7 @@ $ftp->close();</code></pre>
 			<article>
 				<h4 class="method" id="method_chmod">chmod($path, $perm)</h4>
 				<p>
-					在遠端伺服器變更一個檔案的權限。
+					在遠端伺服器變更一个档案的權限。
 				</p>
 				<table class="method">
 					<tbody>
@@ -628,23 +628,23 @@ $ftp->close();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><i>必要</i></td>
-									<td>要變更權限的檔案。</td>
+									<td>要變更權限的档案。</td>
 								</tr>
 								<tr>
 									<th><kbd>$perm</kbd></th>
 									<td><i>必要</i></td>
-									<td>權限，unix 風格定義，為一個八進位值。</td>
+									<td>權限，unix 風格定義，为一个八進位值。</td>
 								</tr>
 							</table>
 						</td>
@@ -656,10 +656,10 @@ $ftp->close();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 連線到一個 FTP 伺服器
+							<pre class="php"><code>// 連線到一个 FTP 伺服器
 $ftp = Ftp::forge($config);
 
-// 使檔案為全部可寫
+// 使档案为全部可寫
 if ( ! $ftp->chmod('/path/to/file.txt', 0666))
 {
 	// 變更權限失敗
@@ -676,7 +676,7 @@ $ftp->close();</code></pre>
 			<article>
 				<h4 class="method" id="method_list_files">list_files($path = '.')</h4>
 				<p>
-					表列在遠端伺服器上所給路徑中的所有檔案。
+					表列在遠端伺服器上所給路徑中的所有档案。
 				</p>
 				<table class="method">
 					<tbody>
@@ -685,18 +685,18 @@ $ftp->close();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><pre class="php"><code>'.'</code></pre></td>
-									<td>遠端伺服器路徑。預設為<var>目前目錄</var>。</td>
+									<td>遠端伺服器路徑。預設为<var>目前目录</var>。</td>
 								</tr>
 							</table>
 						</td>
@@ -708,10 +708,10 @@ $ftp->close();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 連線到一個 FTP 伺服器
+							<pre class="php"><code>// 連線到一个 FTP 伺服器
 $ftp = Ftp::forge($config);
 
-// 表列檔案
+// 表列档案
 if ( $files = $ftp->list_files('/path/to/files') === false)
 {
 	// 表列失敗
@@ -744,8 +744,8 @@ $ftp->close();</code></pre>
 			<article>
 				<h4 class="method" id="method_mirror">mirror($local_path, $remote_path)</h4>
 				<p>
-					遞迴讀取本地文件夾與其包含的一切（包括子文件夾），並藉由 FTP 的基礎上建立一個鏡像。
-					無論原始檔案路徑的目錄結構，將在伺服器上被重建。
+					遞迴讀取本地文件夾與其包含的一切（包括子文件夾），并藉由 FTP 的基础上建立一个鏡像。
+					無論原始档案路徑的目录結構，将在伺服器上被重建。
 				</p>
 				<table class="method">
 					<tbody>
@@ -754,11 +754,11 @@ $ftp->close();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -798,7 +798,7 @@ $ftp->close();</code></pre>
 			<article>
 				<h4 class="method" id="method_close">close()</h4>
 				<p>
-					<strong>close</strong> 方法關閉一個 <var>forge()</var> 或 <var>connect()</var> 建立的開啟到遠端伺服器的 ftp 連線。
+					<strong>close</strong> 方法關閉一个 <var>forge()</var> 或 <var>connect()</var> 建立的開啟到遠端伺服器的 ftp 連線。
 				</p>
 				<table class="method">
 					<tbody>
@@ -807,7 +807,7 @@ $ftp->close();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							無
 						</td>
@@ -834,7 +834,7 @@ if ( ! $ftp->close())
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

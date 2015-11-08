@@ -12,7 +12,7 @@
 		var class_prefix = 'Query_Builder_Where::';
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Query Builder Where - 類別 - FuelPHP 简体中文手册</title>
+	<title>Query Builder Where - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="qb_where.html#" id="toc_handle">目錄</a>
+			<a href="qb_where.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,12 +40,12 @@
 
 		<div id="main">
 
-			<h2 id="introduction">Query_Builder_Where 類別</h2>
+			<h2 id="introduction">Query_Builder_Where 类別</h2>
 
 			<p>
-				<strong>Query_Builder_Where</strong> 類別處理為查詢建立條件和限制邏輯，
-				每一種類型的 where 語句（包括 BETWEEN 和 IN 等等……）也在此處理。此類別不是實例化的（它是抽象）
-				但被分享相同函式的其他類別所擴充，這些類別是：
+				<strong>Query_Builder_Where</strong> 类別处理为查詢建立條件和限制邏輯，
+				每一種类型的 where 語句（包括 BETWEEN 和 IN 等等……）也在此处理。此类別不是實例化的（它是抽象）
+				但被分享相同函式的其他类別所擴充，这些类別是：
 			</p>
 
 			<ul>
@@ -55,7 +55,7 @@
 			</ul>
 
 			<p id="returned_instance" class="note">
-				<strong>請注意：</strong> 因為被上列類別擴充，回傳的「目前實例」將會是那些其中之一。
+				<strong>請注意：</strong> 因为被上列类別擴充，回傳的「目前實例」将会是那些其中之一。
 			</p>
 
 			<article>
@@ -65,7 +65,7 @@
 
 			<article>
 				<h4 class="method" id="method_and_where">and_where($column, $op = null, $value = null)</h4>
-				<p><strong>and_where</strong> 方法附加一個 WHERE 語句。</p>
+				<p><strong>and_where</strong> 方法附加一个 WHERE 語句。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -73,12 +73,12 @@
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th class="fixed_width">類型</th>
+										<th>參数</th>
+										<th class="fixed_width">类型</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -92,7 +92,7 @@
 										<th><kbd>$op</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>邏輯操作符：=、!=、IN、BETWEEN 和 LIKE。如果沒有提供此將退回到 '='</td>
+										<td>邏輯操作符：=、!=、IN、BETWEEN 和 LIKE。如果沒有提供此将退回到 '='</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -110,13 +110,13 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定第一個 where 語句
+// 設定第一个 where 語句
 $query->where('name', '!=', 'John');
 
-// 然後附加一個新的條件
+// 然後附加一个新的條件
 $query->and_where('surname', 'Doe');
 
 // 透過回呼（callback）巢狀 where
@@ -137,7 +137,7 @@ $query->where(function($query){
 
 			<article>
 				<h4 class="method" id="method_or_where">or_where($column, $op = null, $value = null)</h4>
-				<p><strong>or_where</strong> 方法附加一個 OR WHERE 語句。</p>
+				<p><strong>or_where</strong> 方法附加一个 OR WHERE 語句。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -145,12 +145,12 @@ $query->where(function($query){
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th class="fixed_width">類型</th>
+										<th>參数</th>
+										<th class="fixed_width">类型</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -164,7 +164,7 @@ $query->where(function($query){
 										<th><kbd>$op</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>邏輯操作符：=、!=、IN、BETWEEN。如果沒有提供此將退回到 '='</td>
+										<td>邏輯操作符：=、!=、IN、BETWEEN。如果沒有提供此将退回到 '='</td>
 									</tr>
 									<tr>
 										<th><kbd>$value</kbd></th>
@@ -182,13 +182,13 @@ $query->where(function($query){
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定第一個 where 語句
+// 設定第一个 where 語句
 $query->where('name', '=', 'John');
 
-// 然後附加一個新的條件
+// 然後附加一个新的條件
 $query->or_where('surname', 'Doe');
 
 // 透過回呼（callback）巢狀 where
@@ -214,7 +214,7 @@ $query->or_where(function($query){
 
 			<article>
 				<h4 class="method" id="method_and_where_open">and_where_open()</h4>
-				<p><strong>and_where_open</strong> 方法開啟一個 SQL 閉包（closure）並使用 AND 附加它。</p>
+				<p><strong>and_where_open</strong> 方法開啟一个 SQL 閉包（closure）并使用 AND 附加它。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -222,7 +222,7 @@ $query->or_where(function($query){
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -234,13 +234,13 @@ $query->or_where(function($query){
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('name', 'john');
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->and_where_open();
 
 // SELECT * FROM `users` WHERE `name` = "John" AND (
@@ -253,7 +253,7 @@ $query->and_where_open();
 
 			<article>
 				<h4 class="method" id="method_or_where_open">or_where_open()</h4>
-				<p><strong>or_where_open</strong> 方法開啟一個 SQL 閉包（closure）並使用 OR 附加它。</p>
+				<p><strong>or_where_open</strong> 方法開啟一个 SQL 閉包（closure）并使用 OR 附加它。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -261,7 +261,7 @@ $query->and_where_open();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -273,13 +273,13 @@ $query->and_where_open();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('name', 'john');
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->or_where_open();
 
 // SELECT * FROM `users` WHERE `name` = "John" OR (
@@ -297,7 +297,7 @@ $query->or_where_open();
 
 			<article>
 				<h4 class="method" id="method_and_where_close">and_where_close()</h4>
-				<p><strong>and_where_close</strong> 方法開啟一個 SQL 閉包（closure）。</p>
+				<p><strong>and_where_close</strong> 方法開啟一个 SQL 閉包（closure）。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -305,7 +305,7 @@ $query->or_where_open();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -317,16 +317,16 @@ $query->or_where_open();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('email', 'like', '%@example.com');
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->and_where_open();
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('name', 'John');
 $query->or_where('surname', 'Doe');
 
@@ -342,7 +342,7 @@ $query->and_where_close();
 
 			<article>
 				<h4 class="method" id="method_or_where_close">or_where_close()</h4>
-				<p><strong>or_where_close</strong> 方法關閉一個 SQL 閉包（closure）。</p>
+				<p><strong>or_where_close</strong> 方法關閉一个 SQL 閉包（closure）。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -350,7 +350,7 @@ $query->and_where_close();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<em>無</em>
 							</td>
@@ -362,16 +362,16 @@ $query->and_where_close();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('email', 'like', '%@example.com');
 
-// 開啟一個閉包（closure）
+// 開啟一个閉包（closure）
 $query->or_where_open();
 
-// 設定一個 where 語句
+// 設定一个 where 語句
 $query->where('name', 'John');
 $query->and_where('surname', 'Doe');
 
@@ -386,7 +386,7 @@ $query->or_where_close();
 
 			<article>
 				<h4 class="method" id="method_order_by">order_by($column, $direction = NULL)</h4>
-				<p><strong>order_by</strong> 方法為結果／執行設定排序。</p>
+				<p><strong>order_by</strong> 方法为結果／执行設定排序。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -394,12 +394,12 @@ $query->or_where_close();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -413,7 +413,7 @@ $query->or_where_close();
 										<th><kbd>$direction</kbd></th>
 										<td><em>字串</em></td>
 										<td><em>null</em></td>
-										<td>可以設定為 <em>'asc'</em> 或 <em>'desc'</em>。</td>
+										<td>可以設定为 <em>'asc'</em> 或 <em>'desc'</em>。</td>
 									</tr>
 								</table>
 							</td>
@@ -425,7 +425,7 @@ $query->or_where_close();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
 // 設定排序
@@ -443,7 +443,7 @@ $query->order_by('surname', 'desc');
 
 			<article>
 				<h4 class="method" id="method_limit">limit($number)</h4>
-				<p><strong>limit</strong> 方法限制選擇／影響的列數。</p>
+				<p><strong>limit</strong> 方法限制選擇／影響的列数。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -451,20 +451,20 @@ $query->order_by('surname', 'desc');
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$number</kbd></th>
-										<td><em>整數</em></td>
+										<td><em>整数</em></td>
 										<td><em>必要</em></td>
-										<td>列數</td>
+										<td>列数</td>
 									</tr>
 								</table>
 							</td>
@@ -476,7 +476,7 @@ $query->order_by('surname', 'desc');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 預處理一個 select 語句
+								<pre class="php"><code>// 預处理一个 select 語句
 $query = DB::select('*')->from('users');
 
 // 設定限制
@@ -494,7 +494,7 @@ $query->limit(10);
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>撰寫你自己的驅動 - Auth 套件 - FuelPHP 简体中文手册</title>
+	<title>撰寫你自己的驅动 - Auth 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,20 +40,20 @@
 		<div id="main">
 			<h2>Auth 套件</h2>
 
-			<p>Auth 套件在 Fuel 裡提供一個標準化的認證介面。
-			這使得我們的使用者能編寫自己的驅動程序，並且輕鬆地將新的驅動程序與舊的程式碼整合，
+			<p>Auth 套件在 Fuel 裡提供一个标准化的認證介面。
+			这使得我們的使用者能编寫自己的驅动程序，并且輕鬆地将新的驅动程序與舊的程式码整合，
 			以保持基本方法一致。</p>
 
 			<section>
-				<h2 id="writing_drivers">撰寫你自己的驅動</h2>
+				<h2 id="writing_drivers">撰寫你自己的驅动</h2>
 
 				<p>
-					撰寫驅動可以兩種方式達成。透過擴充 Auth 驅動類別以從零開始建立一個新驅動，
-					或擴充一個存在的類別並在需要的地方變更它們。
+					撰寫驅动可以兩種方式達成。透過擴充 Auth 驅动类別以從零開始建立一个新驅动，
+					或擴充一个存在的类別并在需要的地方變更它們。
 				</p>
 
 				<p>
-					一個 Auth 驅動包含三種類型的類別一起運作，這些是：
+					一个 Auth 驅动包含三種类型的类別一起運作，这些是：
 				</p>
 
 				<ul>
@@ -62,27 +62,27 @@
 					<li><a href="types/acl.html">Acl</a>（Auth_Acl_Driver）。</li>
 				</ul>
 
-				<h3 id="extending">擴充認證類別</h3>
+				<h3 id="extending">擴充認證类別</h3>
 
-				<p>像這樣擴充這些類別：</p>
+				<p>像这樣擴充这些类別：</p>
 
 				<pre class="php"><code>&lt;?php
 
 class Auth_Login_Mydriver extends \Auth\Auth_Login_Driver
 {
 
-	// 在驅動類別裡實現所有需要的函式和變數定義。
+	// 在驅动类別裡實现所有需要的函式和變数定義。
 
 }
 
 /* End of file app/classes/auth/login/mydriver.php */
 </code></pre>
 
-				<h3 id="implementing_function">實現函式</h3>
+				<h3 id="implementing_function">實现函式</h3>
 
 				<p>
-					當擴充 Auth 驅動類別時，注意每一個需要實現的函式的預期回傳值。
-					每一個方法提供一個範例，如此你知道需要回傳什麼。下面是一個範例：
+					當擴充 Auth 驅动类別時，注意每一个需要實现的函式的預期回傳值。
+					每一个方法提供一个範例，如此你知道需要回傳什么。下面是一个範例：
 				</p>
 
 				<pre class="php"><code>/**
@@ -94,21 +94,21 @@ class Auth_Login_Mydriver extends \Auth\Auth_Login_Driver
 abstract public function get_user_id();</code></pre>
 
 				<p>
-					上面的程式碼告訴你每一個驅動都應該有 <em>get_user_id</em> 函式。
-					就像所有你擴充的有抽象函式的類別，這些函式必須在擴充的類別中被定義。
-					此函式的回傳類型提供在註解中，在這裡是 <em>array(driver_id, user_id)</em>。
-					為了讓你的驅動與其他驅動並肩合作，
-					確認你回傳正確的值或你的驅動中斷協定。
+					上面的程式码告訴你每一个驅动都應該有 <em>get_user_id</em> 函式。
+					就像所有你擴充的有抽象函式的类別，这些函式必須在擴充的类別中被定義。
+					此函式的回傳类型提供在註解中，在这裡是 <em>array(driver_id, user_id)</em>。
+					为了让你的驅动與其他驅动并肩合作，
+					確認你回傳正確的值或你的驅动中斷協定。
 				</p>
 
 				<p>
-					這裡是相同的函式來自 Simpleauth 驅動的實現。
+					这裡是相同的函式來自 Simpleauth 驅动的實现。
 				</p>
 
 				<pre class="php"><code>/**
  * 取得使用者的 ID
  *
- * @return  Array  包含此驅動 ID ＆使用者 ID
+ * @return  Array  包含此驅动 ID ＆使用者 ID
  */
 public function get_user_id()
 {
@@ -122,15 +122,15 @@ public function get_user_id()
 </code></pre>
 
 				<p>
-					一旦你讓新驅動的一切都到位，取代或添加到 auth <a href="intro.html#configuration">配置</a>。
+					一旦你让新驅动的一切都到位，取代或添加到 auth <a href="intro.html#configuration">配置</a>。
 				</p>
 
 				<pre class="php"><code>// 在 config/auth.php 中的陣列
 
-// 添加做為第二個驅動
+// 添加做为第二个驅动
 'driver' => array('Simpleauth', 'Mydriver'),
 
-// 或取代存在的驅動
+// 或取代存在的驅动
 'driver' => array('Mydriver'),
 </code></pre>
 
@@ -140,7 +140,7 @@ public function get_user_id()
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

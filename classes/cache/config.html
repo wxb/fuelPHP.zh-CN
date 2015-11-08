@@ -12,7 +12,7 @@
 		var class_prefix = "Cache::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Cache 配置 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Cache 配置 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,24 +40,24 @@
 
 		<div id="main">
 
-			<h2>Cache 類別</h2>
+			<h2>Cache 类別</h2>
 
-			<p>Cache 類別能讓你快取資源大量操作的結果。</p>
+			<p>Cache 类別能让你快取資源大量操作的結果。</p>
 
 			<section>
 				<h3 id="config">配置</h3>
 
-				<p>Cache 類別預設透過 fuel/core/config/cache.php 配置檔案來配置。
-				它已經填入預設設定，你可以藉由添加一個相同名稱的配置檔案，
-				到你的應用程式 config 資料夾，並在此設定你想要的變更，以覆寫此設定。
-				這些將覆寫核心配置，但保持你沒有覆寫的部份。
+				<p>Cache 类別預設透過 fuel/core/config/cache.php 配置档案來配置。
+				它已经填入預設設定，你可以藉由添加一个相同名稱的配置档案，
+				到你的应用程序 config 資料夾，并在此設定你想要的變更，以覆寫此設定。
+				这些将覆寫核心配置，但保持你沒有覆寫的部份。
 
 				<p>以下全域配置值可以被定義：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -66,16 +66,16 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'file'</code></pre></td>
 							<td>
-								用於儲存快取的預設儲存驅動。
+								用於儲存快取的預設儲存驅动。
 							</td>
 						</tr>
 						<tr>
 							<th>expiration</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								預設秒數直到過期，當沒給生存時間時使用，
-								設定為 null 時將不會到期。
+								預設秒数直到過期，當沒給生存時間時使用，
+								設定为 null 時将不会到期。
 							</td>
 						</tr>
 						<tr>
@@ -83,32 +83,32 @@
 							<td>字串</td>
 							<td><pre class="php"><code>serialize</code></pre></td>
 							<td>
-								快取字串時不會發生什麼事，除非當快取更複雜的內容像物件，
-								或更原始的像雙精度浮點數。在這些情況下，有 "內容處理程序"
-								被引入，它可以確保你會取回正確類型的物件。
-								預設情況下，處理程序被引入為了使用 PHP 序列化和 JSON 編碼。<br />
-								你可以添加你自己的或以不同方式處理不同類型的物件／原始類型
-								藉由添加每一種處理程序：'int_handler' => 'json'、'string_handler' => 'string'、
+								快取字串時不会发生什么事，除非當快取更複雜的內容像物件，
+								或更原始的像雙精度浮點数。在这些情況下，有 "內容处理程序"
+								被引入，它可以確保你会取回正確类型的物件。
+								預設情況下，处理程序被引入为了使用 PHP 序列化和 JSON 编码。<br />
+								你可以添加你自己的或以不同方式处理不同类型的物件／原始类型
+								藉由添加每一種处理程序：'int_handler' => 'json'、'string_handler' => 'string'、
 								'Model_Post' => 'serialize'、等等……
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<p>對於每一個快取儲存驅動，存在個別的配置段落，
-				此段落包含驅動的指定參數。</p>
+				<p>對於每一个快取儲存驅动，存在个別的配置段落，
+				此段落包含驅动的指定參数。</p>
 
 				<section>
-					<h5 id="file_driver_config">File 驅動程序配置</h5>
+					<h5 id="file_driver_config">File 驅动程序配置</h5>
 
-					<p>儲存快取到檔案系統。</p>
+					<p>儲存快取到档案系统。</p>
 
-					<p>特定的驅動程序配置：</p>
+					<p>特定的驅动程序配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -116,21 +116,21 @@
 								<th>path</th>
 								<td>字串</td>
 								<td><pre class="php"><code>APPPATH.'cache/'</code></pre></td>
-								<td>用於儲存快取的基礎路徑。</td>
+								<td>用於儲存快取的基础路徑。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="memcache_driver_config">MemCached 驅動程序配置</h5>
+					<h5 id="memcache_driver_config">MemCached 驅动程序配置</h5>
 
-					<p>特定的驅動程序配置：</p>
+					<p>特定的驅动程序配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -146,21 +146,21 @@
 								<td><pre class="php"><code>array(
 		array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100)
 	)</code></pre></td>
-								<td>執行 memcached 服務的伺服器和埠號陣列。</td>
+								<td>执行 memcached 服務的伺服器和埠號陣列。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="redis_driver_config">Redis 驅動程序配置</h5>
+					<h5 id="redis_driver_config">Redis 驅动程序配置</h5>
 
-					<p>特定的驅動程序配置：</p>
+					<p>特定的驅动程序配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -180,7 +180,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

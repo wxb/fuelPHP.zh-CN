@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,11 +40,11 @@
 
 		<div id="main">
 
-			<h2 id="email_class_method">Email 類別方法</h2>
+			<h2 id="email_class_method">Email 类別方法</h2>
 
 			<article>
 				<h4 class="method" id="method_forge" data-class="Email">forge($setup = null, array $config = array())</h4>
-				<p><strong>forge</strong> 回傳一個新的 Email_Driver 實例基於配置或它接收到的輸入。</p>
+				<p><strong>forge</strong> 回傳一个新的 Email_Driver 實例基於配置或它接收到的輸入。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -52,12 +52,12 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -65,28 +65,28 @@
 									<th><kbd>$setup</kbd></th>
 									<td><em>混合</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>提供 <em>null</em> 做為預設的配置，一個設定組的名稱，或配置的陣列。</td>
+									<td>提供 <em>null</em> 做为預設的配置，一个設定組的名稱，或配置的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
 									<td><em>混合</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>額外配置陣列以動態修改預設配置。</td>
+									<td>額外配置陣列以动態修改預設配置。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>一個新的 Email_Driver 實例</td>
+						<td>一个新的 Email_Driver 實例</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 簡單的樣本：
+							<pre class="php"><code>// 简单的樣本：
 $email = \Email::forge();
 
-// 從一個群組載入配置
+// 從一个群組載入配置
 $email = \Email::forge('my_defaults');
 
 // 提供配置
@@ -94,7 +94,7 @@ $email = \Email::forge(array(
 	'driver' => 'smtp',
 ));
 
-// 從群組載入設置以動態覆寫
+// 從群組載入設置以动態覆寫
 $email = \Email::forge('my_defaults', array(
 	'driver' => 'smtp',
 ));
@@ -108,13 +108,13 @@ $email = \Email::forge('my_defaults', array(
 			<h2 id="email_driver_methods">Email driver 方法</h2>
 
 			<p>
-				擴充 <em>Email_Driver</em> 的每個驅動程序都有這些方法。
-				你所需要的就是喚醒與執行它們。
+				擴充 <em>Email_Driver</em> 的每个驅动程序都有这些方法。
+				你所需要的就是喚醒與执行它們。
 			</p>
 
 			<article>
 				<h4 class="method" id="method_body">body($body)</h4>
-				<p><strong>body</strong> 轉換輸入為字串，並設定訊息主體。</p>
+				<p><strong>body</strong> 轉換輸入为字串，并設定訊息主體。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -122,12 +122,12 @@ $email = \Email::forge('my_defaults', array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -159,7 +159,7 @@ $email->body(\View::forge('my/view', $data);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_alt_body">alt_body($alt_body)</h4>
-				<p><strong>alt_body</strong> 轉換輸入為字串，並設定訊息的替代主體。</p>
+				<p><strong>alt_body</strong> 轉換輸入为字串，并設定訊息的替代主體。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -167,12 +167,12 @@ $email->body(\View::forge('my/view', $data);</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -212,12 +212,12 @@ $email->alt_body(\View::forge('my/alt/view', $data);</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -246,8 +246,8 @@ $email->alt_body(\View::forge('my/alt/view', $data);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_html_body">html_body($html, $generate_alt = null, $auto_attach = null)</h4>
-				<p><strong>html_body</strong> 方法設置郵件主體並且選擇性地從其產生替代的主體。如果指定內嵌的圖片將自動被附加。</p>
-				<p class="note"><strong>請注意：</strong> 預設情況下自動附加是開啟的（透過配置）。要關閉這個功能，提供 false 或者更改配置設定。</p>
+				<p><strong>html_body</strong> 方法設置郵件主體并且選擇性地從其產生替代的主體。如果指定內嵌的圖片将自动被附加。</p>
+				<p class="note"><strong>請注意：</strong> 預設情況下自动附加是開啟的（透過配置）。要關閉这个功能，提供 false 或者更改配置設定。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -255,12 +255,12 @@ $email->alt_body(\View::forge('my/alt/view', $data);</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th class="fixed_width">類型</th>
+									<th>參数</th>
+									<th class="fixed_width">类型</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -280,7 +280,7 @@ $email->alt_body(\View::forge('my/alt/view', $data);</code></pre>
 									<th><kbd>$auto_attach</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>設定為 true 或 false 以附加嵌入式圖片，當提供空值時回退（fallback）到預設配置。</td>
+									<td>設定为 true 或 false 以附加嵌入式圖片，當提供空值時回退（fallback）到預設配置。</td>
 								</tr>
 							</table>
 						</td>
@@ -296,7 +296,7 @@ $email->alt_body(\View::forge('my/alt/view', $data);</code></pre>
 // 不產生替代訊息主體
 $email->html_body(\View::forge('welcome/email', $data), false);
 
-// 產生替代訊息主體，但不自動附加圖片。
+// 產生替代訊息主體，但不自动附加圖片。
 $email->html_body(\View::forge('welcome/email', $data), true, false);</code></pre>
 						</td>
 					</tr>
@@ -314,12 +314,12 @@ $email->html_body(\View::forge('welcome/email', $data), true, false);</code></pr
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -362,12 +362,12 @@ $email->html_body(\View::forge('welcome/email', $data), true, false);</code></pr
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -396,7 +396,7 @@ $email->html_body(\View::forge('welcome/email', $data), true, false);</code></pr
 
 			<article>
 				<h4 class="method" id="method_to">to($email, $name = false)</h4>
-				<p><strong>to</strong> 方法增加單一或陣列的地址至 <em>to</em> 接收者陣列。</p>
+				<p><strong>to</strong> 方法增加单一或陣列的地址至 <em>to</em> 接收者陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -404,12 +404,12 @@ $email->html_body(\View::forge('welcome/email', $data), true, false);</code></pr
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -435,10 +435,10 @@ $email->html_body(\View::forge('welcome/email', $data), true, false);</code></pr
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->to('me@example.com', 'My Name');
 
-// 添加多個地址
+// 添加多个地址
 $email->to(array(
 	'me@example.com',
 	// 帶有名稱
@@ -453,7 +453,7 @@ $email->to(array(
 
 			<article>
 				<h4 class="method" id="method_cc">cc($email, $name = false)</h4>
-				<p><strong>cc</strong> 方法添加單一或陣列的地址到 <em>cc</em> 接收者陣列。</p>
+				<p><strong>cc</strong> 方法添加单一或陣列的地址到 <em>cc</em> 接收者陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -461,12 +461,12 @@ $email->to(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -492,10 +492,10 @@ $email->to(array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->cc('me@example.com', 'My Name');
 
-// 添加多個地址
+// 添加多个地址
 $email->cc(array(
 	'me@example.com',
 	// 帶有名稱
@@ -510,7 +510,7 @@ $email->cc(array(
 
 			<article>
 				<h4 class="method" id="method_bcc">bcc($email, $name = false)</h4>
-				<p><strong>bcc</strong> 方法添加單一或陣列的地址到 <em>bcc</em> 接收者陣列。</p>
+				<p><strong>bcc</strong> 方法添加单一或陣列的地址到 <em>bcc</em> 接收者陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -518,12 +518,12 @@ $email->cc(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -549,10 +549,10 @@ $email->cc(array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->bcc('me@example.com', 'My Name');
 
-// 添加多個地址
+// 添加多个地址
 $email->bcc(array(
 	'me@example.com',
 	// 帶有名稱
@@ -567,7 +567,7 @@ $email->bcc(array(
 
 			<article>
 				<h4 class="method" id="method_reply_to">reply_to($email, $name = false)</h4>
-				<p><strong>reply_to</strong> 方法添加單一或陣列的地址到 <em>reply to</em> 接收者陣列。</p>
+				<p><strong>reply_to</strong> 方法添加单一或陣列的地址到 <em>reply to</em> 接收者陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -575,12 +575,12 @@ $email->bcc(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -606,10 +606,10 @@ $email->bcc(array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->reply_to('me@example.com', 'My Name');
 
-// 添加多個地址
+// 添加多个地址
 $email->reply_to(array(
 	'me@example.com',
 	// 帶有名稱
@@ -624,7 +624,7 @@ $email->reply_to(array(
 
 			<article>
 				<h4 class="method" id="method_header">header($header, $value = null)</h4>
-				<p><strong>header</strong> 方法添加一個自訂的標題到你的郵件表頭。</p>
+				<p><strong>header</strong> 方法添加一个自訂的标題到你的郵件表頭。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -632,12 +632,12 @@ $email->reply_to(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -645,7 +645,7 @@ $email->reply_to(array(
 									<th><kbd>$header</kbd></th>
 									<td><em>字串｜陣列</em></td>
 									<td><em>必要</em></td>
-									<td>表頭的類型或表頭的陣列。</td>
+									<td>表頭的类型或表頭的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$value</kbd></th>
@@ -663,10 +663,10 @@ $email->reply_to(array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->header('X-SMTPAP', 'XXXXXXXX');
 
-// 添加多個地址
+// 添加多个地址
 $email->reply_to(array(
 	'X-SMTPAP' => 'XXXXXX',
 	'X-SMTPAP2' => 'XXXXXA',
@@ -688,7 +688,7 @@ $email->reply_to(array(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -700,10 +700,10 @@ $email->reply_to(array(
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->bcc('me@example.com', 'My Name');
 
-// 添加多個地址
+// 添加多个地址
 $email->to(array(
 	'me@example.com',
 	// 帶有名稱
@@ -729,7 +729,7 @@ $email->clear_recipients();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -741,10 +741,10 @@ $email->clear_recipients();
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加單一地址
+							<pre class="php"><code>// 添加单一地址
 $email->reply_to('me@example.com', 'My Name');
 
-// 添加多個地址
+// 添加多个地址
 $email->to(array(
 	'me@example.com',
 	// 帶有名稱
@@ -770,7 +770,7 @@ $email->clear_addresses();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -782,7 +782,7 @@ $email->clear_addresses();
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加多個地址
+							<pre class="php"><code>// 添加多个地址
 $email->to(array(
 	'me@example.com',
 	// 帶有名稱
@@ -808,7 +808,7 @@ $email->clear_to();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -820,7 +820,7 @@ $email->clear_to();
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加多個地址
+							<pre class="php"><code>// 添加多个地址
 $email->cc(array(
 	'me@example.com',
 	// 帶有名稱
@@ -846,7 +846,7 @@ $email->clear_cc();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -858,7 +858,7 @@ $email->clear_cc();
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加多個地址
+							<pre class="php"><code>// 添加多个地址
 $email->bcc(array(
 	'me@example.com',
 	// 帶有名稱
@@ -884,7 +884,7 @@ $email->clear_bcc();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -896,7 +896,7 @@ $email->clear_bcc();
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加多個地址
+							<pre class="php"><code>// 添加多个地址
 $email->reply_to(array(
 	'me@example.com',
 	// 帶有名稱
@@ -914,8 +914,8 @@ $email->clear_reply_to();
 
 			<article>
 				<h4 class="method" id="method_attach">attach($file, $inline = false, $cid = null, $mime = null, $name = null)</h4>
-				<p><strong>attach</strong> 方法附加一個檔案。</p>
-				<p class="note">此方法將會在 <em>attach_paths</em> 陣列裡設定（config/email.php）的附件路徑中搜尋檔案。</p>
+				<p><strong>attach</strong> 方法附加一个档案。</p>
+				<p class="note">此方法将会在 <em>attach_paths</em> 陣列裡設定（config/email.php）的附件路徑中搜尋档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -923,12 +923,12 @@ $email->clear_reply_to();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -936,25 +936,25 @@ $email->clear_reply_to();
 									<th><kbd>$file</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>引入檔案的路徑。</td>
+									<td>引入档案的路徑。</td>
 								</tr>
 								<tr>
 									<th><kbd>$inline</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>是否附加內嵌檔案。</td>
+									<td>是否附加內嵌档案。</td>
 								</tr>
 								<tr>
 									<th><kbd>$cid</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>內容標識符。附加內嵌圖像時使用。</td>
+									<td>內容标識符。附加內嵌圖像時使用。</td>
 								</tr>
 								<tr>
 									<th><kbd>$mime</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>MIME 類型預設是去查在 core/config/mimes 內的陣列，以此來覆寫它。</td>
+									<td>MIME 类型預設是去查在 core/config/mimes 內的陣列，以此來覆寫它。</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
@@ -972,12 +972,12 @@ $email->clear_reply_to();
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加一個附件
+							<pre class="php"><code>// 添加一个附件
 $email->attach(DOCROOT.'attachments/report.pdf');
 
-// 添加一個內嵌圖像
+// 添加一个內嵌圖像
 $email->attach(DOCROOT.'assets/img/mail/header.png', true, 'cid:headerimage');
-// 此圖像將被包成 &lt;img src="cid:headerimage" /&gt;
+// 此圖像将被包成 &lt;img src="cid:headerimage" /&gt;
 </code></pre>
 						</td>
 					</tr>
@@ -987,7 +987,7 @@ $email->attach(DOCROOT.'assets/img/mail/header.png', true, 'cid:headerimage');
 
 			<article>
 				<h4 class="method" id="method_string_attach">string_attach($contents, $filename, $cid = null, $inline = false, $mime = null)</h4>
-				<p><strong>string_attach</strong> 方法以字串輸入附加一個檔案。</p>
+				<p><strong>string_attach</strong> 方法以字串輸入附加一个档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -995,12 +995,12 @@ $email->attach(DOCROOT.'assets/img/mail/header.png', true, 'cid:headerimage');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1014,25 +1014,25 @@ $email->attach(DOCROOT.'assets/img/mail/header.png', true, 'cid:headerimage');
 									<th><kbd>$filename</kbd></th>
 									<td><em>字串</em></td>
 									<td><em>必要</em></td>
-									<td>使用的檔案名稱。</td>
+									<td>使用的档案名稱。</td>
 								</tr>
 								<tr>
 									<th><kbd>$cid</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>內容標識符。附加內嵌圖像時使用。</td>
+									<td>內容标識符。附加內嵌圖像時使用。</td>
 								</tr>
 								<tr>
 									<th><kbd>$inline</kbd></th>
 									<td><em>布林</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>是否將附加檔案內嵌。</td>
+									<td>是否将附加档案內嵌。</td>
 								</tr>
 								<tr>
 									<th><kbd>$mime</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>MIME 類型預設是去查在 core/config/mimes 內的陣列，以此來覆寫它。</td>
+									<td>MIME 类型預設是去查在 core/config/mimes 內的陣列，以此來覆寫它。</td>
 								</tr>
 							</table>
 						</td>
@@ -1044,7 +1044,7 @@ $email->attach(DOCROOT.'assets/img/mail/header.png', true, 'cid:headerimage');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加一個附件
+							<pre class="php"><code>// 添加一个附件
 $email->string_attach('This is a textfile', 'test.txt');
 </code></pre>
 						</td>
@@ -1063,7 +1063,7 @@ $email->string_attach('This is a textfile', 'test.txt');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1090,7 +1090,7 @@ $email->clear_attachments();
 
 			<article>
 				<h4 class="method" id="method_send">send($validate = null)</h4>
-				<p><strong>send</strong> 方法發送信件。</p>
+				<p><strong>send</strong> 方法发送信件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1098,12 +1098,12 @@ $email->clear_attachments();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1128,11 +1128,11 @@ $email->clear_attachments();
 }
 catch(\EmailSendingFailedException $e)
 {
-	// 驅動程序無法發送信件。
+	// 驅动程序無法发送信件。
 }
 catch(\EmailValidationFailedException $e)
 {
-	// 單一或更多驗證失敗的email地址。
+	// 单一或更多驗證失敗的email地址。
 }
 </code></pre>
 						</td>
@@ -1151,7 +1151,7 @@ catch(\EmailValidationFailedException $e)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1168,11 +1168,11 @@ catch(\EmailValidationFailedException $e)
 }
 catch(\EmailSendingFailedException $e)
 {
-	// 驅動程序無法發送信件。
+	// 驅动程序無法发送信件。
 }
 catch(\EmailValidationFailedException $e)
 {
-	// 單一或更多驗證失敗的email地址。
+	// 单一或更多驗證失敗的email地址。
 	$these_failed = $email->get_invalid_addresses();
 }
 </code></pre>
@@ -1192,12 +1192,12 @@ catch(\EmailValidationFailedException $e)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1227,8 +1227,8 @@ catch(\EmailValidationFailedException $e)
 			<article>
 				<h4 class="method" id="method_pipelining">pipelining($pipelining = true)</h4>
 				<p>
-					<strong>pipelining</strong> 方法可使用流水線（一次發送多個訊息）。
-					對於不支援的驅動，這個方法是一個空操作（NOOP）。流水線預設是停用的。
+					<strong>pipelining</strong> 方法可使用流水線（一次发送多个訊息）。
+					對於不支援的驅动，这个方法是一个空操作（NOOP）。流水線預設是停用的。
 				</p>
 				<table class="method">
 					<tbody>
@@ -1237,12 +1237,12 @@ catch(\EmailValidationFailedException $e)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1281,7 +1281,7 @@ catch(\EmailValidationFailedException $e)
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1312,7 +1312,7 @@ $from = $email->get_from();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1343,7 +1343,7 @@ $to = $email->get_to();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1374,7 +1374,7 @@ $cc = $email->get_cc();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1405,7 +1405,7 @@ $bcc = $email->get_bcc();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1436,7 +1436,7 @@ $reply_to = $email->get_reply_to();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1467,7 +1467,7 @@ $text = $email->get_body();
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<em>無</em>
 						</td>
@@ -1491,7 +1491,7 @@ $subject = $email->get_subject();
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

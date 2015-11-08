@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>File 進階 - 類別 - FuelPHP 简体中文手册</title>
+	<title>File 進階 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -42,29 +42,29 @@
 			<h2>進階用法</h2>
 
 			<section>
-				<h3 id="intro">簡介</h3>
+				<h3 id="intro">简介</h3>
 
 				<p>
-					除了基本的 File 類別的靜態<a href="usage.html">用法</a>，也有較為複雜的選項可用。
-					首先是<strong>區域</strong>，基本上它是不能在外部動作的基礎路徑，
-					並有一些配置選項。當在區域使用 File 類別的方法，
-					它們將回傳包裝目錄＆檔案的物件。
+					除了基本的 File 类別的靜態<a href="usage.html">用法</a>，也有較为複雜的選項可用。
+					首先是<strong>區域</strong>，基本上它是不能在外部动作的基础路徑，
+					并有一些配置選項。當在區域使用 File 类別的方法，
+					它們将回傳包裝目录＆档案的物件。
 				</p>
 
 				<article>
 					<h3 id="areas">區域</h3>
 
-					<h4 id="areas_intro">簡介</h4>
+					<h4 id="areas_intro">简介</h4>
 					<p>
-						檔案區域被用來影響檔案系統行為。透過設定基礎限制，
-						你可以設定允許在這些限制內靈活運用的界限，
-						而不須擔心檔案及目錄的未認證的存取。
+						档案區域被用來影響档案系统行为。透過設定基础限制，
+						你可以設定允許在这些限制內靈活運用的界限，
+						而不須擔心档案及目录的未認證的存取。
 					</p>
 
 					<h4 id="area_config">配置</h4>
 					<p>
-						預設情況下，檔案區域穿過所有目錄無限制存取。有兩種方式來設定這些配置值。
-						最快的方式是傳遞一個陣列進入
+						預設情況下，档案區域穿過所有目录無限制存取。有兩種方式來設定这些配置值。
+						最快的方式是傳遞一个陣列進入
 						File::forge() 方法。
 					</p>
 
@@ -76,9 +76,9 @@
 $area = \File::forge($config);</code></pre>
 
 					<p>
-						一個更集中的方式是透過在你的 File 配置檔案中定義一個（或更多）區域。要做到這一點，
+						一个更集中的方式是透過在你的 File 配置档案中定義一个（或更多）區域。要做到这一點，
 						複製 <em>core/config/file.php</em> 到 <em>app/config/file.php</em>（或建立新的）
-						並且在 <em>'areas'</em> 陣列中定義你的區域。現在你可以透過提供識別符字串到
+						并且在 <em>'areas'</em> 陣列中定義你的區域。现在你可以透過提供識別符字串到
 						File::forge() 方法來取得區域。
 					</p>
 
@@ -90,7 +90,7 @@ $area = \File::forge($config);</code></pre>
 	),
 ),
 
-// 現在取得區域
+// 现在取得區域
 
 $area = \File::instance('my_area');
 					</code></pre>
@@ -98,12 +98,12 @@ $area = \File::instance('my_area');
 					<h3 id="area_usage">用法</h3>
 
 					<p>
-						有兩種方式在 File 類別中使用區域。<br />
-						首先是在一個靜態情境下，提供一個 File_Area
+						有兩種方式在 File 类別中使用區域。<br />
+						首先是在一个靜態情境下，提供一个 File_Area
 						實例或識別符到你正在呼叫的函式。
 					</p>
 
-					<pre class="php"><code>// 讀取目錄的內容
+					<pre class="php"><code>// 讀取目录的內容
 try
 {
 	$dir = File::read_dir('somedir', 0, null, 'my_area');
@@ -132,10 +132,10 @@ catch(\FileAccessException $e)
 				</article>
 
 				<article>
-					<h3 id="file_handers">檔案＆目錄做為物件：File 處理程序</h3>
+					<h3 id="file_handers">档案＆目录做为物件：File 处理程序</h3>
 
 					<p>
-						<a href="handlers.html">閱讀關於 File 處理程序。</a>
+						<a href="handlers.html">閱讀關於 File 处理程序。</a>
 					</p>
 				</article>
 			</section>
@@ -144,7 +144,7 @@ catch(\FileAccessException $e)
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

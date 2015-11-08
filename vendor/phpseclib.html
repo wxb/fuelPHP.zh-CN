@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,32 +41,32 @@
 
 			<h2>PHPSecLib</h2>
 
-			<h3>簡介</h3>
+			<h3>简介</h3>
 
 			<p>
-				PHP 安全通信函式庫（The PHP Secure Communications Library）包含了 LGPL 許可的純 PHP 實現任意精度的整數，
-				充分 PKCS#1（v2.1）標準的 RSA、DES、3DES、RC4、Rijndael、AES、SSH-1、SSH-2、和 SFTP。本書討論如何使用它們。
+				PHP 安全通信函式庫（The PHP Secure Communications Library）包含了 LGPL 許可的純 PHP 實现任意精度的整数，
+				充分 PKCS#1（v2.1）标准的 RSA、DES、3DES、RC4、Rijndael、AES、SSH-1、SSH-2、和 SFTP。本書討論如何使用它們。
 			</p>
 
 			<h3>文件</h3>
 
-			<p>你可以在<a href="http://phpseclib.sourceforge.net/documentation/" target="_blank">這裡</a>找到原始的 PHPSecLib 文件。</p>
+			<p>你可以在<a href="http://phpseclib.sourceforge.net/documentation/" target="_blank">这裡</a>找到原始的 PHPSecLib 文件。</p>
 
 			<h3>FuelPHP 使用</h3>
 
 			<p>
-				提供者套件被 FuelPHP 用於 Crypt 類別以及 Auth 套件，使用 PBKDF2 來產生安全雜湊。
+				提供者套件被 FuelPHP 用於 Crypt 类別以及 Auth 套件，使用 PBKDF2 來產生安全雜湊。
 			</p>
 
-			<h3>應用程式使用</h3>
+			<h3>应用程序使用</h3>
 
 			<p>
-				為了在你的應用程式使用，PHPSecLib 套件已經被轉換成一個有命名空間、自動載入器友善的函式庫。
-				你可以直接在你的應用程式使用。
+				为了在你的应用程序使用，PHPSecLib 套件已经被轉換成一个有命名空間、自动載入器友善的函式庫。
+				你可以直接在你的应用程序使用。
 			</p>
 <pre class="php"><code>&lt;?php
 /**
- * 做一個 SSH 登入的控制器範例
+ * 做一个 SSH 登入的控制器範例
  */
 
 class Controller_Ssh extends Controller
@@ -82,7 +82,7 @@ class Controller_Ssh extends Controller
 			throw new \Exception('ssh login failed');
 		}
 
-		// 回傳格式化目錄列表的檢視
+		// 回傳格式化目录列表的檢視
 		return View::forge('ssh/dirinfo', array(
 			'pwd' => $ssh->exec('pwd'),
 			'info' => $ssh->exec('ls -la'),
@@ -95,7 +95,7 @@ class Controller_Ssh extends Controller
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

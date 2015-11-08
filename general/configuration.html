@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="configuration.html#" id="toc_handle">目錄</a>
+			<a href="configuration.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,40 +39,40 @@
 
 		<div id="main">
 
-			<h2>配置你的應用程式</h2>
+			<h2>配置你的应用程序</h2>
 
-			<h3 id="intro">簡介</h3>
+			<h3 id="intro">简介</h3>
 			<p>
-				FuelPHP 框架是以配置慣例的想法建成。這樣的結果是你可以在一個高度可自訂的基礎上，
+				FuelPHP 框架是以配置慣例的想法建成。这樣的結果是你可以在一个高度可自訂的基础上，
 				開始建立你的應用程序。
 			</p>
 
 			<p>
-				配置檔案儲存在 <kbd>app/config</kbd> 文件夾裡。
-				應用程式的基本配置在 <em>app/config/config.php</em> 完成。
-				載入的配置可依特定環境改變，更多關於此在 <a href="environments.html#/env_config">環境</a>。
+				配置档案儲存在 <kbd>app/config</kbd> 文件夾裡。
+				应用程序的基本配置在 <em>app/config/config.php</em> 完成。
+				載入的配置可依特定环境改變，更多關於此在 <a href="environments.html#/env_config">环境</a>。
 			</p>
 
 			<p class="note">
-				要覆寫功能相關配置的設定，在 app/config 建立一個新檔案，
-				或從 core/config 複製相應的檔案到 app/config。
+				要覆寫功能相關配置的設定，在 app/config 建立一个新档案，
+				或從 core/config 複製相應的档案到 app/config。
 			</p>
 
 			<h3 id="config">配置選項</h3>
 
 			<p>
-				這些是可以被定義在應用程式中的基本配置檔案 <kbd>app/config/config.php</kbd> 的選項。
-				當你剛裝好 FuelPHP 時，這個檔案是空的。所有如下定義的預設值，
-				被定義在 <kbd>core/config</kbd> 文件夾中的相應檔案。當你想要覆寫一個預設值時，在你的應用程式配置檔案中添加該鍵到陣列，
-				並修改值。或者，從核心檔案複製該段落到應用程式檔案，
-				並修改它。
+				这些是可以被定義在应用程序中的基本配置档案 <kbd>app/config/config.php</kbd> 的選項。
+				當你剛裝好 FuelPHP 時，这个档案是空的。所有如下定義的預設值，
+				被定義在 <kbd>core/config</kbd> 文件夾中的相應档案。當你想要覆寫一个預設值時，在你的应用程序配置档案中添加該鍵到陣列，
+				并修改值。或者，從核心档案複製該段落到应用程序档案，
+				并修改它。
 			</p>
 
 			<p class="note">
-				FuelPHP 使用 "<em>句點表示法</em>" 處理陣列。它是一種方便存取一個多維陣列元素的方式。
-				此表示法也用於文件中，因為它提供簡單的陣列類型參照。例如：
+				FuelPHP 使用 "<em>句點表示法</em>" 处理陣列。它是一種方便存取一个多維陣列元素的方式。
+				此表示法也用於文件中，因为它提供简单的陣列类型參照。例如：
 			</p>
-			<pre class="php"><code>// 當你看見 "always_load.packages = array()"，它是以下的簡寫：
+			<pre class="php"><code>// 當你看見 "always_load.packages = array()"，它是以下的简寫：
 array("always_load" => array("packages" => array(...) ) );
 </code></pre>
 
@@ -81,7 +81,7 @@ array("always_load" => array("packages" => array(...) ) );
 				<tbody>
 					<tr class="header">
 						<th style="width:500px;">鍵</th>
-						<th>類型</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th>描述</th>
 					</tr>
@@ -90,7 +90,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							應用程式的基礎 URL。可以是相對的。<strong>必須</strong>包含一個斜線。（'/foo/'、'http://example.com/'）
+							应用程序的基础 URL。可以是相對的。<strong>必須</strong>包含一个斜線。（'/foo/'、'http://example.com/'）
 						</td>
 					</tr>
 					<tr>
@@ -98,7 +98,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>''</code></pre></td>
 						<td>
-							任何需要被添加到 Fuel 產生的 URL 的後綴。如果後綴是一個副檔名，
+							任何需要被添加到 Fuel 產生的 URL 的後綴。如果後綴是一个副档名，
 							確認包含點（'.html'）。
 						</td>
 					</tr>
@@ -107,7 +107,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>'index.php'</code></pre></td>
 						<td>
-							主引導程序的檔案名稱。如果你使用 mod_rewrite，設為 false 或移除。
+							主引導程序的档案名稱。如果你使用 mod_rewrite，設为 false 或移除。
 						</td>
 					</tr>
 					<tr>
@@ -115,7 +115,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>'Controller_'</code></pre></td>
 						<td>
-							當對應 URI 到控制器類別名稱時用來尋找控制器的類別前綴。
+							當對應 URI 到控制器类別名稱時用來尋找控制器的类別前綴。
 							如果你想要你的控制器有命名空間或在不同於
 							app/classes/controller 的文件夾，你必須變更它。
 						</td>
@@ -133,7 +133,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>APPPATH.'cache/'</code></pre></td>
 						<td>
-							要儲存快取檔案的資料夾，此資料夾必須是可寫入的。
+							要儲存快取档案的資料夾，此資料夾必須是可寫入的。
 						</td>
 					</tr>
 					<tr>
@@ -141,15 +141,15 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							是否啟用檔案 finder 快取。
+							是否啟用档案 finder 快取。
 						</td>
 					</tr>
 					<tr>
 						<th>cache_lifetime</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>3600</code></pre></td>
 						<td>
-							檔案 finder 快取存活時間（秒）。
+							档案 finder 快取存活時間（秒）。
 						</td>
 					</tr>
 					<tr>
@@ -157,7 +157,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>回呼（callback）</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							給 ob_start() 的回呼（callback），設為 ob_gzhandler 以啟用 gzip 輸出編碼。
+							給 ob_start() 的回呼（callback），設为 ob_gzhandler 以啟用 gzip 輸出编码。
 						</td>
 					</tr>
 					<tr>
@@ -168,7 +168,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<th>errors</th>
 						<td>陣列</td>
 						<td colspan="2">
-							<strong>陣列，包含配置鍵以控制檢測到錯誤時的行為：</strong>
+							<strong>陣列，包含配置鍵以控制檢测到错误時的行为：</strong>
 						</td>
 					</tr>
 					<tr>
@@ -177,15 +177,15 @@ array("always_load" => array("packages" => array(...) ) );
 						<td><pre class="php"><code>array(
 )</code></pre></td>
 						<td>
-							在哪一種 php 錯誤繼續執行。見<a href="error.html">錯誤處理</a>。
+							在哪一種 php 错误繼續执行。見<a href="error.html">错误处理</a>。
 						</td>
 					</tr>
 					<tr>
 						<th>errors.throttle</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>10</code></pre></td>
 						<td>
-							在我們停止顯示前要顯示多少錯誤。（預防記憶體不足錯誤）
+							在我們停止顯示前要顯示多少错误。（預防記憶體不足错误）
 						</td>
 					</tr>
 					<tr>
@@ -201,7 +201,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>'en'</code></pre></td>
 						<td>
-							預設的應用程式語言，由 <a href="../classes/lang.html">Lang 類別</a> 使用。
+							預設的应用程序語言，由 <a href="../classes/lang.html">Lang 类別</a> 使用。
 						</td>
 					</tr>
 					<tr>
@@ -209,10 +209,10 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>'en_US'</code></pre></td>
 						<td>
-							在一些 php 安裝需要給 <em>setlocale()</em> 使用，設定為 <kbd>false</kbd>
+							在一些 php 安装需要給 <em>setlocale()</em> 使用，設定为 <kbd>false</kbd>
 							以防止被設定。<br />
-							<em>每種 OS 的設定語法會不同，例如 Ubuntu 需要一個
-							<kbd>.utf8</kbd>（編碼）後綴。</em>
+							<em>每種 OS 的設定語法会不同，例如 Ubuntu 需要一个
+							<kbd>.utf8</kbd>（编码）後綴。</em>
 						</td>
 					</tr>
 					<tr>
@@ -220,17 +220,17 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>'UTF-8'</code></pre></td>
 						<td>
-							應用程式的預設字元編碼。
+							应用程序的預設字元编码。
 						</td>
 					</tr>
 					<tr>
 						<th>server_gmt_offset</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>0</code></pre></td>
 						<td>
-							當 time() 使用時，伺服器與 GMT 時間戳記以秒為單位的偏移量。<br />
-							<em>這僅僅是為了改正錯誤的伺服器配置：<kbd>time()</kbd>
-							應始終回傳自 January 1 1970 00:00:00 GMT 以來的秒數。</em>
+							當 time() 使用時，伺服器與 GMT 時間戳記以秒为单位的偏移量。<br />
+							<em>这僅僅是为了改正错误的伺服器配置：<kbd>time()</kbd>
+							應始終回傳自 January 1 1970 00:00:00 GMT 以來的秒数。</em>
 						</td>
 					</tr>
 					<tr>
@@ -244,18 +244,18 @@ array("always_load" => array("packages" => array(...) ) );
 					<tr>
 						<td colspan="4">
 						<p class="note">
-							如果你設定這個值，請 <strong>務必</strong> 確保該時區配置與你伺服器上設定的時區相符。
-							因為時區計算的運作藉由轉化為 GTM，當你時區不相符時，它將導致嚴重錯誤。
-							由於不正確的過期時間計算，將造成在你應用程式中的時間顯示不正確，以及 cookie/session 的問題！
+							如果你設定这个值，請 <strong>務必</strong> 確保該時區配置與你伺服器上設定的時區相符。
+							因为時區計算的運作藉由轉化为 GTM，當你時區不相符時，它将導致嚴重错误。
+							由於不正確的過期時間計算，将造成在你应用程序中的時間顯示不正確，以及 cookie/session 的問題！
 						</p>
 						</td>
 					</tr>
 					<tr>
 						<th>log_threshold</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>Fuel::L_WARNING</code></pre></td>
 						<td>
-							記錄的門檻。什麼等級的訊息要記錄，或一個應該被記錄的特定訊息等級的陣列。<a href="../classes/fuel.html#log_constants">閱讀關於可能的值</a>
+							記錄的門檻。什么等級的訊息要記錄，或一个應該被記錄的特定訊息等級的陣列。<a href="../classes/fuel.html#log_constants">閱讀關於可能的值</a>
 						</td>
 					</tr>
 					<tr>
@@ -263,7 +263,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>APPPATH.'logs/'</code></pre></td>
 						<td>
-							儲存紀錄的資料夾，此資料夾必須為可寫入的。
+							儲存紀錄的資料夾，此資料夾必須为可寫入的。
 						</td>
 					</tr>
 					<tr>
@@ -283,7 +283,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<th>security</th>
 						<td>陣列</td>
 						<td colspan="2">
-							<strong>陣列，包含配置鍵以控制你的應用程式安全：</strong>
+							<strong>陣列，包含配置鍵以控制你的应用程序安全：</strong>
 						</td>
 					</tr>
 					<tr>
@@ -291,7 +291,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							是否自動檢查 CSRF 符記。<a href="security.html#csrf">閱讀更多關於 CSRF</a>。
+							是否自动檢查 CSRF 符記。<a href="security.html#csrf">閱讀更多關於 CSRF</a>。
 						</td>
 					</tr>
 					<tr>
@@ -304,11 +304,11 @@ array("always_load" => array("packages" => array(...) ) );
 					</tr>
 					<tr>
 						<th>security.csrf_expiration</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>0</code></pre></td>
 						<td>
-							設定 CSRF cookie 的到期時間。任何大於 0 的秒數
-							cookie 將過期。
+							設定 CSRF cookie 的到期時間。任何大於 0 的秒数
+							cookie 将過期。
 						</td>
 					</tr>
 					<tr>
@@ -316,7 +316,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>字串</td>
 						<td><pre class="php"><code>'put your salt value here to make the token more secure'</code></pre></td>
 						<td>
-							用來確保產生的安全符記是不可預測的鹽。
+							用來確保產生的安全符記是不可預测的鹽。
 						</td>
 					</tr>
 					<tr>
@@ -324,7 +324,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							允許 Input 類別在呈現時使用 "X" 表頭，例如 HTTP_X_FORWARDED_FOR 或 HTTP_X_FORWARDED_PROTO。
+							允許 Input 类別在呈现時使用 "X" 表頭，例如 HTTP_X_FORWARDED_FOR 或 HTTP_X_FORWARDED_PROTO。
 						</td>
 					</tr>
 					<tr>
@@ -340,7 +340,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							用來過濾輸入陣列（$_GET、$_POST 和 $_COOKIE）的 PHP 函式。可以被設為 <em>xxs_clean</em>，
+							用來過濾輸入陣列（$_GET、$_POST 和 $_COOKIE）的 PHP 函式。可以被設为 <em>xxs_clean</em>，
 							根據輸入的大小可能導致效能損失。
 						</td>
 					</tr>
@@ -349,8 +349,8 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							用來過濾設定給檢視變數的 PHP 函式。可以被設為 <em>xxs_clean</em>，
-							根據變數的大小可能導致效能損失。
+							用來過濾設定給檢視變数的 PHP 函式。可以被設为 <em>xxs_clean</em>，
+							根據變数的大小可能導致效能損失。
 						</td>
 					</tr>
 					<tr>
@@ -358,7 +358,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>布林</td>
 						<td><pre class="php"><code>true</code></pre></td>
 						<td>
-							是否自動編碼（htmlentities）檢視資料。
+							是否自动编码（htmlentities）檢視資料。
 						</td>
 					</tr>
 					<tr>
@@ -371,8 +371,8 @@ array("always_load" => array("packages" => array(...) ) );
 'Closure'
 )</code></pre></td>
 						<td>
-							隨著輸出編碼打開，所有傳遞的物件將被轉換為字串或拋出例外，
-							除非它們是此陣列中類別的實例。
+							隨著輸出编码打開，所有傳遞的物件将被轉換为字串或拋出例外，
+							除非它們是此陣列中类別的實例。
 						</td>
 					</tr>
 					<tr>
@@ -389,10 +389,10 @@ array("always_load" => array("packages" => array(...) ) );
 					</tr>
 					<tr>
 						<th>cookie.expiration</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>0</code></pre></td>
 						<td>
-							在 cookie 到期前的秒數。
+							在 cookie 到期前的秒数。
 						</td>
 					</tr>
 					<tr>
@@ -432,7 +432,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							指向模組目錄的路徑。當添加一個模組沒有指定位置時使用。
+							指向模組目录的路徑。當添加一个模組沒有指定位置時使用。
 						</td>
 					</tr>
 					<tr>
@@ -452,7 +452,7 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							那些套件要自動載入。像這樣指定：<strong>array('package')</strong> 或 <strong>array('package' => PKGPATH.'path/to/package')</strong>為了讓它運作，套件路徑必須在 <em>package_paths</em> 被設定
+							那些套件要自动載入。像这樣指定：<strong>array('package')</strong> 或 <strong>array('package' => PKGPATH.'path/to/package')</strong>为了让它運作，套件路徑必須在 <em>package_paths</em> 被設定
 						</td>
 					</tr>
 					<tr>
@@ -460,8 +460,8 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							那些模組要自動載入。像這樣指定：<strong>array('package')</strong>。自動載入的模組可藉由
-							URL 存取。為了讓它運作，模組路徑必須在 <em>module_paths</em> 被設定
+							那些模組要自动載入。像这樣指定：<strong>array('package')</strong>。自动載入的模組可藉由
+							URL 存取。为了让它運作，模組路徑必須在 <em>module_paths</em> 被設定
 						</td>
 					</tr>
 					<tr>
@@ -469,8 +469,8 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							哪些類別要自動載入和初始化。當你想要從套件或模組自動載入一個類別時，
-							確保那些也被自動載入了！
+							哪些类別要自动載入和初始化。當你想要從套件或模組自动載入一个类別時，
+							確保那些也被自动載入了！
 						</td>
 					</tr>
 					<tr>
@@ -478,8 +478,8 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							哪些配置檔案要自動載入。像這樣載入一個配置檔案進入群組：<strong>array('config')</strong> 或
-							<strong>array('filename' => 'group')</strong>。如果你不想載入檔案進入群組，設定群組名稱為
+							哪些配置档案要自动載入。像这樣載入一个配置档案進入群組：<strong>array('config')</strong> 或
+							<strong>array('filename' => 'group')</strong>。如果你不想載入档案進入群組，設定群組名稱为
 							<em>null</em>：<strong>array('filename' => null)</strong>。
 						</td>
 					</tr>
@@ -488,8 +488,8 @@ array("always_load" => array("packages" => array(...) ) );
 						<td>陣列</td>
 						<td><pre class="php"><code>array()</code></pre></td>
 						<td>
-							哪些語言檔案要自動載入。像這樣載入一個語言檔案進入群組：<strong>array('lang')</strong> 或
-							<strong>array('filename' => 'group')</strong>。如果你不想載入檔案進入群組，設定群組名稱為
+							哪些語言档案要自动載入。像这樣載入一个語言档案進入群組：<strong>array('lang')</strong> 或
+							<strong>array('filename' => 'group')</strong>。如果你不想載入档案進入群組，設定群組名稱为
 							<em>null</em>：<strong>array('filename' => null)</strong>。
 						</td>
 					</tr>
@@ -497,15 +497,15 @@ array("always_load" => array("packages" => array(...) ) );
 			</table>
 
 			<p>
-				與配置檔案／設定的互動是透過使用 <a href="../classes/config.html">Config</a> 類別達成。
-				配置檔案也可以使用 <a href="../packages/oil/generate.html#config">Oil</a> 產生。
+				與配置档案／設定的互动是透過使用 <a href="../classes/config.html">Config</a> 类別達成。
+				配置档案也可以使用 <a href="../packages/oil/generate.html#config">Oil</a> 產生。
 			</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

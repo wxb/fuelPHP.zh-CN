@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Database 簡介 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Database 简介 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,36 +39,36 @@
 
 		<div id="main">
 
-			<h2>Database 簡介</h2>
+			<h2>Database 简介</h2>
 
 			<section>
 
-				<h3 id="introduction">簡介</h3>
+				<h3 id="introduction">简介</h3>
 
 				<p>
-					Fuel 提供基於資料庫抽象層的驅動程序，
-					在編寫的時候支援的驅動程序有 MySQL、MySQLi 和 PDO。
-					除了常規的資料庫互動，Fuel 也具有 DBUtil 類別以執行資料庫操作如建立資料庫、
+					Fuel 提供基於資料庫抽象層的驅动程序，
+					在编寫的時候支援的驅动程序有 MySQL、MySQLi 和 PDO。
+					除了常規的資料庫互动，Fuel 也具有 DBUtil 类別以执行資料庫操作如建立資料庫、
 					添加欄位及更多。
 				</p>
 
-				<p class="note">請注意：並非所有的特色都被每一種驅動程序支援。</p>
+				<p class="note">請注意：并非所有的特色都被每一種驅动程序支援。</p>
 			</section>
 
 			<section>
 				<h3 id="configuration">配置</h3>
 
 				<p>
-					為了開始與資料庫協作，你必須變更資料庫設定。
-					全域設定對你在 <em>APPPATH/config/db.php</em> 定義的所有 <a href="../../general/environments.html">環境</a>
-					是有效的。你在位於適當環境配置文件夾中的 <em>db.php</em>
-					定義環境特定資料庫設定。
-					兩者將被合併以形成完整的資料庫配置。
+					为了開始與資料庫協作，你必須變更資料庫設定。
+					全域設定對你在 <em>APPPATH/config/db.php</em> 定義的所有 <a href="../../general/environments.html">环境</a>
+					是有效的。你在位於適當环境配置文件夾中的 <em>db.php</em>
+					定義环境特定資料庫設定。
+					兩者将被合併以形成完整的資料庫配置。
 				</p>
 				<p>
-					資料庫配置像這樣的格式：
+					資料庫配置像这樣的格式：
 				</p>
-					<pre class="php"><code>// MySQL 驅動程序配置
+					<pre class="php"><code>// MySQL 驅动程序配置
 'development' => array(
 	'type'           => 'mysqli',
 	'connection'     => array(
@@ -88,7 +88,7 @@
 	'readonly'       => false,
 ),
 
-// PDO 驅動程序配置，使用 PostgreSQL
+// PDO 驅动程序配置，使用 PostgreSQL
 'production' => array(
 	'type'           => 'pdo',
 	'connection'     => array(
@@ -124,13 +124,13 @@
 					<tbody>
 						<tr>
 							<th>設定</th>
-							<th>類型</th>
+							<th>类型</th>
 							<th class="description">描述</th>
 						</tr>
 						<tr>
 							<th><kbd>type</kbd></th>
 							<td>字串</td>
-							<td>要使用什麼類型的連線，可以是 mysql、mysqli 或 pdo。</td>
+							<td>要使用什么类型的連線，可以是 mysql、mysqli 或 pdo。</td>
 						</tr>
 						<tr>
 							<th><kbd>connection</kbd></th>
@@ -150,12 +150,12 @@
 						<tr>
 							<th><kbd>connection.password</kbd></th>
 							<td>字串</td>
-							<td>連線密碼。</td>
+							<td>連線密码。</td>
 						</tr>
 						<tr>
 							<th><kbd>connection.persistent</kbd></th>
 							<td>布林</td>
-							<td>是否啟動一個持久的連線。</td>
+							<td>是否啟动一个持久的連線。</td>
 						</tr>
 						<tr>
 							<th><kbd>connection.compress</kbd></th>
@@ -180,7 +180,7 @@
 						<tr>
 							<th><kbd>enable_cache</kbd></th>
 							<td>布林</td>
-							<td>是否允許快取，將覆寫連線基礎上的查詢快取設定。</td>
+							<td>是否允許快取，将覆寫連線基础上的查詢快取設定。</td>
 						</tr>
 						<tr>
 							<th><kbd>profiling</kbd></th>
@@ -190,7 +190,7 @@
 						<tr>
 							<th><kbd>readonly</kbd></th>
 							<td>陣列｜false</td>
-							<td>如果你有一個 master/slave 資料庫設定，你可以使用它來定義一個 slave 連線的陣列，它可以被用在隨機的讀取操作。</td>
+							<td>如果你有一个 master/slave 資料庫設定，你可以使用它來定義一个 slave 連線的陣列，它可以被用在隨機的讀取操作。</td>
 						</tr>
 					</tbody>
 				</table>
@@ -203,7 +203,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

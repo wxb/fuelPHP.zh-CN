@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>簡介 - Orm 套件 - FuelPHP 简体中文手册</title>
+	<title>简介 - Orm 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,23 +41,23 @@
 			<h2>Orm</h2>
 
 			<p>Orm 是 <a href="http://en.wikipedia.org/wiki/Object_relational_mapper" target="_blank">物件關聯對映（Object
-				Relational Mapper）</a> 的簡寫，它做兩件事：<br />對應你資料庫裡的資料列到物件，
-				並能讓你在這些物件之間建立關係。<br />
-				它緊隨 <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">活動記錄模式（
-				Active Record Pattern）</a>，但也受到其他系統的影響。</p>
+				Relational Mapper）</a> 的简寫，它做兩件事：<br />對應你資料庫裡的資料列到物件，
+				并能让你在这些物件之間建立關係。<br />
+				它緊隨 <a href="http://en.wikipedia.org/wiki/Active_record_pattern" target="_blank">活动記錄模式（
+				Active Record Pattern）</a>，但也受到其他系统的影響。</p>
 
 			<section>
-				<h2 id="intro">簡介</h2>
+				<h2 id="intro">简介</h2>
 
-				<p>不像其他許多的活動記錄（ActiveRecord）實現，我們的小、快速、簡單易用。
-					它試圖使從資料庫建立、更新、和刪除項目盡可能地輕鬆，
-					它為你做所有辛苦的工作。</p>
+				<p>不像其他許多的活动記錄（ActiveRecord）實现，我們的小、快速、简单易用。
+					它试圖使從資料庫建立、更新、和刪除項目盡可能地輕鬆，
+					它为你做所有辛苦的工作。</p>
 			</section>
 
 			<section>
-				<h2 id="install">安裝</h2>
+				<h2 id="install">安装</h2>
 
-				<p>Orm 套件包含在 Fuel 的下載中，你所需要做的是在你的配置中啟用它。</p>
+				<p>Orm 套件包含在 Fuel 的下载中，你所需要做的是在你的配置中啟用它。</p>
 				<pre class="php"><code>'always_load' => array(
 	'packages' => array(
 		'orm',
@@ -71,41 +71,41 @@
 				<p>一些常見的問題和頻繁的問題。</p>
 
 				<h3>我的 關聯／外鍵 無法被儲存 (1)</h3>
-				<p>這最常發生在使用了錯誤類型的關聯關係。尤其 Has-one 與
+				<p>这最常发生在使用了错误类型的關聯關係。尤其 Has-one 與
 					Belongs-to 往往搞混。重讀文件的例子，
-					以確認你使用正確的關聯類型並檢查所有配置是否正確。</p>
+					以確認你使用正確的關聯类型并檢查所有配置是否正確。</p>
 
 				<h3>我無法關聯物件 (2)</h3>
 				<p>確認你的模型是擴充 <code>Orm\Model</code> 而非 <code>Model_Crud</code>。</p>
 
-				<h3>我得到一個在 套件／模組 中無法找到我的關聯模型的例外。</h3>
+				<h3>我得到一个在 套件／模組 中無法找到我的關聯模型的例外。</h3>
 				<p>確認套件或模組已被 Fuel 載入，
-					否則自動載入器無法找到類別。<br />
-					並且當配置關聯模型 <code>"model_to"</code> 時，確認你配置完整類別名稱，
+					否則自动載入器無法找到类別。<br />
+					并且當配置關聯模型 <code>"model_to"</code> 時，確認你配置完整类別名稱，
 					其中包括命名空間，<em>即使你在該命名空間</em>。
-					字串中的類別名稱取自全域範圍，無論目前的命名空間。</p>
+					字串中的类別名稱取自全域範圍，無論目前的命名空間。</p>
 
-				<h3>我得到一個 Orm\FrozenObject 例外</h3>
-				<p>物件在被儲存到資料庫時不能編輯，以預防循環儲存及重複儲存已存檔的物件。
-					這不應該發生在正常使用下，
-					且最常見是因為錯誤的配置或關聯所造成。<br />
-					有時候可能是錯誤引起的，尤其當你不是使用穩定發行的版本。</p>
+				<h3>我得到一个 Orm\FrozenObject 例外</h3>
+				<p>物件在被儲存到資料庫時不能编輯，以預防循环儲存及重複儲存已存档的物件。
+					这不應該发生在正常使用下，
+					且最常見是因为错误的配置或關聯所造成。<br />
+					有時候可能是错误引起的，尤其當你不是使用穩定发行的版本。</p>
 
-				<h3>我已經定義了一個限制和偏移，但結果不正確</h3>
-				<p>ORM 始終確保查詢的結果是一致的。如果你運行一個包含關聯模型的查詢，
-					子查詢將被產生以確保整個關聯結果集被取回。
-					即使這意味著比起你已經設定的限制更多的記錄將被取回。這是因為，
-					一旦你開始操作不完整的結果集，非常糟糕的事情可能發生在你的關聯模型。</p>
-				<p>如果你絕對肯定你不會操作該結果，例如，因為你只需要它們的分頁，
+				<h3>我已经定義了一个限制和偏移，但結果不正確</h3>
+				<p>ORM 始終確保查詢的結果是一致的。如果你运行一个包含關聯模型的查詢，
+					子查詢将被產生以確保整个關聯結果集被取回。
+					即使这意味著比起你已经設定的限制更多的記錄将被取回。这是因为，
+					一旦你開始操作不完整的結果集，非常糟糕的事情可能发生在你的關聯模型。</p>
+				<p>如果你絕對肯定你不会操作該結果，例如，因为你只需要它們的分頁，
 					你可以使用 <kbd>rows_limit()</kbd> 和 <kbd>rows_offset()</kbd> 來代替，
-					這將在整個查詢中強制它們。</p>
+					这将在整个查詢中強制它們。</p>
 			</section>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

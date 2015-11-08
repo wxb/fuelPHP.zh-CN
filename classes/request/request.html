@@ -12,7 +12,7 @@
 		var class_prefix = "Request::";
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Request - 類別 - FuelPHP 简体中文手册</title>
+	<title>Request - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="request.html#" id="toc_handle">目錄</a>
+			<a href="request.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Request 類別</h2>
+			<h2>Request 类別</h2>
 
-			<p>Request 類別處理 URI 請求。它被 Fuel 用在 index.php 處理使用者 URI 請求，在一個 HMVC 情境下你需要它來產生請求。</p>
+			<p>Request 类別处理 URI 請求。它被 Fuel 用在 index.php 处理使用者 URI 請求，在一个 HMVC 情境下你需要它來產生請求。</p>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($uri = null, $route = true)</h4>
-				<p><strong>forge</strong> 方法回傳一個新的 Request 物件。</p>
+				<p><strong>forge</strong> 方法回傳一个新的 Request 物件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -54,23 +54,23 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$uri</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要被請求的 URI。如果這個參數不存在，URI 類別將被用來偵測 URI。</td>
+									<td>要被請求的 URI。如果这个參数不存在，URI 类別将被用來偵测 URI。</td>
 								</tr>
 								<tr>
 									<th><kbd>$route</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>如果為 true，被傳遞或被偵測到的 URI 將被路由類別處理。如果路徑不存在，一個 404 將被產生。如果你請求一個非公開的 URI，設定它為 <strong>false</strong>。</td>
+									<td>如果为 true，被傳遞或被偵测到的 URI 将被路由类別处理。如果路徑不存在，一个 404 将被產生。如果你請求一个非公開的 URI，設定它为 <strong>false</strong>。</td>
 								</tr>
 							</table>
 						</td>
@@ -82,20 +82,20 @@
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 為 admin 控制器的 login 方法建立請求物件
+							<pre class="php"><code>// 为 admin 控制器的 login 方法建立請求物件
 $request = Request::forge('admin/login');
 
-// 請注意這只建立物件，它沒有執行請求！</code></pre>
+// 請注意这只建立物件，它沒有执行請求！</code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note">你也可以使用 Request::forge() 來鍛造一個 <a href="curl.html">cURL</a> 或一個 <a href="soap.html">SOAP</a> 請求物件。</p>
+				<p class="note">你也可以使用 Request::forge() 來鍛造一个 <a href="curl.html">cURL</a> 或一个 <a href="soap.html">SOAP</a> 請求物件。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_execute">execute($method_params = null)</h4>
-				<p><strong>execute</strong> 方法執行一個請求並在該請求物件儲存回應的結果讓後續使用。</p>
+				<p><strong>execute</strong> 方法执行一个請求并在該請求物件儲存回應的結果让後續使用。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -103,18 +103,18 @@ $request = Request::forge('admin/login');
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$method_params</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要傳給被呼叫控制器的任何選擇性參數的陣列。</td>
+									<td>要傳給被呼叫控制器的任何選擇性參数的陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -126,10 +126,10 @@ $request = Request::forge('admin/login');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 為 admin 控制器的 login 方法建立並執行 Request 物件
+							<pre class="php"><code>// 为 admin 控制器的 login 方法建立并执行 Request 物件
 $request = Request::forge('admin/login')->execute();
 
-// 傳遞一個物件到 login 控制器
+// 傳遞一个物件到 login 控制器
 $object = new Object();
 $request = Request::forge('admin/login')->execute(array('object' => $object));</code></pre>
 						</td>
@@ -140,7 +140,7 @@ $request = Request::forge('admin/login')->execute(array('object' => $object));</
 
 			<article>
 				<h4 class="method" id="method_response">response()</h4>
-				<p><strong>response</strong> 方法取回執行請求的回應物件。</p>
+				<p><strong>response</strong> 方法取回执行請求的回應物件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -148,7 +148,7 @@ $request = Request::forge('admin/login')->execute(array('object' => $object));</
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
@@ -158,11 +158,11 @@ $request = Request::forge('admin/login')->execute(array('object' => $object));</
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 執行請求、取回回應、並顯示它
+							<pre class="php"><code>// 执行請求、取回回應、并顯示它
 $response = Request::forge('admin/login')->execute()->response();
 echo $response;
 
-// Request 物件包含一個 __toString() 方法做為一個替代方法來取回輸出
+// Request 物件包含一个 __toString() 方法做为一个替代方法來取回輸出
 $output = Request::forge('admin/login')->execute();
 echo $output;</code></pre>
 						</td>
@@ -173,7 +173,7 @@ echo $output;</code></pre>
 
 			<article>
 				<h4 class="method" id="method_params">params()</h4>
-				<p>回傳一個觸發此請求的路由中所有具名參數的陣列。</p>
+				<p>回傳一个觸发此請求的路由中所有具名參数的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -181,7 +181,7 @@ echo $output;</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
@@ -191,7 +191,7 @@ echo $output;</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得具名參數的列表
+							<pre class="php"><code>// 取得具名參数的列表
 $params = Request::active()->params();</code></pre>
 						</td>
 					</tr>
@@ -209,7 +209,7 @@ $params = Request::active()->params();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -219,7 +219,7 @@ $params = Request::active()->params();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 在一個鍛造的 Request 取得請求方法
+							<pre class="php"><code>// 在一个鍛造的 Request 取得請求方法
 $method = Request::main()->get_method();</code></pre>
 						</td>
 					</tr>
@@ -237,18 +237,18 @@ $method = Request::main()->get_method();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$method</kbd></th>
 									<td>字串，必要</td>
-									<td>要被回傳的參數名稱。這必須與路徑中定義的完全相同。</td>
+									<td>要被回傳的參数名稱。这必須與路徑中定義的完全相同。</td>
 								</tr>
 							</table>
 						</td>
@@ -260,7 +260,7 @@ $method = Request::main()->get_method();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 在一個鍛造的 Request 設定請求方法
+							<pre class="php"><code>// 在一个鍛造的 Request 設定請求方法
 $params = Request::forge('some/route')->set_method('POST');</code></pre>
 						</td>
 					</tr>
@@ -270,7 +270,7 @@ $params = Request::forge('some/route')->set_method('POST');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_param">param($param, $default = null)</h4>
-				<p>回傳一個觸發此請求路徑中的指定具名參數，或如果該參數找不到時回傳預設值。</p>
+				<p>回傳一个觸发此請求路徑中的指定具名參数，或如果該參数找不到時回傳預設值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -278,23 +278,23 @@ $params = Request::forge('some/route')->set_method('POST');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$param</kbd></th>
 									<td>字串，必要</td>
-									<td>要被回傳的參數名稱。這必須與路徑中定義的完全相同。</td>
+									<td>要被回傳的參数名稱。这必須與路徑中定義的完全相同。</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>如果請求的具名參數未被定義時要回傳的值。</td>
+									<td>如果請求的具名參数未被定義時要回傳的值。</td>
 								</tr>
 							</table>
 						</td>
@@ -306,13 +306,13 @@ $params = Request::forge('some/route')->set_method('POST');</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得稱為 'name' 的指定具名參數
+							<pre class="php"><code>// 取得稱为 'name' 的指定具名參数
 $param = Request::active()->param('name', 'none');</code></pre>
 						</td>
 					</tr>
 					</tbody>
 				</table>
-				<p class="note"><a href="../../general/routing.html#/named_routes">路由</a>段落介紹命名的參數如何被定義在路徑中。</p>
+				<p class="note"><a href="../../general/routing.html#/named_routes">路由</a>段落介紹命名的參数如何被定義在路徑中。</p>
 			</article>
 
 			<article>
@@ -325,12 +325,12 @@ $param = Request::active()->param('name', 'none');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>Fuel\Core\Request 物件或當它是主要請求時為 null</td>
+						<td>Fuel\Core\Request 物件或當它是主要請求時为 null</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -353,7 +353,7 @@ $parent = Request::active()->parent();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
@@ -382,7 +382,7 @@ $children = Request::main()->children();</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
@@ -398,9 +398,9 @@ $children = Request::main()->children();</code></pre>
 					</tbody>
 				</table>
 
-				<p class="note">這是第一個執行的 Request 實例，並不一定是目前 Request 的根父代。
-					這可能是這種情況，例如，如果主要的 Request 發生 404，而且你在那之後建立一個新的
-					Request（發生在 <kbd>_404_</kbd> 路徑）。
+				<p class="note">这是第一个执行的 Request 實例，并不一定是目前 Request 的根父代。
+					这可能是这種情況，例如，如果主要的 Request 发生 404，而且你在那之後建立一个新的
+					Request（发生在 <kbd>_404_</kbd> 路徑）。
 			</article>
 
 			<article>
@@ -413,7 +413,7 @@ $children = Request::main()->children();</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
@@ -432,7 +432,7 @@ $children = Request::main()->children();</code></pre>
 
 			<article>
 				<h4 class="method" id="method_add_path">add_path($path, $prefix = false)</h4>
-				<p><strong>add_path</strong> 方法能讓你添加一個搜尋路徑到目前的 Request 實例。搜尋路徑被 Finder::search() 用來定位你的應用程式內的檔案。</p>
+				<p><strong>add_path</strong> 方法能让你添加一个搜尋路徑到目前的 Request 實例。搜尋路徑被 Finder::search() 用來定位你的应用程序內的档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -440,11 +440,11 @@ $children = Request::main()->children();</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -456,7 +456,7 @@ $children = Request::main()->children();</code></pre>
 								<tr>
 									<th><kbd>$prefix</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果為 <strong>false</strong>，路徑將被附加到搜尋路徑。如果為 <strong>true</strong>，它將被附加在前。</td>
+									<td>如果为 <strong>false</strong>，路徑将被附加到搜尋路徑。如果为 <strong>true</strong>，它将被附加在前。</td>
 								</tr>
 							</table>
 						</td>
@@ -468,7 +468,7 @@ $children = Request::main()->children();</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 添加應用程式 myfiles 文件夾到活躍的 Request 實例的搜尋路徑
+							<pre class="php"><code>// 添加应用程序 myfiles 文件夾到活躍的 Request 實例的搜尋路徑
 Request::active()->add_path(APPPATH.'myfiles'.DS);</code></pre>
 						</td>
 					</tr>
@@ -486,7 +486,7 @@ Request::active()->add_path(APPPATH.'myfiles'.DS);</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>否</td>
 					</tr>
 					<tr>
@@ -508,7 +508,7 @@ $paths = Request::active()->get_paths();</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

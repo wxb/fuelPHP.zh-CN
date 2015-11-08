@@ -12,7 +12,7 @@
 		var class_prefix = "Autoloader::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Autoloader - 類別 - FuelPHP 简体中文手册</title>
+	<title>Autoloader - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Autoloader 類別</h2>
+			<h2>Autoloader 类別</h2>
 
-			<p>Autoloader 類別包含 Fuel 的自動載入器函式，它也提供了與自動載入程序互動的方法。</p>
+			<p>Autoloader 类別包含 Fuel 的自动載入器函式，它也提供了與自动載入程序互动的方法。</p>
 
 			<article>
 				<h4 class="method" id="method_add_namespace">add_namespace($namespace, $path, $psr = false)</h4>
-				<p><strong>add_namespace</strong> 方法添加一個命名空間與路徑。</p>
+				<p><strong>add_namespace</strong> 方法添加一个命名空間與路徑。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -54,11 +54,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -75,7 +75,7 @@
 									<tr>
 										<th><kbd>$psr</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td class="description">設定為 <strong>true</strong> 以表示這是一個 PSR-0 兼容的命名空間。</td>
+										<td class="description">設定为 <strong>true</strong> 以表示这是一个 PSR-0 兼容的命名空間。</td>
 									</tr>
 								</table>
 							</td>
@@ -100,7 +100,7 @@ Autoloader::add_namespace('Nested\\Namespace', PKGPATH.'nested/');
 
 			<article>
 				<h4 class="method" id="method_add_namespaces">add_namespaces($namespace, $prepend = false)</h4>
-				<p><strong>add_namespaces</strong> 方法添加一個命名空間陣列。</p>
+				<p><strong>add_namespaces</strong> 方法添加一个命名空間陣列。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -108,11 +108,11 @@ Autoloader::add_namespace('Nested\\Namespace', PKGPATH.'nested/');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -124,7 +124,7 @@ Autoloader::add_namespace('Nested\\Namespace', PKGPATH.'nested/');
 									<tr>
 										<th><kbd>$prepend</kbd></th>
 										<td><em>false</em></td>
-										<td class="description">設定為 <em>true</em> 如果你想附加在前。</td>
+										<td class="description">設定为 <em>true</em> 如果你想附加在前。</td>
 									</tr>
 								</table>
 							</td>
@@ -149,7 +149,7 @@ Autoloader::add_namespace('Nested\\Namespace', PKGPATH.'nested/');
 
 			<article>
 				<h4 class="method" id="method_namespace_path">namespace_path($namespace)</h4>
-				<p><strong>namespace_path</strong> 方法取回指向一個命名空間的路徑。</p>
+				<p><strong>namespace_path</strong> 方法取回指向一个命名空間的路徑。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -157,11 +157,11 @@ Autoloader::add_namespace('Nested\\Namespace', PKGPATH.'nested/');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -194,7 +194,7 @@ $path = Autoloader::namespace_path('Unknown\\Namespace');
 
 			<article>
 				<h4 class="method" id="method_add_class">add_class($class, $path)</h4>
-				<p><strong>add_class</strong> 方法添加一個類別路徑。</p>
+				<p><strong>add_class</strong> 方法添加一个类別路徑。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -202,23 +202,23 @@ $path = Autoloader::namespace_path('Unknown\\Namespace');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$class</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">類別名稱</td>
+										<td class="description">类別名稱</td>
 									</tr>
 									<tr>
 										<th><kbd>$path</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">指向類別檔案的路徑</td>
+										<td class="description">指向类別档案的路徑</td>
 									</tr>
 								</table>
 							</td>
@@ -239,7 +239,7 @@ $path = Autoloader::namespace_path('Unknown\\Namespace');
 
 			<article>
 				<h4 class="method" id="method_add_classes">add_classes($classes)</h4>
-				<p><strong>add_class</strong> 方法添加一個類別陣列。</p>
+				<p><strong>add_class</strong> 方法添加一个类別陣列。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -247,18 +247,18 @@ $path = Autoloader::namespace_path('Unknown\\Namespace');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$classes</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">類別陣列</td>
+										<td class="description">类別陣列</td>
 									</tr>
 								</table>
 							</td>
@@ -283,7 +283,7 @@ $path = Autoloader::namespace_path('Unknown\\Namespace');
 
 			<article>
 				<h4 class="method" id="method_alias_to_namespace">alias_to_namespace($class, $namespace = '')</h4>
-				<p><strong>alias_to_namespace</strong> 方法別名一個類別指向一個命名空間，預設是根部。</p>
+				<p><strong>alias_to_namespace</strong> 方法別名一个类別指向一个命名空間，預設是根部。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -291,18 +291,18 @@ $path = Autoloader::namespace_path('Unknown\\Namespace');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$class</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">類別名稱</td>
+										<td class="description">类別名稱</td>
 									</tr>
 									<tr>
 										<th><kbd>$namespace</kbd></th>
@@ -333,8 +333,8 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 			<article>
 				<h4 class="method" id="method_add_core_namespace">add_core_namespace($namespace, $prefix = false)</h4>
 				<p>
-					<strong>add_core_namespace</strong> 方法添加一個命名空間給可能沒有命名空間前綴的類別，
-					並且會自動別名到全域的命名空間。前綴類別將覆寫核心類別與先前添加的命名空間。
+					<strong>add_core_namespace</strong> 方法添加一个命名空間給可能沒有命名空間前綴的类別，
+					并且会自动別名到全域的命名空間。前綴类別将覆寫核心类別與先前添加的命名空間。
 				</p>
 				<table class="method">
 					<tbody>
@@ -343,11 +343,11 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -359,7 +359,7 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 									<tr>
 										<th><kbd>$prefix</kbd></th>
 										<td><em>false</em></td>
-										<td class="description">設定為 <em>true</em> 以前綴命名空間</td>
+										<td class="description">設定为 <em>true</em> 以前綴命名空間</td>
 									</tr>
 								</table>
 							</td>
@@ -380,7 +380,7 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 
 			<article>
 				<h4 class="method" id="method_load">load($class)</h4>
-				<p><strong>load</strong> 方法試圖尋找、載入類別，如存在時觸發它的 _init 函式。</p>
+				<p><strong>load</strong> 方法试圖尋找、載入类別，如存在時觸发它的 _init 函式。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -388,18 +388,18 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$class</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">類別名稱</td>
+										<td class="description">类別名稱</td>
 									</tr>
 								</table>
 							</td>
@@ -422,16 +422,16 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 
 			<article>
 				<h4 id="function_import">import($path, $folder = 'classes')</h4>
-				<p><strong>import</strong> 函式導入一個在 COREPATH 的 PHP 檔案。</p>
+				<p><strong>import</strong> 函式導入一个在 COREPATH 的 PHP 档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -439,7 +439,7 @@ Autoloader::alias_to_namespace('Mynamespace\\Myclass', 'Other\\Namespace\\');
 									<th><kbd>$path</kbd></th>
 									<td><em>字串</em></td>
 									<td><em>必要</em></td>
-									<td>指向檔案的路徑</td>
+									<td>指向档案的路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$folder</kbd></th>
@@ -471,7 +471,7 @@ import('spyc/spyc', 'vendor');
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

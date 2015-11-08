@@ -12,7 +12,7 @@
 		var class_prefix = "DBUtil::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>DBUtil - 類別 - FuelPHP 简体中文手册</title>
+	<title>DBUtil - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,17 +40,17 @@
 
 		<div id="main">
 
-			<h2>DBUtil 類別</h2>
+			<h2>DBUtil 类別</h2>
 
-			<p>DBUtil 類別能讓你對資料庫做管理和執行例行操作。</p>
+			<p>DBUtil 类別能让你對資料庫做管理和执行例行操作。</p>
 
 			<h3 id="managing">管理函式</h3>
 
-			<p>DBUtil 能讓你建立、更名、改變和除去資料庫欄位。</p>
+			<p>DBUtil 能让你建立、更名、改變和除去資料庫欄位。</p>
 
 			<article>
 				<h4 class="method" id="method_set_connection">set_connection($connection)</h4>
-				<p><strong>set_connection</strong> 方法為所有方法設定預設 DBUtil 連線。</p>
+				<p><strong>set_connection</strong> 方法为所有方法設定預設 DBUtil 連線。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -58,11 +58,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -76,7 +76,7 @@
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -85,7 +85,7 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 為 DBUtil 設定一個替代的資料庫連線
+								<pre class="php"><code>// 为 DBUtil 設定一个替代的資料庫連線
 DBUtil::set_connection('my_database_group');
 
 // 用該連線做其他 DBUtil 呼叫。
@@ -102,7 +102,7 @@ DBUtil::set_connection(null);
 
 			<article>
 				<h4 class="method" id="method_create_database">create_database($database, charset = null, $if_not_exists = true, $db = null)</h4>
-				<p><strong>create_database</strong> 方法建立一個資料庫，如果失敗將拋出一個 Database_Exception。</p>
+				<p><strong>create_database</strong> 方法建立一个資料庫，如果失敗将拋出一个 Database_Exception。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -110,11 +110,11 @@ DBUtil::set_connection(null);
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -143,7 +143,7 @@ DBUtil::set_connection(null);
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -152,7 +152,7 @@ DBUtil::set_connection(null);
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 建立名為 `my_database` 的資料庫
+								<pre class="php"><code>// 建立名为 `my_database` 的資料庫
 DBUtil::create_database('my_database');
 
 // 捕捉例外
@@ -176,12 +176,12 @@ DBUtil::create_database('new_database', 'utf8_unicode_ci');
 						</tr>
 					</tbody>
 				</table>
-				<p>如果沒有提供字符集，將退回到活動 db 群組的字符集。</p>
+				<p>如果沒有提供字符集，将退回到活动 db 群組的字符集。</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_drop_database">drop_database($database, $db = null)</h4>
-				<p><strong>drop_database</strong> 方法除去一個資料庫，如果失敗將拋出一個 Database_Exception。</p>
+				<p><strong>drop_database</strong> 方法除去一个資料庫，如果失敗将拋出一个 Database_Exception。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -189,11 +189,11 @@ DBUtil::create_database('new_database', 'utf8_unicode_ci');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -212,7 +212,7 @@ DBUtil::create_database('new_database', 'utf8_unicode_ci');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -221,7 +221,7 @@ DBUtil::create_database('new_database', 'utf8_unicode_ci');
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 除去名為 `my_database` 的資料庫
+								<pre class="php"><code>// 除去名为 `my_database` 的資料庫
 DBUtil::drop_database('my_database');
 
 // 捕捉例外
@@ -250,11 +250,11 @@ catch(\Database_Exception $e)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -278,7 +278,7 @@ catch(\Database_Exception $e)
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 確認名為 'my_table' 的資料表是否存在
+								<pre class="php"><code>// 確認名为 'my_table' 的資料表是否存在
 if(DBUtil::table_exists('my_table'))
 {
 	// 資料表存在
@@ -295,7 +295,7 @@ if(DBUtil::table_exists('my_table'))
 
 			<article>
 				<h4 class="method" id="method_drop_table">drop_table($table, $db = null)</h4>
-				<p><strong>drop_table</strong> 方法除去一張資料表，如果失敗將拋出一個 Database_Exception。</p>
+				<p><strong>drop_table</strong> 方法除去一張資料表，如果失敗将拋出一个 Database_Exception。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -303,11 +303,11 @@ if(DBUtil::table_exists('my_table'))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -326,7 +326,7 @@ if(DBUtil::table_exists('my_table'))
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -335,7 +335,7 @@ if(DBUtil::table_exists('my_table'))
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 除去名為 `my_table` 的資料表
+								<pre class="php"><code>// 除去名为 `my_table` 的資料表
 DBUtil::drop_table('my_table');
 
 // 捕捉例外
@@ -364,11 +364,11 @@ catch(\Database_Exception $e)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -387,7 +387,7 @@ catch(\Database_Exception $e)
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -396,7 +396,7 @@ catch(\Database_Exception $e)
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 更名 `my_table` 為 `my_new_table`
+								<pre class="php"><code>// 更名 `my_table` 为 `my_new_table`
 DBUtil::rename_table('my_table', 'my_new_table');
 
 // 捕捉例外
@@ -425,11 +425,11 @@ catch(\Database_Exception $e)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -456,17 +456,17 @@ catch(\Database_Exception $e)
 									<tr>
 										<th><kbd>$engine</kbd></th>
 										<td><strong>false</strong></td>
-										<td>要使用哪個儲存引擎（MyISAM、InnoDB、……）</td>
+										<td>要使用哪个儲存引擎（MyISAM、InnoDB、……）</td>
 									</tr>
 									<tr>
 										<th><kbd>$charset</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>預設字符集，退回到活動 db 群組字符集</td>
+										<td>預設字符集，退回到活动 db 群組字符集</td>
 									</tr>
 									<tr>
 										<th><kbd>$foreign_keys</kbd></th>
 										<td><strong>array()</strong></td>
-										<td>外鍵約束定義的陣列，陣列鍵 'key' 和 'reference' 是必要的，且如果缺少會拋出一個錯誤，所有其他的是選擇性的。</td>
+										<td>外鍵約束定義的陣列，陣列鍵 'key' 和 'reference' 是必要的，且如果缺少会拋出一个错误，所有其他的是選擇性的。</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
@@ -478,7 +478,7 @@ catch(\Database_Exception $e)
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -536,11 +536,11 @@ CREATE TABLE `users` (
 							</td>
 						</tr>
 						<tr>
-							<th>可能的參數</th>
+							<th>可能的參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
@@ -553,7 +553,7 @@ CREATE TABLE `users` (
 									</tr>
 									<tr>
 										<th><kbd>constraint</kbd></th>
-										<td>長度或值，值可以被提供在一個陣列中</td>
+										<td>長度或值，值可以被提供在一个陣列中</td>
 									</tr>
 									<tr>
 										<th><kbd>charset</kbd></th>
@@ -561,7 +561,7 @@ CREATE TABLE `users` (
 									</tr>
 									<tr>
 										<th><kbd>unsigned</kbd></th>
-										<td>布林，<em>true</em> 如果無符號，預設為 <em>false</em></td>
+										<td>布林，<em>true</em> 如果無符號，預設为 <em>false</em></td>
 									</tr>
 									<tr>
 										<th><kbd>default</kbd></th>
@@ -569,11 +569,11 @@ CREATE TABLE `users` (
 									</tr>
 									<tr>
 										<th><kbd>null</kbd></th>
-										<td>布林，<em>true</em> 如果可為空，預設為 <em>false</em></td>
+										<td>布林，<em>true</em> 如果可为空，預設为 <em>false</em></td>
 									</tr>
 									<tr>
 										<th><kbd>auto_increment</kbd></th>
-										<td>設為 <em>true</em> 以使用自動遞增</td>
+										<td>設为 <em>true</em> 以使用自动遞增</td>
 									</tr>
 									<tr>
 										<th><kbd>comment</kbd></th>
@@ -585,7 +585,7 @@ CREATE TABLE `users` (
 					</tbody>
 				</table>
 
-				<p>預設欄位值預設情況下會被轉義，在一些情況下你可能不想轉義此值，如果是這樣，你可以使用 <a href="./db.html#method_expr">DB::expr</a>。</p>
+				<p>預設欄位值預設情況下会被轉義，在一些情況下你可能不想轉義此值，如果是这樣，你可以使用 <a href="./db.html#method_expr">DB::expr</a>。</p>
 				<pre class="php"><code>\DBUtil::create_table('users', array(
 	'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true),
 	'name' => array('type' => 'text'),
@@ -610,11 +610,11 @@ CREATE TABLE `users` (
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -669,11 +669,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -697,7 +697,7 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -727,11 +727,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -755,7 +755,7 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -781,11 +781,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -809,7 +809,7 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -831,7 +831,7 @@ else
 
 			<article>
 				<h4 class="method" id="method_create_index">create_index($table, $index_columns, $index_name, $index = '', $db = null)</h4>
-				<p><strong>create_index</strong> 方法能讓你在資料表建立次要索引。</p>
+				<p><strong>create_index</strong> 方法能让你在資料表建立次要索引。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -839,11 +839,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -865,7 +865,7 @@ else
 									<tr>
 										<th><kbd>$index</kbd></th>
 										<td><em>選擇性</em></td>
-										<td>要被建立的索引類型。<br />目前支援：UNIQUE、FULLTEXT、SPATIAL、NONCLUSTERED</td>
+										<td>要被建立的索引类型。<br />目前支援：UNIQUE、FULLTEXT、SPATIAL、NONCLUSTERED</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
@@ -903,7 +903,7 @@ else
 
 			<article>
 				<h4 class="method" id="method_drop_index">drop_index($table, $index_name, $db = null)</h4>
-				<p><strong>drop_index</strong> 方法能讓你從資料表除去次要索引。</p>
+				<p><strong>drop_index</strong> 方法能让你從資料表除去次要索引。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -911,11 +911,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -959,7 +959,7 @@ else
 
 			<article>
 				<h4 class="method" id="method_add_foregin_key">add_foregin_key($table, $foreign_key)</h4>
-				<p><strong>add_foreign_key</strong> 方法能讓你在資料表建立後添加外鍵。</p>
+				<p><strong>add_foreign_key</strong> 方法能让你在資料表建立後添加外鍵。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -967,11 +967,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1017,7 +1017,7 @@ else
 
 			<article>
 				<h4 class="method" id="method_drop_foreign_key">drop_foreign_key($table, $fk_name)</h4>
-				<p><strong>drop_foreign_key</strong> 方法能讓你從資料表除去外鍵。</p>
+				<p><strong>drop_foreign_key</strong> 方法能让你從資料表除去外鍵。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1025,11 +1025,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1078,11 +1078,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1101,7 +1101,7 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳受影響的列數。</td>
+							<td>回傳受影響的列数。</td>
 						</tr>
 						<tr>
 							<th>拋出</th>
@@ -1127,11 +1127,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1150,14 +1150,14 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>True</em> 如果資料表是 OK 的。<em>False</em> 當需要注意時。如果不支援它會記錄錯誤訊息。</td>
+							<td><em>True</em> 如果資料表是 OK 的。<em>False</em> 當需要注意時。如果不支援它会記錄错误訊息。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>if(\DBUtil::analyze_table('table_name') === false)
 {
-	// 做點什麼
+	// 做點什么
 }
 </code></pre>
 							</td>
@@ -1176,11 +1176,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1199,14 +1199,14 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>True</em> 如果資料表是 OK 的。<em>False</em> 當需要注意時。如果不支援它會記錄錯誤訊息。</td>
+							<td><em>True</em> 如果資料表是 OK 的。<em>False</em> 當需要注意時。如果不支援它会記錄错误訊息。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>if(\DBUtil::check_table('table_name') === false)
 {
-	// 做點什麼
+	// 做點什么
 }
 </code></pre>
 							</td>
@@ -1225,11 +1225,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1248,14 +1248,14 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>True</em> 如果資料表是 OK 或已優化的。<em>False</em> 在失敗時。如果不支援或失敗它會記錄錯誤訊息。</td>
+							<td><em>True</em> 如果資料表是 OK 或已優化的。<em>False</em> 在失敗時。如果不支援或失敗它会記錄错误訊息。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>if(\DBUtil::optimize_table('table_name') === false)
 {
-	// 做點什麼
+	// 做點什么
 }
 </code></pre>
 							</td>
@@ -1274,11 +1274,11 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1297,14 +1297,14 @@ else
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>True</em> 如果資料表是 OK 或已修復的。<em>false</em> 在失敗時。如果不支援或失敗它會記錄錯誤訊息。</td>
+							<td><em>True</em> 如果資料表是 OK 或已修復的。<em>false</em> 在失敗時。如果不支援或失敗它会記錄错误訊息。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
 								<pre class="php"><code>if(\DBUtil::repair_table('table_name') === false)
 {
-	// 做點什麼
+	// 做點什么
 }
 </code></pre>
 							</td>
@@ -1317,7 +1317,7 @@ else
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

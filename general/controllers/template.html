@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,16 +41,16 @@
 
 			<h2>樣板控制器</h2>
 
-			<h3>樣板控制器是什麼？</h3>
+			<h3>樣板控制器是什么？</h3>
 
-			<p>Template 控制器是 Base 控制器的擴充並內建支援樣板。它使用一些預定義的 before() 和 after() 方法。基本上，
+			<p>Template 控制器是 Base 控制器的擴充并內建支援樣板。它使用一些預定義的 before() 和 after() 方法。基本上，
 			它可以用來在你的檢視佈局中包裹頁眉、頁腳、側邊欄等。</p>
 
 			<h3>使用樣板控制器</h3>
 
-			<p>如同所有的控制器，你在 <kbd>fuel/app/classes/controller</kbd> 目錄裡建立一個類別。它們需要擴充 <kbd>Controller_Template</kbd> 類別並且預設前綴為 "Controller_"。下面是一個控制器 "example" 的範例：</p>
+			<p>如同所有的控制器，你在 <kbd>fuel/app/classes/controller</kbd> 目录裡建立一个类別。它們需要擴充 <kbd>Controller_Template</kbd> 类別并且預設前綴为 "Controller_"。下面是一个控制器 "example" 的範例：</p>
 
-			<p class="note"><strong>請注意：</strong>預設情況下，擴充 Controller_Template 的類別的所有方法將使用該樣板。
+			<p class="note"><strong>請注意：</strong>預設情況下，擴充 Controller_Template 的类別的所有方法将使用該樣板。
 			<br />但是，有可能從樣板<a href="#omit_methods">省略方法</a>。</p>
 
 	<pre><code>class Controller_Example extends Controller_Template
@@ -66,8 +66,8 @@
 			<h3>使用樣板控制器的 before() 及／或 after()</h3>
 
 			<p class="note"><strong>請注意：</strong>如果你在你的樣板控制器擴充中使用 before() 方法，你
-				<strong>必須</strong> 添加 <kbd>parent::before();</kbd> 到該方法，否則 <kbd>$this->template</kbd> 將無法使用。
-				<strong>讓 after() 兼容</strong> 於 Controller_Template：
+				<strong>必須</strong> 添加 <kbd>parent::before();</kbd> 到該方法，否則 <kbd>$this->template</kbd> 将無法使用。
+				<strong>让 after() 兼容</strong> 於 Controller_Template：
 				使用 <kbd>after($response)</kbd> 而不僅僅是 after()。</p>
 
 
@@ -78,19 +78,19 @@
 	 */
 	public function before()
 	{
-		parent::before(); // 沒有這一行，樣板不會運作！
+		parent::before(); // 沒有这一行，樣板不会運作！
 
-		// 做點什麼
+		// 做點什么
 	}
 
 	/**
-	 * 透過添加 $response 做為一個參數讓 after() 兼容於 Controller_Template
+	 * 透過添加 $response 做为一个參数让 after() 兼容於 Controller_Template
 	 */
 	public function after($response)
 	{
 		$response = parent::after($response); // 如果你建立自己的 Response 物件就不需要
 
-		// 做點什麼
+		// 做點什么
 
 		return $response; // 確認 after() 回傳 Response 物件
 	}
@@ -106,8 +106,8 @@
 			<h3>樣板範例</h3>
 
 			<p>
-				樣板檔案是一個呼叫你的 JS、CSS、組織你的 HTML 和呼叫檢視局部的好地方。它能讓你組織你的輸出。
-				它就只是一個檢視檔案，預設情況下，將注視這裡：<kbd>fuel/app/views/template.php</kbd>。
+				樣板档案是一个呼叫你的 JS、CSS、組織你的 HTML 和呼叫檢視局部的好地方。它能让你組織你的輸出。
+				它就只是一个檢視档案，預設情況下，将注視这裡：<kbd>fuel/app/views/template.php</kbd>。
 			</p>
 
 	<pre><code>&lt;!DOCTYPE html>
@@ -129,11 +129,11 @@
 &lt;/body>
 &lt;/html></code></pre>
 
-			<h3>變更預設樣板檔案</h3>
+			<h3>變更預設樣板档案</h3>
 
 			<p>
-				你可以輕易地把預設檔案 <kbd>APPPATH/views/template.php</kbd> 改為其他的。<br/>
-				你必須把公開變數 <kbd>$template</kbd>（注意：在這裡你不需要副檔名）設為其他的，例如：
+				你可以輕易地把預設档案 <kbd>APPPATH/views/template.php</kbd> 改为其他的。<br/>
+				你必須把公開變数 <kbd>$template</kbd>（注意：在这裡你不需要副档名）設为其他的，例如：
 			</p>
 
 	<pre><code>class Controller_Example extends Controller_Template
@@ -151,9 +151,9 @@
 		<h3 id="omit_methods">從樣板控制器省略方法</h3>
 
 		<p>
-			預設情況下，擴充 <kbd>Controller_Template</kbd> 的類別的所有方法將使用該樣板。<br />
+			預設情況下，擴充 <kbd>Controller_Template</kbd> 的类別的所有方法将使用該樣板。<br />
 			如果你想要從樣板省略方法，你可以透過在
-			<kbd>Response</kbd> 物件回傳其他東西辦到。那將覆寫預設樣板輸出。
+			<kbd>Response</kbd> 物件回傳其他東西辦到。那将覆寫預設樣板輸出。
 		</p>
 
 		<pre><code>class Controller_Example extends Controller_Template
@@ -165,7 +165,7 @@
 		$this->template->title   = 'Example Page';
 		$this->template->content = View::forge('test/index', $data);
 
-		// 這將在樣板顯示內容
+		// 这将在樣板顯示內容
 	}
 
 	public function action_example()
@@ -173,7 +173,7 @@
 		$data['title']   = "Example Page";
 		$data['content'] = "Don't show me in the template";
 
-		// 優先回傳 Response 物件並將不經樣板顯示內容
+		// 優先回傳 Response 物件并将不经樣板顯示內容
 		return new Response(View::forge('index/test', $data));
 	}
 }</code></pre>
@@ -182,7 +182,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

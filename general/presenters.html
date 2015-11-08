@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>表現控件 - 一般 - FuelPHP 简体中文手册</title>
+	<title>表现控件 - 一般 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="presenters.html#" id="toc_handle">目錄</a>
+			<a href="presenters.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,9 +40,9 @@
 		<div id="main">
 
 			<article>
-				<h2>表現控件</h2>
+				<h2>表现控件</h2>
 
-				<h3 id="what_is_a_presenter">表現控件是什麼？</h3>
+				<h3 id="what_is_a_presenter">表现控件是什么？</h3>
 
 				<p>A Presenter is a class that contains the logic that is needed to generate your view (or views). When the controller
 				is done with your user input and is done with whatever actions it needed to take, it turns execution over to
@@ -50,12 +50,12 @@
 				but can contain database calls and any other retrieval or preparation operations needed to generate the View's
 				data.</p>
 
-				<p class="note">表現控件是選擇性的，如果你不需要它們，你可以直接使用 <a href="views.html">Views</a>，並保持在控制器中預處理邏輯。</p>
+				<p class="note">表现控件是選擇性的，如果你不需要它們，你可以直接使用 <a href="views.html">Views</a>，并保持在控制器中預处理邏輯。</p>
 
 
-				<h3 id="creating_presenters">建立一個表現控件</h3>
+				<h3 id="creating_presenters">建立一个表现控件</h3>
 
-				<p>首先我們在 <code>APPPATH/classes/presenter/index.php</code> 建立一個空的 Presenter 類別：</p>
+				<p>首先我們在 <code>APPPATH/classes/presenter/index.php</code> 建立一个空的 Presenter 类別：</p>
 
 				<pre><code>class Presenter_Index extends Presenter
 {
@@ -131,7 +131,7 @@ $echo_upper('this string'); // 輸出："THIS STRING"</code></pre>
 			<article>
 				<h3 id="security">安全性</h3>
 
-				<p>它與 View 運作相同。這意味著任何在 Presenter 的設定將被輸出編碼，
+				<p>它與 View 運作相同。这意味著任何在 Presenter 的設定将被輸出编码，
 					只要你不關掉它的話。你可以直接在 Presenter 使用相同的 <code>set($name, $value, $encode)</code> 方法，
 					就像你在 View 使用那樣。更多關於此在
 					<a href="views.html#security">View 的安全性章節</a>。</p>
@@ -151,7 +151,7 @@ $presenter = Presenter::forge('index', 'other_method');</code></pre>
 
 				<h4 id="before_after">Before 和 after 方法</h4>
 
-				<p>如果你需要讓一些資料添加到 Presenter 中的所有方法，你可以添加一個 <code>before()</code>
+				<p>如果你需要让一些資料添加到 Presenter 中的所有方法，你可以添加一个 <code>before()</code>
 				或 <code>after()</code> 方法。就像你在 Controllers 做的那樣。</p>
 
 				<h4 id="changing_view">變更檢視</h4>
@@ -172,7 +172,7 @@ $presenter = Presenter::forge('index', 'other_method');</code></pre>
 				<pre class="php"><code>// 使用 'other/index' 檢視來代替 'index' 檢視
 $presenter = Presenter::forge('index', 'other_method', null, 'other/index');
 
-// 你也可以直接傳遞一個 View 物件
+// 你也可以直接傳遞一个 View 物件
 $view = View::forge('other/index');
 $presenter = Presenter::forge('index', 'other_method', null, $view);</code></pre>
 
@@ -181,16 +181,16 @@ $presenter = Presenter::forge('index', 'other_method', null, $view);</code></pre
 
 				<h4>從其他命名空間或非 Presenter_ 前綴的地方使用 Presenter</h4>
 
-				<p>如果你想要使用這些，你必須對 <code>forge()</code>使用完整的類別名稱，包含命名空間。
-				在這些情況下，預設的命名往往會不如預期般運作， 所以鼓勵設定 <code>$_view</code>
-				特性，或傳遞一個自訂檢視名稱。</p>
+				<p>如果你想要使用这些，你必須對 <code>forge()</code>使用完整的类別名稱，包含命名空間。
+				在这些情況下，預設的命名往往会不如預期般運作， 所以鼓勵設定 <code>$_view</code>
+				特性，或傳遞一个自訂檢視名稱。</p>
 			</article>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

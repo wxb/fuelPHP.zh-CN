@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="routing.html#" id="toc_handle">目錄</a>
+			<a href="routing.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,18 +41,18 @@
 
 			<h2>路由</h2>
 
-			<p>Fuel 的路由從簡易靜態路由到進階使用 HTTP  變數為基礎的路由都有。</p>
+			<p>Fuel 的路由從简易靜態路由到進階使用 HTTP  變数为基础的路由都有。</p>
 
 			<p>路由被設定在 <kbd>fuel/app/config/routes.php</kbd>。</p>
 
 			<h3 id="reserved">保留路由</h3>
 
-			<p>在 Fuel 有兩個保留路由。它們是 <kbd>_root_</kbd> 及 <kbd>_404_</kbd>。</p>
+			<p>在 Fuel 有兩个保留路由。它們是 <kbd>_root_</kbd> 及 <kbd>_404_</kbd>。</p>
 
 			<ul>
 				<li><kbd>_root_</kbd> - 當沒有指定 URI 時預設的路由。</li>
-				<li><kbd>_404_</kbd> - 當沒有控制器或動作被找到時使用的路由，
-					也可被用作一個捕捉所有的路由。</li>
+				<li><kbd>_404_</kbd> - 當沒有控制器或动作被找到時使用的路由，
+					也可被用作一个捕捉所有的路由。</li>
 			</ul>
 
 			<pre class="php"><code>return array(
@@ -62,9 +62,9 @@
 
 			<h3 id="basics">基本路由</h3>
 
-			<p>在左邊的路由與請求的 URI 被比較，如果一個配對被找到，請求會被路由到右邊的 URI。</p>
+			<p>在左邊的路由與請求的 URI 被比較，如果一个配對被找到，請求会被路由到右邊的 URI。</p>
 
-			<p>這能讓你像以下這樣做：</p>
+			<p>这能让你像以下这樣做：</p>
 
 			<pre class="php"><code>return array(
     'about'   => 'site/about',
@@ -78,17 +78,17 @@
 			<p>你可以在你的路由包含任何正規表達式，
 			左邊是針對請求 URI 配對，右邊是左邊的替換，
 			所以你可以根據左邊的正規表達式，在右邊使用反向引用。
-			也有一些特別的語句能讓你配對任何東西或只是片段：</p>
+			也有一些特別的語句能让你配對任何東西或只是片段：</p>
 
 			<ul>
 				<li><kbd>:any</kbd> - 配對來自 URI 點上的任何東西</li>
 				<li><kbd>:segment</kbd> - 只配對 URI 中的第一段，但該片段可以是任何東西</li>
-				<li><kbd>:num</kbd> - 配對任何數字</li>
+				<li><kbd>:num</kbd> - 配對任何数字</li>
 				<li><kbd>:alpha</kbd> - 配對任何英文字元，包括 UTF-8</li>
-				<li><kbd>:alnum</kbd> - 配對任何英數字元，包括 UTF-8</li>
+				<li><kbd>:alnum</kbd> - 配對任何英数字元，包括 UTF-8</li>
 			</ul>
 
-			<p>這裡有一些範例：</p>
+			<p>这裡有一些範例：</p>
 
 			<pre class="php"><code>return array(
     'blog/(:any)'      => 'blog/entry/$1', // 路由 /blog/entry_name 到 /blog/entry/entry_name
@@ -99,8 +99,8 @@
 
 			<h3 id="advanced">進階路由</h3>
 
-			<p>你也可以在你的路由命名參數。這能讓你給你的 URI 片段具名，
-			然後可以在你的行動中被存取。</p>
+			<p>你也可以在你的路由命名參数。这能让你給你的 URI 片段具名，
+			然後可以在你的行动中被存取。</p>
 
 			<p>範例：</p>
 
@@ -108,23 +108,23 @@
     'blog/:year/:month/:id' => 'blog/entry', // 路由 /blog/2010/11/entry_name 到 /blog/entry
 );</code></pre>
 
-			<p>在以上範例中會捕捉以下的 <kbd>/blog/2010/11/entry_name</kbd>。
-			它會路由該請求到你的 'blog' 控制器的 'entry' 動作。在那裡，
-			具名參數將像這樣可被使用：</p>
+			<p>在以上範例中会捕捉以下的 <kbd>/blog/2010/11/entry_name</kbd>。
+			它会路由該請求到你的 'blog' 控制器的 'entry' 动作。在那裡，
+			具名參数将像这樣可被使用：</p>
 
 			<pre class="php"><code>$this->param('year');
 $this->param('month');
 $this->param('id');</code></pre>
 
 			<p class="note">
-				請注意，當具名參數是一個正規表達式，會計數每個具名參數做為一個反向引用。
-				所以在一個像 ':name/(\d{2})' 的路由，對你的兩位數片段來說，反向引用是 $2，而不是 $1！</p>
+				請注意，當具名參数是一个正規表達式，会計数每个具名參数做为一个反向引用。
+				所以在一个像 ':name/(\d{2})' 的路由，對你的兩位数片段來說，反向引用是 $2，而不是 $1！</p>
 
 
-			<h3 id="http_verb">HTTP 變數為基礎的路由</h3>
+			<h3 id="http_verb">HTTP 變数为基础的路由</h3>
 
-			<p>你可以路由你的 URL 到控制器和動作，基於 HTTP 變數去呼叫它們，
-			這使得它能快速且簡易的製造 RESTful 控制器。</p>
+			<p>你可以路由你的 URL 到控制器和动作，基於 HTTP 變数去呼叫它們，
+			这使得它能快速且简易的製造 RESTful 控制器。</p>
 
 			<p>範例：</p>
 
@@ -133,15 +133,15 @@ $this->param('id');</code></pre>
     'blog' => array(array('GET', new Route('blog/all')), array('POST', new Route('blog/create'))),
 );</code></pre>
 
-			<p>你可以很正常的在你的 URL 使用具名參數和正規表達式：</p>
+			<p>你可以很正常的在你的 URL 使用具名參数和正規表達式：</p>
 
 	        <pre class="php"><code>return array(
     'blog/(:any)' => array(array('GET', new Route('blog/show/$1'))),
 );</code></pre>
 
-			<p>你也可以指定如果此路由只支援 http、或只有 https，透過傳遞 <kbd>false</kbd> 或 <kbd>true</kbd> 做為第三參數：</p>
+			<p>你也可以指定如果此路由只支援 http、或只有 https，透過傳遞 <kbd>false</kbd> 或 <kbd>true</kbd> 做为第三參数：</p>
 
-	        <pre class="php"><code>// 路由只在它是一個 https 請求時有效
+	        <pre class="php"><code>// 路由只在它是一个 https 請求時有效
 return array(
     'blog/(:any)' => array(array('GET', new Route('blog/show/$1'), true)),
 );</code></pre>
@@ -149,18 +149,18 @@ return array(
 
 			<h3 id="named_routes">具名路由和路由反轉</h3>
 
-			<p>路由反轉的想法是這樣：你有一個管理區域並且有一個設置給它的路由。
-			在你的檢視中，你會想要使用一個 HTML 連結連到該管理區域，例如像 'admin/start/overview'。
-			現在你決定移動東西並且最終移動特定頁面到 'admin/overview'。
-			結果現在你需要在你所有的檢視中更新此連結……</p>
+			<p>路由反轉的想法是这樣：你有一个管理區域并且有一个設置給它的路由。
+			在你的檢視中，你会想要使用一个 HTML 連結連到該管理區域，例如像 'admin/start/overview'。
+			现在你決定移动東西并且最終移动特定頁面到 'admin/overview'。
+			結果现在你需要在你所有的檢視中更新此連結……</p>
 
-			<p>當用這些具名路由來使用路由反轉，你可以連接一個錨點到一個具名路由，如此一來，當路由改變，
-			在你檢視中的連結將自動地依循改變</p>
+			<p>當用这些具名路由來使用路由反轉，你可以連接一个錨點到一个具名路由，如此一來，當路由改變，
+			在你檢視中的連結将自动地依循改變</p>
 
 			<p>路由範例：</p>
 
 			<pre class="php"><code>return array(
-    'admin/start/overview' => array('admin/overview', 'name' => 'admin_overview'), // 為 admin/overview 頁面添加一個具名路由
+    'admin/start/overview' => array('admin/overview', 'name' => 'admin_overview'), // 为 admin/overview 頁面添加一个具名路由
 );</code></pre>
 
 			<p>連結範例：</p>
@@ -169,22 +169,22 @@ return array(
 echo Html::anchor(Router::get('admin_overview'), 'Overview');</code></pre>
 
 			<p class="note">
-				請注意，這目前只對定義在 <kbd>app/config/routes.php</kbd> 中的路由運作，還不能用在模組路由。
+				請注意，这目前只對定義在 <kbd>app/config/routes.php</kbd> 中的路由運作，還不能用在模組路由。
 			</p>
 
 			<h3 id="inline_routes">內嵌路由</h3>
 
 			<p>
-				一個路由不一定要解析為一個控制器方法。FuelPHP 也支援內嵌路由，它被定義為一個取代控制器方法的閉包（closure）。
-				就像控制器方法，內嵌路由<strong>必須</strong>回傳一個 Response 物件，
-				不管是手動鍛造一個，或做為執行一個已鍛造的 Request 的結果。
+				一个路由不一定要解析为一个控制器方法。FuelPHP 也支援內嵌路由，它被定義为一个取代控制器方法的閉包（closure）。
+				就像控制器方法，內嵌路由<strong>必須</strong>回傳一个 Response 物件，
+				不管是手动鍛造一个，或做为执行一个已鍛造的 Request 的結果。
 			</p>
 
 			<p>路由範例：</p>
 
 			<pre class="php"><code>return array(
     'secret/mystuff' => function () {
-		// 此路由只在開發環境運行
+		// 此路由只在开发环境运行
 		if (\Fuel::$env == \Fuel::DEVELOPMENT)
 		{
 			return \Request::forge('secret/mystuff/keepout', false)->execute();
@@ -197,13 +197,13 @@ echo Html::anchor(Router::get('admin_overview'), 'Overview');</code></pre>
 
 			<h3 id="module_routing">模組 &amp; 路由</h3>
 
-			<p><a href="modules.html#module_routing">閱讀關於模組如何處理路由</a>。</p>
+			<p><a href="modules.html#module_routing">閱讀關於模組如何处理路由</a>。</p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

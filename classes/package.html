@@ -12,7 +12,7 @@
 		var class_prefix = "Package::";
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>Package - 類別 - FuelPHP 简体中文手册</title>
+	<title>Package - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="package.html#" id="toc_handle">目錄</a>
+			<a href="package.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Package 類別</h2>
+			<h2>Package 类別</h2>
 
-			<p><kbd>Package</kbd> 類別能讓你簡單地載入、卸載、檢查套件是否載入、或取得所有已載入的套件。</p>
+			<p><kbd>Package</kbd> 类別能让你简单地載入、卸載、檢查套件是否載入、或取得所有已載入的套件。</p>
 
 			<article>
 				<h4 class="method" id="method_load">load($package, $path = null)</h4>
-				<p><strong>load</strong> 方法能讓你在執行階段載入單一或更多套件。如果套件無法找到將會拋出一個 <kbd>PackageNotFoundException</kbd>。</p>
+				<p><strong>load</strong> 方法能让你在执行階段載入单一或更多套件。如果套件無法找到将会拋出一个 <kbd>PackageNotFoundException</kbd>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -54,23 +54,23 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$package</kbd></th>
 									<td><i>必要</i></td>
-									<td>要載入的套件名稱，或一個套件與套件路徑的陣列。</td>
+									<td>要載入的套件名稱，或一个套件與套件路徑的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><code>PKGPATH</code></td>
-									<td>指向套件安裝所在的文件夾路徑。</td>
+									<td>指向套件安装所在的文件夾路徑。</td>
 								</tr>
 							</table>
 						</td>
@@ -85,14 +85,14 @@
 							<pre class="php"><code>// 載入 orm 套件
 Package::load('orm');
 
-// 載入 parser 套件從特定的目錄
+// 載入 parser 套件從特定的目录
 Package::load('parser', '/path/to/packages/dir/');
 
-// 載入多個套件從單一的套件安裝
+// 載入多个套件從单一的套件安装
 Package::load( array('First' => PKGPATH.'my'.DS.'first'.DS, 'Last' => PKGPATH.'my'.DS.'last'.DS) );
 
 // 載入不存在的套件
-Package::load('awesome'); // 拋出一個 PackageNotFoundException
+Package::load('awesome'); // 拋出一个 PackageNotFoundException
 </code></pre>
 						</td>
 					</tr>
@@ -102,7 +102,7 @@ Package::load('awesome'); // 拋出一個 PackageNotFoundException
 
 			<article>
 				<h4 class="method" id="method_unload">unload($package)</h4>
-				<p><strong>unload</strong> 方法能讓你在執行階段卸載套件。</p>
+				<p><strong>unload</strong> 方法能让你在执行階段卸載套件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -110,11 +110,11 @@ Package::load('awesome'); // 拋出一個 PackageNotFoundException
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -144,7 +144,7 @@ Package::unload('orm');
 
 			<article>
 				<h4 class="method" id="method_loaded">loaded($package = null)</h4>
-				<p><strong>loaded</strong> 方法能讓你檢查是否套件已經被載入。如果沒有給套件名稱，會回傳所有已載入的套件。</p>
+				<p><strong>loaded</strong> 方法能让你檢查是否套件已经被載入。如果沒有給套件名稱，会回傳所有已載入的套件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -152,11 +152,11 @@ Package::unload('orm');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -198,7 +198,7 @@ array(
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

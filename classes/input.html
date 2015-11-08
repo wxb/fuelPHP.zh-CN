@@ -12,7 +12,7 @@
 		var class_prefix = "Input::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Input - 類別 - FuelPHP 简体中文手册</title>
+	<title>Input - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Input 類別</h2>
+			<h2>Input 类別</h2>
 
-			<p>Input 類別能讓你存取 HTTP 參數、載入伺服器變數及使用者代理詳情。</p>
+			<p>Input 类別能让你存取 HTTP 參数、載入伺服器變数及使用者代理詳情。</p>
 
 			<article>
 				<h4 class="method" id="method_uri">uri()</h4>
-				<p><strong>uri</strong> 方法偵測目前的 URI 以建立正確的字串。</p>
+				<p><strong>uri</strong> 方法偵测目前的 URI 以建立正確的字串。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -54,7 +54,7 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -74,7 +74,7 @@ echo Input::uri(); // 回傳 /controller/method</code></pre>
 
 			<article>
 				<h4 class="method" id="method_json">json($index = null, $default = null)</h4>
-				<p><strong>json</strong> 方法回傳一個來自 json 請求主體，json_decoded（且淨化過）的值。</p>
+				<p><strong>json</strong> 方法回傳一个來自 json 請求主體，json_decoded（且淨化過）的值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -82,11 +82,11 @@ echo Input::uri(); // 回傳 /controller/method</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -98,7 +98,7 @@ echo Input::uri(); // 回傳 /controller/method</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -112,7 +112,7 @@ echo Input::uri(); // 回傳 /controller/method</code></pre>
 						<td>
 							<pre class="php"><code>$value = \Input::json('key');
 
-// 設定一個預設值當沒有值存在：
+// 設定一个預設值當沒有值存在：
 $value = \Input::json('key', 'backup-value');</code></pre>
 						</td>
 					</tr>
@@ -122,7 +122,7 @@ $value = \Input::json('key', 'backup-value');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_xml">xml($index = null, $default = null)</h4>
-				<p><strong>xml</strong> 方法回傳一個來自 XML 請求主體，XML 解碼（且淨化過）的值。</p>
+				<p><strong>xml</strong> 方法回傳一个來自 XML 請求主體，XML 解码（且淨化過）的值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -130,11 +130,11 @@ $value = \Input::json('key', 'backup-value');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -146,7 +146,7 @@ $value = \Input::json('key', 'backup-value');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -160,7 +160,7 @@ $value = \Input::json('key', 'backup-value');</code></pre>
 						<td>
 							<pre class="php"><code>$value = \Input::xml('key');
 
-// 設定一個預設值當沒有值存在：
+// 設定一个預設值當沒有值存在：
 $value = \Input::xml('key', 'backup-value');</code></pre>
 						</td>
 					</tr>
@@ -170,8 +170,8 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_cookie">cookie($index = null, $default = null)</h4>
-				<p><strong>cookie</strong> 方法能讓你讀取 $_COOKIE 變數，
-				不帶參數的呼叫以取回完整的 cookie 陣列。</p>
+				<p><strong>cookie</strong> 方法能让你讀取 $_COOKIE 變数，
+				不帶參数的呼叫以取回完整的 cookie 陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -179,11 +179,11 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -195,7 +195,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -216,7 +216,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_delete">delete($index = null, $default = null)</h4>
-				<p><strong>delete</strong> 方法能讓你讀取來自 php://input 流的參數當藉由 DELETE 呼叫，不帶參數的呼叫以取回完整的陣列。</p>
+				<p><strong>delete</strong> 方法能让你讀取來自 php://input 流的參数當藉由 DELETE 呼叫，不帶參数的呼叫以取回完整的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -224,11 +224,11 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -240,7 +240,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -261,8 +261,8 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_put">put($index = null, $default = null)</h4>
-				<p><strong>put</strong> 方法能讓你讀取來自 php://input 流的參數當藉由 PUT 呼叫，
-				不帶參數的呼叫以取回完整的陣列。</p>
+				<p><strong>put</strong> 方法能让你讀取來自 php://input 流的參数當藉由 PUT 呼叫，
+				不帶參数的呼叫以取回完整的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -270,11 +270,11 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -286,7 +286,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -307,8 +307,8 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_patch">patch($index = null, $default = null)</h4>
-				<p><strong>patch</strong> 方法能讓你讀取來自 php://input 流的參數當藉由 PATCH 呼叫，
-				不帶參數的呼叫以取回完整的陣列。</p>
+				<p><strong>patch</strong> 方法能让你讀取來自 php://input 流的參数當藉由 PATCH 呼叫，
+				不帶參数的呼叫以取回完整的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -316,11 +316,11 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -332,7 +332,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -353,7 +353,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get">get($index = null, $default = null)</h4>
-				<p><strong>get</strong> 方法能讓你讀取 $_GET 變數，不帶參數的呼叫以取回完整的陣列。</p>
+				<p><strong>get</strong> 方法能让你讀取 $_GET 變数，不帶參数的呼叫以取回完整的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -361,11 +361,11 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -377,7 +377,7 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -391,8 +391,8 @@ $value = \Input::xml('key', 'backup-value');</code></pre>
 						<td>
 							<pre><code class="php">Input::get('foo', 'bar');
 
-// 你可以像這樣到達多層次深度。
-// 這將回傳 $_GET['somevar']['foo']['bar']
+// 你可以像这樣到達多層次深度。
+// 这将回傳 $_GET['somevar']['foo']['bar']
 Input::get('somevar.foo.bar');</code></pre>
 						</td>
 					</tr>
@@ -402,7 +402,7 @@ Input::get('somevar.foo.bar');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_post">post($index = null, $default = null)</h4>
-				<p><strong>post</strong> 方法能讓你讀取 $_POST 變數，不帶參數的呼叫以取回完整的陣列。</p>
+				<p><strong>post</strong> 方法能让你讀取 $_POST 變数，不帶參数的呼叫以取回完整的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -410,11 +410,11 @@ Input::get('somevar.foo.bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -426,7 +426,7 @@ Input::get('somevar.foo.bar');</code></pre>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -440,8 +440,8 @@ Input::get('somevar.foo.bar');</code></pre>
 						<td>
 							<pre><code class="php">Input::post('foo', 'bar');
 
-// 你可以像這樣到達多層次深度。
-// 這將回傳 $_POST['somevar']['foo']['bar']
+// 你可以像这樣到達多層次深度。
+// 这将回傳 $_POST['somevar']['foo']['bar']
 Input::post('somevar.foo.bar');</code></pre>
 						</td>
 					</tr>
@@ -459,7 +459,7 @@ Input::post('somevar.foo.bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -478,7 +478,7 @@ Input::post('somevar.foo.bar');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_method">method($default = 'GET')</h4>
-				<p><strong>method</strong> 方法回傳用於呼叫控制器的 HTTP 方法。如果表頭 X-HTTP-Method-Override 已經被發送，將回傳替代的指定方法。</p>
+				<p><strong>method</strong> 方法回傳用於呼叫控制器的 HTTP 方法。如果表頭 X-HTTP-Method-Override 已经被发送，将回傳替代的指定方法。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -486,11 +486,11 @@ Input::post('somevar.foo.bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -526,7 +526,7 @@ Input::post('somevar.foo.bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -545,7 +545,7 @@ Input::post('somevar.foo.bar');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_ip">ip()</h4>
-				<p><strong>ip</strong> 方法回傳使用者的公開 IP 位址，如果使用者在代理伺服器後操作，將回傳該伺服器的 IP 位址。</p>
+				<p><strong>ip</strong> 方法回傳使用者的公開 IP 位址，如果使用者在代理伺服器後操作，将回傳該伺服器的 IP 位址。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -553,7 +553,7 @@ Input::post('somevar.foo.bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -572,7 +572,7 @@ Input::post('somevar.foo.bar');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_real_ip">real_ip($default = '0.0.0.0', $exclude_reserved = false)</h4>
-				<p><strong>real_ip</strong> 方法回傳使用者的「真實」IP 位址，如果代理伺服器被偵測到，它將嘗試從代理添加到表頭的訊息，去確認使用者的私有 IP 位址，如果此資訊不存在，公開 IP 位址將被回傳。</p>
+				<p><strong>real_ip</strong> 方法回傳使用者的「真實」IP 位址，如果代理伺服器被偵测到，它将嘗试從代理添加到表頭的訊息，去確認使用者的私有 IP 位址，如果此資訊不存在，公開 IP 位址将被回傳。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -580,23 +580,23 @@ Input::post('somevar.foo.bar');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><pre class="php"><code>'0.0.0.0'</code></pre></td>
-									<td>當沒有有效的 IP 位址被檢測到時，要回傳的值。</td>
+									<td>當沒有有效的 IP 位址被檢测到時，要回傳的值。</td>
 								</tr>
 								<tr>
 									<th><kbd>$exclude_reserved</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果為 true，排除私有和預留的 IP 範圍，且只回傳公開 IP 位址。</td>
+									<td>如果为 true，排除私有和預留的 IP 範圍，且只回傳公開 IP 位址。</td>
 								</tr>
 							</table>
 						</td>
@@ -614,7 +614,7 @@ Input::post('somevar.foo.bar');</code></pre>
 					</tbody>
 				</table>
 
-				<p class="note">當 $exclude_reserved 為 true，以下的範圍將從結果被排除：</p>
+				<p class="note">當 $exclude_reserved 为 true，以下的範圍将從結果被排除：</p>
 <pre><code>IPv4:
 10.0.0.0/8     // private use network (rfc1918)
 172.16.0.0/12  // private use network (rfc1918)
@@ -641,8 +641,8 @@ fe80::/10      // link local unicast (rfc4291)
 
 			<article>
 				<h4 class="method" id="method_server">server($index = null, $default = null)</h4>
-				<p><strong>server</strong> 能讓你從 $_SERVER 陣列讀取參數並帶著預設值，
-					不帶參數呼叫以取回完整陣列。</p>
+				<p><strong>server</strong> 能让你從 $_SERVER 陣列讀取參数并帶著預設值，
+					不帶參数呼叫以取回完整陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -650,11 +650,11 @@ fe80::/10      // link local unicast (rfc4291)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -666,7 +666,7 @@ fe80::/10      // link local unicast (rfc4291)
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -686,7 +686,7 @@ fe80::/10      // link local unicast (rfc4291)
 			</article>
 			<article>
 				<h4 class="method" id="method_referrer">referrer($default = '')</h4>
-				<p><strong>referrer</strong> 方法能讓你從 $_SERVER 陣列讀取導入連結。</p>
+				<p><strong>referrer</strong> 方法能让你從 $_SERVER 陣列讀取導入連結。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -694,18 +694,18 @@ fe80::/10      // link local unicast (rfc4291)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -725,7 +725,7 @@ fe80::/10      // link local unicast (rfc4291)
 			</article>
 			<article>
 				<h4 class="method" id="method_user_agent">user_agent($default = '')</h4>
-				<p><strong>user_agent</strong> 能讓你從 $_SERVER 陣列讀取使用者代理。</p>
+				<p><strong>user_agent</strong> 能让你從 $_SERVER 陣列讀取使用者代理。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -733,18 +733,18 @@ fe80::/10      // link local unicast (rfc4291)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -764,7 +764,7 @@ fe80::/10      // link local unicast (rfc4291)
 			</article>
 			<article>
 				<h4 class="method" id="method_all">all()</h4>
-				<p><strong>all</strong> 回傳所有 GET、POST、PUT 和 DELETE 變數。</p>
+				<p><strong>all</strong> 回傳所有 GET、POST、PUT 和 DELETE 變数。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -786,7 +786,7 @@ fe80::/10      // link local unicast (rfc4291)
 			</article>
 			<article>
 				<h4 class="method" id="method_file">file($index = null, $default = null)</h4>
-				<p><strong>file</strong> 方法能讓你從 FILE 陣列取回一個項目。</p>
+				<p><strong>file</strong> 方法能让你從 FILE 陣列取回一个項目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -794,11 +794,11 @@ fe80::/10      // link local unicast (rfc4291)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -810,7 +810,7 @@ fe80::/10      // link local unicast (rfc4291)
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -830,7 +830,7 @@ fe80::/10      // link local unicast (rfc4291)
 			</article>
 			<article>
 				<h4 class="method" id="method_param">param($index = null, $default = null)</h4>
-				<p><strong>param</strong> 能讓你從 GET、POST、PUT 或 DELETE 陣列之中取回一個項目。</p>
+				<p><strong>param</strong> 能让你從 GET、POST、PUT 或 DELETE 陣列之中取回一个項目。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -838,11 +838,11 @@ fe80::/10      // link local unicast (rfc4291)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -854,7 +854,7 @@ fe80::/10      // link local unicast (rfc4291)
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>當找不到陣列項目應該被回傳什麼值？</td>
+									<td>當找不到陣列項目應該被回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -874,7 +874,7 @@ fe80::/10      // link local unicast (rfc4291)
 			</article>
 			<article>
 				<h4 class="method" id="method_extension">extension()</h4>
-				<p><strong>extension</strong> 方法回傳目前 URI 副檔名。</p>
+				<p><strong>extension</strong> 方法回傳目前 URI 副档名。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -882,7 +882,7 @@ fe80::/10      // link local unicast (rfc4291)
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -913,11 +913,11 @@ echo Input::extension(); // 'html'
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -929,7 +929,7 @@ echo Input::extension(); // 'html'
 								<tr>
 									<th><kbd>$default</kbd></th>
 									<td><i>選擇性</i></td>
-									<td>如果該表頭條目找不到時應該回傳什麼值？</td>
+									<td>如果該表頭條目找不到時應該回傳什么值？</td>
 								</tr>
 							</table>
 						</td>
@@ -962,7 +962,7 @@ if ($header = \Input::headers('Content-Length', false))
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

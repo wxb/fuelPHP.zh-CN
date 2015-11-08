@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>簡介 - Email 套件 - FuelPHP 简体中文手册</title>
+	<title>简介 - Email 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,7 +41,7 @@
 			<h2>Email 套件</h2>
 
 			<p>
-				Email 套件提供了一個介面使用 PHP 的 mail 函式、sendmail 或 SMTP來發送郵件。
+				Email 套件提供了一个介面使用 PHP 的 mail 函式、sendmail 或 SMTP來发送郵件。
 				套件支援：
 			</p>
 
@@ -54,11 +54,11 @@
 
 			<section>
 
-				<h3 id="installation">安裝</h3>
+				<h3 id="installation">安装</h3>
 
 				<p>
-					Email 套件已成為官方下載的一部分（自 1.1 版起）。
-					你將必須在應用程式配置或動態引入以啟用套件。
+					Email 套件已成为官方下载的一部分（自 1.1 版起）。
+					你将必須在应用程序配置或动態引入以啟用套件。
 				</p>
 
 				<pre class="php"><code>'always_load' => array(
@@ -79,11 +79,11 @@
 				<h3 id="configuration">配置</h3>
 
 				<p>
-					建立（或從套件複製）一個在 <em>app/config/email.php</em> 的配置檔。並更改所需的配置。
+					建立（或從套件複製）一个在 <em>app/config/email.php</em> 的配置档。并更改所需的配置。
 				</p>
 
 				<p class="note">
-					<strong>請注意：</strong>Email 套件為你載入 email 配置，所以不需要自動載入它。
+					<strong>請注意：</strong>Email 套件为你載入 email 配置，所以不需要自动載入它。
 				</p>
 
 				<h4 id="general_config">一般配置</h4>
@@ -91,8 +91,8 @@
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -101,7 +101,7 @@
 							<td>陣列</td>
 							<td><pre class="php"><code>array( /* default 配置陣列 */ )</code></pre></td>
 							<td>
-								每個設定組使用的預設設定。在你的設置組覆寫這些值。
+								每个設定組使用的預設設定。在你的設置組覆寫这些值。
 							</td>
 						</tr>
 						<tr>
@@ -119,7 +119,7 @@
 		'default' => array(),
 	)</code></pre></td>
 							<td>
-								帶有一個預設設定的設定陣列。添加你自己的或修改預設設定組。
+								帶有一个預設設定的設定陣列。添加你自己的或修改預設設定組。
 							</td>
 						</tr>
 					</tbody>
@@ -130,8 +130,8 @@
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -148,7 +148,7 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'mail'</code></pre></td>
 							<td>
-								使用的驅動程序。可以是 mail、smtp、sendmail、mailgun、mandrill 或 noop（只寫 log 記錄），必須為小寫。
+								使用的驅动程序。可以是 mail、smtp、sendmail、mailgun、mandrill 或 noop（只寫 log 記錄），必須为小寫。
 							</td>
 						</tr>
 						<tr>
@@ -156,7 +156,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								做為 HTML 電子郵件或普通郵件發送。
+								做为 HTML 電子郵件或普通郵件发送。
 							</td>
 						</tr>
 						<tr>
@@ -164,7 +164,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								是否對主題及接收者名稱進行編碼。
+								是否對主題及接收者名稱進行编码。
 								需要 <a href="http://www.php.net/manual/en/ref.mbstring.php" target="_blank">mbstring 擴充</a>。
 							</td>
 						</tr>
@@ -181,7 +181,7 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'8bit'</code></pre></td>
 							<td>
-								電子郵件訊息編碼。可以是 7bit、8bit、quoted-printable 和 base64。
+								電子郵件訊息编码。可以是 7bit、8bit、quoted-printable 和 base64。
 							</td>
 						</tr>
 						<tr>
@@ -220,7 +220,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								設定為false，如果你不想驗證地址。在發送時可能導致失敗。
+								設定为false，如果你不想驗證地址。在发送時可能導致失敗。
 							</td>
 						</tr>
 						<tr>
@@ -228,7 +228,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								是否從一個 HTML 主體自動附加（背景）圖片。
+								是否從一个 HTML 主體自动附加（背景）圖片。
 							</td>
 						</tr>
 						<tr>
@@ -236,15 +236,15 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								是否自動從 HTML 主體產生一個替代的主體。
+								是否自动從 HTML 主體產生一个替代的主體。
 							</td>
 						</tr>
 						<tr>
 							<th>wordwrap</th>
-							<td>整數｜false</td>
+							<td>整数｜false</td>
 							<td><pre class="php"><code>76</code></pre></td>
 							<td>
-								文字換行的大小。如果低於任何大於 0 的大小將換行。當使用 base64 或 quoted-printable 時，此設定將被忽略。
+								文字換行的大小。如果低於任何大於 0 的大小将換行。當使用 base64 或 quoted-printable 時，此設定将被忽略。
 							</td>
 						</tr>
 						<tr>
@@ -265,7 +265,7 @@
 						</tr>
 						<tr>
 							<th>smtp.port</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>25</code></pre></td>
 							<td>
 								SMTP 埠。
@@ -284,15 +284,15 @@
 							<td>字串</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								SMTP 密碼。
+								SMTP 密码。
 							</td>
 						</tr>
 						<tr>
 							<th>smtp.timeout</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>5</code></pre></td>
 							<td>
-								SMTP 逾時。當 SMTP 伺服器在發送程序期間逾時時增加它。
+								SMTP 逾時。當 SMTP 伺服器在发送程序期間逾時時增加它。
 							</td>
 						</tr>
 						<tr>
@@ -317,7 +317,7 @@
 							<td><pre class="php"><code>array('');</code></pre></td>
 							<td>
 								附件路徑陣列。添加附件時，
-								驅動程序會在這些路徑尋找，並附加第一個發現的。
+								驅动程序会在这些路徑尋找，并附加第一个发现的。
 								留下空 ('') 以允許絕對路徑。
 							</td>
 						</tr>
@@ -399,8 +399,8 @@
                 <table class="config">
                     <tbody>
                     <tr class="header">
-                        <th>參數</th>
-                        <th>類型</th>
+                        <th>參数</th>
+                        <th>类型</th>
                         <th>預設</th>
                         <th>描述</th>
                     </tr>
@@ -428,7 +428,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

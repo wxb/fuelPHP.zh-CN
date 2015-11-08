@@ -11,7 +11,7 @@
 		var path = './../';
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>編碼標準 - 一般 - FuelPHP 简体中文手册</title>
+	<title>编码标准 - 一般 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="coding_standards.html#" id="toc_handle">目錄</a>
+			<a href="coding_standards.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -39,53 +39,53 @@
 
 		<div id="main">
 
-			<h2>編碼標準</h2>
+			<h2>编码标准</h2>
 
-			<p>這些程式碼格式與文件的標準，必須被任何對 Fuel 貢獻的人遵循，
-				任何不符合這些準則的貢獻將不被接受。</p>
+			<p>这些程式码格式與文件的标准，必須被任何對 Fuel 贡献的人遵循，
+				任何不符合这些准則的贡献将不被接受。</p>
 
-			<h3 id="file_formatting">檔案格式</h3>
+			<h3 id="file_formatting">档案格式</h3>
 
-			<h5 id="closing_php_tag">PHP 結束標籤</h5>
+			<h5 id="closing_php_tag">PHP 結束标籤</h5>
 
-			<p>只包含 PHP 程式碼的文件應該總是省略 PHP 結束標籤（?>）。
-				這可以防止許多難以捉摸的死亡白螢幕。</p>
+			<p>只包含 PHP 程式码的文件應該總是省略 PHP 結束标籤（?>）。
+				这可以防止許多難以捉摸的死亡白螢幕。</p>
 
 			<h5 id="indentation">縮排</h5>
 
 			<p>所有縮排應該使用真正的 Tab，而非空格。<br />
 				但對齊縮排後的物件應該使用空格，而非 Tab。</p>
 
-			<pre class="php"><code>		// 縮排 2 個 Tab
-		$var       = 'something';  // 用 Tab 縮排並在值和註解
+			<pre class="php"><code>		// 縮排 2 个 Tab
+		$var       = 'something';  // 用 Tab 縮排并在值和註解
 		$variable  = 'else';       // 前／後使用空格對齊</code></pre>
 
 			<h5 id="line_endings">行結尾</h5>
 
-			<p>行結尾應為 Unix-style LF。</p>
+			<p>行結尾應为 Unix-style LF。</p>
 
-			<h5 id="file_naming">檔案命名</h5>
+			<h5 id="file_naming">档案命名</h5>
 
-			<p>所有檔案名稱必須全小寫，沒有例外。</p>
+			<p>所有档案名稱必須全小寫，沒有例外。</p>
 
-			<h5 id="encoding">編碼</h5>
+			<h5 id="encoding">编码</h5>
 
-			<p>檔案應以 UTF-8 編碼儲存且不應該使用 BOM。</p>
+			<p>档案應以 UTF-8 编码儲存且不應該使用 BOM。</p>
 
 			<h3 id="naming_conventions">命名慣例</h3>
 
 			<h5 id="namespaces">命名空間</h5>
 
-			<p>所有核心類別必須在 Fuel\Core 命名空間底下。</p>
+			<p>所有核心类別必須在 Fuel\Core 命名空間底下。</p>
 
 			<pre class="php"><code>namespace Fuel\Core;</code></pre>
 
-			<h5 id="classes">類別</h5>
+			<h5 id="classes">类別</h5>
 
-			<p>類別名稱應該使用底線來分隔單詞，而且類別名稱的每個單詞應以大寫字母開始。
-				然而，在自動載入期間，底線會被轉換成目錄分隔。
+			<p>类別名稱應該使用底線來分隔单詞，而且类別名稱的每个单詞應以大寫字母開始。
+				然而，在自动載入期間，底線会被轉換成目录分隔。
 				駝峰式的使用是被勸阻的，但在某些情況下不能防止，
-				當放置類別在一個子目錄時是沒有意義的。</p>
+				當放置类別在一个子目录時是沒有意義的。</p>
 
 			<pre class="php"><code>namespace Fuel\Core;
 
@@ -101,24 +101,24 @@ class Session_Cookie extends Session_Driver
 
 }</code></pre>
 
-			<p>這將會是下列檔案路徑：</p>
+			<p>这将会是下列档案路徑：</p>
 
 			<pre class="php"><code>core/classes/session.php
 core/classes/session/cookie.php</code></pre>
 
 			<h5 id="methods_standards">方法</h5>
 
-			<p>如同類別名稱，方法名稱應該使用底線來分隔單詞，而非駝峰式。
+			<p>如同类別名稱，方法名稱應該使用底線來分隔单詞，而非駝峰式。
 				方法名稱也應該全部小寫，可見性應始終包括在（public、protected、private）。<br />
 				底線可以被用在名稱的開頭，以明白表示方法是保護／私有，
-				或當你需要方法是公共時，表示它應該被這樣認爲。</p>
+				或當你需要方法是公共時，表示它應該被这樣認爲。</p>
 
 			<pre class="php"><code>class Session
 {
 
 	public static function get_flash($name, $data)
 	{
-		// 一些程式碼
+		// 一些程式码
 	}
 
 }</code></pre>
@@ -131,24 +131,24 @@ core/classes/session/cookie.php</code></pre>
 
 	protected static function capture($view_filename, array $view_data)
 	{
-		// 一些程式碼
+		// 一些程式码
 	}
 
 }</code></pre>
 
-			<h5 id="variables">變數</h5>
+			<h5 id="variables">變数</h5>
 
-			<p>變數名稱應該要簡潔並只有小寫字母和底線。循環迭代應該是短的，
-				最好是單一字元。</p>
+			<p>變数名稱應該要简潔并只有小寫字母和底線。循环迭代應該是短的，
+				最好是单一字元。</p>
 
 			<pre class="php"><code>$first_name
 $buffer
 for ($i = 0; $i &lt; $max; $i++)</code></pre>
 
-			<h5 id="constants">常數</h5>
+			<h5 id="constants">常数</h5>
 
-			<p>常數遵循相同的準則如同變數，例外的是，
-				常數應該是全部大寫的。</p>
+			<p>常数遵循相同的准則如同變数，例外的是，
+				常数應該是全部大寫的。</p>
 
 			<pre class="php"><code>MY_CONSTANT
 TEMPLATE_PATH
@@ -157,7 +157,7 @@ TEXT_DEFAULT</code></pre>
 			<h3 id="keywords">關鍵字</h3>
 
 			<p>如 <kbd>true</kbd>、<kbd>false</kbd>、<kbd>null</kbd>、<kbd>as</kbd> 等關鍵字應該全部小寫，
-				因為大寫保留給常數。同樣適用於原始類型，如 <kbd>array</kbd>、<kbd>integer</kbd>、<kbd>string</kbd>。</p>
+				因为大寫保留給常数。同樣適用於原始类型，如 <kbd>array</kbd>、<kbd>integer</kbd>、<kbd>string</kbd>。</p>
 
 			<pre class="php"><code>$var = true;
 $var = false;
@@ -168,13 +168,13 @@ function my_function($arg = null)</code></pre>
 
 			<h3 id="control_structures">控制結構</h3>
 
-			<p>結構關鍵字例如 <kbd>if</kbd>、<kbd>for</kbd>、<kbd>foreach</kbd>、<kbd>while</kbd>、<kbd>switch</kbd> 應該在一個空格後面加參數／變數列表和值。
-				大括號應該被放在新的一行，並且 <kbd>break</kbd>
-				在它的情況也應該有相同的標籤。</p>
+			<p>結構關鍵字例如 <kbd>if</kbd>、<kbd>for</kbd>、<kbd>foreach</kbd>、<kbd>while</kbd>、<kbd>switch</kbd> 應該在一个空格後面加參数／變数列表和值。
+				大括號應該被放在新的一行，并且 <kbd>break</kbd>
+				在它的情況也應該有相同的标籤。</p>
 
 			<pre class="php"><code>if ($arg === true)
 {
-	// 做點什麼
+	// 做點什么
 }
 elseif ($arg === null)
 {
@@ -182,7 +182,7 @@ elseif ($arg === null)
 }
 else
 {
-	// 捕捉所有的做點什麼
+	// 捕捉所有的做點什么
 }
 
 foreach ($array as $key => $value)
@@ -209,20 +209,20 @@ while ($i &lt; $max)
 switch ($var)
 {
 	case 'value1':
-		// 做點什麼
+		// 做點什么
 	break;
 	default :
-		// 做點什麼
+		// 做點什么
 	break;
 }</code></pre>
 
 			<h5 id="alternative_if">替代的 if 語句</h5>
 
-			<p>在某些情況下，簡單的條件分配或函式呼叫用一個完整的 <kbd>if</kbd> 語句的程式碼有點過多，
-				你可以使用 PHP 的執行邏輯來使用較短的布林運算子基礎句法。
-				使用 <kbd>and</kbd> 意指第二部份只在第一部份為 true 時獲得計算。
-				使用 <kbd>or</kbd> 意指第二部份只在第一部份為 false 時獲得執行。<br />
-				當 <kbd>if</kbd> 和 <kbd>else</kbd> 兩者都需要時不要使用，只在單一條件語句的情況下使用。</p>
+			<p>在某些情況下，简单的條件分配或函式呼叫用一个完整的 <kbd>if</kbd> 語句的程式码有點過多，
+				你可以使用 PHP 的执行邏輯來使用較短的布林運算子基础句法。
+				使用 <kbd>and</kbd> 意指第二部份只在第一部份为 true 時獲得計算。
+				使用 <kbd>or</kbd> 意指第二部份只在第一部份为 false 時獲得执行。<br />
+				當 <kbd>if</kbd> 和 <kbd>else</kbd> 兩者都需要時不要使用，只在单一條件語句的情況下使用。</p>
 
 			<pre class="php"><code>// 代替 if (isset($var)) { Config::set('var', $var); }
 isset($var) and Config::set('var', $var);
@@ -230,11 +230,11 @@ isset($var) and Config::set('var', $var);
 // 代替 if ( ! isset($var)) { $var = Config::get('var'); }
 isset($var) or $var = Config::get('var');
 
-// 千萬不要這樣做
+// 千萬不要这樣做
 Uri::segment(3) and $var = Uri::segment(3);
 Uri::segment(3) or $var = 'default';
 
-// 這樣比較好：
+// 这樣比較好：
 if (Uri::segment(3))
 {
 	$var = Uri::segment(3);
@@ -244,31 +244,31 @@ else
 	$var = 'default';
 }
 
-// 或這樣：
+// 或这樣：
 $var = Uri::segment(3) ? Uri::segment(3) : 'default';
-// 或實際上是這樣：
+// 或實際上是这樣：
 $var = Uri::segment(3) ?: 'default';</code></pre>
 
 			<h3 id="comparison_logical">比較、邏輯運算子</h3>
 
-			<p>函式／方法比較回傳和變數應該是已知的類型，例如一些函式可能回傳 <kbd>false</kbd>，
-				且當此比較回傳類型敏感的運算子如 <kbd>===</kbd> 或 <kbd>!==</kbd>。
+			<p>函式／方法比較回傳和變数應該是已知的类型，例如一些函式可能回傳 <kbd>false</kbd>，
+				且當此比較回傳类型敏感的運算子如 <kbd>===</kbd> 或 <kbd>!==</kbd>。
 				此外，使用 <kbd>and</kbd> 或 <kbd>or</kbd> 比 <kbd>&amp;&amp;</kbd> 或 <kbd>||</kbd> 來得有可讀性。在某些情況下，
-				如其所需也許會不可避免的使用 <kbd>&amp;&amp;</kbd> 或 <kbd>||</kbd>。當使用 <kbd>!</kbd> 時，應該在兩邊都有空格。</p>
+				如其所需也許会不可避免的使用 <kbd>&amp;&amp;</kbd> 或 <kbd>||</kbd>。當使用 <kbd>!</kbd> 時，應該在兩邊都有空格。</p>
 
 			<pre class="php"><code>if ($var == false and $other_var != 'some_value')
 if ($var === false or my_function() !== false)
 if ( ! $var)</code></pre>
 
-			<h5 id="class_interface">類別／介面宣告</h5>
+			<h5 id="class_interface">类別／介面宣告</h5>
 
-			<p>類別／介面宣告有下面一行的左大括號：</p>
+			<p>类別／介面宣告有下面一行的左大括號：</p>
 
 			<pre class="php"><code>class Session
 {
 
 }</code></pre>
-			<p>類別是空的情況下，括號將在同一行上如同定義：</p>
+			<p>类別是空的情況下，括號将在同一行上如同定義：</p>
 
 			<pre class="php"><code>class Empty_Class { }</code></pre>
 
@@ -284,19 +284,19 @@ if ( ! $var)</code></pre>
 	{
 		$closure = function($a, $b)
 		{
-			// 你的閉包（closure）程式碼
+			// 你的閉包（closure）程式码
 		}
 	}
 
 }</code></pre>
 
-			<h5 id="variables">變數</h5>
+			<h5 id="variables">變数</h5>
 
-			<p>當初始化變數時，應每一行宣告一個變數。為了提高程式碼的可讀性，
-				這些都應該是獨立的一行。適當的對齊值和註解。</p>
+			<p>當初始化變数時，應每一行宣告一个變数。为了提高程式码的可讀性，
+				这些都應該是獨立的一行。適當的對齊值和註解。</p>
 
-			<pre class="php"><code>$var        = ''; // 每一個都在自己的行處理
-$other_var  = ''; // 每一個都在自己的行處理</code></pre>
+			<pre class="php"><code>$var        = ''; // 每一个都在自己的行处理
+$other_var  = ''; // 每一个都在自己的行处理</code></pre>
 
 			<h5 id="brackets_parenthesis">中括號和括號</h5>
 
@@ -308,7 +308,7 @@ for ($i = 0; $i < $max; $i++)</code></pre>
 
 			<h5 id="quotation">字串引號</h5>
 
-			<p>多用單引號，少用雙引號。</p>
+			<p>多用单引號，少用雙引號。</p>
 
 			<h5 id="concatenation">連接</h5>
 
@@ -324,22 +324,22 @@ $string = 'my string ' . $var . ' the rest of my string';</code></pre>
 
 			<pre class="php"><code>$var = 'something';
 if ($var == 'something') // 在邏輯運算子前後加上空格
-$var = $some_var + $other_var; // 在數學運算子前後加上空格
+$var = $some_var + $other_var; // 在数學運算子前後加上空格
 $var++; // 遞增前無空格
 ++$var; // 遞增後無空格</code></pre>
 
 			<h5 id="dot-notation">陣列句點表示法</h5>
 
 			<p>
-				雖然嚴格來說它不是一個編碼標準，但在框架範圍內的類別和此文件中大量使用，
-				並且因為它不是一個常見的 PHP 表示法，它可能會混淆初使用框架的人們。
+				雖然嚴格來說它不是一个编码标准，但在框架範圍內的类別和此文件中大量使用，
+				并且因为它不是一个常見的 PHP 表示法，它可能会混淆初使用框架的人們。
 			</p>
-			<pre class="php"><code>// 當你看見 "always_load.packages = array()"，它是以下的簡寫：
+			<pre class="php"><code>// 當你看見 "always_load.packages = array()"，它是以下的简寫：
 array("always_load" => array("packages" => array(...) ) );
 </code></pre>
 
-			<p>此表示法被用在 Arr 類別、以及 Lang、Config 和 Session 類別，以快速從一個多維陣列訪問個別元素。</p>
-			<pre class="php"><code>// 當你有一個陣列結構像這樣
+			<p>此表示法被用在 Arr 类別、以及 Lang、Config 和 Session 类別，以快速從一个多維陣列訪問个別元素。</p>
+			<pre class="php"><code>// 當你有一个陣列結構像这樣
 $array = array(
     "always_load" => array(
         "packages" => array(
@@ -349,7 +349,7 @@ $array = array(
      )
 );
 
-// 那麼這將回傳 "/my/special/package.php":
+// 那麼这将回傳 "/my/special/package.php":
 $path = Arr::get($array, 'always_load.packages.package');
 </code></pre>
 
@@ -357,7 +357,7 @@ $path = Arr::get($array, 'always_load.packages.package');
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

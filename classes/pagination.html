@@ -12,7 +12,7 @@
 		var class_prefix = "Pagination::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Pagination - 類別 - FuelPHP 简体中文手册</title>
+	<title>Pagination - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,12 +40,12 @@
 
 		<div id="main">
 
-			<h2>Pagination 類別</h2>
+			<h2>Pagination 类別</h2>
 
-			<p>Pagination 類別能讓你簡單地為你顯示的紀錄設立分頁。</p>
+			<p>Pagination 类別能让你简单地为你顯示的紀錄設立分頁。</p>
 
 			<section>
-				<p>如何使用 Pagination 類別的簡單例子，你可以將它放進你控制器內的 action 方法。</p>
+				<p>如何使用 Pagination 类別的简单例子，你可以将它放進你控制器內的 action 方法。</p>
 				<h3 id="how_to_query_builder">如何使用查訊建立器來分頁</h3>
 
 				<pre class="php"><code>$config = array(
@@ -57,7 +57,7 @@
 	//'uri_segment'    => 'page',
 );
 
-// 建立一個名為 'mypagination' 的實例
+// 建立一个名为 'mypagination' 的實例
 $pagination = Pagination::forge('mypagination', $config);
 
 $data['example_data'] = DB::select('id', 'value')
@@ -67,7 +67,7 @@ $data['example_data'] = DB::select('id', 'value')
 							->execute()
 							->as_array();
 
-// 我們傳遞物件，當在檢視中輸出時它會被呈現
+// 我們傳遞物件，當在檢視中輸出時它会被呈现
 $data['pagination'] = $pagination;
 
 // 回傳檢視
@@ -91,7 +91,7 @@ $data['example_data'] = Model_Post::query()
 							->rows_limit($pagination->per_page)
 							->get();
 
-// 我們傳遞物件，當在檢視中輸出時它會被呈現
+// 我們傳遞物件，當在檢視中輸出時它会被呈现
 $data['pagination'] = $pagination;
 
 // 回傳檢視
@@ -102,15 +102,15 @@ return \View::forge('posts/index', $data);</code></pre>
 				<h3 id="configuration">配置</h3>
 
 				<p>
-					你可以透過幾種方法配置分頁實例。你可以傳遞一個帶有配置的陣列當你<kbd>鍛造（forge）</kbd>實例，
+					你可以透過幾種方法配置分頁實例。你可以傳遞一个帶有配置的陣列當你<kbd>鍛造（forge）</kbd>實例，
 					或者你可以直接在該實例上更新特性。
 				</p>
 				<p>可定義以下的配置設定：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -119,47 +119,47 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								你有分頁頁面的 URL，如果為 null，Fuel 嘗試從目前的 URL 檢測。
+								你有分頁頁面的 URL，如果为 null，Fuel 嘗试從目前的 URL 檢测。
 							</td>
 						</tr>
 						<tr>
 							<th>uri_segment</th>
-							<td>整數｜字串</td>
+							<td>整数｜字串</td>
 							<td><pre class="php"><code>3</code></pre></td>
 							<td>
-								包含頁碼的 URI 分段（如果為整數）。包含頁碼的查詢字串欄位（如果為字串）。
+								包含頁码的 URI 分段（如果为整数）。包含頁码的查詢字串欄位（如果为字串）。
 							</td>
 						</tr>
 						<tr>
 							<th>num_links</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>5</code></pre></td>
 							<td>
-								要顯示的連結總數。
+								要顯示的連結總数。
 							</td>
 						</tr>
 						<tr>
 							<th>total_items</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>0</code></pre></td>
 							<td>
-								項目總數。通常這是一個 count() 查詢的結果。
+								項目總数。通常这是一个 count() 查詢的結果。
 							</td>
 						</tr>
 						<tr>
 							<th>per_page</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>10</code></pre></td>
 							<td>
-								每頁筆數。
+								每頁筆数。
 							</td>
 						</tr>
 						<tr>
 							<th>current_page</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								如果 URI 不存在頁碼時要載入的頁面。如果沒給，預設是 1。
+								如果 URI 不存在頁码時要載入的頁面。如果沒給，預設是 1。
 							</td>
 						</tr>
 						<tr>
@@ -167,7 +167,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								產生一個「到第一頁」連結如果為 true 並且不在第一頁。
+								產生一个「到第一頁」連結如果为 true 并且不在第一頁。
 							</td>
 						</tr>
 						<tr>
@@ -175,15 +175,15 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								產生一個「到最後一頁」連結如果為 true 並且不在最後一頁。
+								產生一个「到最後一頁」連結如果为 true 并且不在最後一頁。
 							</td>
 						</tr>
 						<tr>
 							<th>link_offset</th>
-							<td>整數／浮點數</td>
+							<td>整数／浮點数</td>
 							<td><pre class="php"><code>0.50</code></pre></td>
 							<td>
-								在分頁區塊中活躍連結的偏移，無論是 0 到 1 之間的小數點，或 0 到 100 之間的整數（百分比）。
+								在分頁區塊中活躍連結的偏移，無論是 0 到 1 之間的小数點，或 0 到 100 之間的整数（百分比）。
 							</td>
 						</tr>
 					</tbody>
@@ -193,36 +193,36 @@ return \View::forge('posts/index', $data);</code></pre>
 			<section>
 				<h3 id="linkoffsets">連結偏移</h3>
 				<p>
-					預設情況下，Pagination 類別會嘗試定位活躍連結（目前頁面）
+					預設情況下，Pagination 类別会嘗试定位活躍連結（目前頁面）
 					在分頁區塊中間。
 				</p>
 				<p>
-					你可以使用配置中的 <kbd>link_offset</kbd> 值來控制此行為。這個值可以定義為 0 到 1 之間的浮點數，或
-					1 到 100 之間的整數（像百分比）。預設情況下，這個值是設為 <code>0.5</code> （= 50%）。
-					如果你讓值變小，活躍連結會往左移動，如果你讓值變大，
-					活躍連結會往右移動。
+					你可以使用配置中的 <kbd>link_offset</kbd> 值來控制此行为。这个值可以定義为 0 到 1 之間的浮點数，或
+					1 到 100 之間的整数（像百分比）。預設情況下，这个值是設为 <code>0.5</code> （= 50%）。
+					如果你让值變小，活躍連結会往左移动，如果你让值變大，
+					活躍連結会往右移动。
 				</p>
 
 				<h5 id="linkoffsetexample">範例</h5>
 
 				<p>
-					讓我們假設你有共 20 頁可以顯示。你已經設定 <kbd>num_links</kbd> 為 5，總共顯示 5 頁的連結，
+					让我們假設你有共 20 頁可以顯示。你已经設定 <kbd>num_links</kbd> 为 5，總共顯示 5 頁的連結，
 					而你顯示上一頁和下一頁連結也是如此。你目前選擇的是第 6 頁。
 				</p>
 				<ul>
 					<li>
-						隨著預設 <kbd>0.5</kbd> 的設定，會顯示 <blockquote><code>&laquo;</code>&nbsp;&nbsp;<code>4</code>&nbsp;&nbsp;<code>5</code>&nbsp;&nbsp;6&nbsp;&nbsp;<code>7</code>&nbsp;&nbsp;<code>8</code>&nbsp;&nbsp;<code>&raquo;</code></blockquote>，
+						隨著預設 <kbd>0.5</kbd> 的設定，会顯示 <blockquote><code>&laquo;</code>&nbsp;&nbsp;<code>4</code>&nbsp;&nbsp;<code>5</code>&nbsp;&nbsp;6&nbsp;&nbsp;<code>7</code>&nbsp;&nbsp;<code>8</code>&nbsp;&nbsp;<code>&raquo;</code></blockquote>，
 						保持選擇的第 6 頁恰好地在區塊中間。
 					</li>
 					<li>
-						 當你變更設定為 <kbd>0</kbd>，Pagination 會始終試著讓第一個連結為活躍連結。在這個情況下，
+						 當你變更設定为 <kbd>0</kbd>，Pagination 会始終试著让第一个連結为活躍連結。在这个情況下，
 						 <blockquote><code>&laquo;</code>&nbsp;&nbsp;6&nbsp;&nbsp;<code>7</code>&nbsp;&nbsp;<code>8</code>&nbsp;&nbsp;<code>9</code>&nbsp;&nbsp;<code>10</code>&nbsp;&nbsp;<code>&raquo;</code></blockquote>
-						會被顯示，讓選擇的第 6 頁為區塊中的第一個連結。
+						会被顯示，让選擇的第 6 頁为區塊中的第一个連結。
 					</li>
 					<li>
-						如果你想變更設定為 <kbd>1</kbd>，Pagination 會始終試著讓最後一個連結為活躍連結。在這個情況下，
+						如果你想變更設定为 <kbd>1</kbd>，Pagination 会始終试著让最後一个連結为活躍連結。在这个情況下，
 						<blockquote><code>&laquo;</code>&nbsp;&nbsp;<code>2</code>&nbsp;&nbsp;<code>3</code>&nbsp;&nbsp;<code>4</code>&nbsp;&nbsp;<code>5</code>&nbsp;&nbsp;6&nbsp;&nbsp;<code>&raquo;</code></blockquote>
-						會被顯示。
+						会被顯示。
 					</li>
 				</ul>
 				<p>
@@ -230,9 +230,9 @@ return \View::forge('posts/index', $data);</code></pre>
 					就可以愈精細切換焦點。
 				</p>
 				<p class="note">
-					這只會在有足夠頁面可以這樣做的時候適用。如果你只有 5 頁可用，你想要顯示 5 個連結，而第 3
-					頁是目前頁面，沒有顯示上一頁和下一頁連結，目前頁面會在中間，不管
-					<kbd>link_offset</kbd> 的設定是什麼。根本沒有足夠的頁面可用來移動目前頁面連結往左或右。
+					这只会在有足夠頁面可以这樣做的時候適用。如果你只有 5 頁可用，你想要顯示 5 个連結，而第 3
+					頁是目前頁面，沒有顯示上一頁和下一頁連結，目前頁面会在中間，不管
+					<kbd>link_offset</kbd> 的設定是什么。根本沒有足夠的頁面可用來移动目前頁面連結往左或右。
 				</p>
 			</section>
 
@@ -240,10 +240,10 @@ return \View::forge('posts/index', $data);</code></pre>
 				<h3 id="templating">樣板化</h3>
 
 				<p>
-					每個 Pagination 實例使用一個樣板來產生需要用來建立分頁標記的 HTML。
-					你可以在 <em>config/pagination.php</em> 檔案中儲存你的標準樣板。
+					每个 Pagination 實例使用一个樣板來產生需要用來建立分頁标記的 HTML。
+					你可以在 <em>config/pagination.php</em> 档案中儲存你的标准樣板。
 					在你做任何修改之前，從核心 config 文件夾複製到你的 app config 文件夾。
-					預設配置檔案配有三個樣板，FuelPHP 預設以及相容 Twitter Bootstrap v2 和 v3 的樣板。
+					預設配置档案配有三个樣板，FuelPHP 預設以及相容 Twitter Bootstrap v2 和 v3 的樣板。
 				</p>
 				<p>以下樣板條目必須被定義：</p>
 				<table class="config">
@@ -253,7 +253,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td class="fixed_width">字串</td>
 							<td><pre class="html"><code>&lt;div class="pagination"&gt;\n\t{pagination}\n&lt;/div&gt;\n</code></pre></td>
 							<td>
-								將包裹產生的分頁的標記。
+								将包裹產生的分頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -261,7 +261,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="first"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來產生第一頁的標記。
+								将被用來產生第一頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -269,7 +269,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td>無</td>
 							<td>
-								將被用來產生第一頁的標記，如果此頁是第一頁或唯一。
+								将被用來產生第一頁的标記，如果此頁是第一頁或唯一。
 							</td>
 						</tr>
 						<tr>
@@ -277,7 +277,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td>無</td>
 							<td>
-								將被用來產生第一頁連結的標記，如果此頁是第一頁或唯一。
+								将被用來產生第一頁連結的标記，如果此頁是第一頁或唯一。
 							</td>
 						</tr>
 						<tr>
@@ -285,7 +285,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>無</td>
 							<td><pre class="html"><code>&amp;laquo;&amp;laquo;</code></pre></td>
 							<td>
-								將被用來產生第一頁標記的標記。
+								将被用來產生第一頁标記的标記。
 							</td>
 						</tr>
 						<tr>
@@ -293,7 +293,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來產生第一頁連結的標記。
+								将被用來產生第一頁連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -301,7 +301,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="previous"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來產生上一頁的標記。
+								将被用來產生上一頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -309,7 +309,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&amp;laquo;</code></pre></td>
 							<td>
-								將被用來產生上一頁標記的標記。
+								将被用來產生上一頁标記的标記。
 							</td>
 						</tr>
 						<tr>
@@ -317,7 +317,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}" rel="prev"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來產生上一頁連結的標記。
+								将被用來產生上一頁連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -325,7 +325,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="previous-inactive"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來為無效連結產生上一頁的標記。
+								将被用來为無效連結產生上一頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -333,7 +333,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}" rel="prev"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來為無效連結產生上一頁連結的標記。
+								将被用來为無效連結產生上一頁連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -341,7 +341,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來產生其他頁面的標記。
+								将被用來產生其他頁面的标記。
 							</td>
 						</tr>
 						<tr>
@@ -349,7 +349,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來產生其他頁面連結的標記。
+								将被用來產生其他頁面連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -357,7 +357,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="active"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來產生目前頁面的標記。
+								将被用來產生目前頁面的标記。
 							</td>
 						</tr>
 						<tr>
@@ -365,7 +365,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來產生目前頁面連結的標記。
+								将被用來產生目前頁面連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -373,7 +373,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="next"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來產生下一頁的標記。
+								将被用來產生下一頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -381,7 +381,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&amp;raquo;</code></pre></td>
 							<td>
-								將被用來產生下一頁標記的標記。
+								将被用來產生下一頁标記的标記。
 							</td>
 						</tr>
 						<tr>
@@ -389,7 +389,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}" rel="next"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來產生下一頁連結的標記。
+								将被用來產生下一頁連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -397,7 +397,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="next-inactive"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來為無效連結產生下一頁的標記。
+								将被用來为無效連結產生下一頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -405,7 +405,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}" rel="next"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來為無效連結產生下一頁連結的標記。
+								将被用來为無效連結產生下一頁連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -413,7 +413,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&lt;span class="last"&gt;\n\t{link}\n&lt;/span&gt;\n</code></pre></td>
 							<td>
-								將被用來產生最後一頁的標記。
+								将被用來產生最後一頁的标記。
 							</td>
 						</tr>
 						<tr>
@@ -421,7 +421,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>&amp;raquo;&amp;raquo;</code></pre></td>
 							<td>
-								將被用來產生最後一頁標記的標記。
+								将被用來產生最後一頁标記的标記。
 							</td>
 						</tr>
 						<tr>
@@ -429,7 +429,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td><pre class="html"><code>\t\t&lt;a href="{uri}"&gt;{page}&lt;/a&gt;\n</code></pre></td>
 							<td>
-								將被用來產生最後一頁連結的標記。
+								将被用來產生最後一頁連結的标記。
 							</td>
 						</tr>
 						<tr>
@@ -437,7 +437,7 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td>無</td>
 							<td>
-								將被用來產生最後一頁的標記，如果此頁是最後一頁或唯一。
+								将被用來產生最後一頁的标記，如果此頁是最後一頁或唯一。
 							</td>
 						</tr>
 						<tr>
@@ -445,29 +445,29 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>字串</td>
 							<td>無</td>
 							<td>
-								將被用來產生最後一頁連結的標記，如果此頁是最後一頁或唯一。
+								将被用來產生最後一頁連結的标記，如果此頁是最後一頁或唯一。
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<p>
-					在樣板中，<strong>{uri}</strong> 將被產生的分頁連結取代（<strong>#</strong> 如果是非活躍樣板），
-					並且 <strong>{page}</strong> 被頁碼或上一個／下一個標記取代。
-					如果你想要在這些標記使用圖像，只要修改定義在樣板中相應的連結，
-					用圖像標記取代 <strong>{page}</strong>。
+					在樣板中，<strong>{uri}</strong> 将被產生的分頁連結取代（<strong>#</strong> 如果是非活躍樣板），
+					并且 <strong>{page}</strong> 被頁码或上一个／下一个标記取代。
+					如果你想要在这些标記使用圖像，只要修改定義在樣板中相應的連結，
+					用圖像标記取代 <strong>{page}</strong>。
 				</p>
 				<p class="note">
-					當你鍛造 Pagination 實例時所傳遞的配置將與定義在你配置檔案中的預設樣板合併。
-					這能讓你指傳遞你想要覆寫值。
-					如果你在配置檔案中的樣板不完整，
-					上面所提的預設值將被使用。
+					當你鍛造 Pagination 實例時所傳遞的配置将與定義在你配置档案中的預設樣板合併。
+					这能让你指傳遞你想要覆寫值。
+					如果你在配置档案中的樣板不完整，
+					上面所提的預設值将被使用。
 				</p>
 			</section>
 
 			<section>
 				<article>
 					<h4 class="method" id="method_forge">forge($name = 'default', $config = array())</h4>
-					<p><strong>forge</strong> 方法能建立一個新的分頁實例，並且透過傳遞一個陣列來配置。</p>
+					<p><strong>forge</strong> 方法能建立一个新的分頁實例，并且透過傳遞一个陣列來配置。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -475,18 +475,18 @@ return \View::forge('posts/index', $data);</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$name</kbd></th>
 										<td><i>必要</i></td>
-										<td>要被建立的實例名稱。如果沒有給名稱，'default' 實例會被建立。</td>
+										<td>要被建立的實例名稱。如果沒有給名稱，'default' 實例会被建立。</td>
 									</tr>
 									<tr>
 										<th><kbd>$config</kbd></th>
@@ -503,7 +503,7 @@ return \View::forge('posts/index', $data);</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 建立一個新的分頁實例
+								<pre class="php"><code>// 建立一个新的分頁實例
 $pagination = Pagination::forge('mypagination', array(
 	'pagination_url' => 'http://docs.fuelphp.com/',
 	'uri_segment' => 2,
@@ -518,7 +518,7 @@ $pagination = Pagination::forge('mypagination', array(
 
 				<article>
 					<h4 class="method" id="method_instance">instance($name = null)</h4>
-					<p><strong>instance</strong> 方法能讓你檢索先前鍛造的實例，或回傳預設實例如果沒給名稱的話。</p>
+					<p><strong>instance</strong> 方法能让你檢索先前鍛造的實例，或回傳預設實例如果沒給名稱的話。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -526,25 +526,25 @@ $pagination = Pagination::forge('mypagination', array(
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$name</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>要被回傳實例的名稱。如果沒給名稱，'default' 實例會被建立。</td>
+										<td>要被回傳實例的名稱。如果沒給名稱，'default' 實例会被建立。</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>混合，一個 Pagination 物件，或 flase 如果請求的實例不存在。</td>
+							<td>混合，一个 Pagination 物件，或 flase 如果請求的實例不存在。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -559,7 +559,7 @@ $pagination = Pagination::instance('mypagination');</code></pre>
 
 				<article>
 					<h4 class="method" id="method_render">render($raw = false)</h4>
-					<p><strong>render</strong> 方法產生在檢視中顯示分頁連結的標記。</p>
+					<p><strong>render</strong> 方法產生在檢視中顯示分頁連結的标記。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -567,18 +567,18 @@ $pagination = Pagination::instance('mypagination');</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$raw</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果為 true，會回傳一個原始分頁資料的陣列，而不是呈現分頁標記。</td>
+										<td>如果为 true，会回傳一个原始分頁資料的陣列，而不是呈现分頁标記。</td>
 									</tr>
 								</table>
 							</td>
@@ -590,7 +590,7 @@ $pagination = Pagination::instance('mypagination');</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回先前鍛造的實例，並且呈現
+								<pre class="php"><code>// 取回先前鍛造的實例，并且呈现
 echo Pagination::instance('mypagination')->render();</code></pre>
 							</td>
 						</tr>
@@ -598,16 +598,16 @@ echo Pagination::instance('mypagination')->render();</code></pre>
 					</table>
 
 					<p class="note">
-						分頁物件包含一個 __toString() 方法，當你寫出該物件、或轉為字串時，
-						會造成 render() 方法被呼叫。
+						分頁物件包含一个 __toString() 方法，當你寫出該物件、或轉为字串時，
+						会造成 render() 方法被呼叫。
 					</p>
 				</article>
 
 				<article>
 					<h4 class="method" id="method_first">first($marker = null)</h4>
 					<p>
-						<strong>first</strong> 方法為分頁產生顯示「第一頁」連結的標記。
-						如果沒給字串用來做為標記，來自樣板的 "first-marker" 值會被使用。
+						<strong>first</strong> 方法为分頁產生顯示「第一頁」連結的标記。
+						如果沒給字串用來做为标記，來自樣板的 "first-marker" 值会被使用。
 					</p>
 					<table class="method">
 						<tbody>
@@ -616,11 +616,11 @@ echo Pagination::instance('mypagination')->render();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -639,23 +639,23 @@ echo Pagination::instance('mypagination')->render();</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回先前鍛造的實例，並且呈現「第一頁」連結
+								<pre class="php"><code>// 取回先前鍛造的實例，并且呈现「第一頁」連結
 echo Pagination::instance('mypagination')->first();</code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
 					<p class="note">
-						「第一頁」連結將只在有第一頁，而你不在第一頁時顯示。
-						請注意，預設情況下，沒有為 'first' 定義無效連結。
+						「第一頁」連結将只在有第一頁，而你不在第一頁時顯示。
+						請注意，預設情況下，沒有为 'first' 定義無效連結。
 					</p>
 				</article>
 
 				<article>
 					<h4 class="method" id="method_previous">previous($marker = null)</h4>
 					<p>
-						<strong>previous</strong> 方法為分頁產生顯示「上一頁」連結的標記。
-						如果沒給字串用來做為標記，來自樣板的 "previous-marker" 值會被使用。
+						<strong>previous</strong> 方法为分頁產生顯示「上一頁」連結的标記。
+						如果沒給字串用來做为标記，來自樣板的 "previous-marker" 值会被使用。
 					</p>
 					<table class="method">
 						<tbody>
@@ -664,11 +664,11 @@ echo Pagination::instance('mypagination')->first();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -687,7 +687,7 @@ echo Pagination::instance('mypagination')->first();</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回先前鍛造的實例，並且呈現「上一頁」連結
+								<pre class="php"><code>// 取回先前鍛造的實例，并且呈现「上一頁」連結
 echo Pagination::instance('mypagination')->previous();</code></pre>
 							</td>
 						</tr>
@@ -698,8 +698,8 @@ echo Pagination::instance('mypagination')->previous();</code></pre>
 				<article>
 					<h4 class="method" id="method_next">next($marker = null)</h4>
 					<p>
-						<strong>next</strong> 方法為分頁產生顯示「下一頁」連結的標記。
-						如果沒給字串用來做為標記，來自樣板的 "next-marker" 值會被使用。
+						<strong>next</strong> 方法为分頁產生顯示「下一頁」連結的标記。
+						如果沒給字串用來做为标記，來自樣板的 "next-marker" 值会被使用。
 					</p>
 					<table class="method">
 						<tbody>
@@ -708,11 +708,11 @@ echo Pagination::instance('mypagination')->previous();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -731,7 +731,7 @@ echo Pagination::instance('mypagination')->previous();</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回先前鍛造的實例，並且呈現「下一頁」連結
+								<pre class="php"><code>// 取回先前鍛造的實例，并且呈现「下一頁」連結
 echo Pagination::instance('mypagination')->next();</code></pre>
 							</td>
 						</tr>
@@ -742,8 +742,8 @@ echo Pagination::instance('mypagination')->next();</code></pre>
 				<article>
 					<h4 class="method" id="method_last">last($marker = null)</h4>
 					<p>
-						<strong>last</strong> 方法為分頁產生顯示「最後一頁」連結的標記。
-						如果沒給字串用來做為標記，來自樣板的 "last-marker" 值會被使用。
+						<strong>last</strong> 方法为分頁產生顯示「最後一頁」連結的标記。
+						如果沒給字串用來做为标記，來自樣板的 "last-marker" 值会被使用。
 					</p>
 					<table class="method">
 						<tbody>
@@ -752,11 +752,11 @@ echo Pagination::instance('mypagination')->next();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -775,21 +775,21 @@ echo Pagination::instance('mypagination')->next();</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回先前鍛造的實例，並且呈現「最後一頁」連結
+								<pre class="php"><code>// 取回先前鍛造的實例，并且呈现「最後一頁」連結
 echo Pagination::instance('mypagination')->last();</code></pre>
 							</td>
 						</tr>
 						</tbody>
 					</table>
 					<p class="note">
-						「最後一頁」連結將只在有任何頁面，而你不在最後一頁時顯示。
-						 請注意，預設情況下，沒有為 'last' 定義無效連結。
+						「最後一頁」連結将只在有任何頁面，而你不在最後一頁時顯示。
+						 請注意，預設情況下，沒有为 'last' 定義無效連結。
 					</p>
 				</article>
 
 				<article>
 					<h4 class="method" id="method_pages_render">pages_render()</h4>
-					<p><strong>pages_render</strong> 方法為分頁產生顯示在上一頁及下一頁之間的頁面連結的標記。</p>
+					<p><strong>pages_render</strong> 方法为分頁產生顯示在上一頁及下一頁之間的頁面連結的标記。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -797,7 +797,7 @@ echo Pagination::instance('mypagination')->last();</code></pre>
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -807,7 +807,7 @@ echo Pagination::instance('mypagination')->last();</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回先前鍛造的實例，並且呈現「pages」連結
+								<pre class="php"><code>// 取回先前鍛造的實例，并且呈现「pages」連結
 echo Pagination::instance('mypagination')->pages_render();</code></pre>
 							</td>
 						</tr>
@@ -820,13 +820,13 @@ echo Pagination::instance('mypagination')->pages_render();</code></pre>
 				<h3 id="static">靜態介面</h3>
 
 				<p>
-					為了方便你，
-					Pagination 類別也有一個只對預設實例操作的靜態介面。
+					为了方便你，
+					Pagination 类別也有一个只對預設實例操作的靜態介面。
 				</p>
 
 				<article>
 					<h4 class="method" id="method_get">get($name)</h4>
-					<p><strong>get</strong> 方法能讓你在預設實例取得一個配置項目。</p>
+					<p><strong>get</strong> 方法能让你在預設實例取得一个配置項目。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -834,11 +834,11 @@ echo Pagination::instance('mypagination')->pages_render();</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -857,10 +857,10 @@ echo Pagination::instance('mypagination')->pages_render();</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 取回目前頁碼
+								<pre class="php"><code>// 取回目前頁码
 $page_number = Pagination::get('current_page');
 
-// 這是一個別名
+// 这是一个別名
 $page_number = Pagination::instance()->current_page;</code></pre>
 							</td>
 						</tr>
@@ -870,7 +870,7 @@ $page_number = Pagination::instance()->current_page;</code></pre>
 
 				<article>
 					<h4 class="method" id="method_set">set($name, $value)</h4>
-					<p><strong>set</strong> 方法能讓你在預設實例設定一個配置項目為所給的值。</p>
+					<p><strong>set</strong> 方法能让你在預設實例設定一个配置項目为所給的值。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -878,11 +878,11 @@ $page_number = Pagination::instance()->current_page;</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -906,10 +906,10 @@ $page_number = Pagination::instance()->current_page;</code></pre>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 設定列總數
+								<pre class="php"><code>// 設定列總数
 $page_number = Pagination::set('total_items', 610);
 
-// 這是一個別名
+// 这是一个別名
 Pagination::instance()->total_items = 610;</code></pre>
 							</td>
 						</tr>
@@ -918,12 +918,12 @@ Pagination::instance()->total_items = 610;</code></pre>
 				</article>
 
 				<p class="note">
-					為了向下相容，靜態方法 <kbd>set_config()</kbd>、<kbd>create_links()</kbd>、
-					<kbd>next_link()</kbd> 和 <kbd>prev_link()</kbd> 將被模擬在預設實例，
-					以最小化升級一個已存在的應用程式到 FuelPHP v1.4+ 的遷移影響。
+					为了向下相容，靜態方法 <kbd>set_config()</kbd>、<kbd>create_links()</kbd>、
+					<kbd>next_link()</kbd> 和 <kbd>prev_link()</kbd> 将被模擬在預設實例，
+					以最小化升級一个已存在的应用程序到 FuelPHP v1.4+ 的迁移影響。
 				</p>
-				<p>請注意，現下沒有可能的方法模擬直接存取靜態類別特性，
-				所以如果你的應用程式使用的話，你將必須改變它們：</p>
+				<p>請注意，现下沒有可能的方法模擬直接存取靜態类別特性，
+				所以如果你的应用程序使用的話，你将必須改變它們：</p>
 								<pre class="php"><code>// v1.4 前用法：
 Pagination::$per_page = 10;
 
@@ -950,7 +950,7 @@ Model_Article::query()
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

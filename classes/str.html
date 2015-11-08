@@ -12,7 +12,7 @@
 		var class_prefix = "Str::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Str - 類別 - FuelPHP 简体中文手册</title>
+	<title>Str - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Str 類別</h2>
+			<h2>Str 类別</h2>
 
-			<p>Str 類別是一系列幫助操作字串的方法。</p>
+			<p>Str 类別是一系列幫助操作字串的方法。</p>
 
 			<article>
 				<h4 class="method" id="method_increment">increment($str, $first = 1)</h4>
-				<p><strong>increment</strong> 方法能讓你附加一個數字字串的結尾或遞增已經存在的數字。</p>
+				<p><strong>increment</strong> 方法能让你附加一个数字字串的結尾或遞增已经存在的数字。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -54,11 +54,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -70,7 +70,7 @@
 									<tr>
 										<th><kbd>$first</kbd></th>
 										<td><pre class="php"><code>1</code></pre></td>
-										<td>要遞增的第一個數字。</td>
+										<td>要遞增的第一个数字。</td>
 									</tr>
 								</table>
 							</td>
@@ -99,7 +99,7 @@ Str::increment($string, 3); // 回傳 filename_3
 
 			<article>
 				<h4 class="method" id="method_random">random($type = 'alnum', $length = 8)</h4>
-				<p><strong>random</strong> 方法基於所給的類型產生一個隨機的字串。</p>
+				<p><strong>random</strong> 方法基於所給的类型產生一个隨機的字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -107,23 +107,23 @@ Str::increment($string, 3); // 回傳 filename_3
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><em>alnum</em></td>
-										<td>要產生的字串類型。你的選擇有 alnum、numeric、nozero、alpha、distinct、hexdec、unique、sha1 與 uuid。</td>
+										<td>要產生的字串类型。你的選擇有 alnum、numeric、nozero、alpha、distinct、hexdec、unique、sha1 與 uuid。</td>
 									</tr>
 									<tr>
 										<th><kbd>$length</kbd></th>
 										<td><pre class="php"><code>16</code></pre></td>
-										<td>你想要最後字串的字元長度（unique、sha1 與 uuid 忽略此參數）。</td>
+										<td>你想要最後字串的字元長度（unique、sha1 與 uuid 忽略此參数）。</td>
 									</tr>
 								</table>
 							</td>
@@ -135,15 +135,15 @@ Str::increment($string, 3); // 回傳 filename_3
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// alnum（大寫與小寫字母混合數字（
+								<pre class="php"><code>// alnum（大寫與小寫字母混合数字（
 Str::random('alnum', 16);
 // 回傳：SvZi9Dh3lq7zQYim
 
-// numeric（只有數字）
+// numeric（只有数字）
 Str::random('numeric', 16);
 // 回傳：1045343964672481
 
-// nozero（除了 0 的數字）
+// nozero（除了 0 的数字）
 Str::random('nozero', 16);
 // 回傳：3244623373994515
 
@@ -151,7 +151,7 @@ Str::random('nozero', 16);
 Str::random('alpha', 16);
 // 回傳：LuVAXbmxQbbWoYqz
 
-// distinct（大寫字母與不會被混淆的數字）
+// distinct（大寫字母與不会被混淆的数字）
 Str::random('distinct', 16);
 // 回傳：R79MPKMH4KTRN35J
 
@@ -178,7 +178,7 @@ Str::random('uuid');
 
 			<article>
 				<h4 class="method" id="method_truncate">truncate($string, $limit, $continuation = '...', $is_html = false)</h4>
-				<p><strong>truncate</strong> 方法能讓你限制字元，並提供一個續編字串，而不打破 html。</p>
+				<p><strong>truncate</strong> 方法能让你限制字元，并提供一个續编字串，而不打破 html。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -186,11 +186,11 @@ Str::random('uuid');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -212,7 +212,7 @@ Str::random('uuid');
 									<tr>
 										<th><kbd>$is_html</kbd></th>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果字串包含 html，設定此為 true 將使該方法不打破 html。</td>
+										<td>如果字串包含 html，設定此为 true 将使該方法不打破 html。</td>
 									</tr>
 								</table>
 							</td>
@@ -238,9 +238,9 @@ Str::truncate($string, 15, '...Read More'); // 回傳 Lorem ipsum dol...Read Mor
 
 			<article>
 				<h4 class="method" id="method_alternator">alternator(*$args)</h4>
-				<p>回傳一個閉包（closure），它將會輪替你傳給此方法做為變數的值，
-					除非你使用 <kbd>false</kbd> 變數呼叫閉包（closure） - 在此情況下，
-					將會在下次呼叫時回傳相同的值，而沒有移動到下一個值。</p>
+				<p>回傳一个閉包（closure），它将会輪替你傳給此方法做为變数的值，
+					除非你使用 <kbd>false</kbd> 變数呼叫閉包（closure） - 在此情況下，
+					将会在下次呼叫時回傳相同的值，而沒有移动到下一个值。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -248,18 +248,18 @@ Str::truncate($string, 15, '...Read More'); // 回傳 Lorem ipsum dol...Read Mor
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>*$args</kbd></th>
 										<td><em>必要</em></td>
-										<td>所有你需要輪替的變數</td>
+										<td>所有你需要輪替的變数</td>
 									</tr>
 								</table>
 							</td>
@@ -274,7 +274,7 @@ Str::truncate($string, 15, '...Read More'); // 回傳 Lorem ipsum dol...Read Mor
 								<pre class="php"><code>$alt = Str::alternator('one', 'two', 'three', 'four');
 echo $alt(); // 輸出 'one'
 echo $alt(); // 輸出 'two'
-echo $alt(false); // 輸出 'three'，但不會移動到下一個元素，如同你在下一次呼叫所見
+echo $alt(false); // 輸出 'three'，但不会移动到下一个元素，如同你在下一次呼叫所見
 echo $alt(); // 輸出 'three'
 echo $alt(); // 輸出 'four'
 echo $alt(); // 輸出 'one'
@@ -287,7 +287,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_upper">upper($str, $encoding = null)</h4>
-				<p><strong>upper</strong> 方法轉換所有字元為大寫，它等同於 PHP 的 strtoupper() 可使用指定的字元編碼。</p>
+				<p><strong>upper</strong> 方法轉換所有字元为大寫，它等同於 PHP 的 strtoupper() 可使用指定的字元编码。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -295,12 +295,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -314,7 +314,7 @@ echo $alt(); // 輸出 'one'
 										<th><kbd>$encoding</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>字元編碼。</td>
+										<td>字元编码。</td>
 									</tr>
 								</table>
 							</td>
@@ -335,7 +335,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_lower">lower($str, $encoding = null)</h4>
-				<p><strong>lower</strong> 方法轉換所有字元為小寫，它等同於 PHP 的 strtolower() 可使用指定的字元編碼。</p>
+				<p><strong>lower</strong> 方法轉換所有字元为小寫，它等同於 PHP 的 strtolower() 可使用指定的字元编码。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -343,12 +343,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -362,7 +362,7 @@ echo $alt(); // 輸出 'one'
 										<th><kbd>$encoding</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>字元編碼。</td>
+										<td>字元编码。</td>
 									</tr>
 								</table>
 							</td>
@@ -383,7 +383,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_tr">tr($string, $array = array())</h4>
-				<p><strong>tr</strong> 方法使用 PHP 的 strtr() 從所給的字串解析變數。</p>
+				<p><strong>tr</strong> 方法使用 PHP 的 strtr() 從所給的字串解析變数。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -391,12 +391,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -410,7 +410,7 @@ echo $alt(); // 輸出 'one'
 										<th><kbd>$array</kbd></th>
 										<td><em>陣列</em></td>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>要 str_replace 的參數。</td>
+										<td>要 str_replace 的參数。</td>
 									</tr>
 								</table>
 							</td>
@@ -431,7 +431,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_is_json">is_json($string)</h4>
-				<p><strong>is_json</strong> 方法檢查一個字串是否為 json 編碼。</p>
+				<p><strong>is_json</strong> 方法檢查一个字串是否为 json 编码。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -439,12 +439,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -473,7 +473,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_is_serialized">is_serialized($string)</h4>
-				<p><strong>is_serialized</strong> 方法檢查一個字串是否序列化。</p>
+				<p><strong>is_serialized</strong> 方法檢查一个字串是否序列化。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -481,12 +481,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -516,7 +516,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_is_html">is_html($string)</h4>
-				<p><strong>is_html</strong> 方法檢查一個字串是否為 html。</p>
+				<p><strong>is_html</strong> 方法檢查一个字串是否为 html。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -524,12 +524,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -559,7 +559,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_is_xml">is_xml($string)</h4>
-				<p><strong>is_xml</strong> 方法檢查一個字串是否是有效的 xml。需要 <a href="http://www.php.net/manual/en/ref.libxml.php" target="_blank">libxml 擴充</a>。</p>
+				<p><strong>is_xml</strong> 方法檢查一个字串是否是有效的 xml。需要 <a href="http://www.php.net/manual/en/ref.libxml.php" target="_blank">libxml 擴充</a>。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -567,12 +567,12 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -602,7 +602,7 @@ echo $alt(); // 輸出 'one'
 
 			<article>
 				<h4 class="method" id="method_starts_with">starts_with($str, $start, $ignore_case = false)</h4>
-				<p><strong>starts_with</strong> 方法檢查一個字串是否有特定的開頭。</p>
+				<p><strong>starts_with</strong> 方法檢查一个字串是否有特定的開頭。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -610,11 +610,11 @@ echo $alt(); // 輸出 'one'
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -657,7 +657,7 @@ Str::starts_with($string, 'lorem', true); // 回傳 true
 
 			<article>
 				<h4 class="method" id="method_ends_with">ends_with($str, $end, $ignore_case = false)</h4>
-				<p><strong>ends_with</strong> 方法檢查一個字串是否有特定的結尾。</p>
+				<p><strong>ends_with</strong> 方法檢查一个字串是否有特定的結尾。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -665,11 +665,11 @@ Str::starts_with($string, 'lorem', true); // 回傳 true
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -712,7 +712,7 @@ Str::ends_with($string, 'Amet', true); // 回傳 true
 
 			<article>
 				<h4 class="method" id="method_sub">sub($str, $start, $length = null, $encoding = null)</h4>
-				<p><strong>sub</strong> 方法回傳字串指定的一部分，它等同於 PHP 的 substr() 可使用指定的字符集編碼。</p>
+				<p><strong>sub</strong> 方法回傳字串指定的一部分，它等同於 PHP 的 substr() 可使用指定的字符集编码。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -720,11 +720,11 @@ Str::ends_with($string, 'Amet', true); // 回傳 true
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -736,7 +736,7 @@ Str::ends_with($string, 'Amet', true); // 回傳 true
 									<tr>
 										<th><kbd>$start</kbd></th>
 										<td><em>必要</em></td>
-										<td>第一個字元的定位，詳細用法請看 <a href="http://php.net/substr" target="_blank">php.net</a>。</td>
+										<td>第一个字元的定位，詳細用法請看 <a href="http://php.net/substr" target="_blank">php.net</a>。</td>
 									</tr>
 									<tr>
 										<th><kbd>$length</kbd></th>
@@ -746,7 +746,7 @@ Str::ends_with($string, 'Amet', true); // 回傳 true
 									<tr>
 										<th><kbd>$encoding</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>字符集編碼。</td>
+										<td>字符集编码。</td>
 									</tr>
 								</table>
 							</td>
@@ -769,7 +769,7 @@ Str::ends_with($string, 'Amet', true); // 回傳 true
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

@@ -12,7 +12,7 @@
 		var class_prefix = "Theme::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Theme 進階 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Theme 進階 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,23 +40,23 @@
 
 		<div id="main">
 
-			<h2>Theme 類別</h2>
+			<h2>Theme 类別</h2>
 
 			<p>
-				Theme 類別為你的應用程式提供主題。
+				Theme 类別为你的应用程序提供主題。
 			</p>
 
 			<h3 id="asset">Asset 支援</h3>
 
 			<p>
-				每一個 Theme 類別實例有它自己的 Asset 類別實例，可以很容易從主題載入資產。
+				每一个 Theme 类別實例有它自己的 Asset 类別實例，可以很容易從主題載入資產。
 				Asset 實例被填入活躍的和備用兩者的資產路徑，
-				它將為你的資產提供相同的備用功能，如你有其他主題元素像樣板和檢視。
+				它将为你的資產提供相同的備用功能，如你有其他主題元素像樣板和檢視。
 			</p>
 
 			<p>範例：</p>
 
-			<pre class="php"><code>// 使用預設的主題實例載入一個資產
+			<pre class="php"><code>// 使用預設的主題實例載入一个資產
 echo \Theme::instance()->asset->css('bootstrap.css');</code></pre>
 
 			<h3 id="advanced_config">進階配置</h3>
@@ -64,17 +64,17 @@ echo \Theme::instance()->asset->css('bootstrap.css');</code></pre>
 			<p>
 				<a href="methods.html#method_active">active()</a>、<a href="methods.html#method_fallback">fallback()</a>、
 				<a href="methods.html#method_get_info">get_info()</a> 和 <a href="methods.html#method_load_info">load_info()</a>
-				方法預設能讓你傳遞一個有已安裝主題名稱的字串。
-				這些方法可以讓你傳遞一個替代的主題定義陣列，這讓傳遞額外配置資訊是可能的。
+				方法預設能让你傳遞一个有已安装主題名稱的字串。
+				这些方法可以让你傳遞一个替代的主題定義陣列，这让傳遞額外配置資訊是可能的。
 			</p>
 
-			<p>以下的主題變數被定義：</p>
+			<p>以下的主題變数被定義：</p>
 
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>參數</th>
-						<th>類型</th>
+						<th>參数</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th>描述</th>
 					</tr>
@@ -82,23 +82,23 @@ echo \Theme::instance()->asset->css('bootstrap.css');</code></pre>
 						<th>name</th>
 						<td>字串</td>
 						<td><strong>必要</strong></td>
-						<td>主題名稱。這應該與在指定路徑中的文件夾相符。</td>
+						<td>主題名稱。这應該與在指定路徑中的文件夾相符。</td>
 					</tr>
 					<tr>
 						<th>path</th>
 						<td>字串</td>
 						<td><strong>必要</strong></td>
-						<td>主題路徑。這應該包含主題名稱，並以一個目錄分隔符結尾。</td>
+						<td>主題路徑。这應該包含主題名稱，并以一个目录分隔符結尾。</td>
 					</tr>
 					<tr>
 						<th>asset_base</th>
 						<td>字串</td>
 						<td><strong>選擇性</strong></td>
 						<td>
-							指向此主題資產相對於應用程式 <strong>DOCROOT</strong>的基礎路徑。
+							指向此主題資產相對於应用程序 <strong>DOCROOT</strong>的基础路徑。
 							如果在 <strong>DOCROOT</strong> 之外，該路徑應該是完整路徑。
-							它應該以一個目錄分隔符結尾。
-							如果沒指定，它將從所給主題路徑、配置的 assets_folder、
+							它應該以一个目录分隔符結尾。
+							如果沒指定，它将從所給主題路徑、配置的 assets_folder、
 							以及配置的 base_url 來建構。
 						</td>
 					</tr>
@@ -106,20 +106,20 @@ echo \Theme::instance()->asset->css('bootstrap.css');</code></pre>
 						<th>info</th>
 						<td>陣列</td>
 						<td><strong>選擇性</strong></td>
-						<td>主題的資訊陣列。如果沒定義，它將從主題資訊檔案中的資訊建立。</td>
+						<td>主題的資訊陣列。如果沒定義，它将從主題資訊档案中的資訊建立。</td>
 					</tr>
 					<tr>
 						<th>find_file</th>
 						<td>布林</td>
 						<td><strong>選擇性</strong></td>
-						<td>如果設為 <strong>true</strong>，<a href="../finder.html#method_search">Finder::search()</a> 方法將被用來定位檢視和主題資訊檔案。</td>
+						<td>如果設为 <strong>true</strong>，<a href="../finder.html#method_search">Finder::search()</a> 方法将被用來定位檢視和主題資訊档案。</td>
 					</tr>
 				</tbody>
 			</table>
 
 			<p>範例：</p>
 
-			<pre class="php"><code>// 標準用法：建立一個實例並設定活躍的主題
+			<pre class="php"><code>// 标准用法：建立一个實例并設定活躍的主題
 $theme = \Theme::forge();
 $theme->active('darkglow');
 
@@ -149,7 +149,7 @@ $theme->active(
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

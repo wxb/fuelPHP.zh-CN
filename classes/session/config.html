@@ -12,7 +12,7 @@
 		var class_prefix = "Session::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Session 配置 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Session 配置 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,21 +40,21 @@
 
 		<div id="main">
 
-			<h2>Session 類別</h2>
+			<h2>Session 类別</h2>
 
-			<p>Session 類別能讓你為你的應用程式在無狀態（stateless）的 web 環境下保持狀態。
-				它能讓你在伺服器上使用各種變數解決方案來儲存變數，並且在下個頁面請求再呼叫變數。</p>
+			<p>Session 类別能让你为你的应用程序在無狀態（stateless）的 web 环境下保持狀態。
+				它能让你在伺服器上使用各種變数解決方案來儲存變数，并且在下个頁面請求再呼叫變数。</p>
 
 			<section>
 				<h2 id="configuration">配置</h2>
 
-				<p>Session 是透過 fuel/core/config/session.php 配置檔案進行配置。它已經填充了一個預設配置群組。你可以藉由複製此配置檔案到你的應用程式 config 目錄，並根據需求修改該檔案，以覆寫此配置群組並添加新群組。</p>
+				<p>Session 是透過 fuel/core/config/session.php 配置档案進行配置。它已经填充了一个預設配置群組。你可以藉由複製此配置档案到你的应用程序 config 目录，并根據需求修改該档案，以覆寫此配置群組并添加新群組。</p>
 				<p>以下的全域配置值可以被定義：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -63,8 +63,8 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								如果為 true，定義在配置中的預設驅動將被自動載入並初始化。
-								設定為 false 如果你想要手動載入特定 session 配置。
+								如果为 true，定義在配置中的預設驅动将被自动載入并初始化。
+								設定为 false 如果你想要手动載入特定 session 配置。
 							</td>
 						</tr>
 						<tr>
@@ -72,9 +72,9 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'cookie'</code></pre></td>
 							<td>
-								要載入的 session 驅動名稱。目前你可以使用 'cookie'、'db'、'memcached'、'redis' 和 'file'。
-								其他值將產生一個錯誤。
-								查看進階段落以了解你可以如何手動載入一個 session 驅動，或如何同時使用多個驅動。
+								要載入的 session 驅动名稱。目前你可以使用 'cookie'、'db'、'memcached'、'redis' 和 'file'。
+								其他值将產生一个错误。
+								查看進階段落以了解你可以如何手动載入一个 session 驅动，或如何同時使用多个驅动。
 							</td>
 						</tr>
 						<tr>
@@ -82,8 +82,8 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								如果為 true，儲存在 session cookie 中的 IP 位址將與網頁伺服器所回報的客戶端 IP 位址比對。
-								在不符合的情況下，該 session 會被丟棄。此函式同時使用客戶端真實 IP 位址及公開 IP 位址，
+								如果为 true，儲存在 session cookie 中的 IP 位址将與網頁伺服器所回報的客戶端 IP 位址比對。
+								在不符合的情況下，該 session 会被丟棄。此函式同時使用客戶端真實 IP 位址及公開 IP 位址，
 								如此在代理伺服器之後的使用者可以被唯一識別（如果代理透露此資訊）。
 							</td>
 						</tr>
@@ -92,8 +92,8 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								如果為 true，儲存在 session cookie 中的 User Agent 字串將與網頁伺服器所回報的 User Agent 字串比對。
-								在不符合的情況下，該 session 會被丟棄。
+								如果为 true，儲存在 session cookie 中的 User Agent 字串将與網頁伺服器所回報的 User Agent 字串比對。
+								在不符合的情況下，該 session 会被丟棄。
 							</td>
 						</tr>
 						<tr>
@@ -101,7 +101,7 @@
 							<td>字串</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								對 session cookie 有效的網域。如果你留空白，它將預設為指定在 URL 中的 hostname。
+								對 session cookie 有效的網域。如果你留空白，它将預設为指定在 URL 中的 hostname。
 								<br />確保你遵循 cookie 網域名稱的規則，如 http://www.faqs.org/rfcs/rfc2109.html 所定義的！
 							</td>
 						</tr>
@@ -110,8 +110,8 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'/'</code></pre></td>
 							<td>
-								如果你希望 cookie 只對某些路徑有效，在這裡輸入該路徑。
-								你使用它主要是如果你已經安裝應用程式在一個文件夾中，而不是在網頁伺服器的 DOCROOT。
+								如果你希望 cookie 只對某些路徑有效，在这裡輸入該路徑。
+								你使用它主要是如果你已经安装应用程序在一个文件夾中，而不是在網頁伺服器的 DOCROOT。
 							</td>
 						</tr>
 						<tr>
@@ -119,16 +119,16 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								如果為 true，只允許透過 HTTP 傳輸 cookie，停用 javascript 存取。
+								如果为 true，只允許透過 HTTP 傳輸 cookie，停用 javascript 存取。
 							</td>
 						</tr>
 						<tr>
 							<th>expiration_time</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>7200</code></pre></td>
 							<td>
-								session 將在之後過期的閒置時間（秒）。這個值必須大於 0。
-								如果定義一個無效值，它將被設為 7200 秒。
+								session 将在之後過期的閒置時間（秒）。这个值必須大於 0。
+								如果定義一个無效值，它将被設为 7200 秒。
 							</td>
 						</tr>
 						<tr>
@@ -136,18 +136,18 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								當設為 true，session 將在瀏覽器（不是目前視窗！）關閉時過期，
-								如果設定的話，它會優先於 expiration_time 所定義的。
+								當設为 true，session 将在瀏覽器（不是目前視窗！）關閉時過期，
+								如果設定的話，它会優先於 expiration_time 所定義的。
 							</td>
 						</tr>
 						<tr>
 							<th>rotation_time</th>
-							<td>整數</td>
+							<td>整数</td>
 							<td><pre class="php"><code>300</code></pre></td>
 							<td>
-								為了防止由於 session 固定的 session 劫持，Fuel 自動地加密 session cookie 資料。
+								为了防止由於 session 固定的 session 劫持，Fuel 自动地加密 session cookie 資料。
 								它也在指定的時間間隔改變 session IDs。
-								如果沒給，或定義無效的值，轉動時間預設為 300 秒。
+								如果沒給，或定義無效的值，轉动時間預設为 300 秒。
 							</td>
 						</tr>
 						<tr>
@@ -155,9 +155,9 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'flash'</code></pre></td>
 							<td>
-								在 session 中的快閃變數透過 flash id 及 session 變數名稱被識別。
-								你可以使用此 flash id 做為一個 session 變數命名空間，以避免變數名稱碰撞。
-								或確保來自模組的 session 變數不會與應用程式中使用的變數互相干擾。
+								在 session 中的快閃變数透過 flash id 及 session 變数名稱被識別。
+								你可以使用此 flash id 做为一个 session 變数命名空間，以避免變数名稱碰撞。
+								或確保來自模組的 session 變数不会與应用程序中使用的變数互相干擾。
 							</td>
 						</tr>
 						<tr>
@@ -165,9 +165,9 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								快閃變數的意思是只被用一次。如果你設定此參數為 true，快閃變數將在下一個頁面請求過後自動過期，
+								快閃變数的意思是只被用一次。如果你設定此參数为 true，快閃變数将在下一个頁面請求過後自动過期，
 								無論是否有重讀。
-								如果你設此為 false，儲存在 session 中的快閃變數將保持，直到你檢索它們。
+								如果你設此为 false，儲存在 session 中的快閃變数将保持，直到你檢索它們。
 							</td>
 						</tr>
 						<tr>
@@ -175,9 +175,9 @@
 							<td>字串</td>
 							<td><pre class="php"><code>''</code></pre></td>
 							<td>
-								在沒有 cookie 被傳送到伺服器的情況下（例如，當你使用 Flash 物件），你可以使用客戶端程式碼來複製 session cookie 的內容進入一個變數，該變數將被傳送到伺服器做為 POST 請求的一部分。
-								你可以使用此變數來定義 POST 變數的名稱。
-								<br />請注意，此變數只在沒找到 session cookie 時被檢查。
+								在沒有 cookie 被傳送到伺服器的情況下（例如，當你使用 Flash 物件），你可以使用客戶端程式码來複製 session cookie 的內容進入一个變数，該變数将被傳送到伺服器做为 POST 請求的一部分。
+								你可以使用此變数來定義 POST 變数的名稱。
+								<br />請注意，此變数只在沒找到 session cookie 時被檢查。
 							</td>
 						</tr>
 						<tr>
@@ -185,9 +185,9 @@
 							<td>字串</td>
 							<td><pre class="php"><code>'Session-Id'</code></pre></td>
 							<td>
-								在沒有 cookie 被發送到伺服器的情況下，你也可以使用客戶端程式碼來設定一個自訂的
+								在沒有 cookie 被发送到伺服器的情況下，你也可以使用客戶端程式码來設定一个自訂的
 								HTTP 表頭來傳遞 session cookie 到伺服器。
-								<br />注意，此變數將只在找不到 session cookie 時被檢查。
+								<br />注意，此變数将只在找不到 session cookie 時被檢查。
 							</td>
 						</tr>
 						<tr>
@@ -195,8 +195,8 @@
 							<td>布林</td>
 							<td><pre class="php"><code>true</code></pre></td>
 							<td>
-								當設為 false，沒有 session cookie 會被建立及添加到送回到客戶端的回應。
-								這意味著，在下一次請求時，你必須用其他方式（GET、POST 或 HTTP-HEADER）
+								當設为 false，沒有 session cookie 会被建立及添加到送回到客戶端的回應。
+								这意味著，在下一次請求時，你必須用其他方式（GET、POST 或 HTTP-HEADER）
 								來傳回從客戶端到伺服器的 session-id。
 							</td>
 						</tr>
@@ -205,7 +205,7 @@
 							<td>布林</td>
 							<td><pre class="php"><code>false</code></pre></td>
 							<td>
-								當設為 true，session 類別會透過 <a href="#native_emulation">模擬</a> 添加支援 PHP 原生 session。
+								當設为 true，session 类別会透過 <a href="#native_emulation">模擬</a> 添加支援 PHP 原生 session。
 							</td>
 						</tr>
 						<tr>
@@ -217,7 +217,7 @@
 	'write_on_set'   => true
  )</code></pre>
 							</td>
-							<td>給以 cookie 為底的 session 特定配置。</td>
+							<td>給以 cookie 为底的 session 特定配置。</td>
 						</tr>
 						<tr>
 							<th>file</th>
@@ -229,7 +229,7 @@
 	'gc_probability' => 5
  )</code></pre>
 							</td>
-							<td>給以 file 為底的 session 特定配置。</td>
+							<td>給以 file 为底的 session 特定配置。</td>
 						</tr>
 						<tr>
 							<th>db</th>
@@ -242,7 +242,7 @@
 	'gc_probability' => 5
  )</code></pre>
 							</td>
-							<td>給以 database 為底的 session 特定配置。</td>
+							<td>給以 database 为底的 session 特定配置。</td>
 						</tr>
 						<tr>
 							<th>memcached</th>
@@ -259,7 +259,7 @@
 						)
  )</code></pre>
 							</td>
-							<td>給以 memcached 為底的 session 特定配置。</td>
+							<td>給以 memcached 为底的 session 特定配置。</td>
 						</tr>
 						<tr>
 							<th>redis</th>
@@ -270,45 +270,45 @@
 	'database'       => 'default'
  )</code></pre>
 							</td>
-							<td>給以 redis 為底的 session 特定配置。</td>
+							<td>給以 redis 为底的 session 特定配置。</td>
 						</tr>
 					</tbody>
 				</table>
 
 				<p>
-					對於每個 session 儲存驅動來說，存在一個單獨的配置段落。
-					這個段落包含驅動特定參數，
-					而且你可以用它來覆蓋特定儲存驅動的全域參數。
+					對於每个 session 儲存驅动來說，存在一个单獨的配置段落。
+					这个段落包含驅动特定參数，
+					而且你可以用它來覆蓋特定儲存驅动的全域參数。
 				</p>
 
 				<p>
-					Session 類別在以下列表中的位置檢查 session id。它不在此時驗證，
-					第一個找到的值會被使用，而且如果證明它無效，新的 session 會被建立：
+					Session 类別在以下列表中的位置檢查 session id。它不在此時驗證，
+					第一个找到的值会被使用，而且如果證明它無效，新的 session 会被建立：
 				</p>
 				<ul>
-					<li>Post 資料，它會檢查 <code class="php">Input::post</code> 定義在 "post_cookie_name" 中的變數</li>
-					<li>Cookie，它會檢查名稱定義在 "cookie_name" 中的有效 cookie。</li>
-					<li>Get 資料，它會檢查 <code class="php">Input::get</code> 名稱定義在 "cookie_name" 中的變數。</li>
-					<li>http 表頭，它會檢查名稱定義在 "http_header_name" 中的表頭。</li>
+					<li>Post 資料，它会檢查 <code class="php">Input::post</code> 定義在 "post_cookie_name" 中的變数</li>
+					<li>Cookie，它会檢查名稱定義在 "cookie_name" 中的有效 cookie。</li>
+					<li>Get 資料，它会檢查 <code class="php">Input::get</code> 名稱定義在 "cookie_name" 中的變数。</li>
+					<li>http 表頭，它会檢查名稱定義在 "http_header_name" 中的表頭。</li>
 				</ul>
 
 				<p class="note">
-					session 類別配置與 cookie 類別配置是獨立的。
+					session 类別配置與 cookie 类別配置是獨立的。
 					重要的是你正確地配置 <kbd>cookie_domain</kbd> 及 <kbd>cookie_path</kbd> 項目。
-					值得注意的是，'localhost' 網域不被多數現代瀏覽器接受是有效值！
+					值得注意的是，'localhost' 網域不被多数现代瀏覽器接受是有效值！
 				</p>
 
 				<section>
-					<h5 id="cookie_driver_config">Cookie 驅動配置</h5>
+					<h5 id="cookie_driver_config">Cookie 驅动配置</h5>
 
-					<p>cookie 驅動不使用任何伺服器為底的儲存。相反的是，所有 session 變數會被儲存在每個請求之後傳送到瀏覽器的 cookie。只在你不必儲存大量資料時使用，因為一個 cookie 的最大有效負荷大小是 4kb，你將很快地到達，由於陣列序列化的開銷和加密。</p>
+					<p>cookie 驅动不使用任何伺服器为底的儲存。相反的是，所有 session 變数会被儲存在每个請求之後傳送到瀏覽器的 cookie。只在你不必儲存大量資料時使用，因为一个 cookie 的最大有效負荷大小是 4kb，你将很快地到達，由於陣列序列化的開銷和加密。</p>
 
-					<p>特定驅動配置：</p>
+					<p>特定驅动配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -316,21 +316,21 @@
 								<th>cookie_name</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'fuelcid'</code></pre></td>
-								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelcid'。如果你在應用程式中使用多個 session 驅動，確保每個驅動的 cookie 名稱是唯一的！</td>
+								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelcid'。如果你在应用程序中使用多个 session 驅动，確保每个驅动的 cookie 名稱是唯一的！</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="file_driver_config">檔案驅動配置</h5>
+					<h5 id="file_driver_config">档案驅动配置</h5>
 
-					<p>特定驅動配置：</p>
+					<p>特定驅动配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -338,33 +338,33 @@
 								<th>cookie_name</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'fuelfid'</code></pre></td>
-								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelfid'。如果你在應用程式中使用多個 session 驅動，確保每個驅動的 cookie 名稱是唯一的！</td>
+								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelfid'。如果你在应用程序中使用多个 session 驅动，確保每个驅动的 cookie 名稱是唯一的！</td>
 							</tr>
 							<tr>
 								<th>path</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'/tmp'</code></pre></td>
-								<td>session 資料被儲存在磁碟上的位置。檔案為底的 session 資料為了效能起見不會被加密。確保你選擇一個不能被其他應用程式以及／或使用者讀取的位置。當你在一個共享的主機運行應用程序時，要特別注意這個事實！</td>
+								<td>session 資料被儲存在磁碟上的位置。档案为底的 session 資料为了效能起見不会被加密。確保你選擇一个不能被其他应用程序以及／或使用者讀取的位置。當你在一个共享的主機运行應用程序時，要特別注意这个事實！</td>
 							</tr>
 							<tr>
 								<th>gc_probability</th>
-								<td>整數</td>
+								<td>整数</td>
 								<td><pre class="php"><code>5</code></pre></td>
-								<td>要保留控制之下的過期 session 檔案數，定期執行垃圾回收。gc_probability 是一個 0 到 100 之間的整數，表示此過程會開始的機會，0 = 從不，100 = 始終。session 驅動執行此任務做為一個 shutdown 事件，以對應用程式的影響降到最低。</td>
+								<td>要保留控制之下的過期 session 档案数，定期执行垃圾回收。gc_probability 是一个 0 到 100 之間的整数，表示此過程会開始的機会，0 = 從不，100 = 始終。session 驅动执行此任務做为一个 shutdown 事件，以對应用程序的影響降到最低。</td>
 							</tr>
 						</tbody>
 					</table>
 				</section>
 
 				<section>
-					<h5 id="db_driver_config">資料庫驅動配置</h5>
+					<h5 id="db_driver_config">資料庫驅动配置</h5>
 
-					<p>特定驅動配置：</p>
+					<p>特定驅动配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -372,17 +372,17 @@
 								<th>cookie_name</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'fueldid'</code></pre></td>
-								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fueldid'。如果你在應用程式中使用多個 session 驅動，確保每個驅動的 cookie 名稱是唯一的！</td>
+								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fueldid'。如果你在应用程序中使用多个 session 驅动，確保每个驅动的 cookie 名稱是唯一的！</td>
 							</tr>
 							<tr>
 								<th>database</th>
 								<td>字串</td>
 								<td><pre class="php"><code>null</code></pre></td>
 								<td>
-									要被用來儲存 session 資料的資料庫名稱。這是定義在應用程式資料庫配置檔案 app/config/db.php 中的名稱。如果沒定義，或設定為 null，目前活躍的資料庫會被選擇。
+									要被用來儲存 session 資料的資料庫名稱。这是定義在应用程序資料庫配置档案 app/config/db.php 中的名稱。如果沒定義，或設定为 null，目前活躍的資料庫会被選擇。
 									<p class="note">
-										請注意，如果你使用多個資料庫，在這裡使用 null 是不明智的做法，因為你的應用程式流程，在任何所給時間會決定活躍的資料庫。
-										使用 <strong>Config::get('environment')</strong> 來使用目前配置的環境，或使用一個具名的資料庫配置。
+										請注意，如果你使用多个資料庫，在这裡使用 null 是不明智的做法，因为你的应用程序流程，在任何所給時間会決定活躍的資料庫。
+										使用 <strong>Config::get('environment')</strong> 來使用目前配置的环境，或使用一个具名的資料庫配置。
 									</p>
 								</td>
 							</tr>
@@ -391,7 +391,7 @@
 								<td>字串</td>
 								<td><pre class="php"><code>'sessions'</code></pre></td>
 								<td>
-									要被用來儲存 session 資料的資料表名稱。你應該確保此資料表存在，並有這些欄位（MySQL 語法）：
+									要被用來儲存 session 資料的資料表名稱。你應該確保此資料表存在，并有这些欄位（MySQL 語法）：
 								<br /><br /><pre>
 CREATE TABLE IF NOT EXISTS `sessions` (
   `session_id` varchar(40) NOT NULL,
@@ -405,14 +405,14 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   UNIQUE KEY `PREVIOUS` (`previous_id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 </pre><br />
-									注意 sessions 資料表在 session_id 及 previous_id 行都有唯一索引。這都是為了加速查詢（始終是透過 ID），並確保沒有重複 ID 被新增。
+									注意 sessions 資料表在 session_id 及 previous_id 行都有唯一索引。这都是为了加速查詢（始終是透過 ID），并確保沒有重複 ID 被新增。
 								</td>
 							</tr>
 							<tr>
 								<th>gc_probability</th>
-								<td>整數</td>
+								<td>整数</td>
 								<td><pre class="php"><code>5</code></pre></td>
-								<td>要保留控制之下的過期 session 檔案數，定期執行垃圾回收。gc_probability 是一個 0 到 100 之間的整數，表示此過程會開始的機會，0 = 從不，100 = 始終。session 驅動執行此任務做為一個 shutdown 事件，以對應用程式的影響降到最低。</td>
+								<td>要保留控制之下的過期 session 档案数，定期执行垃圾回收。gc_probability 是一个 0 到 100 之間的整数，表示此過程会開始的機会，0 = 從不，100 = 始終。session 驅动执行此任務做为一个 shutdown 事件，以對应用程序的影響降到最低。</td>
 							</tr>
 						</tbody>
 					</table>
@@ -421,12 +421,12 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 				<section>
 					<h5 id="memcache_driver_config">Memcached session 配置</h5>
 
-					<p>特定驅動配置：</p>
+					<p>特定驅动配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -434,7 +434,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 								<th>cookie_name</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'fuelmid'</code></pre></td>
-								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelmid'。如果你在應用程式中使用多個 session 驅動，確保每個驅動的 cookie 名稱是唯一的！</td>
+								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelmid'。如果你在应用程序中使用多个 session 驅动，確保每个驅动的 cookie 名稱是唯一的！</td>
 							</tr>
 							<tr>
 								<th>servers</th>
@@ -450,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 )
 </code></pre>
 								</td>
-								<td>包含可用的 memcached 伺服器列表的陣列，如同 <a href="http://php.net/manual/en/memcached.addservers.php">http://php.net/manual/en/memcached.addservers.php</a> 所定義。如果你沒指定此參數，它將預設是一個單一 memcached 伺服器，運作在本地機器，並且監聽預設連接埠。
+								<td>包含可用的 memcached 伺服器列表的陣列，如同 <a href="http://php.net/manual/en/memcached.addservers.php">http://php.net/manual/en/memcached.addservers.php</a> 所定義。如果你沒指定此參数，它将預設是一个单一 memcached 伺服器，運作在本地機器，并且監聽預設連接埠。
 
 								</td>
 							</tr>
@@ -461,12 +461,12 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 				<section>
 					<h5 id="redis_driver_config">Redis session 配置</h5>
 
-					<p>特定驅動配置：</p>
+					<p>特定驅动配置：</p>
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
@@ -474,13 +474,13 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 								<th>cookie_name</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'fuelrid'</code></pre></td>
-								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelrid'。如果你在應用程式中使用多個 session 驅動，確保每個驅動的 cookie 名稱是唯一的！</td>
+								<td>用來儲存 session 的 cookie 名稱。如果沒設定，預設是 'fuelrid'。如果你在应用程序中使用多个 session 驅动，確保每个驅动的 cookie 名稱是唯一的！</td>
 							</tr>
 							<tr>
 								<th>database</th>
 								<td>字串</td>
 								<td><pre class="php"><code>'default'</code></pre></td>
-								<td>要被用來儲存 session 資料的 redis 資料庫名稱。這是定義在應用程式資料庫配置檔案 app/config/db.php 中，redis 段落的名稱。如果沒定義或找不到，'default' 資料庫配置會被選擇。</td>
+								<td>要被用來儲存 session 資料的 redis 資料庫名稱。这是定義在应用程序資料庫配置档案 app/config/db.php 中，redis 段落的名稱。如果沒定義或找不到，'default' 資料庫配置会被選擇。</td>
 							</tr>
 						</tbody>
 					</table>
@@ -488,10 +488,10 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 
 				<h3 id="oil_session_setup">使用 Oil 來建立／控制你的 sessions 資料表</h3>
 				<p>
-					一個 oil 任務提供你能使用 oil 命令列實用工具，
+					一个 oil 任務提供你能使用 oil 命令列實用工具，
 					來建立、移除以及清空你的 session 資料表。
 				</p>
-				<pre class="cli"><code># 顯示選單
+				<pre class="cli"><code># 顯示選单
 $ php oil r session
 
 # 建立 sessions 資料表
@@ -532,7 +532,7 @@ $ php oil r session:clear</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

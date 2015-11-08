@@ -12,7 +12,7 @@
 		var class_prefix = "Validation_Error::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Validation 錯誤 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Validation 错误 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,68 +40,68 @@
 
 		<div id="main">
 
-			<h2>Validation 類別</h2>
+			<h2>Validation 类別</h2>
 
 			<p>
-				類別幫助你驗證使用者輸入，如果你想要同時建立一個表單＆它的驗證，
-				使用 <a href="../fieldset/fieldset.html">Fieldset</a> 類別代替。
+				类別幫助你驗證使用者輸入，如果你想要同時建立一个表单＆它的驗證，
+				使用 <a href="../fieldset/fieldset.html">Fieldset</a> 类別代替。
 			</p>
 
 			<ul>
-				<li><a href="#errors">簡介</a></li>
+				<li><a href="#errors">简介</a></li>
 				<li><a href="#naming_rules">回呼（callback）／閉包（closure）命名規則</a></li>
 				<li><a href="#error_objects">Validation Error 物件</a></li>
 			</ul>
 
 			<section>
-				<h3 id="errors">錯誤訊息</h3>
+				<h3 id="errors">错误訊息</h3>
 
-				<p class="note">錯誤被回傳做為 Validation_Error 物件，你可以使用更加靈活的輸出，
-				如果你不需要它，只要轉換 Validation_Error 物件為一個字串來取得錯誤訊息。</p>
+				<p class="note">错误被回傳做为 Validation_Error 物件，你可以使用更加靈活的輸出，
+				如果你不需要它，只要轉換 Validation_Error 物件为一个字串來取得错误訊息。</p>
 
-				<p>錯誤訊息是使用一個自動載入的語言檔案 "validation.php" 來設定。</p>
+				<p>错误訊息是使用一个自动載入的語言档案 "validation.php" 來設定。</p>
 
-				<p>有兩種方式在驗證過程中操縱錯誤訊息。</p>
+				<p>有兩種方式在驗證過程中操縱错误訊息。</p>
 
-				<pre class="php"><code>// 為特定的 validation 物件變更錯誤訊息
+				<pre class="php"><code>// 为特定的 validation 物件變更错误訊息
 $val->set_message('required', 'The field :label is required.');
 
-// 或為特定欄位變更訊息，不管實際上的錯誤
+// 或为特定欄位變更訊息，不管實際上的错误
 echo $val->error('username')->get_message('The field :label must be filled out before auth is attempted.');
 // 輸出 "The field Your username must be filled out before auth is attempted." 當驗證 username
 // 失敗，或在還沒驗證或驗證成功時沒東西。</code></pre>
 
-				<p>你可能已經注意到，錯誤訊息接受一組被欄位的特性取代的變數。
-				以下是一個可用變數的列表：</p>
+				<p>你可能已经注意到，错误訊息接受一組被欄位的特性取代的變数。
+				以下是一个可用變数的列表：</p>
 
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>變數</th>
+							<th>變数</th>
 							<th>描述</th>
 						</tr>
 						<tr>
 							<th>:field</th>
-							<td>將被欄位的名稱替代。</td>
+							<td>将被欄位的名稱替代。</td>
 						</tr>
 						<tr>
 							<th>:label</th>
-							<td>將被欄位的標籤替代。</td>
+							<td>将被欄位的标籤替代。</td>
 						</tr>
 						<tr>
 							<th>:value</th>
-							<td>將被欄位的值替代，該值不能被驗證。</td>
+							<td>将被欄位的值替代，該值不能被驗證。</td>
 						</tr>
 						<tr>
 							<th>:rule</th>
-							<td>將被失敗的規則替代，包含的規則將只有它們的名稱，
-							其他的會是字串回呼（callback）或 classname:method（這也將是鍵，
-							你必須添加一個驗證規則，如果你想要的話）。</td>
+							<td>将被失敗的規則替代，包含的規則将只有它們的名稱，
+							其他的会是字串回呼（callback）或 classname:method（这也将是鍵，
+							你必須添加一个驗證規則，如果你想要的話）。</td>
 						</tr>
 						<tr>
 							<th>:param:1</th>
-							<td>將被第一個附加參數的值替代，:param:2 會是第二個，
-							以此類推。</td>
+							<td>将被第一个附加參数的值替代，:param:2 会是第二个，
+							以此类推。</td>
 						</tr>
 					</tbody>
 				</table>
@@ -110,17 +110,17 @@ echo $val->error('username')->get_message('The field :label must be filled out b
 			<section>
 				<h3 id="naming_rules">回呼（callback）／閉包（closure）命名規則</h3>
 
-				<p>完整的回呼（callback）規則或閉包（closure）也可以被命名，預設情況下，它們的名稱會是：</p>
+				<p>完整的回呼（callback）規則或閉包（closure）也可以被命名，預設情況下，它們的名稱会是：</p>
 				<ul>
 					<li><strong>Closure：</strong>"closure"</li>
 					<li><strong>array($class, $method)：</strong>"$class:$method"</li>
 					<li><strong>array($object, $method)：</strong>get_class($object).":$method"</li>
 				</ul>
 
-				<p>如果你想要給它們替代的自訂名稱，你可以像這樣做：</p>
+				<p>如果你想要給它們替代的自訂名稱，你可以像这樣做：</p>
 
-				<pre class="php"><code>// 添加一個檢查輸入是否是偶數的規則
-// 它可以使用 ->set_message('odd', ':label is not odd.') 或使用一個語言鍵 'validation.odd'
+				<pre class="php"><code>// 添加一个檢查輸入是否是偶数的規則
+// 它可以使用 ->set_message('odd', ':label is not odd.') 或使用一个語言鍵 'validation.odd'
 $field->add_rule(array('odd' => function($val) { return (bool) ($val % 2); }));
 </code></pre>
 			</section>
@@ -128,13 +128,13 @@ $field->add_rule(array('odd' => function($val) { return (bool) ($val % 2); }));
 			<section>
 				<h3 id="error_objects">Validation Error 物件</h3>
 
-				<p>驗證回傳錯誤物件，它實際上是在驗證過程中拋出的例外。
-					這些物件可以被轉換為字串為了取得他們的實際訊息，
-					或被用為物件來取回關於錯誤的詮釋資料。</p>
+				<p>驗證回傳错误物件，它實際上是在驗證過程中拋出的例外。
+					这些物件可以被轉換为字串为了取得他們的實際訊息，
+					或被用为物件來取回關於错误的詮釋資料。</p>
 
 				<h4 id="property_field">$field</h4>
 
-				<p><code>$error->field</code> 包含造成此錯誤的 <a href="../fieldset/field.html">Fieldset_Field</a>
+				<p><code>$error->field</code> 包含造成此错误的 <a href="../fieldset/field.html">Fieldset_Field</a>
 					物件的參照。</p>
 
 				<h4 id="property_value">$value</h4>
@@ -144,22 +144,22 @@ $field->add_rule(array('odd' => function($val) { return (bool) ($val % 2); }));
 				<h4 id="property_rule">$rule</h4>
 
 				<p><code>$error->rule</code> 包含失敗的驗證規則的名稱。
-					對於大多數的規則來說，這會是傳遞做為驗證規則的字串。
-					但<a href="#naming_rules">當特定名稱時</a>，它也可以是另一個字串。<br />
+					對於大多数的規則來說，这会是傳遞做为驗證規則的字串。
+					但<a href="#naming_rules">當特定名稱時</a>，它也可以是另一个字串。<br />
 					傳遞回呼（callback）像 <code>'Class::method'</code>、<code>array('Class', 'method')</code> 或
-					<code>array($object, 'method')</code>，這將是一個簡化的形式：
+					<code>array($object, 'method')</code>，这将是一个简化的形式：
 					<code>'Classname:methodname'</code>。</p>
 
 				<h4 id="property_params">$params</h4>
 
-				<p>這將包含傳遞給驗證規則的任何附加參數。例如，
-					當使用 <code>->add_rule('max_length', 25)</code>，這將包含 <code>array(25)</code>。</p>
+				<p>这将包含傳遞給驗證規則的任何附加參数。例如，
+					當使用 <code>->add_rule('max_length', 25)</code>，这将包含 <code>array(25)</code>。</p>
 
 				<article>
 					<h4 class="method" id="method_get_message">get_message($msg = false, $open = '', $close = '')</h4>
 
 					<p>
-						取回錯誤訊息並允許改寫。
+						取回错误訊息并允許改寫。
 					</p>
 
 					<table class="method">
@@ -169,12 +169,12 @@ $field->add_rule(array('odd' => function($val) { return (bool) ($val % 2); }));
 								<td>否</td>
 							</tr>
 							<tr>
-								<th>參數</th>
+								<th>參数</th>
 								<td>
 									<table class="parameters">
 										<tr>
-											<th>參數</th>
-											<th>類型</th>
+											<th>參数</th>
+											<th>类型</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
@@ -182,11 +182,11 @@ $field->add_rule(array('odd' => function($val) { return (bool) ($val % 2); }));
 											<th><kbd>$msg</kbd></th>
 											<td><em>false｜字串</em></td>
 											<td><pre class="php"><code>false</code></pre></td>
-											<td>將嘗試從所屬 Validation 實例取回訊息，
+											<td>将嘗试從所屬 Validation 實例取回訊息，
 												或從配置取回當給 <code>false</code> 時。
-												將回傳一個預設的佔位符訊息在空輸入時，或當沒有訊息被找到。<br />
-												或者它使用所給輸入做為訊息，
-												並取代其中的變數。</td>
+												将回傳一个預設的佔位符訊息在空輸入時，或當沒有訊息被找到。<br />
+												或者它使用所給輸入做为訊息，
+												并取代其中的變数。</td>
 										</tr>
 										<tr>
 											<th><kbd>$open</kbd></th>
@@ -210,13 +210,13 @@ $field->add_rule(array('odd' => function($val) { return (bool) ($val % 2); }));
 							<tr>
 								<th>範例</th>
 								<td>
-									<pre class="php"><code>// 取回在 &lt;p&gt; 標籤裡的訊息
+									<pre class="php"><code>// 取回在 &lt;p&gt; 标籤裡的訊息
 $message = $error->get_message(false, '&lt;p&gt;', '&lt;/p&gt;');
 
-// 將使用標準訊息：Validation rule :rule failed for :label
+// 将使用标准訊息：Validation rule :rule failed for :label
 $message = $error->get_message(null);
 
-// 覆寫任何可能已經有給的錯誤訊息
+// 覆寫任何可能已经有給的错误訊息
 $message = $error->get_message('Validation failed for field :label.');</code></pre>
 								</td>
 							</tr>
@@ -229,7 +229,7 @@ $message = $error->get_message('Validation failed for field :label.');</code></p
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

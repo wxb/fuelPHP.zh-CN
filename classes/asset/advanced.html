@@ -12,7 +12,7 @@
 		var class_prefix = "Asset::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Asset 進階 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Asset 進階 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,31 +40,31 @@
 
 		<div id="main">
 
-			<h2>Asset 類別</h2>
+			<h2>Asset 类別</h2>
 
-			<p>Asset 類別是一系列協助收集、分組和顯示資產（js、css、img）的方法。</p>
+			<p>Asset 类別是一系列協助收集、分組和顯示資產（js、css、img）的方法。</p>
 
 			<section>
 				<h3>進階用法</h3>
 
 				<p>
-					Asset 類別支援多個實例的使用。這可能被證明很有用，如果你正在使用主題，
-					而每個主題有它自己的一組資產，或者你正在開發一個模組化的應用程式，
-					而每個模組提供了自己的一組資產。
+					Asset 类別支援多个實例的使用。这可能被證明很有用，如果你正在使用主題，
+					而每个主題有它自己的一組資產，或者你正在开发一个模組化的应用程序，
+					而每个模組提供了自己的一組資產。
 				</p>
 				<p>
-					在這些情況中，只能有單一實例及使用搜尋路徑會不方便，
-					因為資產名稱碰撞的機會是相當高的，會導致你的應用程式載入錯誤的資產。
+					在这些情況中，只能有单一實例及使用搜尋路徑会不方便，
+					因为資產名稱碰撞的機会是相當高的，会導致你的应用程序載入错误的資產。
 				</p>
 				<p>
-					當你使用靜態方法，你可以依你想要的在一個 Asset 實例使用相同方法。
-					關於方法定義詳見<a href="./usage.html">類別用法</a>頁面。
+					當你使用靜態方法，你可以依你想要的在一个 Asset 實例使用相同方法。
+					關於方法定義詳見<a href="./usage.html">类別用法</a>頁面。
 				</p>
 
 				<article>
 					<h4 class="method" id="method_forge">forge($config = array())</h4>
 					<p>
-						<strong>forge</strong> 方法能讓你手動實例化一個 Asset 實例。
+						<strong>forge</strong> 方法能让你手动實例化一个 Asset 實例。
 					</p>
 					<table class="method">
 						<tbody>
@@ -73,11 +73,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th>描述</th>
 									</tr>
@@ -85,17 +85,17 @@
 										<th><kbd>$name</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
 										<td>
-											請求的實例名稱。如果不存在，它將被鍛造。如果沒給名稱，
-											預設實例會被回傳。
+											請求的實例名稱。如果不存在，它将被鍛造。如果沒給名稱，
+											預設實例会被回傳。
 										</td>
 									</tr>
 									<tr>
 										<th><kbd>$config</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
 										<td>
-											當鍛造一個新的 Asset 實例，你可以傳遞一個自訂配置。
-											配置陣列與 asset 配置檔案有相同結構。自訂配置將與記錄在<a href="./config.html">這裡</a>的預設配置，
-											以及在你的 asset 配置檔案中的配置合併，
+											當鍛造一个新的 Asset 實例，你可以傳遞一个自訂配置。
+											配置陣列與 asset 配置档案有相同結構。自訂配置将與記錄在<a href="./config.html">这裡</a>的預設配置，
+											以及在你的 asset 配置档案中的配置合併，
 											所以你只須傳遞你想變更的值。
 										</td>
 									</tr>
@@ -109,10 +109,10 @@
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 實例化一個 Asset 物件並帶著自訂搜尋路徑
+								<pre class="php"><code>// 實例化一个 Asset 物件并帶著自訂搜尋路徑
 $asset = Asset::forge('custom', array('paths' => 'custom/assets/');
 
-// 定義一些 CSS 檔案
+// 定義一些 CSS 档案
 $asset->css(array('header.css', 'footer.css'), array(), 'layout', false);</code></pre>
 							</td>
 						</tr>
@@ -123,7 +123,7 @@ $asset->css(array('header.css', 'footer.css'), array(), 'layout', false);</code>
 				<article>
 					<h4 class="method" id="method_instance">instance($name = null)</h4>
 					<p>
-						<strong>instance</strong> 方法能讓你載入一個具名的 Asset 類別的實例。
+						<strong>instance</strong> 方法能让你載入一个具名的 Asset 类別的實例。
 					</p>
 					<table class="method">
 						<tbody>
@@ -132,11 +132,11 @@ $asset->css(array('header.css', 'footer.css'), array(), 'layout', false);</code>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th>描述</th>
 									</tr>
@@ -144,8 +144,8 @@ $asset->css(array('header.css', 'footer.css'), array(), 'layout', false);</code>
 										<th><kbd>$name</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
 										<td>
-											請求的實例名稱。如果不存在，false 會被回傳。如果沒給名稱，
-											預設實例會被回傳。
+											請求的實例名稱。如果不存在，false 会被回傳。如果沒給名稱，
+											預設實例会被回傳。
 										</td>
 									</tr>
 								</table>
@@ -158,10 +158,10 @@ $asset->css(array('header.css', 'footer.css'), array(), 'layout', false);</code>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 實例化一個 Asset 物件並帶著自訂搜尋路徑
+								<pre class="php"><code>// 實例化一个 Asset 物件并帶著自訂搜尋路徑
 Asset::forge('custom', array('paths' => 'custom/assets/'));
 
-// 使用已定義的實例來定義一些 CSS 檔案
+// 使用已定義的實例來定義一些 CSS 档案
 Asset::instance('custom')->css(array('header.css', 'footer.css'), array(), 'layout', false);</code></pre>
 							</td>
 						</tr>
@@ -170,7 +170,7 @@ Asset::instance('custom')->css(array('header.css', 'footer.css'), array(), 'layo
 				</article>
 
 				<p class="note">
-					 Asset 類別的靜態方法也會使用預設實例。記得這件事，
+					 Asset 类別的靜態方法也会使用預設實例。記得这件事，
 					 如果你修改了預設實例的配置（例如搜尋路徑）！
 				</p>
 
@@ -180,7 +180,7 @@ Asset::instance('custom')->css(array('header.css', 'footer.css'), array(), 'layo
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

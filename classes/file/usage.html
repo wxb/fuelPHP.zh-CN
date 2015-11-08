@@ -12,7 +12,7 @@
 		var class_prefix = "File::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>File 用法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>File 用法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,23 +40,23 @@
 
 		<div id="main">
 
-			<h2>File 類別</h2>
+			<h2>File 类別</h2>
 
 			<p>
-				File 類別提供一系列的方法與檔案＆目錄協作。
+				File 类別提供一系列的方法與档案＆目录協作。
 				可以透過一些輔助方法完成，或透過更進階的物件導向方法，
-				其中所有的檔案和目錄被包裹在物件。
+				其中所有的档案和目录被包裹在物件。
 			</p>
 
 			<section>
 				<h2 id="usage">用法</h2>
 
-				<p>File 類別的基礎用法是透過以下所列它自己的輔助方法。</p>
+				<p>File 类別的基础用法是透過以下所列它自己的輔助方法。</p>
 			</section>
 
 			<article>
 				<h4 class="method" id="method_exists">exists($path, $area = null)</h4>
-				<p>檢查檔案是否存在。如果 $path 指向一個符號連結，該符號連結會被解析來確保它所指向的是否為一個檔案。</p>
+				<p>檢查档案是否存在。如果 $path 指向一个符號連結，該符號連結会被解析來確保它所指向的是否为一个档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -64,18 +64,18 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要檢查檔案的位置</td>
+									<td>要檢查档案的位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -88,13 +88,13 @@
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td><kbd>布林</kbd> true 如果 $path 中的檔案存在，如果不存在的話為 false</td>
+						<td><kbd>布林</kbd> true 如果 $path 中的档案存在，如果不存在的話为 false</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當區域已被使用而且有一個擴充侵犯。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當區域已被使用而且有一个擴充侵犯。
 						</td>
 					</tr>
 					<tr>
@@ -109,7 +109,7 @@
 
 			<article>
 				<h4 class="method" id="method_create">create($basepath, $name, $contents = null, $area = null)</h4>
-				<p>建立一個檔案。</p>
+				<p>建立一个档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -117,28 +117,28 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$basepath</kbd></th>
 									<td><em>必要</em></td>
-									<td>要建立新檔案的位置</td>
+									<td>要建立新档案的位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><em>必要</em></td>
-									<td>給新檔案的檔案名稱</td>
+									<td>給新档案的档案名稱</td>
 								</tr>
 								<tr>
 									<th><kbd>$contents</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>想要放進新檔案的內容</td>
+									<td>想要放進新档案的內容</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -156,8 +156,8 @@
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>FileAccessException</kbd> 當檔案已經存在。
-							<kbd>InvalidPathException</kbd> 當基礎路徑無效或不可寫入。
+							<kbd>FileAccessException</kbd> 當档案已经存在。
+							<kbd>InvalidPathException</kbd> 當基础路徑無效或不可寫入。
 						</td>
 					</tr>
 					<tr>
@@ -172,7 +172,7 @@
 
 			<article>
 				<h4 class="method" id="method_create_dir">create_dir($basepath, $name, $chmod = 0777, $area = null)</h4>
-				<p>建立一個目錄。</p>
+				<p>建立一个目录。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -180,28 +180,28 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$basepath</kbd></th>
 									<td><em>必要</em></td>
-									<td>要建立新目錄的位置</td>
+									<td>要建立新目录的位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><em>必要</em></td>
-									<td>給新目錄的名稱</td>
+									<td>給新目录的名稱</td>
 								</tr>
 								<tr>
 									<th><kbd>$chmod</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>給新目錄的權限</td>
+									<td>給新目录的權限</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -219,8 +219,8 @@
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidPathException</kbd> 當基礎路徑不存在或不可寫入。
-							<kbd>FileAccessException</kbd> 當基礎路徑不可寫入。
+							<kbd>InvalidPathException</kbd> 當基础路徑不存在或不可寫入。
+							<kbd>FileAccessException</kbd> 當基础路徑不可寫入。
 						</td>
 					</tr>
 					<tr>
@@ -235,7 +235,7 @@
 
 			<article>
 				<h4 class="method" id="method_read">read($path, $as_string = false, $area = null)</h4>
-				<p>讀取一個檔案並回傳它（$as_string == true）或添加到輸出（$as_string == false）。</p>
+				<p>讀取一个档案并回傳它（$as_string == true）或添加到輸出（$as_string == false）。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -243,23 +243,23 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要讀取檔案的位置</td>
+									<td>要讀取档案的位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$as_string</kbd></th>
 									<td><kbd>false</kbd></td>
-									<td>讓它在 false 時使用 readfile()，或在 <kbd>true</kbd> 時使用 file_get_contents()</td>
+									<td>让它在 false 時使用 readfile()，或在 <kbd>true</kbd> 時使用 file_get_contents()</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -273,19 +273,19 @@
 					<tr>
 						<th>回傳</th>
 						<td>
-							整數｜字串 - 回傳位元組數當 $as_string 設為 false，
-							或檔案的內容做為一個字串當它設為 true。
+							整数｜字串 - 回傳位元組数當 $as_string 設为 false，
+							或档案的內容做为一个字串當它設为 true。
 						</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td><kbd>InvalidPathException</kbd> 當檔案不存在。</td>
+						<td><kbd>InvalidPathException</kbd> 當档案不存在。</td>
 					</tr>
 
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 回傳 'Contents for file.' 如果你在 File::create() 的範例中建立該檔案
+							<pre class="php"><code>// 回傳 'Contents for file.' 如果你在 File::create() 的範例中建立該档案
 $file_content = File::read(DOCROOT.'test.txt', true);</code></pre>
 						</td>
 					</tr>
@@ -295,7 +295,7 @@ $file_content = File::read(DOCROOT.'test.txt', true);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_read_dir">read_dir($path, $depth = 0, $filter = null, $area = null)</h4>
-				<p>讀取目錄內容進入一個陣列。</p>
+				<p>讀取目录內容進入一个陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -303,29 +303,29 @@ $file_content = File::read(DOCROOT.'test.txt', true);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要讀取的目錄位置</td>
+									<td>要讀取的目录位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$depth</kbd></th>
 									<td><kbd>0</kbd></td>
-									<td>子目錄要重現多深：0 是無限、
-									1 是只有目前目錄或指定數字。</td>
+									<td>子目录要重现多深：0 是無限、
+									1 是只有目前目录或指定数字。</td>
 								</tr>
 								<tr>
 									<th><kbd>$filter</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>要讀取檔案的過濾器：<kbd>array()</kbd> 全部，或 <kbd>null</kbd>
+									<td>要讀取档案的過濾器：<kbd>array()</kbd> 全部，或 <kbd>null</kbd>
 									全部但除了隱藏。</td>
 								</tr>
 								<tr>
@@ -339,21 +339,21 @@ $file_content = File::read(DOCROOT.'test.txt', true);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>陣列 - 一個有子目錄在上的自然字母排序的陣列。
-						目錄有一個帶陣列值的字串鍵（或 false 當因為 $depth 限制而沒讀取時）以及帶檔案名稱做為值的檔案整數索引。
-						所有目錄有一個目錄分隔符做為前綴。</td>
+						<td>陣列 - 一个有子目录在上的自然字母排序的陣列。
+						目录有一个帶陣列值的字串鍵（或 false 當因为 $depth 限制而沒讀取時）以及帶档案名稱做为值的档案整数索引。
+						所有目录有一个目录分隔符做为前綴。</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidPathException</kbd> 當路徑不是目錄。
+							<kbd>InvalidPathException</kbd> 當路徑不是目录。
 							<kbd>FileAccessException</kbd> 當路徑不可讀取。
 						</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 讀取一個目錄
+							<pre class="php"><code>// 讀取一个目录
 $contents = File::read_dir(DOCROOT);
 
 // 有限制深度的讀取
@@ -361,16 +361,16 @@ $contents = File::read_dir(DOCROOT, 2);
 
 // 有自訂規則的讀取
 $contents = File::read_dir(DOCROOT, 0, array(
-	'!^\.', // 不要隱藏檔案／目錄
-	'!^private' => 'dir', // 不要 private 目錄
+	'!^\.', // 不要隱藏档案／目录
+	'!^private' => 'dir', // 不要 private 目录
 	'\.png$' => 'file', // 只取得 png
-	'\.css$' => 'file', // 或 CSS 檔案
+	'\.css$' => 'file', // 或 CSS 档案
 	'!^_', // 排除任何以底線開頭的。
 ));
 
 /**
  * 正如你在上面可以看到的，
- * 你可以制定目錄或檔案的規則，
+ * 你可以制定目录或档案的規則，
  * 透過在規則後面指定
  * 添加 "=> 'file'" 或 "=> 'dir'"。
  */</code></pre>
@@ -382,7 +382,7 @@ $contents = File::read_dir(DOCROOT, 0, array(
 
 			<article>
 				<h4 class="method" id="method_update">update($basepath, $name, $contents = null, $area = null)</h4>
-				<p>更新一個檔案。</p>
+				<p>更新一个档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -390,28 +390,28 @@ $contents = File::read_dir(DOCROOT, 0, array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$basepath</kbd></th>
 									<td><em>必要</em></td>
-									<td>要更新的檔案位置</td>
+									<td>要更新的档案位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案名稱。如果它不存在，它將被建立</td>
+									<td>档案名稱。如果它不存在，它将被建立</td>
 								</tr>
 								<tr>
 									<th><kbd>$contents</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>想要放進檔案的內容</td>
+									<td>想要放進档案的內容</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -429,7 +429,7 @@ $contents = File::read_dir(DOCROOT, 0, array(
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidPathException</kbd> 當基礎路徑不是一個目錄或不可寫入。
+							<kbd>InvalidPathException</kbd> 當基础路徑不是一个目录或不可寫入。
 							<kbd>FileAccessException</kbd> 當沒有寫入權限。
 						</td>
 					</tr>
@@ -445,7 +445,7 @@ $contents = File::read_dir(DOCROOT, 0, array(
 
 			<article>
 				<h4 class="method" id="method_append">append($basepath, $name, $contents = null, $area = null)</h4>
-				<p>附加到一個存在的檔案。</p>
+				<p>附加到一个存在的档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -453,28 +453,28 @@ $contents = File::read_dir(DOCROOT, 0, array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$basepath</kbd></th>
 									<td><em>必要</em></td>
-									<td>要附加的檔案位置</td>
+									<td>要附加的档案位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案名稱。該檔案必須存在</td>
+									<td>档案名稱。該档案必須存在</td>
 								</tr>
 								<tr>
 									<th><kbd>$contents</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>想要添加的檔案</td>
+									<td>想要添加的档案</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -492,8 +492,8 @@ $contents = File::read_dir(DOCROOT, 0, array(
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidPathException</kbd> 當基礎路徑不是一個目錄或不可寫入。
-							<kbd>FileAccessException</kbd> 當檔案不存在。
+							<kbd>InvalidPathException</kbd> 當基础路徑不是一个目录或不可寫入。
+							<kbd>FileAccessException</kbd> 當档案不存在。
 						</td>
 					</tr>
 					<tr>
@@ -508,7 +508,7 @@ $contents = File::read_dir(DOCROOT, 0, array(
 
 			<article>
 				<h4 class="method" id="method_rename">rename($path, $new_path, $source_area = null, $target_area = null)</h4>
-				<p>重新命名或移動一個目錄或檔案。</p>
+				<p>重新命名或移动一个目录或档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -516,23 +516,23 @@ $contents = File::read_dir(DOCROOT, 0, array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要重新命名的檔案或目錄位置</td>
+									<td>要重新命名的档案或目录位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$new_path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案或目錄的新名稱</td>
+									<td>档案或目录的新名稱</td>
 								</tr>
 								<tr>
 									<th><kbd>$source_area</kbd></th>
@@ -556,20 +556,20 @@ $contents = File::read_dir(DOCROOT, 0, array(
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當檔案類型不允許。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當档案类型不允許。
 						</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 重新命名 'test.txt' 為 'newname.txt'，並移動它到一個子目錄
+							<pre class="php"><code>// 重新命名 'test.txt' 为 'newname.txt'，并移动它到一个子目录
 File::rename(DOCROOT.'test.txt', DOCROOT.'folder/newname.txt');
 
-// 使用單一區域重新命名
+// 使用单一區域重新命名
 File::rename(DOCROOT.'one.jpg', DOCROOT.'final.jpg', 'docroot');
 
-// 在兩個限制的區域之間移動並重新命名
+// 在兩个限制的區域之間移动并重新命名
 File::rename(APPPATH.'tmp/file.jpg', DOCROOT.'folder/image.jpg', 'tmp', 'public');</code></pre>
 						</td>
 					</tr>
@@ -587,23 +587,23 @@ File::rename(APPPATH.'tmp/file.jpg', DOCROOT.'folder/image.jpg', 'tmp', 'public'
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要重新命名的檔案或目錄位置</td>
+									<td>要重新命名的档案或目录位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$new_path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案或目錄的新名稱</td>
+									<td>档案或目录的新名稱</td>
 								</tr>
 								<tr>
 									<th><kbd>$source_area</kbd></th>
@@ -627,8 +627,8 @@ File::rename(APPPATH.'tmp/file.jpg', DOCROOT.'folder/image.jpg', 'tmp', 'public'
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當檔案類型不允許。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當档案类型不允許。
 						</td>
 					</tr>
 					<tr>
@@ -643,7 +643,7 @@ File::rename(APPPATH.'tmp/file.jpg', DOCROOT.'folder/image.jpg', 'tmp', 'public'
 
 			<article>
 				<h4 class="method" id="method_copy">copy($path, $new_path, $area = null, $source_area = null, $target_area = null)</h4>
-				<p>複製一個檔案。</p>
+				<p>複製一个档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -651,23 +651,23 @@ File::rename(APPPATH.'tmp/file.jpg', DOCROOT.'folder/image.jpg', 'tmp', 'public'
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要複製的檔案位置</td>
+									<td>要複製的档案位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$new_path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要複製到，包含檔案名稱，的完整路徑</td>
+									<td>要複製到，包含档案名稱，的完整路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$source_area</kbd></th>
@@ -691,22 +691,22 @@ File::rename(APPPATH.'tmp/file.jpg', DOCROOT.'folder/image.jpg', 'tmp', 'public'
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當檔案類型不允許。
-							<kbd>InvalidPathException</kbd> 當來源路徑不是一個檔案。
-							<kbd>FileAccessException</kbd> 當目標檔案已存在。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當档案类型不允許。
+							<kbd>InvalidPathException</kbd> 當來源路徑不是一个档案。
+							<kbd>FileAccessException</kbd> 當目标档案已存在。
 						</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 從 DOCROOT 複製檔案 'test.txt' 到一個子目錄
+							<pre class="php"><code>// 從 DOCROOT 複製档案 'test.txt' 到一个子目录
 File::copy(DOCROOT.'test.txt', DOCROOT.'folder/test.txt');
 
-// 使用單一區域複製
+// 使用单一區域複製
 File::copy(DOCROOT.'one.jpg', DOCROOT.'img/one.jpg', 'public');
 
-// 在兩個限制的區域之間複製
+// 在兩个限制的區域之間複製
 File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 </code></pre>
 						</td>
@@ -717,7 +717,7 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 
 			<article>
 				<h4 class="method" id="method_copy_dir">copy_dir($path, $new_path, $area = null, $source_area = null, $target_area = null)</h4>
-				<p>複製一個目錄。</p>
+				<p>複製一个目录。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -725,18 +725,18 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要複製的目錄位置</td>
+									<td>要複製的目录位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$new_path</kbd></th>
@@ -765,9 +765,9 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>InvalidPathException</kbd> 當來源路徑不是一個目錄。
-							<kbd>FileAccessException</kbd> 當目標目錄已存在。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>InvalidPathException</kbd> 當來源路徑不是一个目录。
+							<kbd>FileAccessException</kbd> 當目标目录已存在。
 						</td>
 					</tr>
 					<tr>
@@ -782,7 +782,7 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 
 			<article>
 				<h4 class="method" id="method_delete">delete($path, $area = null)</h4>
-				<p>刪除一個檔案。</p>
+				<p>刪除一个档案。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -790,18 +790,18 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要刪除的檔案位置</td>
+									<td>要刪除的档案位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -819,8 +819,8 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>InvalidPathException</kbd> 當來源路徑不是一個檔案。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>InvalidPathException</kbd> 當來源路徑不是一个档案。
 						</td>
 					</tr>
 					<tr>
@@ -835,7 +835,7 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 
 			<article>
 				<h4 class="method" id="method_delete_dir">delete_dir($path, $recursive = true, $delete_top = true, $area = null)</h4>
-				<p>刪除一個目錄。</p>
+				<p>刪除一个目录。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -843,28 +843,28 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要刪除的目錄位置</td>
+									<td>要刪除的目录位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$recursive</kbd></th>
 									<td><em>true</em></td>
-									<td>是否也刪除子目錄的內容</td>
+									<td>是否也刪除子目录的內容</td>
 								</tr>
 								<tr>
 									<th><kbd>$delete_top</kbd></th>
 									<td><em>true</em></td>
-									<td>當為空時是否刪除父層目錄自身</td>
+									<td>當为空時是否刪除父層目录自身</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -877,14 +877,14 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td><kbd>布林</kbd> <em>unlink()</em> 的結果，或 true 當不刪除子目錄內容</td>
+						<td><kbd>布林</kbd> <em>unlink()</em> 的結果，或 true 當不刪除子目录內容</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>InvalidPathException</kbd> 當來源路徑不是一個目錄。
-							<kbd>FileAccessException</kbd> 當在刪除過程發生錯誤。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>InvalidPathException</kbd> 當來源路徑不是一个目录。
+							<kbd>FileAccessException</kbd> 當在刪除過程发生错误。
 						</td>
 					</tr>
 					<tr>
@@ -899,7 +899,7 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 
 			<article>
 				<h4 class="method" id="method_open_file">open_file($path, $lock = true, $area = null)</h4>
-				<p>開啟一個檔案並鎖定它。</p>
+				<p>開啟一个档案并鎖定它。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -907,23 +907,23 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>要開啟的檔案位置</td>
+									<td>要開啟的档案位置</td>
 								</tr>
 								<tr>
 									<th><kbd>$lock</kbd></th>
 									<td><em>true</em></td>
-									<td>當檔案開啟是否鎖定。</td>
+									<td>當档案開啟是否鎖定。</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -936,13 +936,13 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td><kbd>資源</kbd>，檔案資源</td>
+						<td><kbd>資源</kbd>，档案資源</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當檔案不能被鎖定。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當档案不能被鎖定。
 						</td>
 					</tr>
 					<tr>
@@ -957,7 +957,7 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 
 			<article>
 				<h4 class="method" id="method_close_file">close_file($resource, $area = null)</h4>
-				<p>關閉一個檔案並解鎖它。</p>
+				<p>關閉一个档案并解鎖它。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -965,18 +965,18 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$resource</kbd></th>
 									<td><em>必要</em></td>
-									<td>開啟的檔案資源</td>
+									<td>開啟的档案資源</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -995,7 +995,7 @@ File::copy(APPPATH.'tmp/1.jpg', DOCROOT.'folder/1.jpg', 'tmp', 'public');
 						<th>範例</th>
 						<td>
 							<pre class="php"><code>$resource = File::open_file(DOCROOT.'/my_dir/text.txt');
-// 對該資源做點什麼
+// 對該資源做點什么
 File::close_file($resource);</code></pre>
 						</td>
 					</tr>
@@ -1005,7 +1005,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get">get($path, $config = array(), $area = null)</h4>
-				<p>為所給檔案取回一個檔案處理程序。<a href="handlers.html">閱讀更多關於處理程序。</a></p>
+				<p>为所給档案取回一个档案处理程序。<a href="handlers.html">閱讀更多關於处理程序。</a></p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1013,18 +1013,18 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>到要被包在一個處理程序中的檔案或目錄的路徑</td>
+									<td>到要被包在一个处理程序中的档案或目录的路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
@@ -1042,13 +1042,13 @@ File::close_file($resource);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>回傳一個新的檔案處理程序物件。</td>
+						<td>回傳一个新的档案处理程序物件。</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當副檔名不允許。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當副档名不允許。
 						</td>
 					</tr>
 					<tr>
@@ -1063,7 +1063,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get_url">get_url($path, $config = array(), $area = null)</h4>
-				<p>檢索一個檔案的公開 URL。URL 必須被設定在基礎配置或所使用區域的區域配置。</p>
+				<p>檢索一个档案的公開 URL。URL 必須被設定在基础配置或所使用區域的區域配置。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1071,18 +1071,18 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案路徑</td>
+									<td>档案路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$config</kbd></th>
@@ -1100,13 +1100,13 @@ File::close_file($resource);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>檔案的公開 URL。</td>
+						<td>档案的公開 URL。</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當副檔名不允許。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當副档名不允許。
 						</td>
 					</tr>
 					<tr>
@@ -1122,7 +1122,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get_permissions">get_permissions($path, $area = null)</h4>
-				<p>檢索檔案或目錄的八進位制權限。</p>
+				<p>檢索档案或目录的八進位制權限。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1130,18 +1130,18 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案路徑</td>
+									<td>档案路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -1154,13 +1154,13 @@ File::close_file($resource);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>八進位制的檔案權限</td>
+						<td>八進位制的档案權限</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當副檔名不允許。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當副档名不允許。
 						</td>
 					</tr>
 					<tr>
@@ -1176,7 +1176,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get_time">get_time($path, $type = 'modified', $area = null)</h4>
-				<p>檢索檔案或目錄的建立或修改時間。</p>
+				<p>檢索档案或目录的建立或修改時間。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1184,23 +1184,23 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案路徑</td>
+									<td>档案路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td><strong>'modified'</strong></td>
-									<td>要檢索的時間類型。必須是 <em>modified</em> 或 <em>created</em></td>
+									<td>要檢索的時間类型。必須是 <em>modified</em> 或 <em>created</em></td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -1213,13 +1213,13 @@ File::close_file($resource);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>檔案建立／修改的 UNIX 時間戳記</td>
+						<td>档案建立／修改的 UNIX 時間戳記</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當副檔名不允許。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當副档名不允許。
 						</td>
 					</tr>
 					<tr>
@@ -1234,7 +1234,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get_size">get_size($path, $area = null)</h4>
-				<p>檢索一個檔案的大小（位元組）。</p>
+				<p>檢索一个档案的大小（位元組）。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1242,18 +1242,18 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案路徑</td>
+									<td>档案路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -1266,14 +1266,14 @@ File::close_file($resource);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>檔案大小（位元組）。</td>
+						<td>档案大小（位元組）。</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>OutsideAreaException</kbd> 當路徑不在檔案區域內。
-							<kbd>FileAccessException</kbd> 當副檔名不允許。
-							<kbd>InvalidPathException</kbd> 當檔案找不到。
+							<kbd>OutsideAreaException</kbd> 當路徑不在档案區域內。
+							<kbd>FileAccessException</kbd> 當副档名不允許。
+							<kbd>InvalidPathException</kbd> 當档案找不到。
 						</td>
 					</tr>
 					<tr>
@@ -1288,7 +1288,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_file_info">file_info($path, $area = null)</h4>
-				<p>檢索一個關於指定檔案資訊的陣列。</p>
+				<p>檢索一个關於指定档案資訊的陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1296,18 +1296,18 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案路徑</td>
+									<td>档案路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -1321,16 +1321,16 @@ File::close_file($resource);</code></pre>
 					<tr>
 						<th>回傳</th>
 						<td>
-							一個有檔案資訊項目的陣列。該陣列將包含路徑、檔案名稱及副檔名資訊、
-							檔案大小及權限、建立與最後修改時間戳記、
-							偵測的 MIME 類型及檔案的字符集。
+							一个有档案資訊項目的陣列。該陣列将包含路徑、档案名稱及副档名資訊、
+							档案大小及權限、建立與最後修改時間戳記、
+							偵测的 MIME 类型及档案的字符集。
 						</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidPathException</kbd> 當檔案找不到。
-							<kbd>InvalidArgumentException</kbd> 當檔案資訊不能被測定。
+							<kbd>InvalidPathException</kbd> 當档案找不到。
+							<kbd>InvalidArgumentException</kbd> 當档案資訊不能被测定。
 						</td>
 					</tr>
 					<tr>
@@ -1345,7 +1345,7 @@ File::close_file($resource);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_download">download($path, $name = null, $mime = null, $area = null, $delete = false, $disposition = 'attachment')</h4>
-				<p>輸出一個檔案、內嵌或做為一個下載附件。。</p>
+				<p>輸出一个档案、內嵌或做为一个下载附件。。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1353,28 +1353,28 @@ File::close_file($resource);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$path</kbd></th>
 									<td><em>必要</em></td>
-									<td>檔案路徑</td>
+									<td>档案路徑</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>覆寫檔案的預設檔名</td>
+									<td>覆寫档案的預設档名</td>
 								</tr>
 								<tr>
 									<th><kbd>$mime</kbd></th>
 									<td><kbd>null</kbd></td>
-									<td>覆寫檔案的預設 MIME 類型</td>
+									<td>覆寫档案的預設 MIME 类型</td>
 								</tr>
 								<tr>
 									<th><kbd>$area</kbd></th>
@@ -1385,35 +1385,35 @@ File::close_file($resource);</code></pre>
 								<tr>
 									<th><kbd>$delete</kbd></th>
 									<td><kbd>false</kbd></td>
-									<td>在下載之後是否要刪除檔案</td>
+									<td>在下载之後是否要刪除档案</td>
 								</tr>
 								<tr>
 									<th><kbd>$disposition</kbd></th>
 									<td><kbd>'attachment'</kbd></td>
-									<td>是否下載或內嵌輸出。接受 'attachment' 或 'inline'，預設為 'attachment'。</td>
+									<td>是否下载或內嵌輸出。接受 'attachment' 或 'inline'，預設为 'attachment'。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>沒有 - 此方法在初始化下載後結束。</td>
+						<td>沒有 - 此方法在初始化下载後結束。</td>
 					</tr>
 					<tr>
 						<th>拋出</th>
 						<td>
-							<kbd>InvalidPathException</kbd> 當檔案不存在。
-							<kbd>InvalidArgumentException</kbd> 如果該檔案沒有檔案資訊可以被檢索。
-							<kbd>FileAccessException</kbd> 當檔案無法被開啟讀取。
+							<kbd>InvalidPathException</kbd> 當档案不存在。
+							<kbd>InvalidArgumentException</kbd> 如果該档案沒有档案資訊可以被檢索。
+							<kbd>FileAccessException</kbd> 當档案無法被開啟讀取。
 						</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 下載檔案
+							<pre class="php"><code>// 下载档案
 File::download(DOCROOT.'/my_dir/text.txt', 'newfile.txt');
 
-// 輸出一個內嵌圖像，用來做為一個 &lt;img&gt; 標籤來源
+// 輸出一个內嵌圖像，用來做为一个 &lt;img&gt; 标籤來源
 File::download(DOCROOT.'/img/image.jpg', null, 'image/jpeg', null, false, 'inline');
 </code></pre>
 						</td>
@@ -1421,9 +1421,9 @@ File::download(DOCROOT.'/img/image.jpg', null, 'image/jpeg', null, false, 'inlin
 					</tbody>
 				</table>
 				<p class="note">
-					請注意，當你呼叫此方法，它不會立即下載檔案。它會在檔案下載後安排一個 shutdown 事件，
-					並終止該指令碼。這確保了所有 Fuel shutdown 函式，
-					像更新 session，會正常執行。
+					請注意，當你呼叫此方法，它不会立即下载档案。它会在档案下载後安排一个 shutdown 事件，
+					并終止該指令码。这確保了所有 Fuel shutdown 函式，
+					像更新 session，会正常执行。
 				</p>
 			</article>
 
@@ -1431,7 +1431,7 @@ File::download(DOCROOT.'/img/image.jpg', null, 'image/jpeg', null, false, 'inlin
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

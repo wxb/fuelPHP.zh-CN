@@ -12,7 +12,7 @@
 		var class_prefix = "Fieldset::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Fieldset - 類別 - FuelPHP 简体中文手册</title>
+	<title>Fieldset - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,24 +40,24 @@
 
 		<div id="main">
 
-			<h2>Fieldset 類別</h2>
+			<h2>Fieldset 类別</h2>
 
 			<p>
-				Fieldset 類別是用來以一個物件導向的方式來建立一個表單並處理它的驗證。
-				它使用 Form 和 Validation 類別。此類別本身只意味著欄位集及其欄位的模型，
-				而其他兩個類別做真正的事。
+				Fieldset 类別是用來以一个物件導向的方式來建立一个表单并处理它的驗證。
+				它使用 Form 和 Validation 类別。此类別本身只意味著欄位集及其欄位的模型，
+				而其他兩个类別做真正的事。
 			</p>
 			<p>
-				每個在欄位集中的欄位是透過一個 <a href="field.html">Fieldset_Field</a> 物件來定義，
+				每个在欄位集中的欄位是透過一个 <a href="field.html">Fieldset_Field</a> 物件來定義，
 				你可以直接使用 Fieldset 的 <kbd>field()</kbd> 方法來存取及操作。
 			</p>
 			<p>
-				表單標記的結果是在傳遞 Fieldset 實例到一個檢視或透過呼叫 <kbd>build()</kbd> 時產生。
+				表单标記的結果是在傳遞 Fieldset 實例到一个檢視或透過呼叫 <kbd>build()</kbd> 時產生。
 			</p>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($name = 'default', $config = array())</h4>
-				<p><strong>forge</strong> 方法回傳一個新的 Fieldset 實例。注意：每個 <kbd>$name</kbd> 只能有一個實例。</p>
+				<p><strong>forge</strong> 方法回傳一个新的 Fieldset 實例。注意：每个 <kbd>$name</kbd> 只能有一个實例。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -65,12 +65,12 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -102,14 +102,14 @@
 				</table>
 
 				<p>
-					當建構一個 Fieldset 物件時，你可以傳遞一個允許你用自訂配置來設置物件的配置陣列。
+					當建構一个 Fieldset 物件時，你可以傳遞一个允許你用自訂配置來設置物件的配置陣列。
 					支援以下項目：
 				</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -118,8 +118,8 @@
 							<td>Validation 物件</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								你想用來驗證該 Fieldset 的現有 Validation 類別物件。如果沒給，
-								一個新的 Validation 物件會為此 Fieldset 被建構。
+								你想用來驗證該 Fieldset 的现有 Validation 类別物件。如果沒給，
+								一个新的 Validation 物件会为此 Fieldset 被建構。
 							</td>
 						</tr>
 						<tr>
@@ -127,21 +127,21 @@
 							<td>Form 物件</td>
 							<td><pre class="php"><code>null</code></pre></td>
 							<td>
-								 你想用來建構該 Fieldset 表單的現有 Form 類別物件。如果沒給，
-								一個新的 Form 物件會為此 Fieldset 被建構。
+								 你想用來建構該 Fieldset 表单的现有 Form 类別物件。如果沒給，
+								一个新的 Form 物件会为此 Fieldset 被建構。
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<p>
-					除了這些欄位，你可以傳遞自訂表單配置來修改 Fieldset 產生表單的方式。
-					對於有效的配置值，看看 <kbd>form.php</kbd> 配置檔案。
+					除了这些欄位，你可以傳遞自訂表单配置來修改 Fieldset 產生表单的方式。
+					對於有效的配置值，看看 <kbd>form.php</kbd> 配置档案。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_instance">instance($instance = null)</h4>
-				<p>回傳一個指定的實例，或預設實例（如果必要時建立）。</p>
+				<p>回傳一个指定的實例，或預設實例（如果必要時建立）。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -149,12 +149,12 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -230,7 +230,7 @@
 
 			<article>
 				<h4 class="method" id="method_add">add($name, $label = '', array $attributes = array(), array $rules = array())</h4>
-				<p>建立一個 <a href="field.html">Fieldset_Field</a> 實例並添加到目前的 Fieldset。</p>
+				<p>建立一个 <a href="field.html">Fieldset_Field</a> 實例并添加到目前的 Fieldset。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -238,12 +238,12 @@
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -255,12 +255,12 @@
 									<tr>
 										<th><kbd>$label</kbd></th>
 										<td><pre class="php"><code>''</code></pre></td>
-										<td>欄位標籤</td>
+										<td>欄位标籤</td>
 									</tr>
 									<tr>
 										<th><kbd>$attributes</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>HTML 屬性做為一個關聯陣列</td>
+										<td>HTML 屬性做为一个關聯陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$rules</kbd></th>
@@ -315,7 +315,7 @@ $form->add(
 
 			<article>
 				<h4 class="method" id="method_delete">delete($name)</h4>
-				<p>從 Fieldset 移除一個具名的 <a href="field.html">Fieldset_Field</a> 實例。</p>
+				<p>從 Fieldset 移除一个具名的 <a href="field.html">Fieldset_Field</a> 實例。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -323,12 +323,12 @@ $form->add(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -357,7 +357,7 @@ $form->add(
 
 			<article>
 				<h4 class="method" id="method_add_before">add_before($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)</h4>
-				<p>建立一個 <a href="field.html">Fieldset_Field</a> 實例並添加它到目前的 Fieldset，就在已定義的透過 <strong>$fieldname</strong> 識別的欄位之前。</p>
+				<p>建立一个 <a href="field.html">Fieldset_Field</a> 實例并添加它到目前的 Fieldset，就在已定義的透過 <strong>$fieldname</strong> 識別的欄位之前。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -365,12 +365,12 @@ $form->add(
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -382,12 +382,12 @@ $form->add(
 									<tr>
 										<th><kbd>$label</kbd></th>
 										<td><pre class="php"><code>''</code></pre></td>
-										<td>欄位標籤</td>
+										<td>欄位标籤</td>
 									</tr>
 									<tr>
 										<th><kbd>$attributes</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>HTML 屬性做為一個關聯陣列</td>
+										<td>HTML 屬性做为一个關聯陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$rules</kbd></th>
@@ -421,7 +421,7 @@ $form->add_before('gender', '', array('options' => $ops, 'type' => 'radio', 'val
 
 			<article>
 				<h4 class="method" id="method_add_after">add_after($name, $label = '', array $attributes = array(), array $rules = array(), $fieldname = null)</h4>
-				<p>建立一個 <a href="field.html">Fieldset_Field</a> 實例並添加它到目前的 Fieldset，就在已定義的透過 <strong>$fieldname</strong> 識別的欄位之後。</p>
+				<p>建立一个 <a href="field.html">Fieldset_Field</a> 實例并添加它到目前的 Fieldset，就在已定義的透過 <strong>$fieldname</strong> 識別的欄位之後。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -429,12 +429,12 @@ $form->add_before('gender', '', array('options' => $ops, 'type' => 'radio', 'val
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -446,12 +446,12 @@ $form->add_before('gender', '', array('options' => $ops, 'type' => 'radio', 'val
 									<tr>
 										<th><kbd>$label</kbd></th>
 										<td><pre class="php"><code>''</code></pre></td>
-										<td>欄位標籤</td>
+										<td>欄位标籤</td>
 									</tr>
 									<tr>
 										<th><kbd>$attributes</kbd></th>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>HTML 屬性做為一個關聯陣列</td>
+										<td>HTML 屬性做为一个關聯陣列</td>
 									</tr>
 									<tr>
 										<th><kbd>$rules</kbd></th>
@@ -493,12 +493,12 @@ $form->add_after('gender', '', array('options' => $ops, 'type' => 'radio', 'valu
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -514,7 +514,7 @@ $form->add_after('gender', '', array('options' => $ops, 'type' => 'radio', 'valu
 					<tr>
 						<th>回傳</th>
 						<td><a href="field.html">Fieldset_Field</a> 實例<br />
-						或一個 <a href="field.html">Fieldset_Field</a> 實例的 <kbd>array()</kbd></td>
+						或一个 <a href="field.html">Fieldset_Field</a> 實例的 <kbd>array()</kbd></td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -538,12 +538,12 @@ $title_field = $article_form->field('article_title');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -583,7 +583,7 @@ $article_form->add_model('Model_Article');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_set_config">set_config($config, $value = null)</h4>
-				<p>在 Fieldset 設定一個配置值。</p>
+				<p>在 Fieldset 設定一个配置值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -591,12 +591,12 @@ $article_form->add_model('Model_Article');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -634,7 +634,7 @@ $article_form->set_config('key', 'value');</code></pre>
 
 			<article id="method_get_config">
 				<h4 class="method" id="method_get_config">get_config($key = null, $default = null)</h4>
-				<p>透過鍵取得配置陣列的一個或更多配置值。</p>
+				<p>透過鍵取得配置陣列的一个或更多配置值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -642,19 +642,19 @@ $article_form->set_config('key', 'value');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$key</kbd></th>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>在一個陣列中的單一或多個鍵，空值來取回全部。</td>
+										<td>在一个陣列中的单一或多个鍵，空值來取回全部。</td>
 									</tr>
 									<tr>
 										<th><kbd>$default</kbd></th>
@@ -689,7 +689,7 @@ $article_form->set_config('key', 'value');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>（無）</td>
 					</tr>
 					<tr>
@@ -717,12 +717,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -766,7 +766,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<i>無</i>
 						</td>
@@ -795,12 +795,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -815,7 +815,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>HTML 標記字串</td>
+						<td>HTML 标記字串</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -840,12 +840,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -879,7 +879,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 
 			<article>
 				<h4 class="method" id="method_enable">enable($field)</h4>
-				<p><kbd>enable</kbd> 方法能讓你重新啟用之前已經被<kbd>停用</kbd>的欄位。</p>
+				<p><kbd>enable</kbd> 方法能让你重新啟用之前已经被<kbd>停用</kbd>的欄位。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -887,12 +887,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -925,7 +925,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 
 			<article>
 				<h4 class="method" id="method_input">input($field = null)</h4>
-				<p>$this->validation()->input() 的別名。取得一個驗證過的來自 POST 或所給輸入的輸入值陣列。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
+				<p>$this->validation()->input() 的別名。取得一个驗證過的來自 POST 或所給輸入的輸入值陣列。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -933,12 +933,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -967,7 +967,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 
 			<article>
 				<h4 class="method" id="method_validated">validated($field = null)</h4>
-				<p>$this->validation()->validated() 的別名。取得一個通過驗證的輸入值陣列。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
+				<p>$this->validation()->validated() 的別名。取得一个通過驗證的輸入值陣列。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -975,12 +975,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1009,7 +1009,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 
 			<article>
 				<h4 class="method" id="method_error">error($field = null)</h4>
-				<p>$this->validation()->error() 的別名。取得一個沒通過驗證的輸入值陣列。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
+				<p>$this->validation()->error() 的別名。取得一个沒通過驗證的輸入值陣列。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1017,12 +1017,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1051,7 +1051,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 
 			<article>
 				<h4 class="method" id="method_show_errors">show_errors(Array $config = array())</h4>
-				<p>$this->validation()->show_errors() 的別名。回傳列表中的所有錯誤，或帶來自 $config 參數的設定標記。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
+				<p>$this->validation()->show_errors() 的別名。回傳列表中的所有错误，或帶來自 $config 參数的設定标記。詳見 <a href="validation/validation.html#usage">Validation</a>。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1059,12 +1059,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1101,12 +1101,12 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tbody>
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1140,7 +1140,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td>RuntimeException，如果不正確的參數被傳遞</td>
+						<td>RuntimeException，如果不正確的參数被傳遞</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -1160,7 +1160,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 
 			<article>
 				<h4 class="method" id="method_get_tabular_form">get_tabular_form()</h4>
-				<p>回傳定義的表格式表單的名稱。</p>
+				<p>回傳定義的表格式表单的名稱。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1168,14 +1168,14 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							無
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，表單名稱，或 <kbd>false</kbd> 如果 Fieldset 不是一個表格式表單</td>
+						<td>混合，表单名稱，或 <kbd>false</kbd> 如果 Fieldset 不是一个表格式表单</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -1191,7 +1191,7 @@ $name = $article_form->get_name();  // 'article'</code></pre>
 			</article>
 
 			<article>
-				<h2 id="create_forms_orm">使用 ORM 模型建立表單</h2>
+				<h2 id="create_forms_orm">使用 ORM 模型建立表单</h2>
 
 				<p>The Fieldset class can be used to create forms from ORM models. The following example will build a
 					form based on the fields specified in <kbd>$_properties</kbd> of your model. In the example, $article
@@ -1233,7 +1233,7 @@ $form = Fieldset::forge('article')->add_model($article);
 $form->add(\Fieldset::forge('tabular')->set_tabular_form('Model_Comment', 'comments', $article)->set_fieldset_tag(false));
 				</code></pre>
 
-				<p class="note">這只適用於<strong>沒有</strong>複合鍵的關聯模型！</p>
+				<p class="note">这只適用於<strong>沒有</strong>複合鍵的關聯模型！</p>
 
 				<p>
 					A tabular form generates HTML input tags that use an array with the name of the relation specified, and the primary key value of the
@@ -1305,7 +1305,7 @@ if (\Input::post())
 			</article>
 
 			<article>
-			<h2 id="form_attributes">表單屬性</h2>
+			<h2 id="form_attributes">表单屬性</h2>
 			<p>The layout of the forms generated by the fieldset is controlled by the <strong>form.php</strong> configuration file.</p>
 
 				<p>
@@ -1315,8 +1315,8 @@ if (\Input::post())
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -1467,23 +1467,23 @@ if (\Input::post())
 					</tbody>
 				</table>
 
-				<h3 id="form_attributes_macros">表單屬性巨集</h3>
+				<h3 id="form_attributes_macros">表单屬性巨集</h3>
 
-				<p>以下巨集可被用在表單樣板。</p>
+				<p>以下巨集可被用在表单樣板。</p>
 
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
+							<th>參数</th>
 							<th>描述</th>
 						</tr>
 						<tr>
 							<th>{open}</th>
-							<td>表單開始標籤，由 Form::open(); 產生</td>
+							<td>表单開始标籤，由 Form::open(); 產生</td>
 						</tr>
 						<tr>
 							<th>{close}</th>
-							<td>表單結束標籤，由 Form::open(); 產生</td>
+							<td>表单結束标籤，由 Form::open(); 產生</td>
 						</tr>
 						<tr>
 							<th>{fields}</th>
@@ -1523,7 +1523,7 @@ if (\Input::post())
 			</article>
 
 			<article>
-			<h2 id="modify_form_attributes">修改表單屬性</h2>
+			<h2 id="modify_form_attributes">修改表单屬性</h2>
 				<p>變更在 Fieldset 中 <kbd>form()</kbd> 實例的屬性可用兩種方式辦到。你可以在 <kbd>forge()</kbd> 方法的屬性陣列中提供你的選項，或直接修改 Form 實例。</p>
 				<pre class='php'><code>// 在 Fieldset 物件的屬性中使用 form_attributes 選項
 $fieldset = Fieldset::forge('article', array(
@@ -1534,18 +1534,18 @@ $fieldset = Fieldset::forge('article', array(
 	)
 );
 
-// 直接修改表單實例
+// 直接修改表单實例
 $fieldset->form()->set_attribute('id', 'edit_article_form');
 				</code></pre>
 			</article>
 
-			<p><strong>更多範例待編寫。</strong></p>
+			<p><strong>更多範例待编寫。</strong></p>
 
 		</div>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

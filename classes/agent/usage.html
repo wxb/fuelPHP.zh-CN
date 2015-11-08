@@ -12,7 +12,7 @@
 		var class_prefix = "Agent::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Agent 用法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Agent 用法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,16 +40,16 @@
 
 		<div id="main">
 
-			<h2>Agent 類別</h2>
+			<h2>Agent 类別</h2>
 
-			<p>Agent 類別能讓你擷取關於瀏覽器的類型、版本、平台或操作系統等等基於客戶使用者代理字串資訊。</p>
+			<p>Agent 类別能让你擷取關於瀏覽器的类型、版本、平台或操作系统等等基於客戶使用者代理字串資訊。</p>
 
 			<section>
 				<h2>用法</h2>
 
 				<article>
 					<h4 id="method_accepts_charset" class="method">accepts_charset($charset = 'utf-8')</h4>
-					<p>檢查目前的瀏覽器是否接受一個特定的字符集。</p>
+					<p>檢查目前的瀏覽器是否接受一个特定的字符集。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -57,11 +57,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -94,7 +94,7 @@ if (Agent::accepts_charset('iso-8859-1'))
 
 				<article>
 					<h4 id="method_accepts_language" class="method">accepts_language($language = 'en')</h4>
-					<p>檢查目前的瀏覽器是否接受一個特定的 ISO 語言代碼。</p>
+					<p>檢查目前的瀏覽器是否接受一个特定的 ISO 語言代码。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -102,18 +102,18 @@ if (Agent::accepts_charset('iso-8859-1'))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$language</kbd></th>
 										<td><i>字串</i></td>
-										<td>ISO 語言代碼</td>
+										<td>ISO 語言代码</td>
 									</tr>
 								</table>
 							</td>
@@ -147,7 +147,7 @@ if (Agent::accepts_language('nl_BE'))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -173,7 +173,7 @@ switch (Agent::browser())
 		// 在此做一些特定的事情
 		break;
 	default:
-		// 這些都是未支援的瀏覽器……
+		// 这些都是未支援的瀏覽器……
 		break;
 }</code></pre>
 							</td>
@@ -192,7 +192,7 @@ switch (Agent::browser())
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -235,7 +235,7 @@ switch (Agent::platform())
 		// 在此做一些特定的事情
 		break;
 	default:
-		// 這些都是未支援的平台……
+		// 这些都是未支援的平台……
 		break;
 }</code></pre>
 							</td>
@@ -254,12 +254,12 @@ switch (Agent::platform())
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>浮點數</td>
+							<td>浮點数</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -278,7 +278,7 @@ if (Agent::browser() == 'IE' and Agent::version() &lt; 7)
 
 				<article>
 					<h4 id="method_charsets" class="method">charsets()</h4>
-					<p>回傳一個被瀏覽器接受的所有字符集陣列。</p>
+					<p>回傳一个被瀏覽器接受的所有字符集陣列。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -286,7 +286,7 @@ if (Agent::browser() == 'IE' and Agent::version() &lt; 7)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -311,7 +311,7 @@ if (in_array('iso-8859-1', $sets))
 
 				<article>
 					<h4 id="method_languages" class="method">languages()</h4>
-					<p>回傳一個被瀏覽器接受的所有 ISO 語言陣列。</p>
+					<p>回傳一个被瀏覽器接受的所有 ISO 語言陣列。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -319,7 +319,7 @@ if (in_array('iso-8859-1', $sets))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -344,7 +344,7 @@ if (in_array('nl_BE', $lang))
 
 				<article>
 					<h4 id="method_properties" class="method">properties()</h4>
-					<p>回傳一個被檢測的瀏覽器的所有特性陣列。</p>
+					<p>回傳一个被檢测的瀏覽器的所有特性陣列。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -352,7 +352,7 @@ if (in_array('nl_BE', $lang))
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -366,7 +366,7 @@ if (in_array('nl_BE', $lang))
 $properties = Agent::properties();
 
 /**
- * 這些都是支援的特性，以及它們的預設值
+ * 这些都是支援的特性，以及它們的預設值
  *
  * $properties = array(
  * 	'browser'             => "unknown",
@@ -396,8 +396,8 @@ $properties = Agent::properties();
  * 	'aolversion'          => 0,
  * );
  *
- * 請注意，布林值表示支援一個特定的功能。
- * 這並不表示啟用與否。
+ * 請注意，布林值表示支援一个特定的功能。
+ * 这并不表示啟用與否。
  */</code></pre>
 							</td>
 						</tr>
@@ -407,7 +407,7 @@ $properties = Agent::properties();
 
 				<article>
 					<h4 id="method_property" class="method">property($property = null)</h4>
-					<p>回傳一個特定的瀏覽器特性。請參閱 properties() 支援的特性列表。</p>
+					<p>回傳一个特定的瀏覽器特性。請參閱 properties() 支援的特性列表。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -415,11 +415,11 @@ $properties = Agent::properties();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -452,7 +452,7 @@ if (Agent::property('cookies') === true)
 
 				<article>
 					<h4 id="method_is_mobiledevice" class="method">is_mobiledevice()</h4>
-					<p>檢查所使用的瀏覽器是否在行動裝置上運行。</p>
+					<p>檢查所使用的瀏覽器是否在行动裝置上运行。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -460,7 +460,7 @@ if (Agent::property('cookies') === true)
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -470,7 +470,7 @@ if (Agent::property('cookies') === true)
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 載入一個平台特定的檢視
+								<pre class="php"><code>// 載入一个平台特定的檢視
 if (Agent::is_mobiledevice())
 {
 	$content = View::forge('mobile/viewname');
@@ -487,7 +487,7 @@ else
 
 				<article>
 					<h4 id="method_is_robot" class="method">is_robot()</h4>
-					<p>檢查是否瀏覽器代理表明訪問者是一個機器人或爬蟲。</p>
+					<p>檢查是否瀏覽器代理表明訪問者是一个機器人或爬蟲。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -495,7 +495,7 @@ else
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -505,7 +505,7 @@ else
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 載入爬蟲特定檢視（請注意：這是不可取的！）
+								<pre class="php"><code>// 載入爬蟲特定檢視（請注意：这是不可取的！）
 if (Agent::is_robot())
 {
 	$content = View::forge('robot/viewname');
@@ -526,7 +526,7 @@ else
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

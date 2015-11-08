@@ -12,7 +12,7 @@
 		var class_prefix = "DB::";
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>DB - 類別 - FuelPHP 简体中文手册</title>
+	<title>DB - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="db.html#" id="toc_handle">目錄</a>
+			<a href="db.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,15 +40,15 @@
 
 		<div id="main">
 
-			<h2>DB 類別</h2>
+			<h2>DB 类別</h2>
 
-			<p>DB 類別能讓你建立及執行資料庫查詢並取得結果。</p>
+			<p>DB 类別能让你建立及执行資料庫查詢并取得結果。</p>
 
 			<article>
 				<h4 class="method" id="method_query">query($sql, $type = null)</h4>
 				<p>
-					<strong>query</strong> 方法回傳一個新的 Database_Query_Builder 物件。
-					確切的物件取決於傳遞的類型。如果沒傳遞類型，Fuel 選擇 DB::SELECT 如果該 SQL 查詢以 'SELECT' 開頭，而且它將回傳一個
+					<strong>query</strong> 方法回傳一个新的 Database_Query_Builder 物件。
+					確切的物件取決於傳遞的类型。如果沒傳遞类型，Fuel 選擇 DB::SELECT 如果該 SQL 查詢以 'SELECT' 開頭，而且它将回傳一个
 					<a href="qb_select.html">Database_Query_Builder_Select</a> 物件。
 				</p>
 				<table class="method">
@@ -58,11 +58,11 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -74,19 +74,19 @@
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><em>null</em></td>
-										<td>SQL 查詢類型。可能的值有：DB::SELECT、DB::INSERT、DB::UPDATE 和 DB::DELETE。</td>
+										<td>SQL 查詢类型。可能的值有：DB::SELECT、DB::INSERT、DB::UPDATE 和 DB::DELETE。</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 Database_Query_Builder 請求類型的物件。</td>
+							<td>回傳一个 Database_Query_Builder 請求类型的物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將預處理：SELECT * FROM `users`
+								<pre class="php"><code>// 将預处理：SELECT * FROM `users`
 $query = DB::query('SELECT * FROM `users`');
 </code></pre>
 							</td>
@@ -94,16 +94,16 @@ $query = DB::query('SELECT * FROM `users`');
 					</tbody>
 				</table>
 				<p class="note">
-					請注意，傳遞正確類型是重要的。
-					資料庫驅動會有不同的對待。
-					如果你有一個必須回傳一組結果的查詢，但不是 SELECT，使用
-					DB::SELECT 來確保結果會正確回傳。
+					請注意，傳遞正確类型是重要的。
+					資料庫驅动会有不同的對待。
+					如果你有一个必須回傳一組結果的查詢，但不是 SELECT，使用
+					DB::SELECT 來確保結果会正確回傳。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_last_query">last_query()</h4>
-				<p><strong>last_query</strong> 方法回傳最後執行的 SQL 查詢。</p>
+				<p><strong>last_query</strong> 方法回傳最後执行的 SQL 查詢。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -111,11 +111,11 @@ $query = DB::query('SELECT * FROM `users`');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -129,12 +129,12 @@ $query = DB::query('SELECT * FROM `users`');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>最後執行的 SQL 查詢。</td>
+							<td>最後执行的 SQL 查詢。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 執行查詢
+								<pre class="php"><code>// 执行查詢
 $user = DB::select()->from('users')->where('id', 1)->execute();
 
 echo DB::last_query();
@@ -148,7 +148,7 @@ echo DB::last_query();
 
 			<article>
 					<h4 class="method" id="method_select">select()</h4>
-					<p><strong>select</strong> 方法回傳一個新的 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</p>
+					<p><strong>select</strong> 方法回傳一个新的 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</p>
 					<table class="method">
 						<tbody>
 						<tr>
@@ -156,11 +156,11 @@ echo DB::last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -174,15 +174,15 @@ echo DB::last_query();
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</td>
+							<td>回傳一个 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將預處理：SELECT *
+								<pre class="php"><code>// 将預处理：SELECT *
 $query = DB::select();
 
-// 將預處理：SELECT `id`, `name`
+// 将預处理：SELECT `id`, `name`
 $query = DB::select('id', 'name');
 </code></pre>
 							</td>
@@ -193,7 +193,7 @@ $query = DB::select('id', 'name');
 
 			<article>
 				<h4 class="method" id="method_select_array">select_array($columns)</h4>
-				<p><strong>select_array</strong> 方法回傳一個新的 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</p>
+				<p><strong>select_array</strong> 方法回傳一个新的 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -201,11 +201,11 @@ $query = DB::select('id', 'name');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -219,15 +219,15 @@ $query = DB::select('id', 'name');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</td>
+							<td>回傳一个 <a href="qb_select.html">Database_Query_Builder_Select</a> 物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將預處理：SELECT *
+								<pre class="php"><code>// 将預处理：SELECT *
 $query = DB::select_array();
 
-// 將預處理：SELECT `id`, `name`
+// 将預处理：SELECT `id`, `name`
 $query = DB::select_array(array('id', 'name'));
 </code></pre>
 							</td>
@@ -238,7 +238,7 @@ $query = DB::select_array(array('id', 'name'));
 
 			<article>
 				<h4 class="method" id="method_insert">insert($table = null, $columns = array())</h4>
-				<p><strong>insert</strong> 方法回傳一個新的 <a href="qb_insert.html">Database_Query_Builder_Insert</a> 物件。</p>
+				<p><strong>insert</strong> 方法回傳一个新的 <a href="qb_insert.html">Database_Query_Builder_Insert</a> 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -246,11 +246,11 @@ $query = DB::select_array(array('id', 'name'));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -269,15 +269,15 @@ $query = DB::select_array(array('id', 'name'));
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 <a href="qb_insert.html">Database_Query_Builder_Insert</a> 物件。</td>
+							<td>回傳一个 <a href="qb_insert.html">Database_Query_Builder_Insert</a> 物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將預處理：INSERT INTO `table_name`
+								<pre class="php"><code>// 将預处理：INSERT INTO `table_name`
 $query = DB::insert('table_name');
 
-// 將預處理：INSERT INTO `table_name` (`id`, `name`)
+// 将預处理：INSERT INTO `table_name` (`id`, `name`)
 $query = DB::insert('table_name', array('id', 'name'));
 </code></pre>
 							</td>
@@ -288,7 +288,7 @@ $query = DB::insert('table_name', array('id', 'name'));
 
 			<article>
 				<h4 class="method" id="method_update">update($table = null)</h4>
-				<p><strong>update</strong> 方法回傳一個新的 <a href="qb_update.html">Database_Query_Builder_Update</a> 物件。</p>
+				<p><strong>update</strong> 方法回傳一个新的 <a href="qb_update.html">Database_Query_Builder_Update</a> 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -296,11 +296,11 @@ $query = DB::insert('table_name', array('id', 'name'));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -314,12 +314,12 @@ $query = DB::insert('table_name', array('id', 'name'));
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 <a href="qb_update.html">Database_Query_Builder_Update</a> 物件。</td>
+							<td>回傳一个 <a href="qb_update.html">Database_Query_Builder_Update</a> 物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將預處理：UPDATE `table_name`
+								<pre class="php"><code>// 将預处理：UPDATE `table_name`
 $query = DB::update('table_name');
 </code></pre>
 							</td>
@@ -330,7 +330,7 @@ $query = DB::update('table_name');
 
 			<article>
 				<h4 class="method" id="method_delete">delete($table = null)</h4>
-				<p><strong>delete</strong> 方法回傳一個新的 <a href="qb_delete.html">Database_Query_Builder_Delete</a> 物件。</p>
+				<p><strong>delete</strong> 方法回傳一个新的 <a href="qb_delete.html">Database_Query_Builder_Delete</a> 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -338,11 +338,11 @@ $query = DB::update('table_name');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -356,12 +356,12 @@ $query = DB::update('table_name');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 <a href="qb_delete.html">Database_Query_Builder_Delete</a> 物件。</td>
+							<td>回傳一个 <a href="qb_delete.html">Database_Query_Builder_Delete</a> 物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 將預處理：DELETE FROM `table_name`
+								<pre class="php"><code>// 将預处理：DELETE FROM `table_name`
 $query = DB::delete('table_name');
 </code></pre>
 							</td>
@@ -372,7 +372,7 @@ $query = DB::delete('table_name');
 
 			<article>
 				<h4 class="method" id="method_expr">expr($expression)</h4>
-				<p><strong>expr</strong> 方法回傳一個新的 Database_Expression 物件。</p>
+				<p><strong>expr</strong> 方法回傳一个新的 Database_Expression 物件。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -380,11 +380,11 @@ $query = DB::delete('table_name');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -398,7 +398,7 @@ $query = DB::delete('table_name');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個 Database_Expression 物件。</td>
+							<td>回傳一个 Database_Expression 物件。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -413,14 +413,14 @@ $expr = DB::expr('columnname + 1');</code></pre>
 					</tbody>
 				</table>
 				<p class="note">
-					你必須在你查詢中所有的表達式使用 DB:expr()，換句話說，其中的一切不是一個欄位名稱，
+					你必須在你查詢中所有的表達式使用 DB:expr()，換句話說，其中的一切不是一个欄位名稱，
 					以確保你傳遞的值沒有被包在引號或反引號中。
 				</p>
 			</article>
 
 			<article>
 				<h4 class="method" id="method_quote">quote($string, $db = null)</h4>
-				<p><strong>quote</strong> 方法回傳一個為 SQL 查詢帶引號的字串。</p>
+				<p><strong>quote</strong> 方法回傳一个为 SQL 查詢帶引號的字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -428,11 +428,11 @@ $expr = DB::expr('columnname + 1');</code></pre>
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -451,7 +451,7 @@ $expr = DB::expr('columnname + 1');</code></pre>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個為 SQL 查詢帶引號的字串。</td>
+							<td>回傳一个为 SQL 查詢帶引號的字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -459,7 +459,7 @@ $expr = DB::expr('columnname + 1');</code></pre>
 								<pre class="php"><code>// 回傳 'something\'s quoted'.
 $query = DB::quote("'something's quoted'");
 
-// 回傳 'something\'s quoted' 透過一個已定義的資料庫連線。
+// 回傳 'something\'s quoted' 透過一个已定義的資料庫連線。
 $query = DB::quote("'something's quoted'", $db_connection);
 </code></pre>
 							</td>
@@ -470,7 +470,7 @@ $query = DB::quote("'something's quoted'", $db_connection);
 
 			<article>
 				<h4 class="method" id="method_quote_identifier">quote_identifier($string, $db)</h4>
-				<p><strong>quote_identifier</strong> 方法回傳一個為 SQL 查詢帶引號的字串。</p>
+				<p><strong>quote_identifier</strong> 方法回傳一个为 SQL 查詢帶引號的字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -478,11 +478,11 @@ $query = DB::quote("'something's quoted'", $db_connection);
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -501,7 +501,7 @@ $query = DB::quote("'something's quoted'", $db_connection);
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個為 SQL 查詢帶引號的字串。</td>
+							<td>回傳一个为 SQL 查詢帶引號的字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -522,7 +522,7 @@ print_r(DB::quote_identifier(array('users.name')));
 
 			<article>
 				<h4 class="method" id="method_quote_table">quote_table($string, $db = null)</h4>
-				<p><strong>quote_table</strong> 方法回傳一個為 SQL 查詢帶引號的字串。</p>
+				<p><strong>quote_table</strong> 方法回傳一个为 SQL 查詢帶引號的字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -530,11 +530,11 @@ print_r(DB::quote_identifier(array('users.name')));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -553,7 +553,7 @@ print_r(DB::quote_identifier(array('users.name')));
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個為 SQL 查詢帶引號的字串。</td>
+							<td>回傳一个为 SQL 查詢帶引號的字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -575,7 +575,7 @@ print_r(DB::quote_identifier(array('users')));
 			<article>
 				<h4 class="method" id="method_table_prefix">table_prefix($table, $db = null)</h4>
 				<p><strong>table_prefix</strong> 方法回傳帶有配置前綴的資料表名稱。
-				如果沒值的話，只有前綴會被回傳。</p>
+				如果沒值的話，只有前綴会被回傳。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -583,11 +583,11 @@ print_r(DB::quote_identifier(array('users')));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -622,7 +622,7 @@ print_r(DB::table_prefix('table_name'));
 
 			<article>
 				<h4 class="method" id="method_escape">escape($string, $db = null)</h4>
-				<p><strong>escape</strong> 方法回傳一個為 SQL 查詢轉義的字串。</p>
+				<p><strong>escape</strong> 方法回傳一个为 SQL 查詢轉義的字串。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -630,11 +630,11 @@ print_r(DB::table_prefix('table_name'));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -653,7 +653,7 @@ print_r(DB::table_prefix('table_name'));
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個為 SQL 查詢轉義的字串。</td>
+							<td>回傳一个为 SQL 查詢轉義的字串。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -669,8 +669,8 @@ print_r(DB::escape('or *\' "'));
 
 			<article>
 				<h4 class="method" id="method_list_columns">list_columns($table, $like = null, $db = null)</h4>
-				<p><strong>list_columns</strong> 方法回傳一個在資料庫表所有行的清單。
-				選擇性的，一個 LIKE 字串可被用於搜尋指定的欄位。</p>
+				<p><strong>list_columns</strong> 方法回傳一个在資料庫表所有行的清单。
+				選擇性的，一个 LIKE 字串可被用於搜尋指定的欄位。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -678,11 +678,11 @@ print_r(DB::escape('or *\' "'));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -706,7 +706,7 @@ print_r(DB::escape('or *\' "'));
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個帶有欄位資料的陣列。</td>
+							<td>回傳一个帶有欄位資料的陣列。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -780,8 +780,8 @@ print_r(DB::list_columns('users','%name%'));
 
 			<article>
 				<h4 class="method" id="method_list_tables">list_tables($like = null, $db = null)</h4>
-				<p><strong>list_tables</strong> 方法回傳一個在資料庫裡所有資料表的清單。
-				選擇性的，一個 LIKE 字串可被用於搜尋指定的資料表。</p>
+				<p><strong>list_tables</strong> 方法回傳一个在資料庫裡所有資料表的清单。
+				選擇性的，一个 LIKE 字串可被用於搜尋指定的資料表。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -789,11 +789,11 @@ print_r(DB::list_columns('users','%name%'));
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -812,7 +812,7 @@ print_r(DB::list_columns('users','%name%'));
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個帶有資料表名稱的陣列。</td>
+							<td>回傳一个帶有資料表名稱的陣列。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -845,7 +845,7 @@ DB::list_tables('%sessions%');
 
 			<article>
 				<h4 class="method" id="method_datatypes">datatype($type, $db = null)</h4>
-				<p><strong>datatype</strong> 方法回傳一個描述 SQL 資料類型的正規化陣列。</p>
+				<p><strong>datatype</strong> 方法回傳一个描述 SQL 資料类型的正規化陣列。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -853,18 +853,18 @@ DB::list_tables('%sessions%');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
 									<tr>
 										<th><kbd>$type</kbd></th>
 										<td><em>必要</em></td>
-										<td class="description">SQL 資料類型。</td>
+										<td class="description">SQL 資料类型。</td>
 									</tr>
 									<tr>
 										<th><kbd>$db</kbd></th>
@@ -876,7 +876,7 @@ DB::list_tables('%sessions%');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳一個描述 SQL 資料類型的正規化陣列。</td>
+							<td>回傳一个描述 SQL 資料类型的正規化陣列。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -898,7 +898,7 @@ DB::datatype('char');
 
 			<article>
 				<h4 class="method" id="method_count_records">count_records($table, $db = null)</h4>
-				<p><strong>count_records</strong> 方法回傳資料表中的記錄筆數。</p>
+				<p><strong>count_records</strong> 方法回傳資料表中的記錄筆数。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -906,11 +906,11 @@ DB::datatype('char');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -929,7 +929,7 @@ DB::datatype('char');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳資料表中的記錄筆數。</td>
+							<td>回傳資料表中的記錄筆数。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -945,7 +945,7 @@ DB::count_records('users');
 
 			<article>
 				<h4 class="method" id="method_count_last_query">count_last_query($db = null)</h4>
-				<p><strong>count_last_query</strong> 方法回傳最後查詢的記錄筆數，沒有應用 LIMIT 或 OFFSET。</p>
+				<p><strong>count_last_query</strong> 方法回傳最後查詢的記錄筆数，沒有應用 LIMIT 或 OFFSET。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -953,11 +953,11 @@ DB::count_records('users');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -971,7 +971,7 @@ DB::count_records('users');
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>回傳最後查詢的記錄筆數，沒有應用 LIMIT 或 OFFSET。</td>
+							<td>回傳最後查詢的記錄筆数，沒有應用 LIMIT 或 OFFSET。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -990,7 +990,7 @@ DB::count_last_query();
 
 			<article>
 				<h4 class="method" id="method_set_charset">set_charset($charset, $db)</h4>
-				<p><strong>set_charset</strong> 方法設定連線字符集，此方法由 [static::connect] 自動呼叫。</p>
+				<p><strong>set_charset</strong> 方法設定連線字符集，此方法由 [static::connect] 自动呼叫。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -998,11 +998,11 @@ DB::count_last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1035,7 +1035,7 @@ DB::count_last_query();
 
 			<article>
 				<h4 class="method" id="method_error_info">error_info()</h4>
-				<p><strong>error_info</strong> 回傳一個關於最後資料庫錯誤訊息的陣列。</p>
+				<p><strong>error_info</strong> 回傳一个關於最後資料庫错误訊息的陣列。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1043,7 +1043,7 @@ DB::count_last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -1072,12 +1072,12 @@ DB::count_last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tbody>
 										<tr>
-											<th>參數</th>
+											<th>參数</th>
 											<th>預設</th>
 											<th class="description">描述</th>
 										</tr>
@@ -1092,7 +1092,7 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>布林</em> - 只對 PDO 驅動程序有意義，如果在交易中回傳 true，否則回傳 false。</td>
+							<td><em>布林</em> - 只對 PDO 驅动程序有意義，如果在交易中回傳 true，否則回傳 false。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -1106,7 +1106,7 @@ DB::count_last_query();
 
 			<article>
 				<h4 class="method" id="method_start_transaction">start_transaction($db = null)</h4>
-				<p><strong>start_transaction</strong> 方法在實例開始一個交易。</p>
+				<p><strong>start_transaction</strong> 方法在實例開始一个交易。</p>
 				<table class="method">
 					<tbody>
 						<tr>
@@ -1114,11 +1114,11 @@ DB::count_last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1132,8 +1132,8 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>布林</em> - 只對 PDO 驅動程序有意義，所有其他的總是回傳 true，
-								但當 SQL 命令失敗時，會拋出一個 Exception。</td>
+							<td><em>布林</em> - 只對 PDO 驅动程序有意義，所有其他的總是回傳 true，
+								但當 SQL 命令失敗時，会拋出一个 Exception。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -1155,11 +1155,11 @@ DB::count_last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1173,8 +1173,8 @@ DB::count_last_query();
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>布林</em> - 只對 PDO 驅動程序有意義，所有其他的總是回傳 true，
-								但當 SQL 命令失敗時，會拋出一個 Exception。</td>
+							<td><em>布林</em> - 只對 PDO 驅动程序有意義，所有其他的總是回傳 true，
+								但當 SQL 命令失敗時，会拋出一个 Exception。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -1196,11 +1196,11 @@ DB::count_last_query();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
+										<th>參数</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -1212,15 +1212,15 @@ DB::count_last_query();
 									<tr>
 										<th><kbd>$rollback_all</kbd></th>
 										<td><strong>true</strong></td>
-										<td class="description">回滾模式：<br>true - 回滾並關閉交易機制；<br>false - 只在目前層級回滾。</td>
+										<td class="description">回滾模式：<br>true - 回滾并關閉交易機制；<br>false - 只在目前層級回滾。</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td><em>布林</em> - 只對 PDO 驅動程序有意義，所有其他的總是回傳 true，
-								但當 SQL 命令失敗時，會拋出一個 Exception。</td>
+							<td><em>布林</em> - 只對 PDO 驅动程序有意義，所有其他的總是回傳 true，
+								但當 SQL 命令失敗時，会拋出一个 Exception。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -1234,7 +1234,7 @@ DB::count_last_query();
 
 			<h3 id="transaction">交易範例</h3>
 
-				<pre class="php"><code>// 典型的交易程式碼流程
+				<pre class="php"><code>// 典型的交易程式码流程
 try
 {
     DB::start_transaction();
@@ -1258,7 +1258,7 @@ catch (Exception $e)
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

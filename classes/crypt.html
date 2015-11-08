@@ -12,7 +12,7 @@
 		var class_prefix = "Crypt::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Crypt - 類別 - FuelPHP 简体中文手册</title>
+	<title>Crypt - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,10 +40,10 @@
 
 		<div id="main">
 
-			<h2>Crypt 類別</h2>
+			<h2>Crypt 类別</h2>
 
 			<p>
-				Crypt 類別允許加密或解密一個字串。Crypt 類別也可用於內部例如 Fuel Session 類別。
+				Crypt 类別允許加密或解密一个字串。Crypt 类別也可用於內部例如 Fuel Session 类別。
 			</p>
 			<p>它使用由 PHPSecLib 提供的加密和雜湊方法，所以它不是依賴外部模組如 mcrypt 來作用的。</p>
 
@@ -51,17 +51,17 @@
 				<h3 id="configuration">配置</h3>
 
 				<p>
-					Crypt 類別透過 <kbd>app/config/crypt.php</kbd> 配置檔案做配置，當你第一次使用 Crypt 類別，或如果缺少必要配置值之一時，它將會被產生和填充隨機值。
+					Crypt 类別透過 <kbd>app/config/crypt.php</kbd> 配置档案做配置，當你第一次使用 Crypt 类別，或如果缺少必要配置值之一時，它将会被產生和填充隨機值。
 				</p>
 				<p class="note">
-					請注意，這將需要寫入 app/config/crypt.php！如果這是辦不到的，確認所有配置設定已經設好！
+					請注意，这将需要寫入 app/config/crypt.php！如果这是辦不到的，確認所有配置設定已经設好！
 				</p>
 				<p>以下配置設定可以被定義：</p>
 				<table class="config">
 					<tbody>
 						<tr class="header">
-							<th>參數</th>
-							<th>類型</th>
+							<th>參数</th>
+							<th>类型</th>
 							<th>預設</th>
 							<th>描述</th>
 						</tr>
@@ -86,19 +86,19 @@
 							<td>字串</td>
 							<td>沒有</td>
 							<td>
-								用於雜湊訊息確認碼（HMAC）程序的隨機值，確認你設定的值是唯一且隨機！
+								用於雜湊訊息確認码（HMAC）程序的隨機值，確認你設定的值是唯一且隨機！
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<p class="note">
-					如果你手動指派鍵，注意它們是 base64_encoded，且長度必須是 4 的倍數以讓它能夠被解碼，確認長度是正確的！
+					如果你手动指派鍵，注意它們是 base64_encoded，且長度必須是 4 的倍数以让它能夠被解码，確認長度是正確的！
 				</p>
 			</section>
 
 			<article>
 				<h4 class="method" id="method_encode">encode($value, $key = false)</h4>
-				<p><strong>encode</strong> 方法加密一個字串值，選擇性的使用自訂鍵。</p>
+				<p><strong>encode</strong> 方法加密一个字串值，選擇性的使用自訂鍵。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -106,11 +106,11 @@
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -122,7 +122,7 @@
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>選擇性的自訂鍵值以使用於加密傳遞的值，如果為 false，配置值 '<strong>crypto_key</strong>' 會被使用。</td>
+									<td>選擇性的自訂鍵值以使用於加密傳遞的值，如果为 false，配置值 '<strong>crypto_key</strong>' 会被使用。</td>
 								</tr>
 							</table>
 						</td>
@@ -134,7 +134,7 @@
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 使用自訂鍵加密一個變數
+							<pre class="php"><code>// 使用自訂鍵加密一个變数
 $value = Crypt::encode($value, 'R@nd0mK~Y');</code></pre>
 						</td>
 					</tr>
@@ -144,7 +144,7 @@ $value = Crypt::encode($value, 'R@nd0mK~Y');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_decode">decode($value, $key = false)</h4>
-				<p><strong>decode</strong> 方法解密一個字串值，選擇性的使用自訂鍵。</p>
+				<p><strong>decode</strong> 方法解密一个字串值，選擇性的使用自訂鍵。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -152,11 +152,11 @@ $value = Crypt::encode($value, 'R@nd0mK~Y');</code></pre>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -168,7 +168,7 @@ $value = Crypt::encode($value, 'R@nd0mK~Y');</code></pre>
 								<tr>
 									<th><kbd>$key</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>選擇性的自訂鍵值以使用於解密傳遞的值，如果為 false，配置值 '<strong>crypto_key</strong>' 會被使用。</td>
+									<td>選擇性的自訂鍵值以使用於解密傳遞的值，如果为 false，配置值 '<strong>crypto_key</strong>' 会被使用。</td>
 								</tr>
 							</table>
 						</td>
@@ -180,7 +180,7 @@ $value = Crypt::encode($value, 'R@nd0mK~Y');</code></pre>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 使用自訂鍵解密一個變數
+							<pre class="php"><code>// 使用自訂鍵解密一个變数
 $value = Crypt::decode($value, 'R@nd0mK~Y');</code></pre>
 						</td>
 					</tr>
@@ -192,7 +192,7 @@ $value = Crypt::decode($value, 'R@nd0mK~Y');</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

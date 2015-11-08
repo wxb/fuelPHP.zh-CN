@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>簡介 - Parser 套件 - FuelPHP 简体中文手册</title>
+	<title>简介 - Parser 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 		<div id="main">
 			<h2>Parser 套件</h2>
 
-			<p>Parser 套件擴充核心檢視類別，能夠使用任何你想要的樣板解析器。</p>
+			<p>Parser 套件擴充核心檢視类別，能夠使用任何你想要的樣板解析器。</p>
 
 			<section>
-				<h2 id="intro">簡介</h2>
+				<h2 id="intro">简介</h2>
 
-				<p>Parser 套件不改變任何你使用檢視的方法，但它將能讓你使用任何你想要的樣板解析器取代 PHP。
-					這套件有著許多解析器的驅動，
+				<p>Parser 套件不改變任何你使用檢視的方法，但它将能让你使用任何你想要的樣板解析器取代 PHP。
+					这套件有著許多解析器的驅动，
 					像 Dwoo、Haml、Jade、Lex、Markdown、Mustache、PHPTal、Smarty 和 Twig。</p>
 
 				<p>Which parser is used is determined by the file extension of your view file. Normal views, parsed by PHP
@@ -57,9 +57,9 @@
 				    so on. The default extension can be changed in config).</p>
 
 				<section>
-					<h3 id="install">安裝</h3>
+					<h3 id="install">安装</h3>
 
-					<p>Parser 套件包含在 Fuel 下載中，
+					<p>Parser 套件包含在 Fuel 下载中，
 						使用你必須先添加啟用至你的配置：</p>
 					<pre class="php"><code>'always_load' => array(
 	'packages' => array(
@@ -91,22 +91,22 @@
 				<section>
 					<h3 id="configuration">配置</h3>
 
-					<p>Parser 能在 config/parser.php 檔案中被配置，且使用以下的鍵：</p>
+					<p>Parser 能在 config/parser.php 档案中被配置，且使用以下的鍵：</p>
 
 					<table class="config">
 						<tbody>
 							<tr class="header">
-								<th>參數</th>
-								<th>類型</th>
+								<th>參数</th>
+								<th>类型</th>
 								<th>預設</th>
 								<th>描述</th>
 							</tr>
 							<tr>
 								<th>extensions</th>
 								<td>陣列</td>
-								<td>（包含擴充與解析的檢視類別的陣列）</td>
+								<td>（包含擴充與解析的檢視类別的陣列）</td>
 								<td>
-									定義哪些擴充是有效的以及它們的檢視驅動是什麼。<br />
+									定義哪些擴充是有效的以及它們的檢視驅动是什么。<br />
 									例：'md' => 'View_Markdown'
 								</td>
 							</tr>
@@ -119,11 +119,11 @@
 				</section>
 
 				<section>
-					<h3 id="runtime_configuration">執行階段配置</h3>
+					<h3 id="runtime_configuration">执行階段配置</h3>
 
-					<p>所有驅動都有一個 <kbd>parser()</kbd> 方法能讓你存取目前的 Parser 物件。
-						這是一個慣例而非必要條件，
-						且不同的第三方驅動程序可能會有所不同。</p>
+					<p>所有驅动都有一个 <kbd>parser()</kbd> 方法能让你存取目前的 Parser 物件。
+						这是一个慣例而非必要條件，
+						且不同的第三方驅动程序可能会有所不同。</p>
 
 					<pre class="php"><code>// 清除特定 Smarty 樣板的快取
 $view = View::forge('example.smarty');
@@ -141,7 +141,7 @@ View_Smarty::parser()->clearCache('example.smarty');</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

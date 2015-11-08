@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -41,17 +41,17 @@
 
 			<h2>使用 Email 套件</h2>
 
-			<p>Email 套件只需要你三樣東西便可開始發送電子郵件。</p>
+			<p>Email 套件只需要你三樣東西便可開始发送電子郵件。</p>
 
 			<ol>
-				<li>「發送來源」地址。</li>
-				<li>發送對象地址。</li>
-				<li>以及最後但並非最不重要的，訊息。</li>
+				<li>「发送來源」地址。</li>
+				<li>发送對象地址。</li>
+				<li>以及最後但并非最不重要的，訊息。</li>
 			</ol>
 
-			<h3 id="sending_mails">讓我們來發送郵件。</h3>
+			<h3 id="sending_mails">让我們來发送郵件。</h3>
 
-			<pre class="php"><code>// 建立一個實例
+			<pre class="php"><code>// 建立一个實例
 $email = Email::forge();
 
 // 設定來源地址
@@ -60,32 +60,32 @@ $email->from('my@email.me', 'My Name');
 // 設定接收地址
 $email->to('receiver@elsewhere.co.uk', 'Johny Squid');
 
-// 設定一個主題
+// 設定一个主題
 $email->subject('This is the subject');
 
-// 設定多個接收地址
+// 設定多个接收地址
 
 $email->to(array(
 	'example@mail.com',
 	'another@mail.com' => 'With a Name',
 ));
 
-// 並且設定主體。
+// 并且設定主體。
 $email->body('This is my message');
 </code></pre>
 
-			<p>在這裡我們已經準備好開始發送郵件。</p>
+			<p>在这裡我們已经准備好開始发送郵件。</p>
 
 			<h3 id="exception">例外</h3>
 
-			<p>發送郵件時，你可能會遭遇兩種類型的例外。</p>
+			<p>发送郵件時，你可能会遭遇兩種类型的例外。</p>
 
 			<ul>
-				<li><strong>\EmailValidationFailedException</strong>：當一個或多個電子郵件地址未通過驗證時拋出。</li>
-				<li><strong>\EmailSendingFailedException</strong>, 當驅動程序發送失敗時拋出</li>
+				<li><strong>\EmailValidationFailedException</strong>：當一个或多个電子郵件地址未通過驗證時拋出。</li>
+				<li><strong>\EmailSendingFailedException</strong>, 當驅动程序发送失敗時拋出</li>
 			</ul>
 
-			<p>下面的例子顯示了如何處理例外。</p>
+			<p>下面的例子顯示了如何处理例外。</p>
 
 			<pre class="php"><code>try
 {
@@ -97,35 +97,35 @@ catch(\EmailValidationFailedException $e)
 }
 catch(\EmailSendingFailedException $e)
 {
-	// 驅動程序無法發送信件
+	// 驅动程序無法发送信件
 }</code></pre>
 
 			<h3 id="html_mails">HTML 郵件。</h3>
 
-			<p>發送 HTML 郵件與發送一般郵件並沒有太大不同：</p>
+			<p>发送 HTML 郵件與发送一般郵件并沒有太大不同：</p>
 
-			<pre class="php"><code>// 設定一個 html 主體訊息
+			<pre class="php"><code>// 設定一个 html 主體訊息
 $email->html_body(\View::forge('email/template', $email_data));
 
-/** 預設情況下也會從 html 產生一個替代的主體，
-	並附加任何內嵌檔案（不像 http://... 的路徑）    **/
+/** 預設情況下也会從 html 產生一个替代的主體，
+	并附加任何內嵌档案（不像 http://... 的路徑）    **/
 
-// 設定一個替代的主體，這是選擇性的。
+// 設定一个替代的主體，这是選擇性的。
 $email->alt_body('This is my alt body, for non-html viewers.');</code></pre>
 
 			<h3 id="attachments">附件</h3>
 
 			<p>
-				Email 套件支援兩種附件：一般（附件）與內嵌。使用一個內嵌附件，
-				如果你想在郵件裡使用它的話。例如你可能想在你的郵件裡有一個圖形，並且你想要人們也能在離線看見。
-				有些客戶端並不快取，是的這很愚蠢。但它是跨網發生這樣的東西。
+				Email 套件支援兩種附件：一般（附件）與內嵌。使用一个內嵌附件，
+				如果你想在郵件裡使用它的話。例如你可能想在你的郵件裡有一个圖形，并且你想要人們也能在離線看見。
+				有些客戶端并不快取，是的这很愚蠢。但它是跨網发生这樣的東西。
 			</p>
 
-			<pre class="php"><code>// 添加一個附件
+			<pre class="php"><code>// 添加一个附件
 $email->attach(DOCROOT.'dir/my_img.png');
 
-// 添加一個內嵌附件
-// 在這裡添加一個 cid 指向主體
+// 添加一个內嵌附件
+// 在这裡添加一个 cid 指向主體
 $email->attach(DOCROOT.'dir/my_img.png', true, 'cid:my_conten_id');
 </code></pre>
 
@@ -136,26 +136,26 @@ $email->string_attach($contents, $filename);
 	</code></pre>
 
 			<p>
-				預設情況下，HTML 圖片會自動引入，但只引入本地檔案。
+				預設情況下，HTML 圖片会自动引入，但只引入本地档案。
 				看看以下的 HTML 以了解它如何運作。
 			</p>
 
-			<pre class="html"><code>&lt;!-- 這會被引入 --&gt;
+			<pre class="html"><code>&lt;!-- 这会被引入 --&gt;
 &lt;img src="path/to/my/file.png" /&gt;
 
-&lt;!-- 這不會被引入 --&gt;
+&lt;!-- 这不会被引入 --&gt;
 &lt;img src="http://remote_host/file.jpeg" /&gt;
 
-&lt;!-- 這不會被引入 --&gt;
+&lt;!-- 这不会被引入 --&gt;
 &lt;img src="cid:my_conten_id" /&gt;
 	</code></pre>
 
-			<p>你所看見最後的標籤（帶有 cid:）也不會被引入。在這種情況下，郵件希望你自己使用內嵌附件附加文件。</p>
+			<p>你所看見最後的标籤（帶有 cid:）也不会被引入。在这種情況下，郵件希望你自己使用內嵌附件附加文件。</p>
 
 			<h3 id="priorities">優先權</h3>
 
 			<p>
-				透過使用 <a href="./methods.html#method_priority">priority</a> 方法修改一個郵件的優先權。
+				透過使用 <a href="./methods.html#method_priority">priority</a> 方法修改一个郵件的優先權。
 			</p>
 
 			<pre class="php"><code>$email->priority(\Email::P_HIGH);</code></pre>
@@ -163,32 +163,32 @@ $email->string_attach($contents, $filename);
 			<h3 id="pipelining">流水線</h3>
 
 			<p>
-				流水線是一個你可以一次發送多封 email 的機制。
+				流水線是一个你可以一次发送多封 email 的機制。
 			</p>
 
 			<pre class="php"><code>$email->pipelining($true);</code></pre>
 
 			<p>
-				啟用後，你可以使用相同的 <code>$email</code> 物件來建構並發送多封 email，在使用相同的連線到郵件伺服器。
-				你應該諮詢你的郵件伺服器託管公司來了解這是否是允許的，以及你在單一流水線可以送出 email 的最大數量。
-				大多數的主機商限制一個特定數量，之後伺服器斷開連線。
+				啟用後，你可以使用相同的 <code>$email</code> 物件來建構并发送多封 email，在使用相同的連線到郵件伺服器。
+				你應該諮詢你的郵件伺服器託管公司來了解这是否是允許的，以及你在单一流水線可以送出 email 的最大数量。
+				大多数的主機商限制一个特定数量，之後伺服器斷開連線。
 			</p>
 			<p>
-				目前，只有 SMTP 驅動支援流水線。
+				目前，只有 SMTP 驅动支援流水線。
 			</p>
 
 
-            <h2 id="drivers">驅動</h2>
-            <h3 id="mailgun">Mailgun 驅動</h3>
-            <p><a href="http://www.mailgun.com/">Mailgun</a> 是一個由 Rackspace 提供，能讓你依需求量發送電子郵件的服務。你會需要在你的 FuelPHP 中用 composer 安裝 <a href="https://github.com/mailgun/mailgun-php">Mailgun 函式庫</a>。</p>
+            <h2 id="drivers">驅动</h2>
+            <h3 id="mailgun">Mailgun 驅动</h3>
+            <p><a href="http://www.mailgun.com/">Mailgun</a> 是一个由 Rackspace 提供，能让你依需求量发送電子郵件的服務。你会需要在你的 FuelPHP 中用 composer 安装 <a href="https://github.com/mailgun/mailgun-php">Mailgun 函式庫</a>。</p>
 
-            <p>添加下一行到你的 <i>composer.json</i> 檔案並執行更新</p>
+            <p>添加下一行到你的 <i>composer.json</i> 档案并执行更新</p>
 
             <pre class="cli"><code class="body">"mailgun/mailgun-php": "1.6"</code></pre>
 
             <pre class="cli"><code>$ composer update</code></pre>
 
-            <p>一旦你安裝了套件，你必須要為你的 App 設置配置。</p>
+            <p>一旦你安装了套件，你必須要为你的 App 設置配置。</p>
 
             <pre class="php"><code>
 /**
@@ -209,7 +209,7 @@ return array(
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 

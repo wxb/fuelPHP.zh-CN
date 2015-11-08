@@ -12,7 +12,7 @@
 		var class_prefix = "Date::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Date - 類別 - FuelPHP 简体中文手册</title>
+	<title>Date - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,14 +40,14 @@
 
 		<div id="main">
 
-			<h2>Date 類別</h2>
+			<h2>Date 类別</h2>
 
-			<p>Date 類別是一系列與日期協作的輔助函式。與 PHP 的 DateTime 類別相反，
-			Fuel 的 Date 類別對 i18n 有完整的支援。你也可以使用 Date 類別的時區轉換。</p>
+			<p>Date 类別是一系列與日期協作的輔助函式。與 PHP 的 DateTime 类別相反，
+			Fuel 的 Date 类別對 i18n 有完整的支援。你也可以使用 Date 类別的時區轉換。</p>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($timestamp = null, $timezone = null)</h4>
-				<p><strong>forge</strong> 方法回傳一個新的 Date 物件。</p>
+				<p><strong>forge</strong> 方法回傳一个新的 Date 物件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -55,11 +55,11 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -100,7 +100,7 @@ Fuel\Core\Date Object
 
 			<article>
 				<h4 class="method" id="method_time">time($timezone = null)</h4>
-				<p><strong>time</strong> 方法回傳在所給時區中的目前時間做為一個 Date 物件。</p>
+				<p><strong>time</strong> 方法回傳在所給時區中的目前時間做为一个 Date 物件。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -108,11 +108,11 @@ Fuel\Core\Date Object
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -141,9 +141,9 @@ Fuel\Core\Date Object
 			<article>
 				<h4 class="method" id="method_display_timezone">display_timezone($timezone = null)</h4>
 				<p>
-					<strong>display_timezone</strong> 方法能讓你全域地設定一個可被 format() 方法使用的時區，
-					以在系統時區當時產生輸出另一個時區。
-					如果你沒有傳遞參數，目前 display_timezone 會被回傳。
+					<strong>display_timezone</strong> 方法能让你全域地設定一个可被 format() 方法使用的時區，
+					以在系统時區當時產生輸出另一个時區。
+					如果你沒有傳遞參数，目前 display_timezone 会被回傳。
 				</p>
 				<table class="method">
 					<tbody>
@@ -152,30 +152,30 @@ Fuel\Core\Date Object
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$timezone</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要被用於在非系統時區中格式化時間戳記的顯示時區。</td>
+									<td>要被用於在非系统時區中格式化時間戳記的顯示時區。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合，null、或目前顯示時區如果沒有參數被傳遞。</td>
+						<td>混合，null、或目前顯示時區如果沒有參数被傳遞。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 設定顯示時區為 'America/Lima'
+							<pre class="php"><code>// 設定顯示時區为 'America/Lima'
 Date::display_timezone('America/Lima');</code></pre>
 						</td>
 					</tr>
@@ -185,12 +185,12 @@ Date::display_timezone('America/Lima');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_create_from_string">create_from_string($input, $pattern_key = 'local')</h4>
-				<p><strong>create_from_string</strong> 建立一個來自具名的日期字串格式或一個模式的
+				<p><strong>create_from_string</strong> 建立一个來自具名的日期字串格式或一个模式的
 					Date 物件。</p>
 
-				<p class="note">此函式為 i18n 用途使用 <a href="http://www.php.net/manual/en/function.strptime.php" target="_blank">strptime()</a>。
-					然而，該方法無法在 Windows 主機上使用，在這種情況下 <kbd>strtotime()</kbd>
-					被用來取代且模式會被忽略。</p>
+				<p class="note">此函式为 i18n 用途使用 <a href="http://www.php.net/manual/en/function.strptime.php" target="_blank">strptime()</a>。
+					然而，該方法無法在 Windows 主機上使用，在这種情況下 <kbd>strtotime()</kbd>
+					被用來取代且模式会被忽略。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -198,11 +198,11 @@ Date::display_timezone('America/Lima');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -214,7 +214,7 @@ Date::display_timezone('America/Lima');</code></pre>
 								<tr>
 									<th><kbd>$pattern_key</kbd></th>
 									<td>"local"</td>
-									<td>要使用的模式鍵（見 config/date.php）或直接一個 strptime() 模式</td>
+									<td>要使用的模式鍵（見 config/date.php）或直接一个 strptime() 模式</td>
 								</tr>
 							</table>
 						</td>
@@ -243,7 +243,7 @@ Fuel\Core\Date Object
 
 			<article>
 				<h4 class="method" id="method_range_to_array">range_to_array($start, $end, $interval = '+1 Day')</h4>
-				<p><strong>range_to_array</strong> 轉換一個日期範圍為一個日期物件的陣列</p>
+				<p><strong>range_to_array</strong> 轉換一个日期範圍为一个日期物件的陣列</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -251,28 +251,28 @@ Fuel\Core\Date Object
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$start</kbd></th>
 									<td><i>必要</i></td>
-									<td>開始日期，不是一個 Date 物件就是一個時間戳記</td>
+									<td>開始日期，不是一个 Date 物件就是一个時間戳記</td>
 								</tr>
 								<tr>
 									<th><kbd>$end</kbd></th>
 									<td><i>必要</i></td>
-									<td>結束日期，不是一個 Date 物件就是一個時間戳記</td>
+									<td>結束日期，不是一个 Date 物件就是一个時間戳記</td>
 								</tr>
 								<tr>
 									<th><kbd>$interval</kbd></th>
 									<td>"+1 Day"</td>
-									<td>要建立一個 Date 物件的時間間隔</td>
+									<td>要建立一个 Date 物件的時間間隔</td>
 								</tr>
 							</table>
 						</td>
@@ -323,7 +323,7 @@ Array
 
 			<article>
 				<h4 class="method" id="method_date_in_month">days_in_month($month, $year = null)</h4>
-				<p><strong>days_in_month</strong> 回傳任何指定年、月份的天數</p>
+				<p><strong>days_in_month</strong> 回傳任何指定年、月份的天数</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -331,11 +331,11 @@ Array
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -354,7 +354,7 @@ Array
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>整數</td>
+						<td>整数</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -370,7 +370,7 @@ echo Date::days_in_month(2, 2000); // 29
 
 			<article>
 				<h4 class="method" id="method_time_ago">time_ago($timestamp, $now, $period)</h4>
-				<p><strong>time_ago</strong> 方法回傳一個格式化的時間差。</p>
+				<p><strong>time_ago</strong> 方法回傳一个格式化的時間差。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -378,11 +378,11 @@ echo Date::days_in_month(2, 2000); // 29
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -394,12 +394,12 @@ echo Date::days_in_month(2, 2000); // 29
 								<tr>
 									<th><kbd>$now</kbd></th>
 									<td class="fixed_width"><i>選擇性</i></td>
-									<td>要進行比較的 UNIX 時間戳記，如果沒給或為空，會使用目前時間</td>
+									<td>要進行比較的 UNIX 時間戳記，如果沒給或为空，会使用目前時間</td>
 								</tr>
 								<tr>
 									<th><kbd>$period</kbd></th>
 									<td class="fixed_width"><i>選擇性</i></td>
-									<td>答案回傳的時間跨度，可能的值是 'second'、'minute'、'hour'、'day'、'week'、'month'、'year' 和 'decade'。如果沒有指定，會回傳最大的可能值</td>
+									<td>答案回傳的時間跨度，可能的值是 'second'、'minute'、'hour'、'day'、'week'、'month'、'year' 和 'decade'。如果沒有指定，会回傳最大的可能值</td>
 								</tr>
 							</table>
 						</td>
@@ -424,19 +424,19 @@ echo Date::time_ago(strtotime("12 April 1964"), strtotime("01 March 2012"), 'yea
 			<article>
 				<h4 class="method" id="method_format">format($pattern_key = 'local', $timezone = null)</h4>
 				<p>
-					<strong>format</strong> 方法回傳一個指定模式鍵的格式化日期。
-					模式被定義在 <kbd>fuel/core/config/date.php</kbd> 配置檔案 - 你可以藉由在
-					<kbd>app/config</kbd> 建立一個類似的檔案來添加你自己的模式。
+					<strong>format</strong> 方法回傳一个指定模式鍵的格式化日期。
+					模式被定義在 <kbd>fuel/core/config/date.php</kbd> 配置档案 - 你可以藉由在
+					<kbd>app/config</kbd> 建立一个类似的档案來添加你自己的模式。
 				</p>
-				<p class="note">此方法為 <a href="http://www.php.net/manual/en/function.strftime.php" target="_blank">strftime()</a>
+				<p class="note">此方法为 <a href="http://www.php.net/manual/en/function.strftime.php" target="_blank">strftime()</a>
 					函式使用模式取代 <kbd>date()</kbd> ，以允許 i18n。</p>
 				<p>
-					如果你沒有傳遞一個時區，當格式化結果時，目前 Date 物件的設定時區將被使用。預設情況下，
-					是系統時區，除非你有藉由呼叫 <kbd>set_timezone()</kbd> 方法修改它。你也可以傳遞
-					<kbd>true</kbd> ，這將造成全域的 display_timezone 被使用。
+					如果你沒有傳遞一个時區，當格式化結果時，目前 Date 物件的設定時區将被使用。預設情況下，
+					是系统時區，除非你有藉由呼叫 <kbd>set_timezone()</kbd> 方法修改它。你也可以傳遞
+					<kbd>true</kbd> ，这将造成全域的 display_timezone 被使用。
 				</p>
-				<p class="note">你可以使用 display_timezone 以全域設定一個要轉換到的時區，例如，
-				當一個使用者已登入，從一個使用者個人設定。這將能讓所有日期在使用者本地時區裡被顯示。</p>
+				<p class="note">你可以使用 display_timezone 以全域設定一个要轉換到的時區，例如，
+				當一个使用者已登入，從一个使用者个人設定。这将能让所有日期在使用者本地時區裡被顯示。</p>
 
 				<table class="method">
 					<tbody>
@@ -445,11 +445,11 @@ echo Date::time_ago(strtotime("12 April 1964"), strtotime("01 March 2012"), 'yea
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -473,16 +473,16 @@ echo Date::time_ago(strtotime("12 April 1964"), strtotime("01 March 2012"), 'yea
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 如果系統時間是 UTC，這將回傳 "01/04/2011 21:22"
+							<pre class="php"><code>// 如果系统時間是 UTC，这将回傳 "01/04/2011 21:22"
 echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M");
 
-// 設定時區為 "Europe/Amsterdam"（在一月是 GMT+1），這將回傳 "01/04/2011 22:22"
+// 設定時區为 "Europe/Amsterdam"（在一月是 GMT+1），这将回傳 "01/04/2011 22:22"
 echo Date::forge(1294176140)->set_timezone('Europe/Amsterdam')->format("%m/%d/%Y %H:%M");
 
-// 設定全域的顯示時區為 "Europe/Amsterdam"
+// 設定全域的顯示時區为 "Europe/Amsterdam"
 Date::display_timezone('Europe/Amsterdam');
 
-// 這也將回傳 "01/04/2011 22:22"
+// 这也将回傳 "01/04/2011 22:22"
 echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M", true);</code></pre>
 						</td>
 					</tr>
@@ -501,7 +501,7 @@ echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M", true);</code></pre>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>整數</td>
+						<td>整数</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -545,18 +545,18 @@ echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M", true);</code></pre>
 						<th class="legend">靜態</th>
 						<td>否</td>
 					</tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$display_timezone</kbd></th>
 									<td><i>布林</i></td>
-									<td>如果為 true，全域的 display_timezone 將取代 Date 物件的時區設定</td>
+									<td>如果为 true，全域的 display_timezone 将取代 Date 物件的時區設定</td>
 								</tr>
 							</table>
 						</td>
@@ -570,7 +570,7 @@ echo Date::forge(1294176140)->format("%m/%d/%Y %H:%M", true);</code></pre>
 							<pre class="php"><code>echo Date::forge(1294176140, "Europe/London")->get_timezone_abbr(); // 回傳 "GMT"
 echo Date::forge(1294176140, "Europe/Amsterdam")->get_timezone_abbr(); // 回傳 "CET"
 
-// 設定全域顯示時區為 "Europe/Amsterdam"
+// 設定全域顯示時區为 "Europe/Amsterdam"
 Date::display_timezone('Europe/Amsterdam');
 echo Date::forge(1294176140)->get_timezone_abbr(true); // 也回傳 "CET"</code></pre>
 						</td>
@@ -589,11 +589,11 @@ echo Date::forge(1294176140)->get_timezone_abbr(true); // 也回傳 "CET"</code>
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -623,7 +623,7 @@ echo Date::forge(1294176140)->get_timezone_abbr(true); // 也回傳 "CET"</code>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

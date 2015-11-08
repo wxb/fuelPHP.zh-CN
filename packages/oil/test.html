@@ -11,7 +11,7 @@
 		var path = './../../';
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>測試 - Oil 套件 - FuelPHP 简体中文手册</title>
+	<title>测试 - Oil 套件 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -19,7 +19,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -28,7 +28,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,16 +40,16 @@
 		<div id="main">
 			<section>
 
-				<h2 id="test">測試</h2>
+				<h2 id="test">测试</h2>
 
-				<p><code>oil test</code>（或 <code>oil t</code>）命令運行與你的 web app、模組和套件相關的 PHPUnit 測試。關於 FuelPHP 單元測試的完整文件可以在 <a href="../../general/unit_testing.html">單元測試</a> 文件頁面找到，而關於 PHPUnit 的完整文件可以在 <a href="http://www.phpunit.de/manual/current/en/index.html">PHPUnit 網站</a>找到。</p>
+				<p><code>oil test</code>（或 <code>oil t</code>）命令运行與你的 web app、模組和套件相關的 PHPUnit 测试。關於 FuelPHP 单元测试的完整文件可以在 <a href="../../general/unit_testing.html">单元测试</a> 文件頁面找到，而關於 PHPUnit 的完整文件可以在 <a href="http://www.phpunit.de/manual/current/en/index.html">PHPUnit 網站</a>找到。</p>
                 <h3 id="configuration">配置</h3>
-                <p>Oil 實用工具本身不需要太多配置，但如果在你機器上的 PHPUnit 實例不是全域安裝（例如，如果你使用 Composer 安裝 PHPUnit 到你的專案），你會想要配置 Oil 來解決你的 PHPUnit 安裝。在 <code>app/config/oil.php</code> 建立（或從 Oil 套件複製）一個配置檔案，並根據需要變更這些設定：</p>
+                <p>Oil 實用工具本身不需要太多配置，但如果在你機器上的 PHPUnit 實例不是全域安装（例如，如果你使用 Composer 安装 PHPUnit 到你的專案），你会想要配置 Oil 來解決你的 PHPUnit 安装。在 <code>app/config/oil.php</code> 建立（或從 Oil 套件複製）一个配置档案，并根據需要變更这些設定：</p>
                 <h4 id="phpunit_configuration">PHPUnit 配置</h4>
                 <table class="config">
                     <tr class="header">
-                        <th>參數</th>
-                        <th>類型</th>
+                        <th>參数</th>
+                        <th>类型</th>
                         <th>預設</th>
                         <th>描述</th>
                     </tr>
@@ -57,31 +57,31 @@
                         <th>phpunit.autoload_path</th>
                         <td>字串</td>
                         <td><pre class="php"><code class="php">'PHPUnit/Autoload.php'</code></pre></td>
-                        <td>指向 PHPUnit Autoload 檔案的路徑。</td>
+                        <td>指向 PHPUnit Autoload 档案的路徑。</td>
                     </tr>
                     <tr>
                         <th>phpunit.binary_path</th>
                         <td>字串</td>
                         <td><pre class="php"><code class="php">'phpunit'</code></pre></td>
-                        <td>這是運行 PHPUnit 命令（如果需要的話，包含完整路徑）的可執行文件。</td>
+                        <td>这是运行 PHPUnit 命令（如果需要的話，包含完整路徑）的可执行文件。</td>
                     </tr>
                 </table>
 				<h4 id="cli_options">命令列選項</h4>
-				<p>測試支援幾個 PHPUnit 命令列選項：</p>
-				<p><code>--file=&lt;file&gt;</code> 只在指定的檔案運行測試。</p>
-				<p><code>--group=&lt;group&gt;</code> 只在指定的群組（們）運行測試。</p>
-				<p><code>--testsuite=&lt;testsuite&gt;</code> 只運行指定測試套裝（們）的測試。</p>
-				<p><code>--exclude-group=&lt;group&gt;</code> 從指定的群組（們）排除測試。</p>
-				<p><code>--coverage-clover=&lt;file&gt;</code> 產生 Clover XML 格式的程式碼覆蓋率報告。</p>
-				<p><code>--coverage-html=&lt;dir&gt;</code> 產生 HTML 格式的程式碼覆蓋率報告。</p>
-				<p><code>--coverage-php=&lt;file&gt;</code> 序列化 PHP_CodeCoverage 物件到檔案。</p>
-				<p><code>--coverage-text=&lt;file&gt;</code> 產生文本格式的程式碼覆蓋率報告。</p>
-				<p><code>--log-junit=&lt;file&gt;</code> 產生執行在 JUnit XML 格式的測試報告到檔案。</p>
-				<p><code>--debug</code> 在測試執行過程顯示除錯資訊。</p>
-                <p>更多關於這些命令列選項以及它們所處理的資訊，請見 <a
+				<p>测试支援幾个 PHPUnit 命令列選項：</p>
+				<p><code>--file=&lt;file&gt;</code> 只在指定的档案运行测试。</p>
+				<p><code>--group=&lt;group&gt;</code> 只在指定的群組（們）运行测试。</p>
+				<p><code>--testsuite=&lt;testsuite&gt;</code> 只运行指定测试套裝（們）的测试。</p>
+				<p><code>--exclude-group=&lt;group&gt;</code> 從指定的群組（們）排除测试。</p>
+				<p><code>--coverage-clover=&lt;file&gt;</code> 產生 Clover XML 格式的程式码覆蓋率報告。</p>
+				<p><code>--coverage-html=&lt;dir&gt;</code> 產生 HTML 格式的程式码覆蓋率報告。</p>
+				<p><code>--coverage-php=&lt;file&gt;</code> 序列化 PHP_CodeCoverage 物件到档案。</p>
+				<p><code>--coverage-text=&lt;file&gt;</code> 產生文本格式的程式码覆蓋率報告。</p>
+				<p><code>--log-junit=&lt;file&gt;</code> 產生执行在 JUnit XML 格式的测试報告到档案。</p>
+				<p><code>--debug</code> 在测试执行過程顯示除错資訊。</p>
+                <p>更多關於这些命令列選項以及它們所处理的資訊，請見 <a
                         href="http://www.phpunit.de/manual/current/en/textui.html#textui.clioptions">PHPUnit 文件</a>。</p>
-                <h4 id="phpunit_config">PHPUnit 測試運行配置</h4>
-				<p>預設情況下，Oil 將傳遞位於 <code>COREPATH</code> 目錄中的 <code>phpunit.xml</code> 測試運行配置檔案給 PHPUnit。</p>
+                <h4 id="phpunit_config">PHPUnit 测试运行配置</h4>
+				<p>預設情況下，Oil 将傳遞位於 <code>COREPATH</code> 目录中的 <code>phpunit.xml</code> 测试运行配置档案給 PHPUnit。</p>
                 <p>Fuel 在 <code>fuel/core/phpunit.xml</code> 的基本 phpunit.xml 包含：</p>
 				<pre class='xml'><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;phpunit colors="true" stopOnFailure="false" bootstrap="../core/bootstrap_phpunit.php"&gt;
@@ -104,8 +104,8 @@
 	&lt;/testsuites&gt;
 &lt;/phpunit&gt;
 </code></pre>
-				<p>如果你需要更改這個配置檔案，將它複製到你的 <code>APPPATH</code> 目錄並編輯它。Oil 才能夠識別代替預設的新配置檔案，並使用你自訂的配置。</p>
-                <p>例如，如果你在 Modules 開發，你可能需要以下額外的測試組在你自訂的測試配置檔案：</p>
+				<p>如果你需要更改这个配置档案，将它複製到你的 <code>APPPATH</code> 目录并编輯它。Oil 才能夠識別代替預設的新配置档案，并使用你自訂的配置。</p>
+                <p>例如，如果你在 Modules 开发，你可能需要以下額外的测试組在你自訂的测试配置档案：</p>
 <pre class='xml'><code>		&lt;testsuite name="modules"&gt;
 			&lt;directory suffix=".php"&gt;../modules/*/tests&lt;/directory&gt;
 		&lt;/testsuite&gt;
@@ -116,7 +116,7 @@
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

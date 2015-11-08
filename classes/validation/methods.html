@@ -12,7 +12,7 @@
 		var class_prefix = "Validation::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Validation 方法 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Validation 方法 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,21 +40,21 @@
 
 		<div id="main">
 
-			<h2>Validation 類別</h2>
+			<h2>Validation 类別</h2>
 
 			<p>
-				類別幫助你驗證使用者輸入，如果你想要同時建立一個表單＆它的驗證，
-				使用 <a href="../fieldset/fieldset.html">Fieldset</a> 類別代替。
+				类別幫助你驗證使用者輸入，如果你想要同時建立一个表单＆它的驗證，
+				使用 <a href="../fieldset/fieldset.html">Fieldset</a> 类別代替。
 			</p>
 
-			<h3 id="class_methods">類別方法</h3>
+			<h3 id="class_methods">类別方法</h3>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($fieldset = 'default')</h4>
 
 				<p>
-					<strong>forge</strong> 方法回傳一個新的 Validation 實例。
-					並用一個 $fieldset 與 Fieldset 連結。
+					<strong>forge</strong> 方法回傳一个新的 Validation 實例。
+					并用一个 $fieldset 與 Fieldset 連結。
 				</p>
 
 				<table class="method">
@@ -64,12 +64,12 @@
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -88,18 +88,18 @@
 						</tr>
 						<tr>
 							<th>拋出</th>
-							<td>\DomainException，當 Fieldset 名稱或實例已經有一個關聯的 Validation 實例。</td>
+							<td>\DomainException，當 Fieldset 名稱或實例已经有一个關聯的 Validation 實例。</td>
 						</tr>
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 建立一個新的 Validation 實例
+								<pre class="php"><code>// 建立一个新的 Validation 實例
 $val = Validation::forge();
 
-// 關聯新的 Validation 實例與一個Fieldset，使用 Fieldset 名稱
+// 關聯新的 Validation 實例與一个Fieldset，使用 Fieldset 名稱
 $val = Validation::forge('my_fieldset');
 
-// 關聯新的 Validation 實例與一個Fieldset，透過傳遞 Fieldset 實例
+// 關聯新的 Validation 實例與一个Fieldset，透過傳遞 Fieldset 實例
 $fieldset = Fieldset::instance('my_fieldset');
 $val = Validation::forge($fieldset);
 </code></pre>
@@ -115,7 +115,7 @@ $val = Validation::forge($fieldset);
 				<p>
 					<strong>instance</strong> 方法回傳與 Vaildation 實例關聯的
 					Fieldset 實例的識別符 $name，
-					或預設的 Fieldset（如果需要的話會建立）。
+					或預設的 Fieldset（如果需要的話会建立）。
 				</p>
 
 				<table class="method">
@@ -125,12 +125,12 @@ $val = Validation::forge($fieldset);
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -156,7 +156,7 @@ $val = Validation::forge($fieldset);
 								<pre class="php"><code>// 取得預設 Fieldset 的 Validation 實例
 $val = Validation::instance();
 
-// 取得一個特定 Fieldset 的 Validation 實例
+// 取得一个特定 Fieldset 的 Validation 實例
 $val = Validation::instance('my_fieldset');
 </code></pre>
 							</td>
@@ -177,7 +177,7 @@ $val = Validation::instance('my_fieldset');
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -211,7 +211,7 @@ $val = Validation::active();
 							<td>是</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -245,7 +245,7 @@ $field = Validation::active_field();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								無
 							</td>
@@ -270,7 +270,7 @@ $fieldset = $val->fieldset();
 			<article>
 				<h4 class="method" id="method_add_field">add_field($name, $label, $rules)</h4>
 				<p>
-					<strong>add_field</strong> 方法是 add() 方法一個更簡單的別名，它可以在一個步驟指定欄位名稱、標籤以及規則。
+					<strong>add_field</strong> 方法是 add() 方法一个更简单的別名，它可以在一个步驟指定欄位名稱、标籤以及規則。
 				</p>
 				<table class="method">
 					<tbody>
@@ -279,12 +279,12 @@ $fieldset = $val->fieldset();
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th class="fixed_width">類型</th>
+										<th>參数</th>
+										<th class="fixed_width">类型</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -298,16 +298,16 @@ $fieldset = $val->fieldset();
 										<th><kbd>$label</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>無</code></pre></td>
-										<td>欄位的標籤。</td>
+										<td>欄位的标籤。</td>
 									</tr>
 									<tr>
 										<th><kbd>$rules</kbd></th>
 										<td><em>混合</em></td>
 										<td><pre class="php"><code>無</code></pre></td>
 										<td>
-											帶有群組在方括號內的規則參數（選擇性）的驗證規則組，
-											並用逗號分隔。在被用垂直線或管道符號（|）的規則可被傳遞做為一個字串，
-											或做為一個規則陣列。
+											帶有群組在方括號內的規則參数（選擇性）的驗證規則組，
+											并用逗號分隔。在被用垂直線或管道符號（|）的規則可被傳遞做为一个字串，
+											或做为一个規則陣列。
 										</td>
 									</tr>
 								</table>
@@ -320,12 +320,12 @@ $fieldset = $val->fieldset();
 						<tr>
 							<th>範例</th>
 							<td>
-								<pre class="php"><code>// 在不同類型的欄位設定規則
+								<pre class="php"><code>// 在不同类型的欄位設定規則
 $val->add_field('username', 'Username', 'required|trim|valid_string[alpha,lowercase,numeric]');
 $val->add_field('email', 'Email', 'required|trim|valid_email');
 $val->add_field('age', 'Age', 'valid_string[numeric]');
 
-// 做為一個陣列
+// 做为一个陣列
 $val->add_field('username', 'Username', array('required', 'trim', 'valid_string[alpha,lowercase,numeric]'));</code></pre>
 							</td>
 						</tr>
@@ -336,7 +336,7 @@ $val->add_field('username', 'Username', array('required', 'trim', 'valid_string[
 			<article>
 				<h4 class="method" id="method_set_message">set_message($rule, $message)</h4>
 				<p>
-					<strong>set_message</strong> 方法為此 Validation 實例覆寫語言檔案訊息。當沒有訊息被指派到你正在使用的規則時，它也是有用的。
+					<strong>set_message</strong> 方法为此 Validation 實例覆寫語言档案訊息。當沒有訊息被指派到你正在使用的規則時，它也是有用的。
 				</p>
 				<table class="method">
 					<tbody>
@@ -345,12 +345,12 @@ $val->add_field('username', 'Username', array('required', 'trim', 'valid_string[
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th class="fixed_width">預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -364,7 +364,7 @@ $val->add_field('username', 'Username', array('required', 'trim', 'valid_string[
 										<th><kbd>$message</kbd></th>
 										<td class="fixed_width"><em>字串｜null</em></td>
 										<td><pre class="php"><code>無</code></pre></td>
-										<td>要為此規則顯示的訊息，如果傳遞一個字串，或 null 來回復到語言檔案。</td>
+										<td>要为此規則顯示的訊息，如果傳遞一个字串，或 null 來回復到語言档案。</td>
 									</tr>
 								</table>
 							</td>
@@ -392,7 +392,7 @@ $val->set_message('custom_rule', 'The :label you entered is previously registere
 			<article>
 				<h4 class="method" id="method_get_message">get_message($rule)</h4>
 				<p>
-					<strong>get_message</strong> 方法為此 Validation 實例取回一個指定的錯誤訊息。只有透過 <a href="#method_set_message">set_message</a> 方法設定的訊息會被回傳。
+					<strong>get_message</strong> 方法为此 Validation 實例取回一个指定的错误訊息。只有透過 <a href="#method_set_message">set_message</a> 方法設定的訊息会被回傳。
 				</p>
 				<table class="method">
 					<tbody>
@@ -401,12 +401,12 @@ $val->set_message('custom_rule', 'The :label you entered is previously registere
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -428,7 +428,7 @@ $val->set_message('custom_rule', 'The :label you entered is previously registere
 							<td>
 								<pre class="php"><code>// 覆寫需要的規則訊息
 $val->set_message('custom_rule', 'The :label you entered is previously registered. Please choose another one');
-// ……之後，或在你程式碼中的其他地方，取得此訊息
+// ……之後，或在你程式码中的其他地方，取得此訊息
 $val->get_message('required', null);
 </code></pre>
 							</td>
@@ -440,7 +440,7 @@ $val->get_message('required', null);
 			<article>
 				<h4 class="method" id="method_add_callable">add_callable($class)</h4>
 				<p>
-					<strong>add_callable</strong> 方法添加一組自訂或擴充的驗證驗證規則。你不須要寫一個完整的回呼（callback），只要一個類別名稱的字串。這也允許從此物件覆寫功能，因為新類別是附加在前的。
+					<strong>add_callable</strong> 方法添加一組自訂或擴充的驗證驗證規則。你不須要寫一个完整的回呼（callback），只要一个类別名稱的字串。这也允許從此物件覆寫功能，因为新类別是附加在前的。
 				</p>
 				<table class="method">
 					<tbody>
@@ -449,12 +449,12 @@ $val->get_message('required', null);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -462,7 +462,7 @@ $val->get_message('required', null);
 										<th><kbd>$class</kbd></th>
 										<td><em>字串｜物件</em></td>
 										<td><pre class="php"><code>無</code></pre></td>
-										<td>做為字串的類別名稱，或物件名稱</td>
+										<td>做为字串的类別名稱，或物件名稱</td>
 									</tr>
 								</table>
 							</td>
@@ -475,7 +475,7 @@ $val->get_message('required', null);
 							<th>範例</th>
 							<td>
 								<p><pre class="php"><code>$val->add_callable('myvalidation');</code></pre></p>
-								<p>為了完整使用此方法的範例，檢查<a href="validation.html#/extending_validation">擴充 Validation 類別</a>，以及所需要的類別。</p>
+								<p>为了完整使用此方法的範例，檢查<a href="validation.html#/extending_validation">擴充 Validation 类別</a>，以及所需要的类別。</p>
 							</td>
 						</tr>
 					</tbody>
@@ -485,7 +485,7 @@ $val->get_message('required', null);
 			<article>
 				<h4 class="method" id="method_remove_callable">remove_callable($class)</h4>
 				<p>
-					<strong>remove_callable</strong> 方法從可呼叫陣列移除一個可呼叫。
+					<strong>remove_callable</strong> 方法從可呼叫陣列移除一个可呼叫。
 				</p>
 				<table class="method">
 					<tbody>
@@ -494,12 +494,12 @@ $val->get_message('required', null);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -507,7 +507,7 @@ $val->get_message('required', null);
 										<th><kbd>$class</kbd></th>
 										<td><em>字串｜物件</em></td>
 										<td><pre class="php"><code>無</code></pre></td>
-										<td>做為字串的類別名稱，或物件名稱</td>
+										<td>做为字串的类別名稱，或物件名稱</td>
 									</tr>
 								</table>
 							</td>
@@ -529,7 +529,7 @@ $val->get_message('required', null);
 			<article>
 				<h4 class="method" id="method_callables">callables()</h4>
 				<p>
-					<strong>callables</strong> 方法取回你不需要添加一個完整回呼（callback）但只要方法名稱的物件
+					<strong>callables</strong> 方法取回你不需要添加一个完整回呼（callback）但只要方法名稱的物件
 				</p>
 				<table class="method">
 					<tbody>
@@ -538,7 +538,7 @@ $val->get_message('required', null);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>無</td>
 						</tr>
 						<tr>
@@ -552,7 +552,7 @@ $val->get_message('required', null);
 			<article>
 				<h4 class="method" id="method_run">run($input = null, $allow_partial = false, $temp_callables = array())</h4>
 				<p>
-					針對傳遞的 input 運行定義的驗證規則，或 Input::post() 如果沒傳東西的話。
+					針對傳遞的 input 运行定義的驗證規則，或 Input::post() 如果沒傳東西的話。
 				</p>
 				<table class="method">
 					<tbody>
@@ -561,12 +561,12 @@ $val->get_message('required', null);
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -580,7 +580,7 @@ $val->get_message('required', null);
 										<th><kbd>$allow_partial</kbd></th>
 										<td><em>布林</em></td>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果為 false，全部有定義驗證規則的欄位<strong>必須</strong>在 input 出現</td>
+										<td>如果为 false，全部有定義驗證規則的欄位<strong>必須</strong>在 input 出现</td>
 									</tr>
 									<tr>
 										<th><kbd>$temp_callables</kbd></th>
@@ -593,7 +593,7 @@ $val->get_message('required', null);
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>布林，如果驗證過為 true，如果失敗為 false</td>
+							<td>布林，如果驗證過为 true，如果失敗为 false</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -606,7 +606,7 @@ if ( ! $val->run())
 	foreach ($val->error() as $field => $error)
 	{
 		echo $error->get_message();
-		// Title 欄位是必要且必須包含一個值。
+		// Title 欄位是必要且必須包含一个值。
 	}
 }
 </code></pre>
@@ -628,12 +628,12 @@ if ( ! $val->run())
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -689,12 +689,12 @@ if ($val->run())
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -742,7 +742,7 @@ if ($val->run())
 			<article>
 				<h4 class="method" id="method_error">error($field = null, $default = false)</h4>
 				<p>
-					<strong>error</strong> 方法回傳在驗證期間發生的指定或所有錯誤。
+					<strong>error</strong> 方法回傳在驗證期間发生的指定或所有错误。
 				</p>
 				<table class="method">
 					<tbody>
@@ -751,12 +751,12 @@ if ($val->run())
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -764,13 +764,13 @@ if ($val->run())
 										<th><kbd>$field</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>你想要回傳的 Validation_Error 實例的欄位名稱。如果你沒指定，會回傳所有錯誤物件。</td>
+										<td>你想要回傳的 Validation_Error 實例的欄位名稱。如果你沒指定，会回傳所有错误物件。</td>
 									</tr>
 									<tr>
 										<th><kbd>$default</kbd></th>
 										<td><em>混合</em></td>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果指定欄位的錯誤不存在，回傳這個值。</td>
+										<td>如果指定欄位的错误不存在，回傳这个值。</td>
 									</tr>
 								</table>
 							</td>
@@ -791,7 +791,7 @@ if ( ! $val->run(array()))
 	foreach ($val->error() as $field => $error)
 	{
 		echo $error->get_message();
-		// Title 欄位是 required 的並且必須包含一個值。
+		// Title 欄位是 required 的并且必須包含一个值。
 	}
 }
 </code></pre>
@@ -804,7 +804,7 @@ if ( ! $val->run(array()))
 			<article>
 				<h4 class="method" id="method_error_message">error_message($field = null, $default = false)</h4>
 				<p>
-					<strong>error_message</strong> 方法回傳在驗證期間發生的指定或所有錯誤訊息。
+					<strong>error_message</strong> 方法回傳在驗證期間发生的指定或所有错误訊息。
 				</p>
 				<table class="method">
 					<tbody>
@@ -813,12 +813,12 @@ if ( ! $val->run(array()))
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -826,13 +826,13 @@ if ( ! $val->run(array()))
 										<th><kbd>$field</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>null</code></pre></td>
-										<td>你想要回傳的錯誤訊息的欄位名稱。如果你沒指定，會回傳所有錯誤訊息。</td>
+										<td>你想要回傳的错误訊息的欄位名稱。如果你沒指定，会回傳所有错误訊息。</td>
 									</tr>
 									<tr>
 										<th><kbd>$default</kbd></th>
 										<td><em>字串</em></td>
 										<td><pre class="php"><code>false</code></pre></td>
-										<td>如果指定欄位的錯誤不存在，回傳這個值。</td>
+										<td>如果指定欄位的错误不存在，回傳这个值。</td>
 									</tr>
 								</table>
 							</td>
@@ -853,7 +853,7 @@ if ( ! $val->run(array()))
 	foreach ($val->error_message() as $field => $message)
 	{
 		echo $message;
-		// Title 欄位是 required 的並且必須包含一個值。
+		// Title 欄位是 required 的并且必須包含一个值。
 	}
 }
 </code></pre>
@@ -866,7 +866,7 @@ if ( ! $val->run(array()))
 			<article>
 				<h4 class="method" id="method_show_errors">show_errors($options = array())</h4>
 				<p>
-					<strong>show_errors</strong> 根據定義的樣板回傳呈現在 HTML 中的驗證錯誤列表。
+					<strong>show_errors</strong> 根據定義的樣板回傳呈现在 HTML 中的驗證错误列表。
 				</p>
 				<table class="method">
 					<tbody>
@@ -875,12 +875,12 @@ if ( ! $val->run(array()))
 							<td>否</td>
 						</tr>
 						<tr>
-							<th>參數</th>
+							<th>參数</th>
 							<td>
 								<table class="parameters">
 									<tr>
-										<th>參數</th>
-										<th>類型</th>
+										<th>參数</th>
+										<th>类型</th>
 										<th>預設</th>
 										<th class="description">描述</th>
 									</tr>
@@ -888,14 +888,14 @@ if ( ! $val->run(array()))
 										<th><kbd>$options</kbd></th>
 										<td><em>陣列</em></td>
 										<td><pre class="php"><code>array()</code></pre></td>
-										<td>HTML 樣板的選項，以覆寫來自驗證配置檔案的預設值</td>
+										<td>HTML 樣板的選項，以覆寫來自驗證配置档案的預設值</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 						<tr>
 							<th>回傳</th>
-							<td>字串，呈現的 HTML</td>
+							<td>字串，呈现的 HTML</td>
 						</tr>
 						<tr>
 							<th>範例</th>
@@ -914,7 +914,7 @@ if ( ! $val->run(array()))
 				</table>
 				<p class="note">
 					以下選項可以被傳遞：'open_list'、'close_list'、'open_error'、'close_error' 和 'no_errors'。
-					預設情況下會產生一個無序清單，且如果沒找到驗證錯誤會回傳一個空字串。
+					預設情況下会產生一个無序清单，且如果沒找到驗證错误会回傳一个空字串。
 				</p>
 			</article>
 
@@ -942,7 +942,7 @@ if ( ! $val->run(array()))
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

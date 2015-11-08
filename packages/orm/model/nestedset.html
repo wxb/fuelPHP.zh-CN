@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,7 +40,7 @@
 
             <div id="main">
                 <section>
-                    <h2 id="introduction">簡介</h2>
+                    <h2 id="introduction">简介</h2>
 
 					<p>
 						<i>This introduction is based on <a href="http://www.codeproject.com/Articles/4155/Improve-hierarchy-performance-using-nested-sets">this article</a>, (c) James Simpson.</i>
@@ -86,7 +86,7 @@
 						handy when we need to access the tree.
                     </p>
 
-					<h3>在單一資料表儲存多個樹狀結構</h3>
+					<h3>在单一資料表儲存多个樹狀結構</h3>
 
 					<p>
 						You can store multiple tree structures into a single database table. To make this possible, you can add a tree-id
@@ -249,7 +249,7 @@ $tim->child($kerry)->save();
                 </section>
 
                 <section>
-					<h2 id="behavioral_changes">行為改變</h2>
+					<h2 id="behavioral_changes">行为改變</h2>
 
 					<p>
 						In addition to the primary key, which is read-only in every ORM model object once set, a Nestedset model doesn't allow
@@ -330,7 +330,7 @@ $tim->child($kerry)->save();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -370,7 +370,7 @@ $root = Model_Tree::forge()->set_tree_id($mytreeid)->root()->get_one();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -409,7 +409,7 @@ $roots = Model_Tree::forge()->roots()->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -450,7 +450,7 @@ $parent = Model_Tree::forge()->parent()->get_one();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -489,7 +489,7 @@ $parent = Model_Tree::forge()->children()->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -532,7 +532,7 @@ $parent = Model_Tree::forge()->ancestors()->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -576,7 +576,7 @@ $parent = Model_Tree::forge()->descendants()->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -618,7 +618,7 @@ $parent = Model_Tree::forge()->leaf_descendants()->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -667,7 +667,7 @@ $parent = Model_Tree::forge()->siblings()->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -706,7 +706,7 @@ $parent = Model_Tree::forge()->first_child()->get_one();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -752,7 +752,7 @@ $parent = Model_Tree::forge()->last_child()->get_one();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -794,7 +794,7 @@ $sibling = $henry->previous_silbing()->get_one();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -837,11 +837,11 @@ $sibling = $nicola->next_silbing()->get_one();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -913,11 +913,11 @@ $path = $kerry->path(false)->get();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -961,11 +961,11 @@ $kerry->first_child($bill)->save();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1021,11 +1021,11 @@ $kerry->last_child($bill)->save();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1069,11 +1069,11 @@ $james->previous_sibling($tim)->save();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1107,7 +1107,7 @@ $james->next_sibling($tim)->save();
                 </section>
 
                 <section>
-					<h2 id="test_methods">測試方法</h2>
+					<h2 id="test_methods">测试方法</h2>
 
 					<p>
 						Test methods are used to query a particular state of the object with regards to their position in the tree.
@@ -1125,7 +1125,7 @@ $james->next_sibling($tim)->save();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1161,7 +1161,7 @@ echo $tim->is_root() ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1198,7 +1198,7 @@ echo $angela->is_leaf() ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1235,11 +1235,11 @@ echo $bill->is_child() ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1286,11 +1286,11 @@ echo $nicola->is_child_of($ben) ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1338,11 +1338,11 @@ echo $nicola->is_descendant_of($ben) ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1386,11 +1386,11 @@ echo $bill->is_parent_of($james) ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1462,7 +1462,7 @@ echo $bill->is_ancestor_of($james) ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1498,7 +1498,7 @@ echo $tim->has_previous_sibling() ? 'true' : 'false';
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1550,11 +1550,11 @@ echo $ben->has_next_sibling() ? 'true' : 'false';
 									<td>是</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1596,7 +1596,7 @@ $tree_id = Model_Tree::tree_config('tree_id');</code></pre>
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1629,11 +1629,11 @@ $current_tree = $bill->get_tree_id();</code></pre>
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1675,14 +1675,14 @@ $root = Model_Tree::forge()->set_tree_id($mytreeid)->get_one();</code></pre>
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
 								</tr>
 								<tr>
 									<th>回傳</th>
-									<td>一個 ORM 查詢物件。</td>
+									<td>一个 ORM 查詢物件。</td>
 								</tr>
 								<tr>
 									<th>範例</th>
@@ -1719,14 +1719,14 @@ $enabled = $bill
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
 								</tr>
 								<tr>
 									<th>回傳</th>
-									<td>一個 ORM 查詢物件。</td>
+									<td>一个 ORM 查詢物件。</td>
 								</tr>
 								<tr>
 									<th>範例</th>
@@ -1756,14 +1756,14 @@ $enabled = $bill
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
 								</tr>
 								<tr>
 									<th>回傳</th>
-									<td>整數</td>
+									<td>整数</td>
 								</tr>
 								<tr>
 									<th>範例</th>
@@ -1798,14 +1798,14 @@ echo Model_Tree::forge()->count_children();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
 								</tr>
 								<tr>
 									<th>回傳</th>
-									<td>整數</td>
+									<td>整数</td>
 								</tr>
 								<tr>
 									<th>範例</th>
@@ -1838,7 +1838,7 @@ echo Model_Tree::forge()->count_descendants();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										無。
 									</td>
@@ -1881,11 +1881,11 @@ $result = Model_Tree::forge()->depth();
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -1957,11 +1957,11 @@ $children = $bill->children;
 									<td>否</td>
 								</tr>
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<td>
 										<table class="parameters">
 											<tr>
-												<th>參數</th>
+												<th>參数</th>
 												<th>預設</th>
 												<th class="description">描述</th>
 											</tr>
@@ -2006,7 +2006,7 @@ $descendants = $ben->related('child')->descendants()->get();
 			</div>
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

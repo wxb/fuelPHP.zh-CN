@@ -12,7 +12,7 @@
 		var class_prefix = "Cache::";
 	</script>
 	<script src="./../../assets/js/combined.js"></script>
-	<title>Cache 進階 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Cache 進階 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,20 +40,20 @@
 
 		<div id="main">
 
-			<h2>Cache 類別</h2>
+			<h2>Cache 类別</h2>
 
-			<p>Cache 類別能讓你快取資源大量操作的結果。</p>
+			<p>Cache 类別能让你快取資源大量操作的結果。</p>
 
 			<section>
 				<h3>進階用法</h3>
 
-                                <p>使用快取做為一個物件實例。</p>
-                                <pre><code>$options = array(...); // 這些跟在快取配置檔案中的相同。
+                                <p>使用快取做为一个物件實例。</p>
+                                <pre><code>$options = array(...); // 这些跟在快取配置档案中的相同。
 
 $cache = Cache::forge('my_cache', $options)</code></pre>
                                 <p>接著資料可以使用 <kbd>set()</kbd> 函式被儲存到快取中。</p>
                                 <pre id="php"><code>$cache-&gt;set($myData, 604800);</code></pre>
-                                <p>這設定資料在一個區塊中，並設定過期時間為一週（604800 秒）。如果第二個參數設定為 null，那麼快取將永遠不會過期。</p>
+                                <p>这設定資料在一个區塊中，并設定過期時間为一週（604800 秒）。如果第二个參数設定为 null，那麼快取将永遠不会過期。</p>
                                 <p>當靜態使用 <kbd>Cache</kbd> 時，資料可以相同的方式被取回。</p>
 			</section>
 
@@ -61,7 +61,7 @@ $cache = Cache::forge('my_cache', $options)</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

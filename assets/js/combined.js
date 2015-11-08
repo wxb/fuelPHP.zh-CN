@@ -323,7 +323,7 @@ panes.main = {
 		"贡献":	"contribute.html",
 		"制作群":  "credits.html"
 	},
-	"安裝": {
+	"安装": {
 		"指示":	"installation/instructions.html",
 		"下载":	"installation/download.html",
 		"升级":	"installation/upgrade.html",
@@ -332,7 +332,7 @@ panes.main = {
 	},
 	"一般": {
 		"类": {
-			"簡介":		"general/classes.html",
+			"简介":		"general/classes.html",
 			"扩展核心类":	"general/extending_core.html"
 		},
 		"编码标准":	"general/coding_standards.html",
@@ -342,7 +342,7 @@ panes.main = {
 		"模型-视图-控制器":	"general/mvc.html",
 		"模型":			"general/models.html",
 		"视图":			"general/views.html",
-		"*表現控件":		"general/presenters.html",
+		"*表现控件":		"general/presenters.html",
 		"控制器": {
 			"基础" :		"general/controllers/base.html",
 			"模板":		"general/controllers/template.html",
@@ -362,7 +362,7 @@ panes.main = {
 		"分析":		"general/profiling.html",
 	},
 	"第三方": {
-		"簡介":		"vendor/intro.html",
+		"简介":		"vendor/intro.html",
 		"htmLawed":			"vendor/htmlawed.html",
 		"Markdown":			"vendor/markdown.html",
 		"PHPQuickProfiler":	"vendor/phpquickprofiler.html",
@@ -372,7 +372,7 @@ panes.main = {
 };
 
 panes.core = {
-	"類別": {
+	"类別": {
 		"Agent": {
 			"配置":	"classes/agent/config.html",
 			"用法":	"classes/agent/usage.html",
@@ -394,12 +394,12 @@ panes.core = {
 		"Cookie":		"classes/cookie.html",
 		"Crypt":		"classes/crypt.html",
 		"Database": {
-			"簡介":   	  "classes/database/introduction.html",
+			"简介":   	  "classes/database/introduction.html",
 			"用法":          	  "classes/database/usage.html",
-			"DB 類別":       	  "classes/database/db.html",
-			"DBUtil 類別":   	  "classes/database/dbutil.html",
+			"DB 类別":       	  "classes/database/db.html",
+			"DBUtil 类別":   	  "classes/database/dbutil.html",
 			"建立查詢":	{
-				"簡介":			"classes/database/qb.html",
+				"简介":			"classes/database/qb.html",
 				"Insert 建立器":	"classes/database/qb_insert.html",
 				"Select 建立器":	"classes/database/qb_select.html",
 				"Update 建立器":	"classes/database/qb_update.html",
@@ -417,10 +417,10 @@ panes.core = {
 			"*Fieldset Field":	"classes/fieldset/field.html",
 		},
 		"File": {
-			"簡介":	"classes/file/intro.html",
+			"简介":	"classes/file/intro.html",
 			"用法":		"classes/file/usage.html",
 			"進階":		"classes/file/advanced.html",
-			"處理程序":		"classes/file/handlers.html"
+			"处理程序":		"classes/file/handlers.html"
 		},
 		"Finder":		"classes/finder.html",
 		"Form":			"classes/form.html",
@@ -436,13 +436,13 @@ panes.core = {
 		"Markdown":		"classes/markdown.html",
 		"Migrate":		"classes/migrate.html",
 		"Model_Crud": {
-			"簡介": "classes/model_crud/introduction.html",
+			"简介": "classes/model_crud/introduction.html",
 			"方法": "classes/model_crud/methods.html"
 			//"Usage": "classes/model_crud/usage.html",
 		},
 		"Module":		"classes/module.html",
 		"Mongo_Db": {
-			"簡介":	"classes/mongo/introduction.html",
+			"简介":	"classes/mongo/introduction.html",
 			"方法":		"classes/mongo/methods.html"
 		},
 		"Num":			"classes/num.html",
@@ -466,7 +466,7 @@ panes.core = {
 		},
 		"Str": 			"classes/str.html",
 		"Theme": {
-			"*簡介":	"classes/theme/introduction.html",
+			"*简介":	"classes/theme/introduction.html",
 			"*方法":	"classes/theme/methods.html",
 			"進階":	"classes/theme/advanced.html"
 		},
@@ -477,9 +477,9 @@ panes.core = {
 		},
 		"Uri":			"classes/uri.html",
 		"Validation": {
-			"簡介": "classes/validation/validation.html",
+			"简介": "classes/validation/validation.html",
 			"*方法": "classes/validation/methods.html",
-			"錯誤": "classes/validation/errors.html"
+			"错误": "classes/validation/errors.html"
 		},
 		"View":			"classes/view.html"
 	}
@@ -487,11 +487,11 @@ panes.core = {
 
 panes.oil = {
 	"Oil": {
-		"簡介":		"packages/oil/intro.html",
+		"简介":		"packages/oil/intro.html",
 		"產生":		"packages/oil/generate.html",
 		"提煉":		"packages/oil/refine.html",
 		"套件":		"packages/oil/package.html",
-		"測試":		"packages/oil/test.html",
+		"测试":		"packages/oil/test.html",
 		"控制台":		"packages/oil/console.html",
 		"伺服器":		"packages/oil/server.html"
 	}
@@ -499,23 +499,23 @@ panes.oil = {
 
 panes.auth = {
 	"Auth 套件": {
-		"簡介":		"packages/auth/intro.html",
-		"撰寫驅動":	"packages/auth/drivers.html",
-		"驅動類型": {
+		"简介":		"packages/auth/intro.html",
+		"撰寫驅动":	"packages/auth/drivers.html",
+		"驅动类型": {
 			"Login":	"packages/auth/types/login.html",
 			"Group":	"packages/auth/types/group.html",
 			"ACL":	"packages/auth/types/acl.html"
 		},
 		"Simpleauth": {
-			"簡介":	"packages/auth/simpleauth/intro.html",
+			"简介":	"packages/auth/simpleauth/intro.html",
 			"用法":	"packages/auth/simpleauth/usage.html"
 		},
 		"Ormauth": {
-			"簡介":	"packages/auth/ormauth/intro.html",
+			"简介":	"packages/auth/ormauth/intro.html",
 			"用法":	"packages/auth/ormauth/usage.html"
 		},
 		"Opauth": {
-			"*簡介":	"packages/auth/opauth/intro.html",
+			"*简介":	"packages/auth/opauth/intro.html",
 			"用法":	"packages/auth/opauth/usage.html"
 		},
 		"範例": {
@@ -528,7 +528,7 @@ panes.auth = {
 
 panes.email = {
 	"Email 套件": {
-		"*簡介":		"packages/email/introduction.html",
+		"*简介":		"packages/email/introduction.html",
 		"用法":		"packages/email/usage.html",
 		"方法":		"packages/email/methods.html",
 		"故障排除":	"packages/email/troubleshooting.html"
@@ -537,11 +537,11 @@ panes.email = {
 
 panes.orm = {
 	"Orm 套件": {
-		"簡介":		"packages/orm/intro.html",
+		"简介":		"packages/orm/intro.html",
 		"*建立模型":	"packages/orm/creating_models.html",
 		"CRUD":		"packages/orm/crud.html",
 		"關聯模型": {
-			"*簡介":				"packages/orm/relations/intro.html",
+			"*简介":				"packages/orm/relations/intro.html",
 			"*Belongs To":		"packages/orm/relations/belongs_to.html",
 			"*Has One":			"packages/orm/relations/has_one.html",
 			"*Has Many":		"packages/orm/relations/has_many.html",
@@ -554,7 +554,7 @@ panes.orm = {
 		},
 		"EAV 容器":	"packages/orm/eav.html",
 		"觀察者": {
-			"簡介":			"packages/orm/observers/intro.html",
+			"简介":			"packages/orm/observers/intro.html",
 			"*包含的觀察者":	"packages/orm/observers/included.html",
 			"撰寫你自己的":	"packages/orm/observers/creating.html"
 		}
@@ -563,7 +563,7 @@ panes.orm = {
 
 panes.parser = {
 	"Parser 套件": {
-		"*簡介":	"packages/parser/intro.html"
+		"*简介":	"packages/parser/intro.html"
 	}
 };
 

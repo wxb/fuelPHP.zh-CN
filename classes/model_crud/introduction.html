@@ -12,7 +12,7 @@
 		var class_prefix = "Model_Crud::";
 	</script>
 	<script src="../../assets/js/combined.js"></script>
-	<title>Model_Crud 簡介 - 類別 - FuelPHP 简体中文手册</title>
+	<title>Model_Crud 简介 - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="introduction.html#" id="toc_handle">目錄</a>
+			<a href="introduction.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,13 +40,13 @@
 
 		<div id="main">
 
-			<h2>Model_Crud 類別</h2>
+			<h2>Model_Crud 类別</h2>
 
-			<h3 id="introduction">簡介</h3>
+			<h3 id="introduction">简介</h3>
 
 			<p>
 				許多資料庫的操作回歸基本的 CRUD（建立、取回、更新、刪除）操作。
-				Model_Crud 類別提供標準化的功能，類別能幫助你：
+				Model_Crud 类別提供标准化的功能，类別能幫助你：
 			</p>
 
 			<ul>
@@ -57,10 +57,10 @@
 				<li>條目輸入驗證</li>
 			</ul>
 
-			<h3 id="first_model">你的第一個模型</h3>
+			<h3 id="first_model">你的第一个模型</h3>
 
 			<p>
-				要使用 Model_Crud 類別，建立一個類別擴充 \Model_Crud，範例：
+				要使用 Model_Crud 类別，建立一个类別擴充 \Model_Crud，範例：
 			</p>
 
 			<pre class="php"><code>&lt;?php
@@ -72,19 +72,19 @@ class Model_Users extends \Model_Crud
 }
 </code></pre>
 
-			<p>現在你有基本的模型可以使用。</p>
+			<p>现在你有基本的模型可以使用。</p>
 
 			<h3 id="configuration">配置</h3>
 
 			<p>
-				藉由設定一些參數配置模型：
+				藉由設定一些參数配置模型：
 			</p>
 
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>參數</th>
-						<th>類型</th>
+						<th>參数</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th>描述</th>
 						<th>範例</th>
@@ -130,7 +130,7 @@ class Model_Users extends \Model_Crud
 						<td>陣列</td>
 						<td><em>無</em></td>
 						<td>
-							驗證標籤。
+							驗證标籤。
 						</td>
 						<td>
 							<pre class="php"><code>protected static $_labels = array(
@@ -189,7 +189,7 @@ class Model_Users extends \Model_Crud
 						<td colspan="5">
 							<p class="note">
 								$_mass_whitelist 就像是在大量指派屬性時允許額外的安全性。
-								千萬注意，這僅適用於 <strong>__construct</strong>、
+								千萬注意，这僅適用於 <strong>__construct</strong>、
 								<strong>::forge</strong> 和 <strong>->set</strong>。
 							</p>
 						</td>
@@ -199,7 +199,7 @@ class Model_Users extends \Model_Crud
 						<td>字串</td>
 						<td><em>無</em></td>
 						<td>
-							要使用的資料庫連線，或在一個 master／slave 設定中用於讀取的連線。如果沒有配置，將使用預設的 DB 配置。
+							要使用的資料庫連線，或在一个 master／slave 設定中用於讀取的連線。如果沒有配置，将使用預設的 DB 配置。
 						</td>
 						<td>
 							<pre class="php"><code>protected static $_connection = null;</code></pre>
@@ -210,7 +210,7 @@ class Model_Users extends \Model_Crud
 						<td>字串</td>
 						<td><em>無</em></td>
 						<td>
-							在一個 master／slave 設定中要用來寫入的資料庫連線。
+							在一个 master／slave 設定中要用來寫入的資料庫連線。
 						</td>
 						<td>
 							<pre class="php"><code>protected static $_write_connection = 'master';</code></pre>
@@ -236,7 +236,7 @@ class Model_Users extends \Model_Crud
 						<td><em>無</em></td>
 						<td>
 							給 'created at' 欄位的名稱。設 <strong>$_mysql_timestamp</strong>
-							為 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記
+							为 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記
 						</td>
 						<td>
 							<pre class="php"><code>protected static $_created_at = 'created_at';</code></pre>
@@ -248,7 +248,7 @@ class Model_Users extends \Model_Crud
 						<td><em>無</em></td>
 						<td>
 							給 'updated at' 欄位的名稱。設 <strong>$_mysql_timestamp</strong>
-							為 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記
+							为 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記
 						</td>
 						<td>
 							<pre class="php"><code>protected static $_updated_at = 'modified_at';</code></pre>
@@ -259,8 +259,8 @@ class Model_Users extends \Model_Crud
 						<td>布林</td>
 						<td><em>無</em></td>
 						<td>
-							為 <strong>$_created_at</strong> 與 <strong>$_updated_at</strong> 欄位，
-							設為 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記。
+							为 <strong>$_created_at</strong> 與 <strong>$_updated_at</strong> 欄位，
+							設为 true 以使用 MySQL 時間戳記取代 UNIX 時間戳記。
 						</td>
 						<td>
 							<pre class="php"><code>protected static $_mysql_timestamp = true;</code></pre>
@@ -273,7 +273,7 @@ class Model_Users extends \Model_Crud
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

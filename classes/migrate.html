@@ -12,7 +12,7 @@
 		var class_prefix = "Migrate::";
 	</script>
 	<script src="../assets/js/combined.js"></script>
-	<title>Migrate - 類別 - FuelPHP 简体中文手册</title>
+	<title>Migrate - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="migrate.html#" id="toc_handle">目錄</a>
+			<a href="migrate.html#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,16 +40,16 @@
 
 		<div id="main">
 
-			<h2>Migrate 類別</h2>
+			<h2>Migrate 类別</h2>
 
 			<p>
-				Migrate 類別能讓你從你的控制器運行、穿越與恢復 <a href="../general/migrations.html">遷移</a>。
-				遷移支援應用程式、模組和套件。
+				Migrate 类別能让你從你的控制器运行、穿越與恢復 <a href="../general/migrations.html">迁移</a>。
+				迁移支援应用程序、模組和套件。
 			</p>
 
 			<article>
 				<h4 class="method" id="method_current">current($name = 'default', $type = 'app')</h4>
-				<p>遷移到配置裡的 current 架構設定。</p>
+				<p>迁移到配置裡的 current 架構設定。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -57,23 +57,23 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th>描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><pre class="php"><code>'default'</code></pre></td>
-									<td>套件或模組的名稱。在應用程式的情況下，使用 'default'。</td>
+									<td>套件或模組的名稱。在应用程序的情況下，使用 'default'。</td>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td><pre class="php"><code>'app'</code></pre></td>
-									<td>遷移的類型。有效的值有 'app'、'module' 和 'package'。</td>
+									<td>迁移的类型。有效的值有 'app'、'module' 和 'package'。</td>
 								</tr>
 							</table>
 						</td>
@@ -85,7 +85,7 @@
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 運行應用程式的遷移，到 current 的架構。
+							<pre class="php"><code>// 运行应用程序的迁移，到 current 的架構。
 Migrate::current('default', 'app');
 </code></pre>
 						</td>
@@ -96,7 +96,7 @@ Migrate::current('default', 'app');
 
 			<article>
 				<h4 class="method" id="method_latest">latest($name = 'default', $type = 'app')</h4>
-				<p>遷移到配置裡的最新架構設定。</p>
+				<p>迁移到配置裡的最新架構設定。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -104,23 +104,23 @@ Migrate::current('default', 'app');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th>描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><pre class="php"><code>'default'</code></pre></td>
-									<td>套件或模組的名稱。在應用程式的情況下，使用 'default'。</td>
+									<td>套件或模組的名稱。在应用程序的情況下，使用 'default'。</td>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td><pre class="php"><code>'app'</code></pre></td>
-									<td>遷移的類型。有效的值有 'app'、'module' 和 'package'。</td>
+									<td>迁移的类型。有效的值有 'app'、'module' 和 'package'。</td>
 								</tr>
 							</table>
 						</td>
@@ -132,7 +132,7 @@ Migrate::current('default', 'app');
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 運行 'mypackage' 套件的遷移，到最新的架構。
+							<pre class="php"><code>// 运行 'mypackage' 套件的迁移，到最新的架構。
 Migrate::latest('mypackage', 'package');
 </code></pre>
 						</td>
@@ -143,7 +143,7 @@ Migrate::latest('mypackage', 'package');
 
 			<article>
 				<h4 class="method" id="method_version">version($version, $name = 'default', $type = 'app')</h4>
-				<p><strong>version</strong> 方法將上下移動遷移以設定架構在指定的遷移版本。</p>
+				<p><strong>version</strong> 方法将上下移动迁移以設定架構在指定的迁移版本。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -151,40 +151,40 @@ Migrate::latest('mypackage', 'package');
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th>描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$version</kbd></th>
 									<td><i>必要</i></td>
-									<td>你要遷移到的版本，如果你指定 <strong>null</strong>，它將遷移到最新的版本。</td>
+									<td>你要迁移到的版本，如果你指定 <strong>null</strong>，它将迁移到最新的版本。</td>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><pre class="php"><code>'default'</code></pre></td>
-									<td>套件或模組的名稱。在應用程式的情況下，使用 'default'。</td>
+									<td>套件或模組的名稱。在应用程序的情況下，使用 'default'。</td>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td><pre class="php"><code>'app'</code></pre></td>
-									<td>遷移的類型。有效的值有 'app'、'module' 和 'package'。</td>
+									<td>迁移的类型。有效的值有 'app'、'module' 和 'package'。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>混合 - 遷移到的版本號，或 <strong>false</strong> 在請求版本是 current 版本的情況下。</td>
+						<td>混合 - 迁移到的版本號，或 <strong>false</strong> 在請求版本是 current 版本的情況下。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 遷移 'mymodule' 模組到版本 10
+							<pre class="php"><code>// 迁移 'mymodule' 模組到版本 10
 Migrate::version(10, 'mymodule', 'module');
 </code></pre>
 						</td>
@@ -197,7 +197,7 @@ Migrate::version(10, 'mymodule', 'module');
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

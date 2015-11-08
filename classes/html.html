@@ -12,7 +12,7 @@
 		var class_prefix = "Html::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Html - 類別 - FuelPHP 简体中文手册</title>
+	<title>Html - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,17 +40,17 @@
 
 		<div id="main">
 
-			<h2>Html 類別</h2>
+			<h2>Html 类別</h2>
 
-			<p>Html 類別是一個幾乎包含所有 HTML 標籤的 HTML 包裝器。</p>
+			<p>Html 类別是一个幾乎包含所有 HTML 标籤的 HTML 包裝器。</p>
 
-			<h3>文件類型</h3>
+			<h3>文件类型</h3>
 
-			<p>我們引入一個擁有所有文件類型位於 <kbd>fuel/core/config/doctypes.php</kbd> 的配置檔案。</p>
+			<p>我們引入一个擁有所有文件类型位於 <kbd>fuel/core/config/doctypes.php</kbd> 的配置档案。</p>
 
 			<article>
 				<h4 class="method" id="method_anchor">anchor($href, $text, $attributes = array(), $secure = null)</h4>
-				<p><strong>anchor</strong> 方法回傳一個 HTML 錨點標籤。</p>
+				<p><strong>anchor</strong> 方法回傳一个 HTML 錨點标籤。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -58,18 +58,18 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$href</kbd></th>
 									<td><i>必要</i></td>
-									<td>目標 URL</td>
+									<td>目标 URL</td>
 								</tr>
 								<tr>
 									<th><kbd>$text</kbd></th>
@@ -79,19 +79,19 @@
 								<tr>
 									<th><kbd>$attributes</kbd></th>
 									<td><strong>false</strong></td>
-									<td>要被應用到錨點標籤的屬性陣列。</td>
+									<td>要被應用到錨點标籤的屬性陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$secure</kbd></th>
 									<td><i>null</i></td>
-									<td>在建立的URL中，設定為 false 強制 http，或設定為 true 強制 https。</td>
+									<td>在建立的URL中，設定为 false 強制 http，或設定为 true 強制 https。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式的錨點標籤字串（及屬性，如果提供的話）。</td>
+						<td>包含正確格式的錨點标籤字串（及屬性，如果提供的話）。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -115,7 +115,7 @@ echo Html::anchor('example', 'Example', array('id' => 'a1', 'class' => 'sample',
 
 			<article>
 				<h4 class="method" id="method_mail_to">mail_to($email, $text, $subject = null, $attr = array())</h4>
-				<p><strong>mail_to</strong> 方法回傳一個帶有 mailto 做為目標的 HTML 錨點標籤。</p>
+				<p><strong>mail_to</strong> 方法回傳一个帶有 mailto 做为目标的 HTML 錨點标籤。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -123,11 +123,11 @@ echo Html::anchor('example', 'Example', array('id' => 'a1', 'class' => 'sample',
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -149,14 +149,14 @@ echo Html::anchor('example', 'Example', array('id' => 'a1', 'class' => 'sample',
 								<tr>
 									<th><kbd>$attr</kbd></th>
 									<td><strong>empty</strong></td>
-									<td>要被應用到錨點標籤的屬性陣列。</td>
+									<td>要被應用到錨點标籤的屬性陣列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式的錨點標籤字串（及屬性，如果提供的話）。</td>
+						<td>包含正確格式的錨點标籤字串（及屬性，如果提供的話）。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -177,7 +177,7 @@ echo Html:::mail_to('name@domain.com', 'Name', null, array('id' => 'a2', 'class'
 
 			<article>
 				<h4 class="method" id="method_mail_to_safe">mail_to_safe($email, $text, $subject = null, $attr = array())</h4>
-				<p><strong>mail_to_safe</strong> 方法回傳產生一個帶著 mailto 做為目標的 HTML 錨點標籤的 JavaScript 程式碼。</p>
+				<p><strong>mail_to_safe</strong> 方法回傳產生一个帶著 mailto 做为目标的 HTML 錨點标籤的 JavaScript 程式码。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -185,11 +185,11 @@ echo Html:::mail_to('name@domain.com', 'Name', null, array('id' => 'a2', 'class'
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -211,14 +211,14 @@ echo Html:::mail_to('name@domain.com', 'Name', null, array('id' => 'a2', 'class'
 								<tr>
 									<th><kbd>$attr</kbd></th>
 									<td><strong>empty</strong></td>
-									<td>要被應用到錨點標籤的屬性陣列。</td>
+									<td>要被應用到錨點标籤的屬性陣列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式的錨點標籤字串（及屬性，如果提供的話）。</td>
+						<td>包含正確格式的錨點标籤字串（及屬性，如果提供的話）。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -239,7 +239,7 @@ echo Html::mail_to_safe('name@domain.com', 'Name');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_img">img($src, $attr = array())</h4>
-				<p><strong>img</strong> 方法回傳一個圖像標籤。</p>
+				<p><strong>img</strong> 方法回傳一个圖像标籤。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -247,11 +247,11 @@ echo Html::mail_to_safe('name@domain.com', 'Name');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -263,14 +263,14 @@ echo Html::mail_to_safe('name@domain.com', 'Name');</code></pre>
 								<tr>
 									<th><kbd>$attr</kbd></th>
 									<td><strong>array()</strong></td>
-									<td>屬性陣列，如果 alt 屬性沒有被提供，alt 屬性預設為檔案名稱。</td>
+									<td>屬性陣列，如果 alt 屬性沒有被提供，alt 屬性預設为档案名稱。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式的圖像標籤字串。</td>
+						<td>包含正確格式的圖像标籤字串。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -289,7 +289,7 @@ echo Html::img('path/to/image.png', array("alt" => "Alt Message", 'class' => "my
 
 			<article>
 				<h4 class="method" id="method_meta">meta($name, $content = '', $type = 'name')</h4>
-				<p><strong>meta</strong> 方法回傳 meta 標籤或一些標籤，如果提供多級陣列的話。</p>
+				<p><strong>meta</strong> 方法回傳 meta 标籤或一些标籤，如果提供多級陣列的話。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -297,35 +297,35 @@ echo Html::img('path/to/image.png', array("alt" => "Alt Message", 'class' => "my
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$name</kbd></th>
 									<td><i>必要</i></td>
-									<td>可以是包含單一或多個 meta 參數的陣列或是名稱／http-equiv 值。</td>
+									<td>可以是包含单一或多个 meta 參数的陣列或是名稱／http-equiv 值。</td>
 								</tr>
 								<tr>
 									<th><kbd>$content</kbd></th>
 									<td><i>必要</i></td>
-									<td>如果在 $name 參數沒有提供陣列，$content 等於 meta 屬性內容的值。</td>
+									<td>如果在 $name 參数沒有提供陣列，$content 等於 meta 屬性內容的值。</td>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td><strong>'name'</strong></td>
-									<td>如果沒有提供值將預設為 name，可以是名稱或 http-equiv。</td>
+									<td>如果沒有提供值将預設为 name，可以是名稱或 http-equiv。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式的 meta 標籤字串。</td>
+						<td>包含正確格式的 meta 标籤字串。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -354,7 +354,7 @@ echo Html::meta($meta);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_doctype">doctype($type = 'xhtml1-trans')</h4>
-				<p><strong>doctype</strong> 方法回傳正確格式的文件類型標籤。</p>
+				<p><strong>doctype</strong> 方法回傳正確格式的文件类型标籤。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -362,30 +362,30 @@ echo Html::meta($meta);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$type</kbd></th>
 									<td>'xhtml1-trans'</td>
-									<td>要被輸出的 HTML 文件類型標籤的類型。<br />接受的值：<kbd>xhtml11</kbd>、<kbd>xhtml1-strict</kbd>、<kbd>xhtml1-trans</kbd>、<kbd>xhtml1-frame</kbd>、<kbd>html5</kbd>、<kbd>html4-strict</kbd>、<kbd>html4-trans</kbd>、<kbd>html4-frame</kbd></td>
+									<td>要被輸出的 HTML 文件类型标籤的类型。<br />接受的值：<kbd>xhtml11</kbd>、<kbd>xhtml1-strict</kbd>、<kbd>xhtml1-trans</kbd>、<kbd>xhtml1-frame</kbd>、<kbd>html5</kbd>、<kbd>html4-strict</kbd>、<kbd>html4-trans</kbd>、<kbd>html4-frame</kbd></td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式的文件類型標籤字串。</td>
+						<td>包含正確格式的文件类型标籤字串。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 回傳 XHTML1 Transitional 文件類型標籤。
+							<pre class="php"><code>// 回傳 XHTML1 Transitional 文件类型标籤。
 echo Html::doctype();
 
 // 回傳 &lt;!DOCTYPE html&gt;
@@ -398,7 +398,7 @@ echo Html::doctype('html5');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_audio">audio($src, $attr = false)</h4>
-				<p><strong>audio</strong> 方法為了被使用，需要你設定 html5 做為文件類型。</p>
+				<p><strong>audio</strong> 方法为了被使用，需要你設定 html5 做为文件类型。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -406,30 +406,30 @@ echo Html::doctype('html5');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$src</kbd></th>
 									<td><i>必要</i></td>
-									<td>來源檔案位置或包含多個位置的陣列。</td>
+									<td>來源档案位置或包含多个位置的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$attr</kbd></th>
 									<td><strong>false</strong></td>
-									<td>要被應用到音訊標籤的屬性陣列。</td>
+									<td>要被應用到音訊标籤的屬性陣列。</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>包含正確格式帶有來源的音訊標籤字串。</td>
+						<td>包含正確格式帶有來源的音訊标籤字串。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -447,7 +447,7 @@ echo Html::audio(array('../sounds/beep.mp3','../sounds/frog.mp4'));</code></pre>
 
 			<article>
 				<h4 class="method" id="method_ul">ul($list, $style = false)</h4>
-				<p><strong>ul</strong> 方法回傳一個正確格式的單一或多級的無序清單。</p>
+				<p><strong>ul</strong> 方法回傳一个正確格式的单一或多級的無序清单。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -455,23 +455,23 @@ echo Html::audio(array('../sounds/beep.mp3','../sounds/frog.mp4'));</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$list</kbd></th>
 									<td><i>必要</i></td>
-									<td>包含單一或多級項目要被輸出為清單項目的陣列。</td>
+									<td>包含单一或多級項目要被輸出为清单項目的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$style</kbd></th>
 									<td><strong>false</strong></td>
-									<td>要被應用到 ul 標籤的屬性陣列。</td>
+									<td>要被應用到 ul 标籤的屬性陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -528,7 +528,7 @@ echo Html::ul($items, $attr);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_ol">ol($list, $style = false)</h4>
-				<p><strong>ol</strong> 方法回傳一個正確格式的單一或多級的有序清單。</p>
+				<p><strong>ol</strong> 方法回傳一个正確格式的单一或多級的有序清单。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -536,23 +536,23 @@ echo Html::ul($items, $attr);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$list</kbd></th>
 									<td><i>必要</i></td>
-									<td>包含單一或多級項目要被輸出為清單項目的陣列。</td>
+									<td>包含单一或多級項目要被輸出为清单項目的陣列。</td>
 								</tr>
 								<tr>
 									<th><kbd>$style</kbd></th>
 									<td><strong>false</strong></td>
-									<td>（選擇性）要被應用到 ol 標籤的屬性陣列。</td>
+									<td>（選擇性）要被應用到 ol 标籤的屬性陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -610,16 +610,16 @@ echo Html::ol($items, $attr);</code></pre>
 
 			<article>
 				<h4 id="function_html_tag">html_tag($tag, $attr = array(), $content = false)</h4>
-				<p><strong>html_tag</strong> 函式基於提供的屬性產生一個 HTML 標籤。</p>
+				<p><strong>html_tag</strong> 函式基於提供的屬性產生一个 HTML 标籤。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -627,7 +627,7 @@ echo Html::ol($items, $attr);</code></pre>
 									<th><kbd>$tag</kbd></th>
 									<td><em>字串</em></td>
 									<td><em>必要</em></td>
-									<td>標籤名稱</td>
+									<td>标籤名稱</td>
 								</tr>
 								<tr>
 									<th><kbd>$attr</kbd></th>
@@ -639,7 +639,7 @@ echo Html::ol($items, $attr);</code></pre>
 									<th><kbd>$content</kbd></th>
 									<td><em>字串</em></td>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>包覆在標籤中的內容</td>
+									<td>包覆在标籤中的內容</td>
 								</tr>
 							</table>
 						</td>
@@ -666,16 +666,16 @@ echo Html::ol($items, $attr);</code></pre>
 
 			<article>
 				<h4 id="function_array_to_attr">array_to_attr($attr)</h4>
-				<p><strong>array_to_attr</strong> 函式產生一個屬性字串。</p>
+				<p><strong>array_to_attr</strong> 函式產生一个屬性字串。</p>
 				<table class="method">
 					<tbody>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
-									<th>類型</th>
+									<th>參数</th>
+									<th>类型</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -683,7 +683,7 @@ echo Html::ol($items, $attr);</code></pre>
 									<th><kbd>$attr</kbd></th>
 									<td><em>陣列</em></td>
 									<td><em>必要</em></td>
-									<td>一個屬性的陣列</td>
+									<td>一个屬性的陣列</td>
 								</tr>
 							</table>
 						</td>
@@ -712,7 +712,7 @@ echo Html::ol($items, $attr);</code></pre>
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

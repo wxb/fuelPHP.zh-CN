@@ -12,7 +12,7 @@
 		var class_prefix = "Image::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Image - 類別 - FuelPHP 简体中文手册</title>
+	<title>Image - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,31 +40,31 @@
 
 		<div id="main">
 
-			<h2>Image 類別</h2>
+			<h2>Image 类別</h2>
 
 			<p>
-				Image 類別是用來方便地添加對圖片的常見操作，如調整尺寸、剪裁等。
+				Image 类別是用來方便地添加對圖片的常見操作，如調整尺寸、剪裁等。
 			</p>
 
 			<h3 id="limitations">侷限性</h3>
 
 			<p>
-				Image 類別有一些應該被意識到的侷限性。首先，GD 函式庫處理透明度非常糟糕。
-				由於這樣，<strong>Image::rotate()</strong> 不能使用透明背景。在 <strong>imagemagick</strong>
-				中圓圖也有缺陷，因為有透明邊角的圖像會在角落得到不透明的圓圈。
+				Image 类別有一些應該被意識到的侷限性。首先，GD 函式庫处理透明度非常糟糕。
+				由於这樣，<strong>Image::rotate()</strong> 不能使用透明背景。在 <strong>imagemagick</strong>
+				中圓圖也有缺陷，因为有透明邊角的圖像会在角落得到不透明的圓圈。
 			</p>
 			<p>
-				在 GD 中使用多個轉換，可能會導致不正常的結果。
+				在 GD 中使用多个轉換，可能会導致不正常的結果。
 			</p>
 
 			<h3 id="configuration">配置</h3>
 
-			<p>Image 類別接受以下的配置選項。從 <strong>fuel/core/config/image.php</strong> 複製檔案到 <strong>fuel/app/config/image.php</strong></p>
+			<p>Image 类別接受以下的配置選項。從 <strong>fuel/core/config/image.php</strong> 複製档案到 <strong>fuel/app/config/image.php</strong></p>
 			<table class="config">
 				<tbody>
 					<tr class="header">
-						<th>參數</th>
-						<th>類型</th>
+						<th>參数</th>
+						<th>类型</th>
 						<th>預設</th>
 						<th>描述</th>
 
@@ -82,12 +82,12 @@
 						<td>字串</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							十六進位（例如：#ff0、#4f32de）的背景。要透明背景設為 <strong>null</strong>。
+							十六進位（例如：#ff0、#4f32de）的背景。要透明背景設为 <strong>null</strong>。
 						</td>
 					</tr>
 					<tr>
 						<th>watermark_alpha</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>75</code></pre></td>
 						<td>
 							任何應用到圖像的浮水印透明度。範圍從 <strong>0-100</strong>。
@@ -95,7 +95,7 @@
 					</tr>
 					<tr>
 						<th>quality</th>
-						<td>整數</td>
+						<td>整数</td>
 						<td><pre class="php"><code>100</code></pre></td>
 						<td>
 							給 jpeg 和 png 圖像的品質。
@@ -106,7 +106,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>null</code></pre></td>
 						<td>
-							定義一個覆寫預設圖像類型如果沒給副檔名。如果設為 <strong>null</strong>，它會繼承原本的副檔名。
+							定義一个覆寫預設圖像类型如果沒給副档名。如果設为 <strong>null</strong>，它会繼承原本的副档名。
 						</td>
 					</tr>
 					<tr>
@@ -114,7 +114,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'/usr/bin/'</code></pre></td>
 						<td>
-							imagemagick 可執行檔案的儲存位置。必須添加前導斜線。
+							imagemagick 可执行档案的儲存位置。必須添加前導斜線。
 						</td>
 					</tr>
 					<tr>
@@ -122,7 +122,7 @@
 						<td>字串</td>
 						<td><pre class="php"><code>'/tmp/'</code></pre></td>
 						<td>
-							要儲存被編輯圖像檔案的臨時目錄。
+							要儲存被编輯圖像档案的臨時目录。
 						</td>
 					</tr>
 					<tr>
@@ -138,7 +138,7 @@
 						<td>布林</td>
 						<td><pre class="php"><code>false</code></pre></td>
 						<td>
-							打開除錯模式，它會跳過設定表頭並在圖像上輸出除錯資訊。
+							打開除错模式，它会跳過設定表頭并在圖像上輸出除错資訊。
 						</td>
 					</tr>
 				</tbody>
@@ -147,22 +147,22 @@
 			<h3 id="presets">預設定</h3>
 
 			<p>
-				預設定是 Image 類別中的功能，允許定義一組任務在配置中，並呼叫該預設定。一個例子是：
+				預設定是 Image 类別中的功能，允許定義一組任務在配置中，并呼叫該預設定。一个例子是：
 			</p>
 			<p>
 				在 <strong>app/config/image.php</strong>
 			</p>
 			<pre class="php"><code>/**
- * 這些預設定能讓你呼叫控制操作。
+ * 这些預設定能让你呼叫控制操作。
  */
 'presets' => array(
 	'mypreset' => array(
-		'bgcolor' => '#f00', // 設定背景顏色為紅色
-		'filetype' => 'jpg', // 輸出為 jpeg。
+		'bgcolor' => '#f00', // 設定背景顏色为紅色
+		'filetype' => 'jpg', // 輸出为 jpeg。
 		'quality' => 75,
 		'actions' => array(
 			array('crop_resize', 200, 200),
-			array('watermark', '$1'), // 注意 $1 是一個變數。
+			array('watermark', '$1'), // 注意 $1 是一个變数。
 			array('output', 'png')
 		)
 	)
@@ -170,12 +170,12 @@
 		<p>
 			在你的控制器中：
 		</p>
-		<pre class="php"><code>// 這裡的 'watermark.gif' 取代 array('watermark', '$1') 中的 $1
+		<pre class="php"><code>// 这裡的 'watermark.gif' 取代 array('watermark', '$1') 中的 $1
 Image::load('filename.gif')->preset('mypreset', 'watermark.gif');</code></pre>
 
 			<article>
 				<h4 class="method" id="method_forge">forge($config = array())</h4>
-				<p><strong>forge</strong> 方法建立一個新的 Image_Driver 實例。</p>
+				<p><strong>forge</strong> 方法建立一个新的 Image_Driver 實例。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -183,11 +183,11 @@ Image::load('filename.gif')->preset('mypreset', 'watermark.gif');</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -195,7 +195,7 @@ Image::load('filename.gif')->preset('mypreset', 'watermark.gif');</code></pre>
 								<tr>
 									<th><kbd>$config</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>一個給 Image_Driver 實例的配置選項陣列</td>
+									<td>一个給 Image_Driver 實例的配置選項陣列</td>
 								</tr>
 							</table>
 						</td>
@@ -226,7 +226,7 @@ $image
 
 			<article>
 				<h4 class="method" id="method_config">config($index, $value = null)</h4>
-				<p>變更一個配置選項的值。</p>
+				<p>變更一个配置選項的值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -234,11 +234,11 @@ $image
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -246,13 +246,13 @@ $image
 								<tr>
 									<th><kbd>$index</kbd></th>
 									<td><i>必要</i></td>
-									<td>要被設定的索引，或一個配置選項陣列。</td>
+									<td>要被設定的索引，或一个配置選項陣列。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$value</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要被設定的值，如果 $index 不是一個陣列。</td>
+									<td>要被設定的值，如果 $index 不是一个陣列。</td>
 								</tr>
 							</table>
 						</td>
@@ -264,7 +264,7 @@ $image
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 調整圖像的尺寸，並變更背景。
+							<pre class="php"><code>// 調整圖像的尺寸，并變更背景。
 Image::load('filename.gif')
 	->config('bgcolor', '#f00')
 	->resize(100, 100, true, true);</code></pre>
@@ -276,7 +276,7 @@ Image::load('filename.gif')
 
 			<article>
 				<h4 class="method" id="method_load">load($filename, $return_data = false, $force_extension = false)</h4>
-				<p><strong>load</strong> 方法試圖載入一個圖像來編輯。</p>
+				<p><strong>load</strong> 方法试圖載入一个圖像來编輯。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -284,11 +284,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -296,19 +296,19 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$filename</kbd></th>
 									<td><i>必要</i></td>
-									<td>指向要被載入的圖像檔案路徑。</td>
+									<td>指向要被載入的圖像档案路徑。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$return_data</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>偵測是否回傳圖像資料，只支援 GD。</td>
+									<td>偵测是否回傳圖像資料，只支援 GD。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$force_extension</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>是否強制圖像副檔名（成為 $force_extension），只支援 GD。</td>
+									<td>是否強制圖像副档名（成为 $force_extension），只支援 GD。</td>
 								</tr>
 							</table>
 						</td>
@@ -323,7 +323,7 @@ Image::load('filename.gif')
 							<pre class="php"><code>// 載入圖像
 Image::load('filename.gif');
 
-// 上傳一個圖像並直接傳遞到 Image::load 方法。
+// 上傳一个圖像并直接傳遞到 Image::load 方法。
 Upload::process(array(
 	'path' => DOCROOT.DS.'files'
 ));
@@ -332,7 +332,7 @@ if (Upload::is_valid())
 {
 	$data = Upload::get_files(0);
 
-	// 使用該上傳檔案的資料，我們可以強制圖像的副檔名
+	// 使用該上傳档案的資料，我們可以強制圖像的副档名
 	// 透過 $force_extension
 	Image::load($data['file'], false, $data['extension'])
 		->crop_resize(200, 200)
@@ -346,7 +346,7 @@ if (Upload::is_valid())
 
 			<article>
 				<h4 class="method" id="method_crop">crop($x1, $y1, $x2, $y2)</h4>
-				<p>使用座標或百分比來裁切圖像。</p>
+				<p>使用座标或百分比來裁切圖像。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -354,11 +354,11 @@ if (Upload::is_valid())
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -366,25 +366,25 @@ if (Upload::is_valid())
 								<tr>
 									<th><kbd>$x1</kbd></th>
 									<td><i>必要</i></td>
-									<td>第一個裁切的 X 軸位置。</td>
+									<td>第一个裁切的 X 軸位置。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$y1</kbd></th>
 									<td><i>必要</i></td>
-									<td>第一個裁切的 Y 軸位置。</td>
+									<td>第一个裁切的 Y 軸位置。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$x2</kbd></th>
 									<td><i>必要</i></td>
-									<td>第二個裁切的 X 軸位置。</td>
+									<td>第二个裁切的 X 軸位置。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$y2</kbd></th>
 									<td><i>必要</i></td>
-									<td>第二個裁切的 Y 軸位置。</td>
+									<td>第二个裁切的 Y 軸位置。</td>
 								</tr>
 							</table>
 						</td>
@@ -396,17 +396,17 @@ if (Upload::is_valid())
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 為了這個範例的目的，圖像的寬和高是 200x200
+							<pre class="php"><code>// 为了这个範例的目的，圖像的寬和高是 200x200
 
 // 裁切圖像從 (20, 20) 到 (180, 180)
 Image::load('filename.gif')
 	->crop(20, 20, 180, 180);
 
-// 裁切圖像從 (40, 40) 到 (160, 160) 使用負數。
+// 裁切圖像從 (40, 40) 到 (160, 160) 使用負数。
 Image::load('filename.gif')
 	->crop(40, 40, -40, -40);
 
-// 裁切圖像從 (30, 30) 到 (170, 170) 混合使用百分比及負數。
+// 裁切圖像從 (30, 30) 到 (170, 170) 混合使用百分比及負数。
 Image::load('filename.gif')
 	->crop('15%', '15%', '-15%', '-15%');</code></pre>
 						</td>
@@ -417,7 +417,7 @@ Image::load('filename.gif')
 
 			<article>
 				<h4 class="method" id="method_resize">resize($width, $height = null, $keepar = true, $pad = false)</h4>
-				<p>調整圖像尺寸。如果寬度或高度是 null，它會保留原有的寬高比來調整。</p>
+				<p>調整圖像尺寸。如果寬度或高度是 null，它会保留原有的寬高比來調整。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -425,11 +425,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -449,13 +449,13 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$keepar</kbd></th>
 									<td><pre class="php"><code>true</code></pre></td>
-									<td>如果設為 true，將保留與原圖像相同的寬高比。</td>
+									<td>如果設为 true，将保留與原圖像相同的寬高比。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$pad</kbd></th>
 									<td><pre class="php"><code>false</code></pre></td>
-									<td>如果設為 true 且 $keepar 為 true，它會用配置的 bgcolor 來填充圖像。</td>
+									<td>如果設为 true 且 $keepar 为 true，它会用配置的 bgcolor 來填充圖像。</td>
 								</tr>
 							</table>
 						</td>
@@ -490,7 +490,7 @@ Image::load('filename.gif')
 
 			<article>
 				<h4 class="method" id="method_crop_resize">crop_resize($width, $height = null)</h4>
-				<p>調整圖像尺寸並裁切成適應所給的寬和高。</p>
+				<p>調整圖像尺寸并裁切成適應所給的寬和高。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -498,11 +498,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -528,7 +528,7 @@ Image::load('filename.gif')
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 用法範例，裁切一個 300x200 圖像為 200x200 會在頂部及底部移除 50px
+							<pre class="php"><code>// 用法範例，裁切一个 300x200 圖像为 200x200 会在頂部及底部移除 50px
 Image::load('filename.gif')
 	->crop_resize(200, 200);</code></pre>
 						</td>
@@ -547,11 +547,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -559,7 +559,7 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$degrees</kbd></th>
 									<td><i>必要</i></td>
-									<td>圖像要轉動的角度。接受正數及負數。</td>
+									<td>圖像要轉动的角度。接受正数及負数。</td>
 								</tr>
 							</table>
 						</td>
@@ -579,7 +579,7 @@ Image::load('filename.gif')
 Image::load('filename.gif')
 	->rotate(-90);
 
-// 接受 (-359, 359) 範圍之外的數字。
+// 接受 (-359, 359) 範圍之外的数字。
 Image::load('filename')
 	->rotate(450);</code></pre>
 						</td>
@@ -598,11 +598,11 @@ Image::load('filename')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -649,11 +649,11 @@ Image::load('filename')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -661,7 +661,7 @@ Image::load('filename')
 								<tr>
 									<th><kbd>$filename</kbd></th>
 									<td><i>必要</i></td>
-									<td>要使用做為浮水印的圖像檔案位置。</td>
+									<td>要使用做为浮水印的圖像档案位置。</td>
 								</tr>
 
 								<tr>
@@ -713,11 +713,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -731,7 +731,7 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$color</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>邊線顏色，預設為背景顏色。</td>
+									<td>邊線顏色，預設为背景顏色。</td>
 								</tr>
 							</table>
 						</td>
@@ -743,11 +743,11 @@ Image::load('filename.gif')
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 製造一個 10px 黑色邊線
+							<pre class="php"><code>// 製造一个 10px 黑色邊線
 Image::load('filename.gif')
 	->border(10, '#000000');
 
-// 製造一個 15px 紅、綠、藍的邊線。
+// 製造一个 15px 紅、綠、藍的邊線。
 Image::load('filename.gif')
 	->border(5, '#FF0000')
 	->border(5, '#00FF00')
@@ -768,11 +768,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -811,11 +811,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -874,18 +874,18 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$filename</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要取得尺寸的檔案位置。</td>
+									<td>要取得尺寸的档案位置。</td>
 								</tr>
 							</table>
 						</td>
@@ -897,7 +897,7 @@ Image::load('filename.gif')
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 取得呈現圖像的尺寸
+							<pre class="php"><code>// 取得呈现圖像的尺寸
 $sizes = Image::sizes('filename.gif');
 
 // 回傳
@@ -914,7 +914,7 @@ Object
 
 			<article>
 				<h4 class="method" id="method_extension">extension()</h4>
-				<p>回傳檔案的副檔名，它代表在建構時被發現的類型。</p>
+				<p>回傳档案的副档名，它代表在建構時被发现的类型。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -922,7 +922,7 @@ Object
 						<td>否</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							沒有
 						</td>
@@ -938,7 +938,7 @@ Object
 $ext = Image::load('uploaded_file.jpg')
 	->extension();
 
-// 儲存 PNG 為 JPG
+// 儲存 PNG 为 JPG
 Image::load('placeholder.png')
 	->output($ext);
 							</code></pre>
@@ -950,7 +950,7 @@ Image::load('placeholder.png')
 
 			<article>
 				<h4 class="method" id="method_grayscale">grayscale()</h4>
-				<p>將圖像轉成灰階版本。</p>
+				<p>将圖像轉成灰階版本。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -958,7 +958,7 @@ Image::load('placeholder.png')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>沒有</td>
 					</tr>
 					<tr>
@@ -979,7 +979,7 @@ Image::load('filename.gif')
 
 			<article>
 				<h4 class="method" id="method_save">save($filename = null, $permissions = null)</h4>
-				<p>儲存圖像，並選擇性的試圖設定權限。</p>
+				<p>儲存圖像，并選擇性的试圖設定權限。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -987,11 +987,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -999,13 +999,13 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$filename</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要儲存圖像的位置。如果檔案名稱為 null，載入的圖像檔案名稱會被使用。如果沒添加副檔名，將被附加基於載入檔案的副檔名。</td>
+									<td>要儲存圖像的位置。如果档案名稱为 null，載入的圖像档案名稱会被使用。如果沒添加副档名，将被附加基於載入档案的副档名。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$permissions</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>接受一個 unix 風格的權限（例如：755），或 null 不設定權限</td>
+									<td>接受一个 unix 風格的權限（例如：755），或 null 不設定權限</td>
 								</tr>
 							</table>
 						</td>
@@ -1017,15 +1017,15 @@ Image::load('filename.gif')
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 存為 filename2.ext
+							<pre class="php"><code>// 存为 filename2.ext
 Image::load('filename.gif')
 	->save('filename2');
 
-// 存為 filename2.png
+// 存为 filename2.png
 Image::load('filename.gif')
 	->save('filename2.png');
 
-// 存為 filename2.ext 當試圖應用權限時
+// 存为 filename2.ext 當试圖應用權限時
 Image::load('filename.gif')
 	->save('filename2', 755);</code></pre>
 						</td>
@@ -1036,7 +1036,7 @@ Image::load('filename.gif')
 
 			<article>
 				<h4 class="method" id="method_save_pa">save_pa($prepend, $append = null, $extension = null, $permissions = null)</h4>
-				<p>用一個附加在前和／或附加在後的檔案名稱儲存圖像到相同位置，並選擇性的嘗試設定權限。</p>
+				<p>用一个附加在前和／或附加在後的档案名稱儲存圖像到相同位置，并選擇性的嘗试設定權限。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1044,11 +1044,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1056,25 +1056,25 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$append</kbd></th>
 									<td><i>必要</i></td>
-									<td>要添加到檔案名稱開頭的字串。</td>
+									<td>要添加到档案名稱開頭的字串。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$prepend</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要添加到檔案名稱結尾且在副檔名之前的字串。</td>
+									<td>要添加到档案名稱結尾且在副档名之前的字串。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$extension</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>可以設定新的圖像副檔名，如果為 null，預設是載入的圖像副檔名。</td>
+									<td>可以設定新的圖像副档名，如果为 null，預設是載入的圖像副档名。</td>
 								</tr>
 
 								<tr>
 									<th><kbd>$permissions</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>接受一個 unix 風格的權限（例如：755），或 null 不設定權限</td>
+									<td>接受一个 unix 風格的權限（例如：755），或 null 不設定權限</td>
 								</tr>
 							</table>
 						</td>
@@ -1086,7 +1086,7 @@ Image::load('filename.gif')
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 存為 prepend_filename_append.gif
+							<pre class="php"><code>// 存为 prepend_filename_append.gif
 Image::load('filename.gif')
 	->save_pa('prepend_', '_append');
 							</code></pre>
@@ -1098,7 +1098,7 @@ Image::load('filename.gif')
 
 			<article>
 				<h4 class="method" id="method_output">output($filetype)</h4>
-				<p>直接輸出圖像，並設定表頭。</p>
+				<p>直接輸出圖像，并設定表頭。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -1106,11 +1106,11 @@ Image::load('filename.gif')
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th class="fixed_width">預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -1118,7 +1118,7 @@ Image::load('filename.gif')
 								<tr>
 									<th><kbd>$filetype</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>要輸出圖像的檔案類型（如：png、gif、jpeg、等等）。預設是載入檔案的副檔名。</td>
+									<td>要輸出圖像的档案类型（如：png、gif、jpeg、等等）。預設是載入档案的副档名。</td>
 								</tr>
 							</table>
 						</td>
@@ -1130,11 +1130,11 @@ Image::load('filename.gif')
 					<tr>
 						<th>範例</th>
 						<td>
-							<pre class="php"><code>// 輸出為 gif
+							<pre class="php"><code>// 輸出为 gif
 Image::load('filename.gif')
 	->output();
 
-// 輸出為 jpeg
+// 輸出为 jpeg
 Image::load('filename.gif')
 	->output('jpeg');
 							</code></pre>
@@ -1148,7 +1148,7 @@ Image::load('filename.gif')
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>

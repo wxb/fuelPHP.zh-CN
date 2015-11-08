@@ -12,7 +12,7 @@
 		var class_prefix = "Uri::";
 	</script>
 	<script src="./../assets/js/combined.js"></script>
-	<title>Uri - 類別 - FuelPHP 简体中文手册</title>
+	<title>Uri - 类別 - FuelPHP 简体中文手册</title>
 </head>
 <body>
 	<div id="container">
@@ -20,7 +20,7 @@
 			<div class="table">
 				<h1>
 					<strong>FuelPHP，PHP 5.3 框架</strong>
-					正體中文文件
+					简体中文手册
 				</h1>
 
 				
@@ -29,7 +29,7 @@
 
 				<div class="clear"></div>
 			</nav>
-			<a href="#" id="toc_handle">目錄</a>
+			<a href="#" id="toc_handle">目录</a>
 			<div class="clear"></div>
 		</header>
 
@@ -40,18 +40,18 @@
 
 		<div id="main">
 
-			<h2>Uri 類別</h2>
+			<h2>Uri 类別</h2>
 
-			<p>Uri 類別能讓你與 URI 互動。</p>
+			<p>Uri 类別能让你與 URI 互动。</p>
 
 			<article>
 				<h4 class="method" id="method_base">base($include_index = true)</h4>
 				<p>
-					<strong>base</strong> 方法回傳基礎 URL，不包括 index_file 當 <strong>$include_index</strong>
-					設為 <em>false</em> 時。
+					<strong>base</strong> 方法回傳基础 URL，不包括 index_file 當 <strong>$include_index</strong>
+					設为 <em>false</em> 時。
 				</p>
 				<p class="note">
-					請注意：如果在 app/config/config.php 裡 index_file 沒有被設定，<strong>$include_index</strong> 將被忽略。
+					請注意：如果在 app/config/config.php 裡 index_file 沒有被設定，<strong>$include_index</strong> 将被忽略。
 				</p>
 				<table class="method">
 					<tbody>
@@ -60,11 +60,11 @@
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -78,7 +78,7 @@
 					</tr>
 					<tr>
 						<th>回傳</th>
-						<td>字串，基礎 URL 與選擇性的索引檔案附加</td>
+						<td>字串，基础 URL 與選擇性的索引档案附加</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -96,7 +96,7 @@ echo Uri::base(false);
 
 			<article>
 				<h4 class="method" id="method_create">create($uri = null, $variables = array(), $get_variables = array(), $secure = null)</h4>
-				<p><strong>create</strong> 方法能讓你建立一個 URL 根據所給的 URI，包括基礎 URL。</p>
+				<p><strong>create</strong> 方法能让你建立一个 URL 根據所給的 URI，包括基础 URL。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -104,11 +104,11 @@ echo Uri::base(false);
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
@@ -120,18 +120,18 @@ echo Uri::base(false);
 								<tr>
 									<th><kbd>$variables</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>URL 的變數。</td>
+									<td>URL 的變数。</td>
 								</tr>
 								<tr>
 									<th><kbd>$get_variables</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
 									<td>添加到 URL 的查詢字串，其值 &amp; 鍵可使用
-										$variables 陣列中的變數。</td>
+										$variables 陣列中的變数。</td>
 								</tr>
 								<tr>
 									<th><kbd>$secure</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>設定為 false 以強制 http，或設定為 true 以強制 https 在建立的 URL</td>
+									<td>設定为 false 以強制 http，或設定为 true 以強制 https 在建立的 URL</td>
 								</tr>
 							</table>
 						</td>
@@ -162,7 +162,7 @@ echo Uri::create('http://www.example.org/:some', array('some' => 'thing', 'and' 
 
 			<article>
 				<h4 class="method" id="method_current">current()</h4>
-				<p><strong>current</strong> 方法能讓你提取目前的 URL，包括在 HMVC 模式的基礎 URL。</p>
+				<p><strong>current</strong> 方法能让你提取目前的 URL，包括在 HMVC 模式的基础 URL。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -170,7 +170,7 @@ echo Uri::create('http://www.example.org/:some', array('some' => 'thing', 'and' 
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -190,7 +190,7 @@ echo Uri::current(); // 回傳 http://localhost/module/controller/method</code><
 
 			<article>
 				<h4 class="method" id="method_main">main()</h4>
-				<p><strong>main</strong> 方法能讓你提取目前的 URL，包括基礎 URL。</p>
+				<p><strong>main</strong> 方法能让你提取目前的 URL，包括基础 URL。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -198,7 +198,7 @@ echo Uri::current(); // 回傳 http://localhost/module/controller/method</code><
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -218,7 +218,7 @@ echo Uri::main(); // 回傳 http://localhost/controller/method</code></pre>
 
 			<article>
 				<h4 class="method" id="method_segment">segment($segment, $default = null)</h4>
-				<p><strong>segment</strong> 方法能讓你回傳想要的分段，或不存在時回傳 false。</p>
+				<p><strong>segment</strong> 方法能让你回傳想要的分段，或不存在時回傳 false。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -226,18 +226,18 @@ echo Uri::main(); // 回傳 http://localhost/controller/method</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$segment</kbd></th>
 									<td><i>必要</i></td>
-									<td>分段編號。</td>
+									<td>分段编號。</td>
 								</tr>
 								<tr>
 									<th><kbd>$default</kbd></th>
@@ -264,7 +264,7 @@ echo Uri::segment(3); // 回傳 param1</code></pre>
 
 			<article>
 				<h4 class="method" id="method_segments">segments()</h4>
-				<p><strong>segments</strong> 方法能讓你提取目前的 URI 分段陣列。</p>
+				<p><strong>segments</strong> 方法能让你提取目前的 URI 分段陣列。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -272,7 +272,7 @@ echo Uri::segment(3); // 回傳 param1</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -292,7 +292,7 @@ echo Uri::segments(); // 回傳 array(0 => 'controller', 1 => 'method')</code></
 
 			<article>
 				<h4 class="method" id="method_segment_replace">segment_replace($url, $secure = null)</h4>
-				<p><strong>segment_replace</strong> 方法能讓你以目前的 URI 分段，在所給的 URL 中取代該位置的萬用字元。</p>
+				<p><strong>segment_replace</strong> 方法能让你以目前的 URI 分段，在所給的 URL 中取代該位置的萬用字元。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -300,23 +300,23 @@ echo Uri::segments(); // 回傳 array(0 => 'controller', 1 => 'method')</code></
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$url</kbd></th>
 									<td><i>必要</i></td>
-									<td>包含萬用字元的 URL。萬用字元被定義為一個 * 字元。</td>
+									<td>包含萬用字元的 URL。萬用字元被定義为一个 * 字元。</td>
 								</tr>
 								<tr>
 									<th><kbd>$secure</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>如果為 false，回傳的 URL 會使用 HTTP，如果為 true，它會使用 HTTPS。</td>
+									<td>如果为 false，回傳的 URL 会使用 HTTP，如果为 true，它会使用 HTTPS。</td>
 								</tr>
 							</table>
 						</td>
@@ -327,7 +327,7 @@ echo Uri::segments(); // 回傳 array(0 => 'controller', 1 => 'method')</code></
 					</tr>
 					<tr>
 						<th>拋出</th>
-						<td>OutOfBoundsException，如果一個萬用字元的位置在片段中不存在任何值。</td>
+						<td>OutOfBoundsException，如果一个萬用字元的位置在片段中不存在任何值。</td>
 					</tr>
 					<tr>
 						<th>範例</th>
@@ -337,7 +337,7 @@ echo Uri::segments(); // 回傳 array(0 => 'controller', 1 => 'method')</code></
 // 回傳 http://localhost/one/two/three
 echo Uri::segment_replace('http://localhost/*/*/three');
 
-// 拋出一個例外，因為沒有可用的第三片段
+// 拋出一个例外，因为沒有可用的第三片段
 echo Uri::segment_replace('http://localhost/this/that/*/other');
 
 // 回傳 https://localhost/one/two/three
@@ -351,7 +351,7 @@ echo Uri::segment_replace('http://localhost/*/*/three', true);</code></pre>
 			<article>
 				<h4 class="method" id="method_update_query_string">update_query_string($vars = array(), $uri = null, $secure = null)</h4>
 				<p>
-					<strong>update_query_string</strong> 方法能讓你更新目前或傳遞的 URI 的查詢字串。
+					<strong>update_query_string</strong> 方法能让你更新目前或傳遞的 URI 的查詢字串。
 				</p>
 				<table class="method">
 					<tbody>
@@ -360,31 +360,31 @@ echo Uri::segment_replace('http://localhost/*/*/three', true);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$vars</kbd></th>
 									<td><pre class="php"><code>array()</code></pre></td>
-									<td>一個查詢變數的關聯陣列，或一個包含變數名稱的字串。</td>
+									<td>一个查詢變数的關聯陣列，或一个包含變数名稱的字串。</td>
 								</tr>
 								<tr>
 									<th><kbd>$uri</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
 									<td>
-										要使用的 URL。如果沒給，目前的 URL 會被使用。如果 $vars 是一個字串，這會包含變數值
-										（這意味著在這情況下，你不能傳遞一個自訂的 URI）。
+										要使用的 URL。如果沒給，目前的 URL 会被使用。如果 $vars 是一个字串，这会包含變数值
+										（这意味著在这情況下，你不能傳遞一个自訂的 URI）。
 									</td>
 								</tr>
 								<tr>
 									<th><kbd>$secure</kbd></th>
 									<td><pre class="php"><code>null</code></pre></td>
-									<td>如果為 false，回傳的 URL 會使用 HTTP，如果為 true，它會使用 HTTPS。</td>
+									<td>如果为 false，回傳的 URL 会使用 HTTP，如果为 true，它会使用 HTTPS。</td>
 								</tr>
 							</table>
 						</td>
@@ -417,7 +417,7 @@ echo Uri::update_query_string('three', 3, true);</code></pre>
 
 			<article>
 				<h4 class="method" id="method_to_assoc">to_assoc($start = 1)</h4>
-				<p><strong>to_assoc</strong> 方法使用分段陣列並把它變成一個關聯陣列如果分段數是偶數。如果分段數是奇數，最後的陣列鍵將有一個 <code>null</code> 值。</p>
+				<p><strong>to_assoc</strong> 方法使用分段陣列并把它變成一个關聯陣列如果分段数是偶数。如果分段数是奇数，最後的陣列鍵将有一个 <code>null</code> 值。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -425,18 +425,18 @@ echo Uri::update_query_string('three', 3, true);</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$start</kbd></th>
 									<td><pre class="php"><code>1</code></pre></td>
-									<td>要開始的分段數。這能讓你剝離引導分段。</td>
+									<td>要開始的分段数。这能让你剝離引導分段。</td>
 								</tr>
 							</table>
 						</td>
@@ -474,7 +474,7 @@ array(
 
 			<article>
 				<h4 class="method" id="method_string">string()</h4>
-				<p><strong>string</strong> 方法能讓你提取目前的 URI。</p>
+				<p><strong>string</strong> 方法能让你提取目前的 URI。</p>
 				<table class="method">
 					<tbody>
 					<tr>
@@ -482,7 +482,7 @@ array(
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>無</td>
 					</tr>
 					<tr>
@@ -503,9 +503,9 @@ echo Uri::string(); // 回傳 controller/method</code></pre>
 			<article>
 				<h4 class="method" id="method_build_query_string">build_query_string($values ...)</h4>
 				<p>
-					<strong>build_query_string</strong> 方法能讓你從一個或更多傳遞的關聯陣列或字串值產生一個查詢字串。
-					你可以透過 Input::get() 從現有的來建構一個更新的查詢字串。如果你傳遞一個字串，它會被假設為一個開關，
-					並且會被轉換為 "string=1"。
+					<strong>build_query_string</strong> 方法能让你從一个或更多傳遞的關聯陣列或字串值產生一个查詢字串。
+					你可以透過 Input::get() 從现有的來建構一个更新的查詢字串。如果你傳遞一个字串，它会被假設为一个開關，
+					并且会被轉換为 "string=1"。
 				</p>
 				<table class="method">
 					<tbody>
@@ -514,18 +514,18 @@ echo Uri::string(); // 回傳 controller/method</code></pre>
 						<td>是</td>
 					</tr>
 					<tr>
-						<th>參數</th>
+						<th>參数</th>
 						<td>
 							<table class="parameters">
 								<tr>
-									<th>參數</th>
+									<th>參数</th>
 									<th>預設</th>
 									<th class="description">描述</th>
 								</tr>
 								<tr>
 									<th><kbd>$values</kbd></th>
 									<td><i>必要</i></td>
-									<td>一個或更多關聯陣列或字串值</td>
+									<td>一个或更多關聯陣列或字串值</td>
 								</tr>
 							</table>
 						</td>
@@ -548,7 +548,7 @@ echo Uri::build_query_string(array('varA' => 'varA'), 'varB', array('varC' => 'v
 
 		<footer>
 			<p>
-				&copy; FuelPHP 開發團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授權許可下發布。
+				&copy; FuelPHP 开发團隊 2010-2014 - <a href="http://fuelphp.com">FuelPHP</a> 在 MIT 授权許可下发布。
 			</p>
 		</footer>
 	</div>
